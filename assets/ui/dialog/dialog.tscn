@@ -157,14 +157,14 @@ texture = ExtResource("1_qkj7q")
 self_modulate = Color(2.695322e-06, 0.7918582, 0.85055786, 1)
 layout_mode = 0
 offset_right = 1920.0
-offset_bottom = 64.0
+offset_bottom = 80.0
 texture = ExtResource("2_5o6qf")
 
 [node name="Label" type="Label" parent="Bar/Name" unique_id=1722338196]
 layout_mode = 0
 offset_left = 16.0
-offset_right = 144.0
-offset_bottom = 64.0
+offset_right = 472.0
+offset_bottom = 80.0
 theme = ExtResource("3_fh4nj")
 theme_type_variation = &"Title"
 text = "Name"
@@ -173,11 +173,11 @@ vertical_alignment = 1
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 80.0
+offset_top = 96.0
 offset_right = 1904.0
 offset_bottom = 328.0
 theme = ExtResource("3_fh4nj")
-text = "Dialog"
+bbcode_enabled = true
 scroll_active = false
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1273139418]

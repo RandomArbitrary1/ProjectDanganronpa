@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d2a8c8qghf1rh"]
 
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/ui/dialog/dialog.tscn" id="1_f4v0s"]
+[ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_06prf"]
+[ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="3_iaqgu"]
 
 [sub_resource type="GDScript" id="GDScript_f4v0s"]
 resource_name = "Test"
@@ -8,6 +10,11 @@ script/source = "extends Control
 
 func _ready() -> void:
 	self.get_node(\"Button\").pressed.connect(func():
+		self.get_node(\"Dialog\").file = load(\"res://assets/data/dialog/test.json\")
+		self.get_node(\"Dialog\").start()
+	)
+	self.get_node(\"Button2\").pressed.connect(func():
+		self.get_node(\"Dialog\").file = load(\"res://assets/data/dialog/test2.json\")
 		self.get_node(\"Dialog\").start()
 	)
 "
@@ -23,7 +30,7 @@ script = SubResource("GDScript_f4v0s")
 
 [node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("1_f4v0s")]
 layout_mode = 1
-file = "\"res://assets/data/dialog/test.json\""
+file = ExtResource("2_06prf")
 
 [node name="Button" type="Button" parent="." unique_id=2092715834]
 layout_mode = 0
@@ -31,4 +38,14 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 49.0
 offset_bottom = 39.0
+theme = ExtResource("3_iaqgu")
 text = "Test"
+
+[node name="Button2" type="Button" parent="." unique_id=1459064384]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 8.0
+offset_right = 211.0
+offset_bottom = 79.0
+theme = ExtResource("3_iaqgu")
+text = "Test2"

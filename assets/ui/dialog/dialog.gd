@@ -1,6 +1,6 @@
 extends Control
 
-@export var file: String
+@export var file: Resource 
 @export var active: bool
 @onready var box = self.get_node("Bar/Dialog")
 @onready var anim = self.get_node("Anims")
@@ -22,6 +22,10 @@ func next():
 			nameplate.get_node("Label").text = dialog[line][1]
 			nameplate.self_modulate = color(dialog[line][1])
 			box.text = dialog[line][4]
+			if dialog[line].size() > 5:
+				for i in dialog[line][5]:
+					if i == "Thought":
+						box.text = "[color=cyan]" + box.text + "[/color]"
 			var tween: Tween = create_tween()
 			tween.tween_property(box, "visible_ratio", 1.0, dialog[line][4].length()*dialog[line][3]).from(0.0)
 	else:
@@ -29,9 +33,8 @@ func next():
 		anim.play("Close")
 
 func start():
-	if file != "" and not active:
-		#dialog = load(file).data
-		dialog = load("res://assets/data/dialog/test.json").data
+	if file and not active:
+		dialog = file.data
 		line = 0
 		anim.play("Open")
 		next()
