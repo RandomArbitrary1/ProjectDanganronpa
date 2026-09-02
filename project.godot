@@ -10,12 +10,6 @@ config_version=5
 
 [application]
 
-<<<<<<< HEAD
-config/name="Danganronpa:FanGame"
-config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
-
-=======
 config/name="ProjectDanganronpa"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -37,7 +31,6 @@ Progress={
 ]
 }
 
->>>>>>> 859e6ed1a19d61ff63ec0281f6220485afcc038e
 [physics]
 
 3d/physics_engine="Jolt Physics"
