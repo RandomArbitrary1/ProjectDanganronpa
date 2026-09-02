@@ -9,11 +9,18 @@ extends Control
 var dialog = null
 var line = 0
 
+func color(val):
+	if val == "Person1":
+		return Color(0.554, 0.688, 1.0, 1.0)
+	elif val == "Person2":
+		return Color(0.709, 0.839, 0.0, 1.0)
+	
 
 func next():
 	if line < dialog.size():
 		if dialog[line][0] == "Text":
 			nameplate.get_node("Label").text = dialog[line][1]
+			nameplate.self_modulate = color(dialog[line][1])
 			box.text = dialog[line][4]
 			var tween: Tween = create_tween()
 			tween.tween_property(box, "visible_ratio", 1.0, dialog[line][4].length()*dialog[line][3]).from(0.0)
