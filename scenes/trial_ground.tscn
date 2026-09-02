@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cgt2ihdfqochk"]
+
+[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="1_3jcxg"]
+[ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="1_583ih"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akiwv"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3jcxg"]
+sky_material = SubResource("ProceduralSkyMaterial_akiwv")
+
+[sub_resource type="Environment" id="Environment_583ih"]
+background_mode = 2
+sky = SubResource("Sky_3jcxg")
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 3.0
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_583ih"]
+size = Vector3(1, 1.8, 1)
+
+[node name="TrialGround" type="Node3D" unique_id=1833039300]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=347635823]
+environment = SubResource("Environment_583ih")
+
+[node name="sun" type="DirectionalLight3D" parent="." unique_id=496777979]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="RoomNODE" type="CSGCombiner3D" parent="." unique_id=841293864]
+
+[node name="Room" type="CSGBox3D" parent="RoomNODE" unique_id=2053213690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+size = Vector3(41, 33, 41)
+
+[node name="CutoutRoom" type="CSGCylinder3D" parent="RoomNODE" unique_id=75888639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.875, 0)
+operation = 2
+radius = 15.0
+height = 24.75
+sides = 16
+material = ExtResource("1_583ih")
+
+[node name="Floor" type="CSGBox3D" parent="RoomNODE" unique_id=1002592347]
+size = Vector3(33, 1, 33)
+material = ExtResource("1_3jcxg")
+
+[node name="SizeOfAPerson" type="MeshInstance3D" parent="." unique_id=423297161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5432043, 0)
+mesh = SubResource("BoxMesh_583ih")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1744772261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.882429, 10.752957)
+
+[node name="LIGHT" type="SpotLight3D" parent="." unique_id=1190063664]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 10, 0)
+light_energy = 3.851
+spot_range = 17.498
