@@ -3,6 +3,43 @@
 [ext_resource type="Script" uid="uid://cauuom6vrajem" path="res://assets/scripts/ui/loading_screen/loading_screen.gd" id="1_ep5rh"]
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="2_hprjd"]
 
+[sub_resource type="Animation" id="Animation_hprjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotatingLoadingObj:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ku3bi"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotatingLoadingObj:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5phy8"]
+_data = {
+&"RESET": SubResource("Animation_hprjd"),
+&"appear": SubResource("Animation_ku3bi")
+}
+
 [node name="LoadingScreen" type="Control" unique_id=1853993188]
 layout_mode = 3
 anchors_preset = 15
@@ -50,3 +87,4 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("2_hprjd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=633188483]
+libraries/ = SubResource("AnimationLibrary_5phy8")

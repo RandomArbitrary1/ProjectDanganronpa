@@ -4,11 +4,13 @@ extends Control
 
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var rotating_loading_obj: TextureRect = $RotatingLoadingObj
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var progress = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	animation_player.play("appear")
 	ResourceLoader.load_threaded_request(scene)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

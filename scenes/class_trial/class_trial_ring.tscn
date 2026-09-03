@@ -1,20 +1,40 @@
 [gd_scene format=3 uid="uid://by21wmsuw5lkd"]
 
+[ext_resource type="Material" uid="uid://di7w2qykj66jy" path="res://assets/materials/red_carpet.tres" id="1_vor7m"]
 [ext_resource type="PackedScene" uid="uid://dfapcrx3tvq2x" path="res://scenes/class_trial/class_podium.tscn" id="1_ym4ti"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3own7"]
+material = ExtResource("1_vor7m")
+height = 0.1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3own7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7c0y6"]
-albedo_color = Color(0.63888407, 2.0214916e-06, 4.813075e-07, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vor7m"]
+albedo_color = Color(0.8859762, 0.651355, 7.70092e-07, 1)
 normal_enabled = true
 normal_scale = 0.66
 normal_texture = SubResource("PlaceholderTexture2D_3own7")
-uv1_scale = Vector3(10.005, 10.005, 10.005)
+uv1_scale = Vector3(71.435, 71.435, 71.435)
 uv1_triplanar = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_3own7"]
-material = SubResource("StandardMaterial3D_7c0y6")
+[sub_resource type="CylinderMesh" id="CylinderMesh_inf3k"]
+material = SubResource("StandardMaterial3D_vor7m")
 height = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vor7m"]
+material = ExtResource("1_vor7m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inf3k"]
+albedo_color = Color(0.902068, 0.6279179, 3.85046e-07, 1)
+normal_enabled = true
+normal_scale = 0.66
+normal_texture = SubResource("PlaceholderTexture2D_3own7")
+uv1_scale = Vector3(5.425, 5.425, 5.425)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f3lcg"]
+material = SubResource("StandardMaterial3D_inf3k")
 
 [node name="ClassTrialRing" type="Node3D" unique_id=809995449]
 
@@ -22,52 +42,72 @@ height = 0.1
 transform = Transform3D(10, 0, 0, 0, 0.324, 0, 0, 0, 10, 0, -0.015961528, 0)
 mesh = SubResource("CylinderMesh_3own7")
 
+[node name="CarpetOuterRing" type="MeshInstance3D" parent="." unique_id=1819714304]
+transform = Transform3D(10.2, 0, 0, 0, 0.324, 0, 0, 0, 10.2, 0, -0.02, 0)
+mesh = SubResource("CylinderMesh_inf3k")
+
 [node name="podiums" type="Node3D" parent="." unique_id=518712564]
 
 [node name="ClassPodium" parent="podiums" unique_id=1706174257 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 3)
 
-[node name="ClassPodium2" parent="podiums" unique_id=2140556817 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+[node name="ClassPodium2" parent="podiums" unique_id=2106910183 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="ClassPodium3" parent="podiums" unique_id=2047973337 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 4, 0, -1.7484555e-07)
+[node name="ClassPodium3" parent="podiums" unique_id=1951111380 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 3, 0, -1.3113416e-07)
 
-[node name="ClassPodium4" parent="podiums" unique_id=556446250 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, 1.7484555e-07)
+[node name="ClassPodium4" parent="podiums" unique_id=1691554768 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, 1.3113416e-07)
 
-[node name="ClassPodium5" parent="podiums" unique_id=69169188 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071067, 2.828427, 0, 2.828427)
+[node name="ClassPodium5" parent="podiums" unique_id=258236503 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071067, 2.1213202, 0, 2.1213202)
 
-[node name="ClassPodium6" parent="podiums" unique_id=1930763970 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.828427, 0, -2.828427)
+[node name="ClassPodium6" parent="podiums" unique_id=276429267 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.1213202, 0, -2.1213202)
 
-[node name="ClassPodium7" parent="podiums" unique_id=1929104383 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(0.7071069, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, 0.7071069, 2.8284268, 0, -2.8284273)
+[node name="ClassPodium7" parent="podiums" unique_id=368322191 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.7071069, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, 0.7071069, 2.1213202, 0, -2.1213202)
 
-[node name="ClassPodium8" parent="podiums" unique_id=2134187181 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -2.8284268, 0, 2.8284273)
+[node name="ClassPodium8" parent="podiums" unique_id=454916985 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -2.1213202, 0, 2.1213202)
 
-[node name="ClassPodium9" parent="podiums" unique_id=115587888 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-0.92413306, 0, -0.3820707, 0, 1, 0, 0.3820707, 0, -0.92413306, 1.5282824, 0, 3.6965325)
+[node name="ClassPodium9" parent="podiums" unique_id=2037196245 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.9241797, 0, -0.38195777, 0, 1, 0, 0.38195777, 0, -0.9241797, 1.1458731, 0, 2.7725394)
 
-[node name="ClassPodium10" parent="podiums" unique_id=84198971 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(0.9241331, 0, 0.3820706, 0, 1, 0, -0.3820706, 0, 0.9241331, -1.5282824, 0, -3.6965325)
+[node name="ClassPodium10" parent="podiums" unique_id=1188979725 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.9241798, 0, 0.3819577, 0, 1, 0, -0.3819577, 0, 0.9241798, -1.1458731, 0, -2.7725394)
 
-[node name="ClassPodium11" parent="podiums" unique_id=660214368 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(0.38207072, 0, -0.92413306, 0, 1, 0, 0.92413306, 0, 0.38207072, 3.6965325, 0, -1.5282825)
+[node name="ClassPodium11" parent="podiums" unique_id=1535617159 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.38195783, 0, -0.9241797, 0, 1, 0, 0.9241797, 0, 0.38195783, 2.7725394, 0, -1.1458732)
 
-[node name="ClassPodium12" parent="podiums" unique_id=2124849761 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-0.38207063, 0, 0.9241331, 0, 1, 0, -0.9241331, 0, -0.38207063, -3.6965325, 0, 1.5282825)
+[node name="ClassPodium12" parent="podiums" unique_id=1387656363 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.3819577, 0, 0.9241798, 0, 1, 0, -0.9241798, 0, -0.3819577, -2.7725394, 0, 1.1458732)
 
-[node name="ClassPodium13" parent="podiums" unique_id=444795238 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-0.383296, 0, -0.9236256, 0, 1, 0, 0.9236256, 0, -0.383296, 3.6945019, 0, 1.5331844)
+[node name="ClassPodium13" parent="podiums" unique_id=99214916 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.3834088, 0, -0.9235787, 0, 1, 0, 0.9235787, 0, -0.3834088, 2.770736, 0, 1.1502266)
 
-[node name="ClassPodium14" parent="podiums" unique_id=355563992 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(0.3832961, 0, 0.92362547, 0, 1, 0, -0.92362547, 0, 0.3832961, -3.6945019, 0, -1.5331844)
+[node name="ClassPodium14" parent="podiums" unique_id=333468115 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.38340884, 0, 0.9235786, 0, 1, 0, -0.9235786, 0, 0.38340884, -2.770736, 0, -1.1502266)
 
-[node name="ClassPodium15" parent="podiums" unique_id=1880566829 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(0.9236256, 0, -0.38329592, 0, 1, 0, 0.38329592, 0, 0.9236256, 1.533184, 0, -3.6945024)
+[node name="ClassPodium15" parent="podiums" unique_id=127561473 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.9235787, 0, -0.38340878, 0, 1, 0, 0.38340878, 0, 0.9235787, 1.1502266, 0, -2.770736)
 
-[node name="ClassPodium16" parent="podiums" unique_id=1068629386 instance=ExtResource("1_ym4ti")]
-transform = Transform3D(-0.9236256, 0, 0.383296, 0, 1, 0, -0.383296, 0, -0.9236256, -1.533184, 0, 3.6945024)
+[node name="ClassPodium16" parent="podiums" unique_id=332200252 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.92357874, 0, 0.3834087, 0, 1, 0, -0.3834087, 0, -0.92357874, -1.1502266, 0, 2.770736)
+
+[node name="CarpetLine1" type="MeshInstance3D" parent="." unique_id=1060698894]
+transform = Transform3D(0.5035838, 0, 0, 0, 1, 0, 0, 0, 16.157225, 0, -0.03, 0)
+mesh = SubResource("PlaneMesh_vor7m")
+
+[node name="CarpetLineOuter1" type="MeshInstance3D" parent="." unique_id=1049605958]
+transform = Transform3D(0.5528275, 0, 0, 0, 1, 0, 0, 0, 16.126366, 0, -0.04, 0)
+mesh = SubResource("PlaneMesh_f3lcg")
+
+[node name="CarpetLine2" type="MeshInstance3D" parent="." unique_id=1411556132]
+transform = Transform3D(-2.2012346e-08, 0, -16.157225, 0, 1, 0, 0.5035838, 0, -7.062547e-07, 0, -0.03, 0)
+mesh = SubResource("PlaneMesh_vor7m")
+
+[node name="CarpetLineOuter2" type="MeshInstance3D" parent="." unique_id=1079119864]
+transform = Transform3D(-2.4164857e-08, 0, -16.126366, 0, 1, 0, 0.5528275, 0, -7.0490586e-07, 0, -0.04, 0)
+mesh = SubResource("PlaneMesh_f3lcg")

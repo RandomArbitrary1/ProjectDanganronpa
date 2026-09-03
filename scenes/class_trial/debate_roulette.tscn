@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://r1ybdydhlyyl"]
+
+[ext_resource type="Texture2D" uid="uid://blghom2hvkp3a" path="res://assets/textures/ui/class_trial/crosshair.png" id="1_q3l8k"]
+[ext_resource type="Script" uid="uid://s4ufmjq1kvqv" path="res://assets/scripts/class_trial/debate_roulette.gd" id="1_s74x1"]
+[ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="3_bsook"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsook"]
+radius = 119.36
+
+[node name="DebateRoulette" type="Control" unique_id=1937437093]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s74x1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=547455956]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -377.0
+offset_right = 807.0
+offset_bottom = 724.0
+grow_vertical = 0
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("3_bsook")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=953600336]
+root_node = NodePath("../..")
+
+[node name="crosshair" type="TextureRect" parent="." unique_id=1547952700]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_q3l8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crosshair" unique_id=1109988330]
+position = Vector2(126, 124)
+shape = SubResource("CircleShape2D_bsook")
