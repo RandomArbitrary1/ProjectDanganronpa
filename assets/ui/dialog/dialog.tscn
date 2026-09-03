@@ -382,10 +382,10 @@ texture = ExtResource("2_5o6qf")
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 96.0
+offset_left = 40.0
+offset_top = 120.0
 offset_right = 1536.0
-offset_bottom = 328.0
+offset_bottom = 304.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
 scroll_active = false
