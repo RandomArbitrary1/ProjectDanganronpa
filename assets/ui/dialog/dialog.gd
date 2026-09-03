@@ -12,7 +12,9 @@ var line = 0
 var tween = null
 
 func color(val):
-	if val == "Person1":
+	if val == "Player":
+		return Color(0.861, 0.675, 0.634, 1.0)
+	elif val == "Person1":
 		return Color(0.554, 0.688, 1.0, 1.0)
 	elif val == "Person2":
 		return Color(0.709, 0.839, 0.0, 1.0)

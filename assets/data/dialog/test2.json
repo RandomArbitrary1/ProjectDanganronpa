@@ -5,5 +5,5 @@
 	["Text","Person1","Excited",0.03,"Nuh uh"],
 	["Text","Person1","Excited",0.03,"Clap them cheeks for me first"],
 	["Text","Person2","Excited",0.1,"..."],
-	["Text","Person2","Excited",0.03,"What is this guy on?? damn", ["Thought"]],
+	["Text","Player","Excited",0.03,"What are these guys on?? damn", ["Thought"]],
 ]

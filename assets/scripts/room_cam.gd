@@ -21,9 +21,10 @@ func _process(delta: float) -> void:
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
 	else:
 		var chr = get_node(str(characters) + "/" + character)
-		var direction = (start_position - chr.position).normalized()
-		self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-		self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,.5), 20*delta)
+		if chr:
+			var direction = (start_position - chr.position).normalized()
+			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
+			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,.5), 20*delta)
 	
 	if Input.is_action_pressed("Up"):
 		angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))
