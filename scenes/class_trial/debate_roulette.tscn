@@ -4,11 +4,94 @@
 [ext_resource type="Script" uid="uid://s4ufmjq1kvqv" path="res://assets/scripts/class_trial/debate_roulette.gd" id="1_s74x1"]
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="3_bsook"]
 [ext_resource type="AudioStream" uid="uid://vp1f2vv2w0ju" path="res://assets/audio/sfx/class_trial/big_gunshot.mp3" id="4_on1fu"]
+[ext_resource type="Texture2D" uid="uid://cl73jelgvbjh8" path="res://assets/textures/ui/class_trial/shoot_white_noise_effect.png" id="4_ul4ow"]
 [ext_resource type="AudioStream" uid="uid://b5oljuyd4ulox" path="res://assets/audio/sfx/class_trial/small_gunshot.mp3" id="5_ul4ow"]
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
+[ext_resource type="Texture2D" uid="uid://b5ixvrf66o27g" path="res://assets/textures/ui/class_trial/truth_bullet.png" id="8_fe14r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsook"]
 radius = 119.36
+
+[sub_resource type="Animation" id="Animation_ul4ow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crosshair/noise_shoot_vfx:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crosshair/noise_shoot_vfx:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qus7n"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crosshair/noise_shoot_vfx:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fe14r"]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crosshair/noise_shoot_vfx:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crosshair/noise_shoot_vfx:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qus7n"]
+_data = {
+&"RESET": SubResource("Animation_ul4ow"),
+&"hide": SubResource("Animation_qus7n"),
+&"shoot": SubResource("Animation_fe14r")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe14r"]
+bg_color = Color(0, 0.7071298, 0.09982402, 1)
 
 [node name="DebateRoulette" type="Control" unique_id=1937437093]
 layout_mode = 3
@@ -19,7 +102,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s74x1")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=547455956]
+[node name="sfx" type="Node" parent="." unique_id=279543093]
+
+[node name="big_gunshot" type="AudioStreamPlayer" parent="sfx" unique_id=560462808]
+stream = ExtResource("4_on1fu")
+bus = &"Sfx"
+
+[node name="small_gunshot" type="AudioStreamPlayer" parent="sfx" unique_id=1665445687]
+stream = ExtResource("5_ul4ow")
+pitch_scale = 1.9
+bus = &"Sfx"
+
+[node name="break" type="AudioStreamPlayer" parent="sfx" unique_id=176073633]
+stream = ExtResource("6_fe14r")
+bus = &"Sfx"
+
+[node name="revolver" type="TextureRect" parent="." unique_id=547455956]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -32,8 +130,34 @@ grow_vertical = 0
 scale = Vector2(0.645, 0.645)
 texture = ExtResource("3_bsook")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=953600336]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="revolver" unique_id=953600336]
 root_node = NodePath("../..")
+
+[node name="Bullets" type="Control" parent="." unique_id=849448777]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TruthBullet" type="TextureRect" parent="Bullets" unique_id=2095885499]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 182.0
+offset_top = 842.0
+offset_right = 682.0
+offset_bottom = 992.0
+grow_vertical = 2
+texture = ExtResource("8_fe14r")
+
+[node name="Label" type="Label" parent="Bullets/TruthBullet" unique_id=1443344272]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 37.0
+offset_right = 456.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 51
+text = "My account"
 
 [node name="crosshair" type="TextureRect" parent="." unique_id=1547952700]
 layout_mode = 1
@@ -48,21 +172,58 @@ offset_right = 125.0
 offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_q3l8k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="crosshair" unique_id=1109988330]
+[node name="Area2D" type="Area2D" parent="crosshair" unique_id=1441810566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crosshair/Area2D" unique_id=1109988330]
 position = Vector2(126, 124)
 shape = SubResource("CircleShape2D_bsook")
 
-[node name="sfx" type="Node" parent="." unique_id=279543093]
+[node name="noise_shoot_vfx" type="TextureRect" parent="crosshair" unique_id=716033914]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_ul4ow")
 
-[node name="big_gunshot" type="AudioStreamPlayer" parent="sfx" unique_id=560462808]
-stream = ExtResource("4_on1fu")
+[node name="noise_anim" type="AnimationPlayer" parent="crosshair/noise_shoot_vfx" unique_id=570816609]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_qus7n")
 
-[node name="small_gunshot" type="AudioStreamPlayer" parent="sfx" unique_id=1665445687]
-stream = ExtResource("5_ul4ow")
-pitch_scale = 1.9
+[node name="HP" type="ProgressBar" parent="." unique_id=1977004638]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -580.0
+offset_top = 33.0
+offset_bottom = 83.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/fill = SubResource("StyleBoxFlat_fe14r")
+show_percentage = false
 
-[node name="break" type="AudioStreamPlayer" parent="sfx" unique_id=176073633]
-stream = ExtResource("6_fe14r")
+[node name="Concentrate" type="ProgressBar" parent="." unique_id=1761164395]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -580.0
+offset_top = 108.0
+offset_bottom = 158.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/fill = SubResource("StyleBoxFlat_fe14r")
+show_percentage = false

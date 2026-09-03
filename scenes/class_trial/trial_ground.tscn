@@ -61,7 +61,7 @@ size = Vector3(33, 1, 33)
 material = ExtResource("2_fp278")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1744772261]
-transform = Transform3D(1, 0, 0, 0, 0.79857254, 0.60189867, 0, -0.60189867, 0.79857254, 0, 2.8519182, 4.206522)
+transform = Transform3D(1, 0, 0, 0, 0.7985725, 0.6018986, 0, -0.6018986, 0.7985725, 0, 2.8519182, 4.206522)
 fov = 70.0
 
 [node name="LIGHT" type="SpotLight3D" parent="." unique_id=1190063664]
