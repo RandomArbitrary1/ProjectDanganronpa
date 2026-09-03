@@ -74,4 +74,5 @@ func _process(delta: float) -> void:
 			if tween:
 				tween.kill()
 				box.visible_ratio = 1.0
+				input_ind.play("Show")
 		
