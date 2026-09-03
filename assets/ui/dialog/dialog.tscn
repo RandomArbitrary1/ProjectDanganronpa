@@ -3,7 +3,47 @@
 [ext_resource type="Script" uid="uid://bsetxvinrr88k" path="res://assets/ui/dialog/dialog.gd" id="1_5o6qf"]
 [ext_resource type="Texture2D" uid="uid://bkyr0h38kgmyx" path="res://assets/ui/dialog/dialog_bar.png" id="1_qkj7q"]
 [ext_resource type="Texture2D" uid="uid://bqowfkcgbfvgi" path="res://assets/ui/dialog/dialog_name.png" id="2_5o6qf"]
+[ext_resource type="Texture2D" uid="uid://bnw8cb8iyu6ml" path="res://assets/ui/dialog/box_decoration.png" id="3_8knbj"]
 [ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="3_fh4nj"]
+[ext_resource type="Texture2D" uid="uid://g7tk75amqho2" path="res://assets/ui/dialog/Dialog_nameplate.png" id="3_qqjwx"]
+
+[sub_resource type="Animation" id="Animation_fm551"]
+resource_name = "Loop"
+length = 0.1667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lines:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666666, 0.1, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [8.0, -18.0, -44.0, -70.0, -96.0]
+}
+
+[sub_resource type="Animation" id="Animation_fmua3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lines:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqd2n"]
+_data = {
+&"Loop": SubResource("Animation_fm551"),
+&"RESET": SubResource("Animation_fmua3")
+}
 
 [sub_resource type="Animation" id="Animation_5o6qf"]
 resource_name = "Close"
@@ -47,7 +87,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_fh4nj"]
 resource_name = "Open"
-length = 0.235
+length = 0.57
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,6 +123,66 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bar/Lines:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.46666667, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.09411765]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bar/Decoration:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.23333333, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-260.0, -360.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bar/Decoration:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.23333333, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bar/Name:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.23333333, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-100.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bar/Name:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.23333333, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_qqjwx"]
@@ -123,12 +223,101 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bar/Decoration:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-360.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bar/Decoration:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bar/Name:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bar/Name:modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bar/Lines:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.09411765]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bar/Name/Label:modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_8knbj"]
+resource_name = "Switch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bar/Name/Label:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8knbj"]
 _data = {
 &"Close": SubResource("Animation_5o6qf"),
 &"Open": SubResource("Animation_fh4nj"),
-&"RESET": SubResource("Animation_qqjwx")
+&"RESET": SubResource("Animation_qqjwx"),
+&"Switch": SubResource("Animation_8knbj")
 }
 
 [node name="Dialog" type="Control" unique_id=1879447364]
@@ -143,42 +332,68 @@ script = ExtResource("1_5o6qf")
 
 [node name="Bar" type="TextureRect" parent="." unique_id=1310259742]
 visible = false
+clip_contents = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -344.0
+offset_bottom = 0.0012207031
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
 
-[node name="Name" type="TextureRect" parent="Bar" unique_id=602250927]
+[node name="Lines" type="TextureRect" parent="Bar" unique_id=51850745]
+modulate = Color(1, 1, 1, 0.09411765)
+layout_mode = 0
+offset_left = 1536.0
+offset_top = 8.0
+offset_right = 1740.0
+offset_bottom = 544.0
+texture = ExtResource("3_8knbj")
+
+[node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
 self_modulate = Color(2.695322e-06, 0.7918582, 0.85055786, 1)
 layout_mode = 0
-offset_right = 1920.0
+offset_right = 256.0
 offset_bottom = 80.0
-texture = ExtResource("2_5o6qf")
+texture = ExtResource("3_qqjwx")
+region_rect = Rect2(0, 0, 80, 80)
+patch_margin_right = 80
 
 [node name="Label" type="Label" parent="Bar/Name" unique_id=1722338196]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 24.0
 offset_right = 472.0
 offset_bottom = 80.0
 theme = ExtResource("3_fh4nj")
-theme_type_variation = &"Title"
+theme_type_variation = &"Title_outline"
 text = "Name"
 vertical_alignment = 1
+
+[node name="Decoration" type="TextureRect" parent="Bar" unique_id=1794326463]
+self_modulate = Color(2.695322e-06, 0.7918582, 0.85055786, 1)
+layout_mode = 0
+offset_left = -360.0
+offset_right = 1920.0
+offset_bottom = 344.0
+texture = ExtResource("2_5o6qf")
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 96.0
-offset_right = 1904.0
+offset_right = 1536.0
 offset_bottom = 328.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
 scroll_active = false
+
+[node name="Loop" type="AnimationPlayer" parent="Bar" unique_id=1859249319]
+libraries/ = SubResource("AnimationLibrary_cqd2n")
+autoplay = &"Loop"
+speed_scale = 0.2
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1273139418]
 libraries/ = SubResource("AnimationLibrary_8knbj")

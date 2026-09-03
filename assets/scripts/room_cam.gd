@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
 	else:
-		var chr = get_node(str(characters) + "/" + character)
+		var chr = get_node_or_null(str(characters) + "/" + character)
 		if chr:
 			var direction = (start_position - chr.position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
