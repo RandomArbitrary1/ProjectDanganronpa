@@ -83,6 +83,43 @@ _data = {
 &"Show": SubResource("Animation_ayq60")
 }
 
+[sub_resource type="Animation" id="Animation_8knbj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Name/Label:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sqsua"]
+resource_name = "Switch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Name/Label:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sed6d"]
+_data = {
+&"RESET": SubResource("Animation_8knbj"),
+&"Switch": SubResource("Animation_sqsua")
+}
+
 [sub_resource type="Animation" id="Animation_5o6qf"]
 resource_name = "Close"
 length = 0.235
@@ -334,28 +371,11 @@ tracks/8/keys = {
 "values": [1.0]
 }
 
-[sub_resource type="Animation" id="Animation_8knbj"]
-resource_name = "Switch"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bar/Name/Label:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8knbj"]
 _data = {
 &"Close": SubResource("Animation_5o6qf"),
 &"Open": SubResource("Animation_fh4nj"),
-&"RESET": SubResource("Animation_qqjwx"),
-&"Switch": SubResource("Animation_8knbj")
+&"RESET": SubResource("Animation_qqjwx")
 }
 
 [node name="Dialog" type="Control" unique_id=1879447364]
@@ -376,7 +396,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -344.0
-offset_bottom = -63.999878
+offset_bottom = -63.99951
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
@@ -432,8 +452,8 @@ texture = ExtResource("2_5o6qf")
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 48.0
+offset_left = 64.0
+offset_top = 56.0
 offset_right = 1600.0
 offset_bottom = 264.0
 theme = ExtResource("3_fh4nj")
@@ -451,6 +471,9 @@ texture = ExtResource("7_8knbj")
 
 [node name="Anim" type="AnimationPlayer" parent="Bar/Input_indicator" unique_id=2090635946]
 libraries/ = SubResource("AnimationLibrary_sqsua")
+
+[node name="Switch" type="AnimationPlayer" parent="Bar" unique_id=435922046]
+libraries/ = SubResource("AnimationLibrary_sed6d")
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1273139418]
 libraries/ = SubResource("AnimationLibrary_8knbj")

@@ -7,6 +7,7 @@ extends Control
 @onready var anim = self.get_node("Anims")
 @onready var nameplate = self.get_node("Bar/Name")
 @onready var decoration = self.get_node("Bar/Decoration")
+@onready var switch = self.get_node("Bar/Switch")
 @onready var input_ind = self.get_node("Bar/Input_indicator/Anim")
 
 var dialog = null
@@ -28,7 +29,7 @@ func next():
 		input_ind.play("RESET")
 		if dialog[line][0] == "Text":
 			if nameplate.get_node("Label").text != dialog[line][1] and line != 0:
-				anim.play("Switch")
+				switch.play("Switch")
 			nameplate.get_node("Label").text = dialog[line][1]
 			get_node(camera).character = dialog[line][1]
 			nameplate.self_modulate = color(dialog[line][1])
@@ -41,7 +42,7 @@ func next():
 				for i in dialog[line][5]:
 					if i == "Thought":
 						box.text = "[color=cyan]" + box.text + "[/color]"
-			if line == 0 and anim.is_playing():
+			if line == 0:
 				await anim.animation_finished
 			tween = create_tween()
 			tween.tween_property(box, "visible_ratio", 1.0, dialog[line][4].length()*dialog[line][3]).from(0.0)
@@ -73,4 +74,5 @@ func _process(delta: float) -> void:
 			if tween:
 				tween.kill()
 				box.visible_ratio = 1.0
+				input_ind.play("Show")
 		
