@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://dfapcrx3tvq2x"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6aoe"]
+albedo_color = Color(0.7191653, 0, 0.02196187, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_p6aoe"]
+material = SubResource("StandardMaterial3D_p6aoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5obic"]
+albedo_color = Color(0.7769377, 0.5436698, 5.7756904e-07, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5obic"]
+material = SubResource("StandardMaterial3D_5obic")
 
 [node name="ClassPodium" type="Node3D" unique_id=1706174257]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=217495138]
-transform = Transform3D(0.7035787, 0, 0, 0, 0.15384667, 0, 0, 0, 0.2443409, 0, 0.183, 0)
+transform = Transform3D(0.67020065, 0, 0, 0, 0.15384667, 0, 0, 0, 0.2443409, 0, 0.183, 0)
 mesh = SubResource("BoxMesh_p6aoe")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1873054909]
