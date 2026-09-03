@@ -1,5 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://bqyb3163eupti"]
 
 [resource]
+default_font_size = 45
 Title/base_type = &"Label"
-Title/font_sizes/font_size = 36
+Title/font_sizes/font_size = 50

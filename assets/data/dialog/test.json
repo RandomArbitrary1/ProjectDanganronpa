@@ -1,6 +1,9 @@
 [
 	["Text","Person1","Excited",0.03,"I am saying things. :3"],
-	["Text","Person2","Angry",0.03,"Go shut up or i'll shove them pepperoni nipples up your a-",["skip"]],
+	["Text","Person2","Angry",0.03,"Go shut up or i'll shove them pepperoni nipples up your a-"],
 	["Text","Person2","Base",0.03,"wait what"],
-	["Text","Person1","Sad",0.07,":(((((((((((((((((((((((((((((((((((((("],
+	["Text","Person1","Sad",0.07,":("],
+	["Text","Person2","Base",0.03,"How about i shove em up your ass instead player"],
+	["Text","Player","Excited",0.03,"uhm..."],
+	["Text","Person2","Base",0.03,"Yeah thats what i thought"],
 ]
