@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://defpqq2c68rou"]
+
+[ext_resource type="Script" uid="uid://gu7qo6ivbsve" path="res://assets/scripts/room_cam.gd" id="1_85yof"]
+[ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/ui/dialog/dialog.tscn" id="1_ffxv4"]
+[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="1_jn645"]
+[ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="2_14vil"]
+[ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_85yof"]
+[ext_resource type="Script" uid="uid://blt2t4mlb3qxv" path="res://assets/scripts/talking.gd" id="2_jxe34"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3jcxg"]
+sky_material = SubResource("ProceduralSkyMaterial_85yof")
+
+[sub_resource type="Environment" id="Environment_14vil"]
+background_mode = 2
+sky = SubResource("Sky_3jcxg")
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 3.0
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14vil"]
+size = Vector3(10, 17, 10)
+
+[sub_resource type="Animation" id="Animation_jxe34"]
+resource_name = "Enter"
+length = 0.14
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.07, 0.07), Vector3(0.07, 0.07, 0.07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jn645"]
+resource_name = "Leave"
+length = 0.14
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_qvc4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.07, 0.07, 0.07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dqbv"]
+_data = {
+&"Enter": SubResource("Animation_jxe34"),
+&"Leave": SubResource("Animation_jn645"),
+&"RESET": SubResource("Animation_qvc4m")
+}
+
+[node name="Room" type="Node3D" unique_id=478957731]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
+environment = SubResource("Environment_14vil")
+
+[node name="sun" type="DirectionalLight3D" parent="." unique_id=1760678702]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1946810001]
+transform = Transform3D(0.9659259, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0.7179892, 1, 2.599845)
+current = true
+script = ExtResource("1_85yof")
+minX = -10.0
+minY = -10.0
+maxX = 35.0
+maxY = 10.0
+speed = 25.0
+characters = NodePath("../Characters")
+
+[node name="Characters" type="Node3D" parent="." unique_id=2124327811]
+script = ExtResource("2_jxe34")
+
+[node name="Person1" type="Sprite3D" parent="Characters" unique_id=1419704845]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -2, 0.7, 1)
+billboard = 2
+texture = ExtResource("2_14vil")
+
+[node name="Area3D" type="Area3D" parent="Characters/Person1" unique_id=1541279462]
+
+[node name="Click" type="CollisionShape3D" parent="Characters/Person1/Area3D" unique_id=1052657154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.500001, 0)
+shape = SubResource("BoxShape3D_14vil")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/Person1" unique_id=1865328660]
+libraries/ = SubResource("AnimationLibrary_7dqbv")
+
+[node name="Person2" type="Sprite3D" parent="Characters" unique_id=23375718]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0.7, -2)
+billboard = 2
+texture = ExtResource("2_14vil")
+
+[node name="Area3D" type="Area3D" parent="Characters/Person2" unique_id=381677914]
+
+[node name="Click" type="CollisionShape3D" parent="Characters/Person2/Area3D" unique_id=794411573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.500001, 0)
+shape = SubResource("BoxShape3D_14vil")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/Person2" unique_id=861540954]
+libraries/ = SubResource("AnimationLibrary_7dqbv")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=965481541]
+
+[node name="Dialog" parent="UI" unique_id=1879447364 instance=ExtResource("1_ffxv4")]
+file = ExtResource("2_85yof")
+camera = NodePath("../../Camera3D")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2542478, 1)
+size = Vector3(7, 0.51416016, 9)
+material = ExtResource("1_jn645")
