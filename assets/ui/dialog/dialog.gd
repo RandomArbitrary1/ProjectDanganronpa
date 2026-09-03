@@ -6,10 +6,12 @@ extends Control
 @onready var box = self.get_node("Bar/Dialog")
 @onready var anim = self.get_node("Anims")
 @onready var nameplate = self.get_node("Bar/Name")
+@onready var decoration = self.get_node("Bar/Decoration")
 
 var dialog = null
 var line = 0
 var tween = null
+var name_size = 0
 
 func color(val):
 	if val == "Player":
@@ -23,9 +25,15 @@ func color(val):
 func next():
 	if line < dialog.size():
 		if dialog[line][0] == "Text":
+			if nameplate.get_node("Label").text != dialog[line][1] and line != 0:
+				anim.play("Switch")
 			nameplate.get_node("Label").text = dialog[line][1]
 			get_node(camera).character = dialog[line][1]
 			nameplate.self_modulate = color(dialog[line][1])
+			name_size = nameplate.get_node("Label").get_minimum_size().x+110
+			if line == 0:
+				nameplate.size.x = name_size
+			decoration.self_modulate = color(dialog[line][1])
 			box.text = dialog[line][4]
 			if dialog[line].size() > 5:
 				for i in dialog[line][5]:
@@ -51,7 +59,8 @@ func start():
 		active = true
 		
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	nameplate.size.x = move_toward(nameplate.size.x, name_size, 500*delta)
 	if Input.is_action_just_pressed("Progress") and active:
 		if box.visible_ratio == 1.0:
 			line += 1

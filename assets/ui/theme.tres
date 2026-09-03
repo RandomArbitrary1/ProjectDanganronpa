@@ -1,6 +1,16 @@
 [gd_resource type="Theme" format=3 uid="uid://bqyb3163eupti"]
 
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="1_ib6tx"]
+[ext_resource type="FontFile" uid="uid://drtqq6oqdgtqj" path="res://assets/ui/SplineSans.ttf" id="2_fenpc"]
+
 [resource]
-default_font_size = 45
+default_font = ExtResource("2_fenpc")
+default_font_size = 55
 Title/base_type = &"Label"
 Title/font_sizes/font_size = 50
+Title/fonts/font = ExtResource("1_ib6tx")
+Title_outline/base_type = &"Label"
+Title_outline/colors/font_outline_color = Color(0.50928617, 0.50928617, 0.50928617, 1)
+Title_outline/constants/outline_size = 14
+Title_outline/font_sizes/font_size = 50
+Title_outline/fonts/font = ExtResource("1_ib6tx")
