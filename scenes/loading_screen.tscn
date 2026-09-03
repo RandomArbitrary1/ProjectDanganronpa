@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bqv67g0qn5r0b"]
+
+[ext_resource type="Script" uid="uid://cauuom6vrajem" path="res://assets/scripts/ui/loading_screen/loading_screen.gd" id="1_ep5rh"]
+[ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="2_hprjd"]
+
+[node name="LoadingScreen" type="Control" unique_id=1853993188]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ep5rh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=932519482]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=207947545]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -548.0
+offset_bottom = -419.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 91
+
+[node name="RotatingLoadingObj" type="TextureRect" parent="." unique_id=2094538595]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -387.99997
+offset_top = -715.0
+offset_right = 713.0
+offset_bottom = 386.0
+grow_vertical = 0
+scale = Vector2(0.205, 0.205)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_hprjd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=633188483]

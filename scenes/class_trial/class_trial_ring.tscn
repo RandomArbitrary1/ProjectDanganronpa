@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://by21wmsuw5lkd"]
+
+[ext_resource type="PackedScene" uid="uid://dfapcrx3tvq2x" path="res://scenes/class_trial/class_podium.tscn" id="1_ym4ti"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3own7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7c0y6"]
+albedo_color = Color(0.63888407, 2.0214916e-06, 4.813075e-07, 1)
+normal_enabled = true
+normal_scale = 0.66
+normal_texture = SubResource("PlaceholderTexture2D_3own7")
+uv1_scale = Vector3(10.005, 10.005, 10.005)
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3own7"]
+material = SubResource("StandardMaterial3D_7c0y6")
+height = 0.1
+
+[node name="ClassTrialRing" type="Node3D" unique_id=809995449]
+
+[node name="Carpet" type="MeshInstance3D" parent="." unique_id=909825802]
+transform = Transform3D(10, 0, 0, 0, 0.324, 0, 0, 0, 10, 0, -0.015961528, 0)
+mesh = SubResource("CylinderMesh_3own7")
+
+[node name="podiums" type="Node3D" parent="." unique_id=518712564]
+
+[node name="ClassPodium" parent="podiums" unique_id=1706174257 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 4)
+
+[node name="ClassPodium2" parent="podiums" unique_id=2140556817 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="ClassPodium3" parent="podiums" unique_id=2047973337 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 4, 0, -1.7484555e-07)
+
+[node name="ClassPodium4" parent="podiums" unique_id=556446250 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, 1.7484555e-07)
+
+[node name="ClassPodium5" parent="podiums" unique_id=69169188 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071067, 2.828427, 0, 2.828427)
+
+[node name="ClassPodium6" parent="podiums" unique_id=1930763970 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.828427, 0, -2.828427)
+
+[node name="ClassPodium7" parent="podiums" unique_id=1929104383 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.7071069, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, 0.7071069, 2.8284268, 0, -2.8284273)
+
+[node name="ClassPodium8" parent="podiums" unique_id=2134187181 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -2.8284268, 0, 2.8284273)
+
+[node name="ClassPodium9" parent="podiums" unique_id=115587888 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.92413306, 0, -0.3820707, 0, 1, 0, 0.3820707, 0, -0.92413306, 1.5282824, 0, 3.6965325)
+
+[node name="ClassPodium10" parent="podiums" unique_id=84198971 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.9241331, 0, 0.3820706, 0, 1, 0, -0.3820706, 0, 0.9241331, -1.5282824, 0, -3.6965325)
+
+[node name="ClassPodium11" parent="podiums" unique_id=660214368 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.38207072, 0, -0.92413306, 0, 1, 0, 0.92413306, 0, 0.38207072, 3.6965325, 0, -1.5282825)
+
+[node name="ClassPodium12" parent="podiums" unique_id=2124849761 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.38207063, 0, 0.9241331, 0, 1, 0, -0.9241331, 0, -0.38207063, -3.6965325, 0, 1.5282825)
+
+[node name="ClassPodium13" parent="podiums" unique_id=444795238 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.383296, 0, -0.9236256, 0, 1, 0, 0.9236256, 0, -0.383296, 3.6945019, 0, 1.5331844)
+
+[node name="ClassPodium14" parent="podiums" unique_id=355563992 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.3832961, 0, 0.92362547, 0, 1, 0, -0.92362547, 0, 0.3832961, -3.6945019, 0, -1.5331844)
+
+[node name="ClassPodium15" parent="podiums" unique_id=1880566829 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(0.9236256, 0, -0.38329592, 0, 1, 0, 0.38329592, 0, 0.9236256, 1.533184, 0, -3.6945024)
+
+[node name="ClassPodium16" parent="podiums" unique_id=1068629386 instance=ExtResource("1_ym4ti")]
+transform = Transform3D(-0.9236256, 0, 0.383296, 0, 1, 0, -0.383296, 0, -0.9236256, -1.533184, 0, 3.6945024)
