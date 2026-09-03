@@ -14,7 +14,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lines:position:y")
+tracks/0/path = NodePath("Control/Lines:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +29,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lines:position:y")
+tracks/0/path = NodePath("Control/Lines:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -127,7 +127,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Bar/Lines:modulate:a")
+tracks/3/path = NodePath("Bar/Control/Lines:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -274,7 +274,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Bar/Lines:modulate:a")
+tracks/7/path = NodePath("Bar/Control/Lines:modulate:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -332,7 +332,6 @@ script = ExtResource("1_5o6qf")
 
 [node name="Bar" type="TextureRect" parent="." unique_id=1310259742]
 visible = false
-clip_contents = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -344,20 +343,33 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
 
-[node name="Lines" type="TextureRect" parent="Bar" unique_id=51850745]
+[node name="Control" type="Control" parent="Bar" unique_id=69475807]
+clip_contents = true
+anchors_preset = 0
+offset_left = 1520.0
+offset_right = 1752.0
+offset_bottom = 344.0
+
+[node name="Lines" type="TextureRect" parent="Bar/Control" unique_id=51850745]
 modulate = Color(1, 1, 1, 0.09411765)
 layout_mode = 0
-offset_left = 1536.0
+offset_left = 16.0
 offset_top = 8.0
-offset_right = 1740.0
+offset_right = 220.0
 offset_bottom = 544.0
 texture = ExtResource("3_8knbj")
+
+[node name="Loop" type="AnimationPlayer" parent="Bar/Control" unique_id=1859249319]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_cqd2n")
+autoplay = &"Loop"
+speed_scale = 0.2
 
 [node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
 self_modulate = Color(2.695322e-06, 0.7918582, 0.85055786, 1)
 layout_mode = 0
+offset_top = -80.0
 offset_right = 256.0
-offset_bottom = 80.0
 texture = ExtResource("3_qqjwx")
 region_rect = Rect2(0, 0, 80, 80)
 patch_margin_right = 80
@@ -382,18 +394,13 @@ texture = ExtResource("2_5o6qf")
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 96.0
+offset_left = 40.0
+offset_top = 48.0
 offset_right = 1536.0
-offset_bottom = 328.0
+offset_bottom = 304.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
 scroll_active = false
-
-[node name="Loop" type="AnimationPlayer" parent="Bar" unique_id=1859249319]
-libraries/ = SubResource("AnimationLibrary_cqd2n")
-autoplay = &"Loop"
-speed_scale = 0.2
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1273139418]
 libraries/ = SubResource("AnimationLibrary_8knbj")

@@ -39,7 +39,7 @@ func next():
 				for i in dialog[line][5]:
 					if i == "Thought":
 						box.text = "[color=cyan]" + box.text + "[/color]"
-			if anim.is_playing():
+			if line == 0 and anim.is_playing():
 				await anim.animation_finished
 			tween = create_tween()
 			tween.tween_property(box, "visible_ratio", 1.0, dialog[line][4].length()*dialog[line][3]).from(0.0)
