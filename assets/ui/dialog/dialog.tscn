@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bnw8cb8iyu6ml" path="res://assets/ui/dialog/box_decoration.png" id="3_8knbj"]
 [ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="3_fh4nj"]
 [ext_resource type="Texture2D" uid="uid://g7tk75amqho2" path="res://assets/ui/dialog/Dialog_nameplate.png" id="3_qqjwx"]
+[ext_resource type="Texture2D" uid="uid://bawa3vh5cq7r2" path="res://assets/ui/dialog/Input.png" id="7_8knbj"]
 
 [sub_resource type="Animation" id="Animation_fm551"]
 resource_name = "Loop"
@@ -43,6 +44,43 @@ tracks/0/keys = {
 _data = {
 &"Loop": SubResource("Animation_fm551"),
 &"RESET": SubResource("Animation_fmua3")
+}
+
+[sub_resource type="Animation" id="Animation_cqd2n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ayq60"]
+resource_name = "Show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqsua"]
+_data = {
+&"RESET": SubResource("Animation_cqd2n"),
+&"Show": SubResource("Animation_ayq60")
 }
 
 [sub_resource type="Animation" id="Animation_5o6qf"]
@@ -401,6 +439,18 @@ offset_bottom = 264.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
 scroll_active = false
+
+[node name="Input_indicator" type="TextureRect" parent="Bar" unique_id=403398415]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1592.0
+offset_top = 176.0
+offset_right = 1696.0
+offset_bottom = 272.0
+texture = ExtResource("7_8knbj")
+
+[node name="Anim" type="AnimationPlayer" parent="Bar/Input_indicator" unique_id=2090635946]
+libraries/ = SubResource("AnimationLibrary_sqsua")
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1273139418]
 libraries/ = SubResource("AnimationLibrary_8knbj")
