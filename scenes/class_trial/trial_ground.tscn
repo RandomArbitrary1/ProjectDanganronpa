@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_fp278"]
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="3_1yv25"]
 [ext_resource type="PackedScene" uid="uid://by21wmsuw5lkd" path="res://scenes/class_trial/class_trial_ring.tscn" id="4_nogv8"]
+[ext_resource type="PackedScene" uid="uid://be8bvo5ct7xu3" path="res://scenes/class_trial/class_trial_manager.tscn" id="5_fp278"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akiwv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -88,3 +89,5 @@ mesh = SubResource("PlaneMesh_47ylv")
 
 [node name="ClassTrialRing" parent="." unique_id=809995449 instance=ExtResource("4_nogv8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.040589094, 0)
+
+[node name="CLASS_TRIAL_MAIN" parent="." unique_id=642936802 instance=ExtResource("5_fp278")]

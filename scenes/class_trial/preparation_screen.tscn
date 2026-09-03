@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://p0mqiqashvrm"]
 
+[ext_resource type="Script" uid="uid://qyroxccegj43" path="res://assets/scripts/class_trial/preparation_screen.gd" id="1_w1tpi"]
+[ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="2_rl4mh"]
+
 [node name="Preparation" type="Control" unique_id=383539966]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_w1tpi")
 
 [node name="Label" type="Label" parent="." unique_id=1789577931]
 layout_mode = 1
@@ -35,3 +39,15 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 80
 text = "Start Class Trial!"
+
+[node name="revolver_cylinder" type="TextureRect" parent="." unique_id=1577032863]
+layout_mode = 1
+offset_left = -429.00003
+offset_top = -130.00003
+offset_right = 672.0
+offset_bottom = 971.0
+scale = Vector2(0.595, 0.595)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_rl4mh")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

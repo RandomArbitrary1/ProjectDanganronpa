@@ -7,20 +7,30 @@ extends Control
 @onready var noise_anim: AnimationPlayer = $crosshair/noise_shoot_vfx/noise_anim
 @onready var hp: ProgressBar = $HP
 @onready var concentrate: ProgressBar = $Concentrate
-
-
+var state = "debate"
+var timer = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hp.value = 100
 	concentrate.value = 100
 	noise_anim.play("hide")
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if self.visible:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	crosshair.position = get_local_mouse_position() - crosshair.size / 2
+	if state == "start":
+		self.visible = false
+		if timer > 1.0:
+			self.visible = true
+			state = "debate"
+		else:
+			timer += delta
 
 func _input(event: InputEvent) -> void:
+	if !self.visible:
+		return
 	if Input.is_action_just_pressed("RMB"):
 		white_noise_shoot()
 		
