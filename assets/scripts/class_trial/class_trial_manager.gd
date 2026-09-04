@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 		debate()
 
 func prepare():
+	camera_3d.global_position = Vector3(0,7.5,15)
+	camera_3d.rotation.x = -0.4
 	if !music.playing:
 		music.play()
 		music_2.stop()

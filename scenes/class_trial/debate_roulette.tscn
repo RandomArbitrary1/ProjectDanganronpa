@@ -9,6 +9,90 @@
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
 [ext_resource type="Texture2D" uid="uid://b5ixvrf66o27g" path="res://assets/textures/ui/class_trial/truth_bullet.png" id="8_fe14r"]
 
+[sub_resource type="Animation" id="Animation_juyy3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(182, 862)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../revolver:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.645, 0.645)]
+}
+
+[sub_resource type="Animation" id="Animation_3resf"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(182, 862), Vector2(182, 862), Vector2(1920, 862)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.285, 2), Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../revolver:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.645, 0.645), Vector2(1, 1), Vector2(0.645, 0.645)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wokie"]
+_data = {
+&"RESET": SubResource("Animation_juyy3"),
+&"shoot": SubResource("Animation_3resf")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsook"]
 radius = 119.36
 
@@ -125,16 +209,14 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -294.0
-offset_top = -377.0
-offset_right = 807.0
-offset_bottom = 724.0
+offset_left = -526.0
+offset_top = -582.0
+offset_right = 575.0
+offset_bottom = 519.0
 grow_vertical = 0
 scale = Vector2(0.645, 0.645)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_bsook")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="revolver" unique_id=953600336]
-root_node = NodePath("../..")
 
 [node name="Bullets" type="Control" parent="." unique_id=849448777]
 anchors_preset = 0
@@ -148,9 +230,10 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 182.0
 offset_top = 842.0
-offset_right = 682.0
+offset_right = 682.0005
 offset_bottom = 992.0
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("8_fe14r")
 
 [node name="Label" type="Label" parent="Bullets/TruthBullet" unique_id=1443344272]
@@ -161,6 +244,10 @@ offset_right = 456.0
 offset_bottom = 107.0
 theme_override_font_sizes/font_size = 51
 text = "My account"
+
+[node name="ShootAnim" type="AnimationPlayer" parent="Bullets" unique_id=1030463280]
+root_node = NodePath("../TruthBullet")
+libraries/ = SubResource("AnimationLibrary_wokie")
 
 [node name="crosshair" type="TextureRect" parent="." unique_id=1547952700]
 layout_mode = 1

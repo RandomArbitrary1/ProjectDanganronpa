@@ -7,6 +7,7 @@ extends Control
 @onready var noise_anim: AnimationPlayer = $crosshair/noise_shoot_vfx/noise_anim
 @onready var hp: ProgressBar = $HP
 @onready var concentrate: ProgressBar = $Concentrate
+@onready var shoot_anim: AnimationPlayer = $Bullets/ShootAnim
 var state = "debate"
 var timer = 0.0
 # Called when the node enters the scene tree for the first time.
@@ -33,8 +34,14 @@ func _input(event: InputEvent) -> void:
 		return
 	if Input.is_action_just_pressed("RMB"):
 		white_noise_shoot()
+	if Input.is_action_just_pressed("LMB"):
+		truth_shoot()
 		
 func white_noise_shoot():
 	noise_anim.stop()
 	noise_anim.play("shoot")
 	small_gunshot.play()
+func truth_shoot():
+	big_gunshot.play()
+	shoot_anim.stop()
+	shoot_anim.play("shoot")
