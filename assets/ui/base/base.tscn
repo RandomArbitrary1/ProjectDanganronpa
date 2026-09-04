@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://dymidptdxg4ca"]
 
-[ext_resource type="Texture2D" uid="uid://csyiysjcjr0sl" path="res://assets/ui/base/music_display.png" id="1_re8kh"]
 [ext_resource type="Texture2D" uid="uid://bx27sfmkvaktm" path="res://assets/ui/base/boombox.png" id="1_wry5i"]
-[ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="2_3px7c"]
+[ext_resource type="Script" uid="uid://rm7ao78bcljq" path="res://assets/ui/base/visualizer.gd" id="2_lbvlt"]
 
 [node name="Base" type="Control" unique_id=1095541041]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,40 +12,66 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Music" type="NinePatchRect" parent="." unique_id=2071344353]
-self_modulate = Color(0.080783345, 0.080783345, 0.080783345, 1)
+[node name="Boombox" type="TextureRect" parent="." unique_id=687299019]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -416.0
-offset_top = 80.0
-offset_right = -160.0
-offset_bottom = 112.0
-grow_horizontal = 0
-texture = ExtResource("1_re8kh")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 32
-
-[node name="Label" type="Label" parent="Music" unique_id=1757211468]
-layout_mode = 0
-offset_left = 32.0
-offset_right = 240.0
-offset_bottom = 32.0
-theme = ExtResource("2_3px7c")
-theme_override_font_sizes/font_size = 20
-text = "Music"
-vertical_alignment = 1
-
-[node name="Boombox" type="TextureRect" parent="Music" unique_id=687299019]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -24.0
-offset_top = -40.0
-offset_right = 123.0
-offset_bottom = 48.0
+offset_left = -184.0
+offset_top = 40.0
+offset_right = -32.0
+offset_bottom = 144.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_wry5i")
+
+[node name="Visualizer" type="Control" parent="." unique_id=916634500]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 128.0
+grow_horizontal = 0
+script = ExtResource("2_lbvlt")
+
+[node name="1" type="ColorRect" parent="Visualizer" unique_id=683046495]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 32.0
+color = Color(1, 0.8235294, 0.20392157, 1)
+
+[node name="2" type="ColorRect" parent="Visualizer" unique_id=229280919]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 40.0
+offset_right = 256.0
+offset_bottom = 64.0
+color = Color(1, 0.8235294, 0.20392157, 1)
+
+[node name="3" type="ColorRect" parent="Visualizer" unique_id=1991398217]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 72.0
+offset_right = 256.0
+offset_bottom = 96.0
+color = Color(1, 0.8235294, 0.20392157, 1)
+
+[node name="4" type="ColorRect" parent="Visualizer" unique_id=1922758133]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 104.0
+offset_right = 256.0
+offset_bottom = 128.0
+color = Color(1, 0.8235294, 0.20392157, 1)
+
+[node name="5" type="ColorRect" parent="Visualizer" unique_id=447198310]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 136.0
+offset_right = 256.0
+offset_bottom = 160.0
+color = Color(1, 0.8235294, 0.20392157, 1)

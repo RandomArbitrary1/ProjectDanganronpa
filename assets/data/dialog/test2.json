@@ -1,9 +1,7 @@
-[
-	["Text","Person2","Excited",0.03,"Hello"],
-	["Text","Person1","Excited",0.03,"Hi"],
-	["Text","Person2","Excited",0.03,"Go away freak"],
-	["Text","Person1","Excited",0.03,"Nuh uh"],
-	["Text","Person1","Excited",0.03,"Clap them cheeks for me first"],
-	["Text","Person2","Excited",0.1,"..."],
-	["Text","Player","Excited",0.03,"What are these guys on?? damn", ["Thought"]],
-]
+{
+	"dialog1":{"type":"Text","character":"Person2","expression":"Excited","content":"Hello","flags":[]},
+	"dialog2":{"type":"Text","character":"Person1","expression":"Excited","content":"Hey","flags":[]},
+	"dialog3":{"type":"Text","character":"Person2","expression":"Excited","content":"Die","flags":[]},
+	"dialog4":{"type":"Text","character":"Person1","expression":"Excited","content":"No :(","flags":[]},
+	"dialog5":{"type":"Text","character":"Player","expression":"Excited","content":"SHUT UP!!!","flags":[]},
+}

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="2_14vil"]
 [ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_85yof"]
 [ext_resource type="Script" path="res://assets/scripts/talking.gd" id="2_jxe34"]
+[ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/ui/base/base.tscn" id="5_jn645"]
 [ext_resource type="Texture2D" uid="uid://cjagb1jt4i1an" path="res://assets/textures/environment/Wood.png" id="6_jn645"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
@@ -191,6 +192,8 @@ libraries/ = SubResource("AnimationLibrary_7dqbv")
 [node name="Dialog" parent="UI" unique_id=1879447364 instance=ExtResource("1_ffxv4")]
 file = ExtResource("2_85yof")
 camera = NodePath("../../Camera3D")
+
+[node name="Base" parent="UI" unique_id=1095541041 instance=ExtResource("5_jn645")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2542478, 1)

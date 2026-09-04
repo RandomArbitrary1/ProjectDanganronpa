@@ -11,7 +11,7 @@ extends Control
 @onready var input_ind = self.get_node("Bar/Input_indicator/Anim")
 
 var dialog = null
-var line = 0
+var line = 1
 var tween = null
 var name_size = 0
 
@@ -25,27 +25,27 @@ func color(val):
 	
 
 func next():
-	if line < dialog.size():
+	if dialog.has("dialog" + str(line)):
+		var current = dialog.get("dialog" + str(line))
 		input_ind.play("RESET")
-		if dialog[line][0] == "Text":
-			if nameplate.get_node("Label").text != dialog[line][1] and line != 0:
+		if current.type == "Text":
+			if nameplate.get_node("Label").text != current.character and line != 0:
 				switch.play("Switch")
-			nameplate.get_node("Label").text = dialog[line][1]
-			get_node(camera).character = dialog[line][1]
-			nameplate.self_modulate = color(dialog[line][1])
+			nameplate.get_node("Label").text = current.character
+			get_node(camera).character = current.character
+			nameplate.self_modulate = color(current.character)
 			name_size = nameplate.get_node("Label").get_minimum_size().x+110
 			if line == 0:
 				nameplate.size.x = name_size
-			decoration.self_modulate = color(dialog[line][1])
-			box.text = dialog[line][4]
-			if dialog[line].size() > 5:
-				for i in dialog[line][5]:
-					if i == "Thought":
-						box.text = "[color=cyan]" + box.text + "[/color]"
+			decoration.self_modulate = color(current.character)
+			box.text = current.content
+			for i in current.flags:
+				if i == "Thought":
+					box.text = "[color=cyan]" + box.text + "[/color]"
 			if line == 0:
 				await anim.animation_finished
 			tween = create_tween()
-			tween.tween_property(box, "visible_ratio", 1.0, dialog[line][4].length()*dialog[line][3]).from(0.0)
+			tween.tween_property(box, "visible_ratio", 1.0, current.content.length()*.03).from(0.0)
 			await tween.finished
 			input_ind.play("Show")
 	else:
@@ -57,7 +57,7 @@ func next():
 func start():
 	if file and not active:
 		dialog = file.data
-		line = 0
+		line = 1
 		box.visible_ratio = 0.0
 		anim.play("Open")
 		next()
