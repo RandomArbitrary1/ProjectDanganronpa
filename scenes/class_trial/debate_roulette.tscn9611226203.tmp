@@ -261,7 +261,7 @@ anchor_bottom = 0.5
 offset_left = 182.0
 offset_top = 842.0
 offset_right = 682.0065
-offset_bottom = 992.0071
+offset_bottom = 992.00714
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("8_fe14r")
@@ -278,9 +278,6 @@ text = "My account"
 [node name="ShootAnim" type="AnimationPlayer" parent="Bullets" unique_id=1030463280]
 root_node = NodePath("../TruthBullet")
 libraries/ = SubResource("AnimationLibrary_wokie")
-
-[node name="downtime" type="Timer" parent="Bullets" unique_id=1247655685]
-one_shot = true
 
 [node name="HP" type="ProgressBar" parent="." unique_id=1977004638]
 layout_mode = 1
@@ -352,5 +349,3 @@ texture = ExtResource("4_ul4ow")
 [node name="noise_anim" type="AnimationPlayer" parent="crosshair/noise_shoot_vfx" unique_id=570816609]
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_qus7n")
-
-[connection signal="timeout" from="Bullets/downtime" to="Bullets" method="_on_downtime_timeout"]
