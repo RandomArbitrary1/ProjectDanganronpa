@@ -1,14 +1,12 @@
 extends Control
 @onready var crosshair: TextureRect = $crosshair
-
-
 @onready var break_sfx: AudioStreamPlayer = $sfx/break
-
 @onready var hp: ProgressBar = $HP
 @onready var concentrate: ProgressBar = $Concentrate
 @onready var shoot_anim: AnimationPlayer = $Bullets/ShootAnim
 @onready var revolver: TextureRect = $revolver
 @onready var bullets: Control = $Bullets
+
 var state = "debate"
 var timer = 0.0
 # Called when the node enters the scene tree for the first time.
@@ -23,9 +21,11 @@ func _process(delta: float) -> void:
 		concentrate.value -= delta * 25.0
 	else:
 		concentrate.value += delta * 8.3
+		
 	if self.visible:
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	crosshair.position = get_local_mouse_position() - crosshair.size / 2
+	
 	if state == "start":
 		self.visible = false
 		if timer > 1.0:
@@ -33,11 +33,13 @@ func _process(delta: float) -> void:
 			state = "debate"
 		else:
 			timer += delta
+			
 	revolver.rotation += delta * 0.2
 
 func _input(event: InputEvent) -> void:
 	if !self.visible:
 		return
+		
 	if Input.is_action_just_pressed("RMB"):
 		bullets.white_noise_shoot()
 	if Input.is_action_just_pressed("LMB"):

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c5vyamd3yluw6"]
+
+[node name="ClassTrialCamera" type="Camera3D" unique_id=235264550]
+fov = 70.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=705859273]

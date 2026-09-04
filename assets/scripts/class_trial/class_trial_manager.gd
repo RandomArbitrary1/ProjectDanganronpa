@@ -1,6 +1,6 @@
 extends Node3D
 @onready var class_trial_ring: Node3D = $"../ClassTrialRing"
-@onready var camera_3d: Camera3D = $"../Camera3D"
+@onready var camera_3d: Camera3D = $"../ClassTrialCamera"
 @onready var preparation: Control = $Preparation
 @onready var debate_roulette: Control = $DebateRoulette
 @onready var music: AudioStreamPlayer = $music/music
