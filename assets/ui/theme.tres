@@ -1,10 +1,10 @@
 [gd_resource type="Theme" format=3 uid="uid://bqyb3163eupti"]
 
 [ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="1_ib6tx"]
-[ext_resource type="FontFile" uid="uid://drtqq6oqdgtqj" path="res://assets/ui/SplineSans.ttf" id="2_fenpc"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/RobotoMono-Regular.ttf" id="2_ib6tx"]
 
 [resource]
-default_font = ExtResource("2_fenpc")
+default_font = ExtResource("2_ib6tx")
 default_font_size = 55
 Title/base_type = &"Label"
 Title/font_sizes/font_size = 50
