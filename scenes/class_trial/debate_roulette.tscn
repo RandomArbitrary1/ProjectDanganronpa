@@ -90,6 +90,9 @@ _data = {
 &"shoot": SubResource("Animation_fe14r")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qus7n"]
+bg_color = Color(1, 0.83137256, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe14r"]
 bg_color = Color(0, 0.7071298, 0.09982402, 1)
 
@@ -212,7 +215,8 @@ offset_top = 33.0
 offset_bottom = 83.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/fill = SubResource("StyleBoxFlat_fe14r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qus7n")
+value = 59.06
 show_percentage = false
 
 [node name="Concentrate" type="ProgressBar" parent="." unique_id=1761164395]
@@ -226,4 +230,5 @@ offset_bottom = 158.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/fill = SubResource("StyleBoxFlat_fe14r")
+value = 50.2
 show_percentage = false
