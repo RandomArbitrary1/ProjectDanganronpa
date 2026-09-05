@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://br2hnrc63urlv"]
+[gd_scene format=3 uid="uid://defpqq2c68rou"]
 
 [ext_resource type="Script" uid="uid://gu7qo6ivbsve" path="res://assets/scripts/room_cam.gd" id="1_85yof"]
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/ui/dialog/dialog.tscn" id="1_ffxv4"]
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="2_14vil"]
 [ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_85yof"]
-[ext_resource type="Script" uid="uid://blt2t4mlb3qxv" path="res://assets/scripts/talking.gd" id="2_jxe34"]
+[ext_resource type="Script" path="res://assets/scripts/talking.gd" id="2_jxe34"]
 [ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/ui/base/base.tscn" id="5_jn645"]
 [ext_resource type="Texture2D" uid="uid://cjagb1jt4i1an" path="res://assets/textures/environment/Wood.png" id="6_jn645"]
-[ext_resource type="Texture2D" uid="uid://bx27sfmkvaktm" path="res://assets/ui/base/boombox.png" id="7_7dqbv"]
+[ext_resource type="AudioStream" uid="uid://bw0tm8qc374yk" path="res://assets/audio/music/happy_music.mp3" id="8_7dqbv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -196,11 +196,13 @@ camera = NodePath("../../Camera3D")
 
 [node name="Base" parent="UI" unique_id=1095541041 instance=ExtResource("5_jn645")]
 
-[node name="Boombox" type="Sprite2D" parent="UI" unique_id=584685564]
-position = Vector2(220, 152)
-texture = ExtResource("7_7dqbv")
-
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2542478, 1)
 size = Vector3(7, 0.51416016, 9)
 material = SubResource("StandardMaterial3D_qvc4m")
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=539813931]
+stream = ExtResource("8_7dqbv")
+autoplay = true
+bus = &"Music"
+parameters/looping = false

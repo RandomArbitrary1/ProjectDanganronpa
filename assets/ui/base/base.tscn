@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bx27sfmkvaktm" path="res://assets/ui/base/boombox.png" id="1_wry5i"]
 [ext_resource type="Script" uid="uid://rm7ao78bcljq" path="res://assets/ui/base/visualizer.gd" id="2_lbvlt"]
+[ext_resource type="Texture2D" uid="uid://ccyjpljq0t28" path="res://assets/ui/base/boombox_speaker.png" id="3_re8kh"]
 
 [node name="Base" type="Control" unique_id=1095541041]
 layout_mode = 3
@@ -13,7 +14,6 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Boombox" type="TextureRect" parent="." unique_id=687299019]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -25,53 +25,24 @@ offset_bottom = 144.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_wry5i")
-
-[node name="Visualizer" type="Control" parent="." unique_id=916634500]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -256.0
-offset_bottom = 128.0
-grow_horizontal = 0
 script = ExtResource("2_lbvlt")
 
-[node name="1" type="ColorRect" parent="Visualizer" unique_id=683046495]
+[node name="Speaker1" type="TextureRect" parent="Boombox" unique_id=949932325]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 8.0
-offset_right = 256.0
-offset_bottom = 32.0
-color = Color(1, 0.8235294, 0.20392157, 1)
-
-[node name="2" type="ColorRect" parent="Visualizer" unique_id=229280919]
-layout_mode = 0
-offset_left = 160.0
+offset_left = 16.0
 offset_top = 40.0
-offset_right = 256.0
-offset_bottom = 64.0
-color = Color(1, 0.8235294, 0.20392157, 1)
+offset_right = 64.0
+offset_bottom = 88.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_re8kh")
+expand_mode = 1
 
-[node name="3" type="ColorRect" parent="Visualizer" unique_id=1991398217]
+[node name="Speaker2" type="TextureRect" parent="Boombox" unique_id=1911427042]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 72.0
-offset_right = 256.0
-offset_bottom = 96.0
-color = Color(1, 0.8235294, 0.20392157, 1)
-
-[node name="4" type="ColorRect" parent="Visualizer" unique_id=1922758133]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 104.0
-offset_right = 256.0
-offset_bottom = 128.0
-color = Color(1, 0.8235294, 0.20392157, 1)
-
-[node name="5" type="ColorRect" parent="Visualizer" unique_id=447198310]
-layout_mode = 0
-offset_left = 176.0
-offset_top = 136.0
-offset_right = 256.0
-offset_bottom = 160.0
-color = Color(1, 0.8235294, 0.20392157, 1)
+offset_left = 88.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 88.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_re8kh")
+expand_mode = 1
