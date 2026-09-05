@@ -205,4 +205,4 @@ material = SubResource("StandardMaterial3D_qvc4m")
 stream = ExtResource("8_7dqbv")
 autoplay = true
 bus = &"Music"
-parameters/looping = false
+parameters/looping = true
