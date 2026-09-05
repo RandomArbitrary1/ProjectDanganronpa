@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/ui/dialog/dialog.tscn" id="1_ffxv4"]
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="2_14vil"]
 [ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_85yof"]
-[ext_resource type="Script" path="res://assets/scripts/talking.gd" id="2_jxe34"]
+[ext_resource type="Script" uid="uid://blt2t4mlb3qxv" path="res://assets/scripts/talking.gd" id="2_jxe34"]
 [ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/ui/base/base.tscn" id="5_jn645"]
 [ext_resource type="Texture2D" uid="uid://cjagb1jt4i1an" path="res://assets/textures/environment/Wood.png" id="6_jn645"]
 [ext_resource type="AudioStream" uid="uid://bw0tm8qc374yk" path="res://assets/audio/music/happy_music.mp3" id="8_7dqbv"]
