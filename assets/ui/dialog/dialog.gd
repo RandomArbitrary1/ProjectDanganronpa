@@ -33,11 +33,11 @@ func next():
 				switch.play("Switch")
 			nameplate.get_node("Label").text = current.character
 			get_node(camera).character = current.character
-			nameplate.self_modulate = color(current.character)
+			#nameplate.self_modulate = color(current.character)
 			name_size = nameplate.get_node("Label").get_minimum_size().x+110
 			if line == 0:
 				nameplate.size.x = name_size
-			decoration.self_modulate = color(current.character)
+			#decoration.self_modulate = color(current.character)
 			box.text = current.content
 			for i in current.flags:
 				if i == "Thought":

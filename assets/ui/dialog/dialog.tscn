@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="3_fh4nj"]
 [ext_resource type="Texture2D" uid="uid://g7tk75amqho2" path="res://assets/ui/dialog/Dialog_nameplate.png" id="3_qqjwx"]
 [ext_resource type="Texture2D" uid="uid://bawa3vh5cq7r2" path="res://assets/ui/dialog/Input.png" id="7_8knbj"]
+[ext_resource type="Texture2D" uid="uid://c83tcbtko4vyn" path="res://assets/ui/dialog/bubble.png" id="7_fm551"]
 
 [sub_resource type="Animation" id="Animation_fm551"]
 resource_name = "Loop"
@@ -395,8 +396,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -344.0
-offset_bottom = -63.99939
+offset_top = -280.0
+offset_bottom = 0.00024414063
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
@@ -404,8 +405,8 @@ texture = ExtResource("1_qkj7q")
 [node name="Control" type="Control" parent="Bar" unique_id=69475807]
 clip_contents = true
 anchors_preset = 0
-offset_left = 1552.0
-offset_right = 1784.0
+offset_left = 1699.0
+offset_right = 1931.0
 offset_bottom = 280.0
 
 [node name="Lines" type="TextureRect" parent="Bar/Control" unique_id=51850745]
@@ -424,7 +425,7 @@ autoplay = &"Loop"
 speed_scale = 0.2
 
 [node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
-self_modulate = Color(2.695322e-06, 0.7918582, 0.85055786, 1)
+self_modulate = Color(1, 0.8235294, 0.20392157, 1)
 layout_mode = 0
 offset_top = -80.0
 offset_right = 256.0
@@ -443,18 +444,26 @@ text = "Name"
 vertical_alignment = 1
 
 [node name="Decoration" type="TextureRect" parent="Bar" unique_id=1794326463]
-self_modulate = Color(2.695322e-06, 0.7918582, 0.85055786, 1)
+self_modulate = Color(1, 0.8235294, 0.20392157, 1)
 layout_mode = 0
 offset_left = -360.0
 offset_right = 1920.0
 offset_bottom = 280.0
 texture = ExtResource("2_5o6qf")
 
+[node name="Icon" type="TextureRect" parent="Bar/Decoration" unique_id=855212044]
+layout_mode = 0
+offset_left = 2192.0
+offset_top = 208.0
+offset_right = 2256.0
+offset_bottom = 272.0
+texture = ExtResource("7_fm551")
+
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 56.0
-offset_right = 1600.0
+offset_right = 1736.0
 offset_bottom = 264.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
@@ -463,9 +472,9 @@ scroll_active = false
 [node name="Input_indicator" type="TextureRect" parent="Bar" unique_id=403398415]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1592.0
+offset_left = 1656.0
 offset_top = 176.0
-offset_right = 1696.0
+offset_right = 1760.0
 offset_bottom = 272.0
 texture = ExtResource("7_8knbj")
 
