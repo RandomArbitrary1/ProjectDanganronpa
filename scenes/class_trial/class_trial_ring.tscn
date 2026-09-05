@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://by21wmsuw5lkd"]
 
+[ext_resource type="Script" uid="uid://dp0movql525vj" path="res://assets/scripts/class_trial/class_trial_ring.gd" id="1_f3lcg"]
 [ext_resource type="Texture2D" uid="uid://bnnybf8nldt65" path="res://assets/textures/environment/grey_carpet.png" id="1_inf3k"]
 [ext_resource type="PackedScene" uid="uid://dfapcrx3tvq2x" path="res://scenes/class_trial/class_podium.tscn" id="1_ym4ti"]
 [ext_resource type="Texture2D" uid="uid://dp0861c53r7xd" path="res://assets/textures/environment/grey_carpet_normal.png" id="2_f3lcg"]
@@ -55,6 +56,7 @@ uv1_world_triplanar = true
 material = SubResource("StandardMaterial3D_xg1oj")
 
 [node name="ClassTrialRing" type="Node3D" unique_id=809995449]
+script = ExtResource("1_f3lcg")
 
 [node name="Carpet" type="MeshInstance3D" parent="." unique_id=909825802]
 transform = Transform3D(10, 0, 0, 0, 0.324, 0, 0, 0, 10, 0, -0.015961528, 0)

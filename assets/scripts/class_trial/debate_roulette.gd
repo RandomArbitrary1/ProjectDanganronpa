@@ -22,15 +22,15 @@ func _process(delta: float) -> void:
 		concentrate.value -= delta * 25.0
 	else:
 		concentrate.value += delta * 8.3
-		
-	if self.visible:
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 	crosshair.position = get_local_mouse_position() - crosshair.size / 2
 	
 	if state == "start":
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		self.visible = false
 		if timer > 4.0:
 			if !self.visible:
+				bullets.reload()
 				state = "debate"
 				camera_node.play("rotate_in_center")
 				self.visible = true
@@ -50,4 +50,3 @@ func _input(_event: InputEvent) -> void:
 func start():
 	state = "start"
 	camera_node.play("intro1")
-	bullets.reload()

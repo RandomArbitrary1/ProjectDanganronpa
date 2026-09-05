@@ -2,7 +2,6 @@
 
 [ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="1_0rnqo"]
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="2_1yv25"]
-[ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="3_1yv25"]
 [ext_resource type="PackedScene" uid="uid://c5vyamd3yluw6" path="res://scenes/class_trial/class_trial_camera.tscn" id="3_nogv8"]
 [ext_resource type="PackedScene" uid="uid://by21wmsuw5lkd" path="res://scenes/class_trial/class_trial_ring.tscn" id="4_nogv8"]
 [ext_resource type="PackedScene" uid="uid://be8bvo5ct7xu3" path="res://scenes/class_trial/class_trial_manager.tscn" id="5_fp278"]
@@ -24,15 +23,6 @@ ssao_enabled = true
 ssao_radius = 16.0
 ssao_intensity = 3.0
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idadj"]
-transparency = 1
-cull_mode = 2
-albedo_texture = ExtResource("3_1yv25")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_47ylv"]
-material = SubResource("StandardMaterial3D_idadj")
-size = Vector2(1.5, 2)
 
 [node name="TrialGround" type="Node3D" unique_id=1833039300]
 
@@ -69,22 +59,6 @@ transform = Transform3D(-4.371139e-08, 0.8660254, 0.50000006, 0, -0.50000006, 0.
 light_energy = 3.851
 shadow_enabled = true
 spot_range = 17.498
-
-[node name="dummy" type="MeshInstance3D" parent="." unique_id=539464331]
-transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, -1, 1, -4.371139e-08, -4.371139e-08, 3.0513012, 1.0504594, 0.0433681)
-mesh = SubResource("PlaneMesh_47ylv")
-
-[node name="dummy2" type="MeshInstance3D" parent="." unique_id=1476451184]
-transform = Transform3D(-0.64293456, 0.7659211, 2.8103571e-08, -4.371139e-08, 1.9106855e-15, -1, -0.7659211, -0.64293456, 3.3479473e-08, -2.2183447, 1.0504594, 2.1111755)
-mesh = SubResource("PlaneMesh_47ylv")
-
-[node name="dummy3" type="MeshInstance3D" parent="." unique_id=1954699260]
-transform = Transform3D(0.97937745, 0.20203876, 9.610874e-05, 5.5802055e-05, 0.0002051962, -1, -0.20203878, 0.97937745, 0.00018969043, -1.2721288, 1.0497831, -2.801224)
-mesh = SubResource("PlaneMesh_47ylv")
-
-[node name="dummy4" type="MeshInstance3D" parent="." unique_id=1508536699]
-transform = Transform3D(-0.69009715, -0.72371674, 7.9444726e-07, 0.00015333327, -0.00014730828, -1, 0.72371674, -0.69009715, 0.00021262691, 2.2024236, 1.0511357, 2.2663884)
-mesh = SubResource("PlaneMesh_47ylv")
 
 [node name="ClassTrialRing" parent="." unique_id=809995449 instance=ExtResource("4_nogv8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.040589094, 0)
