@@ -5,15 +5,16 @@ extends Node3D
 @onready var debate_roulette: Control = $DebateRoulette
 @onready var music: AudioStreamPlayer = $music/music
 @onready var music_2: AudioStreamPlayer = $music/music2
-var state = "prepare"
 
+var state = "prepare"
+var data = JsonParse.load_json("class_trial/debate/debate1")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	print(data)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if state == "prepare":
 		prepare()
 	if state == "debate":

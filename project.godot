@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://cm6aiabvb3yqk"
 [autoload]
 
 FullscreenFunction="*uid://fqn4emcc0dpk"
+JsonParse="*uid://b4lj3xew0ydov"
 
 [display]
 

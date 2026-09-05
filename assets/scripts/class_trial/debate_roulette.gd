@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	
 	if state == "start":
 		self.visible = false
-		if timer > 3.0:
+		if timer > 4.0:
 			if !self.visible:
 				state = "debate"
 				camera_node.play("rotate_in_center")
@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 			
 	revolver.rotation += delta * 0.2
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if !self.visible:
 		return
 		
@@ -50,3 +50,4 @@ func _input(event: InputEvent) -> void:
 func start():
 	state = "start"
 	camera_node.play("intro1")
+	bullets.reload()

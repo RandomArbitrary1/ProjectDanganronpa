@@ -4,7 +4,6 @@ extends Control
 @onready var shoot_anim: AnimationPlayer = $ShootAnim
 @onready var big_gunshot: AudioStreamPlayer = $"../sfx/big_gunshot"
 @onready var small_gunshot: AudioStreamPlayer = $"../sfx/small_gunshot"
-@onready var noise_shoot_vfx: TextureRect = $crosshair/noise_shoot_vfx
 @onready var noise_anim: AnimationPlayer = $"../crosshair/noise_shoot_vfx/noise_anim"
 @onready var crosshair_anim: AnimationPlayer = $"../crosshair/crosshair_anim"
 @onready var downtime: Timer = $downtime
@@ -31,9 +30,10 @@ func truth_shoot():
 	shoot_anim.stop()
 	shoot_anim.play("shoot")
 	downtime.start(2.0)
-	var ray_origin = camera.get_node("ClassTrialCamera").project_ray_origin(mouse_pos)
+	#var ray_origin = camera.get_node("ClassTrialCamera").project_ray_origin(mouse_pos)
 	var ray_direction = camera.get_node("ClassTrialCamera").project_ray_normal(mouse_pos)
 	bullet_direction = ray_direction.normalized()
+	word_bullet.visible = true
 	
 	word_bullet.rotation = camera.global_rotation
 	word_bullet.rotation.y = camera.global_rotation.y-1.5
@@ -49,4 +49,7 @@ func white_noise_shoot():
 	small_gunshot.play()
 
 func _on_downtime_timeout() -> void:
+	reload()
+func reload():
 	shoot_anim.play("reload")
+	word_bullet.visible = false
