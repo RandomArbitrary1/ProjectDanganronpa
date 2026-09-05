@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dfapcrx3tvq2x"]
 
 [ext_resource type="Script" uid="uid://bjpu526gg7xch" path="res://assets/scripts/class_trial/class_podium.gd" id="1_3kyly"]
+[ext_resource type="Texture2D" uid="uid://d1rsit3kpy7w" path="res://assets/textures/characters/dummyman/dummy_determined.png" id="2_ybmnw"]
 [ext_resource type="Texture2D" uid="uid://ctden4krekhfk" path="res://assets/textures/characters/dead_pole.png" id="3_70p0a"]
+[ext_resource type="PackedScene" uid="uid://d0pwvsd04iti5" path="res://assets/objects/class_trial/class_trial_podium.glb" id="3_ybmnw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6aoe"]
 albedo_color = Color(0.7191653, 0, 0.02196187, 1)
@@ -9,31 +11,38 @@ albedo_color = Color(0.7191653, 0, 0.02196187, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_p6aoe"]
 material = SubResource("StandardMaterial3D_p6aoe")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5obic"]
-albedo_color = Color(0.7769377, 0.5436698, 5.7756904e-07, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5obic"]
-material = SubResource("StandardMaterial3D_5obic")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kyly"]
 transparency = 1
+cull_mode = 2
 albedo_texture = ExtResource("3_70p0a")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_70p0a"]
 material = SubResource("StandardMaterial3D_3kyly")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70p0a"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("3_70p0a")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ybmnw"]
+material = SubResource("StandardMaterial3D_70p0a")
+
 [node name="ClassPodium" type="Node3D" unique_id=1706174257]
 script = ExtResource("1_3kyly")
-sprite = ExtResource("3_70p0a")
+sprite = ExtResource("2_ybmnw")
 
 [node name="block" type="MeshInstance3D" parent="." unique_id=217495138]
 transform = Transform3D(0.67020065, 0, 0, 0, 0.15384667, 0, 0, 0, 0.2443409, 0, 0.183, 0)
 mesh = SubResource("BoxMesh_p6aoe")
 
-[node name="block2" type="MeshInstance3D" parent="." unique_id=1873054909]
-transform = Transform3D(0.7035787, 0, 0, 0, 1, 0, 0, 0, 0.3144195, 0, 0.5, 0.23854327)
-mesh = SubResource("BoxMesh_5obic")
-
 [node name="character" type="MeshInstance3D" parent="." unique_id=1742413104]
 transform = Transform3D(0.699, 0, 0, 0, -2.0369507e-08, -0.932, 0, 0.466, -4.0739014e-08, 0, 1.2156459, 0)
 mesh = SubResource("PlaneMesh_70p0a")
+
+[node name="shadow" type="MeshInstance3D" parent="." unique_id=180535954]
+transform = Transform3D(0.699, 0, 0, 0, -2.0369507e-08, -0.932, 0, 0.466, -4.0739014e-08, 0, 1.2156459, -0.023935229)
+mesh = SubResource("PlaneMesh_ybmnw")
+
+[node name="class_trial_podium" parent="." unique_id=59247663 instance=ExtResource("3_ybmnw")]
+transform = Transform3D(-0.67, 0, 1.509958e-07, 0, 0.935, 0, -1.0116719e-07, 0, -1, 0, 0, 0)

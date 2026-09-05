@@ -8,4 +8,4 @@ func _ready() -> void:
 	
 func set_up():
 	for podium in podiums.get_children():
-		print(podium)
+		podium.pose("Succesfully linked!111")
