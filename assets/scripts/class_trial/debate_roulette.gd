@@ -6,6 +6,7 @@ extends Control
 @onready var shoot_anim: AnimationPlayer = $Bullets/ShootAnim
 @onready var revolver: TextureRect = $revolver
 @onready var bullets: Control = $Bullets
+@onready var camera_node: Node3D = $"../../ClassTrialCamera"
 
 var state = "debate"
 var timer = 0.0
@@ -28,9 +29,11 @@ func _process(delta: float) -> void:
 	
 	if state == "start":
 		self.visible = false
-		if timer > 1.0:
-			self.visible = true
-			state = "debate"
+		if timer > 3.0:
+			if !self.visible:
+				state = "debate"
+				camera_node.play("rotate_in_center")
+				self.visible = true
 		else:
 			timer += delta
 			
@@ -44,5 +47,6 @@ func _input(event: InputEvent) -> void:
 		bullets.white_noise_shoot()
 	if Input.is_action_just_pressed("LMB"):
 		bullets.truth_shoot()
-	
-		
+func start():
+	state = "start"
+	camera_node.play("intro1")

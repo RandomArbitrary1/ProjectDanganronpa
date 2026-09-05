@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgt2ihdfqochk"]
 
 [ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="1_0rnqo"]
-[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_fp278"]
+[ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="2_1yv25"]
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="3_1yv25"]
 [ext_resource type="PackedScene" uid="uid://c5vyamd3yluw6" path="res://scenes/class_trial/class_trial_camera.tscn" id="3_nogv8"]
 [ext_resource type="PackedScene" uid="uid://by21wmsuw5lkd" path="res://scenes/class_trial/class_trial_ring.tscn" id="4_nogv8"]
@@ -60,7 +60,7 @@ material = ExtResource("1_0rnqo")
 
 [node name="Floor" type="CSGBox3D" parent="RoomNODE" unique_id=1002592347]
 size = Vector3(33, 1, 33)
-material = ExtResource("2_fp278")
+material = ExtResource("2_1yv25")
 
 [node name="ClassTrialCamera" parent="." unique_id=235264550 instance=ExtResource("3_nogv8")]
 

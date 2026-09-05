@@ -209,6 +209,67 @@ _data = {
 &"shoot": SubResource("Animation_fe14r")
 }
 
+[sub_resource type="Animation" id="Animation_lwld5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v3j6b"]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06reo"]
+_data = {
+&"RESET": SubResource("Animation_lwld5"),
+&"shoot": SubResource("Animation_v3j6b")
+}
+
 [node name="DebateRoulette" type="Control" unique_id=1937437093]
 layout_mode = 3
 anchors_preset = 15
@@ -359,5 +420,8 @@ texture = ExtResource("4_ul4ow")
 [node name="noise_anim" type="AnimationPlayer" parent="crosshair/noise_shoot_vfx" unique_id=570816609]
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_qus7n")
+
+[node name="crosshair_anim" type="AnimationPlayer" parent="crosshair" unique_id=2120537212]
+libraries/ = SubResource("AnimationLibrary_06reo")
 
 [connection signal="timeout" from="Bullets/downtime" to="Bullets" method="_on_downtime_timeout"]
