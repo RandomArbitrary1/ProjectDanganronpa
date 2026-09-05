@@ -20,7 +20,9 @@ albedo_texture = ExtResource("3_70p0a")
 material = SubResource("StandardMaterial3D_3kyly")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70p0a"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.1
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 albedo_texture = ExtResource("3_70p0a")

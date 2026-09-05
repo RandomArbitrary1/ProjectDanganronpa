@@ -356,10 +356,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -580.0
-offset_top = 33.0
-offset_bottom = 83.0
+offset_left = -597.34326
+offset_top = 66.12303
+offset_right = -17.343262
+offset_bottom = 116.12303
 grow_horizontal = 0
+rotation = 0.13964796
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/fill = SubResource("StyleBoxFlat_qus7n")
 value = 59.06
@@ -370,10 +372,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -580.0
-offset_top = 108.0
-offset_bottom = 158.0
+offset_left = -597.34326
+offset_top = 141.12303
+offset_right = -17.343262
+offset_bottom = 191.12303
 grow_horizontal = 0
+rotation = 0.13964796
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/fill = SubResource("StyleBoxFlat_fe14r")
 value = 50.2
@@ -424,5 +428,22 @@ libraries/ = SubResource("AnimationLibrary_qus7n")
 
 [node name="crosshair_anim" type="AnimationPlayer" parent="crosshair" unique_id=2120537212]
 libraries/ = SubResource("AnimationLibrary_06reo")
+
+[node name="timer_label" type="Label" parent="." unique_id=134018399]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -393.0
+offset_top = -137.0
+offset_right = -39.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.09155498
+theme_override_font_sizes/font_size = 80
+text = "00:00:00"
 
 [connection signal="timeout" from="Bullets/downtime" to="Bullets" method="_on_downtime_timeout"]

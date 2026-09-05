@@ -19,6 +19,12 @@ func swap():
 	mat = character.get_active_material(0).duplicate()
 	mat.albedo_color = Color.BLACK
 	shadow.set_surface_override_material(0, mat)
-	print("SWAPPED!")
+	print("Sprite Updated")
 func pose(string):
 	print(string)
+func place_person(person=null):
+	if !person:
+		print("no person parsed!")
+	if person:
+		print("'placed'")
+		print(person)

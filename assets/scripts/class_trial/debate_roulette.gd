@@ -7,35 +7,40 @@ extends Control
 @onready var revolver: TextureRect = $revolver
 @onready var bullets: Control = $Bullets
 @onready var camera_node: Node3D = $"../../ClassTrialCamera"
+@onready var timer_label = $timer_label
 
 var state = "debate"
-var timer = 0.0
-# Called when the node enters the scene tree for the first time.
+var timer = 499.0
+var state_timer = 0.0
+
 func _ready() -> void:
 	hp.value = 100
 	concentrate.value = 100
 	bullets.noise_anim.play("hide")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("Spacebar"):
 		concentrate.value -= delta * 25.0
 	else:
 		concentrate.value += delta * 8.3
-
+	timer -= delta
+	var minutes = (timer) / 60
+	var seconds = int(timer) % 60
+	var milliseconds = int((timer - int(timer)) * 100)
+	timer_label.text = "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 	crosshair.position = get_local_mouse_position() - crosshair.size / 2
 	
 	if state == "start":
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		self.visible = false
-		if timer > 4.0:
+		if state_timer > 4.0:
 			if !self.visible:
 				bullets.reload()
 				state = "debate"
 				camera_node.play("rotate_in_center")
 				self.visible = true
 		else:
-			timer += delta
+			state_timer += delta
 			
 	revolver.rotation += delta * 0.2
 

@@ -1,13 +1,13 @@
 {
 "music":"trial_debate1",
 "dialog":[
-{"person":"mikan","emotion":"panic","text":"I'm not the killer!"},{
-"person":"nagito","emotion":"focus","text":"We can't think of anyone else other than you..."},{
-"person":"nagito","emotion":"point","text":"...who could've made that video."},{
-"person":"mikan","emotion":"dark","text":"Huh? Is the hempbad the proof?"},{
-"person":"mikan","emotion":"dark","text":"Is the hospital gown she was wearing suspicious?"},{
-"person":"mikan","emotion":"dark","text":"Just from that video"},{
-"person":"mikan","emotion":"angry","text":"Just from that camera angle!?"},{
-"person":"mikan","emotion":"angry","text":"Please forgive me already!"}],
+{"character":"raito","emotion":"panic","text":"I'm not the killer!"},{
+"character":"nori","emotion":"focus","text":"We can't think of anyone else other than you..."},{
+"character":"nori","emotion":"point","text":"...who could've made that video."},{
+"character":"raito","emotion":"focus","text":"Huh? Is the hempbag the proof?"},{
+"character":"raito","emotion":"focus","text":"Is the hospital gown she was wearing suspicious?"},{
+"character":"raito","emotion":"point","text":"Just from that video"},{
+"character":"raito","emotion":"sad","text":"Just from that camera angle!?"},{
+"character":"raito","emotion":"angry","text":"Please forgive me already!"}],
 "retry_monologue":["What she just said was very off.","I know for a fact it was her!"]
 }
