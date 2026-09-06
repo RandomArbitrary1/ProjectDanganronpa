@@ -1,7 +1,5 @@
 {
-	"dialog1":{"type":"Text","character":"Person2","expression":"Excited","content":"Hello","flags":[]},
-	"dialog2":{"type":"Text","character":"Person1","expression":"Excited","content":"Hey","flags":[]},
-	"dialog3":{"type":"Text","character":"Person2","expression":"Excited","content":"Die","flags":[]},
-	"dialog4":{"type":"Text","character":"Person1","expression":"Excited","content":"No :(","flags":[]},
-	"dialog5":{"type":"Text","character":"Player","expression":"Excited","content":"SHUT UP!!!","flags":[]},
+	"dialog":[
+		{"type":"text","character":"shion","expression":"sad","content":"i say long string i say long string i say long string i say long string","flags":[]},
+	]
 }
