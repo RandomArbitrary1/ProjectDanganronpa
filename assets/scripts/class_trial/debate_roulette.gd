@@ -68,8 +68,7 @@ func debate_process(delta):
 	camera_node.rotation = Vector3.ZERO
 	progress.text = "0/" + str(dialog_data.size())
 	state_timer += delta
-	
-	if state_timer > 1.0:
+	if state_timer > 3.0:
 		debate_next(delta)
 		state_timer = 0
 	

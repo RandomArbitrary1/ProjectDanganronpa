@@ -1,10 +1,11 @@
 {
 "music":"trial_debate1",
 "dialog":[
-{"character":"raito","emotion":"panic","text":"I'm not the killer!"},{
+{"character":"raito","emotion":"sad","text":"I'm not the killer!"},{
 "character":"nori","emotion":"focus","text":"We can't think of anyone else other than you..."},{
-"character":"nori","emotion":"point","text":"...who could've made that video."},{
-"character":"raito","emotion":"focus","text":"Huh? Is the hempbag the proof?"},{
+"character":"nori","emotion":"point","text":"...who could've filmed that video."},{
+"character":"shion","emotion":"point","text":"Tell us why it couldn't be you!"},{
+"character":"raito","emotion":"normal","text":"Why? Is the hempbag the proof?"},{
 "character":"raito","emotion":"focus","text":"Is the hospital gown she was wearing suspicious?"},{
 "character":"raito","emotion":"point","text":"Just from that video"},{
 "character":"raito","emotion":"sad","text":"Just from that camera angle!?"},{
