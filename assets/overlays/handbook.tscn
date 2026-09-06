@@ -1,0 +1,315 @@
+[gd_scene format=3 uid="uid://dndpi3bk3uqya"]
+
+[ext_resource type="Script" uid="uid://cfel37mcqes05" path="res://assets/scripts/ui/handbook.gd" id="1_3e3ew"]
+[ext_resource type="Texture2D" uid="uid://c8undfavd5s5k" path="res://assets/ui/handbook/handbook_tab.png" id="2_e6f8r"]
+[ext_resource type="Texture2D" uid="uid://cm8qrgt074qpj" path="res://assets/ui/handbook/handbook_navigation.png" id="2_vmyeq"]
+[ext_resource type="Texture2D" uid="uid://d1f68oltrlvpg" path="res://assets/ui/handbook/handbook_tab_active.png" id="3_ptt60"]
+[ext_resource type="Texture2D" uid="uid://bawa3vh5cq7r2" path="res://assets/ui/dialog/Input.png" id="4_vmyeq"]
+[ext_resource type="Texture2D" uid="uid://ctndld16hh7c8" path="res://assets/ui/handbook/handbook_border.png" id="6_k6wq8"]
+
+[sub_resource type="Animation" id="Animation_k6wq8"]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06666667, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_5f50f"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q1qae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nrkx1"]
+_data = {
+&"Close": SubResource("Animation_k6wq8"),
+&"Open": SubResource("Animation_5f50f"),
+&"RESET": SubResource("Animation_q1qae")
+}
+
+[node name="Handbook" type="ColorRect" unique_id=701086383]
+process_mode = 3
+visible = false
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 0.0009765625
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_3e3ew")
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=1749970568]
+libraries/ = SubResource("AnimationLibrary_nrkx1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=374691870]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1888.0
+offset_bottom = 160.0
+texture = ExtResource("2_vmyeq")
+
+[node name="Tabs" type="NinePatchRect" parent="." unique_id=1350392617]
+self_modulate = Color(0.003921569, 0.003921569, 0.003921569, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 128.0
+texture = ExtResource("2_e6f8r")
+region_rect = Rect2(0, 0, 192, 64)
+patch_margin_left = 64
+patch_margin_right = 64
+
+[node name="List" type="HBoxContainer" parent="Tabs" unique_id=998653621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -64
+
+[node name="Tab" type="NinePatchRect" parent="Tabs/List" unique_id=1172070726]
+self_modulate = Color(0.055683427, 0.7867745, 0.99999994, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_ptt60")
+region_rect = Rect2(0, 0, 192, 64)
+patch_margin_left = 64
+patch_margin_right = 64
+
+[node name="Icon" type="TextureRect" parent="Tabs/List/Tab" unique_id=1578641373]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.055683427, 0.7867745, 0.99999994, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vmyeq")
+stretch_mode = 5
+
+[node name="Tab2" type="NinePatchRect" parent="Tabs/List" unique_id=879995323]
+self_modulate = Color(0.92984587, 0.9298463, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_ptt60")
+region_rect = Rect2(0, 0, 192, 64)
+patch_margin_left = 64
+patch_margin_right = 64
+
+[node name="Icon" type="TextureRect" parent="Tabs/List/Tab2" unique_id=672591556]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.92984587, 0.9298463, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vmyeq")
+stretch_mode = 5
+
+[node name="Tab3" type="NinePatchRect" parent="Tabs/List" unique_id=115764925]
+self_modulate = Color(0.9649698, 0.38609925, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_ptt60")
+region_rect = Rect2(0, 0, 192, 64)
+patch_margin_left = 64
+patch_margin_right = 64
+
+[node name="Icon" type="TextureRect" parent="Tabs/List/Tab3" unique_id=1759414266]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.9649698, 0.38609925, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vmyeq")
+stretch_mode = 5
+
+[node name="Tab4" type="NinePatchRect" parent="Tabs/List" unique_id=1721538438]
+self_modulate = Color(0.5662952, 0.0034665691, 0.9075215, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_ptt60")
+region_rect = Rect2(0, 0, 192, 64)
+patch_margin_left = 64
+patch_margin_right = 64
+
+[node name="Icon" type="TextureRect" parent="Tabs/List/Tab4" unique_id=12257839]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.5662952, 0.0034665691, 0.9075215, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vmyeq")
+stretch_mode = 5
+
+[node name="Tab5" type="NinePatchRect" parent="Tabs/List" unique_id=1232621847]
+self_modulate = Color(0, 0.70586336, 1.1551381e-06, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_ptt60")
+region_rect = Rect2(0, 0, 192, 64)
+patch_margin_left = 64
+patch_margin_right = 64
+
+[node name="Icon" type="TextureRect" parent="Tabs/List/Tab5" unique_id=202452400]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0.70586336, 1.1551381e-06, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vmyeq")
+stretch_mode = 5
+
+[node name="Tab6" type="NinePatchRect" parent="Tabs/List" unique_id=254826377]
+self_modulate = Color(0.5211406, 0.5211406, 0.5211405, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_ptt60")
+region_rect = Rect2(0, 0, 192, 64)
+patch_margin_left = 64
+patch_margin_right = 64
+
+[node name="Icon" type="TextureRect" parent="Tabs/List/Tab6" unique_id=1815850192]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.5211406, 0.5211406, 0.5211405, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vmyeq")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1322651524]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_k6wq8")

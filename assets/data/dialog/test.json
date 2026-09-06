@@ -1,4 +1,7 @@
 {
-	"dialog1":{"type":"Text","character":"Player","expression":"Excited","content":"Should i say something?","flags":["Thought"]},
-	"dialog2":{"type":"Text","character":"Player","expression":"Excited","content":"Nevermind best if not","flags":["Thought"]},
+	"dialog":[
+		{"type":"text","character":"raito","expression":"sad","content":"i say things","flags":[]},
+		{"type":"text","character":"shion","expression":"sad","content":"no u dont","flags":[]},
+		{"type":"text","character":"shion","expression":"sad","content":"idiot","flags":["thought"]},
+	]
 }
