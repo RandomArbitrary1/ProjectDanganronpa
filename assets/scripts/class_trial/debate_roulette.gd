@@ -15,6 +15,7 @@ extends Control
 var state = "bullet_preview"
 var timer = 499.0
 var state_timer = 0.0
+var dialog_index = 0
 
 func _ready() -> void:
 	hp.value = 100
@@ -66,4 +67,12 @@ func debate_process(delta):
 	camera_node.global_position = Vector3(0,0.5,0)
 	camera_node.rotation = Vector3.ZERO
 	progress.text = "0/" + str(dialog_data.size())
+	state_timer += delta
 	
+	if state_timer > 1.0:
+		debate_next(delta)
+		state_timer = 0
+	
+func debate_next(delta):
+	print(dialog_data[dialog_index]["character"],": ", dialog_data[dialog_index]["text"])
+	dialog_index = (dialog_index + 1) % dialog_data.size()

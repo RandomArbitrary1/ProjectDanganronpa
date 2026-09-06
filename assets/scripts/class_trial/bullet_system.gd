@@ -50,6 +50,7 @@ func white_noise_shoot():
 	small_gunshot.play()
 	if root.state == "bullet_preview":
 		root.state = "debate"
+		root.state_timer = 0
 
 func _on_downtime_timeout() -> void:
 	reload()
