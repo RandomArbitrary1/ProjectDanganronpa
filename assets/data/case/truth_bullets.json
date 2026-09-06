@@ -1,4 +1,8 @@
 {
-"knife":{"name":"Kitchen knife", "description":"Oh wow what a sharp knife!"},
-"11037":{"name":"11037", "description":"Hmm what could this arrangement of numbers mean?"}
+"strange_place":{"name":"Strange place", "description":"I feel like I remember this, but can't tell how.",
+"picture":"res://assets/textures/truth_bullets/strange_place.png"},
+"lost_memory":{"name":"Lost memory", "description":"A memory of a building, important enough to remember I guess, altho I don't know why.",
+"picture":"res://assets/textures/truth_bullets/lost_memory.png"},
+"decision":{"name":"Decision", "description":"idk what a good ratio+size is for the picture, im asking you to decide.",
+"picture":"res://assets/textures/truth_bullets/decision.png"}
 }
