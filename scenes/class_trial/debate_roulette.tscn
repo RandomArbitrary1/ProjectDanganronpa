@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
 [ext_resource type="Script" uid="uid://w5nod7m0ufde" path="res://assets/scripts/class_trial/bullet_system.gd" id="6_qus7n"]
 [ext_resource type="Texture2D" uid="uid://b5ixvrf66o27g" path="res://assets/textures/ui/class_trial/truth_bullet.png" id="8_fe14r"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/RobotoMono-Regular.ttf" id="8_juyy3"]
 
 [sub_resource type="Animation" id="Animation_juyy3"]
 length = 0.001
@@ -330,10 +331,12 @@ texture = ExtResource("8_fe14r")
 [node name="Label" type="Label" parent="Bullets/TruthBullet" unique_id=1443344272]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 37.0
+offset_top = 27.0
 offset_right = 456.0
-offset_bottom = 107.0
-theme_override_font_sizes/font_size = 51
+offset_bottom = 112.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("8_juyy3")
+theme_override_font_sizes/font_size = 63
 text = "My account"
 
 [node name="ShootAnim" type="AnimationPlayer" parent="Bullets" unique_id=1030463280]
@@ -345,7 +348,6 @@ one_shot = true
 
 [node name="word_bullet" type="Label3D" parent="Bullets" unique_id=2107680734]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0)
-visible = false
 pixel_size = 0.001
 text = "My bullet"
 font_size = 352
@@ -393,6 +395,7 @@ offset_top = -16.000015
 offset_bottom = 106.999985
 grow_horizontal = 0
 rotation = 0.107797585
+theme_override_fonts/font = ExtResource("8_juyy3")
 theme_override_font_sizes/font_size = 80
 text = "00:00:00"
 
@@ -401,6 +404,7 @@ layout_mode = 0
 offset_left = 64.0
 offset_right = 332.0
 offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("8_juyy3")
 theme_override_font_sizes/font_size = 175
 text = "0/0"
 
@@ -411,14 +415,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -531.0001
-offset_top = -119.0
-offset_right = -248.00012
-offset_bottom = 23.0
+offset_left = -494.00012
+offset_top = -141.0
+offset_right = -211.00012
+offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-rotation = -0.19970196
+rotation = -0.08918114
 pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("8_juyy3")
 theme_override_font_sizes/font_size = 75
 text = "name"
 

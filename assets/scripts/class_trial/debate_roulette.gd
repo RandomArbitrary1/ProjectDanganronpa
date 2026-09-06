@@ -29,11 +29,14 @@ func _process(delta: float) -> void:
 	else:
 		concentrate.value += delta * 8.3
 	timer -= delta
+	
 	var minutes = (timer) / 60
 	var seconds = int(timer) % 60
 	var milliseconds = int((timer - int(timer)) * 100)
+	
 	timer_label.text = "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 	crosshair.position = get_local_mouse_position() - crosshair.size / 2
+	
 	if state == "debate":
 		debate_process(delta)
 	if state == "start":
@@ -44,14 +47,15 @@ func _process(delta: float) -> void:
 func _input(_event: InputEvent) -> void:
 	if !self.visible:
 		return
-		
 	if Input.is_action_just_pressed("RMB"):
 		bullets.white_noise_shoot()
 	if Input.is_action_just_pressed("LMB"):
 		bullets.truth_shoot()
+		
 func start():
 	state = "start"
 	camera_node.play("intro1")
+	
 func start_process(delta):
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	self.visible = false
@@ -63,19 +67,23 @@ func start_process(delta):
 			self.visible = true
 	else:
 		state_timer += delta
+		
 func debate_process(delta):
 	camera_node.play("RESET")
 	camera_node.global_position = Vector3(0,0.5,0)
 	camera_node.rotation = Vector3.ZERO
-	progress.text = "0/" + str(dialog_data.size())
 	state_timer += delta
+	progress.text = str(dialog_index+1)+ "/" + str(dialog_data.size())
 	if state_timer > 3.0:
 		debate_next(delta)
 		state_timer = 0
-	
-func debate_next(_delta):
+	if name_label.text == "name":
+		debate_start(delta)
+func debate_start(delta):
+	debate_next(delta, -1)
+func debate_next(delta, add=1):
+	dialog_index = (dialog_index + add) % dialog_data.size()
 	var character = dialog_data[dialog_index]["character"]
 	var char_data = char_data[character]
-	print(char_data["name"],": ", dialog_data[dialog_index]["text"])
+	print(char_data["name"],": ", dialog_data[dialog_index]["content"])
 	name_label.text = str(char_data["name"])
-	dialog_index = (dialog_index + 1) % dialog_data.size()

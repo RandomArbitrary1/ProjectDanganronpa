@@ -29,16 +29,42 @@ func _ready() -> void:
 		if id == 0:
 			var new = dialog_line.duplicate()
 			list.add_child(new)
+			run_options(new)
 		elif id == 1:
 			var new = visible_line.duplicate()
 			list.add_child(new)
+			run_options(new)
 		elif id == 2:
 			var new = focus_line.duplicate()
 			list.add_child(new)
+			run_options(new)
 		elif id == 3:
-			var new = dialog_line.duplicate()
+			var new = music_line.duplicate()
 			list.add_child(new)
+			run_options(new)
 	)
+	
+func run_options(i):
+	i.get_node(\"Panel/Up\").pressed.connect(func():
+		if i.get_index() > 0:
+			list.move_child(i,i.get_index()-1)
+	)
+	i.get_node(\"Panel/Down\").pressed.connect(func():
+		if i.get_index()+1 < list.get_child_count():
+			list.move_child(i,i.get_index()+1)
+	)
+	i.get_node(\"Panel/Remove\").pressed.connect(func():
+		i.queue_free()
+	)
+	if i.has_node(\"Character\"):
+		i.get_node(\"Character\").mouse_entered.connect(func():
+			i.get_node(\"Character/Name\").visible = true
+			i.get_node(\"Character/Emotion\").visible = true
+		)
+		i.get_node(\"Character\").mouse_exited.connect(func():
+			i.get_node(\"Character/Name\").visible = false
+			i.get_node(\"Character/Emotion\").visible = false
+		)
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_released(\"RMB\"):
@@ -111,62 +137,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Music" type="HBoxContainer" parent="Items/List" unique_id=1072936168]
-custom_minimum_size = Vector2(0, 51)
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Items/List/Music" unique_id=606793821]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Up" type="Button" parent="Items/List/Music/Panel" unique_id=135723463]
-layout_mode = 0
-offset_left = 5.714263
-offset_top = 5.714279
-offset_right = 125.714264
-offset_bottom = 45.71428
-text = "Move up"
-
-[node name="Down" type="Button" parent="Items/List/Music/Panel" unique_id=833686899]
-layout_mode = 0
-offset_left = 131.42854
-offset_top = 5.714279
-offset_right = 251.42854
-offset_bottom = 45.714275
-text = "Move down"
-
-[node name="Remove" type="Button" parent="Items/List/Music/Panel" unique_id=532349665]
-layout_mode = 0
-offset_left = 257.14285
-offset_top = 5.7142844
-offset_right = 377.14285
-offset_bottom = 45.71428
-text = "Remove"
-
-[node name="Flags" type="Button" parent="Items/List/Music/Panel" unique_id=1649738797]
-layout_mode = 0
-offset_left = 382.85715
-offset_top = 5.714285
-offset_right = 502.85715
-offset_bottom = 45.714287
-text = "Flags"
-
-[node name="LineEdit" type="LineEdit" parent="Items/List/Music/Panel" unique_id=1956721395]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 5.714283
-offset_right = 1085.7142
-offset_bottom = 45.714275
-
-[node name="Label" type="Label" parent="Items/List/Music/Panel" unique_id=1735070164]
-layout_mode = 0
-offset_left = 508.57144
-offset_top = 5.714283
-offset_right = 560.0
-offset_bottom = 45.714275
-text = "Music"
-vertical_alignment = 1
-
 [node name="Focus" type="HBoxContainer" parent="Items/List" unique_id=1181826034]
 custom_minimum_size = Vector2(0, 51)
 layout_mode = 2
@@ -217,11 +187,16 @@ text = "Focus target"
 vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="Items/List/Focus/Panel" unique_id=2138899056]
-layout_mode = 0
-offset_left = 742.8571
-offset_top = 5.714283
-offset_right = 1085.7142
-offset_bottom = 45.714275
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 742.85706
+offset_top = 5.714287
+offset_right = -5.2857666
+offset_bottom = -5.285721
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Type" type="OptionButton" parent="Items/List/Focus/Panel" unique_id=625532767]
 layout_mode = 0
@@ -229,11 +204,171 @@ offset_left = 611.4286
 offset_top = 5.714286
 offset_right = 737.1428
 offset_bottom = 45.71428
-item_count = 2
-popup/item_0/text = "Character"
+selected = 0
+item_count = 3
+popup/item_0/text = "Default"
 popup/item_0/id = 0
-popup/item_1/text = "Object"
+popup/item_1/text = "Character"
 popup/item_1/id = 1
+popup/item_2/text = "Object"
+popup/item_2/id = 2
+
+[node name="Music" type="HBoxContainer" parent="Items/List" unique_id=1072936168]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Music" unique_id=606793821]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Up" type="Button" parent="Items/List/Music/Panel" unique_id=135723463]
+layout_mode = 0
+offset_left = 5.714263
+offset_top = 5.714279
+offset_right = 125.714264
+offset_bottom = 45.71428
+text = "Move up"
+
+[node name="Down" type="Button" parent="Items/List/Music/Panel" unique_id=833686899]
+layout_mode = 0
+offset_left = 131.42854
+offset_top = 5.714279
+offset_right = 251.42854
+offset_bottom = 45.714275
+text = "Move down"
+
+[node name="Remove" type="Button" parent="Items/List/Music/Panel" unique_id=532349665]
+layout_mode = 0
+offset_left = 257.14285
+offset_top = 5.7142844
+offset_right = 377.14285
+offset_bottom = 45.71428
+text = "Remove"
+
+[node name="Flags" type="Button" parent="Items/List/Music/Panel" unique_id=1649738797]
+layout_mode = 0
+offset_left = 382.85715
+offset_top = 5.714285
+offset_right = 502.85715
+offset_bottom = 45.714287
+text = "Flags"
+
+[node name="LineEdit" type="LineEdit" parent="Items/List/Music/Panel" unique_id=1956721395]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 560.0
+offset_top = 5.714287
+offset_right = -5.2857666
+offset_bottom = -5.285721
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Items/List/Music/Panel" unique_id=1735070164]
+layout_mode = 0
+offset_left = 508.57144
+offset_top = 5.714283
+offset_right = 560.0
+offset_bottom = 45.714275
+text = "Music"
+vertical_alignment = 1
+
+[node name="Dialog" type="HBoxContainer" parent="Items/List" unique_id=1469758066]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Dialog" unique_id=2012505208]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextEdit" type="TextEdit" parent="Items/List/Dialog/Panel" unique_id=2002795568]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 131.42856
+offset_top = 34.285713
+offset_right = -6.0004883
+offset_bottom = -5.7142944
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Up" type="Button" parent="Items/List/Dialog/Panel" unique_id=414994148]
+layout_mode = 0
+offset_left = 5.714263
+offset_top = 5.714279
+offset_right = 125.714264
+offset_bottom = 45.71428
+text = "Move up"
+
+[node name="Down" type="Button" parent="Items/List/Dialog/Panel" unique_id=508296457]
+layout_mode = 0
+offset_left = 5.714263
+offset_top = 51.428562
+offset_right = 125.714264
+offset_bottom = 91.42856
+text = "Move down"
+
+[node name="Remove" type="Button" parent="Items/List/Dialog/Panel" unique_id=1912057391]
+layout_mode = 0
+offset_left = 5.714263
+offset_top = 97.142845
+offset_right = 125.714264
+offset_bottom = 137.14284
+text = "Remove"
+
+[node name="Flags" type="Button" parent="Items/List/Dialog/Panel" unique_id=1370212433]
+layout_mode = 0
+offset_left = 5.714274
+offset_top = 142.85715
+offset_right = 125.71427
+offset_bottom = 182.85715
+text = "Flags"
+
+[node name="Label" type="Label" parent="Items/List/Dialog/Panel" unique_id=1982149487]
+layout_mode = 0
+offset_left = 131.42856
+offset_top = 5.714283
+offset_right = 462.8571
+offset_bottom = 28.714287
+text = "Dialog"
+vertical_alignment = 1
+
+[node name="Character" type="Button" parent="Items/List/Dialog" unique_id=1200245873]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Items/List/Dialog/Character" unique_id=1746620367]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_53vve")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="LineEdit" parent="Items/List/Dialog/Character" unique_id=1639236523]
+visible = false
+layout_mode = 0
+offset_left = 6.1428747
+offset_top = 97.14285
+offset_right = 194.71428
+offset_bottom = 142.85715
+mouse_filter = 1
+placeholder_text = "Name"
+
+[node name="Emotion" type="LineEdit" parent="Items/List/Dialog/Character" unique_id=89599378]
+visible = false
+layout_mode = 0
+offset_left = 6.1428747
+offset_top = 148.57143
+offset_right = 194.71428
+offset_bottom = 194.2857
+mouse_filter = 1
+placeholder_text = "Emotion"
 
 [node name="Visibility" type="HBoxContainer" parent="Items/List" unique_id=549563064]
 custom_minimum_size = Vector2(0, 51)
@@ -281,77 +416,6 @@ offset_left = 508.5714
 offset_right = 607.5714
 offset_bottom = 51.428574
 text = "Visible"
-
-[node name="Dialog" type="HBoxContainer" parent="Items/List" unique_id=1469758066]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Items/List/Dialog" unique_id=2012505208]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextEdit" type="TextEdit" parent="Items/List/Dialog/Panel" unique_id=2002795568]
-layout_mode = 0
-offset_left = 131.42853
-offset_top = 34.28572
-offset_right = 881.00024
-offset_bottom = 194.2857
-
-[node name="Up" type="Button" parent="Items/List/Dialog/Panel" unique_id=414994148]
-layout_mode = 0
-offset_left = 5.714263
-offset_top = 5.714279
-offset_right = 125.714264
-offset_bottom = 45.71428
-text = "Move up"
-
-[node name="Down" type="Button" parent="Items/List/Dialog/Panel" unique_id=508296457]
-layout_mode = 0
-offset_left = 5.714263
-offset_top = 51.428562
-offset_right = 125.714264
-offset_bottom = 91.42856
-text = "Move down"
-
-[node name="Remove" type="Button" parent="Items/List/Dialog/Panel" unique_id=1912057391]
-layout_mode = 0
-offset_left = 5.714263
-offset_top = 97.142845
-offset_right = 125.714264
-offset_bottom = 137.14284
-text = "Remove"
-
-[node name="Flags" type="Button" parent="Items/List/Dialog/Panel" unique_id=1370212433]
-layout_mode = 0
-offset_left = 5.714274
-offset_top = 142.85715
-offset_right = 125.71427
-offset_bottom = 182.85715
-text = "Flags"
-
-[node name="Label" type="Label" parent="Items/List/Dialog/Panel" unique_id=1982149487]
-layout_mode = 0
-offset_left = 131.42856
-offset_top = 5.714283
-offset_right = 462.8571
-offset_bottom = 28.714287
-text = "Dialog"
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Items/List/Dialog" unique_id=1200245873]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Items/List/Dialog/Button" unique_id=1746620367]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_53vve")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=926571378]
 oversampling_override = 1.0
