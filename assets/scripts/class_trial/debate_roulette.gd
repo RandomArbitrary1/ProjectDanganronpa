@@ -11,7 +11,8 @@ extends Control
 @onready var progress: Label = $progress
 @onready var class_trial_main: Node3D = $".."
 @onready var dialog_data = class_trial_main.data["dialog"]
-
+@onready var char_data = JsonParse.load_json("characters/characters")
+@onready var name_label: Label = $name_label
 var state = "bullet_preview"
 var timer = 499.0
 var state_timer = 0.0
@@ -72,6 +73,9 @@ func debate_process(delta):
 		debate_next(delta)
 		state_timer = 0
 	
-func debate_next(delta):
-	print(dialog_data[dialog_index]["character"],": ", dialog_data[dialog_index]["text"])
+func debate_next(_delta):
+	var character = dialog_data[dialog_index]["character"]
+	var char_data = char_data[character]
+	print(char_data["name"],": ", dialog_data[dialog_index]["text"])
+	name_label.text = str(char_data["name"])
 	dialog_index = (dialog_index + 1) % dialog_data.size()

@@ -1,7 +1,17 @@
 {
-"shion":{"name":"Shion Fumihiro","talent":"Ultimate Spy","Likes":["Peanuts"],"Dislikes":["Not being involved","Alone"]},
-"nori":{"name":"Noriyuki Wato","talent":"Ultimate ?"},
-"yuito":{"name":"Yuito Haruki","talent":"Ultimate ?"},
-"raito":{"name":"Raito Rito","talent":"Ultimate ?"},
-"ayuka":{"name":"Ayuka Hozumi","talent":"Ultimate ?"}
+"shion":{"name":"Shion Fumihiro","talent":"Ultimate Spy","sex":"Female","likes":"Peanuts",
+"dislikes":"Being alone","height":"1.68 cm","birth_date":"2 june",
+"sprites":"TEMPORARY STRING, should be used as 'sprites':{angry:'ref/angry.png',sad:'ref/sad.png'} "},
+"nori":{"name":"Noriyuki Wato","talent":"Ultimate ???","sex":"Male","likes":"Optimism",
+"dislikes":"Pessimism","height":"1.75 cm","birth_date":"25 february",
+"sprites":"TEMPORARY STRING, should be used as 'sprites':{angry:'ref/angry.png',sad:'ref/sad.png'}"},
+"yuito":{"name":"Yuito Haruki","talent":"Ultimate Dancer","sex":"Female","likes":"Hot sauce",
+"dislikes":"Gore, Horror","height":"1.65 cm","birth_date":"11 october",
+"sprites":"TEMPORARY STRING, should be used as 'sprites':{angry:'ref/angry.png',sad:'ref/sad.png'}"},
+"raito":{"name":"Raito Rito","talent":"Ultimate Electrician","sex":"Male","likes":"Determination",
+"dislikes":"Giving up","height":"1.82 cm","birth_date":"8 march",
+"sprites":"TEMPORARY STRING, should be used as 'sprites':{angry:'ref/angry.png',sad:'ref/sad.png'}"},
+"ayuka":{"name":"Ayuka Hozumi","talent":"Ultimate Scientist","sex":"Female","likes":"Focusing",
+"dislikes":"Noisy/busy places","height":"1.70 cm","birth_date":"21 december",
+"sprites":"TEMPORARY STRING, should be used as 'sprites':{angry:'ref/angry.png',sad:'ref/sad.png'}"}
 }
