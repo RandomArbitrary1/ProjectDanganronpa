@@ -9,6 +9,7 @@ extends Control
 @onready var downtime: Timer = $downtime
 @onready var camera: Node3D = $"../../../ClassTrialCamera"
 @onready var word_bullet: Label3D = $word_bullet
+@onready var root: Control = $".."
 
 var bullet_direction = Vector3(0,0,0)
 # Called when the node enters the scene tree for the first time.
@@ -47,6 +48,8 @@ func white_noise_shoot():
 	noise_anim.stop()
 	noise_anim.play("shoot")
 	small_gunshot.play()
+	if root.state == "bullet_preview":
+		root.state = "debate"
 
 func _on_downtime_timeout() -> void:
 	reload()

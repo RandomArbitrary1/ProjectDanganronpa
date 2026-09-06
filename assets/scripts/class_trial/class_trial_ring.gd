@@ -8,6 +8,6 @@ func _ready() -> void:
 	
 func set_up():
 	for podium in podiums.get_children():
-		pass
-		#if person_spots[podium.get_index()]:
-			#podium.place_person(person_spots[podium.get_index()])
+		var index = podium.get_index()
+		if index < person_spots.size():
+			podium.place_person(person_spots[index])

@@ -12,6 +12,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 func play(animation:String):
+	if animation == "stop":
+		animation_player.stop()
+		return
 	animation_player.stop()
 	camera_node.global_position = Vector3.ZERO
 	camera_node.rotation = Vector3.ZERO

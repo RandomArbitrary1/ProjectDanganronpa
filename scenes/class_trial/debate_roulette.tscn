@@ -446,4 +446,12 @@ rotation = -0.09155498
 theme_override_font_sizes/font_size = 80
 text = "00:00:00"
 
+[node name="progress" type="Label" parent="." unique_id=2010527368]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 332.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 175
+text = "0/0"
+
 [connection signal="timeout" from="Bullets/downtime" to="Bullets" method="_on_downtime_timeout"]

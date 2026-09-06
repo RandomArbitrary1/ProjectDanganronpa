@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dfapcrx3tvq2x"]
 
 [ext_resource type="Script" uid="uid://bjpu526gg7xch" path="res://assets/scripts/class_trial/class_podium.gd" id="1_3kyly"]
-[ext_resource type="Texture2D" uid="uid://d1rsit3kpy7w" path="res://assets/textures/characters/dummyman/dummy_determined.png" id="2_ybmnw"]
 [ext_resource type="Texture2D" uid="uid://ctden4krekhfk" path="res://assets/textures/characters/dead_pole.png" id="3_70p0a"]
 [ext_resource type="PackedScene" uid="uid://d0pwvsd04iti5" path="res://assets/objects/class_trial/class_trial_podium.glb" id="3_ybmnw"]
 
@@ -32,7 +31,7 @@ material = SubResource("StandardMaterial3D_70p0a")
 
 [node name="ClassPodium" type="Node3D" unique_id=1706174257]
 script = ExtResource("1_3kyly")
-sprite = ExtResource("2_ybmnw")
+sprite = ExtResource("3_70p0a")
 
 [node name="block" type="MeshInstance3D" parent="." unique_id=217495138]
 transform = Transform3D(0.67020065, 0, 0, 0, 0.15384667, 0, 0, 0, 0.2443409, 0, 0.183, 0)
