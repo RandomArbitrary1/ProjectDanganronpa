@@ -24,6 +24,7 @@ script/source = "extends Control
 @onready var focus_line = list.get_node(\"Focus\").duplicate()
 @onready var music_line = list.get_node(\"Music\").duplicate()
 
+var data = {}
 var moving = null
 
 func _ready() -> void:
@@ -52,6 +53,10 @@ func _ready() -> void:
 			var new = music_line.duplicate()
 			list.add_child(new)
 			run_options(new)
+	)
+	file_dialog.file_selected.connect(func(path):
+		navigation.get_node(\"File\").text = path.get_file()
+		data = load(path).data
 	)
 	
 func run_options(i):
