@@ -4,7 +4,6 @@ extends Node3D
 
 @onready var character: MeshInstance3D = $character
 @onready var shadow: MeshInstance3D = $shadow
-var emotion:String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

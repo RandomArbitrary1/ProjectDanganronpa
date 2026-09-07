@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://s383xot1qgn0"]
+
+[ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_1pa7i"]
+[ext_resource type="Material" uid="uid://cinfix0r7v3n6" path="res://assets/materials/tile.tres" id="1_xjhtt"]
+[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_3m5c8"]
+[ext_resource type="AudioStream" uid="uid://ddvpiisqpmr1c" path="res://assets/audio/music/beautiful_lie.mp3" id="4_3m5c8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1pa7i"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3jcxg"]
+sky_material = SubResource("ProceduralSkyMaterial_1pa7i")
+
+[sub_resource type="Environment" id="Environment_3m5c8"]
+background_mode = 2
+sky = SubResource("Sky_3jcxg")
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 3.0
+glow_enabled = true
+
+[node name="SchoolPart" type="Node3D" unique_id=809493090]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1546226829]
+environment = SubResource("Environment_3m5c8")
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1272704109]
+stream = ExtResource("4_3m5c8")
+volume_db = -1.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="Building" type="CSGCombiner3D" parent="." unique_id=305987796]
+
+[node name="Room" type="CSGBox3D" parent="Building" unique_id=1250318460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 9.5, 32)
+material_override = ExtResource("1_1pa7i")
+size = Vector3(30, 18, 65)
+material = ExtResource("2_3m5c8")
+
+[node name="CutoutRoom" type="CSGBox3D" parent="Building" unique_id=732436545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 32)
+operation = 2
+size = Vector3(3, 6, 63)
+material = ExtResource("2_3m5c8")
+
+[node name="CutoutRoom2" type="CSGBox3D" parent="Building" unique_id=1116744357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 6.5, 27.5)
+operation = 2
+size = Vector3(14, 12, 18)
+material = ExtResource("2_3m5c8")
+
+[node name="Floor" type="CSGBox3D" parent="Building" unique_id=43171049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 32)
+size = Vector3(30, 1, 65)
+material = ExtResource("1_xjhtt")
+
+[node name="Lights" type="Node3D" parent="." unique_id=1766990819]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=1259753074]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 3.6210122)
+light_energy = 2.0
+spot_range = 25.0
+spot_angle = 70.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=1002206081]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 17.106668)
+light_energy = 2.0
+spot_range = 25.0
+spot_angle = 70.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights" unique_id=1492699332]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 29.734312)
+light_energy = 2.0
+spot_range = 25.0
+spot_angle = 70.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights" unique_id=1028434030]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.1889067, 12.13978, 27.01059)
+light_energy = 2.0
+spot_range = 25.0
+spot_angle = 70.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights" unique_id=1097102415]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 43.21997)
+light_energy = 2.0
+spot_range = 25.0
+spot_angle = 70.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights" unique_id=1382234468]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 56.006893)
+light_energy = 2.0
+spot_range = 25.0
+spot_angle = 70.0
