@@ -1,3 +1,11 @@
 {
-	"dialog": []
+	"dialog": [
+		{
+			"character": "nori",
+			"content": "ello",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		}
+	]
 }
