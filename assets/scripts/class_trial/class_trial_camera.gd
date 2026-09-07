@@ -1,6 +1,7 @@
 extends Node3D
 @onready var animation_player: AnimationPlayer = $ClassTrialCamera/AnimationPlayer
 @onready var camera_node: Node3D = $"."
+@onready var class_trial_camera: Camera3D = $ClassTrialCamera
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,3 +20,5 @@ func play(animation:String):
 	camera_node.global_position = Vector3.ZERO
 	camera_node.rotation = Vector3.ZERO
 	animation_player.play(animation)
+func fov(value):
+	class_trial_camera.fov = value

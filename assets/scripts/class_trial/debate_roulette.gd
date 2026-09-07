@@ -69,21 +69,43 @@ func start_process(delta):
 		state_timer += delta
 		
 func debate_process(delta):
-	camera_node.play("RESET")
-	camera_node.global_position = Vector3(0,0.5,0)
-	camera_node.rotation = Vector3.ZERO
 	state_timer += delta
-	progress.text = str(dialog_index+1)+ "/" + str(dialog_data.size())
+	camera_node.fov(35)
 	if state_timer > 3.0:
 		debate_next(delta)
 		state_timer = 0
 	if name_label.text == "name":
 		debate_start(delta)
+		
 func debate_start(delta):
-	debate_next(delta, -1)
-func debate_next(delta, add=1):
+	debate_next(delta, 0)
+	
+func debate_next(_delta, add=1):
 	dialog_index = (dialog_index + add) % dialog_data.size()
 	var character = dialog_data[dialog_index]["character"]
-	var char_data = char_data[character]
-	print(char_data["name"],": ", dialog_data[dialog_index]["content"])
-	name_label.text = str(char_data["name"])
+	var char_data_one = char_data[character]
+	
+	print(char_data_one["name"],": ", dialog_data[dialog_index]["content"])
+	name_label.text = str(char_data_one["name"])
+	progress.text = str(dialog_index+1)+ "/" + str(dialog_data.size())
+	
+	var podiums = get_tree().get_nodes_in_group("podium")
+	for podium in podiums:
+		if podium.char_name == character:
+			podium.expression(dialog_data[dialog_index]["expression"])
+			var test_tween = create_tween()
+			var target_position = podium.global_position - podium.global_transform.basis.z * 2.0
+			#test_tween..parallel().tween_property(camera_node,"global_position",target_position,3.0)
+			var target_rotation = camera_node.global_transform.looking_at(
+			podium.global_position,
+			Vector3.UP
+		).basis.get_euler()
+			test_tween.parallel().tween_property(camera_node,"global_rotation",target_rotation,1.0)
+			return
+	print("ERROR, no character",character, "has been found!")
+func debate_camera_reset():
+	camera_node.global_position = Vector3(0,1.8,0)
+	camera_node.rotation = Vector3.ZERO
+	state = "debate"
+	state_timer = 0
+	camera_node.play("RESET")
