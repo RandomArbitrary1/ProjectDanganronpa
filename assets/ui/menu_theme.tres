@@ -1,5 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://bfavwrk3v75ob"]
 
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="1_ppmnc"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvvi2"]
 bg_color = Color(8.061901e-07, 0.30009484, 0.27179542, 1)
 skew = Vector2(-0.12, 0)
@@ -57,6 +59,7 @@ corner_radius_bottom_left = 5
 shadow_size = 11
 
 [resource]
+default_font = ExtResource("1_ppmnc")
 Button/styles/hover = SubResource("StyleBoxFlat_qvvi2")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_ppmnc")
 Button/styles/normal = SubResource("StyleBoxFlat_10t4b")
