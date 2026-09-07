@@ -68,6 +68,18 @@ func _ready() -> void:
 		reload_list()
 	)
 	navigation.get_node(\"Save\").pressed.connect(save)
+	navigation.get_node(\"Clear\").pressed.connect(func():
+		if navigation.get_node(\"Clear\").text == \"yes?\":
+			data = {\"dialog\":[]}
+			navigation.get_node(\"Clear\").text = \"Clear all\"
+			for i in list.get_children():
+				i.queue_free()
+		else:
+			navigation.get_node(\"Clear\").text = \"yes?\"
+	)
+	navigation.get_node(\"Clear\").mouse_exited.connect(func():
+		navigation.get_node(\"Clear\").text = \"Clear all\"
+	)
 
 func reload_list():
 	for i in list.get_children():
@@ -104,6 +116,7 @@ func run_options(i, item_data):
 		moving = i
 	)
 	i.get_node(\"Panel/Remove\").pressed.connect(func():
+		data.dialog.remove_at(item_data.id)
 		i.queue_free()
 	)
 	if item_data.type == \"text\":
@@ -161,7 +174,8 @@ func save():
 	
 func _process(_delta: float) -> void:
 	for i in data.dialog:
-		i.id = i.eline.get_index()
+		if i.has(\"id\") and i.has(\"eline\"):
+			i.id = i.eline.get_index()
 	for i in list.get_children():
 		i.get_node(\"Panel/Index\").text = str(i.get_index())
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -297,6 +311,21 @@ grow_horizontal = 0
 mouse_default_cursor_shape = 2
 theme_override_icons/icon = ExtResource("3_ol5w5")
 text = "Save as"
+icon_alignment = 2
+
+[node name="Clear" type="Button" parent="Navigation" unique_id=1177034459]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -308.5714
+offset_top = 5.7142854
+offset_right = -199.99988
+offset_bottom = 45.714287
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+text = "Clear all"
 icon_alignment = 2
 
 [node name="File" type="Label" parent="Navigation" unique_id=1611597450]
