@@ -16,6 +16,7 @@ script/source = "extends Control
 @onready var context_menu = self.get_node(\"Context_menu\")
 @onready var navigation = self.get_node(\"Navigation\")
 @onready var file_dialog = self.get_node(\"FileDialog\")
+@onready var file_dialog_save = self.get_node(\"FileDialogSave\")
 @onready var list = self.get_node(\"Items/List\")
 
 @onready var dialog_line = list.get_node(\"Dialog\").duplicate()
@@ -35,6 +36,9 @@ func _ready() -> void:
 	
 	navigation.get_node(\"Load\").pressed.connect(func():
 		file_dialog.visible = true
+	)
+	navigation.get_node(\"Save_as\").pressed.connect(func():
+		file_dialog_save.visible = true
 	)
 	context_menu.id_pressed.connect(func(id):
 		if id == 0:
@@ -66,6 +70,15 @@ func _ready() -> void:
 			data.dialog[i][\"id\"] = i
 		print(data)
 		reload_list()
+	)
+	file_dialog_save.file_selected.connect(func(path):
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		if file:
+			file.store_string(JSON.stringify(data, \"\\t\"))
+			navigation.get_node(\"File\").text = path.get_file()
+			file_path = path
+			file.close()
+			self.get_node(\"Saved/Anim\").play(\"Anim\")
 	)
 	navigation.get_node(\"Save\").pressed.connect(save)
 	navigation.get_node(\"Clear\").pressed.connect(func():
@@ -168,7 +181,7 @@ func save():
 		i.erase(\"eline\")
 	print(new_data)
 	var to_save = FileAccess.open(file_path, FileAccess.WRITE)
-	to_save.store_string(JSON.stringify(new_data))
+	to_save.store_string(JSON.stringify(new_data, \"\\t\"))
 	to_save.close()
 	self.get_node(\"Saved/Anim\").play(\"Anim\")
 	
@@ -766,6 +779,12 @@ libraries/ = SubResource("AnimationLibrary_p2fl4")
 oversampling_override = 1.0
 title = "Open a File"
 file_mode = 0
+access = 2
+filters = PackedStringArray("*json")
+use_native_dialog = true
+
+[node name="FileDialogSave" type="FileDialog" parent="." unique_id=169077777]
+oversampling_override = 1.0
 access = 2
 filters = PackedStringArray("*json")
 use_native_dialog = true

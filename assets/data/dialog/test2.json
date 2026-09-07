@@ -1,1 +1,25 @@
-{"dialog":[{"character":"shion","content":"i say long string i say long string i say long string i say long string","expression":"sad","flags":[],"type":"text"},{"character":"raito","content":"idiot go die","expression":"angry","flags":[],"type":"text"},{"character":"shion","content":"how dare you","expression":"angry","flags":[],"type":"text"}]}
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "i say long string i say long string i say long string i say long string",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "idiot go die",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "how dare you",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}
