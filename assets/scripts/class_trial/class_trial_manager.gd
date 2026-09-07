@@ -7,7 +7,7 @@ extends Node3D
 @onready var music_2: AudioStreamPlayer = $music/music2
 
 var state = "prepare"
-var data = JsonParse.load_json("class_trial/debate/debate1")
+var data = JsonParse.load_json("class_trial/debate/debate1.json")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

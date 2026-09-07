@@ -4,7 +4,7 @@ func _ready() -> void:
 	pass
 
 func load_json(path:String): # ALREADY LOOKS INSIDE "data" folder as root, add path like: "/dialog/test.json"
-	var combined = "res://assets/data/" + path + ".json"
+	var combined = "res://assets/data/" + path
 	var file = FileAccess.open(combined,FileAccess.READ)
 	
 	if file == null: # file doesnt exist
