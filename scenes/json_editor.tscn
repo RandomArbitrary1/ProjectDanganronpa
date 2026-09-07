@@ -67,6 +67,7 @@ func _ready() -> void:
 		print(data)
 		reload_list()
 	)
+	navigation.get_node(\"Save\").pressed.connect(save)
 
 func reload_list():
 	for i in list.get_children():
@@ -147,13 +148,16 @@ func sort_new(a, b):
 	return false
 
 func save():
-	var new_data = data.duplicate()
-	new_data.sort_custom(sort_new)
-	for i in new_data:
-		pass
+	var new_data = data.duplicate(true)
+	new_data.dialog.sort_custom(sort_new)
+	for i in new_data.dialog:
+		i.erase(\"id\")
+		i.erase(\"eline\")
+	print(new_data)
 	var to_save = FileAccess.open(file_path, FileAccess.WRITE)
 	to_save.store_string(JSON.stringify(new_data))
 	to_save.close()
+	self.get_node(\"Saved/Anim\").play(\"Anim\")
 	
 func _process(_delta: float) -> void:
 	for i in data.dialog:
@@ -184,6 +188,42 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="Animation" id="Animation_xfl6f"]
+resource_name = "Anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ol5w5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2fl4"]
+_data = {
+&"Anim": SubResource("Animation_xfl6f"),
+&"RESET": SubResource("Animation_ol5w5")
+}
 
 [node name="JsonEditor" type="Control" unique_id=264201279]
 layout_mode = 3
@@ -670,6 +710,28 @@ offset_right = -5.714279
 offset_bottom = 62.85714
 text = "0"
 horizontal_alignment = 2
+
+[node name="Saved" type="Panel" parent="." unique_id=955261081]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1194.2855
+offset_top = 11.428572
+offset_right = 1274.2855
+offset_bottom = 51.428566
+
+[node name="Label" type="Label" parent="Saved" unique_id=1260800737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Saved"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Anim" type="AnimationPlayer" parent="Saved" unique_id=1032939644]
+libraries/ = SubResource("AnimationLibrary_p2fl4")
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=926571378]
 oversampling_override = 1.0
