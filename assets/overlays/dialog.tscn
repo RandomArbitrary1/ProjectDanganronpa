@@ -386,7 +386,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_5o6qf")
 
 [node name="Bar" type="TextureRect" parent="." unique_id=1310259742]

@@ -363,7 +363,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_l4oit")
 
 [node name="Trial_text" type="TextureRect" parent="." unique_id=2055028143]
