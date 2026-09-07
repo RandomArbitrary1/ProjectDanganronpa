@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	revolver_cylinder.rotation += delta * 0.3
 	if intro.visible:
 		timer += delta
-		if timer > 4.7:
+		if timer > 4.9:
 			class_trial_main.state = "debate"
 
 

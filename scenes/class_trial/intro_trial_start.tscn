@@ -277,7 +277,7 @@ offset_left = 110.00001
 offset_top = 388.99997
 offset_right = 610.0
 offset_bottom = 889.0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("2_h5blc")
 
@@ -287,7 +287,7 @@ offset_left = 463.0
 offset_top = 364.0
 offset_right = 963.0
 offset_bottom = 864.0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_jiiqk")
 
@@ -297,7 +297,7 @@ offset_left = 736.0
 offset_top = 331.0
 offset_right = 1236.0
 offset_bottom = 831.0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("4_yvnhd")
 
@@ -307,7 +307,7 @@ offset_left = 989.0
 offset_top = 257.0
 offset_right = 1489.0
 offset_bottom = 757.0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("2_svhqp")
 
@@ -317,7 +317,7 @@ offset_left = 1336.0
 offset_top = 243.00002
 offset_right = 1836.0
 offset_bottom = 743.0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_x8ge1")
 
@@ -327,7 +327,7 @@ offset_left = 611.0
 offset_top = 281.0
 offset_right = 1311.0
 offset_bottom = 781.0
-scale = Vector2(9.076402e-06, 9.076402e-06)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("8_x8ge1")
 
@@ -344,7 +344,7 @@ offset_right = 250.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 0.76418155)
+scale = Vector2(30, 1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_x8ge1")
 
