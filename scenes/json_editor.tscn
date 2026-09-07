@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="1_53vve"]
 [ext_resource type="Texture2D" uid="uid://b8nlmkqp038bh" path="res://assets/ui/json_editor/insert_drive_file_24dp_E3E3E3.png" id="1_p0t4n"]
-[ext_resource type="Texture2D" uid="uid://ch7mm537esq6y" path="res://assets/textures/environment/WoodTexture.png" id="1_xfl6f"]
+[ext_resource type="Texture2D" uid="uid://cu4cl4be62c7n" path="res://assets/textures/environment/WoodTextureOil.png" id="1_xfl6f"]
 [ext_resource type="Texture2D" uid="uid://dm7i4hetvoe4q" path="res://assets/ui/json_editor/save_24dp_E3E3E3.png" id="2_xfl6f"]
 [ext_resource type="Texture2D" uid="uid://yy5scsj1qxvf" path="res://assets/ui/json_editor/save_as_24dp_E3E3E3.png" id="3_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://ccdrvhhvoo3js" path="res://assets/ui/json_editor/reorder_24dp_E3E3E3.png" id="4_p2fl4"]
@@ -123,11 +123,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 5485.714
-offset_bottom = 3085.7144
+offset_right = 1371.4285
+offset_bottom = 771.4285
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_xfl6f")
 expand_mode = 1
 stretch_mode = 1
