@@ -94,7 +94,7 @@ func debate_next(_delta, add=1):
 		if podium.char_name == character:
 			podium.expression(dialog_data[dialog_index]["expression"])
 			var test_tween = create_tween()
-			var target_position = podium.global_position - podium.global_transform.basis.z * 2.0
+
 			#test_tween..parallel().tween_property(camera_node,"global_position",target_position,3.0)
 			var target_rotation = camera_node.global_transform.looking_at(
 			podium.global_position,
