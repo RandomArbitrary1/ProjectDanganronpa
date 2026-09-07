@@ -4,6 +4,8 @@
 [ext_resource type="Material" uid="uid://cinfix0r7v3n6" path="res://assets/materials/tile.tres" id="1_xjhtt"]
 [ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_3m5c8"]
 [ext_resource type="AudioStream" uid="uid://ddvpiisqpmr1c" path="res://assets/audio/music/beautiful_lie.mp3" id="4_3m5c8"]
+[ext_resource type="Material" uid="uid://0dhobjpdibad" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
+[ext_resource type="PackedScene" uid="uid://bofdjnsxhfoic" path="res://assets/objects/environment/greenery.tscn" id="6_kp8oi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1pa7i"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,6 +27,10 @@ glow_enabled = true
 
 [node name="SchoolPart" type="Node3D" unique_id=809493090]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1074517942]
+transform = Transform3D(0.9100337, 0.31040782, -0.27474666, 0.29211035, -0.0099257175, 0.95633316, 0.29412615, -0.9505517, -0.09970605, 0, 6.4445763, 9.378704)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1546226829]
 environment = SubResource("Environment_3m5c8")
 
@@ -37,62 +43,119 @@ parameters/looping = true
 [node name="Building" type="CSGCombiner3D" parent="." unique_id=305987796]
 
 [node name="Room" type="CSGBox3D" parent="Building" unique_id=1250318460]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 9.5, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 7.552765, 30)
 material_override = ExtResource("1_1pa7i")
-size = Vector3(30, 18, 65)
-material = ExtResource("2_3m5c8")
+size = Vector3(39, 14.10553, 65)
 
-[node name="CutoutRoom" type="CSGBox3D" parent="Building" unique_id=732436545]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 32)
+[node name="Entrance" type="CSGBox3D" parent="Building" unique_id=732436545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 operation = 2
-size = Vector3(3, 6, 63)
-material = ExtResource("2_3m5c8")
+size = Vector3(5, 6, 3)
+material = ExtResource("1_xjhtt")
 
-[node name="CutoutRoom2" type="CSGBox3D" parent="Building" unique_id=1116744357]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 6.5, 27.5)
+[node name="DormRoomORUpstairs" type="CSGBox3D" parent="Building" unique_id=1690289646]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 3.5, 11)
+operation = 2
+size = Vector3(5, 6, 3)
+material = ExtResource("1_xjhtt")
+
+[node name="SECRET_HOLE" type="CSGBox3D" parent="Building" unique_id=19280370]
+transform = Transform3D(-4.317e-08, 0.15689988, 0.9876145, 6.8583117e-09, 0.9876145, -0.15689988, -1, 0, -4.371139e-08, 5.7238827, 8.883896, 20.619804)
+operation = 2
+size = Vector3(0.45336914, 9.660278, 0.68603516)
+material = ExtResource("1_xjhtt")
+
+[node name="Hallway" type="CSGBox3D" parent="Building" unique_id=1092938577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 3, 26)
+operation = 2
+size = Vector3(4, 5, 13)
+material = ExtResource("1_xjhtt")
+
+[node name="Hallway2" type="CSGBox3D" parent="Building" unique_id=1701841842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, 26)
+operation = 2
+size = Vector3(4, 5, 13)
+material = ExtResource("1_xjhtt")
+
+[node name="Lobby" type="CSGBox3D" parent="Building" unique_id=1116744357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 6.5, 10.5)
 operation = 2
 size = Vector3(14, 12, 18)
-material = ExtResource("2_3m5c8")
+material = ExtResource("1_xjhtt")
+
+[node name="hole_ceiling" type="CSGBox3D" parent="Building" unique_id=2028954299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.400099, 14.479101, 17.514614)
+operation = 2
+size = Vector3(3.8652039, 4, 3.6679688)
+material = ExtResource("1_xjhtt")
+
+[node name="hole_ceiling2" type="CSGBox3D" parent="Building" unique_id=316113620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39885092, 14.479101, 18.907436)
+operation = 2
+size = Vector3(1.9948578, 4, 0.8823242)
+material = ExtResource("1_xjhtt")
 
 [node name="Floor" type="CSGBox3D" parent="Building" unique_id=43171049]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 32)
-size = Vector3(30, 1, 65)
-material = ExtResource("1_xjhtt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 30)
+size = Vector3(38, 1, 65)
+material = ExtResource("2_3m5c8")
+
+[node name="ReceptionDesk" type="CSGBox3D" parent="Building" unique_id=2078579049]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.1397552, 1, 4)
+size = Vector3(5, 1, 0.86602783)
+material = ExtResource("1_1pa7i")
+
+[node name="ReceptionDesk2" type="CSGBox3D" parent="Building" unique_id=1151126178]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.3289795, 1, 6.1708374)
+size = Vector3(0.6583252, 1, 2.2465515)
+material = ExtResource("1_1pa7i")
+
+[node name="BlockingBoulder" type="CSGSphere3D" parent="Building" unique_id=2108820986]
+transform = Transform3D(1.3126079, -0.62125397, 0, 0.40032774, 2.036988, 0, 0, 0, 1, -5.744933, 1.6173134, 19.286455)
+radius = 2.4513667
+radial_segments = 7
+rings = 8
+material = ExtResource("5_xlgs6")
 
 [node name="Lights" type="Node3D" parent="." unique_id=1766990819]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=1259753074]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 3.6210122)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, -0.3789878)
 light_energy = 2.0
 spot_range = 25.0
 spot_angle = 70.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=1002206081]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 17.106668)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4, 5.3443613, 21.106668)
 light_energy = 2.0
 spot_range = 25.0
 spot_angle = 70.0
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights" unique_id=1492699332]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 29.734312)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 5.3443613, 29.734312)
 light_energy = 2.0
 spot_range = 25.0
 spot_angle = 70.0
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lights" unique_id=1028434030]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.1889067, 12.13978, 27.01059)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.18890667, 12.207098, 10.01059)
 light_energy = 2.0
 spot_range = 25.0
 spot_angle = 70.0
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="Lights" unique_id=1097102415]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 43.21997)
-light_energy = 2.0
-spot_range = 25.0
-spot_angle = 70.0
+[node name="Props" type="Node3D" parent="." unique_id=2136127847]
 
-[node name="SpotLight3D5" type="SpotLight3D" parent="Lights" unique_id=1382234468]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.3443613, 56.006893)
-light_energy = 2.0
-spot_range = 25.0
-spot_angle = 70.0
+[node name="Greenery" parent="Props" unique_id=257907977 instance=ExtResource("6_kp8oi")]
+transform = Transform3D(7.7306395, 0, 0, 0, -1.2851149e-07, -2.94, 0, 2.94, -1.2851149e-07, 0.1276257, 9.650322, 1.5065379)
+
+[node name="Greenery4" parent="Props" unique_id=1027950852 instance=ExtResource("6_kp8oi")]
+transform = Transform3D(-7.730639, -2.5702295e-07, 1.123483e-14, 0, -1.2851149e-07, -2.94, 6.75834e-07, -2.94, 1.2851149e-07, 0.1276257, 9.650322, 19.466013)
+
+[node name="Greenery5" parent="Props" unique_id=1075471769 instance=ExtResource("6_kp8oi")]
+transform = Transform3D(-7.730639, -2.5702295e-07, 1.123483e-14, 0, -1.2851149e-07, -2.94, 6.75834e-07, -2.94, 1.2851149e-07, 0.1276257, 14.552363, 19.313099)
+
+[node name="Greenery2" parent="Props" unique_id=651052673 instance=ExtResource("6_kp8oi")]
+transform = Transform3D(-3.8867023e-07, 2.9399998, -1.2851147e-07, 0, -1.2851149e-07, -2.94, -8.891739, -1.2851149e-07, 5.6174154e-15, -7.4939394, 9.650322, 10.583584)
+
+[node name="Greenery3" parent="Props" unique_id=715210961 instance=ExtResource("6_kp8oi")]
+transform = Transform3D(1.1660107e-06, -2.9399998, 1.2851149e-07, 0, -1.2851149e-07, -2.94, 8.891739, 3.8553443e-07, -1.6852246e-14, 6.495621, 9.650322, 10.583584)

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bwy88nfiay4jp"]
 
-[ext_resource type="Texture2D" uid="uid://b585ya7mgqx6j" path="res://assets/textures/environment/wood_plank.png" id="1_e3g13"]
+[ext_resource type="Texture2D" uid="uid://cbg6qwxmq3jq4" path="res://assets/textures/environment/wood_plank_oil.png" id="1_e3g13"]
 [ext_resource type="Texture2D" uid="uid://dkhdioi6w0mv" path="res://assets/textures/environment/wood_plank_oil_normal.png" id="2_e3g13"]
 
 [resource]
