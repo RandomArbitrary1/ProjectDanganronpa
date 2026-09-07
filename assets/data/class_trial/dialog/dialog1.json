@@ -1,0 +1,46 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "Okay, so... where do we even begin? Does everyone actually think one of us did this?",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "ayuka",
+			"content": "Someone did it. That's just how this works.",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "yuito",
+			"content": "Shion! Pay attention! We're going to figure out who killed ??? The only thing we know is that they died upstairs.",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "I was in the library. Alone, unfortunately, so I don't have anyone to back that up.",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "If we're doing this properly... Yuito, you were taking pictures near the dorms earlier, right? Did you get anything useful, or is that camera just for show?",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "yuito",
+			"content": "It's never \"just for show.\" I got a few shots of the hallway around that time. Nothing that screams \"murder weapon,\" but I can share them if it helps.",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}

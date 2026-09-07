@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cbcv001taaaxs" path="res://assets/audio/music/preparation.mp3" id="2_ywd3k"]
 [ext_resource type="AudioStream" uid="uid://cvh1y3k8xtpb0" path="res://assets/audio/music/trial_debate1.mp3" id="3_sm3nl"]
 [ext_resource type="PackedScene" uid="uid://p0mqiqashvrm" path="res://scenes/class_trial/preparation_screen.tscn" id="3_ywd3k"]
+[ext_resource type="PackedScene" uid="uid://bi2wqakt44a5q" path="res://assets/ui/dialog/dialog_trial.tscn" id="6_pcyjt"]
 
 [node name="CLASS_TRIAL_MAIN" type="Node3D" unique_id=642936802]
 script = ExtResource("1_arjlt")
@@ -24,5 +25,10 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="DebateRoulette" parent="." unique_id=1937437093 instance=ExtResource("2_hddxn")]
+visible = false
 
 [node name="Preparation" parent="." unique_id=383539966 instance=ExtResource("3_ywd3k")]
+visible = false
+
+[node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("6_pcyjt")]
+visible = false
