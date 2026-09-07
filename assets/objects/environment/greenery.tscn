@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bofdjnsxhfoic"]
+
+[ext_resource type="Texture2D" uid="uid://b0bgovvp2lkdh" path="res://assets/textures/environment/Greenery1.png" id="1_4h74c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81r6p"]
+transparency = 1
+albedo_texture = ExtResource("1_4h74c")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yfeh8"]
+material = SubResource("StandardMaterial3D_81r6p")
+
+[node name="Greenery" type="MeshInstance3D" unique_id=257907977]
+transform = Transform3D(4.0129104, 0, 0, 0, -1.2851149e-07, -2.94, 0, 2.94, -1.2851149e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_yfeh8")

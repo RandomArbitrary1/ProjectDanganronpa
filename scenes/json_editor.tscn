@@ -24,6 +24,7 @@ script/source = "extends Control
 @onready var music_line = list.get_node(\"Music\").duplicate()
 
 var data = {\"dialog\":[]}
+var file_path = \"\"
 var moving = null
 
 func _ready() -> void:
@@ -39,27 +40,30 @@ func _ready() -> void:
 		if id == 0:
 			var new = dialog_line.duplicate()
 			list.add_child(new)
-			data.dialog.append({\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
-			run_options(new)
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
+			run_options(new,data.dialog[data.dialog.size()-1])
 		elif id == 1:
 			var new = visible_line.duplicate()
-			data.dialog.append({\"type\":\"visible\",\"value\":true,\"flags\":[]})
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"visible\",\"value\":true,\"flags\":[]})
 			list.add_child(new)
-			run_options(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
 		elif id == 2:
 			var new = focus_line.duplicate()
-			data.dialog.append({\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
 		elif id == 3:
 			var new = music_line.duplicate()
-			data.dialog.append({\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
 	)
 	file_dialog.file_selected.connect(func(path):
+		file_path = path
 		navigation.get_node(\"File\").text = path.get_file()
 		data = load(path).data
+		for i in data.dialog.size():
+			data.dialog[i][\"id\"] = i
 		print(data)
 		reload_list()
 	)
@@ -73,22 +77,26 @@ func reload_list():
 			new.get_node(\"Panel/TextEdit\").text = i.content
 			new.get_node(\"Character/Name\").selected = range(new.get_node(\"Character/Name\").item_count).map(func(ii): return new.get_node(\"Character/Name\").get_item_text(ii)).find(i.character)
 			new.get_node(\"Character/Emotion\").selected = range(new.get_node(\"Character/Emotion\").item_count).map(func(ii): return new.get_node(\"Character/Emotion\").get_item_text(ii)).find(i.expression)
+			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new)
+			run_options(new, i)
 		elif i.type == \"visible\":
 			var new = visible_line.duplicate()
+			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new)
+			run_options(new, i)
 		elif i.type == \"focus\":
 			var new = focus_line.duplicate()
+			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new)
+			run_options(new, i)
 		elif i.type == \"music\":
 			var new = music_line.duplicate()
+			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new)
+			run_options(new, i)
 	
-func run_options(i):
+func run_options(i, item_data):
 	i.get_node(\"Panel/Down\").button_down.connect(func():
 		i.get_node(\"Panel/Outline\").visible = true
 		i.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -97,6 +105,31 @@ func run_options(i):
 	i.get_node(\"Panel/Remove\").pressed.connect(func():
 		i.queue_free()
 	)
+	if item_data.type == \"text\":
+		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
+			item_data.content = i.get_node(\"Panel/TextEdit\").text
+		)
+		i.get_node(\"Character/Name\").item_selected.connect(func(ind):
+			item_data.character = i.get_node(\"Character/Name\").get_item_text(ind)
+		)
+		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
+			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
+		)
+	elif item_data.type == \"visible\":
+		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
+			item_data.value = i.get_node(\"Panel/CheckButton\").button_pressed
+		)
+	elif item_data.type == \"focus\":
+		i.get_node(\"Panel/Type\").item_selected.connect(func(ind):
+			item_data.object = i.get_node(\"Panel/Type\").get_item_text(ind)
+		)
+		i.get_node(\"Panel/LineEdit\").text_changed.connect(func(_e):
+			item_data.point = i.get_node(\"Panel/LineEdit\").text
+		)
+	elif item_data.type == \"music\":
+		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
+			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
+		)
 
 func closest(target):
 	var close = list.get_child(0).global_position.y
@@ -108,7 +141,23 @@ func closest(target):
 			closeID = num
 	return closeID
 	
+func sort_new(a, b):
+	if a.id < b.id:
+		return true
+	return false
+
+func save():
+	var new_data = data.duplicate()
+	new_data.sort_custom(sort_new)
+	for i in new_data:
+		pass
+	var to_save = FileAccess.open(file_path, FileAccess.WRITE)
+	to_save.store_string(JSON.stringify(new_data))
+	to_save.close()
+	
 func _process(_delta: float) -> void:
+	for i in data.dialog:
+		i.id = i.eline.get_index()
 	for i in list.get_children():
 		i.get_node(\"Panel/Index\").text = str(i.get_index())
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -297,7 +346,7 @@ offset_bottom = 62.85714
 text = "0"
 horizontal_alignment = 2
 
-[node name="Name" type="OptionButton" parent="Items/List/Music/Panel" unique_id=159475097]
+[node name="Song" type="OptionButton" parent="Items/List/Music/Panel" unique_id=159475097]
 layout_mode = 0
 offset_left = 194.28572
 offset_top = 5.7142982
