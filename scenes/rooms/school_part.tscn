@@ -32,7 +32,6 @@ environment = SubResource("Environment_3m5c8")
 stream = ExtResource("4_3m5c8")
 volume_db = -1.0
 autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="Building" type="CSGCombiner3D" parent="." unique_id=305987796]
