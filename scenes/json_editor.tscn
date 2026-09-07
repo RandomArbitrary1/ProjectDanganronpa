@@ -17,14 +17,13 @@ script/source = "extends Control
 @onready var navigation = self.get_node(\"Navigation\")
 @onready var file_dialog = self.get_node(\"FileDialog\")
 @onready var list = self.get_node(\"Items/List\")
-@onready var scroll_bar = self.get_node(\"VScrollBar\")
 
 @onready var dialog_line = list.get_node(\"Dialog\").duplicate()
 @onready var visible_line = list.get_node(\"Visibility\").duplicate()
 @onready var focus_line = list.get_node(\"Focus\").duplicate()
 @onready var music_line = list.get_node(\"Music\").duplicate()
 
-var data = {}
+var data = {\"dialog\":[]}
 var moving = null
 
 func _ready() -> void:
@@ -40,24 +39,54 @@ func _ready() -> void:
 		if id == 0:
 			var new = dialog_line.duplicate()
 			list.add_child(new)
+			data.dialog.append({\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
 			run_options(new)
 		elif id == 1:
 			var new = visible_line.duplicate()
+			data.dialog.append({\"type\":\"visible\",\"value\":true,\"flags\":[]})
 			list.add_child(new)
 			run_options(new)
 		elif id == 2:
 			var new = focus_line.duplicate()
+			data.dialog.append({\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new)
 		elif id == 3:
 			var new = music_line.duplicate()
+			data.dialog.append({\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new)
 	)
 	file_dialog.file_selected.connect(func(path):
 		navigation.get_node(\"File\").text = path.get_file()
 		data = load(path).data
+		print(data)
+		reload_list()
 	)
+
+func reload_list():
+	for i in list.get_children():
+		i.queue_free()
+	for i in data.dialog:
+		if i.type == \"text\":
+			var new = dialog_line.duplicate()
+			new.get_node(\"Panel/TextEdit\").text = i.content
+			new.get_node(\"Character/Name\").selected = range(new.get_node(\"Character/Name\").item_count).map(func(ii): return new.get_node(\"Character/Name\").get_item_text(ii)).find(i.character)
+			new.get_node(\"Character/Emotion\").selected = range(new.get_node(\"Character/Emotion\").item_count).map(func(ii): return new.get_node(\"Character/Emotion\").get_item_text(ii)).find(i.expression)
+			list.add_child(new)
+			run_options(new)
+		elif i.type == \"visible\":
+			var new = visible_line.duplicate()
+			list.add_child(new)
+			run_options(new)
+		elif i.type == \"focus\":
+			var new = focus_line.duplicate()
+			list.add_child(new)
+			run_options(new)
+		elif i.type == \"music\":
+			var new = music_line.duplicate()
+			list.add_child(new)
+			run_options(new)
 	
 func run_options(i):
 	i.get_node(\"Panel/Down\").button_down.connect(func():
@@ -92,6 +121,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released(\"RMB\"):
 		context_menu.visible = true
 		context_menu.position = mouse_pos
+	if Input.is_action_just_pressed(\"Ctrl\"):
+		print(data.dialog)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfl6f"]
@@ -200,6 +231,106 @@ custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
+
+[node name="Music" type="HBoxContainer" parent="Items/List" unique_id=1072936168]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Music" unique_id=606793821]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Music/Panel" unique_id=1734375800]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/Music/Panel" unique_id=833686899]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Music/Panel" unique_id=532349665]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Music/Panel" unique_id=1649738797]
+layout_mode = 0
+offset_left = 97.14293
+offset_top = 5.714285
+offset_right = 137.14293
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Music/Panel" unique_id=1735070164]
+layout_mode = 0
+offset_left = 142.85718
+offset_top = 5.714283
+offset_right = 194.28574
+offset_bottom = 45.714275
+text = "Music"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Music/Panel" unique_id=1869713327]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="Name" type="OptionButton" parent="Items/List/Music/Panel" unique_id=159475097]
+layout_mode = 0
+offset_left = 194.28572
+offset_top = 5.7142982
+offset_right = 794.2856
+offset_bottom = 45.7143
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+selected = 0
+item_count = 12
+popup/item_0/text = "angst"
+popup/item_0/id = 0
+popup/item_1/text = "back_in_the_building"
+popup/item_1/id = 1
+popup/item_2/text = "beautiful_lie"
+popup/item_2/id = 2
+popup/item_3/text = "beautiful_ruin"
+popup/item_3/id = 3
+popup/item_4/text = "big_realization"
+popup/item_4/id = 4
+popup/item_5/text = "happy_music"
+popup/item_5/id = 5
+popup/item_6/text = "panic"
+popup/item_6/id = 6
+popup/item_7/text = "preparation"
+popup/item_7/id = 7
+popup/item_8/text = "shock_realization"
+popup/item_8/id = 8
+popup/item_9/text = "slow_realization"
+popup/item_9/id = 9
+popup/item_10/text = "solar"
+popup/item_10/id = 10
+popup/item_11/text = "trial_debate1"
+popup/item_11/id = 11
 
 [node name="Dialog" type="HBoxContainer" parent="Items/List" unique_id=1469758066]
 custom_minimum_size = Vector2(0, 143)
@@ -484,83 +615,6 @@ popup/item_2/text = "Object"
 popup/item_2/id = 2
 
 [node name="Index" type="Label" parent="Items/List/Focus/Panel" unique_id=2121319680]
-layout_mode = 0
-offset_left = -85.71428
-offset_right = -5.714279
-offset_bottom = 62.85714
-text = "0"
-horizontal_alignment = 2
-
-[node name="Music" type="HBoxContainer" parent="Items/List" unique_id=1072936168]
-custom_minimum_size = Vector2(0, 51)
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Items/List/Music" unique_id=606793821]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Outline" type="Panel" parent="Items/List/Music/Panel" unique_id=1734375800]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
-
-[node name="Down" type="Button" parent="Items/List/Music/Panel" unique_id=833686899]
-layout_mode = 0
-offset_left = 5.714287
-offset_top = 5.7142844
-offset_right = 45.714287
-offset_bottom = 45.71428
-mouse_default_cursor_shape = 13
-theme_override_icons/icon = ExtResource("4_p2fl4")
-icon_alignment = 1
-
-[node name="Remove" type="Button" parent="Items/List/Music/Panel" unique_id=532349665]
-layout_mode = 0
-offset_left = 51.428574
-offset_top = 5.7142844
-offset_right = 91.42857
-offset_bottom = 45.71428
-mouse_default_cursor_shape = 2
-theme_override_icons/icon = ExtResource("5_oqeqj")
-icon_alignment = 1
-
-[node name="Flags" type="Button" parent="Items/List/Music/Panel" unique_id=1649738797]
-layout_mode = 0
-offset_left = 97.14293
-offset_top = 5.714285
-offset_right = 137.14293
-offset_bottom = 45.714287
-mouse_default_cursor_shape = 2
-theme_override_icons/icon = ExtResource("6_1adse")
-icon_alignment = 1
-
-[node name="LineEdit" type="LineEdit" parent="Items/List/Music/Panel" unique_id=1956721395]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 194.28574
-offset_top = 5.714287
-offset_right = -5.2857666
-offset_bottom = -5.285721
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Items/List/Music/Panel" unique_id=1735070164]
-layout_mode = 0
-offset_left = 142.85718
-offset_top = 5.714283
-offset_right = 194.28574
-offset_bottom = 45.714275
-text = "Music"
-vertical_alignment = 1
-
-[node name="Index" type="Label" parent="Items/List/Music/Panel" unique_id=1869713327]
 layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
