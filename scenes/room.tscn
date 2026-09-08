@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://defpqq2c68rou"]
 
 [ext_resource type="Script" uid="uid://gu7qo6ivbsve" path="res://assets/scripts/room_cam.gd" id="1_85yof"]
-[ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/ui/dialog/dialog.tscn" id="1_ffxv4"]
+[ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="1_ffxv4"]
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="2_14vil"]
 [ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_85yof"]
 [ext_resource type="Script" uid="uid://blt2t4mlb3qxv" path="res://assets/scripts/talking.gd" id="2_jxe34"]
-[ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/ui/base/base.tscn" id="5_jn645"]
+[ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/overlays/base.tscn" id="5_jn645"]
 [ext_resource type="PackedScene" uid="uid://dndpi3bk3uqya" path="res://assets/overlays/handbook.tscn" id="7_ybpoa"]
 [ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="8_ybpoa"]
 [ext_resource type="AudioStream" uid="uid://duuupn6it42v1" path="res://assets/audio/music/beautiful_ruin.mp3" id="9_ybpoa"]
