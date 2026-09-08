@@ -39,7 +39,8 @@ func debate():
 	preparation.visible = false
 	
 func start_dialog():
+	state = "dialog"
 	music_dialog.play()
 	music.stop()
-	music.stop()
+	music_2.stop()
 	dialog.start()
