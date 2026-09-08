@@ -7,7 +7,6 @@ var camera = null
 @onready var anim = self.get_node("Anims")
 @onready var bullet = self.get_node("Bar/Bullet")
 @onready var nameplate = self.get_node("Bar/Name")
-@onready var decoration = self.get_node("Bar/Decoration")
 @onready var switch = self.get_node("Bar/Switch")
 @onready var input_ind = self.get_node("Bar/Input_indicator/Anim")
 var character_info = preload("res://assets/data/characters/characters.json").data

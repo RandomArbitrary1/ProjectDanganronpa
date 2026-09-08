@@ -548,14 +548,14 @@ vertical_alignment = 1
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 48.0
-offset_right = 1831.5251
-offset_bottom = 290.86902
-rotation = 0.027925268
+offset_left = 64.0
+offset_top = 72.0
+offset_right = 1839.5251
+offset_bottom = 314.86902
 theme = ExtResource("5_fo12k")
 bbcode_enabled = true
 scroll_active = false
+autowrap_mode = 2
 
 [node name="Input_indicator" type="TextureRect" parent="Bar" unique_id=403398415]
 modulate = Color(1, 1, 1, 0)
