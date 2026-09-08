@@ -23,18 +23,22 @@ script/source = "extends Control
 @onready var visible_line = list.get_node(\"Visibility\").duplicate()
 @onready var focus_line = list.get_node(\"Focus\").duplicate()
 @onready var music_line = list.get_node(\"Music\").duplicate()
+@onready var bullet_line = list.get_node(\"Bullet\").duplicate()
 
 var data = {\"dialog\":[]}
 var file_path = \"\"
 var moving = null
+var to_open = \"data\"
 
 func _ready() -> void:
 	list.get_node(\"Music\").queue_free()
 	list.get_node(\"Dialog\").queue_free()
 	list.get_node(\"Visibility\").queue_free()
 	list.get_node(\"Focus\").queue_free()
+	list.get_node(\"Bullet\").queue_free()
 	
 	navigation.get_node(\"Load\").pressed.connect(func():
+		to_open = \"data\"
 		file_dialog.visible = true
 	)
 	navigation.get_node(\"Save_as\").pressed.connect(func():
@@ -61,15 +65,21 @@ func _ready() -> void:
 			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data.dialog[data.dialog.size()-1])
+		elif id == 11:
+			var new = bullet_line.duplicate()
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
 	)
 	file_dialog.file_selected.connect(func(path):
-		file_path = path
-		navigation.get_node(\"File\").text = path.get_file()
-		data = load(path).data
-		for i in data.dialog.size():
-			data.dialog[i][\"id\"] = i
-		print(data)
-		reload_list()
+		if to_open == \"data\":
+			file_path = path
+			navigation.get_node(\"File\").text = path.get_file()
+			data = load(path).data
+			for i in data.dialog.size():
+				data.dialog[i][\"id\"] = i
+			print(data)
+			reload_list()
 	)
 	file_dialog_save.file_selected.connect(func(path):
 		var file = FileAccess.open(path, FileAccess.WRITE)
@@ -121,6 +131,20 @@ func reload_list():
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
+		elif i.type == \"bullet\":
+			var new = bullet_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Panel/CheckButton\").button_pressed = i.show
+			new.get_node(\"Panel/Load\").text = i.file.get_file()
+			new.get_node(\"Panel/Bullet\").clear()
+			var file = null
+			if i.has(\"file\"):
+				file = load(i.file).data
+				if file is Dictionary:
+					for key in file.keys():
+						new.get_node(\"Panel/Bullet\").add_item(key)
+			list.add_child(new)
+			run_options(new, i)
 	
 func run_options(i, item_data):
 	i.get_node(\"Panel/Down\").button_down.connect(func():
@@ -156,6 +180,27 @@ func run_options(i, item_data):
 	elif item_data.type == \"music\":
 		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
 			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
+		)
+	elif item_data.type == \"bullet\":
+		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
+			item_data.show = i.get_node(\"Panel/CheckButton\").button_pressed
+		)
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"bullet\" + str(item_data.id)
+			file_dialog.visible = true
+		)
+		file_dialog.file_selected.connect(func(path):
+			item_data.file = path
+			if to_open == \"bullet\" + str(item_data.id):
+				i.get_node(\"Panel/Load\").text = path.get_file()
+				i.get_node(\"Panel/Bullet\").clear()
+				var file = load(path).data
+				if file is Dictionary:
+					for key in file.keys():
+						i.get_node(\"Panel/Bullet\").add_item(key)
+		)
+		i.get_node(\"Panel/Bullet\").item_selected.connect(func(ind):
+			item_data.bullet = i.get_node(\"Panel/Bullet\").get_item_text(ind)
 		)
 
 func closest(target):
@@ -200,7 +245,7 @@ func _process(_delta: float) -> void:
 		moving = null
 	if Input.is_action_just_released(\"RMB\"):
 		context_menu.visible = true
-		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-252),(clampf(mouse_pos.y,0,1080-154)))
+		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-262),(clampf(mouse_pos.y,0,1080-424)))
 	if Input.is_action_just_pressed(\"Ctrl\"):
 		print(data.dialog)
 "
@@ -362,6 +407,100 @@ custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
+
+[node name="Bullet" type="HBoxContainer" parent="Items/List" unique_id=922323109]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Bullet" unique_id=1173112791]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Bullet/Panel" unique_id=1525163626]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/Bullet/Panel" unique_id=2001071246]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Bullet/Panel" unique_id=1933119827]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Bullet/Panel" unique_id=1525513454]
+layout_mode = 0
+offset_left = 97.14293
+offset_top = 5.714285
+offset_right = 137.14293
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Bullet/Panel" unique_id=1390846539]
+layout_mode = 0
+offset_left = 142.85718
+offset_top = 5.714283
+offset_right = 240.00009
+offset_bottom = 45.714275
+text = "Bullet"
+vertical_alignment = 1
+
+[node name="Load" type="Button" parent="Items/List/Bullet/Panel" unique_id=403257907]
+layout_mode = 0
+offset_left = 291.42856
+offset_top = 5.714287
+offset_right = 491.42856
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+text = "Select file"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
+
+[node name="Bullet" type="OptionButton" parent="Items/List/Bullet/Panel" unique_id=133974147]
+layout_mode = 0
+offset_left = 497.14288
+offset_top = 5.714286
+offset_right = 794.28564
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+
+[node name="Index" type="Label" parent="Items/List/Bullet/Panel" unique_id=261789310]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="CheckButton" type="CheckButton" parent="Items/List/Bullet/Panel" unique_id=129361642]
+layout_mode = 0
+offset_left = 188.57141
+offset_right = 287.5714
+offset_bottom = 51.428577
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "Show"
 
 [node name="Music" type="HBoxContainer" parent="Items/List" unique_id=1072936168]
 custom_minimum_size = Vector2(0, 51)
@@ -650,6 +789,7 @@ offset_left = 137.14285
 offset_right = 236.14285
 offset_bottom = 51.428574
 mouse_default_cursor_shape = 2
+button_pressed = true
 text = "Visible"
 
 [node name="Index" type="Label" parent="Items/List/Visibility/Panel" unique_id=1919461854]
@@ -790,15 +930,36 @@ filters = PackedStringArray("*json")
 use_native_dialog = true
 
 [node name="Context_menu" type="PopupMenu" parent="." unique_id=1903347401]
+transparent_bg = false
 oversampling_override = 1.0
 size = Vector2i(252, 124)
 content_scale_factor = 1.4
-item_count = 4
-item_0/text = "New dialog"
-item_0/id = 0
-item_1/text = "New visible toggle"
-item_1/id = 1
-item_2/text = "new focus target"
-item_2/id = 2
-item_3/text = "New music switch"
-item_3/id = 3
+item_count = 12
+item_0/text = "Dialog"
+item_0/id = 100
+item_0/separator = true
+item_1/text = "New dialog"
+item_1/id = 0
+item_2/text = "New visible toggle"
+item_2/id = 1
+item_3/text = "new focus target"
+item_3/id = 2
+item_4/text = "New music switch"
+item_4/id = 3
+item_5/text = "New bullet preview"
+item_5/id = 11
+item_6/text = "Character"
+item_6/id = 101
+item_6/separator = true
+item_7/text = "New character data"
+item_7/id = 6
+item_8/text = "Debate"
+item_8/id = 102
+item_8/separator = true
+item_9/text = "New debate dialog"
+item_9/id = 8
+item_10/text = "Case"
+item_10/id = 103
+item_10/separator = true
+item_11/text = "New truth bullet"
+item_11/id = 10

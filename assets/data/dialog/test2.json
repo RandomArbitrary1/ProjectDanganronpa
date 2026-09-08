@@ -20,6 +20,118 @@
 			"expression": "angry",
 			"flags": [],
 			"type": "text"
+		},
+		{
+			"bullet": "lost_memory",
+			"file": "C:/Users/maikn/Documents/my apps n games/Godot/Danganronpa/project-danganronpa/assets/data/case/truth_bullets.json",
+			"flags": [],
+			"show": true,
+			"type": "bullet"
+		},
+		{
+			"character": "shion",
+			"content": "how about this",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"bullet": "",
+			"file": "",
+			"flags": [],
+			"show": false,
+			"type": "bullet"
+		},
+		{
+			"character": "raito",
+			"content": "hoh :o",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "i has been exposed",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "please forgive me cuz i can't take it",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "neh, take it like a good boy >:3",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "O_O",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "NO, I WON'T!!!",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "I HAVE A CHOICE",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "u don't actually",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "f-fine...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "just not too crazy please...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "hehe",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
 		}
 	]
 }
