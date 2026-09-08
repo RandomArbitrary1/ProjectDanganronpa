@@ -25,26 +25,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath("Screen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.06666667, 0.2),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 960.0]
 }
 
 [sub_resource type="Animation" id="Animation_5f50f"]
@@ -65,26 +77,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath("Screen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+"values": [960.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_q1qae"]
@@ -104,26 +128,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath(".:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Screen:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nrkx1"]
@@ -136,7 +172,6 @@ _data = {
 [node name="Handbook" type="ColorRect" unique_id=701086383]
 process_mode = 3
 visible = false
-clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -147,30 +182,32 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_3e3ew")
 
-[node name="Anim" type="AnimationPlayer" parent="." unique_id=1749970568]
-libraries/ = SubResource("AnimationLibrary_nrkx1")
+[node name="Screen" type="Control" parent="." unique_id=20491013]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=374691870]
+[node name="TextureRect" type="TextureRect" parent="Screen" unique_id=374691870]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 1888.0
-offset_bottom = 160.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 1880.0
+offset_bottom = 168.0
 texture = ExtResource("2_vmyeq")
 
-[node name="Tabs" type="NinePatchRect" parent="." unique_id=1350392617]
+[node name="Tabs" type="NinePatchRect" parent="Screen" unique_id=1350392617]
 self_modulate = Color(0.003921569, 0.003921569, 0.003921569, 1)
 layout_mode = 0
-offset_left = 128.0
-offset_top = 64.0
-offset_right = 896.0
-offset_bottom = 128.0
+offset_left = 136.0
+offset_top = 72.0
+offset_right = 904.0
+offset_bottom = 136.0
 texture = ExtResource("2_e6f8r")
 region_rect = Rect2(0, 0, 192, 64)
 patch_margin_left = 64
 patch_margin_right = 64
 
-[node name="List" type="HBoxContainer" parent="Tabs" unique_id=998653621]
+[node name="List" type="HBoxContainer" parent="Screen/Tabs" unique_id=998653621]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,7 +216,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -64
 
-[node name="Tab" type="NinePatchRect" parent="Tabs/List" unique_id=1172070726]
+[node name="Tab" type="NinePatchRect" parent="Screen/Tabs/List" unique_id=1172070726]
 self_modulate = Color(0.055683427, 0.7867745, 0.99999994, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -188,7 +225,7 @@ region_rect = Rect2(0, 0, 192, 64)
 patch_margin_left = 64
 patch_margin_right = 64
 
-[node name="Icon" type="TextureRect" parent="Tabs/List/Tab" unique_id=1578641373]
+[node name="Icon" type="TextureRect" parent="Screen/Tabs/List/Tab" unique_id=1578641373]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.055683427, 0.7867745, 0.99999994, 1)
 layout_mode = 1
@@ -200,7 +237,7 @@ grow_vertical = 2
 texture = ExtResource("4_vmyeq")
 stretch_mode = 5
 
-[node name="Tab2" type="NinePatchRect" parent="Tabs/List" unique_id=879995323]
+[node name="Tab2" type="NinePatchRect" parent="Screen/Tabs/List" unique_id=879995323]
 self_modulate = Color(0.92984587, 0.9298463, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -209,7 +246,7 @@ region_rect = Rect2(0, 0, 192, 64)
 patch_margin_left = 64
 patch_margin_right = 64
 
-[node name="Icon" type="TextureRect" parent="Tabs/List/Tab2" unique_id=672591556]
+[node name="Icon" type="TextureRect" parent="Screen/Tabs/List/Tab2" unique_id=672591556]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.92984587, 0.9298463, 0, 1)
 layout_mode = 1
@@ -221,7 +258,7 @@ grow_vertical = 2
 texture = ExtResource("4_vmyeq")
 stretch_mode = 5
 
-[node name="Tab3" type="NinePatchRect" parent="Tabs/List" unique_id=115764925]
+[node name="Tab3" type="NinePatchRect" parent="Screen/Tabs/List" unique_id=115764925]
 self_modulate = Color(0.9649698, 0.38609925, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -230,7 +267,7 @@ region_rect = Rect2(0, 0, 192, 64)
 patch_margin_left = 64
 patch_margin_right = 64
 
-[node name="Icon" type="TextureRect" parent="Tabs/List/Tab3" unique_id=1759414266]
+[node name="Icon" type="TextureRect" parent="Screen/Tabs/List/Tab3" unique_id=1759414266]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.9649698, 0.38609925, 1, 1)
 layout_mode = 1
@@ -242,7 +279,7 @@ grow_vertical = 2
 texture = ExtResource("4_vmyeq")
 stretch_mode = 5
 
-[node name="Tab4" type="NinePatchRect" parent="Tabs/List" unique_id=1721538438]
+[node name="Tab4" type="NinePatchRect" parent="Screen/Tabs/List" unique_id=1721538438]
 self_modulate = Color(0.5662952, 0.0034665691, 0.9075215, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -251,7 +288,7 @@ region_rect = Rect2(0, 0, 192, 64)
 patch_margin_left = 64
 patch_margin_right = 64
 
-[node name="Icon" type="TextureRect" parent="Tabs/List/Tab4" unique_id=12257839]
+[node name="Icon" type="TextureRect" parent="Screen/Tabs/List/Tab4" unique_id=12257839]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.5662952, 0.0034665691, 0.9075215, 1)
 layout_mode = 1
@@ -263,7 +300,7 @@ grow_vertical = 2
 texture = ExtResource("4_vmyeq")
 stretch_mode = 5
 
-[node name="Tab5" type="NinePatchRect" parent="Tabs/List" unique_id=1232621847]
+[node name="Tab5" type="NinePatchRect" parent="Screen/Tabs/List" unique_id=1232621847]
 self_modulate = Color(0, 0.70586336, 1.1551381e-06, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -272,7 +309,7 @@ region_rect = Rect2(0, 0, 192, 64)
 patch_margin_left = 64
 patch_margin_right = 64
 
-[node name="Icon" type="TextureRect" parent="Tabs/List/Tab5" unique_id=202452400]
+[node name="Icon" type="TextureRect" parent="Screen/Tabs/List/Tab5" unique_id=202452400]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0.70586336, 1.1551381e-06, 1)
 layout_mode = 1
@@ -284,7 +321,7 @@ grow_vertical = 2
 texture = ExtResource("4_vmyeq")
 stretch_mode = 5
 
-[node name="Tab6" type="NinePatchRect" parent="Tabs/List" unique_id=254826377]
+[node name="Tab6" type="NinePatchRect" parent="Screen/Tabs/List" unique_id=254826377]
 self_modulate = Color(0.5211406, 0.5211406, 0.5211405, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -293,7 +330,7 @@ region_rect = Rect2(0, 0, 192, 64)
 patch_margin_left = 64
 patch_margin_right = 64
 
-[node name="Icon" type="TextureRect" parent="Tabs/List/Tab6" unique_id=1815850192]
+[node name="Icon" type="TextureRect" parent="Screen/Tabs/List/Tab6" unique_id=1815850192]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.5211406, 0.5211406, 0.5211405, 1)
 layout_mode = 1
@@ -304,6 +341,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_vmyeq")
 stretch_mode = 5
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=1749970568]
+libraries/ = SubResource("AnimationLibrary_nrkx1")
+speed_scale = 0.8
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1322651524]
 layout_mode = 1

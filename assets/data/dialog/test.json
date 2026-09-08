@@ -1,7 +1,48 @@
 {
-	"dialog":[
-		{"type":"text","character":"raito","expression":"sad","content":"i say things","flags":[]},
-		{"type":"text","character":"shion","expression":"sad","content":"no u dont","flags":[]},
-		{"type":"text","character":"shion","expression":"sad","content":"idiot","flags":["thought"]},
+	"dialog": [
+		{
+			"character": "raito",
+			"content": "i say things",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"bullet": "decision",
+			"file": "res://assets/data/case/truth_bullets.json",
+			"flags": [],
+			"show": true,
+			"type": "bullet"
+		},
+		{
+			"character": "shion",
+			"content": "no u dont",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"bullet": "strange_place",
+			"file": "res://assets/data/case/truth_bullets.json",
+			"flags": [],
+			"show": true,
+			"type": "bullet"
+		},
+		{
+			"character": "shion",
+			"content": "idiot",
+			"expression": "sad",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"bullet": "",
+			"file": "",
+			"flags": [],
+			"show": false,
+			"type": "bullet"
+		}
 	]
 }

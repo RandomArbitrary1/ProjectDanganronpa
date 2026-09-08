@@ -5,6 +5,7 @@ extends Control
 @export var camera: NodePath 
 @onready var box = self.get_node("Bar/Dialog")
 @onready var anim = self.get_node("Anims")
+@onready var bullet = self.get_node("Bar/Bullet")
 @onready var nameplate = self.get_node("Bar/Name")
 @onready var decoration = self.get_node("Bar/Decoration")
 @onready var switch = self.get_node("Bar/Switch")
@@ -25,7 +26,8 @@ func next():
 			if nameplate.get_node("Label").text != current.character and line != 0:
 				switch.play("Switch")
 			nameplate.get_node("Label").text = character_info[current.character].name
-			get_node(camera).character = current.character
+			if get_node(camera).character != null:
+				get_node(camera).character = current.character
 			name_size = nameplate.get_node("Label").get_minimum_size().x+110
 			if line == 0:
 				nameplate.size.x = name_size
@@ -41,14 +43,18 @@ func next():
 			input_ind.play("Show")
 		elif current.type == "bullet":
 			if current.show == true:
+				bullet.get_node("Anim").play("Show")
 				print(current.bullet)
 			else:
-				print("hide")
+				bullet.get_node("Anim").play("Hide")
+			line += 1
+			next()
 		else:
 			line += 1
 			next()
 	else:
-		get_node(camera).character = ""
+		if get_node(camera).character != null:
+			get_node(camera).character = ""
 		anim.play("Close")
 		await anim.animation_finished
 		active = false
