@@ -1,7 +1,7 @@
 extends ColorRect
 
 @onready var anim = self.get_node("Anim")
-@onready var tabs = self.get_node("Tabs/List")
+@onready var tabs = self.get_node("Screen/Tabs/List")
 
 var open = false
 var tab = 0

@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="7_tcbm5"]
 [ext_resource type="Texture2D" uid="uid://ydrxal4ffqx7" path="res://assets/ui/dialog/dialog_nameplate_trial.png" id="8_bpbyh"]
 [ext_resource type="Texture2D" uid="uid://b21l86538w61x" path="res://assets/ui/dialog/Input_trial.png" id="9_4ol2b"]
+[ext_resource type="Texture2D" uid="uid://c6fsx1vohihc" path="res://assets/ui/dialog/bullet_mask.png" id="10_sjoq3"]
+[ext_resource type="Texture2D" uid="uid://c5pttmtilex01" path="res://assets/textures/truth_bullets/strange_place.png" id="11_fo12k"]
+[ext_resource type="Texture2D" uid="uid://btdp0ubxsyvag" path="res://assets/ui/dialog/bullet_border.png" id="12_pkhgj"]
 
 [sub_resource type="Animation" id="Animation_0csof"]
 length = 0.001
@@ -83,6 +86,96 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_cqd2n"),
 &"Show": SubResource("Animation_ayq60")
+}
+
+[sub_resource type="Animation" id="Animation_ob5wf"]
+resource_name = "Hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1240.0, 1920.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_68f4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1240.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ncwt0"]
+resource_name = "Show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1920.0, 1240.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tcbm5"]
+_data = {
+&"Hide": SubResource("Animation_ob5wf"),
+&"RESET": SubResource("Animation_68f4p"),
+&"Show": SubResource("Animation_ncwt0")
 }
 
 [sub_resource type="Animation" id="Animation_8knbj"]
@@ -475,6 +568,42 @@ texture = ExtResource("9_4ol2b")
 
 [node name="Anim" type="AnimationPlayer" parent="Bar/Input_indicator" unique_id=2090635946]
 libraries/ = SubResource("AnimationLibrary_sqsua")
+
+[node name="Bullet" type="TextureRect" parent="Bar" unique_id=1686007172]
+visible = false
+clip_children = 2
+layout_mode = 0
+offset_left = 1240.0
+offset_top = -1200.0
+offset_right = 1896.0005
+offset_bottom = -808.0
+texture = ExtResource("10_sjoq3")
+flip_h = true
+
+[node name="Image" type="TextureRect" parent="Bar/Bullet" unique_id=996370686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_fo12k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="TextureRect" parent="Bar/Bullet" unique_id=1251053384]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_pkhgj")
+flip_h = true
+
+[node name="Anim" type="AnimationPlayer" parent="Bar/Bullet" unique_id=75443482]
+libraries/ = SubResource("AnimationLibrary_tcbm5")
+speed_scale = 1.5
 
 [node name="Switch" type="AnimationPlayer" parent="Bar" unique_id=435922046]
 libraries/ = SubResource("AnimationLibrary_sed6d")

@@ -23,7 +23,7 @@
 		},
 		{
 			"bullet": "lost_memory",
-			"file": "C:/Users/maikn/Documents/my apps n games/Godot/Danganronpa/project-danganronpa/assets/data/case/truth_bullets.json",
+			"file": "res://assets/data/case/truth_bullets.json",
 			"flags": [],
 			"show": true,
 			"type": "bullet"
@@ -36,6 +36,13 @@
 			"type": "text"
 		},
 		{
+			"character": "raito",
+			"content": "hoh :o",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
 			"bullet": "",
 			"file": "",
 			"flags": [],
@@ -44,14 +51,7 @@
 		},
 		{
 			"character": "raito",
-			"content": "hoh :o",
-			"expression": "angry",
-			"flags": [],
-			"type": "text"
-		},
-		{
-			"character": "raito",
-			"content": "i has been exposed",
+			"content": "i have been exposed",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"
@@ -93,7 +93,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "u don't actually",
+			"content": "you don't actually",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"
@@ -128,7 +128,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "hehe",
+			"content": ">:)",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"

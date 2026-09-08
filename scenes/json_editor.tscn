@@ -138,7 +138,8 @@ func reload_list():
 			new.get_node(\"Panel/Load\").text = i.file.get_file()
 			new.get_node(\"Panel/Bullet\").clear()
 			var file = null
-			if i.has(\"file\"):
+			if i.file != \"\":
+				print(i.file)
 				file = load(i.file).data
 				if file is Dictionary:
 					for key in file.keys():
@@ -919,13 +920,11 @@ libraries/ = SubResource("AnimationLibrary_p2fl4")
 oversampling_override = 1.0
 title = "Open a File"
 file_mode = 0
-access = 2
 filters = PackedStringArray("*json")
 use_native_dialog = true
 
 [node name="FileDialogSave" type="FileDialog" parent="." unique_id=169077777]
 oversampling_override = 1.0
-access = 2
 filters = PackedStringArray("*json")
 use_native_dialog = true
 
