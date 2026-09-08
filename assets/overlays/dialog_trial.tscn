@@ -458,7 +458,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_l4oit")
-camera = null
 
 [node name="Trial_text" type="TextureRect" parent="." unique_id=2055028143]
 modulate = Color(1, 1, 1, 0)
@@ -475,7 +474,7 @@ expand_mode = 1
 [node name="Spin" type="AnimationPlayer" parent="Trial_text" unique_id=1676999829]
 libraries/ = SubResource("AnimationLibrary_am7bp")
 autoplay = &"Spin"
-speed_scale = 0.3
+speed_scale = 0.1
 
 [node name="Bar" type="TextureRect" parent="." unique_id=1310259742]
 visible = false
