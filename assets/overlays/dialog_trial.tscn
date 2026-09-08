@@ -574,9 +574,9 @@ visible = false
 clip_children = 2
 layout_mode = 0
 offset_left = 1240.0
-offset_top = -1200.0
+offset_top = -520.0
 offset_right = 1896.0005
-offset_bottom = -808.0
+offset_bottom = -128.0
 texture = ExtResource("10_sjoq3")
 flip_h = true
 
