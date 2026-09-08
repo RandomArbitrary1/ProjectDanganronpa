@@ -1,0 +1,22 @@
+{
+	"dialog": [
+		{
+			"character": "nori",
+			"content": "stinky",
+			"eline": "Dialog:<HBoxContainer#83735086792>",
+			"expression": "angry",
+			"flags": [],
+			"id": 0,
+			"type": "text"
+		},
+		{
+			"character": "yuito",
+			"content": "no u :(",
+			"eline": "@HBoxContainer@423:<HBoxContainer#205856442106>",
+			"expression": "sad",
+			"flags": [],
+			"id": 1,
+			"type": "text"
+		}
+	]
+}

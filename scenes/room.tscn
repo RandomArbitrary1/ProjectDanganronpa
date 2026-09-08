@@ -6,9 +6,9 @@
 [ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_85yof"]
 [ext_resource type="Script" uid="uid://blt2t4mlb3qxv" path="res://assets/scripts/talking.gd" id="2_jxe34"]
 [ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/overlays/base.tscn" id="5_jn645"]
-[ext_resource type="Texture2D" uid="uid://cjagb1jt4i1an" path="res://assets/textures/environment/Wood.png" id="6_jn645"]
 [ext_resource type="PackedScene" uid="uid://dndpi3bk3uqya" path="res://assets/overlays/handbook.tscn" id="7_ybpoa"]
-[ext_resource type="AudioStream" uid="uid://bw0tm8qc374yk" path="res://assets/audio/music/happy_music.mp3" id="8_7dqbv"]
+[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="8_ybpoa"]
+[ext_resource type="AudioStream" uid="uid://duuupn6it42v1" path="res://assets/audio/music/beautiful_ruin.mp3" id="9_ybpoa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -133,11 +133,6 @@ _data = {
 &"RESET": SubResource("Animation_qvc4m")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvc4m"]
-albedo_texture = ExtResource("6_jn645")
-uv1_scale = Vector3(0.7, 0.7, 0.7)
-uv1_triplanar = true
-
 [node name="Room" type="Node3D" unique_id=478957731]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
@@ -202,10 +197,10 @@ camera = NodePath("../../Camera3D")
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2542478, 1)
 size = Vector3(7, 0.51416016, 9)
-material = SubResource("StandardMaterial3D_qvc4m")
+material = ExtResource("8_ybpoa")
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=539813931]
-stream = ExtResource("8_7dqbv")
+stream = ExtResource("9_ybpoa")
 autoplay = true
 bus = &"Music"
 parameters/looping = true

@@ -9,19 +9,12 @@ extends Control
 @onready var decoration = self.get_node("Bar/Decoration")
 @onready var switch = self.get_node("Bar/Switch")
 @onready var input_ind = self.get_node("Bar/Input_indicator/Anim")
+var character_info = preload("res://assets/data/characters/characters.json").data
 
 var dialog = null
 var line = 0
 var tween = null
 var name_size = 0
-
-func color(val):
-	if val == "Player":
-		return Color(0.861, 0.675, 0.634, 1.0)
-	elif val == "Person1":
-		return Color(0.554, 0.688, 1.0, 1.0)
-	elif val == "Person2":
-		return Color(0.709, 0.839, 0.0, 1.0)
 	
 
 func next():
@@ -31,13 +24,11 @@ func next():
 		if current.type == "text":
 			if nameplate.get_node("Label").text != current.character and line != 0:
 				switch.play("Switch")
-			nameplate.get_node("Label").text = current.character
+			nameplate.get_node("Label").text = character_info[current.character].name
 			get_node(camera).character = current.character
-			#nameplate.self_modulate = color(current.character)
 			name_size = nameplate.get_node("Label").get_minimum_size().x+110
 			if line == 0:
 				nameplate.size.x = name_size
-			#decoration.self_modulate = color(current.character)
 			box.text = current.content
 			for i in current.flags:
 				if i == "thought":
@@ -48,6 +39,14 @@ func next():
 			tween.tween_property(box, "visible_ratio", 1.0, current.content.length()*.03).from(0.0)
 			await tween.finished
 			input_ind.play("Show")
+		elif current.type == "bullet":
+			if current.show == true:
+				print(current.bullet)
+			else:
+				print("hide")
+		else:
+			line += 1
+			next()
 	else:
 		get_node(camera).character = ""
 		anim.play("Close")
