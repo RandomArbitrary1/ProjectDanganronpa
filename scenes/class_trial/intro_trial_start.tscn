@@ -225,9 +225,12 @@ tracks/11/path = NodePath(".")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(4.366667, 5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"hide_elements"
+}, {
 "args": [],
 "method": &"start"
 }]
@@ -360,7 +363,7 @@ offset_right = 250.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(30, 1)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_x8ge1")
 
