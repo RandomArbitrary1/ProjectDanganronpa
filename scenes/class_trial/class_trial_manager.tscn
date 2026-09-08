@@ -9,6 +9,7 @@
 [ext_resource type="JSON" path="res://assets/data/class_trial/dialog/dialog1.json" id="7_4lntu"]
 [ext_resource type="PackedScene" uid="uid://dro7rb65a6s7t" path="res://scenes/class_trial/intro_trial_start.tscn" id="7_jtrg0"]
 [ext_resource type="AudioStream" uid="uid://bmmyb3ptlrskj" path="res://assets/audio/music/solar.mp3" id="8_l62vn"]
+[ext_resource type="PackedScene" uid="uid://c5vyamd3yluw6" path="res://scenes/class_trial/class_trial_camera.tscn" id="10_ykbj0"]
 
 [node name="CLASS_TRIAL_MAIN" type="Node3D" unique_id=642936802]
 script = ExtResource("1_arjlt")
@@ -32,6 +33,7 @@ parameters/looping = true
 [node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("6_pcyjt")]
 visible = false
 file = ExtResource("7_4lntu")
+camera = NodePath("../CameraNode")
 
 [node name="Intro" parent="." unique_id=1820223695 instance=ExtResource("7_jtrg0")]
 
@@ -39,3 +41,5 @@ file = ExtResource("7_4lntu")
 stream = ExtResource("8_l62vn")
 volume_db = -9.0
 parameters/looping = true
+
+[node name="CameraNode" parent="." unique_id=1313045060 instance=ExtResource("10_ykbj0")]
