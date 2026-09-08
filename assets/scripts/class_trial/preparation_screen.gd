@@ -8,15 +8,10 @@ var timer = 0.0
 func _ready() -> void:
 	intro.visible = false
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	revolver_cylinder.rotation += delta * 0.3
-	if intro.visible:
-		timer += delta
-		if timer > 4.9:
-			class_trial_main.state = "debate"
-
+	#class_trial_main.state = "debate"
 
 func _on_button_pressed() -> void:
 	intro.visible = true

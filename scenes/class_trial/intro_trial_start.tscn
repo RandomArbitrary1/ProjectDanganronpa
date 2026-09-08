@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dro7rb65a6s7t"]
 
 [ext_resource type="Texture2D" uid="uid://dpju5j4jqq1sb" path="res://assets/textures/ui/bg_tiles2.png" id="1_7a7ep"]
+[ext_resource type="Script" uid="uid://muua1j042j4h" path="res://assets/scripts/class_trial/intro_trial_start.gd" id="1_ibexd"]
 [ext_resource type="AudioStream" uid="uid://dj1dhvos2a5m6" path="res://assets/audio/sfx/class_trial/gavel.mp3" id="2_5xcgg"]
 [ext_resource type="Texture2D" uid="uid://voteotxow472" path="res://assets/textures/ui/class_trial/t.png" id="2_h5blc"]
 [ext_resource type="Texture2D" uid="uid://chujljng3nqgw" path="res://assets/textures/ui/class_trial/a.png" id="2_svhqp"]
@@ -217,6 +218,20 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0.56666666, 0.96666664, 1.1333333, 1.4666667, 1.6, 1.7402081, 2.3571382, 3.0333333)
 }
 tracks/10/use_blend = true
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_omduj"]
 _data = {
@@ -232,6 +247,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_ibexd")
 
 [node name="background" type="TextureRect" parent="." unique_id=1167685530]
 layout_mode = 1
