@@ -31,11 +31,9 @@ var moving = null
 var to_open = \"data\"
 
 func _ready() -> void:
-	list.get_node(\"Music\").queue_free()
-	list.get_node(\"Dialog\").queue_free()
-	list.get_node(\"Visibility\").queue_free()
-	list.get_node(\"Focus\").queue_free()
-	list.get_node(\"Bullet\").queue_free()
+	for i in list.get_children():
+		if i:
+			i.queue_free()
 	
 	navigation.get_node(\"Load\").pressed.connect(func():
 		to_open = \"data\"

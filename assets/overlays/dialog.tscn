@@ -561,6 +561,7 @@ offset_bottom = 264.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
 scroll_active = false
+autowrap_mode = 2
 
 [node name="Input_indicator" type="TextureRect" parent="Bar" unique_id=403398415]
 modulate = Color(1, 1, 1, 0)
