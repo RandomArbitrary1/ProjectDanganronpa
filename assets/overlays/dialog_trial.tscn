@@ -458,6 +458,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_l4oit")
+camera = null
 
 [node name="Trial_text" type="TextureRect" parent="." unique_id=2055028143]
 modulate = Color(1, 1, 1, 0)

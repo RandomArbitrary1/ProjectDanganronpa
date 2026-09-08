@@ -1,8 +1,8 @@
 extends Control
 
 @export var file: Resource 
-@export var active: bool
-@export var camera: NodePath 
+var active: bool
+var camera = null
 @onready var box = self.get_node("Bar/Dialog")
 @onready var anim = self.get_node("Anims")
 @onready var bullet = self.get_node("Bar/Bullet")
@@ -16,6 +16,9 @@ var dialog = null
 var line = 0
 var tween = null
 var name_size = 0
+
+func _ready() -> void:
+	camera = get_tree().get_first_node_in_group("Camera_room")
 	
 
 func next():
@@ -26,8 +29,8 @@ func next():
 			if nameplate.get_node("Label").text != current.character and line != 0:
 				switch.play("Switch")
 			nameplate.get_node("Label").text = character_info[current.character].name
-			if get_node(camera).character != null:
-				get_node(camera).character = current.character
+			if  camera and "character" in camera and camera.character != null:
+				camera.character = current.character
 			name_size = nameplate.get_node("Label").get_minimum_size().x+110
 			if line == 0:
 				nameplate.size.x = name_size
@@ -53,8 +56,8 @@ func next():
 			line += 1
 			next()
 	else:
-		if get_node(camera).character != null:
-			get_node(camera).character = ""
+		if camera and "character" in camera and camera.character != null:
+			camera.character = ""
 		anim.play("Close")
 		await anim.animation_finished
 		active = false
