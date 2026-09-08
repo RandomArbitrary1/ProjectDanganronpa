@@ -919,19 +919,21 @@ libraries/ = SubResource("AnimationLibrary_p2fl4")
 [node name="FileDialog" type="FileDialog" parent="." unique_id=926571378]
 oversampling_override = 1.0
 title = "Open a File"
+position = Vector2i(0, 36)
 file_mode = 0
 filters = PackedStringArray("*json")
 use_native_dialog = true
 
 [node name="FileDialogSave" type="FileDialog" parent="." unique_id=169077777]
 oversampling_override = 1.0
+position = Vector2i(0, 36)
 filters = PackedStringArray("*json")
 use_native_dialog = true
 
 [node name="Context_menu" type="PopupMenu" parent="." unique_id=1903347401]
 transparent_bg = false
 oversampling_override = 1.0
-size = Vector2i(252, 124)
+size = Vector2i(268, 464)
 content_scale_factor = 1.4
 item_count = 12
 item_0/text = "Dialog"

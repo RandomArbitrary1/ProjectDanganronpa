@@ -7,7 +7,7 @@ extends Control
 @onready var noise_anim: AnimationPlayer = $"../crosshair/noise_shoot_vfx/noise_anim"
 @onready var crosshair_anim: AnimationPlayer = $"../crosshair/crosshair_anim"
 @onready var downtime: Timer = $downtime
-@onready var camera: Node3D = $"../../../ClassTrialCamera"
+@onready var camera: Node3D = $"../../CameraNode"
 @onready var word_bullet: Label3D = $word_bullet
 @onready var root: Control = $".."
 

@@ -2,22 +2,34 @@
 	"dialog": [
 		{
 			"character": "shion",
-			"content": "Okay, so... where do we even begin? Does everyone actually think one of us did this?",
+			"content": "The trial started, and I got a bad feeling about this...",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"
+		},
+		{
+			"bullet": "lost_memory",
+			"file": "res://assets/data/case/truth_bullets.json",
+			"flags": [],
+			"show": true,
+			"type": "bullet"
 		},
 		{
 			"character": "ayuka",
 			"content": "Someone did it. That's just how this works.",
-			"expression": "sad",
+			"expression": "happy",
 			"flags": [],
 			"type": "text"
 		},
 		{
+			"flags": [],
+			"song": "solar",
+			"type": "music"
+		},
+		{
 			"character": "yuito",
 			"content": "Shion! Pay attention! We're going to figure out who killed ??? The only thing we know is that they died upstairs.",
-			"expression": "sad",
+			"expression": "angry",
 			"flags": [],
 			"type": "text"
 		},
@@ -38,6 +50,13 @@
 		{
 			"character": "yuito",
 			"content": "It's never \"just for show.\" I got a few shots of the hallway around that time. Nothing that screams \"murder weapon,\" but I can share them if it helps.",
+			"expression": "happy",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Huh, something sounded off just now. And I know just what it is! I am going to expose them, even if I'm gonna use the class trial for it!",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"

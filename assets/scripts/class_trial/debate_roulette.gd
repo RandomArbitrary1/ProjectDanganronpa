@@ -6,7 +6,7 @@ extends Control
 @onready var shoot_anim: AnimationPlayer = $Bullets/ShootAnim
 @onready var revolver: TextureRect = $revolver
 @onready var bullets: Control = $Bullets
-@onready var camera_node: Node3D = $"../../ClassTrialCamera"
+@onready var camera_node: Node3D = $"../CameraNode"
 @onready var timer_label = $timer_label
 @onready var progress: Label = $progress
 @onready var class_trial_main: Node3D = $".."

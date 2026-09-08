@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bi2wqakt44a5q" path="res://assets/overlays/dialog_trial.tscn" id="6_pcyjt"]
 [ext_resource type="JSON" path="res://assets/data/class_trial/dialog/dialog1.json" id="7_4lntu"]
 [ext_resource type="PackedScene" uid="uid://dro7rb65a6s7t" path="res://scenes/class_trial/intro_trial_start.tscn" id="7_jtrg0"]
-[ext_resource type="AudioStream" uid="uid://bmmyb3ptlrskj" path="res://assets/audio/music/solar.mp3" id="8_l62vn"]
+[ext_resource type="AudioStream" uid="uid://dkofdp7jj5k8w" path="res://assets/audio/music/dawn.mp3" id="9_ykbj0"]
 [ext_resource type="PackedScene" uid="uid://c5vyamd3yluw6" path="res://scenes/class_trial/class_trial_camera.tscn" id="10_ykbj0"]
 
 [node name="CLASS_TRIAL_MAIN" type="Node3D" unique_id=642936802]
@@ -37,7 +37,7 @@ file = ExtResource("7_4lntu")
 [node name="Intro" parent="." unique_id=1820223695 instance=ExtResource("7_jtrg0")]
 
 [node name="music_dialog" type="AudioStreamPlayer" parent="." unique_id=1102815192]
-stream = ExtResource("8_l62vn")
+stream = ExtResource("9_ykbj0")
 volume_db = -9.0
 parameters/looping = true
 

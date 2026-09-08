@@ -21,6 +21,9 @@ func _process(_delta: float) -> void:
 		prepare()
 	if state == "debate":
 		debate()
+	if state == "dialog":
+		if !dialog.active:
+			state = "debate"
 
 func prepare():
 	camera_3d.global_position = Vector3(0,7.5,15)
@@ -36,6 +39,7 @@ func debate():
 		debate_roulette.start()
 		music_2.play()
 		music.stop()
+		music_dialog.stop()
 	preparation.visible = false
 	
 func start_dialog():
