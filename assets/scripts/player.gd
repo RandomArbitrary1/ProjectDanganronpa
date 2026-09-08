@@ -4,8 +4,8 @@ extends CharacterBody3D
 var SPEED = 6.5
 var JUMP_VELOCITY = 5.0
 
-@export var TILT_LOWER_LIMIT := deg_to_rad(-60.0)
-@export var TILT_UPPER_LIMIT := deg_to_rad(60.0)
+@export var TILT_LOWER_LIMIT := deg_to_rad(-30.0)
+@export var TILT_UPPER_LIMIT := deg_to_rad(30.0)
 @onready var CAMERA_CONTROLLER = $Camera3D
 @export var MOUSE_SENSITIVITY : float = 0.5 
 
@@ -26,13 +26,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -40,6 +36,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	var target_anim = "bobbing" if direction != Vector3.ZERO else "RESET"
+
+	if self.get_node("Camera3D/Walk").current_animation != target_anim:
+		self.get_node("Camera3D/Walk").play(target_anim)
 
 	move_and_slide()
 	_update_camera(delta)
@@ -61,10 +62,12 @@ func _update_camera(delta):
 	_player_rotation = Vector3(0.0,_mouse_rotation.y,0.0)
 	_camera_rotation = Vector3(_mouse_rotation.x,0.0,0.0)
 	
-	CAMERA_CONTROLLER.transform.basis = Basis.from_euler(_camera_rotation)
+	#CAMERA_CONTROLLER.transform.basis = Basis.from_euler(_camera_rotation)
+	CAMERA_CONTROLLER.rotation = _camera_rotation
 	CAMERA_CONTROLLER.rotation.z = 0.0
 	
-	global_transform.basis = Basis.from_euler(_player_rotation)
+	#global_transform.basis = Basis.from_euler(_player_rotation)
+	global_rotation = _player_rotation
 	
 	_rotation_input = 0.0
 	_tilt_input = 0.0

@@ -4,6 +4,44 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kulj"]
 
+[sub_resource type="Animation" id="Animation_ekc74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.59228325]
+}
+
+[sub_resource type="Animation" id="Animation_6kulj"]
+resource_name = "bobbing"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.6, 0.4, 0.6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otulb"]
+_data = {
+&"RESET": SubResource("Animation_ekc74"),
+&"bobbing": SubResource("Animation_6kulj")
+}
+
 [node name="Player" type="CharacterBody3D" unique_id=806081659]
 script = ExtResource("1_ekc74")
 
@@ -11,3 +49,10 @@ script = ExtResource("1_ekc74")
 shape = SubResource("CapsuleShape3D_6kulj")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=448350214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59228325, 0)
+fov = 60.0
+
+[node name="Walk" type="AnimationPlayer" parent="Camera3D" unique_id=653286696]
+deterministic = true
+libraries/ = SubResource("AnimationLibrary_otulb")
+speed_scale = 1.5
