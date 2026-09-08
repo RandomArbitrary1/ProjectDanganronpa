@@ -6,13 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://cvh1y3k8xtpb0" path="res://assets/audio/music/trial_debate1.mp3" id="3_sm3nl"]
 [ext_resource type="PackedScene" uid="uid://p0mqiqashvrm" path="res://scenes/class_trial/preparation_screen.tscn" id="3_ywd3k"]
 [ext_resource type="PackedScene" uid="uid://bi2wqakt44a5q" path="res://assets/ui/dialog/dialog_trial.tscn" id="6_pcyjt"]
+[ext_resource type="JSON" path="res://assets/data/class_trial/dialog/dialog1.json" id="7_4lntu"]
+[ext_resource type="PackedScene" uid="uid://dro7rb65a6s7t" path="res://scenes/class_trial/intro_trial_start.tscn" id="7_jtrg0"]
+[ext_resource type="AudioStream" uid="uid://bmmyb3ptlrskj" path="res://assets/audio/music/solar.mp3" id="8_l62vn"]
 
 [node name="CLASS_TRIAL_MAIN" type="Node3D" unique_id=642936802]
 script = ExtResource("1_arjlt")
 
 [node name="music" type="Node" parent="." unique_id=1609904005]
 
-[node name="music" type="AudioStreamPlayer" parent="music" unique_id=2032512217]
+[node name="pre_music" type="AudioStreamPlayer" parent="music" unique_id=2032512217]
 stream = ExtResource("2_ywd3k")
 volume_db = -5.0
 parameters/looping = true
@@ -28,3 +31,11 @@ parameters/looping = true
 
 [node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("6_pcyjt")]
 visible = false
+file = ExtResource("7_4lntu")
+
+[node name="Intro" parent="." unique_id=1820223695 instance=ExtResource("7_jtrg0")]
+
+[node name="music_dialog" type="AudioStreamPlayer" parent="." unique_id=1102815192]
+stream = ExtResource("8_l62vn")
+volume_db = -9.0
+parameters/looping = true

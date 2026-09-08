@@ -3,8 +3,10 @@ extends Node3D
 @onready var camera_3d: Node3D = $"../ClassTrialCamera"
 @onready var preparation: Control = $Preparation
 @onready var debate_roulette: Control = $DebateRoulette
-@onready var music: AudioStreamPlayer = $music/music
+@onready var music: AudioStreamPlayer = $music/pre_music
 @onready var music_2: AudioStreamPlayer = $music/music2
+@onready var music_dialog: AudioStreamPlayer = $music_dialog
+@onready var dialog: Control = $Dialog
 
 var state = "prepare"
 var data = JsonParse.load_json("class_trial/debate/debate1.json")
@@ -35,3 +37,9 @@ func debate():
 		music_2.play()
 		music.stop()
 	preparation.visible = false
+	
+func start_dialog():
+	music_dialog.play()
+	music.stop()
+	music.stop()
+	dialog.start()

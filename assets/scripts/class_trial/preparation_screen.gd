@@ -1,13 +1,16 @@
 extends Control
-@onready var class_trial_main: Node3D = $"..."
+@onready var class_trial_main: Node3D = $".."
 @onready var revolver_cylinder: TextureRect = $pre_screen/revolver_cylinder
-@onready var intro: Control = $Intro
+@onready var intro: Control = $"../Intro"
 @onready var pre_screen: Control = $pre_screen
+@onready var dialog: Control = $"../Dialog"
+@onready var music_dialog: AudioStreamPlayer = $"../music_dialog"
 var timer = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	intro.visible = false
+	dialog.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -15,7 +18,11 @@ func _process(delta: float) -> void:
 	
 	if intro.hide_elms:
 		pre_screen.visible = false
-	#class_trial_main.state = "debate"
+		intro.hide_elms = false
+		dialog.visible = true
+	if intro.started:
+		class_trial_main.start_dialog()
+		intro.started = false
 
 func _on_button_pressed() -> void:
 	intro.visible = true
