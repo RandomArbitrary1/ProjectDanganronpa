@@ -1,0 +1,137 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "i say long string i say long string i say long string i say long string",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "idiot go die",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "how dare you",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"bullet": "lost_memory",
+			"file": "res://assets/data/case/truth_bullets.json",
+			"flags": [],
+			"show": true,
+			"type": "bullet"
+		},
+		{
+			"character": "shion",
+			"content": "how about this",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "hoh :o",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"bullet": "",
+			"file": "",
+			"flags": [],
+			"show": false,
+			"type": "bullet"
+		},
+		{
+			"character": "raito",
+			"content": "i have been exposed",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "please forgive me cuz i can't take it",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "neh, take it like a good boy >:3",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "O_O",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "NO, I WON'T!!!",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "I HAVE A CHOICE",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "you don't actually",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "f-fine...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "just not too crazy please...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": ">:)",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}

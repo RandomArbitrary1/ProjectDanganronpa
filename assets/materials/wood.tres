@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b22c6y7o8gyan"]
+
+[ext_resource type="Texture2D" uid="uid://cu4cl4be62c7n" path="res://assets/textures/environment/WoodTextureOil.png" id="1_qxrbt"]
+[ext_resource type="Texture2D" uid="uid://c40g8rfgen1f6" path="res://assets/textures/environment/WoodTextureOil_normal.png" id="2_x5d8h"]
+
+[resource]
+albedo_texture = ExtResource("1_qxrbt")
+normal_enabled = true
+normal_scale = 0.3
+normal_texture = ExtResource("2_x5d8h")
+uv1_scale = Vector3(0.535, 0.535, 0.535)
+uv1_triplanar = true

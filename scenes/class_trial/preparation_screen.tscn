@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://p0mqiqashvrm"]
+
+[ext_resource type="Script" uid="uid://qyroxccegj43" path="res://assets/scripts/class_trial/preparation_screen.gd" id="1_w1tpi"]
+[ext_resource type="Texture2D" uid="uid://csakg4jghf1bk" path="res://assets/textures/ui/bg_tiles1.png" id="2_10t4b"]
+[ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="2_rl4mh"]
+[ext_resource type="Texture2D" uid="uid://dxa3hksnqadhc" path="res://assets/textures/ui/class_trial/preparation_decal1.png" id="3_yuoqm"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="4_31sjx"]
+[ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/menu_theme.tres" id="4_vwv6o"]
+
+[node name="Preparation" type="Control" unique_id=383539966]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1tpi")
+
+[node name="pre_screen" type="Control" parent="." unique_id=266950523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="pre_screen" unique_id=17808726]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_10t4b")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="pre_screen" unique_id=396399546]
+layout_mode = 0
+offset_top = -167.0
+offset_right = 1920.0
+offset_bottom = 333.0
+texture = ExtResource("3_yuoqm")
+
+[node name="case_label" type="Label" parent="pre_screen" unique_id=1789577931]
+layout_mode = 1
+offset_left = 253.0
+offset_top = 65.0
+offset_right = 545.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("4_31sjx")
+theme_override_font_sizes/font_size = 94
+text = "Case 1"
+
+[node name="revolver_cylinder" type="TextureRect" parent="pre_screen" unique_id=1577032863]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -598.0
+offset_top = -550.5
+offset_right = 503.0
+offset_bottom = 550.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.595, 0.595)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_rl4mh")
+
+[node name="handbook_button" type="Button" parent="pre_screen" unique_id=1071279147]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -49.0
+offset_right = 543.0
+offset_bottom = 37.0
+grow_vertical = 2
+theme = ExtResource("4_vwv6o")
+theme_override_font_sizes/font_size = 55
+text = "View Handbook"
+
+[node name="skills_button" type="Button" parent="pre_screen" unique_id=360768282]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 131.0
+offset_top = 55.5
+offset_right = 555.0
+offset_bottom = 160.5
+grow_vertical = 2
+theme = ExtResource("4_vwv6o")
+theme_override_font_sizes/font_size = 69
+text = "Skills"
+
+[node name="difficulty_button" type="Button" parent="pre_screen" unique_id=1752656994]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 153.0
+offset_top = 190.0
+offset_right = 577.0
+offset_bottom = 293.0
+grow_vertical = 2
+theme = ExtResource("4_vwv6o")
+theme_override_font_sizes/font_size = 69
+text = "Difficulty"
+
+[node name="start" type="Button" parent="pre_screen" unique_id=994733607]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 172.0
+offset_top = 320.0
+offset_right = 868.0
+offset_bottom = 440.0
+grow_vertical = 2
+theme = ExtResource("4_vwv6o")
+theme_override_font_sizes/font_size = 80
+text = "Start Class Trial!"
+
+[node name="message" type="Label" parent="pre_screen" unique_id=1941578816]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -942.0
+offset_top = -49.0
+offset_right = 965.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_31sjx")
+theme_override_font_sizes/font_size = 47
+text = "When no one thought any harm would come, a new class trial arrived! Who did it?"
+
+[connection signal="pressed" from="pre_screen/start" to="." method="_on_button_pressed"]

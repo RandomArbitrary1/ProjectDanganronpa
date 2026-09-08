@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://car1tebk5v60w"]
+
+[ext_resource type="Texture2D" uid="uid://belwrwgdo7xj7" path="res://assets/textures/environment/ConcreteOil.png" id="1_0113i"]
+[ext_resource type="Texture2D" uid="uid://bpf6n2vgdn43m" path="res://assets/textures/environment/ConcreteOil_normal.png" id="2_o7n2m"]
+
+[resource]
+albedo_texture = ExtResource("1_0113i")
+normal_enabled = true
+normal_texture = ExtResource("2_o7n2m")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
