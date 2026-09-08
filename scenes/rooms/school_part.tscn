@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://s383xot1qgn0"]
 
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_1pa7i"]
-[ext_resource type="Material" path="res://assets/materials/tile.tres" id="1_xjhtt"]
+[ext_resource type="Material" uid="uid://cinfix0r7v3n6" path="res://assets/materials/tile.tres" id="1_xjhtt"]
 [ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_3m5c8"]
 [ext_resource type="AudioStream" uid="uid://ddvpiisqpmr1c" path="res://assets/audio/music/beautiful_lie.mp3" id="4_3m5c8"]
-[ext_resource type="Material" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
+[ext_resource type="Material" uid="uid://0dhobjpdibad" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
 [ext_resource type="PackedScene" uid="uid://bofdjnsxhfoic" path="res://assets/objects/environment/greenery.tscn" id="6_kp8oi"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="7_4auqc"]
 
