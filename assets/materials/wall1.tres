@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b4yrgwnxylb13"]
+
+[ext_resource type="Texture2D" uid="uid://bmlli5q4qeh6h" path="res://assets/textures/environment/wall_1.png" id="1_og1ur"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_og1ur")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_offset = Vector3(0, -0.13, 0)
+uv1_triplanar = true

@@ -3,10 +3,12 @@
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_1pa7i"]
 [ext_resource type="Material" path="res://assets/materials/tile.tres" id="1_xjhtt"]
 [ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_3m5c8"]
+[ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="3_4sxbn"]
 [ext_resource type="AudioStream" uid="uid://ddvpiisqpmr1c" path="res://assets/audio/music/beautiful_lie.mp3" id="4_3m5c8"]
 [ext_resource type="Material" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
-[ext_resource type="PackedScene" uid="uid://bofdjnsxhfoic" path="res://assets/objects/environment/greenery.tscn" id="6_kp8oi"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="7_4auqc"]
+[ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/veins.tscn" id="7_4sxbn"]
+[ext_resource type="PackedScene" uid="uid://h3rjrxx311b3" path="res://assets/objects/environment/Pillar.glb" id="7_hu5vv"]
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="8_xc4le"]
 [ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="9_8c6gv"]
 [ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/overlays/base.tscn" id="10_6es20"]
@@ -173,22 +175,16 @@ operation = 2
 size = Vector3(5, 6, 3)
 material = ExtResource("1_xjhtt")
 
-[node name="SECRET_HOLE" type="CSGBox3D" parent="Building" unique_id=19280370]
-transform = Transform3D(-4.317e-08, 0.15689988, 0.9876145, 6.8583117e-09, 0.9876145, -0.15689988, -1, 0, -4.371139e-08, 5.7238827, 8.883896, 20.619804)
-operation = 2
-size = Vector3(0.45336914, 9.660278, 0.68603516)
-material = ExtResource("1_xjhtt")
-
 [node name="Hallway" type="CSGBox3D" parent="Building" unique_id=1092938577]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 3, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.5, 26)
 operation = 2
-size = Vector3(4, 5, 13)
-material = ExtResource("1_xjhtt")
+size = Vector3(4, 4, 13)
+material = ExtResource("3_4sxbn")
 
 [node name="Hallway2" type="CSGBox3D" parent="Building" unique_id=1701841842]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, 26)
 operation = 2
-size = Vector3(4, 5, 13)
+size = Vector3(4, 4, 13)
 material = ExtResource("1_xjhtt")
 
 [node name="Lobby" type="CSGBox3D" parent="Building" unique_id=1116744357]
@@ -259,20 +255,23 @@ spot_angle = 70.0
 
 [node name="Props" type="Node3D" parent="." unique_id=2136127847]
 
-[node name="Greenery" parent="Props" unique_id=257907977 instance=ExtResource("6_kp8oi")]
-transform = Transform3D(7.7306395, 0, 0, 0, -1.2851149e-07, -2.94, 0, 2.94, -1.2851149e-07, 0.1276257, 9.650322, 1.5065379)
+[node name="Pillar" parent="Props" unique_id=1926747895 instance=ExtResource("7_hu5vv")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.5, 2.5, 19.5)
 
-[node name="Greenery4" parent="Props" unique_id=1027950852 instance=ExtResource("6_kp8oi")]
-transform = Transform3D(-7.730639, -2.5702295e-07, 1.123483e-14, 0, -1.2851149e-07, -2.94, 6.75834e-07, -2.94, 1.2851149e-07, 0.1276257, 9.650322, 19.466013)
+[node name="Pillar2" parent="Props" unique_id=2078629101 instance=ExtResource("7_hu5vv")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 5.4, 2.5, 19.5)
 
-[node name="Greenery5" parent="Props" unique_id=1075471769 instance=ExtResource("6_kp8oi")]
-transform = Transform3D(-7.730639, -2.5702295e-07, 1.123483e-14, 0, -1.2851149e-07, -2.94, 6.75834e-07, -2.94, 1.2851149e-07, 0.1276257, 14.552363, 19.313099)
+[node name="Pillar3" parent="Props" unique_id=1670590599 instance=ExtResource("7_hu5vv")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.5, 2.5, 32.4)
 
-[node name="Greenery2" parent="Props" unique_id=651052673 instance=ExtResource("6_kp8oi")]
-transform = Transform3D(-3.8867023e-07, 2.9399998, -1.2851147e-07, 0, -1.2851149e-07, -2.94, -8.891739, -1.2851149e-07, 5.6174154e-15, -7.4939394, 9.650322, 10.583584)
+[node name="Pillar4" parent="Props" unique_id=602897920 instance=ExtResource("7_hu5vv")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 5.4, 2.5, 32.4)
 
-[node name="Greenery3" parent="Props" unique_id=715210961 instance=ExtResource("6_kp8oi")]
-transform = Transform3D(1.1660107e-06, -2.9399998, 1.2851149e-07, 0, -1.2851149e-07, -2.94, 8.891739, 3.8553443e-07, -1.6852246e-14, 6.495621, 9.650322, 10.583584)
+[node name="Greenery" parent="Props" unique_id=257907977 instance=ExtResource("7_4sxbn")]
+transform = Transform3D(-1.7540988e-07, 2.94, 0, 1.7540988e-07, 0, -2.94, -4.0129104, -1.2851147e-07, -1.2851149e-07, 1.5171702, 2.9399989, 27.900826)
+
+[node name="Greenery2" parent="Props" unique_id=1271037464 instance=ExtResource("7_4sxbn")]
+transform = Transform3D(5.2622966e-07, -2.94, 0, -1.7540988e-07, -2.246966e-14, -2.94, 4.0129104, 3.8553446e-07, -1.2851149e-07, 5.4903436, 2.939999, 23.887915)
 
 [node name="Player" parent="." unique_id=806081659 instance=ExtResource("7_4auqc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
