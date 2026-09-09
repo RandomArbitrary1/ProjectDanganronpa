@@ -92,7 +92,7 @@ func debate_next(_delta, add=1):
 	var podiums = get_tree().get_nodes_in_group("podium")
 	for podium in podiums:
 		if podium.char_name == character:
-			podium.expression(dialog_data[dialog_index]["expression"])
+			podium.swap(char_data_one.sprites["neutral"])
 			var test_tween = create_tween()
 
 			#test_tween..parallel().tween_property(camera_node,"global_position",target_position,3.0)

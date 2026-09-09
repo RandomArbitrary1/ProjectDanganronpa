@@ -29,14 +29,14 @@ func place_person(person=null):
 		char_name = person
 		print("'placed'", char_name)
 		swap()
-func expression(emotion):
-	var emotion_path = "res://assets/textures/characters/dummyman/dummy.png"
-	if emotion == "sad":
-		emotion_path = "res://assets/textures/characters/dummyman/dummy_sad.png"
-	if emotion == "angry":
-		emotion_path = "res://assets/textures/characters/dummyman/dummy_angry.png"
-	if emotion == "focus":
-		emotion_path = "res://assets/textures/characters/dummyman/dummy_focus.png"
-	if emotion == "determined":
-		emotion_path = "res://assets/textures/characters/dummyman/dummy_determined.png"
-	swap(emotion_path)
+#func expression(emotion):
+	#var emotion_path = "res://assets/textures/characters/dummyman/dummy.png"
+	#if emotion == "sad":
+		#emotion_path = "res://assets/textures/characters/dummyman/dummy_sad.png"
+	#if emotion == "angry":
+		#emotion_path = "res://assets/textures/characters/dummyman/dummy_angry.png"
+	#if emotion == "focus":
+		#emotion_path = "res://assets/textures/characters/dummyman/dummy_focus.png"
+	#if emotion == "determined":
+		#emotion_path = "res://assets/textures/characters/dummyman/dummy_determined.png"
+	#swap(emotion_path)
