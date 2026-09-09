@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bcxbknib62qf5"]
+
+[ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_sb3fe"]
+[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_qq80k"]
+[ext_resource type="Texture2D" uid="uid://c1l552f7et2dy" path="res://assets/textures/environment/chalkboard.png" id="3_5jjs4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6ptlv"]
+sky_top_color = Color(0.27108222, 0.4370956, 0.6574903, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_3jcxg"]
+sky_material = SubResource("ProceduralSkyMaterial_6ptlv")
+
+[sub_resource type="Environment" id="Environment_5jjs4"]
+background_mode = 2
+sky = SubResource("Sky_3jcxg")
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 3.0
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pafn"]
+albedo_texture = ExtResource("3_5jjs4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8dkuk"]
+material = SubResource("StandardMaterial3D_7pafn")
+
+[node name="ClassRoom" type="Node3D" unique_id=683086938]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1762599828]
+
+[node name="Room" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1090806162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -8)
+size = Vector3(15, 7, 17)
+material = ExtResource("1_sb3fe")
+
+[node name="CutoutRoom" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1282823357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -7.5)
+operation = 2
+size = Vector3(13, 6, 16)
+material = ExtResource("1_sb3fe")
+
+[node name="Floor" type="CSGBox3D" parent="CSGCombiner3D" unique_id=416769194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+size = Vector3(15, 1, 17)
+material = ExtResource("2_qq80k")
+
+[node name="Lights" type="Node3D" parent="." unique_id=388181527]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=791901407]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.4166193, 6.68638, -13.30902)
+light_energy = 8.434
+spot_range = 8.277
+spot_angle = 90.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=880960315]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.4166193, 6.68638, -3.3550482)
+light_energy = 8.434
+spot_range = 8.277
+spot_angle = 90.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=224905204]
+environment = SubResource("Environment_5jjs4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1079593960]
+transform = Transform3D(4.0425773, 0, 0, 0, -4.371139e-08, -2.0566654, 0, 1, -8.98997e-08, 0, 4, -15.479373)
+mesh = SubResource("PlaneMesh_8dkuk")

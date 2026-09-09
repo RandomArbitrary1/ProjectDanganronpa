@@ -85,7 +85,7 @@ func debate_next(_delta, add=1):
 	var character = dialog_data[dialog_index]["character"]
 	var char_data_one = char_data[character]
 	
-	print(char_data_one["name"],": ", dialog_data[dialog_index]["content"])
+	print(char_data_one["name"],": ", dialog_data[dialog_index]["content"]) # dialog
 	name_label.text = str(char_data_one["name"])
 	progress.text = str(dialog_index+1)+ "/" + str(dialog_data.size())
 	

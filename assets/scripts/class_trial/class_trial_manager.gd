@@ -7,6 +7,7 @@ extends Node3D
 @onready var music_2: AudioStreamPlayer = $music/music2
 @onready var music_dialog: AudioStreamPlayer = $music_dialog
 @onready var dialog: Control = $Dialog
+@onready var intro: Control = $Intro
 
 var state = "prepare"
 var data = JsonParse.load_json("class_trial/debate/debate1.json")
@@ -16,7 +17,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if state == "dialog":
+		dialog_process(delta)
 	if state == "prepare":
 		prepare()
 	if state == "debate":
@@ -26,8 +29,9 @@ func _process(_delta: float) -> void:
 			state = "debate"
 
 func prepare():
-	camera_3d.global_position = Vector3(0,7.5,15)
-	camera_3d.rotation.x = -0.4
+	if !preparation.state == "hide":
+		camera_3d.global_position = Vector3(0,7.5,15)
+		camera_3d.rotation.x = -0.4
 	if !music.playing:
 		music.play()
 		music_2.stop()
@@ -48,3 +52,8 @@ func start_dialog():
 	music.stop()
 	music_2.stop()
 	dialog.start()
+	camera_3d.fov(30)
+func dialog_process(delta):
+	pass
+	#camera_3d.global_transform.looking_at(
+			#podium.global_position)
