@@ -22,12 +22,14 @@ func _process(delta: float) -> void:
 	if character == "":
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
+		self.fov = lerp(self.fov, 75.0, 45*delta)
 	else:
 		var chr = characters.get_node_or_null(character)
 		if chr:
+			self.fov = lerp(self.fov, 40.0, 45*delta)
 			var direction = (start_position - chr.position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,.5), 20*delta)
+			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,1), 20*delta)
 	
 	if Input.is_action_pressed("Up"):
 		angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))

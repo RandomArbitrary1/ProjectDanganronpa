@@ -4,10 +4,11 @@ extends CharacterBody3D
 var SPEED = 6.5
 var JUMP_VELOCITY = 5.0
 
-@export var TILT_LOWER_LIMIT := deg_to_rad(-30.0)
-@export var TILT_UPPER_LIMIT := deg_to_rad(30.0)
+@export var TILT_LOWER_LIMIT := deg_to_rad(-45.0)
+@export var TILT_UPPER_LIMIT := deg_to_rad(45.0)
 @onready var CAMERA_CONTROLLER = $Camera3D
-@export var MOUSE_SENSITIVITY : float = 0.5 
+@export var MOUSE_SENSITIVITY : float = 0.3 
+@onready var walk_anim = self.get_node("Camera3D/Walk")
 
 var _mouse_input : bool = false
 var _mouse_rotation : Vector3
@@ -39,8 +40,8 @@ func _physics_process(delta: float) -> void:
 	
 	var target_anim = "bobbing" if direction != Vector3.ZERO else "RESET"
 
-	if self.get_node("Camera3D/Walk").current_animation != target_anim:
-		self.get_node("Camera3D/Walk").play(target_anim)
+	if target_anim != "RESET" and walk_anim.current_animation != target_anim:
+		walk_anim.play(target_anim)
 
 	move_and_slide()
 	_update_camera(delta)
@@ -72,6 +73,11 @@ func _update_camera(delta):
 	_rotation_input = 0.0
 	_tilt_input = 0.0
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	walk_anim.speed_scale = SPEED*.231
+	if Input.is_action_pressed("Sprint"):
+		SPEED = lerp(SPEED,13.0, 20*delta)
+	else:
+		SPEED = lerp(SPEED,6.5, 20*delta)
 	if Input.is_action_just_pressed("RMB"):
 		get_tree().quit()
