@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://blt2t4mlb3qxv" path="res://assets/scripts/talking.gd" id="2_jxe34"]
 [ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/overlays/base.tscn" id="5_jn645"]
 [ext_resource type="PackedScene" uid="uid://dndpi3bk3uqya" path="res://assets/overlays/handbook.tscn" id="7_ybpoa"]
-[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="8_ybpoa"]
+[ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="8_qtoah"]
+[ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="9_eom3m"]
 [ext_resource type="AudioStream" uid="uid://duuupn6it42v1" path="res://assets/audio/music/beautiful_ruin.mp3" id="9_ybpoa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
@@ -195,9 +196,16 @@ file = ExtResource("2_85yof")
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2542478, 1)
 size = Vector3(7, 0.51416016, 9)
-material = ExtResource("8_ybpoa")
+material = ExtResource("8_qtoah")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1964429876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45285606, 1)
+flip_faces = true
+size = Vector3(7, 8.979736, 9)
+material = ExtResource("9_eom3m")
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=539813931]
+process_mode = 3
 stream = ExtResource("9_ybpoa")
 autoplay = true
 bus = &"Music"
