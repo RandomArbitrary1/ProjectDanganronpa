@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c2wv77bkli37w" path="res://assets/scripts/player.gd" id="1_ekc74"]
 [ext_resource type="Script" uid="uid://4rdujbx3foai" path="res://assets/scripts/player_cam_extras.gd" id="2_6kulj"]
+[ext_resource type="AudioStream" uid="uid://gnp103hturad" path="res://assets/audio/sfx/player/step1.mp3" id="3_v8hfe"]
+[ext_resource type="AudioStream" uid="uid://n7ylvby1u3vr" path="res://assets/audio/sfx/player/step2.mp3" id="4_v88ll"]
+[ext_resource type="AudioStream" uid="uid://da2wpm3cuc4ck" path="res://assets/audio/sfx/player/step3.mp3" id="5_cg6sm"]
+[ext_resource type="AudioStream" uid="uid://c4svdfts7jrpv" path="res://assets/audio/sfx/player/step4.mp3" id="6_bruc2"]
+[ext_resource type="AudioStream" uid="uid://dr6s6xpkwqgyh" path="res://assets/audio/sfx/player/step5.mp3" id="7_spui4"]
+[ext_resource type="AudioStream" uid="uid://bp7voup80ae51" path="res://assets/audio/sfx/player/step6.mp3" id="8_eemki"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kulj"]
 height = 1.0
@@ -43,6 +49,15 @@ _data = {
 &"bobbing": SubResource("Animation_6kulj")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_68ylt"]
+streams_count = 6
+stream_0/stream = ExtResource("3_v8hfe")
+stream_1/stream = ExtResource("4_v88ll")
+stream_2/stream = ExtResource("5_cg6sm")
+stream_3/stream = ExtResource("6_bruc2")
+stream_4/stream = ExtResource("7_spui4")
+stream_5/stream = ExtResource("8_eemki")
+
 [node name="Player" type="CharacterBody3D" unique_id=806081659]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 script = ExtResource("1_ekc74")
@@ -60,3 +75,8 @@ script = ExtResource("2_6kulj")
 deterministic = true
 libraries/ = SubResource("AnimationLibrary_otulb")
 speed_scale = 1.5
+
+[node name="Steps" type="AudioStreamPlayer" parent="Camera3D" unique_id=1168463174]
+stream = SubResource("AudioStreamRandomizer_68ylt")
+volume_db = 17.0
+bus = &"Sfx"
