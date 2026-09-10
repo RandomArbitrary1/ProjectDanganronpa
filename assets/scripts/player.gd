@@ -10,6 +10,7 @@ var JUMP_VELOCITY = 5.0
 @export var MOUSE_SENSITIVITY : float = 0.3 
 @onready var walk_anim = self.get_node("Camera3D/Walk")
 @onready var dialog = self.get_parent().get_node("UI/Dialog")
+@onready var steps = self.get_node("Camera3D/Steps")
 
 var _mouse_input : bool = false
 var _mouse_rotation : Vector3
@@ -44,6 +45,8 @@ func _physics_process(delta: float) -> void:
 
 		if target_anim != "RESET" and walk_anim.current_animation != target_anim:
 			walk_anim.play(target_anim)
+		if target_anim != "RESET" and not steps.is_playing():
+			steps.play()
 
 		move_and_slide()
 		_update_camera(delta)
@@ -79,7 +82,9 @@ func _process(delta: float) -> void:
 	walk_anim.speed_scale = SPEED*.231
 	if Input.is_action_pressed("Sprint"):
 		SPEED = lerp(SPEED,13.0, 20*delta)
+		steps.pitch_scale = 2
 	else:
 		SPEED = lerp(SPEED,6.5, 20*delta)
+		steps.pitch_scale = 1
 	if Input.is_action_just_pressed("RMB"):
 		get_tree().quit()
