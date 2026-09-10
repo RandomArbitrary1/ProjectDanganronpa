@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dw3px5y5bxf3k"]
 
 [ext_resource type="Script" uid="uid://c2wv77bkli37w" path="res://assets/scripts/player.gd" id="1_ekc74"]
+[ext_resource type="Script" uid="uid://4rdujbx3foai" path="res://assets/scripts/player_cam_extras.gd" id="2_6kulj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kulj"]
 height = 1.0
@@ -50,9 +51,10 @@ script = ExtResource("1_ekc74")
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, -0.4999999, 0)
 shape = SubResource("CapsuleShape3D_6kulj")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=448350214]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=448350214 groups=["Camera_room"]]
 transform = Transform3D(0.83333325, 0, 0, 0, 0.83333325, 0, 0, 0, 0.83333325, 0, 0.8, 0)
 fov = 60.0
+script = ExtResource("2_6kulj")
 
 [node name="Walk" type="AnimationPlayer" parent="Camera3D" unique_id=653286696]
 deterministic = true

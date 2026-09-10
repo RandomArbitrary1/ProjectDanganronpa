@@ -9,6 +9,7 @@ var JUMP_VELOCITY = 5.0
 @onready var CAMERA_CONTROLLER = $Camera3D
 @export var MOUSE_SENSITIVITY : float = 0.3 
 @onready var walk_anim = self.get_node("Camera3D/Walk")
+@onready var dialog = self.get_parent().get_node("UI/Dialog")
 
 var _mouse_input : bool = false
 var _mouse_rotation : Vector3
@@ -29,22 +30,23 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
-	var target_anim = "bobbing" if direction != Vector3.ZERO else "RESET"
+	if not dialog.active:
+		var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+		var target_anim = "bobbing" if direction != Vector3.ZERO else "RESET"
 
-	if target_anim != "RESET" and walk_anim.current_animation != target_anim:
-		walk_anim.play(target_anim)
+		if target_anim != "RESET" and walk_anim.current_animation != target_anim:
+			walk_anim.play(target_anim)
 
-	move_and_slide()
-	_update_camera(delta)
+		move_and_slide()
+		_update_camera(delta)
 
 
 func _unhandled_input(event):

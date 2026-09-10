@@ -1,11 +1,14 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://0dhobjpdibad"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chih2owintexd"]
 
 [ext_resource type="Texture2D" uid="uid://dlrgbqm6ovy5c" path="res://assets/textures/environment/boulder_oil.png" id="1_mgblc"]
 [ext_resource type="Texture2D" uid="uid://dsabyidmikwyx" path="res://assets/textures/environment/boulder_oil_normal.png" id="2_ebw43"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_mgblc")
 normal_enabled = true
+normal_scale = 0.7
 normal_texture = ExtResource("2_ebw43")
 uv1_scale = Vector3(0.59, 0.59, 0.59)
 uv1_triplanar = true

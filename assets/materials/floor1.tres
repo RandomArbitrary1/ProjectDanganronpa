@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bnxvr3c7hnuj"]
+
+[ext_resource type="Texture2D" uid="uid://dx8rofyersfty" path="res://assets/textures/environment/planks_1.png" id="1_hwsg4"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_hwsg4")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.25, 0, 0.25)
+uv1_triplanar = true

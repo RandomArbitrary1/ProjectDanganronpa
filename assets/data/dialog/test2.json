@@ -1,6 +1,13 @@
 {
 	"dialog": [
 		{
+			"character": "raito",
+			"content": "...",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
 			"character": "shion",
 			"content": "i say long string i say long string i say long string i say long string",
 			"expression": "sad",
@@ -130,6 +137,13 @@
 			"character": "shion",
 			"content": ">:)",
 			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "eh?! weirdos",
+			"expression": "angry",
 			"flags": [],
 			"type": "text"
 		}

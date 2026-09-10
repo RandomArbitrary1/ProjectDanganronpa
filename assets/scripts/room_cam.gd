@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if character == "":
+	if character == "" and self.get_parent().name != "Player":
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
 		self.fov = lerp(self.fov, 75.0, 45*delta)
@@ -31,19 +31,20 @@ func _process(delta: float) -> void:
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
 			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,1), 20*delta)
 	
-	if Input.is_action_pressed("Up"):
-		angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))
-	if Input.is_action_pressed("Down"):
-		angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y-delta*speed,minY,maxY))
-	if Input.is_action_pressed("Left"):
-		angle = Vector2(clamp(angle.x+delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
-	if Input.is_action_pressed("Right"):
-		angle = Vector2(clamp(angle.x-delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
-	
-	if Input.is_action_just_pressed("RMB"):
-		mouse_start = get_viewport().get_mouse_position()
-		angle_start = angle
-	if Input.is_action_pressed("RMB"):
-		var offset = (get_viewport().get_mouse_position()-mouse_start)/30.0
-		var angle_end = angle_start + Vector2(-offset.x, -offset.y)
-		angle = Vector2(clamp(angle_end.x,minX,maxX),clamp(angle_end.y,minY,maxY))
+	if self.get_parent().name != "Player":
+		if Input.is_action_pressed("Up"):
+			angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))
+		if Input.is_action_pressed("Down"):
+			angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y-delta*speed,minY,maxY))
+		if Input.is_action_pressed("Left"):
+			angle = Vector2(clamp(angle.x+delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
+		if Input.is_action_pressed("Right"):
+			angle = Vector2(clamp(angle.x-delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
+		
+		if Input.is_action_just_pressed("RMB"):
+			mouse_start = get_viewport().get_mouse_position()
+			angle_start = angle
+		if Input.is_action_pressed("RMB"):
+			var offset = (get_viewport().get_mouse_position()-mouse_start)/30.0
+			var angle_end = angle_start + Vector2(-offset.x, -offset.y)
+			angle = Vector2(clamp(angle_end.x,minX,maxX),clamp(angle_end.y,minY,maxY))
