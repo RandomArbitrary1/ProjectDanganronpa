@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://s383xot1qgn0"]
 
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_1pa7i"]
-[ext_resource type="Material" uid="uid://ccr5d7ohbynp5" path="res://assets/materials/tile.tres" id="1_xjhtt"]
+[ext_resource type="Material" uid="uid://cinfix0r7v3n6" path="res://assets/materials/tile.tres" id="1_xjhtt"]
 [ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="3_4sxbn"]
 [ext_resource type="AudioStream" uid="uid://ddvpiisqpmr1c" path="res://assets/audio/music/beautiful_lie.mp3" id="4_3m5c8"]
 [ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="5_4sxbn"]
-[ext_resource type="Material" uid="uid://chih2owintexd" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
+[ext_resource type="Material" uid="uid://0dhobjpdibad" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="7_4auqc"]
 [ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/veins.tscn" id="7_4sxbn"]
 [ext_resource type="PackedScene" uid="uid://h3rjrxx311b3" path="res://assets/objects/environment/Pillar.glb" id="7_hu5vv"]

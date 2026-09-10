@@ -11,6 +11,7 @@ extends Node3D
 
 var state = "prepare"
 var data = JsonParse.load_json("class_trial/debate/debate1.json")
+var podiums = 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -54,6 +55,5 @@ func start_dialog():
 	dialog.start()
 	camera_3d.fov(30)
 func dialog_process(delta):
-	pass
-	#camera_3d.global_transform.looking_at(
-			#podium.global_position)
+	camera_3d.global_transform.looking_at(
+			podium.global_position)
