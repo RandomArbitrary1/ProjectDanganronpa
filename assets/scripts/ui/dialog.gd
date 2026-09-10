@@ -9,8 +9,8 @@ var camera = null
 @onready var nameplate = self.get_node("Bar/Name")
 @onready var switch = self.get_node("Bar/Switch")
 @onready var input_ind = self.get_node("Bar/Input_indicator/Anim")
+@onready var full_name: Label = $Bar/Name/full_name
 var character_info = preload("res://assets/data/characters/characters.json").data
-
 var dialog = null
 var line = 0
 var tween = null
@@ -25,12 +25,12 @@ func next():
 		var current = dialog[line]
 		input_ind.play("RESET")
 		if current.type == "text":
-			if nameplate.get_node("Label").text != current.character and line != 0:
+			if full_name.text != current.character and line != 0:
 				switch.play("Switch")
-			nameplate.get_node("Label").text = character_info[current.character].name
+			full_name.text = character_info[current.character].name
 			if  camera and "character" in camera and camera.character != null:
 				camera.character = current.character
-			name_size = nameplate.get_node("Label").get_minimum_size().x+110
+			name_size = full_name.get_minimum_size().x+110
 			if line == 0:
 				nameplate.size.x = name_size
 			box.text = current.content

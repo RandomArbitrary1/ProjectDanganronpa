@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://hilwvo5a7k02"]
+
+[ext_resource type="Script" uid="uid://cbcr8kscdb75r" path="res://assets/scripts/danilo_player.gd" id="1_fpkso"]
+[ext_resource type="Script" path="res://assets/scripts/player_cam_extras.gd" id="2_fpkso"]
+[ext_resource type="AudioStream" uid="uid://gnp103hturad" path="res://assets/audio/sfx/player/step1.mp3" id="3_nruid"]
+[ext_resource type="AudioStream" uid="uid://n7ylvby1u3vr" path="res://assets/audio/sfx/player/step2.mp3" id="4_2hmy5"]
+[ext_resource type="AudioStream" uid="uid://da2wpm3cuc4ck" path="res://assets/audio/sfx/player/step3.mp3" id="5_ft6ms"]
+[ext_resource type="AudioStream" uid="uid://c4svdfts7jrpv" path="res://assets/audio/sfx/player/step4.mp3" id="6_h76h5"]
+[ext_resource type="AudioStream" uid="uid://dr6s6xpkwqgyh" path="res://assets/audio/sfx/player/step5.mp3" id="7_mplr4"]
+[ext_resource type="AudioStream" uid="uid://bp7voup80ae51" path="res://assets/audio/sfx/player/step6.mp3" id="8_7g5ss"]
+[ext_resource type="PackedScene" uid="uid://bnif5la5wg0dm" path="res://assets/objects/characters/danilo_ui_copy.tscn" id="9_fpkso"]
+[ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="10_nruid"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kulj"]
+height = 1.0
+
+[sub_resource type="Animation" id="Animation_ekc74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.8]
+}
+
+[sub_resource type="Animation" id="Animation_6kulj"]
+resource_name = "bobbing"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.8, 0.6, 0.8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otulb"]
+_data = {
+&"RESET": SubResource("Animation_ekc74"),
+&"bobbing": SubResource("Animation_6kulj")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_68ylt"]
+streams_count = 6
+stream_0/stream = ExtResource("3_nruid")
+stream_1/stream = ExtResource("4_2hmy5")
+stream_2/stream = ExtResource("5_ft6ms")
+stream_3/stream = ExtResource("6_h76h5")
+stream_4/stream = ExtResource("7_mplr4")
+stream_5/stream = ExtResource("8_7g5ss")
+
+[node name="DaniloPlayer" type="CharacterBody3D" unique_id=806081659]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+script = ExtResource("1_fpkso")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=835239731]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, -0.4999999, 0)
+shape = SubResource("CapsuleShape3D_6kulj")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=448350214 groups=["Camera_room"]]
+transform = Transform3D(0.83333325, 0, 0, 0, 0.83333325, 0, 0, 0, 0.83333325, 0, 0.8, 0)
+fov = 60.0
+script = ExtResource("2_fpkso")
+
+[node name="Walk" type="AnimationPlayer" parent="Camera3D" unique_id=653286696]
+deterministic = true
+libraries/ = SubResource("AnimationLibrary_otulb")
+speed_scale = 1.5
+
+[node name="Steps" type="AudioStreamPlayer" parent="Camera3D" unique_id=1168463174]
+stream = SubResource("AudioStreamRandomizer_68ylt")
+volume_db = 17.0
+bus = &"Sfx"
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=2131073678]
+transform = Transform3D(3.41, 0, 0, 0, -1.4905584e-07, -3.41, 0, 3.41, -1.4905584e-07, 0, 0, 0)
+
+[node name="UI" parent="." unique_id=1174636872 instance=ExtResource("9_fpkso")]
+
+[node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("10_nruid")]
