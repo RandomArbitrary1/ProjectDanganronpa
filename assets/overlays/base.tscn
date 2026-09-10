@@ -150,7 +150,7 @@ anchor_right = 1.0
 offset_left = -1824.0
 offset_top = 80.0
 offset_right = -1624.0
-offset_bottom = 216.0
+offset_bottom = 208.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_wry5i")
@@ -159,9 +159,9 @@ script = ExtResource("2_lbvlt")
 [node name="Speaker1" type="TextureRect" parent="Boombox" unique_id=949932325]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 56.0
+offset_top = 48.0
 offset_right = 80.0
-offset_bottom = 120.0
+offset_bottom = 112.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_re8kh")
 expand_mode = 1
@@ -169,9 +169,9 @@ expand_mode = 1
 [node name="Speaker2" type="TextureRect" parent="Boombox" unique_id=1911427042]
 layout_mode = 0
 offset_left = 120.0
-offset_top = 56.0
+offset_top = 48.0
 offset_right = 184.0
-offset_bottom = 120.0
+offset_bottom = 112.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_re8kh")
 expand_mode = 1
@@ -190,9 +190,9 @@ texture = ExtResource("4_nd5tj")
 
 [node name="Chapter" type="Label" parent="Info" unique_id=617825988]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 36.0
 offset_top = 80.0
-offset_right = 328.0
+offset_right = 332.0
 offset_bottom = 140.0
 theme = ExtResource("5_nd5tj")
 theme_type_variation = &"Title_outline"
@@ -203,9 +203,9 @@ vertical_alignment = 1
 
 [node name="Event" type="Label" parent="Info" unique_id=1428597486]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 36.0
 offset_top = 140.0
-offset_right = 328.0
+offset_right = 332.0
 offset_bottom = 200.0
 theme = ExtResource("5_nd5tj")
 theme_type_variation = &"Title"
@@ -216,9 +216,9 @@ vertical_alignment = 1
 
 [node name="Lvl" type="Label" parent="Info" unique_id=357034831]
 layout_mode = 0
-offset_left = 120.0
+offset_left = 124.0
 offset_top = 200.0
-offset_right = 192.0
+offset_right = 196.0
 offset_bottom = 227.0
 theme = ExtResource("5_nd5tj")
 theme_override_font_sizes/font_size = 20

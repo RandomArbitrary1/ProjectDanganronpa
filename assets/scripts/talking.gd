@@ -22,9 +22,9 @@ func _ready() -> void:
 		)
 		
 func run(object):
-	if object == "shion":
+	if object == "raito":
 		dialog.file = load("res://assets/data/dialog/test2.json")
 		dialog.start()
-	elif object == "raito":
+	elif object == "nori":
 		dialog.file = load("res://assets/data/dialog/test.json")
 		dialog.start()

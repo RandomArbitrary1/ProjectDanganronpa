@@ -1,63 +1,964 @@
 [gd_scene format=3 uid="uid://0gybs6odnl23"]
 
-[ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="1_6yvgm"]
-[ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="2_m6qep"]
-[ext_resource type="PackedScene" uid="uid://by21wmsuw5lkd" path="res://scenes/class_trial/class_trial_ring.tscn" id="3_xtyjt"]
-[ext_resource type="PackedScene" path="res://scenes/class_trial/class_trial_manager.tscn" id="4_p0t4n"]
+[ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="1_53vve"]
+[ext_resource type="Texture2D" uid="uid://b8nlmkqp038bh" path="res://assets/ui/json_editor/insert_drive_file_24dp_E3E3E3.png" id="1_p0t4n"]
+[ext_resource type="Texture2D" uid="uid://cu4cl4be62c7n" path="res://assets/textures/environment/WoodTextureOil.png" id="1_xfl6f"]
+[ext_resource type="Texture2D" uid="uid://dm7i4hetvoe4q" path="res://assets/ui/json_editor/save_24dp_E3E3E3.png" id="2_xfl6f"]
+[ext_resource type="Texture2D" uid="uid://yy5scsj1qxvf" path="res://assets/ui/json_editor/save_as_24dp_E3E3E3.png" id="3_ol5w5"]
+[ext_resource type="Texture2D" uid="uid://ccdrvhhvoo3js" path="res://assets/ui/json_editor/reorder_24dp_E3E3E3.png" id="4_p2fl4"]
+[ext_resource type="Texture2D" uid="uid://ojnuv64i6081" path="res://assets/ui/json_editor/delete_24dp_E3E3E3.png" id="5_oqeqj"]
+[ext_resource type="Texture2D" uid="uid://4aroeotevx1b" path="res://assets/ui/json_editor/flag_24dp_E3E3E3.png" id="6_1adse"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akiwv"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="GDScript" id="GDScript_53vve"]
+resource_name = "json editor"
+script/source = "extends Control
 
-[sub_resource type="Sky" id="Sky_3jcxg"]
-sky_material = SubResource("ProceduralSkyMaterial_akiwv")
+@onready var context_menu = self.get_node(\"Context_menu\")
+@onready var navigation = self.get_node(\"Navigation\")
+@onready var file_dialog = self.get_node(\"FileDialog\")
+@onready var file_dialog_save = self.get_node(\"FileDialogSave\")
+@onready var list = self.get_node(\"Items/List\")
 
-[sub_resource type="Environment" id="Environment_583ih"]
-background_mode = 2
-sky = SubResource("Sky_3jcxg")
-ambient_light_sky_contribution = 0.3
-tonemap_mode = 2
-ssr_enabled = true
-ssao_enabled = true
-ssao_radius = 16.0
-ssao_intensity = 3.0
-glow_enabled = true
+@onready var dialog_line = list.get_node(\"Dialog\").duplicate()
+@onready var visible_line = list.get_node(\"Visibility\").duplicate()
+@onready var focus_line = list.get_node(\"Focus\").duplicate()
+@onready var music_line = list.get_node(\"Music\").duplicate()
+@onready var bullet_line = list.get_node(\"Bullet\").duplicate()
 
-[node name="TrialGround" type="Node3D" unique_id=1833039300]
+var data = {\"dialog\":[]}
+var file_path = \"\"
+var moving = null
+var to_open = \"data\"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=347635823]
-environment = SubResource("Environment_583ih")
+func _ready() -> void:
+	for i in list.get_children():
+		if i:
+			i.queue_free()
+	
+	navigation.get_node(\"Load\").pressed.connect(func():
+		to_open = \"data\"
+		file_dialog.visible = true
+	)
+	navigation.get_node(\"Save_as\").pressed.connect(func():
+		file_dialog_save.visible = true
+	)
+	context_menu.id_pressed.connect(func(id):
+		if id == 0:
+			var new = dialog_line.duplicate()
+			list.add_child(new)
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
+			run_options(new,data.dialog[data.dialog.size()-1])
+		elif id == 1:
+			var new = visible_line.duplicate()
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"visible\",\"value\":true,\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
+		elif id == 2:
+			var new = focus_line.duplicate()
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
+		elif id == 3:
+			var new = music_line.duplicate()
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
+		elif id == 11:
+			var new = bullet_line.duplicate()
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
+	)
+	file_dialog.file_selected.connect(func(path):
+		if to_open == \"data\":
+			file_path = path
+			navigation.get_node(\"File\").text = path.get_file()
+			data = load(path).data
+			for i in data.dialog.size():
+				data.dialog[i][\"id\"] = i
+			print(data)
+			reload_list()
+	)
+	file_dialog_save.file_selected.connect(func(path):
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		if file:
+			file.store_string(JSON.stringify(data, \"\\t\"))
+			navigation.get_node(\"File\").text = path.get_file()
+			file_path = path
+			file.close()
+			self.get_node(\"Saved/Anim\").play(\"Anim\")
+	)
+	navigation.get_node(\"Save\").pressed.connect(save)
+	navigation.get_node(\"Clear\").pressed.connect(func():
+		if navigation.get_node(\"Clear\").text == \"yes?\":
+			data = {\"dialog\":[]}
+			navigation.get_node(\"Clear\").text = \"Clear all\"
+			for i in list.get_children():
+				i.queue_free()
+		else:
+			navigation.get_node(\"Clear\").text = \"yes?\"
+	)
+	navigation.get_node(\"Clear\").mouse_exited.connect(func():
+		navigation.get_node(\"Clear\").text = \"Clear all\"
+	)
 
-[node name="sun" type="DirectionalLight3D" parent="." unique_id=496777979]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, -0.50425816, 0)
-shadow_enabled = true
+func reload_list():
+	for i in list.get_children():
+		i.queue_free()
+	for i in data.dialog:
+		if i.type == \"text\":
+			var new = dialog_line.duplicate()
+			new.get_node(\"Panel/TextEdit\").text = i.content
+			new.get_node(\"Character/Name\").selected = range(new.get_node(\"Character/Name\").item_count).map(func(ii): return new.get_node(\"Character/Name\").get_item_text(ii)).find(i.character)
+			new.get_node(\"Character/Emotion\").selected = range(new.get_node(\"Character/Emotion\").item_count).map(func(ii): return new.get_node(\"Character/Emotion\").get_item_text(ii)).find(i.expression)
+			i[\"eline\"] = new
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"visible\":
+			var new = visible_line.duplicate()
+			i[\"eline\"] = new
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"focus\":
+			var new = focus_line.duplicate()
+			i[\"eline\"] = new
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"music\":
+			var new = music_line.duplicate()
+			i[\"eline\"] = new
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"bullet\":
+			var new = bullet_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Panel/CheckButton\").button_pressed = i.show
+			new.get_node(\"Panel/Load\").text = i.file.get_file()
+			new.get_node(\"Panel/Bullet\").clear()
+			var file = null
+			if i.file != \"\":
+				print(i.file)
+				file = load(i.file).data
+				if file is Dictionary:
+					for key in file.keys():
+						new.get_node(\"Panel/Bullet\").add_item(key)
+			list.add_child(new)
+			run_options(new, i)
+	
+func run_options(i, item_data):
+	i.get_node(\"Panel/Down\").button_down.connect(func():
+		i.get_node(\"Panel/Outline\").visible = true
+		i.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		moving = i
+	)
+	i.get_node(\"Panel/Remove\").pressed.connect(func():
+		data.dialog.remove_at(item_data.id)
+		i.queue_free()
+	)
+	if item_data.type == \"text\":
+		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
+			item_data.content = i.get_node(\"Panel/TextEdit\").text
+		)
+		i.get_node(\"Character/Name\").item_selected.connect(func(ind):
+			item_data.character = i.get_node(\"Character/Name\").get_item_text(ind)
+		)
+		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
+			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
+		)
+	elif item_data.type == \"visible\":
+		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
+			item_data.value = i.get_node(\"Panel/CheckButton\").button_pressed
+		)
+	elif item_data.type == \"focus\":
+		i.get_node(\"Panel/Type\").item_selected.connect(func(ind):
+			item_data.object = i.get_node(\"Panel/Type\").get_item_text(ind)
+		)
+		i.get_node(\"Panel/LineEdit\").text_changed.connect(func(_e):
+			item_data.point = i.get_node(\"Panel/LineEdit\").text
+		)
+	elif item_data.type == \"music\":
+		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
+			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
+		)
+	elif item_data.type == \"bullet\":
+		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
+			item_data.show = i.get_node(\"Panel/CheckButton\").button_pressed
+		)
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"bullet\" + str(item_data.id)
+			file_dialog.visible = true
+		)
+		file_dialog.file_selected.connect(func(path):
+			item_data.file = path
+			if to_open == \"bullet\" + str(item_data.id):
+				i.get_node(\"Panel/Load\").text = path.get_file()
+				i.get_node(\"Panel/Bullet\").clear()
+				var file = load(path).data
+				if file is Dictionary:
+					for key in file.keys():
+						i.get_node(\"Panel/Bullet\").add_item(key)
+		)
+		i.get_node(\"Panel/Bullet\").item_selected.connect(func(ind):
+			item_data.bullet = i.get_node(\"Panel/Bullet\").get_item_text(ind)
+		)
 
-[node name="RoomNODE" type="CSGCombiner3D" parent="." unique_id=841293864]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50425816, 0)
+func closest(target):
+	var close = list.get_child(0).global_position.y
+	var closeID = 0
+	for num in list.get_child_count():
+		var item = list.get_child(num)
+		if abs(target-item.global_position.y) < abs(target-close):
+			close = item.global_position.y
+			closeID = num
+	return closeID
+	
+func sort_new(a, b):
+	if a.id < b.id:
+		return true
+	return false
 
-[node name="Room" type="CSGBox3D" parent="RoomNODE" unique_id=2053213690]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
-size = Vector3(41, 33, 41)
+func save():
+	var new_data = data.duplicate(true)
+	new_data.dialog.sort_custom(sort_new)
+	for i in new_data.dialog:
+		i.erase(\"id\")
+		i.erase(\"eline\")
+	print(new_data)
+	var to_save = FileAccess.open(file_path, FileAccess.WRITE)
+	to_save.store_string(JSON.stringify(new_data, \"\\t\"))
+	to_save.close()
+	self.get_node(\"Saved/Anim\").play(\"Anim\")
+	
+func _process(_delta: float) -> void:
+	for i in data.dialog:
+		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
+			i.id = i.eline.get_index()
+	for i in list.get_children():
+		i.get_node(\"Panel/Index\").text = str(i.get_index())
+	var mouse_pos = get_viewport().get_mouse_position()
+	if moving:
+		list.move_child(moving, closest(mouse_pos.y-32))
+	if moving and Input.is_action_just_released(\"Progress\"):
+		moving.mouse_filter = Control.MOUSE_FILTER_STOP
+		moving.get_node(\"Panel/Outline\").visible = false
+		moving = null
+	if Input.is_action_just_released(\"RMB\"):
+		context_menu.visible = true
+		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-262),(clampf(mouse_pos.y,0,1080-424)))
+	if Input.is_action_just_pressed(\"Ctrl\"):
+		print(data.dialog)
+"
 
-[node name="CutoutRoom" type="CSGCylinder3D" parent="RoomNODE" unique_id=75888639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.875, 0)
-operation = 2
-radius = 15.0
-height = 24.75
-sides = 32
-material = ExtResource("1_6yvgm")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfl6f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
-[node name="Floor" type="CSGBox3D" parent="RoomNODE" unique_id=1002592347]
-size = Vector3(33, 1, 33)
-material = ExtResource("2_m6qep")
+[sub_resource type="Animation" id="Animation_xfl6f"]
+resource_name = "Anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
 
-[node name="LIGHT" type="SpotLight3D" parent="." unique_id=1190063664]
-transform = Transform3D(-4.371139e-08, 0.8660254, 0.50000006, 0, -0.50000006, 0.8660254, 1, 3.7855173e-08, 2.1855696e-08, 5, 7.495742, 0)
-light_energy = 3.851
-shadow_enabled = true
-spot_range = 17.498
+[sub_resource type="Animation" id="Animation_ol5w5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
 
-[node name="ClassTrialRing" parent="." unique_id=809995449 instance=ExtResource("3_xtyjt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.040589094, 0)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2fl4"]
+_data = {
+&"Anim": SubResource("Animation_xfl6f"),
+&"RESET": SubResource("Animation_ol5w5")
+}
 
-[node name="CLASS_TRIAL_MAIN" parent="." unique_id=642936802 instance=ExtResource("4_p0t4n")]
+[node name="JsonEditor" type="Control" unique_id=264201279]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -548.57153
+offset_bottom = -308.57147
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+script = SubResource("GDScript_53vve")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=22404534]
+self_modulate = Color(0.61339027, 0.61339027, 0.61339027, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1371.4285
+offset_bottom = 771.4285
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xfl6f")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Navigation" type="Panel" parent="." unique_id=1170438030]
+layout_mode = 0
+offset_left = 182.85716
+offset_top = 5.714286
+offset_right = 1188.5714
+offset_bottom = 57.142853
+
+[node name="Load" type="Button" parent="Navigation" unique_id=379565603]
+layout_mode = 0
+offset_left = 5.714285
+offset_top = 5.714285
+offset_right = 119.99999
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+text = "Select file"
+icon = ExtResource("1_p0t4n")
+
+[node name="Save" type="Button" parent="Navigation" unique_id=156979398]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -85.71417
+offset_top = 5.7142854
+offset_right = -5.7141724
+offset_bottom = 45.714287
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("2_xfl6f")
+text = "Save"
+icon_alignment = 2
+
+[node name="Save_as" type="Button" parent="Navigation" unique_id=2102459411]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -194.2857
+offset_top = 5.7142854
+offset_right = -91.42853
+offset_bottom = 45.714287
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("3_ol5w5")
+text = "Save as"
+icon_alignment = 2
+
+[node name="Clear" type="Button" parent="Navigation" unique_id=1177034459]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -308.5714
+offset_top = 5.7142854
+offset_right = -199.99988
+offset_bottom = 45.714287
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+text = "Clear all"
+icon_alignment = 2
+
+[node name="File" type="Label" parent="Navigation" unique_id=1611597450]
+layout_mode = 0
+offset_left = 125.71428
+offset_top = 5.714285
+offset_right = 600.0
+offset_bottom = 45.714287
+text = "N/A"
+vertical_alignment = 1
+
+[node name="Items" type="ScrollContainer" parent="." unique_id=2105817097]
+layout_mode = 0
+offset_left = 5.7142944
+offset_top = 62.857143
+offset_right = 1365.7144
+offset_bottom = 765.7142
+
+[node name="List" type="VBoxContainer" parent="Items" unique_id=561660858]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="Bullet" type="HBoxContainer" parent="Items/List" unique_id=922323109]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Bullet" unique_id=1173112791]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Bullet/Panel" unique_id=1525163626]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/Bullet/Panel" unique_id=2001071246]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Bullet/Panel" unique_id=1933119827]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Bullet/Panel" unique_id=1525513454]
+layout_mode = 0
+offset_left = 97.14293
+offset_top = 5.714285
+offset_right = 137.14293
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Bullet/Panel" unique_id=1390846539]
+layout_mode = 0
+offset_left = 142.85718
+offset_top = 5.714283
+offset_right = 240.00009
+offset_bottom = 45.714275
+text = "Bullet"
+vertical_alignment = 1
+
+[node name="Load" type="Button" parent="Items/List/Bullet/Panel" unique_id=403257907]
+layout_mode = 0
+offset_left = 291.42856
+offset_top = 5.714287
+offset_right = 491.42856
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+text = "Select file"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
+
+[node name="Bullet" type="OptionButton" parent="Items/List/Bullet/Panel" unique_id=133974147]
+layout_mode = 0
+offset_left = 497.14288
+offset_top = 5.714286
+offset_right = 794.28564
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+
+[node name="Index" type="Label" parent="Items/List/Bullet/Panel" unique_id=261789310]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="CheckButton" type="CheckButton" parent="Items/List/Bullet/Panel" unique_id=129361642]
+layout_mode = 0
+offset_left = 188.57141
+offset_right = 287.5714
+offset_bottom = 51.428577
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "Show"
+
+[node name="Music" type="HBoxContainer" parent="Items/List" unique_id=1072936168]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Music" unique_id=606793821]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Music/Panel" unique_id=1734375800]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/Music/Panel" unique_id=833686899]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Music/Panel" unique_id=532349665]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Music/Panel" unique_id=1649738797]
+layout_mode = 0
+offset_left = 97.14293
+offset_top = 5.714285
+offset_right = 137.14293
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Music/Panel" unique_id=1735070164]
+layout_mode = 0
+offset_left = 142.85718
+offset_top = 5.714283
+offset_right = 194.28574
+offset_bottom = 45.714275
+text = "Music"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Music/Panel" unique_id=1869713327]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="Song" type="OptionButton" parent="Items/List/Music/Panel" unique_id=159475097]
+layout_mode = 0
+offset_left = 194.28572
+offset_top = 5.7142982
+offset_right = 794.2856
+offset_bottom = 45.7143
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+selected = 0
+item_count = 12
+popup/item_0/text = "angst"
+popup/item_0/id = 0
+popup/item_1/text = "back_in_the_building"
+popup/item_1/id = 1
+popup/item_2/text = "beautiful_lie"
+popup/item_2/id = 2
+popup/item_3/text = "beautiful_ruin"
+popup/item_3/id = 3
+popup/item_4/text = "big_realization"
+popup/item_4/id = 4
+popup/item_5/text = "happy_music"
+popup/item_5/id = 5
+popup/item_6/text = "panic"
+popup/item_6/id = 6
+popup/item_7/text = "preparation"
+popup/item_7/id = 7
+popup/item_8/text = "shock_realization"
+popup/item_8/id = 8
+popup/item_9/text = "slow_realization"
+popup/item_9/id = 9
+popup/item_10/text = "solar"
+popup/item_10/id = 10
+popup/item_11/text = "trial_debate1"
+popup/item_11/id = 11
+
+[node name="Dialog" type="HBoxContainer" parent="Items/List" unique_id=1469758066]
+custom_minimum_size = Vector2(0, 143)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Dialog" unique_id=2012505208]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Dialog/Panel" unique_id=1129775105]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="TextEdit" type="TextEdit" parent="Items/List/Dialog/Panel" unique_id=2002795568]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.42856
+offset_top = 34.285713
+offset_right = -6.0004883
+offset_bottom = -5.7142944
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Down" type="Button" parent="Items/List/Dialog/Panel" unique_id=508296457]
+layout_mode = 0
+offset_left = 5.714274
+offset_top = 5.7142906
+offset_right = 45.714275
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Dialog/Panel" unique_id=1912057391]
+layout_mode = 0
+offset_left = 5.714274
+offset_top = 51.428574
+offset_right = 45.714275
+offset_bottom = 91.428566
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Dialog/Panel" unique_id=1370212433]
+layout_mode = 0
+offset_left = 5.714285
+offset_top = 97.142876
+offset_right = 45.714287
+offset_bottom = 137.14288
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Dialog/Panel" unique_id=1982149487]
+layout_mode = 0
+offset_left = 51.428566
+offset_top = 5.714283
+offset_right = 382.8571
+offset_bottom = 28.714287
+text = "Dialog"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Dialog/Panel" unique_id=402774471]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="Character" type="Panel" parent="Items/List/Dialog" unique_id=1201249221]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Items/List/Dialog/Character" unique_id=1746620367]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_53vve")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="OptionButton" parent="Items/List/Dialog/Character" unique_id=1037701574]
+layout_mode = 0
+offset_left = 5.7142944
+offset_top = 97.14285
+offset_right = 97.14282
+offset_bottom = 137.14285
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "shion"
+popup/item_0/id = 0
+popup/item_1/text = "nori"
+popup/item_1/id = 1
+popup/item_2/text = "yuito"
+popup/item_2/id = 2
+popup/item_3/text = "raito"
+popup/item_3/id = 3
+popup/item_4/text = "ayuka"
+popup/item_4/id = 4
+
+[node name="Emotion" type="OptionButton" parent="Items/List/Dialog/Character" unique_id=1011140921]
+layout_mode = 0
+offset_left = 102.85712
+offset_top = 97.142845
+offset_right = 194.28564
+offset_bottom = 137.14285
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "happy"
+popup/item_0/id = 0
+popup/item_1/text = "angry"
+popup/item_1/id = 1
+popup/item_2/text = "sad"
+popup/item_2/id = 2
+
+[node name="Visibility" type="HBoxContainer" parent="Items/List" unique_id=549563064]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Visibility" unique_id=1626312578]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Visibility/Panel" unique_id=1003563967]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/Visibility/Panel" unique_id=1764249077]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Visibility/Panel" unique_id=643885580]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Visibility/Panel" unique_id=1258878232]
+layout_mode = 0
+offset_left = 97.14287
+offset_top = 5.714287
+offset_right = 137.14287
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Items/List/Visibility/Panel" unique_id=1052923029]
+layout_mode = 0
+offset_left = 137.14285
+offset_right = 236.14285
+offset_bottom = 51.428574
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "Visible"
+
+[node name="Index" type="Label" parent="Items/List/Visibility/Panel" unique_id=1919461854]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="Focus" type="HBoxContainer" parent="Items/List" unique_id=1181826034]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Focus" unique_id=106984022]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Focus/Panel" unique_id=1652866522]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/Focus/Panel" unique_id=1226379672]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Focus/Panel" unique_id=1800775588]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Focus/Panel" unique_id=755614059]
+layout_mode = 0
+offset_left = 97.14293
+offset_top = 5.714285
+offset_right = 137.14293
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Focus/Panel" unique_id=976394712]
+layout_mode = 0
+offset_left = 142.85718
+offset_top = 5.714283
+offset_right = 240.00009
+offset_bottom = 45.714275
+text = "Focus target"
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Items/List/Focus/Panel" unique_id=2138899056]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 377.14288
+offset_top = 5.714287
+offset_right = -5.2857666
+offset_bottom = -5.285721
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Type" type="OptionButton" parent="Items/List/Focus/Panel" unique_id=625532767]
+layout_mode = 0
+offset_left = 245.71432
+offset_top = 5.714286
+offset_right = 371.42856
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Character"
+popup/item_1/id = 1
+popup/item_2/text = "Object"
+popup/item_2/id = 2
+
+[node name="Index" type="Label" parent="Items/List/Focus/Panel" unique_id=2121319680]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="Saved" type="Panel" parent="." unique_id=955261081]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1194.2855
+offset_top = 11.428572
+offset_right = 1274.2855
+offset_bottom = 51.428566
+
+[node name="Label" type="Label" parent="Saved" unique_id=1260800737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Saved"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Anim" type="AnimationPlayer" parent="Saved" unique_id=1032939644]
+libraries/ = SubResource("AnimationLibrary_p2fl4")
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=926571378]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*json")
+use_native_dialog = true
+
+[node name="FileDialogSave" type="FileDialog" parent="." unique_id=169077777]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+filters = PackedStringArray("*json")
+use_native_dialog = true
+
+[node name="Context_menu" type="PopupMenu" parent="." unique_id=1903347401]
+transparent_bg = false
+oversampling_override = 1.0
+size = Vector2i(268, 464)
+content_scale_factor = 1.4
+item_count = 12
+item_0/text = "Dialog"
+item_0/id = 100
+item_0/separator = true
+item_1/text = "New dialog"
+item_1/id = 0
+item_2/text = "New visible toggle"
+item_2/id = 1
+item_3/text = "new focus target"
+item_3/id = 2
+item_4/text = "New music switch"
+item_4/id = 3
+item_5/text = "New bullet preview"
+item_5/id = 11
+item_6/text = "Character"
+item_6/id = 101
+item_6/separator = true
+item_7/text = "New character data"
+item_7/id = 6
+item_8/text = "Debate"
+item_8/id = 102
+item_8/separator = true
+item_9/text = "New debate dialog"
+item_9/id = 8
+item_10/text = "Case"
+item_10/id = 103
+item_10/separator = true
+item_11/text = "New truth bullet"
+item_11/id = 10
