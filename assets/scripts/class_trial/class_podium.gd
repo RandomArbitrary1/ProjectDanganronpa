@@ -27,7 +27,6 @@ func place_person(person=null):
 		print("no person parsed!")
 	if person:
 		char_name = person
-		print("'placed'", char_name)
 		swap()
 #func expression(emotion):
 	#var emotion_path = "res://assets/textures/characters/dummyman/dummy.png"
