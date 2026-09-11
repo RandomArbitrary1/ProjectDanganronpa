@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="1_0rnqo"]
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="2_1yv25"]
 [ext_resource type="PackedScene" uid="uid://by21wmsuw5lkd" path="res://scenes/class_trial/class_trial_ring.tscn" id="4_nogv8"]
-[ext_resource type="PackedScene" path="res://scenes/class_trial/class_trial_manager.tscn" id="5_fp278"]
+[ext_resource type="PackedScene" uid="uid://be8bvo5ct7xu3" path="res://scenes/class_trial/class_trial_manager.tscn" id="5_fp278"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akiwv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
