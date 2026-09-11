@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cg4nn0n7re65s" path="res://assets/objects/environment/window.tscn" id="10_bhgla"]
 [ext_resource type="Script" uid="uid://bjyluqgk8sxjt" path="res://assets/scripts/talking_danilo.gd" id="11_7peox"]
 [ext_resource type="PackedScene" uid="uid://b8m03kvvb8alr" path="res://assets/objects/environment/stairs_lobby.tscn" id="11_86yfa"]
+[ext_resource type="PackedScene" uid="uid://c8qasol3f4p40" path="res://assets/objects/environment/fountain.glb" id="12_n1f41"]
 [ext_resource type="Texture2D" uid="uid://c4lpn70qo4vof" path="res://assets/textures/characters/noriyuki/neutral.png" id="12_rw6mg"]
 [ext_resource type="Texture2D" uid="uid://bkdehq7rn8s5b" path="res://assets/textures/characters/raito/neutral.png" id="13_ptc8j"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="14_cc471"]
@@ -33,6 +34,10 @@ ssao_enabled = true
 ssao_radius = 16.0
 ssao_intensity = 3.0
 glow_enabled = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5paf7"]
+height = 2.3823242
+radius = 1.6523438
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sxbn"]
 size = Vector3(10, 17, 10)
@@ -168,6 +173,12 @@ size = Vector3(39, 14.10553, 86)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.5, 26)
 operation = 2
 size = Vector3(4, 4, 13)
+material = ExtResource("3_n1f41")
+
+[node name="Hallway6" type="CSGBox3D" parent="Building" unique_id=1795509033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 9.5)
+operation = 2
+size = Vector3(4, 6, 10)
 material = ExtResource("3_n1f41")
 
 [node name="Hallway3" type="CSGBox3D" parent="Building" unique_id=1306727616]
@@ -326,6 +337,14 @@ shadow_blur = 5.0
 spot_range = 25.0
 spot_angle = 70.0
 
+[node name="SpotLight3D14" type="SpotLight3D" parent="Lights" unique_id=786147092]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -9, 5.5, 9.5)
+light_energy = 2.0
+shadow_enabled = true
+shadow_blur = 5.0
+spot_range = 25.0
+spot_angle = 70.0
+
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lights" unique_id=1028434030]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.8110933, 13.207098, 13.01059)
 light_energy = 3.0
@@ -428,6 +447,15 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 5.8, 2.76, 64.9)
 
 [node name="stairs_lobby" parent="Props" unique_id=632936874 instance=ExtResource("11_86yfa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 17)
+
+[node name="fountain" parent="Props" unique_id=1260735333 instance=ExtResource("12_n1f41")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 7, 1, 9.5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/fountain" unique_id=1855920438]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/fountain/StaticBody3D" unique_id=1583102050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9562988, 0)
+shape = SubResource("CylinderShape3D_5paf7")
 
 [node name="Characters" type="Node3D" parent="." unique_id=1564452740 groups=["Characters_interact"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.53373826, 7)

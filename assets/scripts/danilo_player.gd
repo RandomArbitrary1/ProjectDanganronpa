@@ -124,7 +124,7 @@ func _process(delta: float) -> void:
 	else:
 		SPEED = lerp(SPEED,6.5, 20*delta)
 		step_advance = .6
-	if Input.is_action_just_pressed("RMB"):
+	if Input.is_action_just_pressed("Ctrl"):
 		get_tree().quit()
 	var current_hover = null
 	
