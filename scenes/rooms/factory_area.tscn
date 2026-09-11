@@ -4,6 +4,8 @@
 [ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="2_kkdtv"]
 [ext_resource type="Material" uid="uid://dlahdlgdkr38v" path="res://assets/materials/hazard_pattern.tres" id="3_d8gto"]
 [ext_resource type="PackedScene" uid="uid://b3muj3tt12ou7" path="res://assets/objects/environment/girder.glb" id="4_nwngx"]
+[ext_resource type="PackedScene" uid="uid://djyb3kbmbt8pw" path="res://assets/objects/models/factory_machine1.glb" id="6_t88nl"]
+[ext_resource type="PackedScene" uid="uid://d2vvl303tuptw" path="res://assets/objects/obj_scene/hazard_stair.tscn" id="7_0c4b8"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="10_i0s0o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6ptlv"]
@@ -26,55 +28,60 @@ ssao_radius = 16.0
 ssao_intensity = 3.0
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g6qi"]
+albedo_color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+metallic_specular = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ocahe"]
+material = SubResource("StandardMaterial3D_6g6qi")
+size = Vector3(3, 1, 30)
+
 [node name="ClassRoom" type="Node3D" unique_id=683086938]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1762599828]
 use_collision = true
 
 [node name="Room" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1090806162]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 17, -13.5)
-size = Vector3(54, 33, 70)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 17, -30)
+size = Vector3(54, 33, 103)
 material = ExtResource("1_nlifi")
 
 [node name="CutoutRoom" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1282823357]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 9.5, -21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 10.5, -38.5)
 operation = 2
-size = Vector3(42, 18, 49)
+size = Vector3(42, 20, 84)
 material = ExtResource("2_kkdtv")
 
-[node name="CutoutRoom2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2131532367]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 6)
+[node name="Entrance" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2131532367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 6)
 operation = 2
 size = Vector3(5, 6, 5)
 material = ExtResource("2_kkdtv")
 
 [node name="Floor" type="CSGBox3D" parent="CSGCombiner3D" unique_id=416769194]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -19)
-size = Vector3(35, 1, 59)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -35.5)
+size = Vector3(46, 1, 92)
 material = ExtResource("2_kkdtv")
-
-[node name="HoleFloor2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=643357787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -34)
-operation = 2
-size = Vector3(14, 1, 15)
-material = ExtResource("2_kkdtv")
-
-[node name="GuardRail2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=132591818]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -26)
-size = Vector3(15, 1, 1)
-material = ExtResource("3_d8gto")
 
 [node name="GuardRail" type="CSGBox3D" parent="CSGCombiner3D" unique_id=81204182]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -11.5)
-size = Vector3(1, 1, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.7797241, -23.5)
+size = Vector3(21, 0.55944824, 34)
 material = ExtResource("3_d8gto")
 
-[node name="GuardRail3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1587042585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1, -9.5)
-size = Vector3(20, 1, 18)
+[node name="CutoutRail" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1579620712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0.5761719, -23.5)
+operation = 2
+size = Vector3(20, 1.2509766, 32)
 material = ExtResource("3_d8gto")
 
 [node name="Lights" type="Node3D" parent="." unique_id=388181527]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=109961660]
+transform = Transform3D(0.87447, 2.1203501e-08, -0.4850796, 0.4850796, -3.8224297e-08, 0.87447, 0, -1, -4.371139e-08, -22.376469, 15.768106, -13.678362)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 50.0
+spot_angle = 64.51
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=224905204]
 environment = SubResource("Environment_5jjs4")
@@ -82,16 +89,35 @@ environment = SubResource("Environment_5jjs4")
 [node name="Props" type="Node3D" parent="." unique_id=1541995143]
 
 [node name="girder" parent="Props" unique_id=938094345 instance=ExtResource("4_nwngx")]
-transform = Transform3D(-4.371139e-08, 0, 13, 0, 1, 0, -1, 0, -5.68248e-07, -1, 12, -31)
+transform = Transform3D(-4.371139e-08, 0, 13, 0, 1, 0, -1, 0, -5.68248e-07, -5, 12, -31)
 
 [node name="girder2" parent="Props" unique_id=177262512 instance=ExtResource("4_nwngx")]
-transform = Transform3D(-4.371139e-08, 0, 13, 0, 1, 0, -1, 0, -5.68248e-07, -1, 12, -11)
+transform = Transform3D(-4.371139e-08, 0, 13, 0, 1, 0, -1, 0, -5.68248e-07, -8, 12, -11)
 
 [node name="girder3" parent="Props" unique_id=1231896385 instance=ExtResource("4_nwngx")]
-transform = Transform3D(-1, 0, -1.136496e-06, 0, 1, 0, 8.742278e-08, 0, -13, -5, 10, -21)
+transform = Transform3D(-0.99999994, 0, -2.1593426e-06, 0, 1, 0, 8.742277e-08, 0, -24.7, -16.461674, 10, -35)
 
 [node name="girder4" parent="Props" unique_id=695220349 instance=ExtResource("4_nwngx")]
-transform = Transform3D(-1, 0, -1.136496e-06, 0, 1, 0, 8.742278e-08, 0, -13, 15, 10, -21)
+transform = Transform3D(-0.99999994, 0, -2.1593426e-06, 0, 1, 0, 8.742277e-08, 0, -24.7, 3.5383272, 10, -35)
+
+[node name="factory_machine1" parent="Props" unique_id=910166106 instance=ExtResource("6_t88nl")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -16, 1, -14)
+
+[node name="factory_machine2" parent="Props" unique_id=458622690 instance=ExtResource("6_t88nl")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -16, 1, -26)
+
+[node name="factory_machine3" parent="Props" unique_id=1970007432 instance=ExtResource("6_t88nl")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 11, 1, -22)
+
+[node name="factory_machine4" parent="Props" unique_id=1802987594 instance=ExtResource("6_t88nl")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 11, 1, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Props" unique_id=1951939839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -23.5)
+mesh = SubResource("BoxMesh_ocahe")
 
 [node name="DaniloPlayer" parent="." unique_id=806081659 instance=ExtResource("10_i0s0o")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 1, 3, -1)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 9, 5)
+
+[node name="hazard_stair" parent="." unique_id=1078755694 instance=ExtResource("7_0c4b8")]
+transform = Transform3D(0.611, 0, 0, 0, 0.611, 0, 0, 0, 0.611, 0, 3.5, 0.5)
