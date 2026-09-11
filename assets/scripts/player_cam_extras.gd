@@ -21,11 +21,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if character == "":
 		self.position = self.position.move_toward(start_position, 25*delta)
-		self.fov = lerp(self.fov, 60.0, 45*delta)
+		self.fov = move_toward(self.fov, 50.0, 165*delta)
 	else:
 		var chr = characters.get_node_or_null(character)
 		if chr:
-			self.fov = lerp(self.fov, 40.0, 45*delta)
+			self.fov = move_toward(self.fov, 40.0, 165*delta)
 			var direction = (chr.position - start_position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
 			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,1), 20*delta)

@@ -183,7 +183,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Name/Label:modulate:a")
+tracks/0/path = NodePath("Name/full_name:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -199,7 +199,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Name/Label:modulate:a")
+tracks/0/path = NodePath("Name/full_name:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -396,7 +396,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Bar/Name/Label:modulate:a")
+tracks/4/path = NodePath("Bar/Name/full_name:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -534,7 +534,7 @@ offset_right = 1354.0
 offset_bottom = 57.0
 texture = ExtResource("8_bpbyh")
 
-[node name="Label" type="Label" parent="Bar/Name" unique_id=1722338196]
+[node name="full_name" type="Label" parent="Bar/Name" unique_id=1722338196]
 layout_mode = 0
 offset_left = 70.99999
 offset_top = 2.0000002

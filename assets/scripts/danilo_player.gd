@@ -9,9 +9,13 @@ var character_info = preload("res://assets/data/characters/characters.json").dat
 @onready var CAMERA_CONTROLLER = $Camera3D
 @export var MOUSE_SENSITIVITY : float = 0.3 
 @onready var walk_anim = self.get_node("Camera3D/Walk")
-@onready var dialog: Control = $Dialog
+@onready var dialog: Control = $UI/Dialog
+@onready var base_gui: Control = $UI/Base
 @onready var steps = self.get_node("Camera3D/Steps")
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+@onready var pointer = $UI/Pointer
+const JOYSTICK_SENSITIVITY = 400
+const DEADZONE = 0.15
 
 var _mouse_input : bool = false
 var _mouse_rotation : Vector3
@@ -44,16 +48,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
-		
-		var target_anim = "bobbing" if direction != Vector3.ZERO else "RESET"
-
-		if target_anim != "RESET" and walk_anim.current_animation != target_anim:
-			walk_anim.play(target_anim)
-		if target_anim != "RESET" and not steps.is_playing():
-			steps.play()
-
-		move_and_slide()
-		_update_camera(delta)
 
 
 func _unhandled_input(event):
@@ -83,6 +77,39 @@ func _update_camera(delta):
 	_tilt_input = 0.0
 
 func _process(delta: float) -> void:
+	if not dialog.active:
+		var joy_x_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
+		var joy_y_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+		if abs(joy_x_left) < DEADZONE: joy_x_left = 0.0
+		if abs(joy_y_left) < DEADZONE: joy_y_left = 0.0
+		if joy_x_left != 0.0 or joy_y_left != 0.0:
+			var input_dir := Vector3(-joy_x_left, 0.0, -joy_y_left)
+			input_dir = input_dir.rotated(Vector3.UP, global_rotation.y)
+			velocity.x = -input_dir.x * JOYSTICK_SENSITIVITY * delta * SPEED/1.5
+			velocity.z = -input_dir.z * JOYSTICK_SENSITIVITY * delta * SPEED/1.5
+		
+		var joy_x_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+		var joy_y_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+		if abs(joy_x_right) < DEADZONE: joy_x_right = 0.0
+		if abs(joy_y_right) < DEADZONE: joy_y_right = 0.0
+		if joy_x_right != 0.0 or joy_y_right != 0.0:
+			_rotation_input = -joy_x_right * JOYSTICK_SENSITIVITY * delta
+			_tilt_input = -joy_y_right * JOYSTICK_SENSITIVITY * delta
+			
+		var target_anim = "bobbing" if velocity.x != 0 and velocity.z != 0 else "RESET"
+
+		if target_anim != "RESET" and walk_anim.current_animation != target_anim:
+			walk_anim.play(target_anim)
+		if target_anim != "RESET" and not steps.is_playing():
+			steps.play()
+		
+		move_and_slide()
+		_update_camera(delta)
+		
+		pointer.modulate.a = lerp(pointer.modulate.a, 1.0, 20*delta)
+	else:
+		pointer.modulate.a = lerp(pointer.modulate.a, 0.0, 20*delta)
+	
 	walk_anim.speed_scale = SPEED*.231
 	if Input.is_action_pressed("Sprint"):
 		SPEED = lerp(SPEED,13.0, 20*delta)
@@ -96,19 +123,20 @@ func _process(delta: float) -> void:
 	
 	if ray_cast_3d.is_colliding():
 		var collider = ray_cast_3d.get_collider()
-		current_hover = collider.get_parent()
+		if collider.get_parent().get_parent() and collider.get_parent().get_parent().name == "Characters":
+			current_hover = collider.get_parent()
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover
-		dialog.full_name.text = character_info[current_hover.name].name
-		dialog.get_node("Anims").play("Open")
+		base_gui.get_node("Hover_label/Label").text = character_info[current_hover.name].name
+		base_gui.get_node("Hover_label/Anim").play("Open")
 	if dialog.active == false and current_hover == null:
 		current_hover_check = null
-		dialog.get_node("Anims").play("Close")
+		base_gui.get_node("Hover_label/Anim").play("Close")
 	if current_hover and Input.is_action_just_pressed("Progress"):
 		var name_send = current_hover.name
 		current_hover = null
 		current_hover_check = null
-		dialog.get_node("Anims").play("Close")
+		base_gui.get_node("Hover_label/Anim").play("Close")
 		run(name_send)
 		
 func run(object):

@@ -55,7 +55,7 @@ func start_dialog():
 	dialog.start()
 	camera_3d.fov(25)
 func dialog_process(delta):
-	var name_ch = dialog.nameplate.get_node("Label").text
+	var name_ch = dialog.nameplate.get_node("full_name").text
 	var key = null
 	for k in char_data:
 		if char_data[k].name == name_ch:

@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://dlahdlgdkr38v" path="res://assets/materials/hazard_pattern.tres" id="3_d8gto"]
 [ext_resource type="PackedScene" uid="uid://b3muj3tt12ou7" path="res://assets/objects/environment/girder.glb" id="4_nwngx"]
 [ext_resource type="PackedScene" uid="uid://bpbl28m104ibk" path="res://assets/objects/environment/factory_machine1.glb" id="5_nwngx"]
-[ext_resource type="PackedScene" uid="uid://hilwvo5a7k02" path="res://assets/objects/characters/danilo_player_copy.tscn" id="10_i0s0o"]
+[ext_resource type="PackedScene" uid="uid://hilwvo5a7k02" path="res://assets/objects/characters/player.tscn" id="10_i0s0o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6ptlv"]
 sky_top_color = Color(0.27108222, 0.4370956, 0.6574903, 1)

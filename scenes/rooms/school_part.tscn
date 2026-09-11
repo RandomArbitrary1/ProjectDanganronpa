@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://s383xot1qgn0"]
 
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_1pa7i"]
-[ext_resource type="Material" uid="uid://cinfix0r7v3n6" path="res://assets/materials/tile.tres" id="1_xjhtt"]
+[ext_resource type="Material" uid="uid://ccr5d7ohbynp5" path="res://assets/materials/tile.tres" id="1_xjhtt"]
 [ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="3_4sxbn"]
 [ext_resource type="AudioStream" uid="uid://ddvpiisqpmr1c" path="res://assets/audio/music/beautiful_lie.mp3" id="4_3m5c8"]
 [ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="5_4sxbn"]
-[ext_resource type="Material" uid="uid://0dhobjpdibad" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
-[ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="7_4auqc"]
+[ext_resource type="Material" uid="uid://chih2owintexd" path="res://assets/materials/boulder.tres" id="5_xlgs6"]
+[ext_resource type="PackedScene" uid="uid://hilwvo5a7k02" path="res://assets/objects/characters/player.tscn" id="7_4auqc"]
 [ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/veins.tscn" id="7_4sxbn"]
 [ext_resource type="PackedScene" uid="uid://h3rjrxx311b3" path="res://assets/objects/environment/Pillar.glb" id="7_hu5vv"]
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="8_xc4le"]
@@ -108,7 +108,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.07, 0.07, 0.07)]
+"values": [Vector3(0.13, 0.13, 0.13)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -419,7 +419,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.53373826, 7)
 script = ExtResource("12_6es20")
 
 [node name="nori" type="Sprite3D" parent="Characters" unique_id=1667668387]
-transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -2, 1.2662643, 6)
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -2, 1.2662643, 6)
 billboard = 2
 texture = ExtResource("11_o1rna")
 
@@ -433,7 +433,7 @@ shape = SubResource("BoxShape3D_4sxbn")
 libraries/ = SubResource("AnimationLibrary_2dtbk")
 
 [node name="raito" type="Sprite3D" parent="Characters" unique_id=1404125181]
-transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 1.2662644, 51)
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 1.2662644, 51)
 billboard = 2
 texture = ExtResource("12_o1rna")
 

@@ -4,8 +4,8 @@ extends CharacterBody3D
 var SPEED = 6.5
 var JUMP_VELOCITY = 5.0
 
-@export var TILT_LOWER_LIMIT := deg_to_rad(-45.0)
-@export var TILT_UPPER_LIMIT := deg_to_rad(45.0)
+@export var TILT_LOWER_LIMIT := deg_to_rad(-65.0)
+@export var TILT_UPPER_LIMIT := deg_to_rad(65.0)
 @onready var CAMERA_CONTROLLER = $Camera3D
 @export var MOUSE_SENSITIVITY : float = 0.3 
 @onready var walk_anim = self.get_node("Camera3D/Walk")
