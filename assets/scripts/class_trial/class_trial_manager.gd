@@ -11,11 +11,11 @@ extends Node3D
 
 var state = "prepare"
 var data = JsonParse.load_json("class_trial/debate/debate1.json")
-var podiums = 
+var char_data = JsonParse.load_json("characters/characters.json")
+var podiums = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
+	podiums = get_tree().get_nodes_in_group("podium")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,7 +53,15 @@ func start_dialog():
 	music.stop()
 	music_2.stop()
 	dialog.start()
-	camera_3d.fov(30)
+	camera_3d.fov(25)
 func dialog_process(delta):
-	camera_3d.global_transform.looking_at(
-			podium.global_position)
+	var name_ch = dialog.nameplate.get_node("full_name").text
+	var key = null
+	for k in char_data:
+		if char_data[k].name == name_ch:
+			key = k
+	for podium in podiums:
+		if podium.char_name == key:
+			camera_3d.look_at(podium.global_position, Vector3.UP)
+			break
+	

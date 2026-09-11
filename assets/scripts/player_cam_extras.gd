@@ -21,7 +21,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if character == "":
 		self.position = self.position.move_toward(start_position, 25*delta)
-		self.fov = move_toward(self.fov, 60.0, 165*delta)
+		self.fov = move_toward(self.fov, 50.0, 165*delta)
 	else:
 		var chr = characters.get_node_or_null(character)
 		if chr:

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dlahdlgdkr38v"]
+
+[ext_resource type="Texture2D" uid="uid://d35j5cbuhhjyf" path="res://assets/textures/environment/HazardPattern.png" id="1_680o2"]
+
+[resource]
+albedo_texture = ExtResource("1_680o2")
+uv1_triplanar = true

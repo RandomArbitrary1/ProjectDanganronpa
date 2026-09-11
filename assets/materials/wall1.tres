@@ -6,6 +6,6 @@
 diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_og1ur")
-uv1_scale = Vector3(0.25, 0.25, 0.25)
-uv1_offset = Vector3(0, -0.13, 0)
+uv1_scale = Vector3(0.075, 0.075, 0.075)
+uv1_offset = Vector3(0, -0.037, 0)
 uv1_triplanar = true

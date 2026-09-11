@@ -1,19 +1,18 @@
 [gd_scene format=3 uid="uid://hilwvo5a7k02"]
 
 [ext_resource type="Script" uid="uid://cbcr8kscdb75r" path="res://assets/scripts/danilo_player.gd" id="1_fpkso"]
-[ext_resource type="Script" uid="uid://4rdujbx3foai" path="res://assets/scripts/player_cam_extras.gd" id="2_fpkso"]
+[ext_resource type="Script" path="res://assets/scripts/player_cam_extras.gd" id="2_fpkso"]
 [ext_resource type="AudioStream" uid="uid://gnp103hturad" path="res://assets/audio/sfx/player/step1.mp3" id="3_nruid"]
 [ext_resource type="AudioStream" uid="uid://n7ylvby1u3vr" path="res://assets/audio/sfx/player/step2.mp3" id="4_2hmy5"]
 [ext_resource type="AudioStream" uid="uid://da2wpm3cuc4ck" path="res://assets/audio/sfx/player/step3.mp3" id="5_ft6ms"]
 [ext_resource type="AudioStream" uid="uid://c4svdfts7jrpv" path="res://assets/audio/sfx/player/step4.mp3" id="6_h76h5"]
 [ext_resource type="AudioStream" uid="uid://dr6s6xpkwqgyh" path="res://assets/audio/sfx/player/step5.mp3" id="7_mplr4"]
 [ext_resource type="AudioStream" uid="uid://bp7voup80ae51" path="res://assets/audio/sfx/player/step6.mp3" id="8_7g5ss"]
-[ext_resource type="PackedScene" uid="uid://bnif5la5wg0dm" path="res://assets/objects/characters/ui.tscn" id="9_fpkso"]
-[ext_resource type="Texture2D" uid="uid://gb5t2y2l0xn7" path="res://assets/textures/ui/fps_cursor.png" id="10_2hmy5"]
+[ext_resource type="PackedScene" uid="uid://bnif5la5wg0dm" path="res://assets/objects/characters/danilo_ui_copy.tscn" id="9_fpkso"]
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="10_nruid"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kulj"]
-height = 2.5
+height = 1.0
 
 [sub_resource type="Animation" id="Animation_ekc74"]
 length = 0.001
@@ -64,14 +63,17 @@ stream_5/stream = ExtResource("8_7g5ss")
 [node name="DaniloPlayer" type="CharacterBody3D" unique_id=806081659]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 script = ExtResource("1_fpkso")
+TILT_LOWER_LIMIT = null
+TILT_UPPER_LIMIT = null
+MOUSE_SENSITIVITY = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=835239731]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.24999994, 0)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, -0.4999999, 0)
 shape = SubResource("CapsuleShape3D_6kulj")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=448350214 groups=["Camera_room"]]
 transform = Transform3D(0.83333325, 0, 0, 0, 0.83333325, 0, 0, 0, 0.83333325, 0, 0.8, 0)
-fov = 50.0
+fov = 60.0
 script = ExtResource("2_fpkso")
 
 [node name="Walk" type="AnimationPlayer" parent="Camera3D" unique_id=653286696]
@@ -84,26 +86,6 @@ stream = SubResource("AudioStreamRandomizer_68ylt")
 volume_db = 17.0
 bus = &"Sfx"
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=2131073678]
-transform = Transform3D(3.41, 0, 0, 0, -1.4905584e-07, -3.41, 0, 3.41, -1.4905584e-07, 0, 0, 0)
-
 [node name="UI" parent="." unique_id=1174636872 instance=ExtResource("9_fpkso")]
 
-[node name="Pointer" type="TextureRect" parent="UI" unique_id=1846435389]
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -350.0
-offset_right = 350.0
-offset_bottom = 350.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_2hmy5")
-expand_mode = 1
-
 [node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("10_nruid")]
-visible = false

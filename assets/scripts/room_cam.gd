@@ -14,6 +14,8 @@ var start_rotation = self.rotation_degrees
 var mouse_start = Vector2.ZERO
 var angle_start = Vector2.ZERO
 
+const DEADZONE = 0.15
+
 func _ready() -> void:
 	characters = get_tree().get_first_node_in_group("Characters_interact")
 
@@ -40,6 +42,15 @@ func _process(delta: float) -> void:
 			angle = Vector2(clamp(angle.x+delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
 		if Input.is_action_pressed("Right"):
 			angle = Vector2(clamp(angle.x-delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
+		
+		var joy_x_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+		var joy_y_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+		if abs(joy_x_right) < DEADZONE: joy_x_right = 0.0
+		if abs(joy_y_right) < DEADZONE: joy_y_right = 0.0
+		if joy_x_right != 0.0 or joy_y_right != 0.0:
+			var x = -joy_x_right * delta * speed
+			var y = -joy_y_right * delta * speed
+			angle = Vector2(clamp(angle.x+x,minX,maxX),clamp(angle.y+y,minY,maxY))
 		
 		if Input.is_action_just_pressed("RMB"):
 			mouse_start = get_viewport().get_mouse_position()
