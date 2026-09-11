@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cfp8b3o8sfas8"]
+
+[ext_resource type="Script" uid="uid://brvr6tpasajf1" path="res://assets/scripts/ui/title/title_ui.gd" id="1_4s1lg"]
+[ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="1_5y5n0"]
+
+[node name="Ui" type="Control" unique_id=1217565761]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4s1lg")
+
+[node name="revolver" type="TextureRect" parent="." unique_id=302648570]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 523.0
+offset_right = 1494.0
+offset_bottom = 1624.0
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_5y5n0")

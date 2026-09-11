@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bst73b0kh88jc"]
+
+[ext_resource type="AudioStream" uid="uid://dmhfnpywmghry" path="res://assets/audio/music/title.mp3" id="1_g80e2"]
+[ext_resource type="PackedScene" uid="uid://cfp8b3o8sfas8" path="res://scenes/ui/title_ui.tscn" id="2_4v1qu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g80e2"]
+sky_top_color = Color(0.24436301, 0.57127833, 0.7478991, 1)
+sky_horizon_color = Color(0.48982134, 0.57155013, 0.6157054, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.48982134, 0.57155013, 0.6157054, 1)
+
+[sub_resource type="Sky" id="Sky_4v1qu"]
+sky_material = SubResource("ProceduralSkyMaterial_g80e2")
+
+[sub_resource type="Environment" id="Environment_s1drf"]
+background_mode = 2
+sky = SubResource("Sky_4v1qu")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_u1og1"]
+
+[node name="Title" type="Node3D" unique_id=569717398]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1935201981]
+environment = SubResource("Environment_s1drf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=883639321]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.9921916, 1, 0.81111735, 1)
+shadow_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=999871051]
+stream = ExtResource("1_g80e2")
+autoplay = true
+parameters/looping = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1338451914]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_u1og1")
+
+[node name="Ui" parent="." unique_id=1217565761 instance=ExtResource("2_4v1qu")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=708970430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.188198, 26.37083)
