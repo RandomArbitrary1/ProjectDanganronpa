@@ -189,7 +189,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_3e3ew")
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1322651524]
+[node name="Border" type="TextureRect" parent="." unique_id=1322651524]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
