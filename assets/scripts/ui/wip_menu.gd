@@ -40,5 +40,5 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		if event is not InputEventMouseButton:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
+	elif event is InputEventJoypadButton or event is InputEventKey:
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
