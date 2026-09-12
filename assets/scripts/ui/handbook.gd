@@ -95,6 +95,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if open:
 		if event is InputEventMouse:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			if event is not InputEventMouseButton:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

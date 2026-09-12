@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dn55ejhr7b7to"]
+
+[ext_resource type="Script" uid="uid://brw4rufy8jyf7" path="res://assets/scripts/ui/wip_menu.gd" id="1_pdcjh"]
+[ext_resource type="Texture2D" uid="uid://cxgdtlvwljwdj" path="res://assets/ui/base/option.png" id="1_tbu3e"]
+[ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="2_pdcjh"]
+
+[node name="WipMenu" type="Control" unique_id=1553073100]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pdcjh")
+
+[node name="Items" type="Control" parent="." unique_id=1371490648]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -164.0
+offset_right = 40.0
+offset_bottom = 164.0
+grow_vertical = 2
+
+[node name="Option" type="NinePatchRect" parent="Items" unique_id=1548277074]
+self_modulate = Color(0.40784314, 0.40784314, 0.40784314, 1)
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 104.0
+texture = ExtResource("1_tbu3e")
+region_rect = Rect2(0, 0, 104, 104)
+patch_margin_right = 104
+
+[node name="Hover" type="NinePatchRect" parent="Items/Option" unique_id=677937697]
+self_modulate = Color(1, 0.25423858, 0.24763542, 1)
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("1_tbu3e")
+region_rect = Rect2(0, 0, 104, 104)
+patch_margin_right = 104
+
+[node name="Label" type="Label" parent="Items/Option" unique_id=748718698]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pdcjh")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "New game"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Option2" type="NinePatchRect" parent="Items" unique_id=1692617469]
+self_modulate = Color(0.40784314, 0.40784314, 0.40784314, 1)
+layout_mode = 0
+offset_top = 112.0
+offset_right = 592.0
+offset_bottom = 216.0
+texture = ExtResource("1_tbu3e")
+region_rect = Rect2(0, 0, 104, 104)
+patch_margin_right = 104
+
+[node name="Hover" type="NinePatchRect" parent="Items/Option2" unique_id=571814205]
+self_modulate = Color(1, 0.25423858, 0.24763542, 1)
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("1_tbu3e")
+region_rect = Rect2(0, 0, 104, 104)
+patch_margin_right = 104
+
+[node name="Label" type="Label" parent="Items/Option2" unique_id=643224194]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pdcjh")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Load save"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Option3" type="NinePatchRect" parent="Items" unique_id=1732844907]
+self_modulate = Color(0.40784314, 0.40784314, 0.40784314, 1)
+layout_mode = 0
+offset_top = 224.0
+offset_right = 704.0
+offset_bottom = 328.0
+texture = ExtResource("1_tbu3e")
+region_rect = Rect2(0, 0, 104, 104)
+patch_margin_right = 104
+
+[node name="Hover" type="NinePatchRect" parent="Items/Option3" unique_id=1438387463]
+self_modulate = Color(1, 0.25423858, 0.24763542, 1)
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("1_tbu3e")
+region_rect = Rect2(0, 0, 104, 104)
+patch_margin_right = 104
+
+[node name="Label" type="Label" parent="Items/Option3" unique_id=74787030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pdcjh")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+horizontal_alignment = 2
+vertical_alignment = 1
