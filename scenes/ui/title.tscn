@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bst73b0kh88jc"]
 
+[ext_resource type="Script" uid="uid://cfj4csd4wh4ge" path="res://assets/scripts/ui/title/title.gd" id="1_4v1qu"]
 [ext_resource type="AudioStream" uid="uid://dmhfnpywmghry" path="res://assets/audio/music/title.mp3" id="1_g80e2"]
 [ext_resource type="PackedScene" uid="uid://cfp8b3o8sfas8" path="res://scenes/ui/title_ui.tscn" id="2_4v1qu"]
+[ext_resource type="Texture2D" uid="uid://dd8powc5qfetb" path="res://assets/textures/ui/title/background.png" id="2_s1drf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g80e2"]
 sky_top_color = Color(0.24436301, 0.57127833, 0.7478991, 1)
@@ -25,6 +27,15 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_u1og1"]
 
 [node name="Title" type="Node3D" unique_id=569717398]
+script = ExtResource("1_4v1qu")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1458811644]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s1drf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1935201981]
 environment = SubResource("Environment_s1drf")

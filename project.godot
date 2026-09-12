@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 FullscreenFunction="*uid://fqn4emcc0dpk"
 JsonParse="*uid://b4lj3xew0ydov"
+LoadingScreen="*uid://bqv67g0qn5r0b"
 
 [debug]
 
