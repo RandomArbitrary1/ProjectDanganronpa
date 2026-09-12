@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d2vvl303tuptw"]
+
+[ext_resource type="PackedScene" uid="uid://cyg7c3trhmd1m" path="res://assets/objects/models/hazard_stair.glb" id="1_aohlm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pg2jb"]
+points = PackedVector3Array(-4.914022, -4.9144, -4.9144, 4.9142814, 4.9144, 4.9144, 4.9142814, -4.9144, 4.9144, -4.914022, -4.9144, 4.9144, -4.914022, 4.9144, 4.9144, 4.9142814, -4.9144, -4.9144)
+
+[node name="hazard_stair" unique_id=1078755694 instance=ExtResource("1_aohlm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" parent_id_path=PackedInt32Array(89942573) index="0" unique_id=1733842693]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0" unique_id=891493241]
+shape = SubResource("ConvexPolygonShape3D_pg2jb")

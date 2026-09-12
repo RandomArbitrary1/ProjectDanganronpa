@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://cfp8b3o8sfas8"]
+
+[ext_resource type="Script" uid="uid://brvr6tpasajf1" path="res://assets/scripts/ui/title/title_ui.gd" id="1_4s1lg"]
+[ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="1_5y5n0"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="3_kjnyq"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/RobotoMono-Regular.ttf" id="4_ufw8e"]
+[ext_resource type="AudioStream" uid="uid://densd5e2hink1" path="res://assets/audio/sfx/toggle.mp3" id="5_i0s5a"]
+[ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/menu_theme.tres" id="6_iualr"]
+
+[sub_resource type="Animation" id="Animation_iualr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("press_label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_edp21"]
+resource_name = "press_any"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("press_label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.43333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgqlf"]
+_data = {
+&"RESET": SubResource("Animation_iualr"),
+&"press_any": SubResource("Animation_edp21")
+}
+
+[node name="Ui" type="Control" unique_id=1217565761]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4s1lg")
+
+[node name="revolver" type="TextureRect" parent="." unique_id=302648570]
+layout_mode = 0
+offset_left = -549.0
+offset_top = 33.0
+offset_right = 552.0
+offset_bottom = 1134.0
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_5y5n0")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=458274582]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -736.0
+offset_top = 128.0
+offset_right = 736.0
+offset_bottom = 280.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_kjnyq")
+theme_override_font_sizes/font_size = 126
+text = "PROJECT: DANGANRONPA"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=468714000]
+libraries/ = SubResource("AnimationLibrary_pgqlf")
+
+[node name="press_label" type="Label" parent="." unique_id=706478272]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -596.0
+offset_top = -209.0
+offset_right = 596.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_ufw8e")
+theme_override_font_sizes/font_size = 71
+text = "Press any button to continue"
+
+[node name="confirm_sfx" type="AudioStreamPlayer" parent="." unique_id=114964799]
+stream = ExtResource("5_i0s5a")
+pitch_scale = 1.96
+
+[node name="Panel" type="Panel" parent="." unique_id=2146991160]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.21753
+offset_top = -50.0
+offset_right = 181.21753
+offset_bottom = 340.57495
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="StartNewGame" type="Button" parent="Panel" unique_id=1900385099]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.5
+offset_top = -187.28748
+offset_right = 231.5
+offset_bottom = -101.287476
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("6_iualr")
+theme_override_font_sizes/font_size = 55
+text = "Start New Game"
+
+[node name="Continue" type="Button" parent="Panel" unique_id=1234133301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.5
+offset_top = -57.287476
+offset_right = 215.5
+offset_bottom = 28.712524
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("6_iualr")
+theme_override_font_sizes/font_size = 55
+text = "Continue"
+
+[node name="Options" type="Button" parent="Panel" unique_id=1334670713]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.36
+offset_top = 69.712524
+offset_right = 215.35999
+offset_bottom = 155.71252
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("6_iualr")
+theme_override_font_sizes/font_size = 55
+text = "Options"

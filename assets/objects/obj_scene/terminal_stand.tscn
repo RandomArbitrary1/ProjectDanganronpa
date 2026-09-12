@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d0lb5vtam557r"]
+
+[ext_resource type="PackedScene" uid="uid://deo1fbucbatmv" path="res://assets/objects/models/terminal_stand.glb" id="1_2s3fh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocahe"]
+size = Vector3(2.6534424, 3.7601318, 2.5471497)
+
+[node name="terminal_stand" unique_id=1434993964 instance=ExtResource("1_2s3fh")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1318227179]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1838775727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003967285, 0.86932373, -0.40040588)
+shape = SubResource("BoxShape3D_ocahe")

@@ -1,6 +1,6 @@
 extends Control
 
-@export var scene: String = "res://scenes/class_trial/trial_ground.tscn"
+@export var scene: String
 
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var rotating_loading_obj: TextureRect = $RotatingLoadingObj
@@ -10,11 +10,12 @@ var progress = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	animation_player.play("appear")
-	ResourceLoader.load_threaded_request(scene)
+	visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not visible:
+		return
 	rotating_loading_obj.rotation += delta * 0.9
 	
 	var status = ResourceLoader.load_threaded_get_status(scene, progress)
@@ -25,4 +26,10 @@ func _process(delta: float) -> void:
 			progress_bar.value = percent
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var fin_scene = ResourceLoader.load_threaded_get(scene)
+			visible = false
 			get_tree().change_scene_to_packed(fin_scene)
+func load_scene(path):
+	visible = true
+	animation_player.play("appear")
+	scene = path
+	ResourceLoader.load_threaded_request(scene)

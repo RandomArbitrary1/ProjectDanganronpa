@@ -11,18 +11,15 @@ config_version=5
 [application]
 
 config/name="ProjectDanganronpa"
-run/main_scene="uid://bj30cyjrktuju"
+run/main_scene="uid://bst73b0kh88jc"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
-
-[audio]
-
-buses/default_bus_layout="uid://cm6aiabvb3yqk"
 
 [autoload]
 
 FullscreenFunction="*uid://fqn4emcc0dpk"
 JsonParse="*uid://b4lj3xew0ydov"
+LoadingScreen="*uid://bqv67g0qn5r0b"
 
 [debug]
 
