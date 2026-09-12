@@ -35,6 +35,8 @@ window/size/viewport_height=1080
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://bto0867l0lova"
+mouse_cursor/custom_image_hotspot=Vector2(4, 4)
 
 [global_group]
 
