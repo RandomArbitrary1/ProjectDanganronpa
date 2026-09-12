@@ -3,19 +3,27 @@ extends ColorRect
 @onready var anim = self.get_node("Anim")
 @onready var tabs = self.get_node("Screen/Tabs/List")
 
+var original_mouse_mode = Input.MOUSE_MODE_HIDDEN
 var open = false
 var tab = 0
-var inside_tab = 0
+var inside_tab = Vector2(0,0)
 @onready var current_tab_node = self.get_node("Screen/List")
+
+var x_range = 4
+var y_range = 3
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("handbook"):
 		if open:
+			Input.mouse_mode = original_mouse_mode
 			open = false
 			anim.play("Close")
 			await anim.animation_finished
 			get_tree().paused = false
+			
 		else:
+			original_mouse_mode = Input.mouse_mode
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			open = true
 			anim.play("Open")
 			get_tree().paused = true
@@ -49,21 +57,46 @@ func _process(delta: float) -> void:
 			else:
 				current.self_modulate.a = lerp(current.self_modulate.a, 0.0, 20*delta)
 				current.get_node("Icon").modulate = current.get_node("Icon").modulate.lerp(Color(1.0,1.0,1.0), 20*delta)
+			if Input.is_action_just_pressed("LMB"):
+				if Rect2(current.global_position, current.size).has_point(get_global_mouse_position()):
+					tab = i
 		
 		if Input.is_action_just_pressed("Left"):
-			if inside_tab > 0:
-				inside_tab -= 1
+			if inside_tab.x > 0:
+				inside_tab.x -= 1
 			else:
-				inside_tab = current_tab_node.get_node("Items").get_child_count()-1
+				inside_tab.x = x_range-1
 		if Input.is_action_just_pressed("Right"):
-			if inside_tab < current_tab_node.get_node("Items").get_child_count()-1:
-				inside_tab += 1
+			if inside_tab .x < x_range-1:
+				inside_tab.x += 1
 			else:
-				inside_tab = 0
+				inside_tab.x = 0
+		if Input.is_action_just_pressed("Up"):
+			if inside_tab.y > 0:
+				inside_tab.y -= 1
+			else:
+				inside_tab.y = y_range-1
+		if Input.is_action_just_pressed("Down"):
+			if inside_tab .y < y_range-1:
+				inside_tab.y += 1
+			else:
+				inside_tab.y = 0
 				
 		
 		for i in current_tab_node.get_node("Items").get_children():
-			if i.get_index(0) == inside_tab:
+			if i.get_index() == inside_tab.y * x_range + inside_tab.x:
 				i.get_node("Outline").modulate.a = lerp(i.get_node("Outline").modulate.a, 1.0, 20*delta)
 			else:
 				i.get_node("Outline").modulate.a = lerp(i.get_node("Outline").modulate.a, 0.0, 20*delta)
+			if Input.is_action_just_pressed("LMB"):
+				if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
+					inside_tab.x = int(i.get_index() % x_range)
+					inside_tab.y = int(i.get_index() / x_range)
+
+func _input(event: InputEvent) -> void:
+	if open:
+		if event is InputEventMouse:
+			if event is not InputEventMouseButton:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif event is InputEventJoypadButton or event is InputEventKey:
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
