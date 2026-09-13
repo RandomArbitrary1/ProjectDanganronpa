@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bcaptsgqxbmr3"]
+
+[ext_resource type="Texture2D" uid="uid://bxe5vojttvamc" path="res://assets/objects/environment/ceiling_light_ceiling_light.png" id="1_e1bgj"]
+[ext_resource type="Texture2D" uid="uid://b8deop8ch068h" path="res://assets/objects/environment/ceiling_light_ceiling_light_emm.png" id="2_emm4h"]
+[ext_resource type="Texture2D" uid="uid://dtr3wcab8b1a3" path="res://assets/objects/environment/ceiling_light_ceiling_light_metal.png" id="3_8ycv4"]
+
+[resource]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_e1bgj")
+metallic = 1.0
+metallic_texture = ExtResource("3_8ycv4")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_8ycv4")
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 3.0
+emission_operator = 1
+emission_texture = ExtResource("2_emm4h")
+metadata/_gltf_primary_texture_coord = 0

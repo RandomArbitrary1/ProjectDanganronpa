@@ -9,7 +9,7 @@ extends Camera3D
 var characters = Node3D
 var angle = Vector2(0,0)
 
-var start_position = Vector3(0,.8,0)
+var start_position = Vector3(0,.65,0)
 var start_rotation = self.rotation_degrees
 var mouse_start = Vector2.ZERO
 var angle_start = Vector2.ZERO
@@ -28,4 +28,4 @@ func _process(delta: float) -> void:
 			self.fov = move_toward(self.fov, 40.0, 165*delta)
 			var direction = (chr.position - start_position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,1), 20*delta)
+			self.global_position = self.global_position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,1), 20*delta)

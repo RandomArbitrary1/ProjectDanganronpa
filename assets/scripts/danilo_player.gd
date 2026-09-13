@@ -27,6 +27,7 @@ var _player_rotation : Vector3
 var _camera_rotation : Vector3
 
 var current_hover_check = null
+var current_hover_type = "character"
 var characters = []
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -130,11 +131,19 @@ func _process(delta: float) -> void:
 	
 	if ray_cast_3d.is_colliding():
 		var collider = ray_cast_3d.get_collider()
-		if collider.get_parent().get_parent() and collider.get_parent().get_parent().name == "Characters":
-			current_hover = collider.get_parent()
+		if collider.get_parent().get_parent():
+			if collider.get_parent().get_parent().name == "Characters":
+				current_hover_type = "character"
+				current_hover = collider.get_parent()
+			elif collider.get_parent().get_parent().name == "Doors":
+				current_hover_type = "door"
+				current_hover = collider.get_parent()
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover
-		base_gui.get_node("Hover_label/Label").text = character_info[current_hover.name].name
+		if current_hover_type == "character":
+			base_gui.get_node("Hover_label/Label").text = character_info[current_hover.name].name
+		elif current_hover_type == "door" or "object":
+			base_gui.get_node("Hover_label/Label").text = current_hover.name
 		base_gui.get_node("Hover_label/Anim").play("Open")
 	if dialog.active == false and current_hover == null:
 		current_hover_check = null

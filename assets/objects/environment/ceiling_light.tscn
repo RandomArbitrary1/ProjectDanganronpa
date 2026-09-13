@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dcdo16wuh1h6f"]
+
+[ext_resource type="PackedScene" uid="uid://drvvjqeye0s7x" path="res://assets/objects/environment/ceiling_light.glb" id="1_jiegw"]
+
+[node name="ceiling_light" unique_id=1966507917 instance=ExtResource("1_jiegw")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="." index="2" unique_id=1811994381]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.15, -0.07)
+light_energy = 2.0
+shadow_enabled = true
+shadow_blur = 5.0
+spot_range = 25.0
+spot_angle = 70.0
