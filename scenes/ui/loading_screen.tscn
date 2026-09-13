@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://bqv67g0qn5r0b"]
 
 [ext_resource type="Script" uid="uid://cauuom6vrajem" path="res://assets/scripts/ui/loading_screen/loading_screen.gd" id="1_ep5rh"]
+[ext_resource type="Texture2D" uid="uid://evakt4rh52oi" path="res://assets/textures/ui/title/background_loading.jpeg" id="2_5fj0j"]
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="2_hprjd"]
+[ext_resource type="Theme" uid="uid://brwp445mcr85m" path="res://assets/ui/themes/loading_bar.tres" id="3_y06jl"]
+[ext_resource type="Texture2D" uid="uid://d3o58hd8jspee" path="res://assets/textures/characters/shuichi_illustration.png" id="4_s2kth"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/RobotoMono-Regular.ttf" id="5_s41fs"]
 
 [sub_resource type="Animation" id="Animation_hprjd"]
 length = 0.001
@@ -33,6 +37,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DarkBG:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 2.143548),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5phy8"]
 _data = {
@@ -52,27 +68,30 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ep5rh")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=932519482]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="DarkBG" type="TextureRect" parent="." unique_id=1835903982]
+self_modulate = Color(0.5729883, 0.5729883, 0.5729883, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5fj0j")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=207947545]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -548.0
-offset_bottom = -419.0
-grow_horizontal = 2
+offset_left = -1149.0
+offset_top = -149.0
+offset_right = -49.0
+offset_bottom = -56.330017
+grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 91
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("3_y06jl")
+theme_override_font_sizes/font_size = 81
+value = 44.55
 
 [node name="RotatingLoadingObj" type="TextureRect" parent="." unique_id=2094538595]
 layout_mode = 1
@@ -90,3 +109,35 @@ texture = ExtResource("2_hprjd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=633188483]
 libraries/ = SubResource("AnimationLibrary_5phy8")
+
+[node name="character" type="TextureRect" parent="." unique_id=475309551]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = -633.0
+offset_right = 1030.0
+offset_bottom = 367.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.765, 0.765)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_s2kth")
+
+[node name="description" type="Label" parent="." unique_id=1118458332]
+custom_maximum_size = Vector2(900, 600)
+layout_mode = 0
+offset_left = 77.0
+offset_top = 42.0
+offset_right = 977.0
+offset_bottom = 642.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_s41fs")
+theme_override_font_sizes/font_size = 48
+text = "Shuichi Saihara AKA the ultimate detective, is a survivor of the 53rd school killing trip. Relying pure on his detective skills and wits to surpass any trial coming his way. Although something's been bothering him..."
+autowrap_mode = 2
