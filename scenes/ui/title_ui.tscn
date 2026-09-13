@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://brvr6tpasajf1" path="res://assets/scripts/ui/title/title_ui.gd" id="1_4s1lg"]
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="1_5y5n0"]
-[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="3_kjnyq"]
-[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/RobotoMono-Regular.ttf" id="4_ufw8e"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="3_kjnyq"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="4_ufw8e"]
 [ext_resource type="AudioStream" uid="uid://cjr0c11lnhgqg" path="res://assets/audio/sfx/ui/confirm.mp3" id="5_iualr"]
 [ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/themes/menu_theme.tres" id="6_iualr"]
 

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="2_hprjd"]
 [ext_resource type="Theme" uid="uid://brwp445mcr85m" path="res://assets/ui/themes/loading_bar.tres" id="3_y06jl"]
 [ext_resource type="Texture2D" uid="uid://d3o58hd8jspee" path="res://assets/textures/characters/shuichi_illustration.png" id="4_s2kth"]
-[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/RobotoMono-Regular.ttf" id="5_s41fs"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="5_s41fs"]
 
 [sub_resource type="Animation" id="Animation_hprjd"]
 length = 0.001

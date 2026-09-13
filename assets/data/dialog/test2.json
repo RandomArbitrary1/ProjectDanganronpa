@@ -2,14 +2,14 @@
 	"dialog": [
 		{
 			"character": "raito",
-			"content": "...",
+			"content": "The fitness gram-pacer test is a multistage aerobic capacity test, that gets more difficult the longer it goes.",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "i say long string i say long string i say long string i say long string",
+			"content": "The longer the string the easier it is to understand what the font looks like, and how easy it is to read of off",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"
@@ -23,7 +23,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "how dare you",
+			"content": "What do you call two faggots fucking, fucking faggots",
 			"expression": "angry",
 			"flags": [],
 			"type": "text"
@@ -37,7 +37,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "how about this",
+			"content": "That makes a lot of sense, I understand everything now",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"
