@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dd0i01jg1ejp1"]
+
+[ext_resource type="PackedScene" uid="uid://dfqdof8xntamy" path="res://assets/objects/environment/door_wood.glb" id="1_geanx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5c0lw"]
+size = Vector3(1.4, 2.64, 0.35)
+
+[node name="door_wood" unique_id=1496385204 instance=ExtResource("1_geanx")]
+
+[node name="Cube" parent="." index="0" unique_id=1912084388]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." index="1" unique_id=1775471776]
+
+[node name="Click" type="CollisionShape3D" parent="Area3D" index="0" unique_id=720295564]
+shape = SubResource("BoxShape3D_5c0lw")

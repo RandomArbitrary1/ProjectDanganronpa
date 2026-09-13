@@ -15,6 +15,10 @@ run/main_scene="uid://bst73b0kh88jc"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cm6aiabvb3yqk"
+
 [autoload]
 
 FullscreenFunction="*uid://fqn4emcc0dpk"
@@ -33,7 +37,7 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://bto0867l0lova"
-mouse_cursor/custom_image_hotspot=Vector2(4, 4)
+mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
 [global_group]
 

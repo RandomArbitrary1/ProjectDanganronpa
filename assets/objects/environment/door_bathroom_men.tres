@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cbe0ntm8aon7n"]
+
+[ext_resource type="Texture2D" uid="uid://dl1jh58kodtlt" path="res://assets/objects/environment/door_bathroom_men.png" id="1_3tpst"]
+[ext_resource type="Texture2D" uid="uid://cfqf12l4dxdv8" path="res://assets/objects/environment/door_bathroom_spec.png" id="2_0ufbq"]
+[ext_resource type="Texture2D" uid="uid://nf32mc8otijv" path="res://assets/objects/environment/door_wood_door_wood_spec.png" id="2_3tpst"]
+
+[resource]
+resource_name = "door_wood"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_3tpst")
+metallic = 1.0
+metallic_texture = ExtResource("2_0ufbq")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_3tpst")
+roughness_texture_channel = 1
+metadata/_gltf_primary_texture_coord = 0
