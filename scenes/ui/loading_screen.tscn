@@ -69,7 +69,7 @@ mouse_filter = 2
 script = ExtResource("1_ep5rh")
 
 [node name="DarkBG" type="TextureRect" parent="." unique_id=1835903982]
-self_modulate = Color(0.5729883, 0.5729883, 0.5729883, 1)
+self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -112,6 +112,7 @@ texture = ExtResource("2_hprjd")
 libraries/ = SubResource("AnimationLibrary_5phy8")
 
 [node name="character" type="TextureRect" parent="." unique_id=475309551]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,6 +130,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("4_s2kth")
 
 [node name="description" type="Label" parent="." unique_id=1118458332]
+visible = false
 custom_maximum_size = Vector2(900, 600)
 layout_mode = 0
 offset_left = 77.0

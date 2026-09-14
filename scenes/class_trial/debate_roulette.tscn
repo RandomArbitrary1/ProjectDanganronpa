@@ -296,6 +296,7 @@ stream = ExtResource("6_fe14r")
 bus = &"Sfx"
 
 [node name="revolver" type="TextureRect" parent="." unique_id=547455956]
+self_modulate = Color(1, 0.34509805, 0, 0.7529412)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

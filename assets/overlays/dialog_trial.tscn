@@ -555,11 +555,10 @@ texture = ExtResource("8_bpbyh")
 
 [node name="full_name" type="Label" parent="Bar/Name" unique_id=1722338196]
 layout_mode = 0
-offset_left = 70.99999
-offset_top = 2.0000002
-offset_right = 519.0
-offset_bottom = 82.0
-rotation = 0.027925268
+offset_left = 82.0
+offset_top = -2.9999998
+offset_right = 530.0
+offset_bottom = 77.0
 theme = SubResource("Theme_pkhgj")
 theme_type_variation = &"Title"
 theme_override_colors/font_shadow_color = Color(0.62335485, 0, 0.078234665, 1)
@@ -583,10 +582,10 @@ autowrap_mode = 2
 [node name="Input_indicator" type="TextureRect" parent="Bar" unique_id=403398415]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1824.0
-offset_top = 232.0
-offset_right = 1928.0
-offset_bottom = 328.0
+offset_left = 1800.0
+offset_top = 220.0
+offset_right = 1904.0
+offset_bottom = 324.0
 texture = ExtResource("9_4ol2b")
 
 [node name="Anim" type="AnimationPlayer" parent="Bar/Input_indicator" unique_id=2090635946]

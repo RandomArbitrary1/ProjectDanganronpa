@@ -2,28 +2,28 @@
 
 [ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="1_ppmnc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvvi2"]
-bg_color = Color(8.061901e-07, 0.30009484, 0.27179542, 1)
-skew = Vector2(-0.12, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(6.3532593e-06, 0.70183647, 0.5295866, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3m0t"]
+bg_color = Color(3.3691526e-07, 0.6047522, 0.39664346, 1)
+skew = Vector2(-0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.5656066, 0.34134024, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 11
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppmnc"]
-bg_color = Color(1.504086e-08, 0.1433472, 0.12809554, 1)
-skew = Vector2(-0.12, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1.2032688e-06, 0.61798465, 0.51427865, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f33t6"]
+bg_color = Color(0.1606347, 0.5318641, 1.92523e-07, 1)
+skew = Vector2(-0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.5656066, 0.34134024, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -31,27 +31,27 @@ corner_radius_bottom_left = 5
 shadow_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10t4b"]
-bg_color = Color(0, 0.48773628, 0.444424, 1)
-skew = Vector2(-0.12, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0.8985179, 0.7794294, 1)
+bg_color = Color(0, 0.47843137, 0.2509804, 1)
+skew = Vector2(-0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.43137255, 0, 0)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 11
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xadh"]
-bg_color = Color(1.504086e-08, 0.1433472, 0.12809554, 1)
-skew = Vector2(-0.12, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1.2032688e-06, 0.61798465, 0.51427865, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_war4s"]
+bg_color = Color(0, 0.20042741, 0.097011246, 1)
+skew = Vector2(-0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.5656066, 0.34134024, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -60,7 +60,7 @@ shadow_size = 11
 
 [resource]
 default_font = ExtResource("1_ppmnc")
-Button/styles/hover = SubResource("StyleBoxFlat_qvvi2")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_ppmnc")
+Button/styles/hover = SubResource("StyleBoxFlat_d3m0t")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_f33t6")
 Button/styles/normal = SubResource("StyleBoxFlat_10t4b")
-Button/styles/pressed = SubResource("StyleBoxFlat_0xadh")
+Button/styles/pressed = SubResource("StyleBoxFlat_war4s")
