@@ -54,6 +54,7 @@ theme_override_font_sizes/font_size = 94
 text = "Case 1"
 
 [node name="revolver_cylinder" type="TextureRect" parent="pre_screen" unique_id=1577032863]
+self_modulate = Color(1, 1, 1, 0.41960785)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

@@ -82,9 +82,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1149.0
-offset_top = -149.0
-offset_right = -49.0
+offset_left = -1186.0
+offset_top = -163.33002
+offset_right = -86.0
 offset_bottom = -56.330017
 grow_horizontal = 0
 grow_vertical = 0
@@ -94,6 +94,7 @@ theme_override_font_sizes/font_size = 81
 value = 44.55
 
 [node name="RotatingLoadingObj" type="TextureRect" parent="." unique_id=2094538595]
+self_modulate = Color(1, 1, 1, 0.60784316)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

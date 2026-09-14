@@ -1,29 +1,24 @@
 [gd_resource type="Theme" format=3 uid="uid://brwp445mcr85m"]
 
 [ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="1_cxnql"]
-[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="1_larw6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxnql"]
 bg_color = Color(0.049977235, 0.16493666, 9.62615e-08, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-shadow_color = Color(0.40815163, 0.4293989, 0, 0.6)
-shadow_size = 25
+skew = Vector2(1, 0)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_larw6"]
-bg_color = Color(0.39866856, 0.7715345, 1.1551381e-06, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+bg_color = Color(6.738305e-07, 0.8123568, 0.601385, 1)
+skew = Vector2(1, 0)
+corner_detail = 1
 
 [resource]
 default_font = ExtResource("1_cxnql")
 ProgressBar/colors/font_color = Color(1, 1, 1, 1)
-ProgressBar/colors/font_outline_color = Color(0.38727167, 0.4039414, 0, 1)
+ProgressBar/colors/font_outline_color = Color(2.2862106e-07, 0.1373094, 0.19440272, 1)
 ProgressBar/constants/outline_size = 22
-ProgressBar/fonts/font = ExtResource("1_larw6")
+ProgressBar/fonts/font = ExtResource("1_cxnql")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_cxnql")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_larw6")

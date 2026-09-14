@@ -2,21 +2,14 @@
 	"dialog": [
 		{
 			"character": "shion",
-			"content": "The trial started, and I got a bad feeling about this...",
+			"content": "The class trial actually started, now who could have killed Shuuto?",
 			"expression": "sad",
 			"flags": [],
 			"type": "text"
 		},
 		{
-			"bullet": "lost_memory",
-			"file": "res://assets/data/case/truth_bullets.json",
-			"flags": [],
-			"show": true,
-			"type": "bullet"
-		},
-		{
-			"character": "ayuka",
-			"content": "Someone did it. That's just how this works.",
+			"character": "yuito",
+			"content": "How do we find out who did it? I have no clue what to do, I've never done this before",
 			"expression": "happy",
 			"flags": [],
 			"type": "text"
@@ -27,37 +20,37 @@
 			"type": "music"
 		},
 		{
-			"character": "yuito",
-			"content": "Shion! Pay attention! We're going to figure out who killed ??? The only thing we know is that they died upstairs.",
+			"character": "raito",
+			"content": "I would guess think like one. So to find the culprit you gotta ask yourself...",
+			"expression": "angry",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "If I was the culprit how would I have done it?",
 			"expression": "angry",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "nori",
-			"content": "I was in the library. Alone, unfortunately, so I don't have anyone to back that up.",
-			"expression": "sad",
+			"content": "That's a good start, but more importantly. Let's discuss a topic we can all think about.",
+			"expression": "happy",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "nori",
-			"content": "If we're doing this properly... Yuito, you were taking pictures near the dorms earlier, right? Did you get anything useful, or is that camera just for show?",
-			"expression": "sad",
-			"flags": [],
-			"type": "text"
-		},
-		{
-			"character": "yuito",
-			"content": "It's never \"just for show.\" I got a few shots of the hallway around that time. Nothing that screams \"murder weapon,\" but I can share them if it helps.",
+			"content": "Let's start with the murder weapon, that shouldn't be too hard.",
 			"expression": "happy",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "Huh, something sounded off just now. And I know just what it is! I am going to expose them, even if I'm gonna use the class trial for it!",
-			"expression": "sad",
+			"content": "The murder weapon... I think I know what it could've been!",
+			"expression": "angry",
 			"flags": [],
 			"type": "text"
 		}
