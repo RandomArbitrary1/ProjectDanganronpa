@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dndpi3bk3uqya" path="res://assets/overlays/handbook.tscn" id="4_a1us6"]
 
 [node name="UI" type="CanvasLayer" unique_id=1174636872]
+layer = -1
 
 [node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("1_3kmj4")]
 file = ExtResource("2_e3wc1")
