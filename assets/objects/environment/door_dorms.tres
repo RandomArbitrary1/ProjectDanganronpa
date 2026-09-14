@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cjivswehkk42t"]
 
-[ext_resource type="Texture2D" uid="uid://c7a5ru0ghlqqa" path="res://assets/objects/environment/door_plain_mint.png" id="1_tru7g"]
+[ext_resource type="Texture2D" uid="uid://dp5rp255781t8" path="res://assets/objects/environment/door_dorms.png" id="1_tru7g"]
 [ext_resource type="Texture2D" uid="uid://nf32mc8otijv" path="res://assets/objects/environment/door_wood_door_wood_spec.png" id="2_tq6sh"]
 
 [resource]

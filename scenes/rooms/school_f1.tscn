@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://chih2owintexd" path="res://assets/materials/boulder.tres" id="6_874sy"]
 [ext_resource type="PackedScene" uid="uid://h3rjrxx311b3" path="res://assets/objects/environment/Pillar.glb" id="7_f18fx"]
 [ext_resource type="PackedScene" uid="uid://1ovyqw7kh3vg" path="res://assets/objects/environment/pillar_arch.glb" id="8_q2iwl"]
-[ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/veins.tscn" id="8_vjcqf"]
+[ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/nature/vines.tscn" id="8_vjcqf"]
 [ext_resource type="PackedScene" uid="uid://cm3afrnihjese" path="res://assets/objects/environment/bench.glb" id="9_2q4xv"]
 [ext_resource type="PackedScene" uid="uid://cg4nn0n7re65s" path="res://assets/objects/environment/window.tscn" id="10_bhgla"]
 [ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="11_7peox"]
@@ -22,8 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door_wood.tscn" id="15_874sy"]
 [ext_resource type="PackedScene" uid="uid://b8lj5h1ffuwfe" path="res://assets/objects/environment/door_metal.tscn" id="16_2q4xv"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="16_ptc8j"]
+[ext_resource type="PackedScene" uid="uid://dv1ake1fdpghp" path="res://assets/objects/environment/nature/vines2.tscn" id="16_ukgdj"]
 [ext_resource type="PackedScene" uid="uid://d4foarusnml0q" path="res://assets/objects/environment/door_bathroom_women.tscn" id="16_vjcqf"]
 [ext_resource type="PackedScene" uid="uid://hyk6h6quwrrg" path="res://assets/objects/environment/door_bathroom_men.tscn" id="17_2q4xv"]
+[ext_resource type="PackedScene" uid="uid://bw4tdosbt8xyy" path="res://assets/objects/environment/nature/grass.tscn" id="17_d4q4h"]
 [ext_resource type="PackedScene" uid="uid://c2mfogvvyweax" path="res://assets/objects/environment/door_metal_double.tscn" id="19_c74on"]
 [ext_resource type="PackedScene" uid="uid://d14yg2oaj76fa" path="res://assets/objects/environment/door_gym.tscn" id="20_7peox"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_plain_mint_double.tscn" id="21_rw6mg"]
@@ -551,10 +553,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 11, 9.5)
 [node name="Misc" type="Node3D" parent="Props" unique_id=1960439688]
 
 [node name="Greenery" parent="Props/Misc" unique_id=257907977 instance=ExtResource("8_vjcqf")]
-transform = Transform3D(-1.7540988e-07, 2.94, 0, 1.7540988e-07, 0, -2.94, -4.0129104, -1.2851147e-07, -1.2851149e-07, 1.5171702, 2.9399989, 25.900826)
+transform = Transform3D(-1.7540988e-07, 2.94, 0, 1.7540988e-07, 0, -2.94, -4.0129104, -1.2851147e-07, -1.2851149e-07, 1.5171702, 3.081313, 25.900826)
 
 [node name="Greenery2" parent="Props/Misc" unique_id=1271037464 instance=ExtResource("8_vjcqf")]
-transform = Transform3D(5.2622966e-07, -2.94, 0, -1.7540988e-07, -2.246966e-14, -2.94, 4.0129104, 3.8553446e-07, -1.2851149e-07, 5.4903436, 2.939999, 23.887915)
+transform = Transform3D(5.2622966e-07, -2.94, 0, -1.7540988e-07, -2.246966e-14, -2.94, 4.0129104, 3.8553446e-07, -1.2851149e-07, 5.4903436, 3.0813131, 23.887915)
+
+[node name="Greenery3" parent="Props/Misc" unique_id=1844695084 instance=ExtResource("8_vjcqf")]
+transform = Transform3D(-8.026, -8.878553e-07, 3.880939e-14, 0, -2.5702298e-07, -5.88, 1.2118924e-06, -5.88, 2.5702298e-07, 7.490343, 10.939999, 19.497738)
+
+[node name="Greenery4" parent="Props/Misc" unique_id=387706518 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-4.0129104, -2.5702298e-07, 1.123483e-14, 0, -1.2851147e-07, -2.94, 3.5081976e-07, -2.94, 1.2851147e-07, 2, 12, 19.452503)
+
+[node name="Greenery10" parent="Props/Misc" unique_id=833541693 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-7.084477e-07, 2.9400003, -1.2851146e-07, 0, -1.2851149e-07, -2.9400003, -4.0129104, -4.358369e-07, 1.8340254e-14, -13.379381, 12, 16.969805)
+
+[node name="Greenery11" parent="Props/Misc" unique_id=1161639996 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-7.084477e-07, 2.9400003, -1.2851146e-07, 0, -1.2851149e-07, -2.9400003, -4.0129104, -4.358369e-07, 1.8340254e-14, -13.379381, 12, 9.819021)
+
+[node name="Greenery13" parent="Props/Misc" unique_id=1167760689 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-5.229754e-07, 2.352, -1.0280919e-07, 0, -1.0280919e-07, -2.352, -3.21, -3.8318944e-07, 1.6749743e-14, 1.6206188, 3.459242, 29.819021)
+
+[node name="Greenery14" parent="Props/Misc" unique_id=1014750996 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-3.660828e-07, 1.646, -7.1948946e-08, 0, -7.1948946e-08, -1.646, -2.247, -2.6816744e-07, 1.1721972e-14, 1.6206188, 3.710168, 23.819021)
+
+[node name="Greenery15" parent="Props/Misc" unique_id=25609584 instance=ExtResource("8_vjcqf")]
+transform = Transform3D(-1.7540988e-07, 2.94, 0, 1.7540988e-07, 0, -2.94, -4.0129104, -1.2851147e-07, -1.2851149e-07, 1.5171702, 3.6379266, -8.0991745)
+
+[node name="Greenery16" parent="Props/Misc" unique_id=61532871 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-3.660828e-07, 1.646, -7.1948946e-08, 0, -7.1948946e-08, -1.646, -2.247, -2.6816744e-07, 1.1721972e-14, 1.6206188, 3.710168, -5.180979)
+
+[node name="Greenery12" parent="Props/Misc" unique_id=1520307729 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-1.1114449e-06, 4.998, -2.1846952e-07, 0, -2.1846952e-07, -4.998, -6.822, -8.142776e-07, 3.5593205e-14, -13.379381, 11.282076, 6.816162)
+
+[node name="Greenery5" parent="Props/Misc" unique_id=93263021 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(-10.033, -1.1098191e-06, 4.8511735e-14, 0, -3.212787e-07, -7.35, 1.5149409e-06, -7.35, 3.212787e-07, -3, 10, 19.452503)
+
+[node name="Greenery6" parent="Props/Misc" unique_id=320681424 instance=ExtResource("8_vjcqf")]
+transform = Transform3D(8.026, 1.4019013e-06, -6.127905e-14, 9.063634e-22, -2.57023e-07, -5.88, -1.9135475e-06, 5.88, -2.57023e-07, 5.8365517, 10.939999, -0.41176224)
+
+[node name="Greenery7" parent="Props/Misc" unique_id=200484314 instance=ExtResource("16_ukgdj")]
+transform = Transform3D(6.02, 7.7106887e-07, -3.370449e-14, 0, -1.9276722e-07, -4.41, -1.0525703e-06, 4.41, -1.9276722e-07, 1.3268952, 11.219375, -0.36652756)
+
+[node name="Greenery8" parent="Props/Misc" unique_id=176014442 instance=ExtResource("8_vjcqf")]
+transform = Transform3D(-2.6314257e-07, 4.41, -1.9276722e-07, 0, -1.9276722e-07, -4.41, -6.02, -1.9276722e-07, 8.426123e-15, -13.48283, 11.369629, 13.903013)
+
+[node name="Greenery9" parent="Props/Misc" unique_id=1997370022 instance=ExtResource("8_vjcqf")]
+transform = Transform3D(-1.3157128e-07, 2.205, -9.638361e-08, 0, -9.638361e-08, -2.205, -3.01, -9.638361e-08, 4.2130614e-15, -13.48283, 12.460567, 4.2802362)
+
+[node name="grass" parent="Props/Misc" unique_id=988088890 instance=ExtResource("17_d4q4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.91424054, 5)
+
+[node name="grass3" parent="Props/Misc" unique_id=1095899900 instance=ExtResource("17_d4q4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.91424054, 27)
+
+[node name="grass2" parent="Props/Misc" unique_id=538521604 instance=ExtResource("17_d4q4h")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9, 0.91424054, 17)
 
 [node name="Doors" type="Node3D" parent="." unique_id=1188321147]
 
