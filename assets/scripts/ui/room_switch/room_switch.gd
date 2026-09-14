@@ -19,7 +19,7 @@ func switch(new_scene, scene_name):
 	anim.play("In")
 	await tween.finished
 	var tween2 = create_tween()
-	tween2.tween_method(func(v): fade.material.set_shader_parameter("factor", v), 0.0, 1.0, .5)
+	tween2.tween_method(func(v): fade.material.set_shader_parameter("factor", v), 0.0, 1.0, 1)
 	await anim.animation_finished
 	ResourceLoader.load_threaded_request(scene)
 	loading = true

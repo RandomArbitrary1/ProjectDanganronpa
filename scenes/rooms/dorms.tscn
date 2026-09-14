@@ -54,9 +54,9 @@ parameters/looping = true
 use_collision = true
 
 [node name="Room" type="CSGBox3D" parent="Building" unique_id=1001310750]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 7.552765, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.552765, 24.5)
 material_override = ExtResource("2_rq8la")
-size = Vector3(58, 14.10553, 135)
+size = Vector3(45, 14.10553, 46)
 
 [node name="Lobby" type="CSGBox3D" parent="Building" unique_id=1574343807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 22.5)
@@ -70,7 +70,7 @@ size = Vector3(45, 1, 130)
 material = ExtResource("4_58jb4")
 
 [node name="hole_door9" type="CSGBox3D" parent="Building" unique_id=212817240]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.896, 1.819, 20.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.896, 1.819, 22.5)
 operation = 2
 size = Vector3(1, 2.63, 2.78)
 material = ExtResource("3_too8b")
@@ -116,6 +116,6 @@ transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.2999
 [node name="Doors" type="Node3D" parent="." unique_id=2097886880]
 
 [node name="School F-1" parent="Doors" unique_id=1496385204 instance=ExtResource("7_toiou")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.799999, 1.82, 20.5)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.799999, 1.82, 22.5)
 script = ExtResource("8_too8b")
 room = "res://scenes/rooms/school_f1.tscn"
