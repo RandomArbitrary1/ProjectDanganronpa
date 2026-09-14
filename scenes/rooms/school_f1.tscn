@@ -17,12 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://c4lpn70qo4vof" path="res://assets/textures/characters/noriyuki/neutral.png" id="12_rw6mg"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="13_hve8u"]
 [ext_resource type="Texture2D" uid="uid://bkdehq7rn8s5b" path="res://assets/textures/characters/raito/neutral.png" id="13_ptc8j"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="14_cc471"]
-=======
 [ext_resource type="PackedScene" uid="uid://12knx4rajn02" path="res://assets/objects/environment/fancy_light.tscn" id="14_6s1tm"]
 [ext_resource type="PackedScene" uid="uid://hilwvo5a7k02" path="res://assets/objects/characters/player.tscn" id="14_cc471"]
->>>>>>> 8fed19629f63eab09d0e59f8988a6d037642a4a1
 [ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door_wood.tscn" id="15_874sy"]
 [ext_resource type="PackedScene" uid="uid://b8lj5h1ffuwfe" path="res://assets/objects/environment/door_metal.tscn" id="16_2q4xv"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="16_ptc8j"]
