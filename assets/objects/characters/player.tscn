@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://hilwvo5a7k02"]
+[gd_scene format=3 uid="uid://dw3px5y5bxf3k"]
 
 [ext_resource type="Script" uid="uid://cbcr8kscdb75r" path="res://assets/scripts/danilo_player.gd" id="1_fpkso"]
-[ext_resource type="Script" uid="uid://4rdujbx3foai" path="res://assets/scripts/player_cam_extras.gd" id="2_fpkso"]
+[ext_resource type="Script" path="res://assets/scripts/player_cam_extras.gd" id="2_fpkso"]
 [ext_resource type="AudioStream" uid="uid://gnp103hturad" path="res://assets/audio/sfx/player/step1.mp3" id="3_nruid"]
 [ext_resource type="AudioStream" uid="uid://n7ylvby1u3vr" path="res://assets/audio/sfx/player/step2.mp3" id="4_2hmy5"]
 [ext_resource type="AudioStream" uid="uid://da2wpm3cuc4ck" path="res://assets/audio/sfx/player/step3.mp3" id="5_ft6ms"]

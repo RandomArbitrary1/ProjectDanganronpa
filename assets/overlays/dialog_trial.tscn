@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b4ungt8kc6a2o" path="res://assets/ui/dialog/trial_display.png" id="4_sjoq3"]
 [ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="5_fo12k"]
 [ext_resource type="Texture2D" uid="uid://c44vgw3ysqktr" path="res://assets/ui/dialog/trial_display_mask.png" id="6_pkhgj"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="6_tcbm5"]
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="7_tcbm5"]
 [ext_resource type="Texture2D" uid="uid://ydrxal4ffqx7" path="res://assets/ui/dialog/dialog_nameplate_trial.png" id="8_bpbyh"]
 [ext_resource type="Texture2D" uid="uid://b21l86538w61x" path="res://assets/ui/dialog/Input_trial.png" id="9_4ol2b"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="9_fo12k"]
 [ext_resource type="Texture2D" uid="uid://c6fsx1vohihc" path="res://assets/ui/dialog/bullet_mask.png" id="10_sjoq3"]
 [ext_resource type="Texture2D" uid="uid://c5pttmtilex01" path="res://assets/textures/truth_bullets/strange_place.png" id="11_fo12k"]
 [ext_resource type="Texture2D" uid="uid://btdp0ubxsyvag" path="res://assets/ui/dialog/bullet_border.png" id="12_pkhgj"]
@@ -50,6 +52,16 @@ _data = {
 &"RESET": SubResource("Animation_0csof"),
 &"Spin": SubResource("Animation_ifhbr")
 }
+
+[sub_resource type="Theme" id="Theme_pkhgj"]
+default_font_size = 59
+Title/base_type = &"Label"
+Title/font_sizes/font_size = 50
+Title_outline/base_type = &"Label"
+Title_outline/colors/font_outline_color = Color(0.3892231, 0.32277426, 4.813075e-08, 1)
+Title_outline/constants/outline_size = 14
+Title_outline/font_sizes/font_size = 50
+Title_outline/fonts/font = ExtResource("9_fo12k")
 
 [sub_resource type="Animation" id="Animation_cqd2n"]
 length = 0.001
@@ -498,14 +510,21 @@ texture = ExtResource("4_sjoq3")
 
 [node name="Label" type="Label" parent="Bar/Display" unique_id=518244269]
 layout_mode = 0
-offset_right = 384.0
-offset_bottom = 112.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 396.0
+offset_bottom = 118.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("5_fo12k")
 theme_type_variation = &"Title"
 theme_override_colors/font_color = Color(1, 0.20784314, 0.20784314, 1)
+theme_override_colors/font_shadow_color = Color(0.39134926, 0.059929907, 7.219613e-08, 1)
+theme_override_constants/shadow_offset_x = -10
+theme_override_constants/shadow_offset_y = -5
+theme_override_fonts/font = ExtResource("6_tcbm5")
 theme_override_font_sizes/font_size = 70
 text = "CASE 01"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Mask" type="TextureRect" parent="Bar/Display" unique_id=96184157]
@@ -536,13 +555,15 @@ texture = ExtResource("8_bpbyh")
 
 [node name="full_name" type="Label" parent="Bar/Name" unique_id=1722338196]
 layout_mode = 0
-offset_left = 70.99999
-offset_top = 2.0000002
-offset_right = 519.0
-offset_bottom = 82.0
-rotation = 0.027925268
-theme = ExtResource("5_fo12k")
+offset_left = 82.0
+offset_top = -2.9999998
+offset_right = 530.0
+offset_bottom = 77.0
+theme = SubResource("Theme_pkhgj")
 theme_type_variation = &"Title"
+theme_override_colors/font_shadow_color = Color(0.62335485, 0, 0.078234665, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
 text = "Name"
 vertical_alignment = 1
 
@@ -554,16 +575,17 @@ offset_right = 1839.5251
 offset_bottom = 314.86902
 theme = ExtResource("5_fo12k")
 bbcode_enabled = true
+text = "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?"
 scroll_active = false
 autowrap_mode = 2
 
 [node name="Input_indicator" type="TextureRect" parent="Bar" unique_id=403398415]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1824.0
-offset_top = 232.0
-offset_right = 1928.0
-offset_bottom = 328.0
+offset_left = 1800.0
+offset_top = 220.0
+offset_right = 1904.0
+offset_bottom = 324.0
 texture = ExtResource("9_4ol2b")
 
 [node name="Anim" type="AnimationPlayer" parent="Bar/Input_indicator" unique_id=2090635946]

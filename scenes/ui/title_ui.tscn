@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://brvr6tpasajf1" path="res://assets/scripts/ui/title/title_ui.gd" id="1_4s1lg"]
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="1_5y5n0"]
-[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="3_kjnyq"]
-[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/RobotoMono-Regular.ttf" id="4_ufw8e"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="3_kjnyq"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="4_ufw8e"]
 [ext_resource type="AudioStream" uid="uid://cjr0c11lnhgqg" path="res://assets/audio/sfx/ui/confirm.mp3" id="5_iualr"]
 [ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/themes/menu_theme.tres" id="6_iualr"]
 
@@ -155,6 +155,7 @@ mouse_filter = 2
 script = ExtResource("1_4s1lg")
 
 [node name="revolver" type="TextureRect" parent="." unique_id=302648570]
+self_modulate = Color(1, 1, 1, 0.3882353)
 layout_mode = 0
 offset_left = 1319.0
 offset_top = 485.0
@@ -184,23 +185,6 @@ text = "PROJECT: DANGANRONPA"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=468714000]
 libraries/ = SubResource("AnimationLibrary_pgqlf")
-
-[node name="press_label" type="Label" parent="." unique_id=706478272]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -596.0
-offset_top = -209.0
-offset_right = 596.0
-offset_bottom = -114.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_ufw8e")
-theme_override_font_sizes/font_size = 71
-text = "Press any button to continue"
 
 [node name="confirm_sfx" type="AudioStreamPlayer" parent="." unique_id=114964799]
 stream = ExtResource("5_iualr")
@@ -291,6 +275,23 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("6_iualr")
 theme_override_font_sizes/font_size = 55
 text = "Quit"
+
+[node name="press_label" type="Label" parent="." unique_id=706478272]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -596.0
+offset_top = -209.0
+offset_right = 596.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_ufw8e")
+theme_override_font_sizes/font_size = 71
+text = "Press any button to continue"
 
 [connection signal="pressed" from="Panel/StartNewGame" to="." method="_on_start_new_game_pressed"]
 [connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]

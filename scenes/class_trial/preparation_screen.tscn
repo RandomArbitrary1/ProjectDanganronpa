@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csakg4jghf1bk" path="res://assets/textures/ui/bg_tiles1.png" id="2_10t4b"]
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="2_rl4mh"]
 [ext_resource type="Texture2D" uid="uid://dxa3hksnqadhc" path="res://assets/textures/ui/class_trial/preparation_decal1.png" id="3_yuoqm"]
-[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/Newtown.ttf" id="4_31sjx"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="4_31sjx"]
 [ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/themes/menu_theme.tres" id="4_vwv6o"]
 
 [node name="Preparation" type="Control" unique_id=383539966]
@@ -54,15 +54,16 @@ theme_override_font_sizes/font_size = 94
 text = "Case 1"
 
 [node name="revolver_cylinder" type="TextureRect" parent="pre_screen" unique_id=1577032863]
+self_modulate = Color(1, 0, 0, 0.41960785)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -598.0
+offset_left = -538.0
 offset_top = -550.5
-offset_right = 503.0
+offset_right = 563.0
 offset_bottom = 550.5
 grow_horizontal = 0
 grow_vertical = 2

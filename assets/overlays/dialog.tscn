@@ -554,12 +554,13 @@ texture = ExtResource("7_fm551")
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 56.0
-offset_right = 1736.0
-offset_bottom = 264.0
+offset_left = 108.0
+offset_top = 30.0
+offset_right = 1780.0
+offset_bottom = 277.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
+text = "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?"
 scroll_active = false
 autowrap_mode = 2
 

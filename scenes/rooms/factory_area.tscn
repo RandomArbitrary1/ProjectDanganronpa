@@ -30,6 +30,11 @@ ssao_enabled = true
 ssao_radius = 16.0
 ssao_intensity = 3.0
 glow_enabled = true
+fog_light_color = Color(0.38431373, 0.5882353, 0.8039216, 1)
+fog_density = 0.005
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.7882353, 1, 0.81960785, 1)
+volumetric_fog_emission = Color(0, 0, 0.1254902, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g6qi"]
 albedo_color = Color(0.10747976, 0.10747973, 0.10747973, 1)
@@ -120,6 +125,13 @@ spot_angle = 64.51
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=1648935635]
 transform = Transform3D(-0.4108112, 0.8836129, 0.22463872, 0.49582136, 0.00975482, 0.86836976, 0.7651113, 0.4681167, -0.44212148, 31.623531, 21.51459, -33.749924)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 50.0
+spot_angle = 64.51
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights" unique_id=2130150351]
+transform = Transform3D(-0.41665345, -0.849145, 0.3245809, 0.69413537, -0.06661859, 0.71675533, -0.587006, 0.52394164, 0.61717844, 54.62353, 21.51459, -30.749924)
 light_energy = 3.0
 shadow_enabled = true
 spot_range = 50.0
