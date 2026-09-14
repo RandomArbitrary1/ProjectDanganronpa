@@ -1,16 +1,17 @@
 extends ColorRect
 
-@onready var anim = self.get_node("Anim")
-@onready var tabs = self.get_node("Screen/Tabs/List")
+@onready var anim : AnimationPlayer = $Anim
+@onready var tabs = $Screen/Tabs/List
+@onready var lists = $Screen/Lists
 
 var original_mouse_mode = Input.MOUSE_MODE_HIDDEN
 var open = false
 var tab = 0
-var inside_tab = Vector2(0,0)
-@onready var current_tab_node = self.get_node("Screen/List")
+var inside_tab = Vector2.ZERO
+@onready var current_tab_node = lists.get_node("System")
 
-var x_range = 4
-var y_range = 3
+var x_range = 3
+var y_range = 2
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("handbook"):
@@ -43,11 +44,13 @@ func _process(delta: float) -> void:
 				tab += 1
 			else:
 				tab = 0
+			switch_tab()
 		if Input.is_action_just_pressed("Previous"):
 			if tab > 0:
 				tab -= 1
 			else:
 				tab = 5
+			switch_tab()
 				
 		for i in tabs.get_child_count():
 			var current = tabs.get_child(i)
@@ -60,6 +63,7 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed("LMB"):
 				if Rect2(current.global_position, current.size).has_point(get_global_mouse_position()):
 					tab = i
+					switch_tab()
 		
 		if Input.is_action_just_pressed("Left"):
 			if inside_tab.x > 0:
@@ -100,3 +104,14 @@ func _input(event: InputEvent) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif event is InputEventJoypadButton or event is InputEventKey:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+func switch_tab():
+	inside_tab = Vector2.ZERO
+	current_tab_node = lists.get_child(tab)
+	x_range = current_tab_node.get_node("Items").columns
+	y_range = int(current_tab_node.get_node("Items").get_child_count() / x_range)
+	for i in lists.get_children():
+		if i.get_index() == tab:
+			i.visible = true
+		else:
+			i.visible = false

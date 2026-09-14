@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://12knx4rajn02"]
+
+[ext_resource type="PackedScene" uid="uid://b8cds47u6e0cj" path="res://assets/objects/environment/fancy_light.glb" id="1_705j6"]
+
+[node name="fancy_light" unique_id=958686824 instance=ExtResource("1_705j6")]
+
+[node name="Plane_001" parent="." index="0" unique_id=699101833]
+transform = Transform3D(-3, 0, -4.5298742e-07, 0, 3, 0, 4.5298742e-07, 0, -3, 0, 0, 0)
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="." index="1" unique_id=1603963636]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.85, -0.07)
+light_energy = 5.0
+light_size = 1.0
+shadow_enabled = true
+shadow_blur = 5.0
+spot_range = 25.0
+spot_angle = 90.0

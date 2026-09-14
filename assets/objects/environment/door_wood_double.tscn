@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://csuvvkrekwpls"]
+[gd_scene format=4 uid="uid://blytsckc2oute"]
 
-[ext_resource type="Material" uid="uid://cjivswehkk42t" path="res://assets/objects/environment/door_dorms.tres" id="1_v4nr8"]
+[ext_resource type="Material" uid="uid://bqb8ig24gtveo" path="res://assets/objects/environment/door_wood.tres" id="1_fjhwr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osu4y"]
 
@@ -37,12 +37,12 @@ shadow_mesh = SubResource("ArrayMesh_gdysu")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5c0lw"]
 size = Vector3(2.8, 2.64, 0.35)
 
-[node name="door_bathroom_women" type="Node3D" unique_id=1496385204]
+[node name="door_wood_double" type="Node3D" unique_id=1496385204]
 
 [node name="Cube" type="MeshInstance3D" parent="." unique_id=1624515407]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("ArrayMesh_lsos1")
-surface_material_override/0 = ExtResource("1_v4nr8")
+surface_material_override/0 = ExtResource("1_fjhwr")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1775471776]
 
