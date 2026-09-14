@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c4n2n6sir6n6o"]
+
+[ext_resource type="Texture2D" uid="uid://v1ftk5p68q4y" path="res://assets/textures/environment/Nature/vines1.png" id="1_q1p4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81r6p"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_q1p4q")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yfeh8"]
+material = SubResource("StandardMaterial3D_81r6p")
+size = Vector2(1.2, 1)
+
+[node name="Greenery" type="MeshInstance3D" unique_id=257907977]
+transform = Transform3D(4.0129104, 0, 0, 0, -1.2851149e-07, -2.94, 0, 2.94, -1.2851149e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_yfeh8")
