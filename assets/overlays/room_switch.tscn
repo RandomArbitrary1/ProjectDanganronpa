@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://c0q3ss7l558p8"]
+
+[ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="1_04yyt"]
+[ext_resource type="Script" uid="uid://c8f4k35tkkknp" path="res://assets/scripts/ui/room_switch/room_switch.gd" id="1_k6gnl"]
+[ext_resource type="Shader" uid="uid://cm4kfrjm8ooe7" path="res://assets/ui/shaders/colorize.gdshader" id="2_vvkiw"]
+[ext_resource type="Shader" uid="uid://dqmj5qxv0qeix" path="res://assets/ui/shaders/dissolve.gdshader" id="3_cfs3j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4tp24"]
+shader = ExtResource("2_vvkiw")
+shader_parameter/tint_strength = 0.0
+shader_parameter/tint_color = Color(0.7224602, 0.00012167454, 0.6231148, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_too8b"]
+noise_type = 0
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_toiou"]
+width = 1920
+height = 1080
+noise = SubResource("FastNoiseLite_too8b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pqfr"]
+shader = ExtResource("3_cfs3j")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_toiou")
+
+[sub_resource type="Animation" id="Animation_k6gnl"]
+resource_name = "In"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene_name:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vdlmo"]
+resource_name = "Out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_04yyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene_name:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6gnl"]
+_data = {
+&"In": SubResource("Animation_k6gnl"),
+&"Out": SubResource("Animation_vdlmo"),
+&"RESET": SubResource("Animation_04yyt")
+}
+
+[node name="RoomSwitch" type="Control" unique_id=1467543798]
+process_mode = 3
+visible = false
+top_level = true
+z_index = 4095
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k6gnl")
+
+[node name="Tint" type="ColorRect" parent="." unique_id=1520407103]
+material = SubResource("ShaderMaterial_4tp24")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fade" type="ColorRect" parent="." unique_id=803677515]
+material = SubResource("ShaderMaterial_5pqfr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=400677340]
+libraries/ = SubResource("AnimationLibrary_k6gnl")
+
+[node name="Scene_name" type="Label" parent="." unique_id=1816860780]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_04yyt")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 70
+text = "Room"
+horizontal_alignment = 1
+vertical_alignment = 1

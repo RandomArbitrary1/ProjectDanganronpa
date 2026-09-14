@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://jyol1e6wnxf2"]
+
+[ext_resource type="AudioStream" uid="uid://bw0tm8qc374yk" path="res://assets/audio/music/happy_music.mp3" id="1_jhl4e"]
+[ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="2_rq8la"]
+[ext_resource type="Material" uid="uid://qt7tfqir33l4" path="res://assets/materials/wall2.tres" id="3_too8b"]
+[ext_resource type="Material" uid="uid://bxtk3l80bifdr" path="res://assets/materials/floor2.tres" id="4_58jb4"]
+[ext_resource type="PackedScene" uid="uid://hilwvo5a7k02" path="res://assets/objects/characters/player.tscn" id="5_58jb4"]
+[ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="6_cb1qk"]
+[ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_plain_mint_double.tscn" id="7_toiou"]
+[ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="8_too8b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4yvdn"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3jcxg"]
+sky_material = SubResource("ProceduralSkyMaterial_4yvdn")
+
+[sub_resource type="Environment" id="Environment_dwiqq"]
+background_mode = 2
+sky = SubResource("Sky_3jcxg")
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 3.0
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 0.8
+glow_hdr_threshold = 1.5
+glow_hdr_scale = 1.0
+glow_hdr_luminance_cap = 50.0
+adjustment_contrast = 1.2
+
+[node name="Node3D" type="Node3D" unique_id=1283156624]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1522784154]
+transform = Transform3D(0.9100337, 0.31040776, -0.27474657, 0.29211035, -0.009925735, 0.95633316, 0.29412615, -0.9505517, -0.099706076, 0, 6.4445763, 9.378704)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616485738]
+environment = SubResource("Environment_dwiqq")
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1154478521]
+process_mode = 3
+stream = ExtResource("1_jhl4e")
+volume_db = -3.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="Building" type="CSGCombiner3D" parent="." unique_id=145541054]
+use_collision = true
+
+[node name="Room" type="CSGBox3D" parent="Building" unique_id=1001310750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.552765, 24.5)
+material_override = ExtResource("2_rq8la")
+size = Vector3(45, 14.10553, 46)
+
+[node name="Lobby" type="CSGBox3D" parent="Building" unique_id=1574343807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 22.5)
+operation = 2
+size = Vector3(19, 4, 20)
+material = ExtResource("3_too8b")
+
+[node name="Floor" type="CSGBox3D" parent="Building" unique_id=653213500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 7)
+size = Vector3(45, 1, 130)
+material = ExtResource("4_58jb4")
+
+[node name="hole_door9" type="CSGBox3D" parent="Building" unique_id=212817240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.896, 1.819, 22.5)
+operation = 2
+size = Vector3(1, 2.63, 2.78)
+material = ExtResource("3_too8b")
+
+[node name="DaniloPlayer" parent="." unique_id=806081659 instance=ExtResource("5_58jb4")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 2, 22)
+
+[node name="Props" type="Node3D" parent="." unique_id=647337532]
+
+[node name="Structure" type="Node3D" parent="Props" unique_id=1805729853]
+
+[node name="Objects" type="Node3D" parent="Props" unique_id=760006839]
+
+[node name="ceiling_light" parent="Props/Objects" unique_id=1966507917 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 5.5, 4.35, 28)
+
+[node name="ceiling_light2" parent="Props/Objects" unique_id=351056510 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 5.5, 4.35, 23)
+
+[node name="ceiling_light3" parent="Props/Objects" unique_id=923331270 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 5.5, 4.35, 18)
+
+[node name="ceiling_light4" parent="Props/Objects" unique_id=1870994681 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 4.35, 28)
+
+[node name="ceiling_light5" parent="Props/Objects" unique_id=844902690 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 4.35, 23)
+
+[node name="ceiling_light6" parent="Props/Objects" unique_id=1648517476 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 4.35, 18)
+
+[node name="ceiling_light7" parent="Props/Objects" unique_id=519494358 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -6.5, 4.35, 28)
+
+[node name="ceiling_light8" parent="Props/Objects" unique_id=1714508444 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -6.5, 4.35, 23)
+
+[node name="ceiling_light9" parent="Props/Objects" unique_id=1707044342 instance=ExtResource("6_cb1qk")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -6.5, 4.35, 18)
+
+[node name="Misc" type="Node3D" parent="Props" unique_id=821061406]
+
+[node name="Doors" type="Node3D" parent="." unique_id=2097886880]
+
+[node name="School F-1" parent="Doors" unique_id=1496385204 instance=ExtResource("7_toiou")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.799999, 1.82, 22.5)
+script = ExtResource("8_too8b")
+room = "res://scenes/rooms/school_f1.tscn"

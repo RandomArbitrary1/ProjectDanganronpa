@@ -149,11 +149,21 @@ func _process(delta: float) -> void:
 		current_hover_check = null
 		base_gui.get_node("Hover_label/Anim").play("Close")
 	if current_hover and Input.is_action_just_pressed("Progress"):
-		var name_send = current_hover.name
-		current_hover = null
-		current_hover_check = null
-		base_gui.get_node("Hover_label/Anim").play("Close")
-		run(name_send)
+		if current_hover_type == "character":
+			var name_send = current_hover.name
+			current_hover = null
+			current_hover_check = null
+			base_gui.get_node("Hover_label/Anim").play("Close")
+			run(name_send)
+		elif current_hover_type == "door" and current_hover.room != "":
+			var scene = current_hover.room
+			var scene_name = current_hover.name
+			current_hover = null
+			current_hover_check = null
+			RoomSwitch.switch(scene, scene_name)
+			
+
+		
 		
 func run(object):
 	if object == "raito":
