@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dp6rhqwkpwn0b"]
+
+[ext_resource type="Texture2D" uid="uid://bh5v40vyifmi" path="res://assets/objects/environment/furniture/trash_can_trash_can.png" id="1_66e13"]
+[ext_resource type="Texture2D" uid="uid://44oh7wcr0gmt" path="res://assets/objects/environment/furniture/trash_can_trash_can_spec.png" id="2_j0uio"]
+
+[resource]
+resource_name = "trash_can"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_66e13")
+metallic = 1.0
+metallic_texture = ExtResource("2_j0uio")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_j0uio")
+roughness_texture_channel = 1
+metadata/_gltf_primary_texture_coord = 0

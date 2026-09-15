@@ -6,6 +6,7 @@
 default_font_size = 59
 Title/base_type = &"Label"
 Title/font_sizes/font_size = 50
+Title/fonts/font = ExtResource("2_omlnh")
 Title_outline/base_type = &"Label"
 Title_outline/colors/font_outline_color = Color(0.3892231, 0.32277426, 4.813075e-08, 1)
 Title_outline/constants/outline_size = 14
