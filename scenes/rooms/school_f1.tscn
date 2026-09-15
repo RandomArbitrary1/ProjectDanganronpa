@@ -30,7 +30,6 @@
 [ext_resource type="PackedScene" uid="uid://d14yg2oaj76fa" path="res://assets/objects/environment/door_gym.tscn" id="20_7peox"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_plain_mint_double.tscn" id="21_rw6mg"]
 [ext_resource type="PackedScene" uid="uid://blytsckc2oute" path="res://assets/objects/environment/door_wood_double.tscn" id="23_cc471"]
-[ext_resource type="Shader" uid="uid://cp0musyiedjmj" path="res://assets/ui/shaders/flare.gdshader" id="30_osbx0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1pa7i"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -180,15 +179,6 @@ _data = {
 &"Leave": SubResource("Animation_jn645"),
 &"RESET": SubResource("Animation_qvc4m")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0rf6"]
-shader = ExtResource("30_osbx0")
-shader_parameter/Blur = 2.5
-shader_parameter/FlareThreshold = 0.0
-shader_parameter/Flares = 0
-shader_parameter/FlareSpacing = 0.0
-shader_parameter/Intensity = 0.0
-shader_parameter/Saturation_ = 0.0
 
 [node name="SchoolPart" type="Node3D" unique_id=809493090]
 
@@ -713,15 +703,6 @@ shape = SubResource("BoxShape3D_4sxbn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/raito" unique_id=465620281]
 libraries/ = SubResource("AnimationLibrary_2dtbk")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1091901596]
-material = SubResource("ShaderMaterial_p0rf6")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
 
 [node name="DaniloPlayer" parent="." unique_id=806081659 instance=ExtResource("14_cc471")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 11, 2, 9)

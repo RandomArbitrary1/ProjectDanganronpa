@@ -22,7 +22,7 @@ func _ready() -> void:
 		tab_data.append({"offset":i.get_node("Items").position.y,"size":size_y+4})
 
 func _process(delta: float) -> void:
-	self.self_modulate = self.self_modulate.lerp(tabs.get_child(tab).self_modulate*Color(.5,.5,.5), 20*delta)
+	self.self_modulate = self.self_modulate.lerp((tabs.get_child(tab).self_modulate+Color(0,0,0,1))*Color(.5,.5,.5), 20*delta)
 	if Input.is_action_just_pressed("handbook"):
 		if open:
 			Input.mouse_mode = original_mouse_mode
