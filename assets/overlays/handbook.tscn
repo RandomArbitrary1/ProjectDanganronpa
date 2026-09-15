@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8undfavd5s5k" path="res://assets/ui/handbook/handbook_tab.png" id="2_e6f8r"]
 [ext_resource type="Texture2D" uid="uid://cm8qrgt074qpj" path="res://assets/ui/handbook/handbook_navigation.png" id="2_vmyeq"]
 [ext_resource type="Texture2D" uid="uid://dkvenxphpxvee" path="res://assets/ui/handbook/handbook_item.png" id="3_5gwyl"]
+[ext_resource type="Shader" uid="uid://p2u833q6sypj" path="res://assets/ui/shaders/handbook_bg.gdshader" id="3_fd50p"]
 [ext_resource type="Texture2D" uid="uid://d1f68oltrlvpg" path="res://assets/ui/handbook/handbook_tab_active.png" id="3_ptt60"]
 [ext_resource type="Texture2D" uid="uid://bkkk0qho2jwyk" path="res://assets/ui/handbook/handbook_item_outline.png" id="4_fd50p"]
 [ext_resource type="Texture2D" uid="uid://ctndld16hh7c8" path="res://assets/ui/handbook/handbook_border.png" id="6_k6wq8"]
@@ -13,6 +14,31 @@
 [ext_resource type="Texture2D" uid="uid://c8v3xdnow2b6e" path="res://assets/ui/handbook/icons/report.png" id="9_20njh"]
 [ext_resource type="Texture2D" uid="uid://dwpook7kjto3y" path="res://assets/ui/handbook/icons/rules.png" id="10_36iju"]
 [ext_resource type="Texture2D" uid="uid://7bbquld8ftrr" path="res://assets/ui/handbook/icons/system.png" id="11_678mn"]
+
+[sub_resource type="Gradient" id="Gradient_fd50p"]
+colors = PackedColorArray(0.20224464, 0.20224461, 0.20224461, 1, 0.48648673, 0.4864868, 0.48648667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4tp24"]
+gradient = SubResource("Gradient_fd50p")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_mi5cs"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5duwa"]
+gradient = SubResource("Gradient_mi5cs")
+width = 200
+height = 200
+fill_from = Vector2(0.3037037, 0.8574074)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4tp24"]
+shader = ExtResource("3_fd50p")
+shader_parameter/gradient = SubResource("GradientTexture2D_5duwa")
+shader_parameter/circle_color = Color(0, 0, 0, 0.39215687)
+shader_parameter/circle_multiplier = 20.0
+shader_parameter/speed = 1.0
+shader_parameter/direction = Vector2(2, 1)
+shader_parameter/rotation = Transform2D(1, -1, 1, 1, 0, 0)
 
 [sub_resource type="Animation" id="Animation_k6wq8"]
 resource_name = "Close"
@@ -176,7 +202,7 @@ _data = {
 &"RESET": SubResource("Animation_q1qae")
 }
 
-[node name="Handbook" type="ColorRect" unique_id=701086383]
+[node name="Handbook" type="TextureRect" unique_id=1023202368]
 process_mode = 3
 visible = false
 anchors_preset = 15
@@ -186,7 +212,7 @@ offset_bottom = 0.0009765625
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_4tp24")
 script = ExtResource("1_3e3ew")
 
 [node name="Border" type="TextureRect" parent="." unique_id=1322651524]
@@ -202,6 +228,19 @@ offset_bottom = 47.99951
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_k6wq8")
+
+[node name="Background" type="ColorRect" parent="." unique_id=593729426]
+material = SubResource("ShaderMaterial_4tp24")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.000977
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Screen" type="Control" parent="." unique_id=20491013]
 anchors_preset = 0
@@ -225,6 +264,7 @@ offset_bottom = 1040.0
 
 [node name="Map" type="Control" parent="Screen/Lists" unique_id=924425554]
 visible = false
+clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
@@ -246,6 +286,7 @@ columns = 3
 
 [node name="Bullets" type="Control" parent="Screen/Lists" unique_id=1058899685]
 visible = false
+clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
@@ -267,6 +308,7 @@ columns = 3
 
 [node name="Gifts" type="Control" parent="Screen/Lists" unique_id=2132885470]
 visible = false
+clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
@@ -627,8 +669,357 @@ patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
 
+[node name="Item13" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1132256818]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item13" unique_id=897824455]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item14" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1747914862]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item14" unique_id=1402064472]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item15" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=316354334]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item15" unique_id=750326116]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item16" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=2145353934]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item16" unique_id=587898436]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item17" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1463055027]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item17" unique_id=1795024873]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item18" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=384133369]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item18" unique_id=548509715]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item19" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=228475928]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item19" unique_id=900158978]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item20" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=901081926]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item20" unique_id=2055356429]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item21" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=879950017]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item21" unique_id=1658292173]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item22" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=469902904]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item22" unique_id=2002409119]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item23" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1715021960]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item23" unique_id=1846195919]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item24" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=173388700]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item24" unique_id=777997778]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
 [node name="Report" type="Control" parent="Screen/Lists" unique_id=1624073679]
 visible = false
+clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
@@ -650,6 +1041,7 @@ columns = 3
 
 [node name="Rules" type="Control" parent="Screen/Lists" unique_id=1656216176]
 visible = false
+clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
@@ -671,6 +1063,7 @@ columns = 3
 
 [node name="System" type="Control" parent="Screen/Lists" unique_id=285997411]
 visible = false
+clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
