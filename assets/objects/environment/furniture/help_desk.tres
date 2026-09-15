@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c8am5ebdxmacs"]
+
+[ext_resource type="Texture2D" uid="uid://c23l7otkysnc5" path="res://assets/objects/environment/furniture/help_desk_help_desk.png" id="1_1pkak"]
+[ext_resource type="Texture2D" uid="uid://l3eallcyux3y" path="res://assets/objects/environment/furniture/help_desk_help_desk_spec.png" id="2_xi14f"]
+
+[resource]
+resource_name = "help_desk"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_1pkak")
+metallic = 1.0
+metallic_texture = ExtResource("2_xi14f")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_xi14f")
+roughness_texture_channel = 1
+metadata/_gltf_primary_texture_coord = 0

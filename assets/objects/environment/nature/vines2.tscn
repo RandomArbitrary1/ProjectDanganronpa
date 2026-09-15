@@ -9,6 +9,7 @@ alpha_antialiasing_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_n68rf")
+texture_repeat = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yfeh8"]
 material = SubResource("StandardMaterial3D_81r6p")

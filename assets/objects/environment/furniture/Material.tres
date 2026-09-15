@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://db36b33yplb0s"]
+
+[ext_resource type="Texture2D" uid="uid://c2vddsay462k2" path="res://assets/objects/environment/furniture/bench_Bench.png" id="1_oq125"]
+[ext_resource type="Texture2D" uid="uid://dxe2f247m2cgv" path="res://assets/objects/environment/furniture/bench_Bench_metalicness.png" id="2_le5ca"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_oq125")
+metallic = 1.0
+metallic_texture = ExtResource("2_le5ca")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_le5ca")
+roughness_texture_channel = 1

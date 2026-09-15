@@ -10,6 +10,7 @@ alpha_antialiasing_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_w4tmt")
+texture_repeat = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yfeh8"]
 lightmap_size_hint = Vector2i(8, 7)
@@ -23,6 +24,7 @@ alpha_antialiasing_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("2_61oey")
+texture_repeat = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hc5ue"]
 lightmap_size_hint = Vector2i(8, 7)
