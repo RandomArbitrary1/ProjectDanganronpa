@@ -518,7 +518,6 @@ autoplay = &"Loop"
 speed_scale = 0.2
 
 [node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
-self_modulate = Color(1, 0.8235294, 0.20392157, 1)
 layout_mode = 0
 offset_top = -80.0
 offset_right = 256.0
@@ -537,19 +536,19 @@ text = "Name"
 vertical_alignment = 1
 
 [node name="Decoration" type="TextureRect" parent="Bar" unique_id=1794326463]
-self_modulate = Color(1, 0.8235294, 0.20392157, 1)
 layout_mode = 0
 offset_left = -360.0
+offset_top = -11.0
 offset_right = 1920.0
-offset_bottom = 280.0
+offset_bottom = 279.0
 texture = ExtResource("2_5o6qf")
 
 [node name="Icon" type="TextureRect" parent="Bar/Decoration" unique_id=855212044]
 layout_mode = 0
-offset_left = 2192.0
-offset_top = 208.0
-offset_right = 2256.0
-offset_bottom = 272.0
+offset_left = 2191.0
+offset_top = 219.0
+offset_right = 2255.0
+offset_bottom = 283.0
 texture = ExtResource("7_fm551")
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
@@ -585,8 +584,8 @@ clip_children = 2
 layout_mode = 1
 offset_left = 1240.0
 offset_top = -456.0
-offset_right = 1896.0005
-offset_bottom = -64.0
+offset_right = 1916.0
+offset_bottom = -44.0
 texture = ExtResource("9_jgkrk")
 flip_h = true
 

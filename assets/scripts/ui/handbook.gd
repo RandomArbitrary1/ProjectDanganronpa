@@ -17,9 +17,13 @@ var y_range = 2
 func _ready() -> void:
 	for i in lists.get_children():
 		var size_y = 1
+		var fit = 1
 		if i.get_node("Items").get_child_count() > 0:
 			size_y = i.get_node("Items").get_child(1).custom_minimum_size.y
-		tab_data.append({"offset":i.get_node("Items").position.y,"size":size_y+4})
+			fit = ceil(872/size_y/2)
+			print(fit)
+
+		tab_data.append({"offset":i.get_node("Items").position.y,"size":size_y+4,"fit":fit})
 
 func _process(delta: float) -> void:
 	self.self_modulate = self.self_modulate.lerp((tabs.get_child(tab).self_modulate+Color(0,0,0,1))*Color(.5,.5,.5), 20*delta)
@@ -101,12 +105,16 @@ func _process(delta: float) -> void:
 				i.get_node("Outline").modulate.a = lerp(i.get_node("Outline").modulate.a, 1.0, 20*delta)
 			else:
 				i.get_node("Outline").modulate.a = lerp(i.get_node("Outline").modulate.a, 0.0, 20*delta)
-			if Input.is_action_just_pressed("LMB"):
-				if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
+			if tab == 1 or tab == 2 or tab == 3:
+				if Input.is_action_just_pressed("LMB") and Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
+					inside_tab.x = int(i.get_index() % x_range)
+					inside_tab.y = int(i.get_index() / x_range)
+			else:
+				if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()) and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 					inside_tab.x = int(i.get_index() % x_range)
 					inside_tab.y = int(i.get_index() / x_range)
 
-	current_tab_node.get_node("Items").position.y = move_toward(current_tab_node.get_node("Items").position.y, clamp(tab_data[tab].offset-(inside_tab.y-1)*tab_data[tab].size,tab_data[tab].size-tab_data[tab].size*(y_range-2)+50, tab_data[tab].offset), 1600*delta)
+	current_tab_node.get_node("Items").position.y = move_toward(current_tab_node.get_node("Items").position.y, clamp(tab_data[tab].offset-(inside_tab.y-(tab_data[tab].fit-1))*tab_data[tab].size,tab_data[tab].size-tab_data[tab].size*(y_range-tab_data[tab].fit)+(tab_data[tab].size/5), tab_data[tab].offset), 1600*delta)
 
 
 func _input(event: InputEvent) -> void:

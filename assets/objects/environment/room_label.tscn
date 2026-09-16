@@ -1,0 +1,61 @@
+[gd_scene format=4 uid="uid://b7kll5v7wnx3"]
+
+[ext_resource type="Material" uid="uid://buiyqtwdt5xxt" path="res://assets/objects/environment/room_label.tres" id="1_jmcis"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="2_wxw4p"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_choqg"]
+_surfaces = [{
+"aabb": AABB(-0.26521826, -3.211833e-08, -1, 0.5304365, 1e-05, 1.1756169),
+"format": 34896613377,
+"index_count": 27,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAQAEAAUAAQAGAAQAAQADAAYABAAGAAcABgADAAgACAADAAkABgAIAAoA"),
+"name": "room_label",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 11,
+"vertex_data": PackedByteArray("AACkASs9AAD//wAA//8AAAAApAH//wAAfRBnARoiAACB7z0AGiIAAP//AAArPQAA/5+dAAYDAADazXEA7g4AAP9fBwEGAwAAJDIzAe4OAAD/f9IAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rcy86"]
+resource_name = "room_label_Plane"
+_surfaces = [{
+"aabb": AABB(-0.26521826, -3.211833e-08, -1, 0.5304365, 1e-05, 1.1756169),
+"attribute_data": PackedByteArray("ZOGcgOB/8P/lf42A8O7SiOvuzPdg4f//ev4+0IT4D+d8/mWwh/iTmf//UsA="),
+"format": 34896613399,
+"index_count": 27,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAQAEAAUAAQAGAAQAAQADAAYABAAGAAcABgADAAgACAADAAkABgAIAAoA"),
+"material": ExtResource("1_jmcis"),
+"name": "room_label",
+"primitive": 3,
+"uv_scale": Vector4(1.9980128, 1.9910862, 0, 0),
+"vertex_count": 11,
+"vertex_data": PackedByteArray("AACkASs9VtX//wAA//9W1QAApAH//1bVfRBnARoiVtWB7z0AGiJW1f//AAArPVbV/5+dAAYDVtXazXEA7g5W1f9fBwEGA1bVJDIzAe4OVtX/f9IAAABW1VPVqCpT1agqU9WoKlPVqCpT1agqU9WoKlPVqCpT1agqU9WoKlPVqCpT1agq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_choqg")
+
+[node name="room_label" type="Node3D" unique_id=625710456]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.2788206, 0, 0)
+
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=597167370]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_rcy86")
+
+[node name="Label_1" type="Label3D" parent="." unique_id=1614427687]
+transform = Transform3D(-5.2453665e-08, 0, -1.1999999, 0, 1.1999999, 0, 1.1999999, 0, -5.2453665e-08, 0.0041134614, 0, -0.09567967)
+pixel_size = 0.01
+modulate = Color(0, 0, 0, 1)
+text = "1-A"
+font = ExtResource("2_wxw4p")
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="Label_2" type="Label3D" parent="." unique_id=385907722]
+transform = Transform3D(-5.2453668e-08, 0, 1.1999999, 0, 1.1999999, 0, -1.1999999, 0, -5.2453668e-08, -0.001841041, 0, -0.056622744)
+pixel_size = 0.01
+modulate = Color(0, 0, 0, 1)
+text = "1-A"
+font = ExtResource("2_wxw4p")
+outline_size = 0
+horizontal_alignment = 0

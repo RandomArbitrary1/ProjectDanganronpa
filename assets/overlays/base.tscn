@@ -158,20 +158,20 @@ script = ExtResource("2_lbvlt")
 
 [node name="Speaker1" type="TextureRect" parent="Boombox" unique_id=949932325]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 48.0
-offset_right = 80.0
-offset_bottom = 112.0
+offset_left = 24.0
+offset_top = 60.0
+offset_right = 88.0
+offset_bottom = 124.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_re8kh")
 expand_mode = 1
 
 [node name="Speaker2" type="TextureRect" parent="Boombox" unique_id=1911427042]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 48.0
-offset_right = 184.0
-offset_bottom = 112.0
+offset_left = 128.0
+offset_top = 60.0
+offset_right = 192.0
+offset_bottom = 124.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_re8kh")
 expand_mode = 1
@@ -191,9 +191,9 @@ texture = ExtResource("4_nd5tj")
 [node name="Chapter" type="Label" parent="Info" unique_id=617825988]
 layout_mode = 0
 offset_left = 36.0
-offset_top = 80.0
+offset_top = 88.0
 offset_right = 332.0
-offset_bottom = 140.0
+offset_bottom = 148.0
 theme = ExtResource("5_nd5tj")
 theme_type_variation = &"Title_outline"
 theme_override_font_sizes/font_size = 40
@@ -204,9 +204,9 @@ vertical_alignment = 1
 [node name="Event" type="Label" parent="Info" unique_id=1428597486]
 layout_mode = 0
 offset_left = 36.0
-offset_top = 140.0
+offset_top = 148.0
 offset_right = 332.0
-offset_bottom = 200.0
+offset_bottom = 208.0
 theme = ExtResource("5_nd5tj")
 theme_type_variation = &"Title"
 theme_override_font_sizes/font_size = 40
@@ -217,9 +217,9 @@ vertical_alignment = 1
 [node name="Lvl" type="Label" parent="Info" unique_id=357034831]
 layout_mode = 0
 offset_left = 124.0
-offset_top = 200.0
+offset_top = 208.0
 offset_right = 196.0
-offset_bottom = 227.0
+offset_bottom = 236.0
 theme = ExtResource("5_nd5tj")
 theme_override_font_sizes/font_size = 20
 text = "LVL 01"
@@ -229,7 +229,6 @@ vertical_alignment = 1
 [node name="Hover_label" type="NinePatchRect" parent="." unique_id=1123439009]
 visible = false
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -237,24 +236,26 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -336.0
-offset_top = -256.0
+offset_top = -272.0
 offset_right = 336.0
-offset_bottom = -176.0
+offset_bottom = -172.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_67dal")
-region_rect = Rect2(0, 0, 80, 80)
-patch_margin_left = 40
-patch_margin_top = 20
-patch_margin_right = 40
-patch_margin_bottom = 20
+region_rect = Rect2(0, 0, 110, 100)
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
 
 [node name="Label" type="Label" parent="Hover_label" unique_id=1028231956]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_nd5tj")
