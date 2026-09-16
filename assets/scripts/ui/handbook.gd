@@ -106,7 +106,7 @@ func _process(delta: float) -> void:
 					inside_tab.x = int(i.get_index() % x_range)
 					inside_tab.y = int(i.get_index() / x_range)
 
-	current_tab_node.get_node("Items").position.y = move_toward(current_tab_node.get_node("Items").position.y, clamp(tab_data[tab].offset-(inside_tab.y-1)*tab_data[tab].size,tab_data[tab].size-tab_data[tab].size*(y_range-3), tab_data[tab].offset), 1600*delta)
+	current_tab_node.get_node("Items").position.y = move_toward(current_tab_node.get_node("Items").position.y, clamp(tab_data[tab].offset-(inside_tab.y-1)*tab_data[tab].size,tab_data[tab].size-tab_data[tab].size*(y_range-2)+50, tab_data[tab].offset), 1600*delta)
 
 
 func _input(event: InputEvent) -> void:
