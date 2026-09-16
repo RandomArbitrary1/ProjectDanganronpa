@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://btudflwtlgc07"]
 
-[ext_resource type="Texture2D" uid="uid://b02jqoala4fh3" path="res://assets/objects/environment/fountain_fountain.png" id="1_o6frv"]
+[ext_resource type="Texture2D" uid="uid://cbw8qsejdtrqr" path="res://assets/objects/environment/fountain_fountain_fountain.png" id="1_o6frv"]
 
 [resource]
 resource_name = "fountain"

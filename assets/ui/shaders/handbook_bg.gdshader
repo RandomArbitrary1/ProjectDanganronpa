@@ -19,5 +19,6 @@ void fragment() {
 	float dist = distance(local_uv, center);
 	float radius = texture(gradient, UV).r;
 	float circle_alpha = 1.0 - step(radius, dist);
-	COLOR = circle_color * vec4(circle_alpha);
+	vec4 final_color = circle_color * vec4(circle_alpha);
+	COLOR = vec4(final_color.rgb * COLOR.rgb, final_color.a * COLOR.a);
 }

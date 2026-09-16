@@ -247,14 +247,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Screen" unique_id=374691870]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 1880.0
-offset_bottom = 168.0
-texture = ExtResource("2_vmyeq")
-
 [node name="Lists" type="Control" parent="Screen" unique_id=721687343]
 anchors_preset = 0
 offset_left = 40.0
@@ -293,18 +285,370 @@ offset_bottom = 872.0
 
 [node name="Items" type="GridContainer" parent="Screen/Lists/Bullets" unique_id=612493915]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -544.0
-offset_top = -302.0
-offset_right = 544.0
-offset_bottom = 302.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 848.0
+offset_bottom = 798.0
+
+[node name="Item" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=170205235]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item" unique_id=1056219529]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 3
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item2" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=20603132]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item2" unique_id=1211699349]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item3" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=1351006337]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item3" unique_id=1950489600]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item4" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=125838871]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item4" unique_id=56232316]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item5" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=1622145482]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item5" unique_id=1968300162]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item6" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=213890739]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item6" unique_id=227525972]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item7" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=740236938]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item7" unique_id=1928747808]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item8" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=2010493641]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item8" unique_id=2001971042]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item9" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=469110215]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item9" unique_id=217920225]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item10" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=845889677]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item10" unique_id=1801534010]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item11" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=2067756039]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item11" unique_id=1126111790]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item12" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=344712054]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Bullets/Items/Item12" unique_id=1778582470]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="Gifts" type="Control" parent="Screen/Lists" unique_id=2132885470]
 visible = false
@@ -1256,6 +1600,14 @@ patch_margin_left = 30
 patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
+
+[node name="TextureRect" type="TextureRect" parent="Screen" unique_id=374691870]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 1880.0
+offset_bottom = 178.0
+texture = ExtResource("2_vmyeq")
 
 [node name="Tabs" type="NinePatchRect" parent="Screen" unique_id=1350392617]
 self_modulate = Color(0.003921569, 0.003921569, 0.003921569, 1)
