@@ -14,5 +14,8 @@
 "sprites":{"neutral":"res://assets/textures/characters/raito/neutral.png"}},
 "ayuka":{"name":"Ayuka Hozumi","talent":"Ultimate Scientist","sex":"Female","likes":"Focusing",
 "dislikes":"Noisy/busy places","height":"1.70 cm","birth_date":"21 december",
+"sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
+"shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Student","sex":"Male","likes":"Radiophysics",
+"dislikes":"Not working","height":"1.71 cm","birth_date":"29 januari",
 "sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}}
 }
