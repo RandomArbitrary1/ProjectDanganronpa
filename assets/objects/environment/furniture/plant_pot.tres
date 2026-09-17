@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cfjht7frap2k3"]
+
+[ext_resource type="Texture2D" uid="uid://b6sgkb7pquhe2" path="res://assets/objects/environment/furniture/plant_pot_plant pot.png" id="1_jp1ve"]
+
+[resource]
+resource_name = "plant_pot"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_jp1ve")
+metadata/_gltf_primary_texture_coord = 0
