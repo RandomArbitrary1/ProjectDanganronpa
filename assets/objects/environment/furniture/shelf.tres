@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3wy2movqwjam"]
+
+[ext_resource type="Texture2D" uid="uid://b4lqbwskkmqh6" path="res://assets/objects/environment/furniture/shelf_shelf.png" id="1_2cwaa"]
+
+[resource]
+resource_name = "shelf"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_2cwaa")
+metallic = 0.5
+metadata/_gltf_primary_texture_coord = 0

@@ -25,12 +25,12 @@ func next():
 		var current = dialog[line]
 		input_ind.play("RESET")
 		if current.type == "text":
-			if full_name.text != current.character and line != 0:
+			if full_name.text != character_info[current.character].name and line != 0:
 				switch.play("Switch")
 			full_name.text = character_info[current.character].name
 			if  camera and "character" in camera and camera.character != null:
 				camera.character = current.character
-			name_size = full_name.get_minimum_size().x+110
+			name_size = full_name.get_minimum_size().x+180
 			if line == 0:
 				nameplate.size.x = name_size
 			box.text = current.content

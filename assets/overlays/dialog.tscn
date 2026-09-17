@@ -315,7 +315,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.23333333, 0.46666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-260.0, -360.0]
+"values": [100.0, 0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -339,7 +339,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.23333333, 0.46666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-100.0, 0.0]
+"values": [-36.0, 64.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -490,7 +490,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -344.0
-offset_bottom = -63.999634
+offset_bottom = -63.999878
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
@@ -517,45 +517,52 @@ libraries/ = SubResource("AnimationLibrary_cqd2n")
 autoplay = &"Loop"
 speed_scale = 0.2
 
-[node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
-layout_mode = 0
-offset_top = -80.0
-offset_right = 256.0
-texture = ExtResource("3_qqjwx")
-region_rect = Rect2(0, 0, 80, 80)
-patch_margin_right = 80
-
-[node name="full_name" type="Label" parent="Bar/Name" unique_id=1722338196]
-layout_mode = 0
-offset_left = 24.0
-offset_right = 472.0
-offset_bottom = 80.0
-theme = ExtResource("3_fh4nj")
-theme_type_variation = &"Title_outline"
-text = "Name"
-vertical_alignment = 1
-
 [node name="Decoration" type="TextureRect" parent="Bar" unique_id=1794326463]
 layout_mode = 0
 offset_left = -360.0
 offset_top = -11.0
-offset_right = 1920.0
+offset_right = 1560.0
 offset_bottom = 279.0
 texture = ExtResource("2_5o6qf")
 
 [node name="Icon" type="TextureRect" parent="Bar/Decoration" unique_id=855212044]
 layout_mode = 0
-offset_left = 2191.0
+offset_left = 1832.0
 offset_top = 219.0
-offset_right = 2255.0
+offset_right = 1896.0
 offset_bottom = 283.0
 texture = ExtResource("7_fm551")
 
+[node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
+layout_mode = 0
+offset_top = -72.0
+offset_right = 511.9995
+offset_bottom = 28.0
+texture = ExtResource("3_qqjwx")
+region_rect = Rect2(0, 0, 180, 100)
+patch_margin_left = 90
+patch_margin_top = 50
+patch_margin_right = 90
+patch_margin_bottom = 50
+
+[node name="full_name" type="Label" parent="Bar/Name" unique_id=1722338196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fh4nj")
+theme_type_variation = &"Title_outline"
+text = "Name"
+vertical_alignment = 1
+
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 30.0
-offset_right = 1780.0
+offset_left = 352.0
+offset_top = 24.0
+offset_right = 1864.0
 offset_bottom = 277.0
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true

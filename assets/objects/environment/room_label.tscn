@@ -3,6 +3,19 @@
 [ext_resource type="Material" uid="uid://buiyqtwdt5xxt" path="res://assets/objects/environment/room_label.tres" id="1_jmcis"]
 [ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="2_wxw4p"]
 
+[sub_resource type="GDScript" id="GDScript_387tp"]
+resource_name = "room_label"
+script/source = "extends Node3D
+
+@export var Text : String
+@onready var label_1: Label3D = $Label_1
+@onready var label_2: Label3D = $Label_2
+
+func _ready() -> void:
+	label_1.text = Text
+	label_2.text = Text
+"
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_choqg"]
 _surfaces = [{
 "aabb": AABB(-0.26521826, -3.211833e-08, -1, 0.5304365, 1e-05, 1.1756169),
@@ -37,25 +50,26 @@ shadow_mesh = SubResource("ArrayMesh_choqg")
 
 [node name="room_label" type="Node3D" unique_id=625710456]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.2788206, 0, 0)
+script = SubResource("GDScript_387tp")
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=597167370]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rcy86")
 
 [node name="Label_1" type="Label3D" parent="." unique_id=1614427687]
-transform = Transform3D(-5.2453665e-08, 0, -1.1999999, 0, 1.1999999, 0, 1.1999999, 0, -5.2453665e-08, 0.0041134614, 0, -0.09567967)
-pixel_size = 0.01
-modulate = Color(0, 0, 0, 1)
-text = "1-A"
-font = ExtResource("2_wxw4p")
-outline_size = 0
-horizontal_alignment = 2
-
-[node name="Label_2" type="Label3D" parent="." unique_id=385907722]
-transform = Transform3D(-5.2453668e-08, 0, 1.1999999, 0, 1.1999999, 0, -1.1999999, 0, -5.2453668e-08, -0.001841041, 0, -0.056622744)
+transform = Transform3D(1.57361e-07, 0, 1.1999999, 0, 1.1999999, 0, -1.1999999, 0, 1.57361e-07, 0.0041134614, 0, -0.09567967)
 pixel_size = 0.01
 modulate = Color(0, 0, 0, 1)
 text = "1-A"
 font = ExtResource("2_wxw4p")
 outline_size = 0
 horizontal_alignment = 0
+
+[node name="Label_2" type="Label3D" parent="." unique_id=385907722]
+transform = Transform3D(-5.245365e-08, 0, -1.1999999, 0, 1.1999999, 0, 1.1999999, 0, -5.245365e-08, -0.0018410411, 0, -0.056622744)
+pixel_size = 0.01
+modulate = Color(0, 0, 0, 1)
+text = "1-A"
+font = ExtResource("2_wxw4p")
+outline_size = 0
+horizontal_alignment = 2
