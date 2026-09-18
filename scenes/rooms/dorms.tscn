@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://jyol1e6wnxf2"]
 
-[ext_resource type="AudioStream" uid="uid://bw0tm8qc374yk" path="res://assets/audio/music/happy_music.mp3" id="1_jhl4e"]
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="2_rq8la"]
 [ext_resource type="Material" uid="uid://qt7tfqir33l4" path="res://assets/materials/wall2.tres" id="3_too8b"]
 [ext_resource type="Material" uid="uid://bxtk3l80bifdr" path="res://assets/materials/floor2.tres" id="4_58jb4"]
@@ -41,14 +40,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616485738]
 environment = SubResource("Environment_dwiqq")
-
-[node name="music" type="AudioStreamPlayer" parent="." unique_id=1154478521]
-process_mode = 3
-stream = ExtResource("1_jhl4e")
-volume_db = -3.0
-autoplay = true
-bus = &"Music"
-parameters/looping = true
 
 [node name="Building" type="CSGCombiner3D" parent="." unique_id=145541054]
 use_collision = true

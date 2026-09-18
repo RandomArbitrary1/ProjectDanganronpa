@@ -53,12 +53,17 @@ func next():
 			input_ind.play("Show")
 		elif current.type == "bullet":
 			if current.show == true:
+				bullet.get_node("Mask/Image").texture = load(load(current.file).data[current.bullet].picture)
 				bullet.get_node("Anim").play("Show")
 				print(current.bullet)
 			else:
 				bullet.get_node("Anim").play("Hide")
 			line += 1
 			next()
+		elif current.type == "music":
+			Music.switch("res://assets/audio/music/" + current.song + ".mp3")
+			line += 1
+			next()	
 		else:
 			line += 1
 			next()

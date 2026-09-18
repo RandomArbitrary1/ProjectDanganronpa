@@ -21,6 +21,7 @@ FullscreenFunction="*uid://fqn4emcc0dpk"
 JsonParse="*uid://b4lj3xew0ydov"
 LoadingScreen="*uid://bqv67g0qn5r0b"
 RoomSwitch="*uid://c0q3ss7l558p8"
+Music="*uid://617ht2vs8k0g"
 
 [debug]
 

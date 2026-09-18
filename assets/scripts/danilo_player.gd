@@ -30,6 +30,7 @@ var current_hover_check = null
 var current_hover_type = "character"
 var characters = []
 func _ready():
+	Music.switch("res://assets/audio/music/beautiful_lie.mp3")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	characters = get_tree().get_nodes_in_group("Characters_interact")
 	ray_cast_3d.collide_with_areas = true
