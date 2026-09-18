@@ -46,7 +46,7 @@
 			"character": "raito",
 			"content": "hoh :o",
 			"expression": "angry",
-			"flags": [],
+			"flags": ["flash"],
 			"type": "text"
 		},
 		{
@@ -88,14 +88,14 @@
 			"character": "raito",
 			"content": "NO, I WON'T!!!",
 			"expression": "angry",
-			"flags": [],
+			"flags": ["rage", "flash"],
 			"type": "text"
 		},
 		{
 			"character": "raito",
 			"content": "I HAVE A CHOICE",
 			"expression": "angry",
-			"flags": [],
+			"flags": ["rage"],
 			"type": "text"
 		},
 		{

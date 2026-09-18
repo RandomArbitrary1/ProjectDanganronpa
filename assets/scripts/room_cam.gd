@@ -24,14 +24,14 @@ func _process(delta: float) -> void:
 	if character == "" and self.get_parent().name != "Player":
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
-		self.fov = move_toward(self.fov, 75.0, 165*delta)
+		self.fov = move_toward(self.fov, 60.0, 165*delta)
 	else:
 		var chr = characters.get_node_or_null(character)
 		if chr:
 			self.fov = move_toward(self.fov, 40.0, 165*delta)
 			var direction = (start_position - chr.position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,1), 20*delta)
+			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.5,2.2), 20*delta)
 	
 	if self.get_parent().name != "Player":
 		if Input.is_action_pressed("Up"):

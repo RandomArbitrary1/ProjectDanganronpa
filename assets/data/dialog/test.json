@@ -4,7 +4,9 @@
 			"character": "nori",
 			"content": "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?",
 			"expression": "sad",
-			"flags": [],
+			"flags": [
+				"flash"
+			],
 			"type": "text"
 		},
 		{
@@ -25,7 +27,7 @@
 			"bullet": "strange_place",
 			"file": "res://assets/data/case/truth_bullets.json",
 			"flags": [],
-			"show": true,
+			"show": false,
 			"type": "bullet"
 		},
 		{

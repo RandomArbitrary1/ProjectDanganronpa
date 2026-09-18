@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="2_rq8la"]
 [ext_resource type="Material" uid="uid://qt7tfqir33l4" path="res://assets/materials/wall2.tres" id="3_too8b"]
 [ext_resource type="Material" uid="uid://bxtk3l80bifdr" path="res://assets/materials/floor2.tres" id="4_58jb4"]
-[ext_resource type="PackedScene" uid="uid://hilwvo5a7k02" path="res://assets/objects/characters/player.tscn" id="5_58jb4"]
+[ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="5_58jb4"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="6_cb1qk"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_plain_mint_double.tscn" id="7_toiou"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="8_too8b"]

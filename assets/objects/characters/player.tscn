@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dw3px5y5bxf3k"]
 
 [ext_resource type="Script" uid="uid://cbcr8kscdb75r" path="res://assets/scripts/danilo_player.gd" id="1_fpkso"]
-[ext_resource type="Script" path="res://assets/scripts/player_cam_extras.gd" id="2_fpkso"]
+[ext_resource type="Script" uid="uid://4rdujbx3foai" path="res://assets/scripts/player_cam_extras.gd" id="2_fpkso"]
 [ext_resource type="AudioStream" uid="uid://gnp103hturad" path="res://assets/audio/sfx/player/step1.mp3" id="3_nruid"]
 [ext_resource type="AudioStream" uid="uid://n7ylvby1u3vr" path="res://assets/audio/sfx/player/step2.mp3" id="4_2hmy5"]
 [ext_resource type="AudioStream" uid="uid://da2wpm3cuc4ck" path="res://assets/audio/sfx/player/step3.mp3" id="5_ft6ms"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="10_nruid"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kulj"]
-height = 2.25
+radius = 0.35
+height = 2.125
 
 [sub_resource type="Animation" id="Animation_ekc74"]
 length = 0.001
@@ -66,7 +67,7 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 script = ExtResource("1_fpkso")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=835239731]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.12499997, 0)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.062499985, 0)
 shape = SubResource("CapsuleShape3D_6kulj")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=448350214 groups=["Camera_room"]]

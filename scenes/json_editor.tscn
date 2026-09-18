@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="1_53vve"]
 [ext_resource type="Texture2D" uid="uid://b8nlmkqp038bh" path="res://assets/ui/json_editor/insert_drive_file_24dp_E3E3E3.png" id="1_p0t4n"]
-[ext_resource type="Texture2D" uid="uid://cu4cl4be62c7n" path="res://assets/textures/environment/WoodTextureOil.png" id="1_xfl6f"]
+[ext_resource type="Texture2D" uid="uid://dx8rofyersfty" path="res://assets/textures/environment/planks_1.png" id="1_xfl6f"]
 [ext_resource type="Texture2D" uid="uid://dm7i4hetvoe4q" path="res://assets/ui/json_editor/save_24dp_E3E3E3.png" id="2_xfl6f"]
 [ext_resource type="Texture2D" uid="uid://yy5scsj1qxvf" path="res://assets/ui/json_editor/save_as_24dp_E3E3E3.png" id="3_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://ccdrvhhvoo3js" path="res://assets/ui/json_editor/reorder_24dp_E3E3E3.png" id="4_p2fl4"]
@@ -18,22 +18,50 @@ script/source = "extends Control
 @onready var file_dialog = self.get_node(\"FileDialog\")
 @onready var file_dialog_save = self.get_node(\"FileDialogSave\")
 @onready var list = self.get_node(\"Items/List\")
+@onready var flags_popup: Window = $Flags
 
 @onready var dialog_line = list.get_node(\"Dialog\").duplicate()
 @onready var visible_line = list.get_node(\"Visibility\").duplicate()
 @onready var focus_line = list.get_node(\"Focus\").duplicate()
 @onready var music_line = list.get_node(\"Music\").duplicate()
 @onready var bullet_line = list.get_node(\"Bullet\").duplicate()
+@onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
 
+var characters = preload(\"res://assets/data/characters/characters.json\").data
+
+var flags = [\"thought\", \"rage\", \"flash\"]
+var flag_current = []
 var data = {\"dialog\":[]}
 var file_path = \"\"
 var moving = null
 var to_open = \"data\"
 
 func _ready() -> void:
+	flags_popup.close_requested.connect(flags_popup.hide)
+	
+	list.get_node(\"Dialog/Character/Name\").clear()
+	for key in characters.keys():
+		list.get_node(\"Dialog/Character/Name\").add_item(key)
+	
+	flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").queue_free()
 	for i in list.get_children():
 		if i:
 			i.queue_free()
+	for i in flags:
+		var flag_opt = flag_button.duplicate()
+		flag_opt.text = i
+		flag_opt.name = i
+		flags_popup.get_node(\"FlagList/FlagItems\").add_child(flag_opt)
+	
+	for i in flags_popup.get_node(\"FlagList/FlagItems\").get_children():
+		i.pressed.connect(func():
+			if flag_current.flags.has(i.name):
+				flag_current.flags.remove_at(flag_current.flags.find(i.name))
+				i.get_node(\"Outline\").visible = false
+			else:
+				flag_current.flags.append(i.name)
+				i.get_node(\"Outline\").visible = true
+		)
 	
 	navigation.get_node(\"Load\").pressed.connect(func():
 		to_open = \"data\"
@@ -146,6 +174,15 @@ func reload_list():
 			run_options(new, i)
 	
 func run_options(i, item_data):
+	i.get_node(\"Panel/Flags\").pressed.connect(func():
+		flag_current = item_data
+		for ii in flags_popup.get_node(\"FlagList/FlagItems\").get_children():
+			if item_data.flags.has(ii.name):
+				ii.get_node(\"Outline\").visible = true
+			else:
+				ii.get_node(\"Outline\").visible = false
+		flags_popup.visible = true
+	)
 	i.get_node(\"Panel/Down\").button_down.connect(func():
 		i.get_node(\"Panel/Outline\").visible = true
 		i.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -309,16 +346,15 @@ scale = Vector2(1.4, 1.4)
 script = SubResource("GDScript_53vve")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=22404534]
-self_modulate = Color(0.61339027, 0.61339027, 0.61339027, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1371.4285
-offset_bottom = 771.4285
+offset_right = 5485.714
+offset_bottom = 3085.7144
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_xfl6f")
 expand_mode = 1
 stretch_mode = 1
@@ -633,6 +669,7 @@ offset_right = -6.0004883
 offset_bottom = -5.7142944
 grow_horizontal = 2
 grow_vertical = 2
+wrap_mode = 1
 
 [node name="Down" type="Button" parent="Items/List/Dialog/Panel" unique_id=508296457]
 layout_mode = 0
@@ -704,7 +741,9 @@ offset_right = 97.14282
 offset_bottom = 137.14285
 mouse_filter = 1
 mouse_default_cursor_shape = 2
+clip_text = true
 selected = 0
+fit_to_longest_item = false
 item_count = 5
 popup/item_0/text = "shion"
 popup/item_0/id = 0
@@ -725,14 +764,26 @@ offset_right = 194.28564
 offset_bottom = 137.14285
 mouse_filter = 1
 mouse_default_cursor_shape = 2
+clip_text = true
 selected = 0
-item_count = 3
+fit_to_longest_item = false
+item_count = 8
 popup/item_0/text = "happy"
 popup/item_0/id = 0
 popup/item_1/text = "angry"
 popup/item_1/id = 1
 popup/item_2/text = "sad"
 popup/item_2/id = 2
+popup/item_3/text = "rage"
+popup/item_3/id = 3
+popup/item_4/text = "depressed"
+popup/item_4/id = 4
+popup/item_5/text = "excited"
+popup/item_5/id = 5
+popup/item_6/text = "shocked"
+popup/item_6/id = 6
+popup/item_7/text = "annoyed"
+popup/item_7/id = 7
 
 [node name="Visibility" type="HBoxContainer" parent="Items/List" unique_id=549563064]
 custom_minimum_size = Vector2(0, 51)
@@ -962,3 +1013,40 @@ item_10/id = 103
 item_10/separator = true
 item_11/text = "New truth bullet"
 item_11/id = 10
+
+[node name="Flags" type="Window" parent="." unique_id=644388794]
+oversampling_override = 1.0
+title = "Flags"
+initial_position = 1
+size = Vector2i(300, 400)
+visible = false
+always_on_top = true
+content_scale_factor = 1.4
+accessibility_name = "Flags"
+
+[node name="FlagList" type="ScrollContainer" parent="Flags" unique_id=258356325]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 210.28572
+offset_bottom = 281.7143
+
+[node name="FlagItems" type="VBoxContainer" parent="Flags/FlagList" unique_id=67271718]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FlagOption" type="Button" parent="Flags/FlagList/FlagItems" unique_id=1593398890]
+layout_mode = 2
+text = "Test"
+
+[node name="Outline" type="Panel" parent="Flags/FlagList/FlagItems/FlagOption" unique_id=2113223425]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
