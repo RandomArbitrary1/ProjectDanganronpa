@@ -70,7 +70,7 @@ script = ExtResource("1_fpkso")
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.062499985, 0)
 shape = SubResource("CapsuleShape3D_6kulj")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=448350214 groups=["Camera_room"]]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=448350214 groups=["Camera", "Camera_room"]]
 transform = Transform3D(0.83333325, 0, 0, 0, 0.83333325, 0, 0, 0, 0.83333325, 0, 0.65, 0)
 fov = 50.0
 script = ExtResource("2_fpkso")

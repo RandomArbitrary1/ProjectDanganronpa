@@ -12,6 +12,8 @@ var camera = null
 @onready var full_name: Label = $Bar/Name/full_name
 @onready var flash: AnimationPlayer = $Flash/Anim
 @onready var dialog_anim: AnimationPlayer = $Bar/Dialog/Anim
+@onready var choice_anim: AnimationPlayer = $Choice/Anim
+
 
 var character_info = preload("res://assets/data/characters/characters.json").data
 var dialog = null
@@ -63,10 +65,16 @@ func next():
 		elif current.type == "music":
 			Music.switch("res://assets/audio/music/" + current.song + ".mp3")
 			line += 1
-			next()	
+			next()
+		elif current.type == "choice":
+			choice_anim.play("Open")
 		else:
 			line += 1
 			next()
+		if dialog.size() > line+1:
+			if dialog[line+1].type == "choice":
+				line += 1
+				next()
 	else:
 		if camera and "character" in camera and camera.character != null:
 			camera.character = ""
