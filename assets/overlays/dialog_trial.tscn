@@ -63,6 +63,68 @@ Title_outline/constants/outline_size = 14
 Title_outline/font_sizes/font_size = 50
 Title_outline/fonts/font = ExtResource("9_fo12k")
 
+[sub_resource type="Animation" id="Animation_g06hn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/normal_font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 56)]
+}
+
+[sub_resource type="Animation" id="Animation_o1amr"]
+resource_name = "rage"
+length = 0.233
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/normal_font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [120]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(120, 56), Vector2(130, 51), Vector2(100, 46), Vector2(120, 61), Vector2(140, 56), Vector2(133, 46), Vector2(112, 66), Vector2(120, 56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pkhgj"]
+_data = {
+&"RESET": SubResource("Animation_g06hn"),
+&"rage": SubResource("Animation_o1amr")
+}
+
 [sub_resource type="Animation" id="Animation_cqd2n"]
 length = 0.001
 tracks/0/type = "value"
@@ -569,15 +631,17 @@ vertical_alignment = 1
 
 [node name="Dialog" type="RichTextLabel" parent="Bar" unique_id=1480168895]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 72.0
-offset_right = 1839.5251
-offset_bottom = 314.86902
+offset_left = 120.0
+offset_top = 56.0
+offset_right = 1895.5251
+offset_bottom = 298.86902
 theme = ExtResource("5_fo12k")
 bbcode_enabled = true
-text = "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?"
 scroll_active = false
 autowrap_mode = 2
+
+[node name="Anim" type="AnimationPlayer" parent="Bar/Dialog" unique_id=249493302]
+libraries/ = SubResource("AnimationLibrary_pkhgj")
 
 [node name="Input_indicator" type="TextureRect" parent="Bar" unique_id=403398415]
 modulate = Color(1, 1, 1, 0)
@@ -597,8 +661,8 @@ clip_children = 2
 layout_mode = 0
 offset_left = 1240.0
 offset_top = -520.0
-offset_right = 1896.0005
-offset_bottom = -128.0
+offset_right = 1916.0
+offset_bottom = -108.0
 texture = ExtResource("10_sjoq3")
 flip_h = true
 

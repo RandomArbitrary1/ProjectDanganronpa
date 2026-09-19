@@ -316,7 +316,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_owry8"]
 resource_name = "Close"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -344,7 +344,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_y6qt6"]
 resource_name = "Open"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -772,7 +772,6 @@ offset_right = 1696.0
 offset_bottom = 277.0034
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
-text = "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?"
 scroll_active = false
 autowrap_mode = 2
 
@@ -785,7 +784,8 @@ layout_mode = 0
 offset_left = 1664.0
 offset_top = 72.0
 offset_right = 1820.0
-offset_bottom = 216.0
+offset_bottom = 228.0
+scale = Vector2(0.89, 0.89)
 texture = ExtResource("7_8knbj")
 
 [node name="Anim" type="AnimationPlayer" parent="Bar/Input_indicator" unique_id=2090635946]
@@ -836,7 +836,7 @@ visible = false
 anchors_preset = 0
 offset_left = 1328.0
 offset_top = 576.0
-offset_right = 1920.007
+offset_right = 1920.0067
 offset_bottom = 776.0
 
 [node name="Yes" type="NinePatchRect" parent="Choice" unique_id=1381765017]
