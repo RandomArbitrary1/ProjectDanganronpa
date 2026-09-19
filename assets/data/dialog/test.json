@@ -10,29 +10,22 @@
 			"type": "text"
 		},
 		{
-			"bullet": "decision",
-			"file": "res://assets/data/case/truth_bullets.json",
 			"flags": [],
-			"show": true,
-			"type": "bullet"
+			"song": "beautiful_ruin",
+			"type": "music"
 		},
 		{
 			"character": "shion",
 			"content": "It's a reference to a meme from like 12 years ago, good old times. But holy shit time flies fast, I'm not even kidding.",
 			"expression": "sad",
-			"flags": [],
+			"flags": [
+				"rage"
+			],
 			"type": "text"
 		},
 		{
-			"bullet": "strange_place",
-			"file": "res://assets/data/case/truth_bullets.json",
 			"flags": [],
-			"show": false,
-			"type": "bullet"
-		},
-		{
-			"flags": [],
-			"song": "back_in_the_building",
+			"song": "slow_realization",
 			"type": "music"
 		},
 		{
@@ -45,11 +38,9 @@
 			"type": "text"
 		},
 		{
-			"bullet": "",
-			"file": "",
 			"flags": [],
-			"show": false,
-			"type": "bullet"
+			"song": "solar",
+			"type": "music"
 		}
 	]
 }
