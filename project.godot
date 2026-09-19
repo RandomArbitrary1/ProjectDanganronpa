@@ -21,6 +21,7 @@ FullscreenFunction="*uid://fqn4emcc0dpk"
 JsonParse="*uid://b4lj3xew0ydov"
 LoadingScreen="*uid://bqv67g0qn5r0b"
 RoomSwitch="*uid://c0q3ss7l558p8"
+Music="*uid://617ht2vs8k0g"
 
 [debug]
 
@@ -34,7 +35,7 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://bto0867l0lova"
-mouse_cursor/custom_image_hotspot=Vector2(8, 8)
+mouse_cursor/custom_image_hotspot=Vector2(5, 5)
 
 [filesystem]
 

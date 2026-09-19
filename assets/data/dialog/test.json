@@ -3,8 +3,10 @@
 		{
 			"character": "nori",
 			"content": "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?",
-			"expression": "sad",
-			"flags": [],
+			"expression": "annoyed",
+			"flags": [
+				"flash"
+			],
 			"type": "text"
 		},
 		{
@@ -25,13 +27,18 @@
 			"bullet": "strange_place",
 			"file": "res://assets/data/case/truth_bullets.json",
 			"flags": [],
-			"show": true,
+			"show": false,
 			"type": "bullet"
+		},
+		{
+			"flags": [],
+			"song": "back_in_the_building",
+			"type": "music"
 		},
 		{
 			"character": "shion",
 			"content": "Also I think you don't have any personality yet. I'm not done writing it, not even sure who you're supposed to be aside from a Nagito clone.",
-			"expression": "sad",
+			"expression": "depressed",
 			"flags": [
 				"thought"
 			],

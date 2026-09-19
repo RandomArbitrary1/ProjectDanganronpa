@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://617ht2vs8k0g"]
+
+[sub_resource type="GDScript" id="GDScript_cxnql"]
+resource_name = "Music"
+script/source = "extends AudioStreamPlayer
+
+var current = \"\"
+
+func switch(file : String):
+	if current != file:
+		current = file
+		self.stream = load(file)
+		self.play()
+"
+
+[node name="Music" type="AudioStreamPlayer" unique_id=1656324941]
+process_mode = 3
+bus = &"Music"
+script = SubResource("GDScript_cxnql")
