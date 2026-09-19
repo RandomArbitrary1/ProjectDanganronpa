@@ -17,5 +17,8 @@
 "sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
 "shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Student","sex":"Male","likes":"Radiophysics",
 "dislikes":"Not working","height":"1.71 cm","birth_date":"29 januari",
-"sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}}
+"sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
+"rikuno":{"name":"Rikuno Yukami","talent":"Ultimate Mercenary","sex":"Female","likes":"Firearms",
+"dislikes":"West Europe","height":"1.76 cm","birth_date":"12 may",
+"sprites":{"neutral":"res://assets/textures/characters/atsuko/neutral.png"}}
 }

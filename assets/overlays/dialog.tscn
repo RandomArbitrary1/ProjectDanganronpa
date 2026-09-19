@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c6fsx1vohihc" path="res://assets/ui/dialog/bullet_mask.png" id="9_jgkrk"]
 [ext_resource type="Texture2D" uid="uid://c5pttmtilex01" path="res://assets/textures/truth_bullets/strange_place.png" id="10_8cy7o"]
 [ext_resource type="Texture2D" uid="uid://btdp0ubxsyvag" path="res://assets/ui/dialog/bullet_border.png" id="11_g06hn"]
+[ext_resource type="Texture2D" uid="uid://bgtvne5dggk44" path="res://assets/ui/dialog/choice.png" id="12_8cy7o"]
 
 [sub_resource type="Animation" id="Animation_jgkrk"]
 length = 0.001
@@ -313,6 +314,96 @@ _data = {
 &"Show": SubResource("Animation_ncwt0")
 }
 
+[sub_resource type="Animation" id="Animation_owry8"]
+resource_name = "Close"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1128.0, 1645.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_y6qt6"]
+resource_name = "Open"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1645.0, 1128.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j0xxs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1328.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2rgs5"]
+_data = {
+&"Close": SubResource("Animation_owry8"),
+&"Open": SubResource("Animation_y6qt6"),
+&"RESET": SubResource("Animation_j0xxs")
+}
+
 [sub_resource type="Animation" id="Animation_5o6qf"]
 resource_name = "Close"
 length = 0.235
@@ -601,7 +692,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -344.0
-offset_bottom = -63.999878
+offset_bottom = -63.999756
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
@@ -678,7 +769,7 @@ layout_mode = 0
 offset_left = 120.0
 offset_top = 56.0
 offset_right = 1696.0
-offset_bottom = 277.00092
+offset_bottom = 277.0034
 theme = ExtResource("3_fh4nj")
 bbcode_enabled = true
 text = "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?"
@@ -739,6 +830,66 @@ stretch_mode = 5
 [node name="Anim" type="AnimationPlayer" parent="Bar/Bullet" unique_id=1385430708]
 libraries/ = SubResource("AnimationLibrary_o1amr")
 speed_scale = 1.5
+
+[node name="Choice" type="Control" parent="." unique_id=915050139]
+visible = false
+anchors_preset = 0
+offset_left = 1328.0
+offset_top = 576.0
+offset_right = 1920.007
+offset_bottom = 776.0
+
+[node name="Yes" type="NinePatchRect" parent="Choice" unique_id=1381765017]
+layout_mode = 1
+offset_left = 240.0
+offset_right = 888.0
+offset_bottom = 100.0
+texture = ExtResource("12_8cy7o")
+region_rect = Rect2(0, 0, 448, 100)
+patch_margin_left = 90
+patch_margin_right = 284
+
+[node name="full_name" type="Label" parent="Choice/Yes" unique_id=910895156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fh4nj")
+theme_override_font_sizes/font_size = 50
+text = "Yes"
+vertical_alignment = 1
+
+[node name="No" type="NinePatchRect" parent="Choice" unique_id=1280205774]
+layout_mode = 1
+offset_left = 240.0
+offset_top = 96.0
+offset_right = 888.0
+offset_bottom = 196.0
+texture = ExtResource("12_8cy7o")
+region_rect = Rect2(0, 0, 448, 100)
+patch_margin_left = 90
+patch_margin_right = 284
+
+[node name="full_name" type="Label" parent="Choice/No" unique_id=1045872195]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fh4nj")
+theme_override_font_sizes/font_size = 50
+text = "No"
+vertical_alignment = 1
+
+[node name="Anim" type="AnimationPlayer" parent="Choice" unique_id=287810625]
+libraries/ = SubResource("AnimationLibrary_2rgs5")
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1273139418]
 libraries/ = SubResource("AnimationLibrary_8knbj")

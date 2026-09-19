@@ -4,6 +4,8 @@
 [ext_resource type="Material" uid="uid://qt7tfqir33l4" path="res://assets/materials/wall2.tres" id="3_too8b"]
 [ext_resource type="Material" uid="uid://bxtk3l80bifdr" path="res://assets/materials/floor2.tres" id="4_58jb4"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="5_58jb4"]
+[ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="5_too8b"]
+[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="6_4yvdn"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="6_cb1qk"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_plain_mint_double.tscn" id="7_toiou"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="8_too8b"]
@@ -68,6 +70,20 @@ material = ExtResource("3_too8b")
 
 [node name="DaniloPlayer" parent="." unique_id=806081659 instance=ExtResource("5_58jb4")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 2, 22)
+
+[node name="Characters" type="Node3D" parent="." unique_id=76754438 groups=["Characters_interact"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.53373826, 7)
+script = ExtResource("5_too8b")
+
+[node name="rikuno" parent="Characters" unique_id=2135237569 instance=ExtResource("6_4yvdn")]
+transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, -4, 1.4, 8)
+character = "rikuno"
+expression = "neutral"
+
+[node name="ayuka" parent="Characters" unique_id=974840096 instance=ExtResource("6_4yvdn")]
+transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, -1, 1.4, 7)
+character = "ayuka"
+expression = "neutral"
 
 [node name="Props" type="Node3D" parent="." unique_id=647337532]
 

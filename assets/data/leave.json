@@ -1,0 +1,19 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "Should I leave this room?",
+			"expression": "sad",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"no": "no",
+			"type": "choice",
+			"yes": "yes"
+		}
+	]
+}

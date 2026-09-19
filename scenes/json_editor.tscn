@@ -25,6 +25,7 @@ script/source = "extends Control
 @onready var focus_line = list.get_node(\"Focus\").duplicate()
 @onready var music_line = list.get_node(\"Music\").duplicate()
 @onready var bullet_line = list.get_node(\"Bullet\").duplicate()
+@onready var choice_line = list.get_node(\"Choice\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
 
 var characters = preload(\"res://assets/data/characters/characters.json\").data
@@ -96,6 +97,11 @@ func _ready() -> void:
 			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data.dialog[data.dialog.size()-1])
+		elif id == 10:
+			var new = choice_line.duplicate()
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"choice\",\"yes\":\"yes\",\"no\":\"no\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data.dialog[data.dialog.size()-1])
 	)
 	file_dialog.file_selected.connect(func(path):
 		if to_open == \"data\":
@@ -157,6 +163,13 @@ func reload_list():
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
+		elif i.type == \"choice\":
+			var new = choice_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Panel/Yes\").text = i.yes
+			new.get_node(\"Panel/No\").text = i.no
+			list.add_child(new)
+			run_options(new, i)
 		elif i.type == \"bullet\":
 			var new = bullet_line.duplicate()
 			i[\"eline\"] = new
@@ -170,6 +183,7 @@ func reload_list():
 				if file is Dictionary:
 					for key in file.keys():
 						new.get_node(\"Panel/Bullet\").add_item(key)
+			new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
 			list.add_child(new)
 			run_options(new, i)
 	
@@ -201,6 +215,13 @@ func run_options(i, item_data):
 		)
 		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
 			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
+		)
+	elif item_data.type == \"choice\":
+		i.get_node(\"Panel/Yes\").text_changed.connect(func():
+			item_data.yes = i.get_node(\"Panel/Yes\").text
+		)
+		i.get_node(\"Panel/No\").text_changed.connect(func():
+			item_data.yes = i.get_node(\"Panel/No\").text
 		)
 	elif item_data.type == \"visible\":
 		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
@@ -442,6 +463,97 @@ custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
+
+[node name="Choice" type="HBoxContainer" parent="Items/List" unique_id=1570782169]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/Choice" unique_id=697637364]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/Choice/Panel" unique_id=48256454]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/Choice/Panel" unique_id=1932628902]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Choice/Panel" unique_id=1718539684]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Choice/Panel" unique_id=321468871]
+layout_mode = 0
+offset_left = 97.14293
+offset_top = 5.714285
+offset_right = 137.14293
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Choice/Panel" unique_id=1925136960]
+layout_mode = 0
+offset_left = 142.85718
+offset_top = 5.714283
+offset_right = 240.00009
+offset_bottom = 45.714275
+text = "Choice"
+vertical_alignment = 1
+
+[node name="Yes" type="LineEdit" parent="Items/List/Choice/Panel" unique_id=2051155858]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 5.714287
+offset_right = -325.71432
+offset_bottom = -5.285721
+grow_horizontal = 2
+grow_vertical = 2
+text = "Yes"
+
+[node name="No" type="LineEdit" parent="Items/List/Choice/Panel" unique_id=1544311279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_top = 5.714287
+offset_right = -5.2857666
+offset_bottom = -5.285721
+grow_horizontal = 2
+grow_vertical = 2
+text = "No"
+
+[node name="Index" type="Label" parent="Items/List/Choice/Panel" unique_id=122148348]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
 
 [node name="Bullet" type="HBoxContainer" parent="Items/List" unique_id=922323109]
 custom_minimum_size = Vector2(0, 51)
@@ -767,23 +879,25 @@ mouse_default_cursor_shape = 2
 clip_text = true
 selected = 0
 fit_to_longest_item = false
-item_count = 8
-popup/item_0/text = "happy"
+item_count = 9
+popup/item_0/text = "neutral"
 popup/item_0/id = 0
-popup/item_1/text = "angry"
+popup/item_1/text = "happy"
 popup/item_1/id = 1
-popup/item_2/text = "sad"
+popup/item_2/text = "excited"
 popup/item_2/id = 2
-popup/item_3/text = "rage"
+popup/item_3/text = "sad"
 popup/item_3/id = 3
 popup/item_4/text = "depressed"
 popup/item_4/id = 4
-popup/item_5/text = "excited"
+popup/item_5/text = "angry"
 popup/item_5/id = 5
-popup/item_6/text = "shocked"
+popup/item_6/text = "rage"
 popup/item_6/id = 6
-popup/item_7/text = "annoyed"
+popup/item_7/text = "shocked"
 popup/item_7/id = 7
+popup/item_8/text = "annoyed"
+popup/item_8/id = 8
 
 [node name="Visibility" type="HBoxContainer" parent="Items/List" unique_id=549563064]
 custom_minimum_size = Vector2(0, 51)
@@ -984,7 +1098,7 @@ transparent_bg = false
 oversampling_override = 1.0
 size = Vector2i(268, 464)
 content_scale_factor = 1.4
-item_count = 12
+item_count = 11
 item_0/text = "Dialog"
 item_0/id = 100
 item_0/separator = true
@@ -998,21 +1112,18 @@ item_4/text = "New music switch"
 item_4/id = 3
 item_5/text = "New bullet preview"
 item_5/id = 11
-item_6/text = "Character"
-item_6/id = 101
-item_6/separator = true
-item_7/text = "New character data"
-item_7/id = 6
-item_8/text = "Debate"
-item_8/id = 102
-item_8/separator = true
-item_9/text = "New debate dialog"
-item_9/id = 8
-item_10/text = "Case"
-item_10/id = 103
-item_10/separator = true
-item_11/text = "New truth bullet"
-item_11/id = 10
+item_6/text = "New choice"
+item_6/id = 10
+item_7/text = "Debate"
+item_7/id = 102
+item_7/separator = true
+item_8/text = "New debate dialog"
+item_8/id = 8
+item_9/text = "Case"
+item_9/id = 103
+item_9/separator = true
+item_10/text = "New truth bullet"
+item_10/id = 10
 
 [node name="Flags" type="Window" parent="." unique_id=644388794]
 oversampling_override = 1.0

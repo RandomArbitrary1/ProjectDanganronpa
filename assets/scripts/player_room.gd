@@ -17,7 +17,7 @@ var characters = []
 var current_hover_type = "character"
 var current_hover = null
 var current_hover_check = null
-var start_position = self.position
+@onready var start_position = self.position
 var start_rotation = self.rotation_degrees
 var mouse_start = Vector2.ZERO
 var angle_start = Vector2.ZERO
@@ -80,6 +80,9 @@ func _process(delta: float) -> void:
 		current_hover_check = null
 		label.get_node("Anim").play("Close")
 		run(name_send)
+	if Input.is_action_just_pressed("Leave"):
+		dialog.file = load("res://assets/data/leave.json")
+		dialog.start()
 		
 
 
