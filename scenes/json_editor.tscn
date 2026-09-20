@@ -19,6 +19,8 @@ script/source = "extends Control
 @onready var file_dialog_save = self.get_node(\"FileDialogSave\")
 @onready var list = self.get_node(\"Items/List\")
 @onready var flags_popup: Window = $Flags
+@onready var dialogs_popup: Window = $Dialog
+
 
 @onready var dialog_line = list.get_node(\"Dialog\").duplicate()
 @onready var visible_line = list.get_node(\"Visibility\").duplicate()
@@ -27,6 +29,7 @@ script/source = "extends Control
 @onready var bullet_line = list.get_node(\"Bullet\").duplicate()
 @onready var choice_line = list.get_node(\"Choice\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
+@onready var dialog_button = dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").duplicate()
 
 var characters = preload(\"res://assets/data/characters/characters.json\").data
 
@@ -37,14 +40,43 @@ var file_path = \"\"
 var moving = null
 var to_open = \"data\"
 
+var current_dialog = \"dialog\"
+
 func _ready() -> void:
 	flags_popup.close_requested.connect(flags_popup.hide)
+	dialogs_popup.close_requested.connect(dialogs_popup.hide)
 	
-	list.get_node(\"Dialog/Character/Name\").clear()
+	dialog_line.get_node(\"Character/Name\").clear()
 	for key in characters.keys():
-		list.get_node(\"Dialog/Character/Name\").add_item(key)
+		dialog_line.get_node(\"Character/Name\").add_item(key)
+	
+	navigation.get_node(\"Choose\").pressed.connect(func():
+		dialogs_popup.visible = true
+	)
+	dialogs_popup.get_node(\"Insert\").pressed.connect(func():
+		for i in data.keys().size():
+			if not data.has(\"dialog\" + str(i+1)):
+				data[\"dialog\" + str(i+1)] = []
+				var new = dialog_button.duplicate()
+				dialogs_popup.get_node(\"DialogList/DialogItems\").add_child(new)
+				dialogs_options(new, \"dialog\" + str(i+1))
+				return
+	)
+	dialogs_popup.get_node(\"DialogList/DialogItems/Base/Activate\").pressed.connect(func():
+		current_dialog = \"dialog\"
+		navigation.get_node(\"Dialog\").text = current_dialog
+		for i in dialogs_popup.get_node(\"DialogList/DialogItems\").get_children():
+			if i.get_index() == 0:
+				i.get_node(\"Outline\").visible = true
+			else:
+				i.get_node(\"Outline\").visible = false
+		reload_list()
+	)
+
 	
 	flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").queue_free()
+	dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").queue_free()
+	
 	for i in list.get_children():
 		if i:
 			i.queue_free()
@@ -75,41 +107,50 @@ func _ready() -> void:
 		if id == 0:
 			var new = dialog_line.duplicate()
 			list.add_child(new)
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
-			run_options(new,data.dialog[data.dialog.size()-1])
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 1:
 			var new = visible_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"visible\",\"value\":true,\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"visible\",\"value\":true,\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 2:
 			var new = focus_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 3:
 			var new = music_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 11:
 			var new = bullet_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 10:
 			var new = choice_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"choice\",\"yes\":\"yes\",\"no\":\"no\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"choice\",\"options\":[],\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
 	file_dialog.file_selected.connect(func(path):
 		if to_open == \"data\":
+			current_dialog = \"dialog\"
 			file_path = path
 			navigation.get_node(\"File\").text = path.get_file()
 			data = load(path).data
-			for i in data.dialog.size():
-				data.dialog[i][\"id\"] = i
+			for i in data[current_dialog].size():
+				data[current_dialog][i][\"id\"] = i
+			for i in dialogs_popup.get_node(\"DialogList/DialogItems\").get_children():
+				if i.name != \"Base\":
+					i.queue_free()
+			for i in data.keys().size():
+				if data.has(\"dialog\" + str(i+1)):
+					var new = dialog_button.duplicate()
+					dialogs_popup.get_node(\"DialogList/DialogItems\").add_child(new)
+					dialogs_options(new, \"dialog\" + str(i+1))
 			print(data)
 			reload_list()
 	)
@@ -135,11 +176,30 @@ func _ready() -> void:
 	navigation.get_node(\"Clear\").mouse_exited.connect(func():
 		navigation.get_node(\"Clear\").text = \"Clear all\"
 	)
+	
+func dialogs_options(item, id):
+	item.get_node(\"Activate\").text = id
+	item.get_node(\"Activate\").pressed.connect(func():
+		current_dialog = id
+		navigation.get_node(\"Dialog\").text = current_dialog
+		for i in dialogs_popup.get_node(\"DialogList/DialogItems\").get_children():
+			if i.get_index() == item.get_index():
+				i.get_node(\"Outline\").visible = true
+			else:
+				i.get_node(\"Outline\").visible = false
+		reload_list()
+	)
+	item.get_node(\"Clear\").pressed.connect(func():
+		if current_dialog == \"dialog\" + str(item.get_index()):
+			current_dialog = \"dialog\"
+			data.erase(id)
+		item.queue_free()
+	)
 
 func reload_list():
 	for i in list.get_children():
 		i.queue_free()
-	for i in data.dialog:
+	for i in data[current_dialog]:
 		if i.type == \"text\":
 			var new = dialog_line.duplicate()
 			new.get_node(\"Panel/TextEdit\").text = i.content
@@ -166,8 +226,11 @@ func reload_list():
 		elif i.type == \"choice\":
 			var new = choice_line.duplicate()
 			i[\"eline\"] = new
-			new.get_node(\"Panel/Yes\").text = i.yes
-			new.get_node(\"Panel/No\").text = i.no
+			for c in 5:
+				if i.options.size() > c:
+					var box = new.get_node(\"Panel/Options\").get_child(c)
+					box.get_node(\"Text\").text = i.options[c].text
+					box.get_node(\"Dialog\").text = i.options[c].dialog
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"bullet\":
@@ -183,7 +246,8 @@ func reload_list():
 				if file is Dictionary:
 					for key in file.keys():
 						new.get_node(\"Panel/Bullet\").add_item(key)
-			new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
+			if file:
+				new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
 			list.add_child(new)
 			run_options(new, i)
 	
@@ -203,25 +267,46 @@ func run_options(i, item_data):
 		moving = i
 	)
 	i.get_node(\"Panel/Remove\").pressed.connect(func():
-		data.dialog.remove_at(item_data.id)
+		data[current_dialog].remove_at(item_data.id)
 		i.queue_free()
 	)
 	if item_data.type == \"text\":
+		i.get_node(\"Character/Emotion\").clear()
+		for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
+			if expr.get_extension() == \"png\":
+				i.get_node(\"Character/Emotion\").add_item(expr)
 		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
 			item_data.content = i.get_node(\"Panel/TextEdit\").text
 		)
+		i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		i.get_node(\"Character/Name\").item_selected.connect(func(ind):
 			item_data.character = i.get_node(\"Character/Name\").get_item_text(ind)
+			i.get_node(\"Character/Emotion\").clear()
+			for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
+				if expr.get_extension() == \"png\":
+					i.get_node(\"Character/Emotion\").add_item(expr)
+			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		)
 		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
 			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
+			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		)
 	elif item_data.type == \"choice\":
-		i.get_node(\"Panel/Yes\").text_changed.connect(func():
-			item_data.yes = i.get_node(\"Panel/Yes\").text
-		)
-		i.get_node(\"Panel/No\").text_changed.connect(func():
-			item_data.yes = i.get_node(\"Panel/No\").text
+		i.get_node(\"Panel/Options/Set\").pressed.connect(func():
+			var new_options = []
+			for c in 5:
+				var box = i.get_node(\"Panel/Options\").get_child(c)
+				if box.get_node(\"Text\").text != \"\" and box.get_node(\"Dialog\").text != \"\":
+					new_options.append({\"text\":box.get_node(\"Text\").text,\"dialog\":box.get_node(\"Dialog\").text})
+			item_data.options = new_options.duplicate()
+			for c in 5:
+				var box = i.get_node(\"Panel/Options\").get_child(c)
+				if item_data.options.size() > c:
+					box.get_node(\"Text\").text = item_data.options[c].text
+					box.get_node(\"Dialog\").text = item_data.options[c].dialog
+				else:
+					box.get_node(\"Text\").text = \"\"
+					box.get_node(\"Dialog\").text = \"\"
 		)
 	elif item_data.type == \"visible\":
 		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
@@ -276,19 +361,20 @@ func sort_new(a, b):
 	return false
 
 func save():
-	var new_data = data.duplicate(true)
-	new_data.dialog.sort_custom(sort_new)
-	for i in new_data.dialog:
-		i.erase(\"id\")
-		i.erase(\"eline\")
-	print(new_data)
-	var to_save = FileAccess.open(file_path, FileAccess.WRITE)
-	to_save.store_string(JSON.stringify(new_data, \"\\t\"))
-	to_save.close()
-	self.get_node(\"Saved/Anim\").play(\"Anim\")
+	if file_path != \"\":
+		var new_data = data.duplicate(true)
+		new_data[current_dialog].sort_custom(sort_new)
+		for i in new_data[current_dialog]:
+			i.erase(\"id\")
+			i.erase(\"eline\")
+		print(new_data)
+		var to_save = FileAccess.open(file_path, FileAccess.WRITE)
+		to_save.store_string(JSON.stringify(new_data, \"\\t\"))
+		to_save.close()
+		self.get_node(\"Saved/Anim\").play(\"Anim\")
 	
 func _process(_delta: float) -> void:
-	for i in data.dialog:
+	for i in data[current_dialog]:
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 			i.id = i.eline.get_index()
 	for i in list.get_children():
@@ -304,7 +390,7 @@ func _process(_delta: float) -> void:
 		context_menu.visible = true
 		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-262),(clampf(mouse_pos.y,0,1080-424)))
 	if Input.is_action_just_pressed(\"Ctrl\"):
-		print(data.dialog)
+		print(data[current_dialog])
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfl6f"]
@@ -442,13 +528,38 @@ theme_override_icons/icon = ExtResource("5_oqeqj")
 text = "Clear all"
 icon_alignment = 2
 
+[node name="Choose" type="Button" parent="Navigation" unique_id=1027686957]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -422.85712
+offset_top = 5.7142854
+offset_right = -314.28558
+offset_bottom = 45.714287
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("4_p2fl4")
+text = "Dialogs"
+icon_alignment = 2
+
 [node name="File" type="Label" parent="Navigation" unique_id=1611597450]
 layout_mode = 0
 offset_left = 125.71428
 offset_top = 5.714285
-offset_right = 600.0
+offset_right = 348.5714
 offset_bottom = 45.714287
 text = "N/A"
+vertical_alignment = 1
+
+[node name="Dialog" type="Label" parent="Navigation" unique_id=516254286]
+layout_mode = 0
+offset_left = 314.2857
+offset_top = 5.714285
+offset_right = 577.1428
+offset_bottom = 45.714287
+text = "Dialog"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Items" type="ScrollContainer" parent="." unique_id=2105817097]
@@ -465,7 +576,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 
 [node name="Choice" type="HBoxContainer" parent="Items/List" unique_id=1570782169]
-custom_minimum_size = Vector2(0, 51)
+custom_minimum_size = Vector2(0, 143)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="Items/List/Choice" unique_id=697637364]
@@ -494,58 +605,32 @@ icon_alignment = 1
 
 [node name="Remove" type="Button" parent="Items/List/Choice/Panel" unique_id=1718539684]
 layout_mode = 0
-offset_left = 51.428574
-offset_top = 5.7142844
-offset_right = 91.42857
-offset_bottom = 45.71428
+offset_left = 5.7142906
+offset_top = 51.428566
+offset_right = 45.71429
+offset_bottom = 91.42856
 mouse_default_cursor_shape = 2
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
 [node name="Flags" type="Button" parent="Items/List/Choice/Panel" unique_id=321468871]
 layout_mode = 0
-offset_left = 97.14293
-offset_top = 5.714285
-offset_right = 137.14293
-offset_bottom = 45.714287
+offset_left = 5.714279
+offset_top = 97.14285
+offset_right = 45.71428
+offset_bottom = 137.14285
 mouse_default_cursor_shape = 2
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
 [node name="Label" type="Label" parent="Items/List/Choice/Panel" unique_id=1925136960]
 layout_mode = 0
-offset_left = 142.85718
+offset_left = 51.42856
 offset_top = 5.714283
-offset_right = 240.00009
+offset_right = 794.28564
 offset_bottom = 45.714275
 text = "Choice"
 vertical_alignment = 1
-
-[node name="Yes" type="LineEdit" parent="Items/List/Choice/Panel" unique_id=2051155858]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 200.0
-offset_top = 5.714287
-offset_right = -325.71432
-offset_bottom = -5.285721
-grow_horizontal = 2
-grow_vertical = 2
-text = "Yes"
-
-[node name="No" type="LineEdit" parent="Items/List/Choice/Panel" unique_id=1544311279]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 480.0
-offset_top = 5.714287
-offset_right = -5.2857666
-offset_bottom = -5.285721
-grow_horizontal = 2
-grow_vertical = 2
-text = "No"
 
 [node name="Index" type="Label" parent="Items/List/Choice/Panel" unique_id=122148348]
 layout_mode = 0
@@ -554,6 +639,119 @@ offset_right = -5.714279
 offset_bottom = 62.85714
 text = "0"
 horizontal_alignment = 2
+
+[node name="Options" type="GridContainer" parent="Items/List/Choice/Panel" unique_id=802573902]
+layout_mode = 0
+offset_left = 51.42857
+offset_top = 51.428562
+offset_right = 794.28564
+offset_bottom = 137.14282
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="Option1" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1679801999]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option1" unique_id=2051155858]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option1" unique_id=1810390839]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option2" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1329249292]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option2" unique_id=112930274]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option2" unique_id=818236943]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option3" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1315234105]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option3" unique_id=1452744169]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option3" unique_id=1160846692]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option4" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=141752509]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option4" unique_id=1331127541]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option4" unique_id=1629733173]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option5" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1725823410]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option5" unique_id=1471329271]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option5" unique_id=34571119]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Set" type="Button" parent="Items/List/Choice/Panel/Options" unique_id=1446404267]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+text = "Apply"
+text_overrun_behavior = 1
 
 [node name="Bullet" type="HBoxContainer" parent="Items/List" unique_id=922323109]
 custom_minimum_size = Vector2(0, 51)
@@ -1084,13 +1282,13 @@ oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
 file_mode = 0
-filters = PackedStringArray("*json")
+filters = PackedStringArray("*.json")
 use_native_dialog = true
 
 [node name="FileDialogSave" type="FileDialog" parent="." unique_id=169077777]
 oversampling_override = 1.0
 position = Vector2i(0, 36)
-filters = PackedStringArray("*json")
+filters = PackedStringArray("*.json")
 use_native_dialog = true
 
 [node name="Context_menu" type="PopupMenu" parent="." unique_id=1903347401]
@@ -1131,6 +1329,7 @@ title = "Flags"
 initial_position = 1
 size = Vector2i(300, 400)
 visible = false
+unresizable = true
 always_on_top = true
 content_scale_factor = 1.4
 accessibility_name = "Flags"
@@ -1161,3 +1360,103 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Dialog" type="Window" parent="." unique_id=430237213]
+oversampling_override = 1.0
+title = "Dialogs"
+initial_position = 1
+size = Vector2i(300, 400)
+visible = false
+unresizable = true
+always_on_top = true
+content_scale_factor = 1.4
+accessibility_name = "Flags"
+
+[node name="DialogList" type="ScrollContainer" parent="Dialog" unique_id=581936615]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 210.28572
+offset_bottom = 242.85713
+
+[node name="DialogItems" type="VBoxContainer" parent="Dialog/DialogList" unique_id=112722077]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Base" type="Control" parent="Dialog/DialogList/DialogItems" unique_id=2081572846]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Activate" type="Button" parent="Dialog/DialogList/DialogItems/Base" unique_id=1299928850]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Base dialog"
+
+[node name="Outline" type="Panel" parent="Dialog/DialogList/DialogItems/Base" unique_id=1619843210]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="DialogOption" type="Control" parent="Dialog/DialogList/DialogItems" unique_id=509855422]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Activate" type="Button" parent="Dialog/DialogList/DialogItems/DialogOption" unique_id=343920288]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -39.99994
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Dialog 1"
+
+[node name="Clear" type="Button" parent="Dialog/DialogList/DialogItems/DialogOption" unique_id=622114363]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.28601
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 2
+
+[node name="Outline" type="Panel" parent="Dialog/DialogList/DialogItems/DialogOption" unique_id=1546054692]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Insert" type="Button" parent="Dialog" unique_id=253748836]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.285736
+offset_top = 248.57141
+offset_right = -5.4285736
+offset_bottom = -6.1428833
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Insert"

@@ -11,9 +11,32 @@
 		},
 		{
 			"flags": [],
-			"no": "no",
-			"type": "choice",
-			"yes": "yes"
+			"options": [
+				{
+					"dialog": "1",
+					"text": "yes"
+				},
+				{
+					"dialog": "0",
+					"text": "no"
+				}
+			],
+			"type": "choice"
+		}
+	],
+	"dialog1": [
+		{
+			"character": "shion",
+			"content": "bye bye",
+			"eline": "<Freed Object>",
+			"expression": "sad",
+			"flags": [
+				"thought",
+				"rage",
+				"flash"
+			],
+			"id": 0,
+			"type": "text"
 		}
 	]
 }
