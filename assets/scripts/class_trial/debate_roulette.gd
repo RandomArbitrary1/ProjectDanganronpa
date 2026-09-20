@@ -1,20 +1,20 @@
 extends Control
 @onready var crosshair: TextureRect = $crosshair
 @onready var break_sfx: AudioStreamPlayer = $sfx/break
-@onready var hp: ProgressBar = $HP
-@onready var concentrate: ProgressBar = $Concentrate
+@onready var hp = $Hud/HP
+@onready var concentrate = $Hud/Concentrate
 @onready var shoot_anim: AnimationPlayer = $Bullets/ShootAnim
 @onready var revolver: TextureRect = $revolver
 @onready var bullets: Control = $Bullets
 @onready var camera_node: Node3D = $"../CameraNode"
-@onready var timer_label = $timer_label
-@onready var dialog_progress_bar: TextureProgressBar = $dialog_progress_bar
-@onready var progress: Label = $progress
+@onready var timer_label = $Hud/timer_label
+@onready var dialog_progress_bar: TextureProgressBar = $Hud/dialog_progress_bar
+@onready var progress: Label = $Hud/progress
 @onready var words: Control = $Words
 @onready var class_trial_main: Node3D = $".."
 @onready var dialog_data = class_trial_main.data["dialog"]
 @onready var char_data = JsonParse.load_json("characters/characters.json")
-@onready var name_label: Label = $name_label
+@onready var name_label: Label = $Hud/name_label
 @onready var words_theme = preload("res://assets/ui/themes/class_trial_debate_words.tres")
 @onready var ready_anim: AnimationPlayer = $"Ready?/anim"
 var state = "nothing"
@@ -68,7 +68,7 @@ func start_process(delta): # PREVIEW PROCESS
 		camera_node.play("rotate_in_center")
 		
 func debate_process(delta):
-	concentrate.value += delta * 8.3
+	concentrate.value += delta * 1.3
 	if Input.is_action_pressed("Spacebar"):
 		concentrate.value -= delta * 35.0
 		
@@ -93,7 +93,7 @@ func debate_next(add=1):
 		
 	word_init()
 	
-	name_label.text = str(char_data_one["name"])
+	name_label.operate(char_data_one["name"])
 	dialog_progress_bar.value = (float(dialog_index) / float(dialog_data.size() - 1)) * 100
 	progress.text = str(dialog_index+1)+ "/" + str(dialog_data.size())
 	
@@ -124,13 +124,20 @@ func word_init():
 	for w in words.get_children():
 		w.queue_free()
 		
-	var label = Label.new()
+	var label = RichTextLabel.new()
+	label.bbcode_enabled = true
 	label.text = str(dialog_data[dialog_index]["content"])
 	label.theme = words_theme
+	label.fit_content = true
+	label.custom_minimum_size = Vector2(1300, 400)
 	words.add_child(label)
 	label.position = Vector2(625,464)
 	label.pivot_offset = label.size / 2 # Offset works after add_child
+	label.gui_input.connect(_on_label_gui_input)
 	
+func _on_label_gui_input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("Label clicked")
 func words_process(delta):
 	for w in words.get_children():
 		w.rotation += delta * 0.1
