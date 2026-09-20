@@ -810,18 +810,22 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9, 0.91424054, 17)
 [node name="Classroom 1-A" parent="Doors" unique_id=1496385204 instance=ExtResource("15_874sy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2, 1.82, -6)
 script = ExtResource("16_ptc8j")
+room = "res://scenes/room.tscn"
 
 [node name="Classroom 1-B" parent="Doors" unique_id=1809682935 instance=ExtResource("15_874sy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2, 1.82, -12)
 script = ExtResource("16_ptc8j")
+room = "res://scenes/room.tscn"
 
 [node name="Classroom 1-D" parent="Doors" unique_id=1883089793 instance=ExtResource("15_874sy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2, 1.82, 29)
 script = ExtResource("16_ptc8j")
+room = "res://scenes/room.tscn"
 
 [node name="Classroom 1-C" parent="Doors" unique_id=230680203 instance=ExtResource("15_874sy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2, 1.82, 23)
 script = ExtResource("16_ptc8j")
+room = "res://scenes/room.tscn"
 
 [node name="Utility closet" parent="Doors" unique_id=971581483 instance=ExtResource("16_2q4xv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.8, 1.82, 35)

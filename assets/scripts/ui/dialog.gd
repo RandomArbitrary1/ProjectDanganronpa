@@ -9,7 +9,7 @@ var camera = null
 @onready var nameplate = self.get_node("Bar/Name")
 @onready var switch = self.get_node("Bar/Switch")
 @onready var input_ind = self.get_node("Bar/Input_indicator/Anim")
-@onready var class_trial_char_bust: TextureRect = self.get_node("Bar/Display/Mask/Character")
+@onready var class_trial_char_bust: TextureRect = self.get_node_or_null("Bar/Display/Mask/Character")
 @onready var full_name: Label = $Bar/Name/full_name
 @onready var flash: AnimationPlayer = $Flash/Anim
 @onready var dialog_anim: AnimationPlayer = $Bar/Dialog/Anim
@@ -24,9 +24,11 @@ var dialog = null
 var line = 0
 var tween = null
 var name_size = 0
+var leave = false
 
 var option_tab = 0
 var option_tab_max = 0
+var optioning = false
 
 func _ready() -> void:
 	$Choice/Option.queue_free()
@@ -61,7 +63,7 @@ func next(): # Next dialog line
 					flash.play("flash")
 				elif i == "rage":
 					dialog_anim.play("rage")
-			if line == 0:
+			if line == 0 and dialog == file.data.dialog:
 				await anim.animation_finished
 				box.visible = true
 				
@@ -84,13 +86,18 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "choice":
+			optioning = true
 			option_tab = 0
-			option_tab_max = current.options.size()
+			option_tab_max = current.options.size()-1
+			for i in $Choice.get_children():
+				if i is NinePatchRect:
+					i.queue_free()
 			for i in current.options.size():
 				var opt = current.options[i]
 				var option = option_temp.duplicate()
 				option.get_node("Text").text = opt.text
 				option.position.y = 100*i
+				option.set_meta("ID", opt.dialog)
 				$Choice.add_child(option)
 				
 			choice_anim.play("Open")
@@ -110,6 +117,10 @@ func next(): # Next dialog line
 
 func start():
 	if file and not active:
+		if file.resource_path == "res://assets/data/leave.json":
+			leave = true
+		else:
+			leave = false
 		box.visible = false
 		box.visible_ratio = 0.0
 		dialog = file.data.dialog
@@ -120,13 +131,11 @@ func start():
 		active = true
 
 func _process(_delta: float) -> void:
-	if $Choice.get_child_count() > option_tab_max:
-		for i in $Choice.get_children():
-			print(i.get_index(),option_tab)
-			if i.get_index() == option_tab:
-				i.texture = option_active
-			else:
-				i.texture = option_inactive
+	for i in $Choice.get_children():
+		if i.get_index() == option_tab:
+			i.texture = option_active
+		else:
+			i.texture = option_inactive
 	if Input.is_action_just_pressed("Up"):
 		if option_tab > 0:
 			option_tab -= 1
@@ -138,12 +147,27 @@ func _process(_delta: float) -> void:
 		else:
 			option_tab = 0
 	if Input.is_action_just_pressed("Progress") and active:
-		if box.visible_ratio == 1.0:
-			line += 1
-			input_ind.play("Next")
-			next()
+		if optioning:
+			choice_anim.play("Close")
+			optioning = false
+			var id = $Choice.get_child(option_tab).get_meta("ID")
+			if id == "0":
+				line += 1
+				next()
+			else:
+				if not leave:
+					line = 0
+					dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
+					next()
+				else:
+					get_tree().root
 		else:
-			if tween and dialog.size() > line:
-				tween.kill()
-				box.visible_ratio = 1.0
-				input_ind.play("Show")
+			if box.visible_ratio == 1.0:
+				line += 1
+				input_ind.play("Next")
+				next()
+			else:
+				if tween and dialog.size() > line:
+					tween.kill()
+					box.visible_ratio = 1.0
+					input_ind.play("Show")

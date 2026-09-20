@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://defpqq2c68rou"]
 
+[ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_jxe34"]
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_jn645"]
 [ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="2_qvc4m"]
 [ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="8_qtoah"]
@@ -24,6 +25,8 @@ ssao_intensity = 3.0
 glow_enabled = true
 
 [node name="Room" type="Node3D" unique_id=478957731]
+script = ExtResource("1_jxe34")
+hall = "//MKAIAST/Users/maikn/Documents/my apps n games/Godot/Danganronpa/project-danganronpa/scenes/rooms/school_f1.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
 environment = SubResource("Environment_14vil")
