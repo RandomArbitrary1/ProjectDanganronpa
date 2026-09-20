@@ -8,13 +8,52 @@
 [ext_resource type="AudioStream" uid="uid://b5oljuyd4ulox" path="res://assets/audio/sfx/class_trial/small_gunshot.mp3" id="5_ul4ow"]
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
 [ext_resource type="Script" uid="uid://w5nod7m0ufde" path="res://assets/scripts/class_trial/bullet_system.gd" id="6_qus7n"]
+[ext_resource type="Script" uid="uid://bhc4scbeu7xse" path="res://assets/scripts/class_trial/debate/name_label.gd" id="7_6k323"]
 [ext_resource type="Texture2D" uid="uid://b5ixvrf66o27g" path="res://assets/textures/ui/class_trial/truth_bullet.png" id="8_fe14r"]
 [ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="8_juyy3"]
+[ext_resource type="Texture2D" uid="uid://db36ff6imvvyx" path="res://assets/textures/ui/class_trial/HP_bar_full.png" id="8_ogawx"]
 [ext_resource type="Theme" uid="uid://xbu3dv5es6ug" path="res://assets/ui/themes/class_trial_debate_words.tres" id="9_3resf"]
-[ext_resource type="Theme" uid="uid://b5h8v3uk0c4bm" path="res://assets/ui/themes/class_health_bar.tres" id="9_lwld5"]
+[ext_resource type="Texture2D" uid="uid://0rp7vcnmr45g" path="res://assets/textures/ui/class_trial/debate_bg.png" id="9_c6kf5"]
+[ext_resource type="Texture2D" uid="uid://nibm1uw8rtdj" path="res://assets/textures/ui/class_trial/concentrate_bar_full.png" id="9_qmpdv"]
 [ext_resource type="Texture2D" uid="uid://dd3mhfe2v8gwg" path="res://assets/textures/ui/class_trial/dialog_progress_bg.png" id="10_06reo"]
 [ext_resource type="Texture2D" uid="uid://c4lccysi02k8b" path="res://assets/textures/ui/class_trial/dialog_progress_upper.png" id="11_c6kf5"]
 [ext_resource type="Texture2D" uid="uid://b6tvvygi6xmjn" path="res://assets/textures/ui/class_trial/bg_debate_ready.png" id="12_wokie"]
+
+[sub_resource type="Animation" id="Animation_ogawx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qmpdv"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgswe"]
+_data = {
+&"RESET": SubResource("Animation_ogawx"),
+&"appear": SubResource("Animation_qmpdv")
+}
 
 [sub_resource type="Animation" id="Animation_juyy3"]
 length = 0.001
@@ -127,14 +166,6 @@ _data = {
 &"reload": SubResource("Animation_wokie"),
 &"shoot": SubResource("Animation_3resf")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwld5"]
-bg_color = Color(0, 0.8509804, 0.4117647, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.39380386, 7.676855e-06, 0.2841931, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsook"]
 radius = 119.36
@@ -347,6 +378,110 @@ bus = &"Sfx"
 stream = ExtResource("6_fe14r")
 bus = &"Sfx"
 
+[node name="Hud" type="Control" parent="." unique_id=474364630]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="bg" type="TextureRect" parent="Hud" unique_id=1388570049]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_c6kf5")
+
+[node name="name_label" type="Label" parent="Hud" unique_id=122820637]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -438.99988
+offset_top = -169.99994
+offset_right = -155.99988
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.19736305
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("8_juyy3")
+theme_override_font_sizes/font_size = 75
+text = "name"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_6k323")
+
+[node name="anim" type="AnimationPlayer" parent="Hud/name_label" unique_id=1460002083]
+libraries/ = SubResource("AnimationLibrary_pgswe")
+
+[node name="HP" type="TextureProgressBar" parent="Hud" unique_id=162493343]
+layout_mode = 0
+offset_left = 1492.2931
+offset_top = 59.0
+offset_right = 1892.2931
+offset_bottom = 109.0
+rotation = 0.2262477
+value = 57.0
+texture_progress = ExtResource("8_ogawx")
+
+[node name="Concentrate" type="TextureProgressBar" parent="Hud" unique_id=250982091]
+layout_mode = 0
+offset_left = 1492.2931
+offset_top = 125.0
+offset_right = 1892.2931
+offset_bottom = 175.0
+rotation = 0.2262477
+value = 35.0
+texture_progress = ExtResource("9_qmpdv")
+
+[node name="dialog_progress_bar" type="TextureProgressBar" parent="Hud" unique_id=1712652643]
+layout_mode = 0
+offset_left = 1304.7263
+offset_top = 544.98865
+offset_right = 2204.7302
+offset_bottom = 744.98865
+rotation = -0.9900216
+scale = Vector2(0.45, 0.45)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+value = 68.0
+texture_under = ExtResource("10_06reo")
+texture_progress = ExtResource("11_c6kf5")
+
+[node name="progress" type="Label" parent="Hud" unique_id=2010527368]
+modulate = Color(1, 1, 1, 0.22745098)
+layout_mode = 0
+offset_left = 1745.0
+offset_top = 619.0001
+offset_right = 1914.0
+offset_bottom = 744.0001
+rotation = -1.0043099
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("8_juyy3")
+theme_override_font_sizes/font_size = 86
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="timer_label" type="Label" parent="Hud" unique_id=134018399]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -372.00012
+offset_top = -17.000013
+offset_right = 11.999878
+offset_bottom = 105.999985
+grow_horizontal = 0
+rotation = 0.20659846
+theme_override_fonts/font = ExtResource("8_juyy3")
+theme_override_font_sizes/font_size = 80
+text = "00:00:00"
+
 [node name="revolver" type="TextureRect" parent="." unique_id=547455956]
 self_modulate = Color(1, 0.34509805, 0, 0.7529412)
 layout_mode = 1
@@ -398,96 +533,6 @@ libraries/ = SubResource("AnimationLibrary_wokie")
 
 [node name="downtime" type="Timer" parent="Bullets" unique_id=1247655685]
 one_shot = true
-
-[node name="HP" type="ProgressBar" parent="." unique_id=1977004638]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -530.2224
-offset_top = 97.68109
-offset_right = -15.247437
-offset_bottom = 130.5011
-grow_horizontal = 0
-rotation = 0.13964796
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = ExtResource("9_lwld5")
-value = 59.06
-show_percentage = false
-
-[node name="Concentrate" type="ProgressBar" parent="." unique_id=1761164395]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -530.2224
-offset_top = 156.0
-offset_right = -15.247437
-offset_bottom = 188.81999
-grow_horizontal = 0
-rotation = 0.13964796
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = ExtResource("9_lwld5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lwld5")
-value = 50.2
-show_percentage = false
-
-[node name="dialog_progress_bar" type="TextureProgressBar" parent="." unique_id=1712652643]
-layout_mode = 0
-offset_left = 1214.125
-offset_top = 515.0
-offset_right = 2114.129
-offset_bottom = 715.0
-rotation = -0.9900216
-scale = Vector2(0.45, 0.45)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-value = 68.0
-texture_under = ExtResource("10_06reo")
-texture_progress = ExtResource("11_c6kf5")
-
-[node name="timer_label" type="Label" parent="." unique_id=134018399]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -354.0
-offset_top = -16.000015
-offset_bottom = 106.999985
-grow_horizontal = 0
-rotation = 0.107797585
-theme_override_fonts/font = ExtResource("8_juyy3")
-theme_override_font_sizes/font_size = 80
-text = "00:00:00"
-
-[node name="progress" type="Label" parent="." unique_id=2010527368]
-layout_mode = 0
-offset_left = 1516.0001
-offset_top = 668.0
-offset_right = 1831.0001
-offset_bottom = 908.0
-rotation = -0.83023083
-theme_override_fonts/font = ExtResource("8_juyy3")
-theme_override_font_sizes/font_size = 175
-text = "0/0"
-
-[node name="name_label" type="Label" parent="." unique_id=122820637]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -494.00012
-offset_top = -141.0
-offset_right = -211.00012
-offset_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = -0.08918114
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("8_juyy3")
-theme_override_font_sizes/font_size = 75
-text = "name"
 
 [node name="Words" type="Control" parent="." unique_id=1761741366]
 anchors_preset = 0
@@ -560,6 +605,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_behavior_recursive = 1
 
 [node name="bg" type="TextureRect" parent="Ready?" unique_id=1678285598]
 layout_mode = 1
