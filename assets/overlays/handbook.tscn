@@ -285,10 +285,10 @@ offset_bottom = 872.0
 
 [node name="Items" type="GridContainer" parent="Screen/Lists/Bullets" unique_id=612493915]
 layout_mode = 1
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 848.0
-offset_bottom = 798.0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 1048.0
+offset_bottom = 1412.0
 
 [node name="Item" type="NinePatchRect" parent="Screen/Lists/Bullets/Items" unique_id=170205235]
 custom_minimum_size = Vector2(250, 110)
@@ -649,6 +649,13 @@ patch_margin_left = 30
 patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
+
+[node name="Info" type="ColorRect" parent="Screen/Lists/Bullets" unique_id=933056216]
+layout_mode = 0
+offset_left = 1096.0
+offset_right = 1840.0
+offset_bottom = 872.0
+color = Color(0, 0, 0, 0.49803922)
 
 [node name="Gifts" type="Control" parent="Screen/Lists" unique_id=2132885470]
 visible = false
@@ -1361,6 +1368,13 @@ patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
 
+[node name="Info" type="ColorRect" parent="Screen/Lists/Gifts" unique_id=1677625937]
+layout_mode = 0
+offset_left = 1096.0
+offset_right = 1840.0
+offset_bottom = 872.0
+color = Color(0, 0, 0, 0.49803922)
+
 [node name="Report" type="Control" parent="Screen/Lists" unique_id=1624073679]
 visible = false
 clip_contents = true
@@ -1368,20 +1382,483 @@ anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
 
-[node name="Items" type="GridContainer" parent="Screen/Lists/Report" unique_id=941415275]
+[node name="Items" type="GridContainer" parent="Screen/Lists/Report" unique_id=1426697683]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 298.0
+offset_bottom = 2508.0
+
+[node name="Item" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=204773500]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item" unique_id=2008842900]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -544.0
-offset_top = -302.0
-offset_right = 544.0
-offset_bottom = 302.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 3
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item2" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=790042811]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item2" unique_id=2117142698]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item3" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=236288723]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item3" unique_id=1284669704]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item4" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1108570743]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item4" unique_id=346852913]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item5" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1701043284]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item5" unique_id=1239722385]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item6" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1403996683]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item6" unique_id=2002467900]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item7" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1803103891]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item7" unique_id=1734518811]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item8" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=452413620]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item8" unique_id=1798671222]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item9" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=55475541]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item9" unique_id=399058151]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item10" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1774585054]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item10" unique_id=1767182054]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item11" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=927281254]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item11" unique_id=925428487]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item12" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1293060303]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item12" unique_id=816330475]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item13" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1932861221]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item13" unique_id=350975446]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item14" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=1120671338]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item14" unique_id=1280037543]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item15" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=657061251]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item15" unique_id=1892422129]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Item16" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=2064232693]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+texture = ExtResource("3_5gwyl")
+region_rect = Rect2(0, 0, 116, 110)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Report/Items/Item16" unique_id=881335027]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fd50p")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Info" type="ColorRect" parent="Screen/Lists/Report" unique_id=1542270339]
+layout_mode = 0
+offset_left = 320.0
+offset_right = 1144.0
+offset_bottom = 872.0
+color = Color(0, 0, 0, 0.49803922)
 
 [node name="Rules" type="Control" parent="Screen/Lists" unique_id=1656216176]
 visible = false

@@ -857,13 +857,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.53373826, 7)
 script = ExtResource("11_7peox")
 
 [node name="nori" parent="Characters" unique_id=2135237569 instance=ExtResource("34_anjoc")]
-transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -1, 1.4, 6)
-character = "noriyuki"
+transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -1, 1.4, -1)
+character = "nori"
 expression = "neutral"
 
 [node name="tenga" parent="Characters" unique_id=778912610 instance=ExtResource("34_anjoc")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, 1, 1.4, -28)
 character = "tenga"
+expression = "neutral"
+
+[node name="naeri" parent="Characters" unique_id=1879049343 instance=ExtResource("34_anjoc")]
+transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, 13, 1.4, 5)
+character = "naeri"
 expression = "neutral"
 
 [node name="raito" parent="Characters" unique_id=1893461810 instance=ExtResource("34_anjoc")]

@@ -23,5 +23,8 @@
 "sprites":{"neutral":"res://assets/textures/characters/rikuno/neutral.png"}},
 "tenga":{"name":"Tenga Koaki","talent":"Ultimate Fisher","sex":"Male","likes":"Animals",
 "dislikes":"Rainy days","height":"1.72 cm","birth_date":"24 july",
-"sprites":{"neutral":"res://assets/textures/characters/tenga/neutral.png"}}
+"sprites":{"neutral":"res://assets/textures/characters/tenga/neutral.png"}},
+"naeri":{"name":"Naeri Enokida","talent":"Ultimate DJ","sex":"Female","likes":"Booze",
+"dislikes":"Waiting","height":"1.65 cm","birth_date":"18 october",
+"sprites":{"neutral":"res://assets/textures/characters/naeri/neutral.png"}}
 }
