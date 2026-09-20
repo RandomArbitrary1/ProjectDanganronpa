@@ -13,7 +13,11 @@ var camera = null
 @onready var full_name: Label = $Bar/Name/full_name
 @onready var flash: AnimationPlayer = $Flash/Anim
 @onready var dialog_anim: AnimationPlayer = $Bar/Dialog/Anim
-@onready var choice_anim: AnimationPlayer = $Choice/Anim
+@onready var choice_anim: AnimationPlayer = $ChoiceAnim
+@onready var option_temp: NinePatchRect = $Choice/Option.duplicate()
+
+var option_inactive = preload("res://assets/ui/dialog/choice.png")
+var option_active = preload("res://assets/ui/dialog/choice_active.png")
 
 
 var character_info = preload("res://assets/data/characters/characters.json").data
@@ -22,7 +26,11 @@ var line = 0
 var tween = null
 var name_size = 0
 
+var option_tab = 0
+var option_tab_max = 0
+
 func _ready() -> void:
+	$Choice/Option.queue_free()
 	camera = get_tree().get_first_node_in_group("Camera_room")
 	
 func next(): # Next dialog line
@@ -77,6 +85,15 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "choice":
+			option_tab = 0
+			option_tab_max = current.options.size()
+			for i in current.options.size():
+				var opt = current.options[i]
+				var option = option_temp.duplicate()
+				option.get_node("Text").text = opt.text
+				option.position.y = 100*i
+				$Choice.add_child(option)
+				
 			choice_anim.play("Open")
 		else:
 			line += 1
@@ -104,6 +121,23 @@ func start():
 		active = true
 
 func _process(_delta: float) -> void:
+	if $Choice.get_child_count() > option_tab_max:
+		for i in $Choice.get_children():
+			print(i.get_index(),option_tab)
+			if i.get_index() == option_tab:
+				i.texture = option_active
+			else:
+				i.texture = option_inactive
+	if Input.is_action_just_pressed("Up"):
+		if option_tab > 0:
+			option_tab -= 1
+		else:
+			option_tab = option_tab_max
+	if Input.is_action_just_pressed("Down"):
+		if option_tab < option_tab_max:
+			option_tab += 1
+		else:
+			option_tab = 0
 	if Input.is_action_just_pressed("Progress") and active:
 		if box.visible_ratio == 1.0:
 			line += 1

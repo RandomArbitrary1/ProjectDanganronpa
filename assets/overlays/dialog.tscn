@@ -896,6 +896,10 @@ stretch_mode = 5
 libraries/ = SubResource("AnimationLibrary_o1amr")
 speed_scale = 1.5
 
+[node name="ChoiceAnim" type="AnimationPlayer" parent="." unique_id=287810625]
+root_node = NodePath("../Choice")
+libraries/ = SubResource("AnimationLibrary_2rgs5")
+
 [node name="Choice" type="Control" parent="." unique_id=915050139]
 visible = false
 anchors_preset = 0
@@ -904,7 +908,7 @@ offset_top = 576.0
 offset_right = 1920.0073
 offset_bottom = 776.0
 
-[node name="Yes" type="NinePatchRect" parent="Choice" unique_id=1381765017]
+[node name="Option" type="NinePatchRect" parent="Choice" unique_id=1381765017]
 layout_mode = 1
 offset_left = 240.0
 offset_right = 888.0
@@ -914,7 +918,7 @@ region_rect = Rect2(0, 0, 448, 100)
 patch_margin_left = 90
 patch_margin_right = 284
 
-[node name="full_name" type="Label" parent="Choice/Yes" unique_id=910895156]
+[node name="Text" type="Label" parent="Choice/Option" unique_id=910895156]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -927,34 +931,6 @@ theme = ExtResource("3_fh4nj")
 theme_override_font_sizes/font_size = 50
 text = "Yes"
 vertical_alignment = 1
-
-[node name="No" type="NinePatchRect" parent="Choice" unique_id=1280205774]
-layout_mode = 1
-offset_left = 240.0
-offset_top = 96.0
-offset_right = 888.0
-offset_bottom = 196.0
-texture = ExtResource("12_8cy7o")
-region_rect = Rect2(0, 0, 448, 100)
-patch_margin_left = 90
-patch_margin_right = 284
-
-[node name="full_name" type="Label" parent="Choice/No" unique_id=1045872195]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 96.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_fh4nj")
-theme_override_font_sizes/font_size = 50
-text = "No"
-vertical_alignment = 1
-
-[node name="Anim" type="AnimationPlayer" parent="Choice" unique_id=287810625]
-libraries/ = SubResource("AnimationLibrary_2rgs5")
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1273139418]
 libraries/ = SubResource("AnimationLibrary_8knbj")
