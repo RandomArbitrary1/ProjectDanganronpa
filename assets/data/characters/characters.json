@@ -5,7 +5,7 @@
 "point":"res://assets/textures/characters/shion/point.png"}},
 "nori":{"name":"Noriyuki Wato","talent":"Ultimate ???","sex":"Male","likes":"Optimism",
 "dislikes":"Pessimism","height":"1.75 cm","birth_date":"25 february",
-"sprites":{"neutral":"res://assets/textures/characters/noriyuki/neutral.png"}},
+"sprites":{"neutral":"res://assets/textures/characters/nori/neutral.png"}},
 "yuito":{"name":"Yuito Haruki","talent":"Ultimate Dancer","sex":"Female","likes":"Hot sauce",
 "dislikes":"Gore, Horror","height":"1.65 cm","birth_date":"11 october",
 "sprites":{"neutral":"res://assets/textures/characters/yuito/neutral.png"}},
