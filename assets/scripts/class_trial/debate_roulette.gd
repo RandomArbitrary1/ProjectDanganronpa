@@ -9,10 +9,12 @@ extends Control
 @onready var camera_node: Node3D = $"../CameraNode"
 @onready var timer_label = $timer_label
 @onready var progress: Label = $progress
+@onready var words: Control = $Words
 @onready var class_trial_main: Node3D = $".."
 @onready var dialog_data = class_trial_main.data["dialog"]
 @onready var char_data = JsonParse.load_json("characters/characters.json")
 @onready var name_label: Label = $name_label
+@onready var words_theme = preload("res://assets/ui/themes/class_trial_debate_words.tres")
 var state = "bullet_preview"
 var timer = 499.0
 var state_timer = 0.0
@@ -84,8 +86,15 @@ func debate_next(_delta, add=1):
 	dialog_index = (dialog_index + add) % dialog_data.size()
 	var character = dialog_data[dialog_index]["character"]
 	var char_data_one = char_data[character]
+
+	for w in words.get_children():
+		w.queue_free()
+		
+	var label = Label.new()
+	label.text = str(dialog_data[dialog_index]["content"])
+	label.theme = words_theme
+	words.add_child(label)
 	
-	print(char_data_one["name"],": ", dialog_data[dialog_index]["content"]) # dialog
 	name_label.text = str(char_data_one["name"])
 	progress.text = str(dialog_index+1)+ "/" + str(dialog_data.size())
 	

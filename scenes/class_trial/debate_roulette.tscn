@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://w5nod7m0ufde" path="res://assets/scripts/class_trial/bullet_system.gd" id="6_qus7n"]
 [ext_resource type="Texture2D" uid="uid://b5ixvrf66o27g" path="res://assets/textures/ui/class_trial/truth_bullet.png" id="8_fe14r"]
 [ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="8_juyy3"]
+[ext_resource type="Theme" uid="uid://xbu3dv5es6ug" path="res://assets/ui/themes/class_trial_debate_words.tres" id="9_3resf"]
 
 [sub_resource type="Animation" id="Animation_juyy3"]
 length = 0.001
@@ -426,6 +427,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+
+[node name="Label" type="Label" parent="Words" unique_id=1172677739]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("9_3resf")
+text = "TEST test"
 
 [node name="crosshair" type="TextureRect" parent="." unique_id=1547952700]
 layout_mode = 1

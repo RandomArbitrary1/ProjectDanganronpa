@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://xbu3dv5es6ug"]
+
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="1_64f13"]
+
+[resource]
+default_font = ExtResource("1_64f13")
+default_font_size = 80
