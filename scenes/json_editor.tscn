@@ -19,6 +19,8 @@ script/source = "extends Control
 @onready var file_dialog_save = self.get_node(\"FileDialogSave\")
 @onready var list = self.get_node(\"Items/List\")
 @onready var flags_popup: Window = $Flags
+@onready var dialogs_popup: Window = $Dialog
+
 
 @onready var dialog_line = list.get_node(\"Dialog\").duplicate()
 @onready var visible_line = list.get_node(\"Visibility\").duplicate()
@@ -27,6 +29,7 @@ script/source = "extends Control
 @onready var bullet_line = list.get_node(\"Bullet\").duplicate()
 @onready var choice_line = list.get_node(\"Choice\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
+@onready var dialog_button = dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").duplicate()
 
 var characters = preload(\"res://assets/data/characters/characters.json\").data
 
@@ -37,14 +40,43 @@ var file_path = \"\"
 var moving = null
 var to_open = \"data\"
 
+var current_dialog = \"dialog\"
+
 func _ready() -> void:
 	flags_popup.close_requested.connect(flags_popup.hide)
+	dialogs_popup.close_requested.connect(dialogs_popup.hide)
 	
-	list.get_node(\"Dialog/Character/Name\").clear()
+	dialog_line.get_node(\"Character/Name\").clear()
 	for key in characters.keys():
-		list.get_node(\"Dialog/Character/Name\").add_item(key)
+		dialog_line.get_node(\"Character/Name\").add_item(key)
+	
+	navigation.get_node(\"Choose\").pressed.connect(func():
+		dialogs_popup.visible = true
+	)
+	dialogs_popup.get_node(\"Insert\").pressed.connect(func():
+		for i in data.keys().size():
+			if not data.has(\"dialog\" + str(i+1)):
+				data[\"dialog\" + str(i+1)] = []
+				var new = dialog_button.duplicate()
+				dialogs_popup.get_node(\"DialogList/DialogItems\").add_child(new)
+				dialogs_options(new, \"dialog\" + str(i+1))
+				return
+	)
+	dialogs_popup.get_node(\"DialogList/DialogItems/Base/Activate\").pressed.connect(func():
+		current_dialog = \"dialog\"
+		navigation.get_node(\"Dialog\").text = current_dialog
+		for i in dialogs_popup.get_node(\"DialogList/DialogItems\").get_children():
+			if i.get_index() == 0:
+				i.get_node(\"Outline\").visible = true
+			else:
+				i.get_node(\"Outline\").visible = false
+		reload_list()
+	)
+
 	
 	flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").queue_free()
+	dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").queue_free()
+	
 	for i in list.get_children():
 		if i:
 			i.queue_free()
@@ -75,41 +107,50 @@ func _ready() -> void:
 		if id == 0:
 			var new = dialog_line.duplicate()
 			list.add_child(new)
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
-			run_options(new,data.dialog[data.dialog.size()-1])
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 1:
 			var new = visible_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"visible\",\"value\":true,\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"visible\",\"value\":true,\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 2:
 			var new = focus_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 3:
 			var new = music_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 11:
 			var new = bullet_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 10:
 			var new = choice_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"choice\",\"options\":[],\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"choice\",\"options\":[],\"flags\":[]})
 			list.add_child(new)
-			run_options(new,data.dialog[data.dialog.size()-1])
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
 	file_dialog.file_selected.connect(func(path):
 		if to_open == \"data\":
+			current_dialog = \"dialog\"
 			file_path = path
 			navigation.get_node(\"File\").text = path.get_file()
 			data = load(path).data
-			for i in data.dialog.size():
-				data.dialog[i][\"id\"] = i
+			for i in data[current_dialog].size():
+				data[current_dialog][i][\"id\"] = i
+			for i in dialogs_popup.get_node(\"DialogList/DialogItems\").get_children():
+				if i.name != \"Base\":
+					i.queue_free()
+			for i in data.keys().size():
+				if data.has(\"dialog\" + str(i+1)):
+					var new = dialog_button.duplicate()
+					dialogs_popup.get_node(\"DialogList/DialogItems\").add_child(new)
+					dialogs_options(new, \"dialog\" + str(i+1))
 			print(data)
 			reload_list()
 	)
@@ -135,11 +176,30 @@ func _ready() -> void:
 	navigation.get_node(\"Clear\").mouse_exited.connect(func():
 		navigation.get_node(\"Clear\").text = \"Clear all\"
 	)
+	
+func dialogs_options(item, id):
+	item.get_node(\"Activate\").text = id
+	item.get_node(\"Activate\").pressed.connect(func():
+		current_dialog = id
+		navigation.get_node(\"Dialog\").text = current_dialog
+		for i in dialogs_popup.get_node(\"DialogList/DialogItems\").get_children():
+			if i.get_index() == item.get_index():
+				i.get_node(\"Outline\").visible = true
+			else:
+				i.get_node(\"Outline\").visible = false
+		reload_list()
+	)
+	item.get_node(\"Clear\").pressed.connect(func():
+		if current_dialog == \"dialog\" + str(item.get_index()):
+			current_dialog = \"dialog\"
+			data.erase(id)
+		item.queue_free()
+	)
 
 func reload_list():
 	for i in list.get_children():
 		i.queue_free()
-	for i in data.dialog:
+	for i in data[current_dialog]:
 		if i.type == \"text\":
 			var new = dialog_line.duplicate()
 			new.get_node(\"Panel/TextEdit\").text = i.content
@@ -186,7 +246,8 @@ func reload_list():
 				if file is Dictionary:
 					for key in file.keys():
 						new.get_node(\"Panel/Bullet\").add_item(key)
-			new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
+			if file:
+				new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
 			list.add_child(new)
 			run_options(new, i)
 	
@@ -206,18 +267,29 @@ func run_options(i, item_data):
 		moving = i
 	)
 	i.get_node(\"Panel/Remove\").pressed.connect(func():
-		data.dialog.remove_at(item_data.id)
+		data[current_dialog].remove_at(item_data.id)
 		i.queue_free()
 	)
 	if item_data.type == \"text\":
+		i.get_node(\"Character/Emotion\").clear()
+		for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
+			if expr.get_extension() == \"png\":
+				i.get_node(\"Character/Emotion\").add_item(expr)
 		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
 			item_data.content = i.get_node(\"Panel/TextEdit\").text
 		)
+		i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		i.get_node(\"Character/Name\").item_selected.connect(func(ind):
 			item_data.character = i.get_node(\"Character/Name\").get_item_text(ind)
+			i.get_node(\"Character/Emotion\").clear()
+			for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
+				if expr.get_extension() == \"png\":
+					i.get_node(\"Character/Emotion\").add_item(expr)
+			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		)
 		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
 			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
+			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		)
 	elif item_data.type == \"choice\":
 		i.get_node(\"Panel/Options/Set\").pressed.connect(func():
@@ -289,19 +361,20 @@ func sort_new(a, b):
 	return false
 
 func save():
-	var new_data = data.duplicate(true)
-	new_data.dialog.sort_custom(sort_new)
-	for i in new_data.dialog:
-		i.erase(\"id\")
-		i.erase(\"eline\")
-	print(new_data)
-	var to_save = FileAccess.open(file_path, FileAccess.WRITE)
-	to_save.store_string(JSON.stringify(new_data, \"\\t\"))
-	to_save.close()
-	self.get_node(\"Saved/Anim\").play(\"Anim\")
+	if file_path != \"\":
+		var new_data = data.duplicate(true)
+		new_data[current_dialog].sort_custom(sort_new)
+		for i in new_data[current_dialog]:
+			i.erase(\"id\")
+			i.erase(\"eline\")
+		print(new_data)
+		var to_save = FileAccess.open(file_path, FileAccess.WRITE)
+		to_save.store_string(JSON.stringify(new_data, \"\\t\"))
+		to_save.close()
+		self.get_node(\"Saved/Anim\").play(\"Anim\")
 	
 func _process(_delta: float) -> void:
-	for i in data.dialog:
+	for i in data[current_dialog]:
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 			i.id = i.eline.get_index()
 	for i in list.get_children():
@@ -317,7 +390,7 @@ func _process(_delta: float) -> void:
 		context_menu.visible = true
 		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-262),(clampf(mouse_pos.y,0,1080-424)))
 	if Input.is_action_just_pressed(\"Ctrl\"):
-		print(data.dialog)
+		print(data[current_dialog])
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfl6f"]
@@ -485,7 +558,7 @@ offset_left = 314.2857
 offset_top = 5.714285
 offset_right = 577.1428
 offset_bottom = 45.714287
-text = "N/A"
+text = "Dialog"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -1209,13 +1282,13 @@ oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
 file_mode = 0
-filters = PackedStringArray("*json")
+filters = PackedStringArray("*.json")
 use_native_dialog = true
 
 [node name="FileDialogSave" type="FileDialog" parent="." unique_id=169077777]
 oversampling_override = 1.0
 position = Vector2i(0, 36)
-filters = PackedStringArray("*json")
+filters = PackedStringArray("*.json")
 use_native_dialog = true
 
 [node name="Context_menu" type="PopupMenu" parent="." unique_id=1903347401]
@@ -1256,6 +1329,7 @@ title = "Flags"
 initial_position = 1
 size = Vector2i(300, 400)
 visible = false
+unresizable = true
 always_on_top = true
 content_scale_factor = 1.4
 accessibility_name = "Flags"
@@ -1286,3 +1360,103 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Dialog" type="Window" parent="." unique_id=430237213]
+oversampling_override = 1.0
+title = "Dialogs"
+initial_position = 1
+size = Vector2i(300, 400)
+visible = false
+unresizable = true
+always_on_top = true
+content_scale_factor = 1.4
+accessibility_name = "Flags"
+
+[node name="DialogList" type="ScrollContainer" parent="Dialog" unique_id=581936615]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 210.28572
+offset_bottom = 242.85713
+
+[node name="DialogItems" type="VBoxContainer" parent="Dialog/DialogList" unique_id=112722077]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Base" type="Control" parent="Dialog/DialogList/DialogItems" unique_id=2081572846]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Activate" type="Button" parent="Dialog/DialogList/DialogItems/Base" unique_id=1299928850]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Base dialog"
+
+[node name="Outline" type="Panel" parent="Dialog/DialogList/DialogItems/Base" unique_id=1619843210]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="DialogOption" type="Control" parent="Dialog/DialogList/DialogItems" unique_id=509855422]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Activate" type="Button" parent="Dialog/DialogList/DialogItems/DialogOption" unique_id=343920288]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -39.99994
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Dialog 1"
+
+[node name="Clear" type="Button" parent="Dialog/DialogList/DialogItems/DialogOption" unique_id=622114363]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.28601
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 2
+
+[node name="Outline" type="Panel" parent="Dialog/DialogList/DialogItems/DialogOption" unique_id=1546054692]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Insert" type="Button" parent="Dialog" unique_id=253748836]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.285736
+offset_top = 248.57141
+offset_right = -5.4285736
+offset_bottom = -6.1428833
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Insert"
