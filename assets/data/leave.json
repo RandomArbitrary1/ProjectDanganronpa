@@ -11,9 +11,11 @@
 		},
 		{
 			"flags": [],
-			"no": "no",
 			"type": "choice",
-			"yes": "yes"
+			"options": [{"text":"yes","dialog":"1"},{"text":"no","dialog":"0"}]
 		}
+	],
+	"dialog1": [
+		
 	]
 }

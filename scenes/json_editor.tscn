@@ -99,7 +99,7 @@ func _ready() -> void:
 			run_options(new,data.dialog[data.dialog.size()-1])
 		elif id == 10:
 			var new = choice_line.duplicate()
-			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"choice\",\"yes\":\"yes\",\"no\":\"no\",\"flags\":[]})
+			data.dialog.append({\"id\":data.dialog.size(),\"eline\":new,\"type\":\"choice\",\"options\":[],\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data.dialog[data.dialog.size()-1])
 	)
@@ -166,8 +166,11 @@ func reload_list():
 		elif i.type == \"choice\":
 			var new = choice_line.duplicate()
 			i[\"eline\"] = new
-			new.get_node(\"Panel/Yes\").text = i.yes
-			new.get_node(\"Panel/No\").text = i.no
+			for c in 5:
+				if i.options.size() > c:
+					var box = new.get_node(\"Panel/Options\").get_child(c)
+					box.get_node(\"Text\").text = i.options[c].text
+					box.get_node(\"Dialog\").text = i.options[c].dialog
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"bullet\":
@@ -217,11 +220,21 @@ func run_options(i, item_data):
 			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
 		)
 	elif item_data.type == \"choice\":
-		i.get_node(\"Panel/Yes\").text_changed.connect(func():
-			item_data.yes = i.get_node(\"Panel/Yes\").text
-		)
-		i.get_node(\"Panel/No\").text_changed.connect(func():
-			item_data.yes = i.get_node(\"Panel/No\").text
+		i.get_node(\"Panel/Options/Set\").pressed.connect(func():
+			var new_options = []
+			for c in 5:
+				var box = i.get_node(\"Panel/Options\").get_child(c)
+				if box.get_node(\"Text\").text != \"\" and box.get_node(\"Dialog\").text != \"\":
+					new_options.append({\"text\":box.get_node(\"Text\").text,\"dialog\":box.get_node(\"Dialog\").text})
+			item_data.options = new_options.duplicate()
+			for c in 5:
+				var box = i.get_node(\"Panel/Options\").get_child(c)
+				if item_data.options.size() > c:
+					box.get_node(\"Text\").text = item_data.options[c].text
+					box.get_node(\"Dialog\").text = item_data.options[c].dialog
+				else:
+					box.get_node(\"Text\").text = \"\"
+					box.get_node(\"Dialog\").text = \"\"
 		)
 	elif item_data.type == \"visible\":
 		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
@@ -442,13 +455,38 @@ theme_override_icons/icon = ExtResource("5_oqeqj")
 text = "Clear all"
 icon_alignment = 2
 
+[node name="Choose" type="Button" parent="Navigation" unique_id=1027686957]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -422.85712
+offset_top = 5.7142854
+offset_right = -314.28558
+offset_bottom = 45.714287
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("4_p2fl4")
+text = "Dialogs"
+icon_alignment = 2
+
 [node name="File" type="Label" parent="Navigation" unique_id=1611597450]
 layout_mode = 0
 offset_left = 125.71428
 offset_top = 5.714285
-offset_right = 600.0
+offset_right = 348.5714
 offset_bottom = 45.714287
 text = "N/A"
+vertical_alignment = 1
+
+[node name="Dialog" type="Label" parent="Navigation" unique_id=516254286]
+layout_mode = 0
+offset_left = 314.2857
+offset_top = 5.714285
+offset_right = 577.1428
+offset_bottom = 45.714287
+text = "N/A"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Items" type="ScrollContainer" parent="." unique_id=2105817097]
@@ -465,7 +503,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 
 [node name="Choice" type="HBoxContainer" parent="Items/List" unique_id=1570782169]
-custom_minimum_size = Vector2(0, 51)
+custom_minimum_size = Vector2(0, 143)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="Items/List/Choice" unique_id=697637364]
@@ -494,58 +532,32 @@ icon_alignment = 1
 
 [node name="Remove" type="Button" parent="Items/List/Choice/Panel" unique_id=1718539684]
 layout_mode = 0
-offset_left = 51.428574
-offset_top = 5.7142844
-offset_right = 91.42857
-offset_bottom = 45.71428
+offset_left = 5.7142906
+offset_top = 51.428566
+offset_right = 45.71429
+offset_bottom = 91.42856
 mouse_default_cursor_shape = 2
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
 [node name="Flags" type="Button" parent="Items/List/Choice/Panel" unique_id=321468871]
 layout_mode = 0
-offset_left = 97.14293
-offset_top = 5.714285
-offset_right = 137.14293
-offset_bottom = 45.714287
+offset_left = 5.714279
+offset_top = 97.14285
+offset_right = 45.71428
+offset_bottom = 137.14285
 mouse_default_cursor_shape = 2
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
 [node name="Label" type="Label" parent="Items/List/Choice/Panel" unique_id=1925136960]
 layout_mode = 0
-offset_left = 142.85718
+offset_left = 51.42856
 offset_top = 5.714283
-offset_right = 240.00009
+offset_right = 794.28564
 offset_bottom = 45.714275
 text = "Choice"
 vertical_alignment = 1
-
-[node name="Yes" type="LineEdit" parent="Items/List/Choice/Panel" unique_id=2051155858]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 200.0
-offset_top = 5.714287
-offset_right = -325.71432
-offset_bottom = -5.285721
-grow_horizontal = 2
-grow_vertical = 2
-text = "Yes"
-
-[node name="No" type="LineEdit" parent="Items/List/Choice/Panel" unique_id=1544311279]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 480.0
-offset_top = 5.714287
-offset_right = -5.2857666
-offset_bottom = -5.285721
-grow_horizontal = 2
-grow_vertical = 2
-text = "No"
 
 [node name="Index" type="Label" parent="Items/List/Choice/Panel" unique_id=122148348]
 layout_mode = 0
@@ -554,6 +566,119 @@ offset_right = -5.714279
 offset_bottom = 62.85714
 text = "0"
 horizontal_alignment = 2
+
+[node name="Options" type="GridContainer" parent="Items/List/Choice/Panel" unique_id=802573902]
+layout_mode = 0
+offset_left = 51.42857
+offset_top = 51.428562
+offset_right = 794.28564
+offset_bottom = 137.14282
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="Option1" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1679801999]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option1" unique_id=2051155858]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option1" unique_id=1810390839]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option2" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1329249292]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option2" unique_id=112930274]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option2" unique_id=818236943]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option3" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1315234105]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option3" unique_id=1452744169]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option3" unique_id=1160846692]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option4" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=141752509]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option4" unique_id=1331127541]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option4" unique_id=1629733173]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Option5" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1725823410]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option5" unique_id=1471329271]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+placeholder_text = "Text"
+
+[node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option5" unique_id=34571119]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Dialog"
+
+[node name="Set" type="Button" parent="Items/List/Choice/Panel/Options" unique_id=1446404267]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+text = "Apply"
+text_overrun_behavior = 1
 
 [node name="Bullet" type="HBoxContainer" parent="Items/List" unique_id=922323109]
 custom_minimum_size = Vector2(0, 51)
