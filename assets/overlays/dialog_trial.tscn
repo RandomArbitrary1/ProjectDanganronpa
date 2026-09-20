@@ -125,6 +125,34 @@ _data = {
 &"rage": SubResource("Animation_o1amr")
 }
 
+[sub_resource type="Animation" id="Animation_pkhgj"]
+resource_name = "Next"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.4, 2.4), Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_cqd2n"]
 length = 0.001
 tracks/0/type = "value"
@@ -138,6 +166,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ayq60"]
@@ -155,9 +207,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sqsua"]
 _data = {
+&"Next": SubResource("Animation_pkhgj"),
 &"RESET": SubResource("Animation_cqd2n"),
 &"Show": SubResource("Animation_ayq60")
 }
@@ -331,7 +396,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_fh4nj"]
 resource_name = "Open"
-length = 0.9
+length = 1.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -339,7 +404,7 @@ tracks/0/path = NodePath("Bar:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -363,10 +428,10 @@ tracks/2/path = NodePath("Bar/Name:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.23333333, 0.46666667),
+"times": PackedFloat32Array(0.1, 0.56666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-100.0, 0.0]
+"values": [-400.0, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -375,7 +440,7 @@ tracks/3/path = NodePath("Bar/Name:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.23333333, 0.46666667),
+"times": PackedFloat32Array(0.23333333, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -387,7 +452,7 @@ tracks/4/path = NodePath("Bar/Display:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.46666667, 0.7),
+"times": PackedFloat32Array(0.46666667, 0.9333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -399,7 +464,7 @@ tracks/5/path = NodePath("Bar/Display:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.46666667, 0.7),
+"times": PackedFloat32Array(0.4, 0.85833335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-844.0, -744.0]
@@ -411,10 +476,34 @@ tracks/6/path = NodePath("Trial_text:modulate:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.7, 0.9),
+"times": PackedFloat32Array(0.73333335, 1.3666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Trial_text:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(4, 4)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bar:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [800.0, 744.0]
 }
 
 [sub_resource type="Animation" id="Animation_qqjwx"]
@@ -515,6 +604,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [0.0]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Trial_text:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Bar:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [744.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8knbj"]
 _data = {
@@ -534,7 +647,7 @@ mouse_filter = 2
 script = ExtResource("1_l4oit")
 
 [node name="Trial_text" type="TextureRect" parent="." unique_id=2055028143]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1.3528494, 1.3528494, 1.3528494, 0)
 layout_mode = 0
 offset_left = 448.0
 offset_top = 376.0
@@ -548,7 +661,7 @@ expand_mode = 1
 [node name="Spin" type="AnimationPlayer" parent="Trial_text" unique_id=1676999829]
 libraries/ = SubResource("AnimationLibrary_am7bp")
 autoplay = &"Spin"
-speed_scale = 0.1
+speed_scale = -0.1
 
 [node name="Bar" type="TextureRect" parent="." unique_id=1310259742]
 visible = false
@@ -558,7 +671,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -336.0
-offset_bottom = 0.0024414063
+offset_bottom = 0.001953125
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_fr3yn")
@@ -601,11 +714,11 @@ texture = ExtResource("6_pkhgj")
 
 [node name="Character" type="TextureRect" parent="Bar/Display/Mask" unique_id=17203150]
 layout_mode = 0
-offset_left = -264.0
-offset_top = 40.0
-offset_right = 1236.0
-offset_bottom = 2040.0
-scale = Vector2(0.7, 0.7)
+offset_left = -535.0
+offset_top = -266.0
+offset_right = 965.0
+offset_bottom = 1734.0
+scale = Vector2(1.07, 1.07)
 texture = ExtResource("7_tcbm5")
 
 [node name="Name" type="TextureRect" parent="Bar" unique_id=1292888700]
@@ -650,6 +763,7 @@ offset_left = 1800.0
 offset_top = 220.0
 offset_right = 1904.0
 offset_bottom = 324.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_4ol2b")
 
 [node name="Anim" type="AnimationPlayer" parent="Bar/Input_indicator" unique_id=2090635946]
