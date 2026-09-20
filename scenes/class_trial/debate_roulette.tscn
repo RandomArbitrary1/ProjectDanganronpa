@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://b5ixvrf66o27g" path="res://assets/textures/ui/class_trial/truth_bullet.png" id="8_fe14r"]
 [ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="8_juyy3"]
 [ext_resource type="Theme" uid="uid://xbu3dv5es6ug" path="res://assets/ui/themes/class_trial_debate_words.tres" id="9_3resf"]
+[ext_resource type="Theme" uid="uid://b5h8v3uk0c4bm" path="res://assets/ui/themes/class_health_bar.tres" id="9_lwld5"]
+[ext_resource type="Texture2D" uid="uid://dd3mhfe2v8gwg" path="res://assets/textures/ui/class_trial/dialog_progress_bg.png" id="10_06reo"]
+[ext_resource type="Texture2D" uid="uid://c4lccysi02k8b" path="res://assets/textures/ui/class_trial/dialog_progress_upper.png" id="11_c6kf5"]
+[ext_resource type="Texture2D" uid="uid://b6tvvygi6xmjn" path="res://assets/textures/ui/class_trial/bg_debate_ready.png" id="12_wokie"]
 
 [sub_resource type="Animation" id="Animation_juyy3"]
 length = 0.001
@@ -124,11 +128,13 @@ _data = {
 &"shoot": SubResource("Animation_3resf")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qus7n"]
-bg_color = Color(1, 0, 0.22352941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe14r"]
-bg_color = Color(0, 0.30980393, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwld5"]
+bg_color = Color(0, 0.8509804, 0.4117647, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.39380386, 7.676855e-06, 0.2841931, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsook"]
 radius = 119.36
@@ -272,6 +278,51 @@ _data = {
 &"shoot": SubResource("Animation_v3j6b")
 }
 
+[sub_resource type="Animation" id="Animation_06reo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c6kf5"]
+resource_name = "start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 1.0333333, 3.5, 4.4333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 0), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6k323"]
+_data = {
+&"RESET": SubResource("Animation_06reo"),
+&"start": SubResource("Animation_c6kf5")
+}
+
+[sub_resource type="Animation" id="Animation_6k323"]
+resource_name = "start"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogawx"]
+_data = {
+&"start": SubResource("Animation_6k323")
+}
+
 [node name="DebateRoulette" type="Control" unique_id=1937437093]
 layout_mode = 3
 anchors_preset = 15
@@ -289,7 +340,7 @@ bus = &"Sfx"
 
 [node name="small_gunshot" type="AudioStreamPlayer" parent="sfx" unique_id=1665445687]
 stream = ExtResource("5_ul4ow")
-pitch_scale = 1.9
+pitch_scale = 1.8
 bus = &"Sfx"
 
 [node name="break" type="AudioStreamPlayer" parent="sfx" unique_id=176073633]
@@ -360,7 +411,7 @@ offset_bottom = 130.5011
 grow_horizontal = 0
 rotation = 0.13964796
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/fill = SubResource("StyleBoxFlat_qus7n")
+theme = ExtResource("9_lwld5")
 value = 59.06
 show_percentage = false
 
@@ -376,9 +427,23 @@ offset_bottom = 188.81999
 grow_horizontal = 0
 rotation = 0.13964796
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/fill = SubResource("StyleBoxFlat_fe14r")
+theme = ExtResource("9_lwld5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lwld5")
 value = 50.2
 show_percentage = false
+
+[node name="dialog_progress_bar" type="TextureProgressBar" parent="." unique_id=1712652643]
+layout_mode = 0
+offset_left = 1214.125
+offset_top = 515.0
+offset_right = 2114.129
+offset_bottom = 715.0
+rotation = -0.9900216
+scale = Vector2(0.45, 0.45)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+value = 68.0
+texture_under = ExtResource("10_06reo")
+texture_progress = ExtResource("11_c6kf5")
 
 [node name="timer_label" type="Label" parent="." unique_id=134018399]
 layout_mode = 1
@@ -396,9 +461,11 @@ text = "00:00:00"
 
 [node name="progress" type="Label" parent="." unique_id=2010527368]
 layout_mode = 0
-offset_left = 64.0
-offset_right = 332.0
-offset_bottom = 240.0
+offset_left = 1516.0001
+offset_top = 668.0
+offset_right = 1831.0001
+offset_bottom = 908.0
+rotation = -0.83023083
 theme_override_fonts/font = ExtResource("8_juyy3")
 theme_override_font_sizes/font_size = 175
 text = "0/0"
@@ -430,10 +497,13 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Words" unique_id=1172677739]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 625.0
+offset_top = 464.0
+offset_right = 1306.0
+offset_bottom = 523.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("9_3resf")
-text = "TEST test"
+text = "No, that's wrong!"
 
 [node name="crosshair" type="TextureRect" parent="." unique_id=1547952700]
 layout_mode = 1
@@ -480,5 +550,53 @@ libraries/ = SubResource("AnimationLibrary_qus7n")
 
 [node name="crosshair_anim" type="AnimationPlayer" parent="crosshair" unique_id=2120537212]
 libraries/ = SubResource("AnimationLibrary_06reo")
+
+[node name="Ready?" type="Control" parent="." unique_id=274680693]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="bg" type="TextureRect" parent="Ready?" unique_id=1678285598]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -100.0
+offset_right = 540.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_wokie")
+
+[node name="Label" type="Label" parent="Ready?" unique_id=1325686448]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -11.5
+offset_right = 81.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_3resf")
+theme_override_font_sizes/font_size = 108
+text = "Prepare your bullets!"
+
+[node name="anim" type="AnimationPlayer" parent="Ready?" unique_id=1577823886]
+libraries/ = SubResource("AnimationLibrary_6k323")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1236655896]
+libraries/ = SubResource("AnimationLibrary_ogawx")
 
 [connection signal="timeout" from="Bullets/downtime" to="Bullets" method="_on_downtime_timeout"]

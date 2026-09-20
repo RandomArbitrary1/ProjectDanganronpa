@@ -41,6 +41,7 @@ func prepare():
 	
 func debate():
 	if !music_2.playing:
+		debate_roulette.visible = true
 		debate_roulette.start()
 		music_2.play()
 		music.stop()
