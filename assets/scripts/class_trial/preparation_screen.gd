@@ -13,6 +13,7 @@ var timer = 0.0
 func _ready() -> void:
 	intro.visible = false
 	dialog.visible = false
+	start_intro()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,5 +30,8 @@ func _process(delta: float) -> void:
 		intro.started = false
 
 func _on_button_pressed() -> void:
+	start_intro()
+	
+func start_intro():
 	intro.visible = true
 	intro.get_node("./anim").play("intro")
