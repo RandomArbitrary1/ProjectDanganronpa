@@ -26,6 +26,7 @@ var tween = null
 var name_size = 0
 var leave = false
 
+var mouse_old = null
 var option_tab = 0
 var option_tab_max = 0
 var optioning = false
@@ -35,6 +36,8 @@ func _ready() -> void:
 	camera = get_tree().get_first_node_in_group("Camera_room")
 	
 func next(): # Next dialog line
+	if mouse_old:
+		Input.mouse_mode = mouse_old
 	if dialog.size() > line:
 		dialog_anim.play("RESET")
 		var current = dialog[line]
@@ -86,6 +89,9 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "choice":
+			mouse_old = Input.mouse_mode
+			old_mouse_position = get_viewport().get_mouse_position()
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			optioning = true
 			option_tab = 0
 			option_tab_max = current.options.size()-1
@@ -134,6 +140,9 @@ func start():
 
 func _process(delta: float) -> void:
 	for i in $Choice.get_children():
+		if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
+			if option_tab != i.get_index() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				option_tab = i.get_index()
 		if i.get_index() == option_tab:
 			i.texture = option_active
 			i.position.x = move_toward(i.position.x, 180.0+i.get_index()*-60, 500*delta)
@@ -175,3 +184,13 @@ func _process(delta: float) -> void:
 					tween.kill()
 					box.visible_ratio = 1.0
 					input_ind.play("Show")
+
+var old_mouse_position : Vector2
+func _input(event: InputEvent) -> void:
+	if optioning:
+		if event is InputEventMouse:
+			if event.position.distance_to(old_mouse_position) > 60:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif event is InputEventJoypadButton or event is InputEventKey:
+			old_mouse_position = get_viewport().get_mouse_position()
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

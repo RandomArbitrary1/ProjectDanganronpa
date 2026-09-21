@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 			
 		else:
 			original_mouse_mode = Input.mouse_mode
+			old_mouse_position = get_viewport().get_mouse_position()
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			open = true
 			anim.play("Open")
@@ -117,12 +118,14 @@ func _process(delta: float) -> void:
 	current_tab_node.get_node("Items").position.y = move_toward(current_tab_node.get_node("Items").position.y, clamp(tab_data[tab].offset-(inside_tab.y-(tab_data[tab].fit-1))*tab_data[tab].size,tab_data[tab].size-tab_data[tab].size*(y_range-tab_data[tab].fit)+(tab_data[tab].size/5), tab_data[tab].offset), 1600*delta)
 
 
+var old_mouse_position : Vector2
 func _input(event: InputEvent) -> void:
 	if open:
 		if event is InputEventMouse:
-			if event is not InputEventMouseButton:
+			if event.position.distance_to(old_mouse_position) > 60:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif event is InputEventJoypadButton or event is InputEventKey:
+			old_mouse_position = get_viewport().get_mouse_position()
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func switch_tab():
