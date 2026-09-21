@@ -1,13 +1,3 @@
 {
-	"dialog": [
-		{
-			"character": "shion",
-			"content": "",
-			"eline": "Dialog:<HBoxContainer#129469777878>",
-			"expression": "sad",
-			"flags": [],
-			"id": 0,
-			"type": "text"
-		}
-	]
+	"dialog": []
 }

@@ -1,5 +1,5 @@
 extends Control
-@onready var bullets: Control = $"."
+@onready var root: Control = $"."
 @onready var truth_bullet: TextureRect = $TruthBullet
 @onready var shoot_anim: AnimationPlayer = $ShootAnim
 @onready var big_gunshot: AudioStreamPlayer = $"../sfx/big_gunshot"
@@ -8,7 +8,8 @@ extends Control
 @onready var crosshair_anim: AnimationPlayer = $"../crosshair/crosshair_anim"
 @onready var downtime: Timer = $downtime
 @onready var camera: Node3D = $"../../CameraNode"
-@onready var root: Control = $".."
+@onready var main_root: Control = $".."
+var bullets = ["strange_place", "lost_memory"]
 
 var bullet_direction = Vector3(0,0,0)
 # Called when the node enters the scene tree for the first time.
@@ -16,9 +17,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-		
+
 func truth_shoot():
 	var mouse_pos = get_viewport().get_mouse_position()
 	if downtime.time_left > 0.0:
@@ -39,8 +38,8 @@ func white_noise_shoot():
 	noise_anim.stop()
 	noise_anim.play("shoot")
 	small_gunshot.play()
-	if root.state == "bullet_preview":
-		root.debate_camera_reset()
+	if main_root.state == "bullet_preview":
+		main_root.debate_camera_reset()
 
 func _on_downtime_timeout() -> void:
 	reload()

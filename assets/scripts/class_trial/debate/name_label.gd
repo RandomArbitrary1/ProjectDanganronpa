@@ -6,9 +6,6 @@ func _ready() -> void:
 	anim.play("RESET")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func operate(char_data):
 	anim.play("appear")
 	text = str(char_data)
