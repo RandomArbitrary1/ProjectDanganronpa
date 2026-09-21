@@ -74,7 +74,6 @@ func next(): # Next dialog line
 			tween.tween_property(box, "visible_ratio", 1.0, current.content.length()*.03).from(0.0)
 			await tween.finished
 			input_ind.play("Show")
-			print("Print is at 65 of dialog.gd, I think this might be bugged cuz THIS input_int.play never plays, -Danilo")
 		elif current.type == "bullet":
 			if current.show == true:
 				bullet.get_node("Mask/Image").texture = load(load(current.file).data[current.bullet].picture)
