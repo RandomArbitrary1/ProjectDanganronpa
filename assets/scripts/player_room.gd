@@ -107,6 +107,7 @@ func _process(delta: float) -> void:
 			dialog.start()
 	if Input.is_action_just_pressed("Leave"):
 		dialog.file = load("res://assets/data/leave.json")
+		label.get_node("Anim").play("Close")
 		dialog.start()
 		
 
