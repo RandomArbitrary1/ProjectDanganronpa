@@ -25,6 +25,7 @@ var angle_start = Vector2.ZERO
 const DEADZONE = 0.15
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	characters = get_tree().get_first_node_in_group("Characters_interact")
 
 
@@ -42,14 +43,15 @@ func _process(delta: float) -> void:
 			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.5,2.2), 20*delta)
 	
 	if self.get_parent().name != "Player":
-		if Input.is_action_pressed("Up"):
-			angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))
-		if Input.is_action_pressed("Down"):
-			angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y-delta*speed,minY,maxY))
-		if Input.is_action_pressed("Left"):
-			angle = Vector2(clamp(angle.x+delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
-		if Input.is_action_pressed("Right"):
-			angle = Vector2(clamp(angle.x-delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
+		if dialog.active == false:
+			if Input.is_action_pressed("Up"):
+				angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))
+			if Input.is_action_pressed("Down"):
+				angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y-delta*speed,minY,maxY))
+			if Input.is_action_pressed("Left"):
+				angle = Vector2(clamp(angle.x+delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
+			if Input.is_action_pressed("Right"):
+				angle = Vector2(clamp(angle.x-delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
 		
 		var joy_x_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
 		var joy_y_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
@@ -64,9 +66,10 @@ func _process(delta: float) -> void:
 			mouse_start = get_viewport().get_mouse_position()
 			angle_start = angle
 		if Input.is_action_pressed("RMB"):
-			var offset = (get_viewport().get_mouse_position()-mouse_start)/30.0
-			var angle_end = angle_start + Vector2(-offset.x, -offset.y)
-			angle = Vector2(clamp(angle_end.x,minX,maxX),clamp(angle_end.y,minY,maxY))
+			if dialog.active == false:
+				var offset = (get_viewport().get_mouse_position()-mouse_start)/30.0
+				var angle_end = angle_start + Vector2(-offset.x, -offset.y)
+				angle = Vector2(clamp(angle_end.x,minX,maxX),clamp(angle_end.y,minY,maxY))
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover
 		label.get_node("Label").text = character_info[current_hover.name].name
@@ -75,11 +78,12 @@ func _process(delta: float) -> void:
 		current_hover_check = null
 		label.get_node("Anim").play("Close")
 	if current_hover and Input.is_action_just_pressed("Progress"):
-		var name_send = current_hover.name
-		current_hover = null
-		current_hover_check = null
-		label.get_node("Anim").play("Close")
-		run(name_send)
+		if current_hover.dialog != "":
+			current_hover = null
+			current_hover_check = null
+			label.get_node("Anim").play("Close")
+			dialog.file = load(current_hover.dialog)
+			dialog.start()
 	if Input.is_action_just_pressed("Leave"):
 		dialog.file = load("res://assets/data/leave.json")
 		dialog.start()

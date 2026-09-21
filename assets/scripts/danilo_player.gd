@@ -151,11 +151,12 @@ func _process(delta: float) -> void:
 		base_gui.get_node("Hover_label/Anim").play("Close")
 	if current_hover and Input.is_action_just_pressed("Progress"):
 		if current_hover_type == "character":
-			var name_send = current_hover.name
-			current_hover = null
-			current_hover_check = null
-			base_gui.get_node("Hover_label/Anim").play("Close")
-			run(name_send)
+			if current_hover.dialog != "":
+				dialog.file = load(current_hover.dialog)
+				current_hover = null
+				current_hover_check = null
+				base_gui.get_node("Hover_label/Anim").play("Close")
+				dialog.start()
 		elif current_hover_type == "door" and current_hover.room != "":
 			var scene = current_hover.room
 			var scene_name = current_hover.name

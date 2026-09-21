@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 @export var character : String
 @export var expression : String
+@export var dialog : String
 
 var camera = Camera3D
 

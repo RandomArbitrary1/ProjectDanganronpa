@@ -1,0 +1,136 @@
+{
+	"dialog": [
+		{
+			"character": "ayuka",
+			"content": "There's a basement here? Let's explore it!",
+			"eline": "<Freed Object>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 0,
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Stay back, i smell strong chemicals coming from behind that door.",
+			"eline": "<Freed Object>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 1,
+			"type": "text"
+		},
+		{
+			"character": "ayuka",
+			"content": "are you drunk? i smell nothing coming from that door, and I'm a scientist so I'd know.",
+			"eline": "<Freed Object>",
+			"expression": "sad",
+			"flags": [],
+			"id": 2,
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "I warned you",
+			"eline": "<Freed Object>",
+			"expression": "sad",
+			"flags": [],
+			"id": 3,
+			"type": "text"
+		},
+		{
+			"eline": "<Freed Object>",
+			"flags": [],
+			"id": 4,
+			"options": [
+				{
+					"dialog": "1",
+					"text": "Don't worry, just go"
+				},
+				{
+					"dialog": "2",
+					"text": "Don't!"
+				},
+				{
+					"dialog": "3",
+					"text": "It's locked"
+				},
+				{
+					"dialog": "1",
+					"text": "[Ignore]"
+				}
+			],
+			"type": "choice"
+		}
+	],
+	"dialog1": [
+		{
+			"character": "ayuka",
+			"content": "Let's go-",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "ayuka",
+			"content": "* BOOOOM *",
+			"expression": "sad",
+			"flags": [
+				"rage",
+				"flash"
+			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Told ya",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		}
+	],
+	"dialog2": [
+		{
+			"character": "ayuka",
+			"content": "Ah alright alright, then I won't go",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		}
+	],
+	"dialog3": [
+		{
+			"character": "ayuka",
+			"content": "Ah right how did I not think of that",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "ayuka",
+			"content": "But don't worry, I have a lockpick",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Let's go!",
+			"expression": "sad",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"options": [
+				{
+					"dialog": "1",
+					"text": "Yeah!"
+				},
+				{
+					"dialog": "2",
+					"text": "Don't"
+				}
+			],
+			"type": "choice"
+		}
+	]
+}

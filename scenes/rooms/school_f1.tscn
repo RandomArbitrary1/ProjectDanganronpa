@@ -864,6 +864,7 @@ script = ExtResource("11_7peox")
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -1, 1.4, -1)
 character = "nori"
 expression = "neutral"
+dialog = "res://assets/data/dialog/test.json"
 
 [node name="tenga" parent="Characters" unique_id=778912610 instance=ExtResource("34_anjoc")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, 1, 1.4, -28)
@@ -879,6 +880,7 @@ expression = "neutral"
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, 1, 1.4, 38)
 character = "raito"
 expression = "neutral"
+dialog = "res://assets/data/dialog/test2.json"
 
 [node name="yuito" parent="Characters" unique_id=187800201 instance=ExtResource("34_anjoc")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -7, 7.766262, 1)

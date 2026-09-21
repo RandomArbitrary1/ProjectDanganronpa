@@ -756,8 +756,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -344.0
-offset_bottom = -64.0
+offset_top = -244.0
+offset_bottom = 36.000122
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
@@ -788,9 +788,8 @@ speed_scale = 0.2
 [node name="Decoration" type="TextureRect" parent="Bar" unique_id=1794326463]
 visible = false
 layout_mode = 0
-offset_left = -360.0
 offset_top = -11.0
-offset_right = 1560.0
+offset_right = 1920.0
 offset_bottom = 279.0
 texture = ExtResource("2_5o6qf")
 
@@ -805,8 +804,9 @@ texture = ExtResource("7_fm551")
 
 [node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
 layout_mode = 0
+offset_left = -188.0
 offset_top = -48.0
-offset_right = 856.0
+offset_right = 668.0
 offset_bottom = 52.0
 texture = ExtResource("3_qqjwx")
 region_rect = Rect2(0, 0, 230, 100)
@@ -903,18 +903,18 @@ libraries/ = SubResource("AnimationLibrary_2rgs5")
 [node name="Choice" type="Control" parent="." unique_id=915050139]
 visible = false
 anchors_preset = 0
-offset_left = 1328.0
-offset_top = 576.0
-offset_right = 1920.0073
-offset_bottom = 776.0
+offset_left = 1128.0
+offset_top = 640.0
+offset_right = 1720.0077
+offset_bottom = 840.0
 
 [node name="Option" type="NinePatchRect" parent="Choice" unique_id=1381765017]
 layout_mode = 1
 offset_left = 240.0
 offset_right = 888.0
-offset_bottom = 100.0
+offset_bottom = 70.0
 texture = ExtResource("12_8cy7o")
-region_rect = Rect2(0, 0, 448, 100)
+region_rect = Rect2(0, 0, 448, 70)
 patch_margin_left = 90
 patch_margin_right = 284
 
@@ -923,12 +923,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
+offset_left = 64.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_fh4nj")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 36
 text = "Yes"
 vertical_alignment = 1
 

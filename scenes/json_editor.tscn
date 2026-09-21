@@ -151,6 +151,11 @@ func _ready() -> void:
 					var new = dialog_button.duplicate()
 					dialogs_popup.get_node(\"DialogList/DialogItems\").add_child(new)
 					dialogs_options(new, \"dialog\" + str(i+1))
+			for a in data.keys().size():
+				print(\"dialog\" + str(a),data.has(\"dialog\" + str(a)))
+				if data.has(\"dialog\" + str(a)):
+					for i in data[\"dialog\" + str(a)].size():
+						data[\"dialog\" + str(a)][i][\"id\"] = i
 			print(data)
 			reload_list()
 	)
@@ -366,7 +371,14 @@ func save():
 		new_data[current_dialog].sort_custom(sort_new)
 		for i in new_data[current_dialog]:
 			i.erase(\"id\")
-			i.erase(\"eline\")
+			if i.has(\"eline\"):
+				i.erase(\"eline\")
+		for a in new_data.keys().size():
+			if new_data.has(\"dialog\" + str(a)) and new_data[\"dialog\" + str(a)] != new_data[current_dialog]:
+				new_data[\"dialog\" + str(a)].sort_custom(sort_new)
+				for i in new_data[\"dialog\" + str(a)]:
+					i.erase(\"id\")
+					i.erase(\"eline\")
 		print(new_data)
 		var to_save = FileAccess.open(file_path, FileAccess.WRITE)
 		to_save.store_string(JSON.stringify(new_data, \"\\t\"))
@@ -377,6 +389,12 @@ func _process(_delta: float) -> void:
 	for i in data[current_dialog]:
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 			i.id = i.eline.get_index()
+	for a in data.keys().size():
+		if data.has(\"dialog\" + str(a)):
+			for b in data[\"dialog\" + str(a)].size():
+				var i = data[\"dialog\" + str(a)][b]
+				if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
+					i.id = b
 	for i in list.get_children():
 		i.get_node(\"Panel/Index\").text = str(i.get_index())
 	var mouse_pos = get_viewport().get_mouse_position()

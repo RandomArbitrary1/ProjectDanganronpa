@@ -96,7 +96,9 @@ func next(): # Next dialog line
 				var opt = current.options[i]
 				var option = option_temp.duplicate()
 				option.get_node("Text").text = opt.text
-				option.position.y = 100*i
+				option.position.y = (120-current.options.size()*60)+60*i
+				option.position.x = 240+i*-60
+				option.size.x += i*60
 				option.set_meta("ID", opt.dialog)
 				$Choice.add_child(option)
 				
@@ -130,12 +132,14 @@ func start():
 		next()
 		active = true
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	for i in $Choice.get_children():
 		if i.get_index() == option_tab:
 			i.texture = option_active
+			i.position.x = move_toward(i.position.x, 180.0+i.get_index()*-60, 500*delta)
 		else:
 			i.texture = option_inactive
+			i.position.x = move_toward(i.position.x, 240.0+i.get_index()*-60, 500*delta)
 	if Input.is_action_just_pressed("Up"):
 		if option_tab > 0:
 			option_tab -= 1
@@ -160,7 +164,7 @@ func _process(_delta: float) -> void:
 					dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
 					next()
 				else:
-					get_tree().root
+					RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
 		else:
 			if box.visible_ratio == 1.0:
 				line += 1

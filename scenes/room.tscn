@@ -27,6 +27,7 @@ glow_enabled = true
 [node name="Room" type="Node3D" unique_id=478957731]
 script = ExtResource("1_jxe34")
 hall = "//MKAIAST/Users/maikn/Documents/my apps n games/Godot/Danganronpa/project-danganronpa/scenes/rooms/school_f1.tscn"
+hall_name = "School F-1"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
 environment = SubResource("Environment_14vil")
@@ -42,13 +43,15 @@ transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.965
 
 [node name="nori" parent="Characters" unique_id=2135237569 instance=ExtResource("2_qvc4m")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -5, 1.9, -5)
-character = "noriyuki"
+character = "nori"
 expression = "neutral"
+dialog = "res://assets/data/dialog/test.json"
 
 [node name="raito" parent="Characters" unique_id=1279466032 instance=ExtResource("2_qvc4m")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -3, 1.9, -6)
 character = "raito"
 expression = "neutral"
+dialog = "res://assets/data/dialog/test2.json"
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 

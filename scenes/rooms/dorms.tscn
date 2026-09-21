@@ -79,11 +79,13 @@ script = ExtResource("5_too8b")
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, -4, 1.4, 8)
 character = "rikuno"
 expression = "neutral"
+dialog = "res://assets/data/dialog/test5.json"
 
 [node name="ayuka" parent="Characters" unique_id=974840096 instance=ExtResource("6_4yvdn")]
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, -1, 1.4, 7)
 character = "ayuka"
 expression = "neutral"
+dialog = "res://assets/data/dialog/test5.json"
 
 [node name="Props" type="Node3D" parent="." unique_id=647337532]
 
