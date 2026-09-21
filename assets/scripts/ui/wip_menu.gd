@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 var old_mouse_position : Vector2
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
-		if event.position.distance_to(old_mouse_position) > 60:
+		if event.position.distance_to(old_mouse_position) > 100:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventJoypadButton or event is InputEventKey:
 		old_mouse_position = get_viewport().get_mouse_position()

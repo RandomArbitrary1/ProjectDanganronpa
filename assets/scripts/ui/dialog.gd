@@ -125,6 +125,7 @@ func next(): # Next dialog line
 
 func start():
 	if file and not active:
+		input_ind.play("RESET")
 		if file.resource_path == "res://assets/data/leave.json":
 			leave = true
 		else:
@@ -133,7 +134,6 @@ func start():
 		box.visible_ratio = 0.0
 		dialog = file.data.dialog
 		line = 0
-		input_ind.play("RESET")
 		anim.play("Open")
 		next()
 		active = true
@@ -189,7 +189,7 @@ var old_mouse_position : Vector2
 func _input(event: InputEvent) -> void:
 	if optioning:
 		if event is InputEventMouse:
-			if event.position.distance_to(old_mouse_position) > 60:
+			if event.position.distance_to(old_mouse_position) > 100:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif event is InputEventJoypadButton or event is InputEventKey:
 			old_mouse_position = get_viewport().get_mouse_position()

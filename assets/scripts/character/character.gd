@@ -14,6 +14,10 @@ func _ready() -> void:
 		var mat : StandardMaterial3D = self.get_surface_override_material(0).duplicate()
 		mat.albedo_texture = sprite
 		self.set_surface_override_material(0,mat)
+	rotation.y = atan2(
+		camera.global_position.x - global_position.x,
+		camera.global_position.z - global_position.z
+	)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

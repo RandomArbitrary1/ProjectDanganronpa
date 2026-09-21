@@ -10,9 +10,14 @@ var angle = Vector2(0,0)
 
 @onready var dialog : Control = $UI/Dialog
 @onready var label : NinePatchRect = $UI/Base/Hover_label
+@onready var reticle: TextureRect = $UI/Reticle
+@onready var reticle_anim: AnimationPlayer = $UI/Reticle/Reticle_anim
 var character_info = preload("res://assets/data/characters/characters.json").data
 const RAY_LENGTH = 1000
 var characters = []
+
+var reticle_talk = preload("res://assets/ui/base/reticle_talk.png")
+var reticle_inspect = preload("res://assets/ui/base/reticle_inspect.png")
 
 var current_hover_type = "character"
 var current_hover = null
@@ -22,14 +27,24 @@ var start_rotation = self.rotation_degrees
 var mouse_start = Vector2.ZERO
 var angle_start = Vector2.ZERO
 
+var previous_dialog_state = false
+
 const DEADZONE = 0.15
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	characters = get_tree().get_first_node_in_group("Characters_interact")
-
+	reticle.get_node("Anim").play("Show")
 
 func _process(delta: float) -> void:
+	if dialog.active != previous_dialog_state:
+		previous_dialog_state = dialog.active
+		if dialog.active:
+			reticle.get_node("Anim").play("Hide")
+		else:
+			reticle.get_node("Anim").play("Show")
+			reticle_anim.play("Exit")
+	reticle.position = get_viewport().get_mouse_position() - Vector2(48,48)
 	if character == "" and self.get_parent().name != "Player":
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
@@ -40,7 +55,7 @@ func _process(delta: float) -> void:
 			self.fov = move_toward(self.fov, 40.0, 165*delta)
 			var direction = (start_position - chr.position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.5,2.2), 20*delta)
+			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.3,2.2), 20*delta)
 	
 	if self.get_parent().name != "Player":
 		if dialog.active == false:
@@ -72,17 +87,23 @@ func _process(delta: float) -> void:
 				angle = Vector2(clamp(angle_end.x,minX,maxX),clamp(angle_end.y,minY,maxY))
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover
-		label.get_node("Label").text = character_info[current_hover.name].name
+		if current_hover_type == "character":
+			label.get_node("Label").text = character_info[current_hover.name].name
+		elif current_hover_type == "object":
+			label.get_node("Label").text = current_hover.display_name
 		label.get_node("Anim").play("Open")
-	if dialog.active == false and current_hover == null:
+		reticle_anim.play("Hover")
+		
+	if dialog.active == false and current_hover == null and current_hover_check != current_hover:
 		current_hover_check = null
 		label.get_node("Anim").play("Close")
+		reticle_anim.play("Exit")
 	if current_hover and Input.is_action_just_pressed("Progress"):
 		if current_hover.dialog != "":
+			dialog.file = load(current_hover.dialog)
 			current_hover = null
 			current_hover_check = null
 			label.get_node("Anim").play("Close")
-			dialog.file = load(current_hover.dialog)
 			dialog.start()
 	if Input.is_action_just_pressed("Leave"):
 		dialog.file = load("res://assets/data/leave.json")
@@ -109,7 +130,18 @@ func _physics_process(_delta):
 	query.collide_with_areas = true
 
 	var result = space_state.intersect_ray(query)
-	if result.has("collider") and result.collider.get_parent().get_parent() and result.collider.get_parent().get_parent().name == "Characters":
-		current_hover = result.collider.get_parent()
+	if result.has("collider") and result.collider.get_parent().get_parent(): 
+		if result.collider.get_parent().get_parent().name == "Characters":
+			current_hover_type = "character"
+			if reticle.get_node("Indicator").texture != reticle_talk:
+				reticle.get_node("Indicator").texture = reticle_talk
+			current_hover = result.collider.get_parent()
+		elif result.collider.get_parent().get_parent().name == "Objects":
+			current_hover_type = "object"
+			if reticle.get_node("Indicator").texture != reticle_inspect:
+				reticle.get_node("Indicator").texture = reticle_inspect
+			current_hover = result.collider.get_parent()
+		else:
+			current_hover = null
 	else:
 		current_hover = null

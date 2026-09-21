@@ -1,0 +1,11 @@
+{
+	"dialog": [
+		{
+			"character": "rikuno",
+			"content": "Hmm... any parts here...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}

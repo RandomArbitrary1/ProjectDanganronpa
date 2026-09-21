@@ -756,8 +756,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -244.0
-offset_bottom = 36.000122
+offset_top = -344.0
+offset_bottom = -63.999878
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_qkj7q")
@@ -788,8 +788,9 @@ speed_scale = 0.2
 [node name="Decoration" type="TextureRect" parent="Bar" unique_id=1794326463]
 visible = false
 layout_mode = 0
+offset_left = -360.0
 offset_top = -11.0
-offset_right = 1920.0
+offset_right = 1560.0
 offset_bottom = 279.0
 texture = ExtResource("2_5o6qf")
 
@@ -804,9 +805,8 @@ texture = ExtResource("7_fm551")
 
 [node name="Name" type="NinePatchRect" parent="Bar" unique_id=1376110222]
 layout_mode = 0
-offset_left = -188.0
 offset_top = -48.0
-offset_right = 668.0
+offset_right = 856.0
 offset_bottom = 52.0
 texture = ExtResource("3_qqjwx")
 region_rect = Rect2(0, 0, 230, 100)
@@ -847,9 +847,9 @@ libraries/ = SubResource("AnimationLibrary_owry8")
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 1664.0
-offset_top = 72.0
+offset_top = 64.0
 offset_right = 1820.0
-offset_bottom = 228.0
+offset_bottom = 220.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_8knbj")
 
@@ -903,9 +903,9 @@ libraries/ = SubResource("AnimationLibrary_2rgs5")
 [node name="Choice" type="Control" parent="." unique_id=915050139]
 visible = false
 anchors_preset = 0
-offset_left = 1128.0
+offset_left = 1328.0
 offset_top = 640.0
-offset_right = 1720.0077
+offset_right = 1920.0078
 offset_bottom = 840.0
 
 [node name="Option" type="NinePatchRect" parent="Choice" unique_id=1381765017]

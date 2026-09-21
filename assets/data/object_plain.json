@@ -1,0 +1,13 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "I don't think theres anything special about this object",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		}
+	]
+}

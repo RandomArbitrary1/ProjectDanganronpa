@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://defpqq2c68rou"]
 
-[ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_jxe34"]
-[ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_jn645"]
-[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="2_qvc4m"]
-[ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="8_qtoah"]
-[ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="9_eom3m"]
+[ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_lx2vg"]
+[ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_04axm"]
+[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="3_8sdgk"]
+[ext_resource type="PackedScene" uid="uid://i6vqs58lhnbx" path="res://assets/objects/environment/furniture/trash_can.glb" id="4_460oe"]
+[ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_ibabf"]
+[ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="6_1dljc"]
+[ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="7_5wqhw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,9 +26,11 @@ ssao_radius = 16.0
 ssao_intensity = 3.0
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvc4m"]
+
 [node name="Room" type="Node3D" unique_id=478957731]
-script = ExtResource("1_jxe34")
-hall = "//MKAIAST/Users/maikn/Documents/my apps n games/Godot/Danganronpa/project-danganronpa/scenes/rooms/school_f1.tscn"
+script = ExtResource("1_lx2vg")
+hall = "res://scenes/rooms_fps/school_f1.tscn"
 hall_name = "School F-1"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
@@ -36,22 +40,35 @@ environment = SubResource("Environment_14vil")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_jn645")]
+[node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_04axm")]
 transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0.7179892, 2, 4.599845)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
-[node name="nori" parent="Characters" unique_id=2135237569 instance=ExtResource("2_qvc4m")]
+[node name="nori" parent="Characters" unique_id=2135237569 instance=ExtResource("3_8sdgk")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -5, 1.9, -5)
 character = "nori"
 expression = "neutral"
 dialog = "res://assets/data/dialog/test.json"
 
-[node name="raito" parent="Characters" unique_id=1279466032 instance=ExtResource("2_qvc4m")]
+[node name="raito" parent="Characters" unique_id=1279466032 instance=ExtResource("3_8sdgk")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, -3, 1.9, -6)
 character = "raito"
 expression = "neutral"
 dialog = "res://assets/data/dialog/test2.json"
+
+[node name="Objects" type="Node3D" parent="." unique_id=986129665]
+
+[node name="trash_can" parent="Objects" unique_id=2105511721 instance=ExtResource("4_460oe")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -1.5, 0.925, -7)
+script = ExtResource("5_ibabf")
+display_name = "Trash can"
+dialog = "res://assets/data/object_plain.json"
+
+[node name="StaticBody3D" type="Area3D" parent="Objects/trash_can" unique_id=614498970]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/trash_can/StaticBody3D" unique_id=578766073]
+shape = SubResource("BoxShape3D_qvc4m")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 
@@ -62,19 +79,19 @@ size = Vector3(22, 13, 19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5370121, -1.5)
 operation = 2
 size = Vector3(11, 5, 14)
-material = ExtResource("9_eom3m")
+material = ExtResource("6_1dljc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.25, -2)
 use_collision = true
 size = Vector3(12, 0.5, 15)
-material = ExtResource("8_qtoah")
+material = ExtResource("7_5wqhw")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1512570832]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2, 3.5, -4.8933315)
-light_energy = 2.0
+light_energy = 3.352
 shadow_enabled = true
 shadow_blur = 5.0
-spot_range = 25.0
+spot_range = 2144.449
 spot_attenuation = 0.5
-spot_angle = 70.0
+spot_angle = 97.89
