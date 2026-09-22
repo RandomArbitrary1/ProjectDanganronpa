@@ -4,6 +4,10 @@ extends TextureRect
 @onready var tabs = $Screen/Tabs/List
 @onready var lists = $Screen/Lists
 
+var character_info = preload("res://assets/data/characters/characters.json").data
+@onready var report_item: NinePatchRect = $Screen/Lists/Report/Items/Item.duplicate()
+
+
 var original_mouse_mode = Input.MOUSE_MODE_HIDDEN
 var open = false
 var tab = 0
@@ -19,11 +23,22 @@ func _ready() -> void:
 		var size_y = 1
 		var fit = 1
 		if i.get_node("Items").get_child_count() > 0:
-			size_y = i.get_node("Items").get_child(1).custom_minimum_size.y
+			size_y = i.get_node("Items").get_child(0).custom_minimum_size.y
 			fit = ceil(872/size_y/2)
 			print(fit)
 
 		tab_data.append({"offset":i.get_node("Items").position.y,"size":size_y+4,"fit":fit})
+	
+	$Screen/Lists/Report/Items/Item.queue_free()
+	
+	#report card
+	for i in character_info.keys().size():
+		var key = character_info.keys()[i]
+		var info = character_info[key]
+		var item = report_item.duplicate()
+		item.get_node("Preview/Name").text = info.name
+		item.get_node("Preview/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
+		lists.get_node("Report/Items").add_child(item)
 
 func _process(delta: float) -> void:
 	self.self_modulate = self.self_modulate.lerp((tabs.get_child(tab).self_modulate+Color(0,0,0,1))*Color(.5,.5,.5), 20*delta)
@@ -65,7 +80,6 @@ func _process(delta: float) -> void:
 			else:
 				tab = 5
 			switch_tab()
-				
 		for i in tabs.get_child_count():
 			var current = tabs.get_child(i)
 			if i == tab:
@@ -106,7 +120,7 @@ func _process(delta: float) -> void:
 				i.get_node("Outline").modulate.a = lerp(i.get_node("Outline").modulate.a, 1.0, 20*delta)
 			else:
 				i.get_node("Outline").modulate.a = lerp(i.get_node("Outline").modulate.a, 0.0, 20*delta)
-			if tab == 1 or tab == 2 or tab == 3:
+			if tab != 5:
 				if Input.is_action_just_pressed("LMB") and Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
 					inside_tab.x = int(i.get_index() % x_range)
 					inside_tab.y = int(i.get_index() / x_range)

@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b0sekveyawv0d" path="res://assets/ui/base/info_widget.png" id="4_nd5tj"]
 [ext_resource type="Texture2D" uid="uid://mdmfv24n215h" path="res://assets/ui/base/note.png" id="4_qe7r1"]
 [ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="5_nd5tj"]
-[ext_resource type="Texture2D" uid="uid://dsvadtltae6b2" path="res://assets/ui/base/interact_hover.png" id="6_67dal"]
 [ext_resource type="Texture2D" uid="uid://naj7tmwwvd5x" path="res://assets/ui/base/day.png" id="7_0cdwa"]
 [ext_resource type="Texture2D" uid="uid://c50fmv7k4whr8" path="res://assets/ui/base/night.png" id="8_d5vj0"]
 
@@ -78,7 +77,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_jkisv"]
 resource_name = "day"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -118,7 +117,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ifxwa"]
 resource_name = "night"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -174,132 +173,6 @@ bg_color = Color(0.03529412, 0.8156863, 1, 1)
 corner_radius_top_right = 100
 corner_radius_bottom_left = 100
 corner_detail = 1
-
-[sub_resource type="Animation" id="Animation_67dal"]
-resource_name = "Close"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.25]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.099999994),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_qe7r1"]
-resource_name = "Open"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.25, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_wngdf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cdwa"]
-_data = {
-&"Close": SubResource("Animation_67dal"),
-&"Open": SubResource("Animation_qe7r1"),
-&"RESET": SubResource("Animation_wngdf")
-}
 
 [node name="Base" type="Control" unique_id=1095541041]
 layout_mode = 3
@@ -445,44 +318,3 @@ theme_override_styles/background = SubResource("StyleBoxFlat_k08ah")
 theme_override_styles/fill = SubResource("StyleBoxFlat_p0rf6")
 value = 30.0
 show_percentage = false
-
-[node name="Hover_label" type="NinePatchRect" parent="." unique_id=1123439009]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -336.0
-offset_top = -272.0
-offset_right = 336.0
-offset_bottom = -172.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("6_67dal")
-region_rect = Rect2(0, 0, 110, 100)
-patch_margin_left = 50
-patch_margin_top = 50
-patch_margin_right = 50
-patch_margin_bottom = 50
-
-[node name="Label" type="Label" parent="Hover_label" unique_id=1028231956]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("5_nd5tj")
-theme_type_variation = &"Title"
-text = "Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Anim" type="AnimationPlayer" parent="Hover_label" unique_id=1306685680]
-libraries/ = SubResource("AnimationLibrary_0cdwa")

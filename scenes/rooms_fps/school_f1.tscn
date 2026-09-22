@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://d14yg2oaj76fa" path="res://assets/objects/environment/door_gym.tscn" id="30_mujyi"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_plain_mint_double.tscn" id="31_1r2xp"]
 [ext_resource type="PackedScene" uid="uid://blytsckc2oute" path="res://assets/objects/environment/door_wood_double.tscn" id="32_bb0f5"]
+[ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="33_qqewr"]
 [ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="33_qqiqe"]
 [ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="34_34go0"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="35_gguu1"]
@@ -840,10 +841,6 @@ script = ExtResource("25_vqswb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82, -21.8)
 script = ExtResource("25_vqswb")
 
-[node name="Teachers lounge" parent="Doors" unique_id=1728117871 instance=ExtResource("29_pn7v0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.6, 1.82, 9.5)
-script = ExtResource("25_vqswb")
-
 [node name="Gym" parent="Doors" unique_id=1064312783 instance=ExtResource("30_mujyi")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.8, 1.82, -10.5)
 script = ExtResource("25_vqswb")
@@ -856,6 +853,14 @@ room = "res://scenes/rooms_fps/dorms.tscn"
 [node name="School F-2" parent="Doors" unique_id=776587408 instance=ExtResource("32_bb0f5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.799999, 8.22, 9.5)
 script = ExtResource("25_vqswb")
+
+[node name="Objects" type="Node3D" parent="." unique_id=798143865]
+
+[node name="Teachers lounge" parent="Objects" unique_id=1728117871 instance=ExtResource("29_pn7v0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.6, 1.82, 9.5)
+script = ExtResource("33_qqewr")
+display_name = "Teachers lounge"
+dialog = "res://assets/data/object_plain.json"
 
 [node name="Characters" type="Node3D" parent="." unique_id=1564452740 groups=["Characters_interact"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.53373826, 7)

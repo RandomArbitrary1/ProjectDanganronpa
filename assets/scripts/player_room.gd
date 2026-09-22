@@ -9,9 +9,10 @@ extends Camera3D
 var angle = Vector2(0,0)
 
 @onready var dialog : Control = $UI/Dialog
-@onready var label : NinePatchRect = $UI/Base/Hover_label
 @onready var reticle: TextureRect = $UI/Reticle
 @onready var reticle_anim: AnimationPlayer = $UI/Reticle/Reticle_anim
+@onready var tooltip: TextureRect = $UI/Reticle/tooltip
+
 var character_info = preload("res://assets/data/characters/characters.json").data
 const RAY_LENGTH = 1000
 var characters = []
@@ -37,6 +38,12 @@ func _ready() -> void:
 	reticle.get_node("Anim").play("Show")
 
 func _process(delta: float) -> void:
+	if get_viewport().get_mouse_position().x < 960:
+		tooltip.flip_h = false
+		tooltip.get_node("Label").position.x = 648
+	else:
+		tooltip.flip_h = true
+		tooltip.get_node("Label").position.x = 8
 	if dialog.active != previous_dialog_state:
 		previous_dialog_state = dialog.active
 		if dialog.active:
@@ -88,26 +95,26 @@ func _process(delta: float) -> void:
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover
 		if current_hover_type == "character":
-			label.get_node("Label").text = character_info[current_hover.name].name
+			tooltip.get_node("Label").text = character_info[current_hover.name].name
 		elif current_hover_type == "object":
-			label.get_node("Label").text = current_hover.display_name
-		label.get_node("Anim").play("Open")
+			tooltip.get_node("Label").text = current_hover.display_name
+		tooltip.get_node("Anim").play("Show")
 		reticle_anim.play("Hover")
 		
 	if dialog.active == false and current_hover == null and current_hover_check != current_hover:
 		current_hover_check = null
-		label.get_node("Anim").play("Close")
+		tooltip.get_node("Anim").play("Hide")
 		reticle_anim.play("Exit")
 	if current_hover and Input.is_action_just_pressed("Progress"):
 		if current_hover.dialog != "":
 			dialog.file = load(current_hover.dialog)
 			current_hover = null
 			current_hover_check = null
-			label.get_node("Anim").play("Close")
+			tooltip.get_node("Anim").play("Hide")
 			dialog.start()
 	if Input.is_action_just_pressed("Leave"):
 		dialog.file = load("res://assets/data/leave.json")
-		label.get_node("Anim").play("Close")
+		tooltip.get_node("Anim").play("Hide")
 		dialog.start()
 		
 
