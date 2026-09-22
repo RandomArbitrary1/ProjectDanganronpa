@@ -5,12 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://i6vqs58lhnbx" path="res://assets/objects/environment/furniture/trash_can.glb" id="4_6fbpm"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_7nuj7"]
 [ext_resource type="PackedScene" uid="uid://c2mfogvvyweax" path="res://assets/objects/environment/door_metal_double.tscn" id="6_dtxoj"]
+[ext_resource type="PackedScene" uid="uid://dv1ake1fdpghp" path="res://assets/objects/environment/nature/vines2.tscn" id="7_51nii"]
 [ext_resource type="PackedScene" uid="uid://d4foarusnml0q" path="res://assets/objects/environment/door_bathroom_women.tscn" id="7_qoysy"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="7_rbycf"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="8_6fbpm"]
-[ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="8_vhw5r"]
+[ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/nature/vines.tscn" id="8_rbycf"]
 [ext_resource type="PackedScene" uid="uid://hyk6h6quwrrg" path="res://assets/objects/environment/door_bathroom_men.tscn" id="9_7nuj7"]
-[ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="9_wgydl"]
+[ext_resource type="PackedScene" uid="uid://bw4tdosbt8xyy" path="res://assets/objects/environment/nature/grass.tscn" id="9_vhw5r"]
+[ext_resource type="Material" uid="uid://b3dddiehncpek" path="res://assets/materials/tile_dirty.tres" id="10_qoysy"]
+[ext_resource type="Material" uid="uid://c5lgk7l26heuh" path="res://assets/materials/tile_big.tres" id="11_6fbpm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -45,7 +48,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_ve0yh")]
-transform = Transform3D(0.70710677, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.70710677, -6.282011, 2, 6.599845)
+transform = Transform3D(0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071068, -6.282011, 2, 6.599845)
 minX = -75.0
 maxX = -15.0
 
@@ -64,25 +67,55 @@ dialog = "res://assets/data/object_plain.json"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/trash_can/StaticBody3D" unique_id=578766073]
 shape = SubResource("BoxShape3D_qvc4m")
 
+[node name="Boys locker room" parent="Objects" unique_id=1322384159 instance=ExtResource("9_7nuj7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.8, 1.82, 0.6000004)
+script = ExtResource("5_7nuj7")
+display_name = "Boys locker room"
+dialog = "res://assets/data/dialog/no_enter.json"
+
 [node name="Props" type="Node3D" parent="." unique_id=1542813512]
 
 [node name="Structure" type="Node3D" parent="Props" unique_id=1205909988]
 
-[node name="Objects" type="Node3D" parent="Props" unique_id=945673890]
+[node name="Furniture" type="Node3D" parent="Props" unique_id=945673890]
 
-[node name="ceiling_light" parent="Props/Objects" unique_id=1966507917 instance=ExtResource("7_rbycf")]
+[node name="ceiling_light" parent="Props/Furniture" unique_id=1966507917 instance=ExtResource("7_rbycf")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 0.5, 3.85, 3)
 
-[node name="ceiling_light2" parent="Props/Objects" unique_id=692995742 instance=ExtResource("7_rbycf")]
+[node name="ceiling_light2" parent="Props/Furniture" unique_id=692995742 instance=ExtResource("7_rbycf")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -2.5, 3.85, 3)
 
-[node name="ceiling_light3" parent="Props/Objects" unique_id=434006064 instance=ExtResource("7_rbycf")]
+[node name="ceiling_light3" parent="Props/Furniture" unique_id=434006064 instance=ExtResource("7_rbycf")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 0.5, 3.85, -2)
 
-[node name="ceiling_light4" parent="Props/Objects" unique_id=1687620697 instance=ExtResource("7_rbycf")]
+[node name="ceiling_light4" parent="Props/Furniture" unique_id=1687620697 instance=ExtResource("7_rbycf")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -2.5, 3.85, -2)
 
 [node name="Misc" type="Node3D" parent="Props" unique_id=1971181397]
+
+[node name="Greenery12" parent="Props/Misc" unique_id=257907977 instance=ExtResource("7_51nii")]
+transform = Transform3D(1.0013738e-06, -2.9309998, 1.2811806e-07, -3.3881318e-21, -1.2811806e-07, -2.9309998, 4, 7.337567e-07, -3.207353e-14, 3.358769, 2.5691428, -2.7197638)
+
+[node name="Greenery9" parent="Props/Misc" unique_id=1987552875 instance=ExtResource("8_rbycf")]
+transform = Transform3D(3.9471382e-07, -2.2049997, 9.63836e-08, 0, -9.63836e-08, -2.2049997, 3.01, 2.8915082e-07, -1.2639184e-14, 3.4622178, 3.4605675, -0.18383789)
+
+[node name="Greenery10" parent="Props/Misc" unique_id=530251876 instance=ExtResource("8_rbycf")]
+transform = Transform3D(3.0099998, 3.8553438e-07, -1.6852244e-14, 1.4023051e-21, -9.63836e-08, -2.2049994, -5.2628513e-07, 2.2049997, -9.638361e-08, -4.537782, 3.4605675, -5.641144)
+
+[node name="grass6" parent="Props/Misc" unique_id=988088890 instance=ExtResource("9_vhw5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.91424054, -1)
+
+[node name="grass10" parent="Props/Misc" unique_id=641712333 instance=ExtResource("9_vhw5r")]
+transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 3, 0.91424054, -2)
+
+[node name="grass8" parent="Props/Misc" unique_id=691398460 instance=ExtResource("9_vhw5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.91424054, 5)
+
+[node name="grass9" parent="Props/Misc" unique_id=1925366794 instance=ExtResource("9_vhw5r")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 1.0799333, 6)
+
+[node name="grass7" parent="Props/Misc" unique_id=425357012 instance=ExtResource("9_vhw5r")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -4, 0.91424054, -3)
 
 [node name="Doors" type="Node3D" parent="." unique_id=57086944]
 
@@ -94,10 +127,7 @@ room = "res://scenes/rooms/gym.tscn"
 [node name="Girls locker room" parent="Doors" unique_id=1004394217 instance=ExtResource("7_qoysy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.8, 1.82, 3.6000004)
 script = ExtResource("8_6fbpm")
-
-[node name="Boys locker room" parent="Doors" unique_id=1322384159 instance=ExtResource("9_7nuj7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.8, 1.82, 0.6000004)
-script = ExtResource("8_6fbpm")
+room = "res://scenes/rooms/locker_room.tscn"
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 
@@ -108,28 +138,28 @@ size = Vector3(22, 13, 19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5370121, 1)
 operation = 2
 size = Vector3(11, 5, 13)
-material = ExtResource("8_vhw5r")
+material = ExtResource("10_qoysy")
 
 [node name="hole_door8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2146667167]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.7480001, 1.819, -5.648)
 operation = 2
 size = Vector3(1, 2.63, 2.78)
-material = ExtResource("8_vhw5r")
+material = ExtResource("10_qoysy")
 
 [node name="hole_door6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=853439756]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.6, 1.82, 3.6000004)
 operation = 2
 size = Vector3(1, 2.63, 1.39)
-material = ExtResource("8_vhw5r")
+material = ExtResource("10_qoysy")
 
 [node name="hole_door7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=277032208]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.6, 1.82, 0.6000004)
 operation = 2
 size = Vector3(1, 2.63, 1.39)
-material = ExtResource("8_vhw5r")
+material = ExtResource("10_qoysy")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.25, -0.5)
 use_collision = true
 size = Vector3(12, 0.5, 18)
-material = ExtResource("9_wgydl")
+material = ExtResource("11_6fbpm")

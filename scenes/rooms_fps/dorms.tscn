@@ -91,33 +91,33 @@ dialog = "res://assets/data/dialog/test5.json"
 
 [node name="Structure" type="Node3D" parent="Props" unique_id=1805729853]
 
-[node name="Objects" type="Node3D" parent="Props" unique_id=760006839]
+[node name="Furniture" type="Node3D" parent="Props" unique_id=760006839]
 
-[node name="ceiling_light" parent="Props/Objects" unique_id=1966507917 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light" parent="Props/Furniture" unique_id=1966507917 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 5.5, 4.35, 28)
 
-[node name="ceiling_light2" parent="Props/Objects" unique_id=351056510 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light2" parent="Props/Furniture" unique_id=351056510 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 5.5, 4.35, 22.5)
 
-[node name="ceiling_light3" parent="Props/Objects" unique_id=923331270 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light3" parent="Props/Furniture" unique_id=923331270 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 5.5, 4.35, 17)
 
-[node name="ceiling_light4" parent="Props/Objects" unique_id=1870994681 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light4" parent="Props/Furniture" unique_id=1870994681 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 4.35, 28)
 
-[node name="ceiling_light5" parent="Props/Objects" unique_id=844902690 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light5" parent="Props/Furniture" unique_id=844902690 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 4.35, 22.5)
 
-[node name="ceiling_light6" parent="Props/Objects" unique_id=1648517476 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light6" parent="Props/Furniture" unique_id=1648517476 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 4.35, 17)
 
-[node name="ceiling_light7" parent="Props/Objects" unique_id=519494358 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light7" parent="Props/Furniture" unique_id=519494358 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -6.5, 4.35, 28)
 
-[node name="ceiling_light8" parent="Props/Objects" unique_id=1714508444 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light8" parent="Props/Furniture" unique_id=1714508444 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -6.5, 4.35, 22.5)
 
-[node name="ceiling_light9" parent="Props/Objects" unique_id=1707044342 instance=ExtResource("7_n18g8")]
+[node name="ceiling_light9" parent="Props/Furniture" unique_id=1707044342 instance=ExtResource("7_n18g8")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -6.5, 4.35, 17)
 
 [node name="Misc" type="Node3D" parent="Props" unique_id=821061406]
