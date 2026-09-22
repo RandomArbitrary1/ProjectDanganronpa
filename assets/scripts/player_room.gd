@@ -98,6 +98,8 @@ func _process(delta: float) -> void:
 			tooltip.get_node("Label").text = character_info[current_hover.name].name
 		elif current_hover_type == "object":
 			tooltip.get_node("Label").text = current_hover.display_name
+		elif current_hover_type == "door":
+			tooltip.get_node("Label").text = current_hover.name
 		tooltip.get_node("Anim").play("Show")
 		reticle_anim.play("Hover")
 		
@@ -106,12 +108,24 @@ func _process(delta: float) -> void:
 		tooltip.get_node("Anim").play("Hide")
 		reticle_anim.play("Exit")
 	if current_hover and Input.is_action_just_pressed("Progress"):
-		if current_hover.dialog != "":
+		if (current_hover_type == "character" or current_hover_type == "object") and current_hover.dialog != "":
 			dialog.file = load(current_hover.dialog)
 			current_hover = null
 			current_hover_check = null
 			tooltip.get_node("Anim").play("Hide")
 			dialog.start()
+		elif current_hover_type == "door"  and current_hover.room != "":
+			if current_hover.name != "Leave":
+				var scene = current_hover.room
+				var scene_name = current_hover.name
+				current_hover = null
+				current_hover_check = null
+				reticle.get_node("Anim").play("Hide")
+				RoomSwitch.switch(scene, scene_name)
+			else:
+				dialog.file = load("res://assets/data/leave.json")
+				tooltip.get_node("Anim").play("Hide")
+				dialog.start()
 	if Input.is_action_just_pressed("Leave"):
 		dialog.file = load("res://assets/data/leave.json")
 		tooltip.get_node("Anim").play("Hide")
@@ -146,6 +160,11 @@ func _physics_process(_delta):
 			current_hover = result.collider.get_parent()
 		elif result.collider.get_parent().get_parent().name == "Objects":
 			current_hover_type = "object"
+			if reticle.get_node("Indicator").texture != reticle_inspect:
+				reticle.get_node("Indicator").texture = reticle_inspect
+			current_hover = result.collider.get_parent()
+		elif result.collider.get_parent().get_parent().name == "Doors":
+			current_hover_type = "door"
 			if reticle.get_node("Indicator").texture != reticle_inspect:
 				reticle.get_node("Indicator").texture = reticle_inspect
 			current_hover = result.collider.get_parent()

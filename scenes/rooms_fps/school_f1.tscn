@@ -844,6 +844,7 @@ script = ExtResource("25_vqswb")
 [node name="Gym" parent="Doors" unique_id=1064312783 instance=ExtResource("30_mujyi")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.8, 1.82, -10.5)
 script = ExtResource("25_vqswb")
+room = "res://scenes/rooms/gym_entrance.tscn"
 
 [node name="Dorms" parent="Doors" unique_id=1525364982 instance=ExtResource("31_1r2xp")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.8, 1.82, 46.5)
