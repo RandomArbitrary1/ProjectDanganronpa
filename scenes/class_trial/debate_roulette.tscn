@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="3_bsook"]
 [ext_resource type="AudioStream" uid="uid://vp1f2vv2w0ju" path="res://assets/audio/sfx/class_trial/big_gunshot.mp3" id="4_on1fu"]
 [ext_resource type="Texture2D" uid="uid://cl73jelgvbjh8" path="res://assets/textures/ui/class_trial/shoot_white_noise_effect.png" id="4_ul4ow"]
+[ext_resource type="AudioStream" uid="uid://78hvmji7help" path="res://assets/audio/sfx/ui/back.mp3" id="5_pjhyb"]
 [ext_resource type="AudioStream" uid="uid://b5oljuyd4ulox" path="res://assets/audio/sfx/class_trial/small_gunshot.mp3" id="5_ul4ow"]
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
 [ext_resource type="Script" uid="uid://w5nod7m0ufde" path="res://assets/scripts/class_trial/bullet_system.gd" id="6_qus7n"]
@@ -18,8 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://dd3mhfe2v8gwg" path="res://assets/textures/ui/class_trial/dialog_progress_bg.png" id="10_06reo"]
 [ext_resource type="Texture2D" uid="uid://c4lccysi02k8b" path="res://assets/textures/ui/class_trial/dialog_progress_upper.png" id="11_c6kf5"]
 [ext_resource type="Texture2D" uid="uid://b6tvvygi6xmjn" path="res://assets/textures/ui/class_trial/bg_debate_ready.png" id="12_wokie"]
+[ext_resource type="Shader" uid="uid://cuqnuvl2hqtdd" path="res://assets/ui/shaders/truth_bullet_distord.gdshader" id="16_vuvx8"]
 [ext_resource type="AudioStream" uid="uid://2pvm5kqvxym" path="res://assets/audio/sfx/class_trial/intro.mp3" id="17_qu6io"]
 [ext_resource type="Script" uid="uid://rlihf4wqf03v" path="res://assets/scripts/class_trial/debate/words.gd" id="17_y04of"]
+[ext_resource type="Texture2D" uid="uid://cullxp2t04bgm" path="res://assets/textures/ui/class_trial/debate_ready_fire.png" id="18_dntt2"]
 [ext_resource type="Script" uid="uid://dejlfsjfmvot5" path="res://assets/scripts/class_trial/debate/crosshair.gd" id="18_pgswe"]
 [ext_resource type="Texture2D" uid="uid://c3csi42ued8pn" path="res://assets/textures/ui/class_trial/inner_crosshair.png" id="19_y04of"]
 
@@ -183,51 +186,92 @@ _data = {
 &"shoot": SubResource("Animation_3resf")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocahe"]
+shader = ExtResource("16_vuvx8")
+shader_parameter/distort_amount = -2.0
+shader_parameter/vanish_point = Vector2(0, 0)
+
 [sub_resource type="Animation" id="Animation_06reo"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("fire:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1930.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fire:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_c6kf5"]
 resource_name = "start"
 length = 5.0
-tracks/0/type = "value"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("sfx")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.76666665, 1.0333333, 3.5, 4.4333334),
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.24896929,
+"stream": ExtResource("17_qu6io")
+}],
+"times": PackedFloat32Array(0.36666667)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fire:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7666665, 1.8999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1930.0, -1199.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bar:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.23333311, 0.99999976, 1.4333333, 3.733333, 4.6666665),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 0), Vector2(1, 0), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0)]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sfx")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.44625568,
-"stream": ExtResource("17_qu6io")
-}],
-"times": PackedFloat32Array(0.24843478)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fire:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7999998, 2.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(6, 1)]
 }
-tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6k323"]
 _data = {
@@ -463,6 +507,10 @@ bus = &"Sfx"
 stream = ExtResource("6_fe14r")
 bus = &"Sfx"
 
+[node name="time_lose" type="AudioStreamPlayer" parent="sfx" unique_id=1689940330]
+stream = ExtResource("5_pjhyb")
+volume_db = 5.0
+
 [node name="Hud" type="Control" parent="." unique_id=474364630]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -568,6 +616,12 @@ theme_override_fonts/font = ExtResource("8_juyy3")
 theme_override_font_sizes/font_size = 80
 text = "00:00:00"
 
+[node name="speeds" type="Label" parent="Hud" unique_id=165688536]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 53
+
 [node name="revolver" type="TextureRect" parent="." unique_id=547455956]
 self_modulate = Color(1, 0.34509805, 0, 0.7529412)
 layout_mode = 1
@@ -620,6 +674,31 @@ libraries/ = SubResource("AnimationLibrary_wokie")
 [node name="downtime" type="Timer" parent="Bullets" unique_id=1247655685]
 one_shot = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Bullets" unique_id=1283023893]
+
+[node name="ColorRect" type="ColorRect" parent="Bullets/CanvasLayer" unique_id=1338126643]
+visible = false
+material = SubResource("ShaderMaterial_ocahe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.23137255)
+
+[node name="FiredBullet" type="RichTextLabel" parent="Bullets/CanvasLayer/ColorRect" unique_id=1617534655]
+custom_maximum_size = Vector2(1200, 500)
+layout_mode = 0
+offset_left = 472.0
+offset_top = 78.0
+offset_right = 1539.0
+offset_bottom = 337.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 189
+text = "My Account"
+fit_content = true
+
 [node name="Ready?" type="Control" parent="." unique_id=274680693]
 layout_mode = 1
 anchors_preset = 15
@@ -627,36 +706,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="bg" type="TextureRect" parent="Ready?" unique_id=1678285598]
+[node name="bar" type="Control" parent="Ready?" unique_id=29826583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="bg" type="TextureRect" parent="Ready?/bar" unique_id=1678285598]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -540.0
+offset_left = -960.0
 offset_top = -100.0
-offset_right = 540.0
+offset_right = 960.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_wokie")
 
-[node name="Label" type="Label" parent="Ready?" unique_id=1325686448]
+[node name="Label" type="Label" parent="Ready?/bar" unique_id=1325686448]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = -11.5
-offset_right = 81.0
-offset_bottom = 11.5
+offset_left = -564.0
+offset_top = -39.5
+offset_right = 564.0
+offset_bottom = 39.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_3resf")
@@ -670,6 +757,16 @@ text = "Prepare your bullets!"
 libraries/ = SubResource("AnimationLibrary_6k323")
 
 [node name="sfx" type="AudioStreamPlayer" parent="Ready?" unique_id=1401856661]
+
+[node name="fire" type="TextureRect" parent="Ready?" unique_id=1106055277]
+modulate = Color(1, 1, 1, 0.7490196)
+layout_mode = 0
+offset_left = 1930.0
+offset_top = 382.1192
+offset_right = 2230.0015
+offset_bottom = 682.1192
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("18_dntt2")
 
 [node name="Words" type="Control" parent="." unique_id=1761741366]
 anchors_preset = 0

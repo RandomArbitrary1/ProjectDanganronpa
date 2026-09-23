@@ -9,6 +9,8 @@ extends Control
 @onready var downtime: Timer = $downtime
 @onready var camera: Node3D = $"../../CameraNode"
 @onready var main_root: Control = $".."
+@onready var crosshair: TextureRect = $"../crosshair"
+@onready var time_lose: AudioStreamPlayer = $"../sfx/time_lose"
 var bullets = ["strange_place", "lost_memory"]
 
 var bullet_direction = Vector3(0,0,0)
@@ -28,9 +30,6 @@ func truth_shoot():
 	shoot_anim.stop()
 	shoot_anim.play("shoot")
 	downtime.start(2.0)
-	#var ray_origin = camera.get_node("ClassTrialCamera").project_ray_origin(mouse_pos)
-	var ray_direction = camera.get_node("ClassTrialCamera").project_ray_normal(mouse_pos)
-	bullet_direction = ray_direction.normalized()
 	
 func white_noise_shoot():
 	crosshair_anim.stop()
@@ -40,6 +39,9 @@ func white_noise_shoot():
 	small_gunshot.play()
 	if main_root.state == "bullet_preview":
 		main_root.debate_camera_reset()
+	if crosshair.touching:
+		main_root.timer -= 15
+		time_lose.play()
 
 func _on_downtime_timeout() -> void:
 	reload()

@@ -18,6 +18,7 @@ extends Control
 @onready var words_theme = preload("res://assets/ui/themes/class_trial_debate_words.tres")
 @onready var ready_anim: AnimationPlayer = $"Ready?/anim"
 @onready var anim: AnimationPlayer = $anim
+@onready var speeds: Label = $Hud/speeds
 var state = "nothing"
 var timer = 499.0
 var state_timer = 0.0
@@ -52,14 +53,6 @@ func _process(delta: float) -> void:
 		preview_process(delta)
 			
 	revolver.rotation += delta * 0.2
-
-func _input(_event: InputEvent) -> void:
-	if !state == "debate":
-		return
-	if Input.is_action_just_pressed("RMB"):
-		bullets_main.white_noise_shoot()
-	if Input.is_action_just_pressed("LMB"):
-		bullets_main.truth_shoot()
 	
 func start_process(delta): # PREVIEW PROCESS
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -72,13 +65,15 @@ func start_process(delta): # PREVIEW PROCESS
 func debate_process(delta):
 	state_timer += delta
 	concentrate.value += delta * 1.3
-	
+	speeds.text = ""
 	if Input.is_action_pressed("Spacebar"):
 		concentrate.value -= delta * 35.0
 		state_timer -= delta * 0.5
+		speeds.text = "c o n c e n t r a t i n g . . ."
 		
 	if Input.is_action_pressed("Ctrl"):
 		state_timer += delta
+		speeds.text = "Speeding Up!"
 		
 	camera_node.fov(35)
 	
