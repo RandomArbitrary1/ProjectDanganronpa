@@ -15,6 +15,7 @@ diffuse_mode = 3
 specular_mode = 1
 disable_ambient_light = true
 albedo_texture = ExtResource("1_bjllt")
+texture_repeat = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v14ks"]
 size = Vector3(0.6, 0.001, 1)

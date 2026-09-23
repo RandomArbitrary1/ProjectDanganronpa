@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_o1sjs"]
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_ve0yh"]
+[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="3_821gf"]
 [ext_resource type="PackedScene" uid="uid://i6vqs58lhnbx" path="res://assets/objects/environment/furniture/trash_can.glb" id="4_6fbpm"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_7nuj7"]
 [ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door.tscn" id="5_vhw5r"]
@@ -58,6 +59,11 @@ maxX = 10.0
 maxY = 0.0
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
+
+[node name="tenga" parent="Characters" unique_id=2135237569 instance=ExtResource("3_821gf")]
+transform = Transform3D(-6.119594e-08, -1.4, 6.119594e-08, -2.9646153e-22, -6.119594e-08, -1.4, 1.4, -6.119594e-08, 2.674959e-15, 0, 1.8999999, 1)
+character = "tenga"
+expression = "neutral"
 
 [node name="Objects" type="Node3D" parent="." unique_id=986129665]
 

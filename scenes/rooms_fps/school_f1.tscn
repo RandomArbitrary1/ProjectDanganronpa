@@ -881,11 +881,6 @@ character = "nori"
 expression = "neutral"
 dialog = "res://assets/data/dialog/test.json"
 
-[node name="tenga" parent="Characters" unique_id=778912610 instance=ExtResource("34_34go0")]
-transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, 1, 1.4, -28)
-character = "tenga"
-expression = "neutral"
-
 [node name="naeri" parent="Characters" unique_id=1879049343 instance=ExtResource("34_34go0")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749595e-15, 13, 1.4, 5)
 character = "naeri"
