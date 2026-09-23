@@ -194,6 +194,7 @@ room = "res://scenes/rooms_fps/school_f1.tscn"
 [node name="Courtyard" parent="Doors" unique_id=886905386 instance=ExtResource("8_msf16")]
 transform = Transform3D(-0.7, 0, -1.0569706e-07, 0, 0.7, 0, 1.0569706e-07, 0, -0.7, 0, 1.82, 32.852)
 script = ExtResource("9_5gesx")
+room = "res://scenes/rooms_fps/courtyard.tscn"
 
 [node name="Dining hall" parent="Doors" unique_id=481195389 instance=ExtResource("8_msf16")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 5.152, 1.82, 12.148)
