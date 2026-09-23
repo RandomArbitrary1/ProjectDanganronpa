@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dd3mhfe2v8gwg" path="res://assets/textures/ui/class_trial/dialog_progress_bg.png" id="10_06reo"]
 [ext_resource type="Texture2D" uid="uid://c4lccysi02k8b" path="res://assets/textures/ui/class_trial/dialog_progress_upper.png" id="11_c6kf5"]
 [ext_resource type="Texture2D" uid="uid://b6tvvygi6xmjn" path="res://assets/textures/ui/class_trial/bg_debate_ready.png" id="12_wokie"]
+[ext_resource type="AudioStream" uid="uid://2pvm5kqvxym" path="res://assets/audio/sfx/class_trial/intro.mp3" id="17_qu6io"]
 [ext_resource type="Script" uid="uid://rlihf4wqf03v" path="res://assets/scripts/class_trial/debate/words.gd" id="17_y04of"]
 [ext_resource type="Script" uid="uid://dejlfsjfmvot5" path="res://assets/scripts/class_trial/debate/crosshair.gd" id="18_pgswe"]
 [ext_resource type="Texture2D" uid="uid://c3csi42ued8pn" path="res://assets/textures/ui/class_trial/inner_crosshair.png" id="19_y04of"]
@@ -212,6 +213,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 0), Vector2(1, 0), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.44625568,
+"stream": ExtResource("17_qu6io")
+}],
+"times": PackedFloat32Array(0.24843478)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6k323"]
 _data = {
@@ -652,6 +668,8 @@ text = "Prepare your bullets!"
 
 [node name="anim" type="AnimationPlayer" parent="Ready?" unique_id=1577823886]
 libraries/ = SubResource("AnimationLibrary_6k323")
+
+[node name="sfx" type="AudioStreamPlayer" parent="Ready?" unique_id=1401856661]
 
 [node name="Words" type="Control" parent="." unique_id=1761741366]
 anchors_preset = 0

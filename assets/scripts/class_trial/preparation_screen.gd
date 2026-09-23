@@ -13,7 +13,7 @@ var timer = 0.0
 func _ready() -> void:
 	intro.visible = false
 	dialog.visible = false
-	start_intro()
+	#start_intro()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
