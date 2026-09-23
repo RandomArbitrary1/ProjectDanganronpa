@@ -26,7 +26,7 @@ glow_enabled = true
 [node name="Room" type="Node3D" unique_id=478957731]
 script = ExtResource("1_fk3v2")
 hall = "res://scenes/rooms/gym_entrance.tscn"
-hall_name = "Gym"
+hall_name = "Gym entrance"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
 environment = SubResource("Environment_14vil")

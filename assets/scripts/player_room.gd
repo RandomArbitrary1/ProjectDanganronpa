@@ -24,7 +24,7 @@ var current_hover_type = "character"
 var current_hover = null
 var current_hover_check = null
 @onready var start_position = self.position
-var start_rotation = self.rotation_degrees
+@onready var start_rotation = self.rotation_degrees
 var mouse_start = Vector2.ZERO
 var angle_start = Vector2.ZERO
 
@@ -51,7 +51,8 @@ func _process(delta: float) -> void:
 		else:
 			reticle.get_node("Anim").play("Show")
 			reticle_anim.play("Exit")
-	reticle.position = get_viewport().get_mouse_position() - Vector2(48,48)
+	if not dialog.active:
+		reticle.position = get_viewport().get_mouse_position() - Vector2(48,48)
 	if character == "" and self.get_parent().name != "Player":
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
@@ -107,7 +108,7 @@ func _process(delta: float) -> void:
 		current_hover_check = null
 		tooltip.get_node("Anim").play("Hide")
 		reticle_anim.play("Exit")
-	if current_hover and Input.is_action_just_pressed("Progress"):
+	if current_hover and Input.is_action_just_pressed("Progress") and not dialog.active:
 		if (current_hover_type == "character" or current_hover_type == "object") and current_hover.dialog != "":
 			dialog.file = load(current_hover.dialog)
 			current_hover = null

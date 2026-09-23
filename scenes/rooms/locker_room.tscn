@@ -31,7 +31,7 @@ size = Vector3(8, 2, 2)
 [node name="Room" type="Node3D" unique_id=478957731]
 script = ExtResource("1_1atqs")
 hall = "res://scenes/rooms/gym_entrance.tscn"
-hall_name = "Gym"
+hall_name = "Gym entrance"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
 environment = SubResource("Environment_14vil")
@@ -42,9 +42,9 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_kd05c")]
 transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 2.7179892, 2, 6.599845)
-minX = 30.0
+minX = -20.0
 minY = -5.0
-maxX = 60.0
+maxX = 0.0
 maxY = 5.0
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]

@@ -1,0 +1,54 @@
+[gd_scene format=4 uid="uid://dd0i01jg1ejp1"]
+
+[ext_resource type="Material" uid="uid://bqb8ig24gtveo" path="res://assets/objects/environment/door_wood.tres" id="1_qgisd"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cfvj3"]
+_surfaces = [{
+"aabb": AABB(-1, -1.8899999, -0.19999999, 2, 3.7799997, 0.39999998),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABQACAAEAAwAGAAUABgAHAAUABQAHAAIABgAIAAcABAACAAkACQACAAcACQAKAAQACwAHAAgACQAHAAsACwAIAAwACQANAAoACwANAAkADgAKAA0ADAAPAAsADAAOAA8ACwAPAA0ADgANAA8A"),
+"name": "door_wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAADMDAAA//8AAP////8AAAAA//8AAAAAAAD///////8AAP//AAD//wAAzAw5+f//AADMDAAA/78AADLzOfn//wAAMvMAAP//AADMDDn5/78AADLzAAD/vwAAMvM5+f+/AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jlvv6"]
+resource_name = "door_wood_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, -1.8899999, -0.19999999, 2, 3.7799997, 0.39999998),
+"attribute_data": PackedByteArray("vNUSCQbkJfy81SX8BuQSCe4AEgliSCX87gAl/GJIEgnk5RIJL/Ql/OTlJfwv9BIJn/kl/A32gQ+f+YEPDfYl/GpkU+kgVrdoamS3aCBWU+kgjhIJs5El/CCOt/WzkRIJP0ol/NJNt/U/ShIJ0k0SCd7TJfyQk4EP3tOBD5CTJfxIZpN122lT6UhmU+nbaZN1ffuBDxD/Jfx9+yX8EP+BDw=="),
+"format": 34896613399,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAFgAVABgAFgAYABkAGQAYABoAGQAaABsAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": ExtResource("1_qgisd"),
+"name": "door_wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("AAAAAP////8AAP//AAD//wAA////////AAAAAAAA//8AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP//////////////////AAD/////AAD/////zAw5+f/////MDAAA/7///8wMAAD/////zAw5+f+/////////AABU1QAA/////1TVAAD//wAAVNX///////9U1cwMAAD/////AAD////////MDDn5/////wAAAAD///////////////8y8zn5////////AAD/////MvMAAP////8y8wAA/78AgMwMOfn/vwCAMvM5+f+/AIDMDAAA/78AgDLzOfn//1TVzAw5+f+/VNXMDDn5//9U1TLzOfn/v1TVMvMAAP////8y8zn5/7///zLzOfn/////MvMAAP+/////P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9/VNWqKlTVqipU1aoqVNWqKv9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3////9/////f////3///1RVVFVUVVRVVFVUVVRVVFX/P/9//z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cfvj3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5c0lw"]
+size = Vector3(2, 4, 0.35)
+
+[node name="Door" type="MeshInstance3D" unique_id=1912084388]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("ArrayMesh_jlvv6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=559148316]
+
+[node name="Click" type="CollisionShape3D" parent="StaticBody3D" unique_id=833483798]
+shape = SubResource("BoxShape3D_5c0lw")
+debug_fill = false
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1775471776]
+
+[node name="Click" type="CollisionShape3D" parent="Area3D" unique_id=720295564]
+shape = SubResource("BoxShape3D_5c0lw")
+debug_fill = false

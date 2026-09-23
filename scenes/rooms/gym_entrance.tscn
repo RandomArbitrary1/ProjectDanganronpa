@@ -4,16 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_ve0yh"]
 [ext_resource type="PackedScene" uid="uid://i6vqs58lhnbx" path="res://assets/objects/environment/furniture/trash_can.glb" id="4_6fbpm"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_7nuj7"]
-[ext_resource type="PackedScene" uid="uid://c2mfogvvyweax" path="res://assets/objects/environment/door_metal_double.tscn" id="6_dtxoj"]
+[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door.tscn" id="5_vhw5r"]
+[ext_resource type="Material" uid="uid://cbe0ntm8aon7n" path="res://assets/objects/environment/door_bathroom_men.tres" id="6_wgydl"]
 [ext_resource type="PackedScene" uid="uid://dv1ake1fdpghp" path="res://assets/objects/environment/nature/vines2.tscn" id="7_51nii"]
-[ext_resource type="PackedScene" uid="uid://d4foarusnml0q" path="res://assets/objects/environment/door_bathroom_women.tscn" id="7_qoysy"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="7_rbycf"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="8_6fbpm"]
 [ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/nature/vines.tscn" id="8_rbycf"]
-[ext_resource type="PackedScene" uid="uid://hyk6h6quwrrg" path="res://assets/objects/environment/door_bathroom_men.tscn" id="9_7nuj7"]
 [ext_resource type="PackedScene" uid="uid://bw4tdosbt8xyy" path="res://assets/objects/environment/nature/grass.tscn" id="9_vhw5r"]
 [ext_resource type="Material" uid="uid://b3dddiehncpek" path="res://assets/materials/tile_dirty.tres" id="10_qoysy"]
 [ext_resource type="Material" uid="uid://c5lgk7l26heuh" path="res://assets/materials/tile_big.tres" id="11_6fbpm"]
+[ext_resource type="Material" uid="uid://bocar0fmh1nd" path="res://assets/objects/environment/door_bathroom_women.tres" id="11_7ptkl"]
+[ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_double.tscn" id="13_821gf"]
+[ext_resource type="Material" uid="uid://c5wupw8t0q5nt" path="res://assets/objects/environment/door_metal.tres" id="14_m3gab"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -49,8 +51,9 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_ve0yh")]
 transform = Transform3D(0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071068, -6.282011, 2, 6.599845)
-minX = -75.0
-maxX = -15.0
+minY = -5.0
+maxX = 10.0
+maxY = 0.0
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
@@ -67,8 +70,9 @@ dialog = "res://assets/data/object_plain.json"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/trash_can/StaticBody3D" unique_id=578766073]
 shape = SubResource("BoxShape3D_qvc4m")
 
-[node name="Boys locker room" parent="Objects" unique_id=1322384159 instance=ExtResource("9_7nuj7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.8, 1.82, 0.6000004)
+[node name="Boys locker room" parent="Objects" unique_id=1912084388 instance=ExtResource("5_vhw5r")]
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.8, 1.82, 0.6000004)
+surface_material_override/0 = ExtResource("6_wgydl")
 script = ExtResource("5_7nuj7")
 display_name = "Boys locker room"
 dialog = "res://assets/data/dialog/no_enter.json"
@@ -119,15 +123,17 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 
 [node name="Doors" type="Node3D" parent="." unique_id=57086944]
 
-[node name="Gym" parent="Doors" unique_id=1496385204 instance=ExtResource("6_dtxoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7480001, 1.82, -5.852)
-script = ExtResource("8_6fbpm")
-room = "res://scenes/rooms/gym.tscn"
-
-[node name="Girls locker room" parent="Doors" unique_id=1004394217 instance=ExtResource("7_qoysy")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.8, 1.82, 3.6000004)
+[node name="Girls locker room" parent="Doors" unique_id=1672453204 instance=ExtResource("5_vhw5r")]
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.8, 1.82, 3.6000004)
+surface_material_override/0 = ExtResource("11_7ptkl")
 script = ExtResource("8_6fbpm")
 room = "res://scenes/rooms/locker_room.tscn"
+
+[node name="Gym" parent="Doors" unique_id=1624515407 instance=ExtResource("13_821gf")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.7480001, 1.82, -5.852)
+surface_material_override/0 = ExtResource("14_m3gab")
+script = ExtResource("8_6fbpm")
+room = "res://scenes/rooms/gym.tscn"
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 

@@ -37,7 +37,8 @@ func _ready() -> void:
 		var info = character_info[key]
 		var item = report_item.duplicate()
 		item.get_node("Preview/Name").text = info.name
-		item.get_node("Preview/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
+		if ResourceLoader.exists("res://assets/textures/characters/" + key + "/neutral.png"):
+			item.get_node("Preview/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
 		lists.get_node("Report/Items").add_child(item)
 
 func _process(delta: float) -> void:

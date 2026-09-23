@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://i6vqs58lhnbx" path="res://assets/objects/environment/furniture/trash_can.glb" id="4_460oe"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_ibabf"]
 [ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="6_1dljc"]
-[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door_wood.tscn" id="6_8sdgk"]
+[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door.tscn" id="6_8sdgk"]
 [ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="7_5wqhw"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="7_460oe"]
 
