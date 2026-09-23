@@ -10,7 +10,6 @@ func _ready() -> void:
 	if state == "press_any":
 		panel.visible = false
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	revolver.rotation += delta * 0.5
@@ -26,18 +25,25 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_start_new_game_pressed() -> void:
-	confirm_sfx.play()
+	exiting()
 	LoadingScreen.load_scene("res://scenes/class_trial/trial_ground.tscn")
 
 
 func _on_continue_pressed() -> void:
-	confirm_sfx.play()
-	LoadingScreen.load_scene("res://scenes/rooms/school_f1.tscn")
+	exiting()
+	LoadingScreen.load_scene("res://scenes/rooms_fps/school_f1.tscn")
 
 func _on_options_pressed() -> void:
-	confirm_sfx.play()
-	LoadingScreen.load_scene("res://scenes/rooms/factory_area.tscn")
+	exiting()
+	LoadingScreen.load_scene("res://scenes/rooms_fps/factory_area.tscn")
 
 func _on_quit_pressed() -> void:
-	confirm_sfx.play()
+	exiting()
 	get_tree().quit()
+
+func exiting():
+	var state = "loading"
+	panel.position = Vector2(-9999,-9999)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
+	confirm_sfx.play()
