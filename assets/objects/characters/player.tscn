@@ -649,6 +649,7 @@ texture = ExtResource("16_eahuj")
 [node name="Loop" type="AnimationPlayer" parent="UI/Reticle" unique_id=318127443]
 libraries/ = SubResource("AnimationLibrary_mesda")
 autoplay = &"Anim"
+speed_scale = 0.6
 
 [node name="Anim" type="AnimationPlayer" parent="UI/Reticle" unique_id=1535620674]
 libraries/ = SubResource("AnimationLibrary_2lmsc")

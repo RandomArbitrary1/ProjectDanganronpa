@@ -440,6 +440,7 @@ texture = ExtResource("5_x35er")
 [node name="Loop" type="AnimationPlayer" parent="UI/Reticle" unique_id=166622951]
 libraries/ = SubResource("AnimationLibrary_7thyx")
 autoplay = &"Anim"
+speed_scale = 0.6
 
 [node name="Anim" type="AnimationPlayer" parent="UI/Reticle" unique_id=1248584980]
 libraries/ = SubResource("AnimationLibrary_fralp")
