@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cw27gj8y4lw5r"]
+
+[ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="1_20crt"]
+[ext_resource type="Material" uid="uid://h0x4jtpt4o2f" path="res://assets/materials/tile_checker.tres" id="2_20crt"]
+[ext_resource type="PackedScene" uid="uid://d2v7flsafhiil" path="res://assets/objects/models/class_trial_entrance2.glb" id="3_txco6"]
+[ext_resource type="PackedScene" uid="uid://b8bsgkwyh0ypo" path="res://assets/objects/models/pillar9.glb" id="4_img0q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_20crt"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3jcxg"]
+sky_material = SubResource("ProceduralSkyMaterial_20crt")
+
+[sub_resource type="Environment" id="Environment_txco6"]
+background_mode = 2
+sky = SubResource("Sky_3jcxg")
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 3.0
+glow_enabled = true
+
+[node name="TrialEnvironment1" type="Node3D" unique_id=1385433186]
+
+[node name="RoomNODE" type="CSGCombiner3D" parent="." unique_id=1525151402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50425816, 0)
+
+[node name="Room" type="CSGBox3D" parent="RoomNODE" unique_id=856407129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+size = Vector3(41, 33, 41)
+
+[node name="CutoutRoom" type="CSGCylinder3D" parent="RoomNODE" unique_id=921578102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.875, 0)
+operation = 2
+radius = 15.0
+height = 24.75
+sides = 32
+material = ExtResource("1_20crt")
+
+[node name="Floor" type="CSGBox3D" parent="RoomNODE" unique_id=1129412267]
+size = Vector3(33, 1, 33)
+material = ExtResource("2_20crt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2136196153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.472571, 0)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 16.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1089324817]
+environment = SubResource("Environment_txco6")
+
+[node name="Props" type="Node3D" parent="." unique_id=1900057336]
+
+[node name="class_trial_entrance2" parent="Props" unique_id=2054038931 instance=ExtResource("3_txco6")]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -14.331686, 0, 0)
+
+[node name="class_trial_entrance3" parent="Props" unique_id=426318372 instance=ExtResource("3_txco6")]
+transform = Transform3D(-0.42, 0, -3.6717566e-08, 0, 0.42, 0, 3.6717566e-08, 0, -0.42, 14.332, 0, 0)
+
+[node name="class_trial_entrance4" parent="Props" unique_id=1229009713 instance=ExtResource("3_txco6")]
+transform = Transform3D(-1.8358783e-08, 0, 0.42, 0, 0.42, 0, -0.42, 0, -1.8358783e-08, 0.00015750588, 0, 14.331842)
+
+[node name="class_trial_entrance5" parent="Props" unique_id=1631248294 instance=ExtResource("3_txco6")]
+transform = Transform3D(5.5076345e-08, 0, -0.42, 0, 0.42, 0, 0.42, 0, 5.5076345e-08, 0.00015625297, 0, -14.331842)
+
+[node name="pillar9" parent="Props" unique_id=1050028068 instance=ExtResource("4_img0q")]
+transform = Transform3D(0.4829629, 0, -0.12940954, 0, 0.84, 0, 0.12940954, 0, 0.4829629, 12.247448, 0, -7.0710673)
+
+[node name="pillar10" parent="Props" unique_id=223336769 instance=ExtResource("4_img0q")]
+transform = Transform3D(0.4829629, 0, -0.12940954, 0, 0.84, 0, 0.12940954, 0, 0.4829629, -12.247448, 0, 7.0710673)
+
+[node name="pillar11" parent="Props" unique_id=915085911 instance=ExtResource("4_img0q")]
+transform = Transform3D(0.12940954, 0, 0.4829629, 0, 0.84, 0, -0.4829629, 0, 0.12940954, -7.0710673, 0, -12.247448)
+
+[node name="pillar12" parent="Props" unique_id=1320698844 instance=ExtResource("4_img0q")]
+transform = Transform3D(0.12940954, 0, 0.4829629, 0, 0.84, 0, -0.4829629, 0, 0.12940954, 7.0710673, 0, 12.247448)
+
+[node name="pillar13" parent="Props" unique_id=664209567 instance=ExtResource("4_img0q")]
+transform = Transform3D(0.4829629, 0, 0.12940954, 0, 0.84, 0, -0.12940954, 0, 0.4829629, 7.071067, 0, -12.247449)
+
+[node name="pillar14" parent="Props" unique_id=1834958447 instance=ExtResource("4_img0q")]
+transform = Transform3D(0.4829629, 0, 0.12940954, 0, 0.84, 0, -0.12940954, 0, 0.4829629, -7.071067, 0, 12.247449)
+
+[node name="pillar15" parent="Props" unique_id=832254536 instance=ExtResource("4_img0q")]
+transform = Transform3D(-0.12940958, 0, 0.4829629, 0, 0.84, 0, -0.4829629, 0, -0.12940958, -12.247449, 0, -7.071067)
+
+[node name="pillar16" parent="Props" unique_id=1003455448 instance=ExtResource("4_img0q")]
+transform = Transform3D(-0.12940958, 0, 0.4829629, 0, 0.84, 0, -0.4829629, 0, -0.12940958, 12.247449, 0, 7.071067)

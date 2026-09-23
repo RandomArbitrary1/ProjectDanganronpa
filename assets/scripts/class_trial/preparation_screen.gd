@@ -13,7 +13,8 @@ var timer = 0.0
 func _ready() -> void:
 	intro.visible = false
 	dialog.visible = false
-	#start_intro()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#start_intro() # Use to speed up for testing
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
