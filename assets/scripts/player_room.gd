@@ -40,7 +40,7 @@ func _ready() -> void:
 	reticle.get_node("Anim").play("Show")
 
 func _process(delta: float) -> void:
-	if get_viewport().get_mouse_position().x < 960:
+	if (reticle_pos == "mouse" and get_viewport().get_mouse_position().x < 960) or (reticle_pos == "controller" and controller_reticle_pos.x < 960):
 		tooltip.flip_h = false
 		tooltip.get_node("Label").position.x = 648
 	else:
