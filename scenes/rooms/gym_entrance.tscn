@@ -6,9 +6,11 @@
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_7nuj7"]
 [ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door.tscn" id="5_vhw5r"]
 [ext_resource type="Material" uid="uid://cbe0ntm8aon7n" path="res://assets/objects/environment/door_bathroom_men.tres" id="6_wgydl"]
+[ext_resource type="PackedScene" uid="uid://v6ddvo1lkhb6" path="res://assets/objects/2D objects/camera.tscn" id="7_7ptkl"]
 [ext_resource type="PackedScene" uid="uid://dv1ake1fdpghp" path="res://assets/objects/environment/nature/vines2.tscn" id="7_51nii"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="7_rbycf"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="8_6fbpm"]
+[ext_resource type="PackedScene" uid="uid://cmu4b24vjyv8r" path="res://assets/objects/2D objects/monitor.tscn" id="8_821gf"]
 [ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/nature/vines.tscn" id="8_rbycf"]
 [ext_resource type="PackedScene" uid="uid://bw4tdosbt8xyy" path="res://assets/objects/environment/nature/grass.tscn" id="9_vhw5r"]
 [ext_resource type="Material" uid="uid://b3dddiehncpek" path="res://assets/materials/tile_dirty.tres" id="10_qoysy"]
@@ -77,6 +79,12 @@ script = ExtResource("5_7nuj7")
 display_name = "Boys locker room"
 dialog = "res://assets/data/dialog/no_enter.json"
 
+[node name="Camera" parent="Objects" unique_id=870626101 instance=ExtResource("7_7ptkl")]
+transform = Transform3D(1.2124355, -0.7, 3.059797e-08, 0, -6.119594e-08, -1.4, 0.7, 1.2124355, -5.299724e-08, 2, 3, -3)
+
+[node name="Monitor" parent="Objects" unique_id=2016118983 instance=ExtResource("8_821gf")]
+transform = Transform3D(1.4, 9.414201e-23, -4.1150785e-30, 0, -6.119594e-08, -1.4000001, -9.414201e-23, 1.4, -6.119595e-08, -6, 3, -3)
+
 [node name="Props" type="Node3D" parent="." unique_id=1542813512]
 
 [node name="Structure" type="Node3D" parent="Props" unique_id=1205909988]
@@ -87,13 +95,13 @@ dialog = "res://assets/data/dialog/no_enter.json"
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 0.5, 3.85, 3)
 
 [node name="ceiling_light2" parent="Props/Furniture" unique_id=692995742 instance=ExtResource("7_rbycf")]
-transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -2.5, 3.85, 3)
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -4.5, 3.85, 3)
 
 [node name="ceiling_light3" parent="Props/Furniture" unique_id=434006064 instance=ExtResource("7_rbycf")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 0.5, 3.85, -2)
 
 [node name="ceiling_light4" parent="Props/Furniture" unique_id=1687620697 instance=ExtResource("7_rbycf")]
-transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -2.5, 3.85, -2)
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -4.5, 3.85, -2)
 
 [node name="Misc" type="Node3D" parent="Props" unique_id=1971181397]
 

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://v6ddvo1lkhb6"]
+
+[ext_resource type="Texture2D" uid="uid://k67o0umjvve6" path="res://assets/textures/environment/2D_objects/Camera.png" id="1_bjllt"]
+[ext_resource type="Script" uid="uid://b1pir1exoyt63" path="res://assets/scripts/obj_data/object_2D.gd" id="2_7uyij"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4fivo"]
+lightmap_size_hint = Vector2i(12, 12)
+size = Vector2(0.5, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ee6p"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("1_bjllt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v14ks"]
+size = Vector3(0.6, 0.001, 1)
+
+[node name="Camera" type="MeshInstance3D" unique_id=870626101]
+transform = Transform3D(1.2124355, -0.7, 3.059797e-08, 0, -6.119594e-08, -1.4, 0.7, 1.2124355, -5.2997237e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4fivo")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ee6p")
+script = ExtResource("2_7uyij")
+display_name = "Camera"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=566567218]
+
+[node name="Click" type="CollisionShape3D" parent="Area3D" unique_id=1991941972]
+transform = Transform3D(1, 0, -5.8619776e-14, 0, 1, -1.1723955e-13, 0, 7.1054274e-15, 1.0000001, 0, -9.536743e-07, -0.20000005)
+shape = SubResource("BoxShape3D_v14ks")
