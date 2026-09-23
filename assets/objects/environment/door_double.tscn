@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://d14yg2oaj76fa"]
+[gd_scene format=4 uid="uid://csuvvkrekwpls"]
 
-[ext_resource type="Material" uid="uid://b7bcqie2poekd" path="res://assets/objects/environment/door_gym.tres" id="1_le6vt"]
+[ext_resource type="Material" uid="uid://cjivswehkk42t" path="res://assets/objects/environment/door_dorms.tres" id="1_v4nr8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osu4y"]
 
@@ -35,16 +35,21 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gdysu")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5c0lw"]
-size = Vector3(2.8, 2.64, 0.35)
+size = Vector3(4, 4, 0.35)
 
-[node name="door_bathroom_women" type="Node3D" unique_id=1496385204]
-
-[node name="Cube" type="MeshInstance3D" parent="." unique_id=1624515407]
+[node name="Door_double" type="MeshInstance3D" unique_id=1624515407]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("ArrayMesh_lsos1")
-surface_material_override/0 = ExtResource("1_le6vt")
+surface_material_override/0 = ExtResource("1_v4nr8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2013745391]
+
+[node name="Click" type="CollisionShape3D" parent="StaticBody3D" unique_id=1844556844]
+shape = SubResource("BoxShape3D_5c0lw")
+debug_fill = false
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1775471776]
 
 [node name="Click" type="CollisionShape3D" parent="Area3D" unique_id=720295564]
 shape = SubResource("BoxShape3D_5c0lw")
+debug_fill = false

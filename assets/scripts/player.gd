@@ -11,9 +11,10 @@ var character_info = preload("res://assets/data/characters/characters.json").dat
 @onready var walk_anim = self.get_node("Camera3D/Walk")
 @onready var dialog: Control = $UI/Dialog
 @onready var base_gui: Control = $UI/Base
+@onready var tooltip: TextureRect = $UI/tooltip
 @onready var steps = self.get_node("Camera3D/Steps")
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
-@onready var pointer = $UI/Pointer
+@onready var reticle: TextureRect = $UI/Reticle
 const JOYSTICK_SENSITIVITY = 400
 const DEADZONE = 0.15
 
@@ -26,9 +27,16 @@ var _tilt_input : float
 var _player_rotation : Vector3
 var _camera_rotation : Vector3
 
+var reticle_talk = preload("res://assets/ui/base/reticle_talk.png")
+var reticle_inspect = preload("res://assets/ui/base/reticle_inspect.png")
+@onready var reticle_anim: AnimationPlayer = $UI/Reticle/Reticle_anim
+
+
 var current_hover_check = null
 var current_hover_type = "character"
+var previous_dialog_state = false
 var characters = []
+
 func _ready():
 	Music.switch("res://assets/audio/music/beautiful_lie.mp3")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -81,6 +89,13 @@ func _update_camera(delta):
 	_tilt_input = 0.0
 
 func _process(delta: float) -> void:
+	if dialog.active != previous_dialog_state:
+		previous_dialog_state = dialog.active
+		if dialog.active:
+			reticle.get_node("Anim").play("Hide")
+		else:
+			reticle.get_node("Anim").play("Show")
+			reticle_anim.play("Exit")
 	if not dialog.active:
 		var joy_x_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
 		var joy_y_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
@@ -114,10 +129,6 @@ func _process(delta: float) -> void:
 		
 		move_and_slide()
 		_update_camera(delta)
-		
-		pointer.modulate.a = lerp(pointer.modulate.a, 1.0, 20*delta)
-	else:
-		pointer.modulate.a = lerp(pointer.modulate.a, 0.0, 20*delta)
 	
 	walk_anim.speed_scale = SPEED*.231
 	if Input.is_action_pressed("Sprint"):
@@ -139,38 +150,45 @@ func _process(delta: float) -> void:
 			elif collider.get_parent().get_parent().name == "Doors":
 				current_hover_type = "door"
 				current_hover = collider.get_parent()
+			elif collider.get_parent().get_parent().name == "Objects":
+				current_hover_type = "object"
+				current_hover = collider.get_parent()
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover
 		if current_hover_type == "character":
-			base_gui.get_node("Hover_label/Label").text = character_info[current_hover.name].name
+			tooltip.get_node("Label").text = character_info[current_hover.name].name
+			if reticle.get_node("Indicator").texture != reticle_talk:
+				reticle.get_node("Indicator").texture = reticle_talk
 		elif current_hover_type == "door" or "object":
-			base_gui.get_node("Hover_label/Label").text = current_hover.name
-		base_gui.get_node("Hover_label/Anim").play("Open")
-	if dialog.active == false and current_hover == null:
+			if current_hover_type == "object":
+				tooltip.get_node("Label").text = current_hover.display_name
+			else:
+				tooltip.get_node("Label").text = current_hover.name
+			if reticle.get_node("Indicator").texture != reticle_inspect:
+				reticle.get_node("Indicator").texture = reticle_inspect
+		tooltip.get_node("Anim").play("Show")
+		reticle_anim.play("Hover")
+	if dialog.active == false and current_hover == null and current_hover_check != null:
 		current_hover_check = null
-		base_gui.get_node("Hover_label/Anim").play("Close")
+		tooltip.get_node("Anim").play("Hide")
+		reticle_anim.play("Exit")
 	if current_hover and Input.is_action_just_pressed("Progress"):
-		if current_hover_type == "character":
+		if current_hover_type == "character" or current_hover_type == "object" and not dialog.active:
 			if current_hover.dialog != "":
 				dialog.file = load(current_hover.dialog)
 				current_hover = null
 				current_hover_check = null
-				base_gui.get_node("Hover_label/Anim").play("Close")
+				tooltip.get_node("Anim").play("Hide")
+				reticle.get_node("Anim").play("Hide")
 				dialog.start()
 		elif current_hover_type == "door" and current_hover.room != "":
 			var scene = current_hover.room
 			var scene_name = current_hover.name
 			current_hover = null
 			current_hover_check = null
+			reticle.get_node("Anim").play("Hide")
 			RoomSwitch.switch(scene, scene_name)
 			
 
 		
 		
-func run(object):
-	if object == "raito":
-		dialog.file = load("res://assets/data/dialog/test2.json")
-		dialog.start()
-	elif object == "nori":
-		dialog.file = load("res://assets/data/dialog/test.json")
-		dialog.start()

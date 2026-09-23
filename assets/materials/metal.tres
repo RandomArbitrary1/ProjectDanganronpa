@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6vjj6c15tgp7"]
+
+[ext_resource type="Texture2D" uid="uid://vf03gfe7s2rc" path="res://assets/textures/environment/Metal.png" id="1_2qfgs"]
+[ext_resource type="Texture2D" uid="uid://c40g8rfgen1f6" path="res://assets/textures/environment/WoodTextureOil_normal.png" id="2_q2isa"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_2qfgs")
+metallic = 0.4
+normal_scale = 0.3
+normal_texture = ExtResource("2_q2isa")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true

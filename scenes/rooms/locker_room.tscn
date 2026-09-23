@@ -1,0 +1,210 @@
+[gd_scene format=3 uid="uid://t6j4strv2oxb"]
+
+[ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_1atqs"]
+[ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_kd05c"]
+[ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="3_1k2jd"]
+[ext_resource type="PackedScene" uid="uid://cm3afrnihjese" path="res://assets/objects/environment/furniture/bench.glb" id="4_kd05c"]
+[ext_resource type="Material" uid="uid://uk4cda4cktrn" path="res://assets/materials/tile_clean.tres" id="4_x4sv2"]
+[ext_resource type="Material" uid="uid://h0x4jtpt4o2f" path="res://assets/materials/tile_checker.tres" id="5_i5mbs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3jcxg"]
+sky_material = SubResource("ProceduralSkyMaterial_85yof")
+
+[sub_resource type="Environment" id="Environment_14vil"]
+background_mode = 2
+sky = SubResource("Sky_3jcxg")
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 3.0
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1k2jd"]
+size = Vector3(8, 2, 2)
+
+[node name="Room" type="Node3D" unique_id=478957731]
+script = ExtResource("1_1atqs")
+hall = "res://scenes/rooms/gym_entrance.tscn"
+hall_name = "Gym entrance"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1704152043]
+environment = SubResource("Environment_14vil")
+
+[node name="sun" type="DirectionalLight3D" parent="." unique_id=1760678702]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_kd05c")]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 2.7179892, 2, 6.599845)
+minX = -20.0
+minY = -5.0
+maxX = 0.0
+maxY = 5.0
+
+[node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
+
+[node name="Objects" type="Node3D" parent="." unique_id=986129665]
+
+[node name="Props" type="Node3D" parent="." unique_id=1542813512]
+
+[node name="Structure" type="Node3D" parent="Props" unique_id=1205909988]
+
+[node name="Furniture" type="Node3D" parent="Props" unique_id=945673890]
+
+[node name="ceiling_light" parent="Props/Furniture" unique_id=1966507917 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 1.5, 3.85, 4)
+
+[node name="ceiling_light2" parent="Props/Furniture" unique_id=692995742 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 3.85, 4)
+
+[node name="ceiling_light3" parent="Props/Furniture" unique_id=1069397073 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 1.5, 3.85, -2)
+
+[node name="ceiling_light4" parent="Props/Furniture" unique_id=859120883 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.5, 3.85, -2)
+
+[node name="ceiling_light5" parent="Props/Furniture" unique_id=1612682365 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -5.5, 3.85, 4)
+
+[node name="ceiling_light6" parent="Props/Furniture" unique_id=603259946 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -7.5, 3.85, 4)
+
+[node name="ceiling_light7" parent="Props/Furniture" unique_id=2086027257 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -5.5, 3.85, -2)
+
+[node name="ceiling_light8" parent="Props/Furniture" unique_id=22147296 instance=ExtResource("3_1k2jd")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -7.5, 3.85, -2)
+
+[node name="bench7" parent="Props/Furniture" unique_id=898370959 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, -9, 1.0999933, -1.7992887)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench7" unique_id=1011824830]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench7/StaticBody3D" unique_id=1998042812]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench14" parent="Props/Furniture" unique_id=1885021079 instance=ExtResource("4_kd05c")]
+transform = Transform3D(-0.39999995, 0, 1.0033972e-08, 0, 0.39999998, 0, -1.0033972e-08, 0, -0.39999995, -5, 1.1, -4)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench14" unique_id=1196830002]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench14/StaticBody3D" unique_id=423277640]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench15" parent="Props/Furniture" unique_id=2008350111 instance=ExtResource("4_kd05c")]
+transform = Transform3D(-0.39999995, 0, 1.0033972e-08, 0, 0.39999998, 0, -1.0033972e-08, 0, -0.39999995, -1.5, 1.1, -4)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench15" unique_id=1821871370]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench15/StaticBody3D" unique_id=1483078263]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench9" parent="Props/Furniture" unique_id=206563710 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, -9, 1.0999933, 5.2007113)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench9" unique_id=156601520]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench9/StaticBody3D" unique_id=916839611]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench8" parent="Props/Furniture" unique_id=543516983 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, -9, 1.1, 1.701)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench8" unique_id=374193409]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench8/StaticBody3D" unique_id=291085668]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench16" parent="Props/Furniture" unique_id=827050622 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, 3, 1.0999933, -1.7992887)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench16" unique_id=688242962]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench16/StaticBody3D" unique_id=304308087]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench17" parent="Props/Furniture" unique_id=344267600 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, 3, 1.0999933, 5.2007113)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench17" unique_id=1140609662]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench17/StaticBody3D" unique_id=1591645176]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench18" parent="Props/Furniture" unique_id=1633991750 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, 3, 1.1, 1.701)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench18" unique_id=1521406267]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench18/StaticBody3D" unique_id=639360428]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench10" parent="Props/Furniture" unique_id=1018278442 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, -5, 1.0999933, 3.2007113)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench10" unique_id=1506944843]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench10/StaticBody3D" unique_id=322980870]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench11" parent="Props/Furniture" unique_id=525980183 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, -5, 1.1, -0.29900002)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench11" unique_id=569266715]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench11/StaticBody3D" unique_id=824040668]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench12" parent="Props/Furniture" unique_id=1503439993 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, -4, 1.0999933, 3.2007113)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench12" unique_id=319947351]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench12/StaticBody3D" unique_id=1828152831]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="bench13" parent="Props/Furniture" unique_id=1804639888 instance=ExtResource("4_kd05c")]
+transform = Transform3D(7.450581e-09, 0, -0.39999998, 0, 0.4, 0, 0.39999998, 0, 7.450581e-09, -4, 1.1, -0.29900002)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Furniture/bench13" unique_id=725717088]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Furniture/bench13/StaticBody3D" unique_id=1569833768]
+transform = Transform3D(0.9999995, 0, 1.7763568e-15, 0, 0.99998343, 0, -1.7763568e-15, 0, 0.9999995, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1k2jd")
+
+[node name="Misc" type="Node3D" parent="Props" unique_id=1971181397]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1181242268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+size = Vector3(22, 13, 23)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1964429876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5370121, 1.5)
+operation = 2
+size = Vector3(13, 5, 12)
+material = ExtResource("4_x4sv2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.25, -0.5)
+use_collision = true
+size = Vector3(15, 0.5, 18)
+material = ExtResource("5_i5mbs")

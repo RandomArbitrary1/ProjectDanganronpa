@@ -1,0 +1,18 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "As much as I wanna know whats all around this school",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "I probably shouldn't go in here",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}

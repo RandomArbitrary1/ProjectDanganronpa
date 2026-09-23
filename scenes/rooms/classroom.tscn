@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://i6vqs58lhnbx" path="res://assets/objects/environment/furniture/trash_can.glb" id="4_460oe"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_ibabf"]
 [ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="6_1dljc"]
+[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door.tscn" id="6_8sdgk"]
 [ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="7_5wqhw"]
+[ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="7_460oe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yof"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -70,6 +72,13 @@ dialog = "res://assets/data/object_plain.json"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/trash_can/StaticBody3D" unique_id=578766073]
 shape = SubResource("BoxShape3D_qvc4m")
 
+[node name="Doors" type="Node3D" parent="." unique_id=1975974436]
+
+[node name="Leave" parent="Doors" unique_id=1496385204 instance=ExtResource("6_8sdgk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.904, 1.82, -5.996)
+script = ExtResource("7_460oe")
+room = "res://scenes/rooms/classroom.tscn"
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1181242268]
@@ -79,6 +88,12 @@ size = Vector3(22, 13, 19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5370121, -1.5)
 operation = 2
 size = Vector3(11, 5, 14)
+material = ExtResource("6_1dljc")
+
+[node name="hole_door" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1822532778]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4, 1.819, -6)
+operation = 2
+size = Vector3(1, 2.63, 1.39)
 material = ExtResource("6_1dljc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]

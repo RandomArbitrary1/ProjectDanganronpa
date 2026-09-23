@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dfqanpyccbdf2"]
+
+[ext_resource type="Texture2D" uid="uid://b0mcm4n4pam3v" path="res://assets/textures/environment/Stone.png" id="1_g7k5e"]
+[ext_resource type="Texture2D" uid="uid://c40g8rfgen1f6" path="res://assets/textures/environment/WoodTextureOil_normal.png" id="2_rky2y"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_g7k5e")
+normal_scale = 0.3
+normal_texture = ExtResource("2_rky2y")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true

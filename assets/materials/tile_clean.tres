@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://uk4cda4cktrn"]
+
+[ext_resource type="Texture2D" uid="uid://bj7618p0o1xme" path="res://assets/textures/environment/tile_clean.png" id="1_errvc"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_errvc")
+metallic = 0.7
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.25, 0, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true

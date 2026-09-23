@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b8lj5h1ffuwfe"]
+[gd_scene format=3 uid="uid://c2mfogvvyweax"]
 
 [ext_resource type="PackedScene" uid="uid://dfqdof8xntamy" path="res://assets/objects/environment/door_wood.glb" id="1_bvsso"]
 [ext_resource type="Material" uid="uid://c5wupw8t0q5nt" path="res://assets/objects/environment/door_metal.tres" id="2_bvsso"]
