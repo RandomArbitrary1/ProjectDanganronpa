@@ -30,6 +30,8 @@ var angle_start = Vector2.ZERO
 
 var previous_dialog_state = false
 
+var reticle_pos = "mouse"
+var controller_reticle_pos = Vector2(960,540)
 const DEADZONE = 0.15
 
 func _ready() -> void:
@@ -52,7 +54,10 @@ func _process(delta: float) -> void:
 			reticle.get_node("Anim").play("Show")
 			reticle_anim.play("Exit")
 	if not dialog.active:
-		reticle.position = get_viewport().get_mouse_position() - Vector2(48,48)
+		if reticle_pos == "mouse":
+			reticle.position = get_viewport().get_mouse_position() - Vector2(48,48)
+		elif reticle_pos == "controller":
+			reticle.position = controller_reticle_pos
 	if character == "" and self.get_parent().name != "Player":
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
@@ -84,6 +89,16 @@ func _process(delta: float) -> void:
 			var x = -joy_x_right * delta * speed
 			var y = -joy_y_right * delta * speed
 			angle = Vector2(clamp(angle.x+x,minX,maxX),clamp(angle.y+y,minY,maxY))
+		
+		if not dialog.active:
+			var joy_x_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
+			var joy_y_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+			if abs(joy_x_left) < DEADZONE: joy_x_left = 0.0
+			if abs(joy_y_left) < DEADZONE: joy_y_left = 0.0
+			if joy_x_left != 0.0 or joy_y_left != 0.0:
+				reticle_pos = "controller"
+				controller_reticle_pos.x = clamp(controller_reticle_pos.x+joy_x_left*5,-48, 1872)
+				controller_reticle_pos.y = clamp(controller_reticle_pos.y+joy_y_left*5, -48, 1032)
 		
 		if Input.is_action_just_pressed("RMB"):
 			mouse_start = get_viewport().get_mouse_position()
@@ -146,6 +161,8 @@ func run(object):
 func _physics_process(_delta):
 	var space_state = get_world_3d().direct_space_state
 	var mousepos = get_viewport().get_mouse_position()
+	if reticle_pos == "controller":
+		mousepos = controller_reticle_pos+Vector2(48,48)
 
 	var origin = self.project_ray_origin(mousepos)
 	var end = origin + self.project_ray_normal(mousepos) * RAY_LENGTH
@@ -173,3 +190,11 @@ func _physics_process(_delta):
 			current_hover = null
 	else:
 		current_hover = null
+
+var old_mouse_position : Vector2
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		if event.position.distance_to(old_mouse_position) > 100:
+			reticle_pos = "mouse"
+	elif event is InputEventJoypadButton or event is InputEventKey:
+		old_mouse_position = get_viewport().get_mouse_position()
