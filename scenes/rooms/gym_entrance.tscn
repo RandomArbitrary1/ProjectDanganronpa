@@ -59,6 +59,7 @@ minX = -20.0
 minY = -5.0
 maxX = 20.0
 maxY = 0.0
+center = Vector3(-2, 2.2, 1)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
