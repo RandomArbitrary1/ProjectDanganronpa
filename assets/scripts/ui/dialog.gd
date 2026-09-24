@@ -179,6 +179,8 @@ func next(): # Next dialog line
 	else:
 		if camera and "character" in camera and camera.character != null:
 			camera.character = ""
+		if camera and "focus" in camera and camera.focus != null:
+			camera.focus = ""
 		anim.play("Close")
 		await anim.animation_finished
 		active = false
