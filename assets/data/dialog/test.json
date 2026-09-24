@@ -3,9 +3,10 @@
 		{
 			"character": "nori",
 			"content": "It's not? Are you saying that Grape House is merely an illusion spell cast by Monokuma's Cursed Eye?",
-			"expression": "annoyed",
+			"expression": "neutral.png",
 			"flags": [
-				"flash"
+				"flash",
+				"shock"
 			],
 			"type": "text"
 		},
@@ -17,9 +18,31 @@
 		{
 			"character": "shion",
 			"content": "It's a reference to a meme from like 12 years ago, good old times. But holy shit time flies fast, I'm not even kidding.",
-			"expression": "sad",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"type": "visible",
+			"value": false
+		},
+		{
+			"file": "res://assets/audio/sfx/class_trial/mountain_break.mp3",
+			"flags": [],
+			"type": "sfx"
+		},
+		{
+			"flags": [],
+			"type": "visible",
+			"value": true
+		},
+		{
+			"character": "shion",
+			"content": "Also I think you don't have any personality yet. I'm not done writing it, not even sure who you're supposed to be aside from a Nagito clone.",
+			"expression": "neutral.png",
 			"flags": [
-				"rage"
+				"thought"
 			],
 			"type": "text"
 		},
@@ -29,18 +52,148 @@
 			"type": "music"
 		},
 		{
+			"enabled": true,
+			"file": "res://assets/textures/characters/tenga/neutral.png",
+			"flags": [],
+			"type": "cg"
+		},
+		{
+			"character": "nori",
+			"content": "* Walks away slowly *",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "Bye bye",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
 			"character": "shion",
-			"content": "Also I think you don't have any personality yet. I'm not done writing it, not even sure who you're supposed to be aside from a Nagito clone.",
-			"expression": "depressed",
+			"content": "[wave amp=50.0 freq=5.0 connected=1]Where are you going?[/wave]",
+			"expression": "neutral.png",
 			"flags": [
-				"thought"
+				"idea"
+			],
+			"type": "text"
+		},
+		{
+			"enabled": true,
+			"file": "res://assets/textures/environment/2D_objects/Camera.png",
+			"flags": [],
+			"image": "",
+			"type": "cg"
+		},
+		{
+			"character": "nori",
+			"content": "Far away from here, especially you",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "Huh a camera?",
+			"expression": "neutral.png",
+			"flags": [
+				"rage"
+			],
+			"type": "text"
+		},
+		{
+			"enabled": false,
+			"file": "",
+			"flags": [],
+			"type": "cg"
+		},
+		{
+			"flags": [],
+			"object": "Object",
+			"point": "Camera",
+			"type": "focus"
+		},
+		{
+			"character": "shion",
+			"content": "What?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "Over there!",
+			"expression": "neutral.png",
+			"flags": [
+				"idea"
 			],
 			"type": "text"
 		},
 		{
 			"flags": [],
-			"song": "solar",
+			"object": "Default",
+			"point": "",
+			"type": "focus"
+		},
+		{
+			"character": "nori",
+			"content": "* Faints *",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"enabled": true,
+			"file": "res://assets/textures/ui/title/background.png",
+			"flags": [],
+			"image": "",
+			"type": "cg"
+		},
+		{
+			"character": "nori",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "Finally peace...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"type": "visible",
+			"value": false
+		},
+		{
+			"enabled": false,
+			"file": "",
+			"flags": [],
+			"type": "cg"
+		},
+		{
+			"flags": [],
+			"type": "visible",
+			"value": true
+		},
+		{
+			"flags": [],
+			"song": "beautiful_lie",
 			"type": "music"
+		},
+		{
+			"character": "nori",
+			"content": "Oh",
+			"expression": "neutral.png",
+			"flags": [
+				"shock"
+			],
+			"type": "text"
 		}
 	]
 }

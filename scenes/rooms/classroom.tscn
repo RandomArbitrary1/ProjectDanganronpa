@@ -62,6 +62,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_04axm")]
 transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0.718, 2.2, 4.6)
+center = Vector3(-2, 2.2, 2)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
@@ -77,7 +78,7 @@ character = "raito"
 expression = "neutral"
 dialog = "res://assets/data/dialog/test2.json"
 
-[node name="Objects" type="Node3D" parent="." unique_id=986129665]
+[node name="Objects" type="Node3D" parent="." unique_id=986129665 groups=["Objects"]]
 
 [node name="trash_can" parent="Objects" unique_id=2105511721 instance=ExtResource("4_460oe")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 2.5, 0.925, -8)

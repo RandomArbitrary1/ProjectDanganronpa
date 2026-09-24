@@ -42,6 +42,7 @@ minX = 0.0
 minY = -5.0
 maxX = 10.0
 maxY = 5.0
+center = Vector3(0.5, 2.2, -1)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
@@ -86,7 +87,7 @@ size = Vector3(6, 5, 17)
 material = ExtResource("4_w4rbc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.25, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.25, -1)
 use_collision = true
-size = Vector3(12, 0.5, 18)
+size = Vector3(6, 0.5, 17)
 material = ExtResource("5_dfe1a")

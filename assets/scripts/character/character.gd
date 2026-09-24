@@ -22,7 +22,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	rotation.y = atan2(
-		camera.global_position.x - global_position.x,
-		camera.global_position.z - global_position.z
-	)
+	if camera.name != "Player":
+		rotation.y = atan2(
+			camera.global_position.x - global_position.x,
+			camera.global_position.z - global_position.z
+		)

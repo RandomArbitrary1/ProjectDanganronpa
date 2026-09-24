@@ -46,6 +46,7 @@ import/blender/enabled=false
 Characters_interact=""
 Camera_room=""
 Camera=""
+Objects=""
 
 [input]
 

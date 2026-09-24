@@ -15,6 +15,17 @@ var camera = null
 @onready var dialog_anim: AnimationPlayer = $Bar/Dialog/Anim
 @onready var choice_anim: AnimationPlayer = $ChoiceAnim
 @onready var option_temp: NinePatchRect = $Choice/Option.duplicate()
+@onready var sfx_dialog: AudioStreamPlayer = $SFX_dialog
+@onready var sfx_next: AudioStreamPlayer = $SFX_next
+@onready var sfx: AudioStreamPlayer = $SFX
+@onready var cg: TextureRect = $CG
+@onready var cg_fade: TextureRect = $CG_fade
+@onready var cg_anim: AnimationPlayer = $CG_anim
+@onready var cg_fade_anim: AnimationPlayer = $CG_fade_anim
+const idea = preload("uid://cm4ro1uwswy2a")
+const shock = preload("uid://v3ccuuxy11kt")
+
+
 
 var option_inactive = preload("res://assets/ui/dialog/choice.png")
 var option_active = preload("res://assets/ui/dialog/choice_active.png")
@@ -25,6 +36,7 @@ var line = 0
 var tween = null
 var name_size = 0
 var leave = false
+var cg_state = false
 
 var mouse_old = null
 var option_tab = 0
@@ -61,9 +73,15 @@ func next(): # Next dialog line
 			
 			for i in current.flags:
 				if i == "thought":
-					box.text = "[color=cyan]" + box.text + "[/color]"
-				elif i == "flash":
+					box.text = "[color=#94d6ff]" + box.text + "[/color]"
+				elif i == "idea":
 					flash.play("flash")
+					sfx_dialog.stream = idea
+					sfx_dialog.play()
+				elif i == "shock":
+					flash.play("flash")
+					sfx_dialog.stream = shock
+					sfx_dialog.play()
 				elif i == "rage":
 					dialog_anim.play("rage")
 			if line == 0 and dialog == file.data.dialog:
@@ -87,6 +105,49 @@ func next(): # Next dialog line
 			Music.switch("res://assets/audio/music/" + current.song + ".mp3")
 			line += 1
 			next()
+		elif current.type == "sfx":
+			sfx.stream = load(current.file)
+			sfx.play()
+			await sfx.finished
+			line += 1
+			next()
+		elif current.type == "focus":
+			if camera and "focus" in camera and camera.character != null:
+				camera.focus = current.point
+			line += 1
+			next()
+		elif current.type == "visible":
+			if current.value:
+				anim.play("Open")
+				await anim.animation_finished
+			else:
+				anim.play("Close")
+				await anim.animation_finished
+			line += 1
+			next()
+		elif current.type == "cg":
+			if current.enabled: 
+				if not cg_state:
+					cg.texture = load(current.file)
+					cg_state = true
+					cg_anim.play("Open")
+					await cg_anim.animation_finished
+					line += 1
+					next()
+				else:
+					cg_fade.texture = load(current.file)
+					cg_fade_anim.play("Fade")
+					await cg_fade_anim.animation_finished
+					cg_fade_anim.play("RESET")
+					cg.texture = load(current.file)
+					line += 1
+					next()
+			elif cg_state:
+				cg_state = false
+				cg_anim.play("Close")
+				await cg_anim.animation_finished
+				line += 1
+				next()
 		elif current.type == "choice":
 			mouse_old = Input.mouse_mode
 			old_mouse_position = get_viewport().get_mouse_position()
@@ -175,6 +236,7 @@ func _process(delta: float) -> void:
 					RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
 		else:
 			if box.visible_ratio == 1.0:
+				sfx_next.play()
 				line += 1
 				input_ind.play("Next")
 				next()

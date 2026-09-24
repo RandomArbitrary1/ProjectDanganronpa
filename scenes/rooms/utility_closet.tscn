@@ -50,6 +50,7 @@ shadow_enabled = true
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_s0uex")]
 transform = Transform3D(0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071067, 2.7179892, 2, 6.599845)
 maxX = 10.0
+center = Vector3(0, 2.2, 4)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 

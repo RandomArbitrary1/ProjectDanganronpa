@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c8f4k35tkkknp" path="res://assets/scripts/ui/room_switch/room_switch.gd" id="1_k6gnl"]
 [ext_resource type="Shader" uid="uid://cm4kfrjm8ooe7" path="res://assets/ui/shaders/colorize.gdshader" id="2_vvkiw"]
 [ext_resource type="Shader" uid="uid://dqmj5qxv0qeix" path="res://assets/ui/shaders/dissolve.gdshader" id="3_cfs3j"]
+[ext_resource type="AudioStream" uid="uid://d1h245457c0mk" path="res://assets/audio/sfx/creaky_door1.mp3" id="5_cfs3j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4tp24"]
 shader = ExtResource("2_vvkiw")
@@ -173,3 +174,6 @@ theme_override_font_sizes/font_size = 70
 text = "Room"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Door" type="AudioStreamPlayer" parent="." unique_id=1939986977]
+stream = ExtResource("5_cfs3j")

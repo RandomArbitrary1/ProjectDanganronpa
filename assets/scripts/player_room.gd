@@ -5,7 +5,9 @@ extends Camera3D
 @export var maxX: float
 @export var maxY: float
 @export var speed: float
+@export var center : Vector3
 @export var character: String
+@export var focus: String
 var angle = Vector2(0,0)
 
 @onready var dialog : Control = $UI/Dialog
@@ -16,6 +18,7 @@ var angle = Vector2(0,0)
 var character_info = preload("res://assets/data/characters/characters.json").data
 const RAY_LENGTH = 1000
 var characters = []
+var objects = []
 
 var reticle_talk = preload("res://assets/ui/base/reticle_talk.png")
 var reticle_inspect = preload("res://assets/ui/base/reticle_inspect.png")
@@ -23,7 +26,7 @@ var reticle_inspect = preload("res://assets/ui/base/reticle_inspect.png")
 var current_hover_type = "character"
 var current_hover = null
 var current_hover_check = null
-@onready var start_position = self.position
+@onready var start_position = self.global_position
 @onready var start_rotation = self.rotation_degrees
 var mouse_start = Vector2.ZERO
 var angle_start = Vector2.ZERO
@@ -37,6 +40,7 @@ const DEADZONE = 0.15
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	characters = get_tree().get_first_node_in_group("Characters_interact")
+	objects = get_tree().get_first_node_in_group("Objects")
 	reticle.get_node("Anim").play("Show")
 
 func _process(delta: float) -> void:
@@ -59,9 +63,21 @@ func _process(delta: float) -> void:
 		elif reticle_pos == "controller":
 			reticle.position = controller_reticle_pos
 	if character == "" and self.get_parent().name != "Player":
-		self.position = self.position.move_toward(start_position, 25*delta)
-		self.rotation_degrees = start_rotation+Vector3(angle.y,angle.x,0)
+		var offset = start_position - center
+		offset = offset.rotated(Vector3.UP, deg_to_rad(-angle.x))
+		offset = offset.rotated(Vector3.RIGHT, deg_to_rad(-angle.y))
+		self.global_position = center + offset
+		look_at(center)
 		self.fov = move_toward(self.fov, 60.0, 165*delta)
+	elif focus != "":
+		var chr = characters.get_node_or_null(focus)
+		if not chr:
+			chr = objects.get_node_or_null(focus)
+		if chr:
+			self.fov = move_toward(self.fov, 40.0, 165*delta)
+			var direction = (start_position - chr.position).normalized()
+			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
+			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.3,2.2), 20*delta)
 	else:
 		var chr = characters.get_node_or_null(character)
 		if chr:
@@ -73,21 +89,21 @@ func _process(delta: float) -> void:
 	if self.get_parent().name != "Player":
 		if dialog.active == false:
 			if Input.is_action_pressed("Up"):
-				angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))
-			if Input.is_action_pressed("Down"):
 				angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y-delta*speed,minY,maxY))
+			if Input.is_action_pressed("Down"):
+				angle = Vector2(clamp(angle.x,minX,maxX),clamp(angle.y+delta*speed,minY,maxY))
 			if Input.is_action_pressed("Left"):
-				angle = Vector2(clamp(angle.x+delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
-			if Input.is_action_pressed("Right"):
 				angle = Vector2(clamp(angle.x-delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
+			if Input.is_action_pressed("Right"):
+				angle = Vector2(clamp(angle.x+delta*speed,minX,maxX),clamp(angle.y,minY,maxY))
 		
 		var joy_x_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
 		var joy_y_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
 		if abs(joy_x_right) < DEADZONE: joy_x_right = 0.0
 		if abs(joy_y_right) < DEADZONE: joy_y_right = 0.0
 		if joy_x_right != 0.0 or joy_y_right != 0.0:
-			var x = -joy_x_right * delta * speed
-			var y = -joy_y_right * delta * speed
+			var x = joy_x_right * delta * speed
+			var y = joy_y_right * delta * speed
 			angle = Vector2(clamp(angle.x+x,minX,maxX),clamp(angle.y+y,minY,maxY))
 		
 		if not dialog.active:
@@ -106,7 +122,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("RMB"):
 			if dialog.active == false:
 				var offset = (get_viewport().get_mouse_position()-mouse_start)/30.0
-				var angle_end = angle_start + Vector2(-offset.x, -offset.y)
+				var angle_end = angle_start + Vector2(offset.x, offset.y)
 				angle = Vector2(clamp(angle_end.x,minX,maxX),clamp(angle_end.y,minY,maxY))
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover

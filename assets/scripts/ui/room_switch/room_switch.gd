@@ -5,11 +5,14 @@ extends Control
 @onready var scene_name_label: Label = $Scene_name
 @onready var tint: ColorRect = $Tint
 @onready var fade: ColorRect = $Fade
+@onready var door: AudioStreamPlayer = $Door
+
 
 var loading = false
 
 
 func switch(new_scene, scene_name):
+	door.play()
 	fade.material.set_shader_parameter("factor", 0.0)
 	scene = new_scene
 	scene_name_label.text = scene_name

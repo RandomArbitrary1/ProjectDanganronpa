@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://0gybs6odnl23"]
 
-[ext_resource type="Texture2D" uid="uid://hx5i21j5m2xx" path="res://assets/textures/characters/dummyman/dummy.png" id="1_53vve"]
 [ext_resource type="Texture2D" uid="uid://b8nlmkqp038bh" path="res://assets/ui/json_editor/insert_drive_file_24dp_E3E3E3.png" id="1_p0t4n"]
 [ext_resource type="Texture2D" uid="uid://dx8rofyersfty" path="res://assets/textures/environment/planks_1.png" id="1_xfl6f"]
 [ext_resource type="Texture2D" uid="uid://dm7i4hetvoe4q" path="res://assets/ui/json_editor/save_24dp_E3E3E3.png" id="2_xfl6f"]
@@ -8,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ccdrvhhvoo3js" path="res://assets/ui/json_editor/reorder_24dp_E3E3E3.png" id="4_p2fl4"]
 [ext_resource type="Texture2D" uid="uid://ojnuv64i6081" path="res://assets/ui/json_editor/delete_24dp_E3E3E3.png" id="5_oqeqj"]
 [ext_resource type="Texture2D" uid="uid://4aroeotevx1b" path="res://assets/ui/json_editor/flag_24dp_E3E3E3.png" id="6_1adse"]
+[ext_resource type="Texture2D" uid="uid://dwpook7kjto3y" path="res://assets/ui/handbook/icons/rules.png" id="8_xfl6f"]
 
 [sub_resource type="GDScript" id="GDScript_53vve"]
 resource_name = "json editor"
@@ -28,12 +28,14 @@ script/source = "extends Control
 @onready var music_line = list.get_node(\"Music\").duplicate()
 @onready var bullet_line = list.get_node(\"Bullet\").duplicate()
 @onready var choice_line = list.get_node(\"Choice\").duplicate()
+@onready var cg_line = list.get_node(\"CG\").duplicate()
+@onready var sfx_line = list.get_node(\"SFX\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
 @onready var dialog_button = dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").duplicate()
 
 var characters = preload(\"res://assets/data/characters/characters.json\").data
 
-var flags = [\"thought\", \"rage\", \"flash\"]
+var flags = [\"thought\", \"rage\", \"idea\", \"shock\"]
 var flag_current = []
 var data = {\"dialog\":[]}
 var file_path = \"\"
@@ -98,6 +100,7 @@ func _ready() -> void:
 	
 	navigation.get_node(\"Load\").pressed.connect(func():
 		to_open = \"data\"
+		file_dialog.set_filters([\"*.json\"])
 		file_dialog.visible = true
 	)
 	navigation.get_node(\"Save_as\").pressed.connect(func():
@@ -107,7 +110,7 @@ func _ready() -> void:
 		if id == 0:
 			var new = dialog_line.duplicate()
 			list.add_child(new)
-			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"sad\",\"content\":\"\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"neutral.png\",\"content\":\"\",\"flags\":[]})
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 1:
 			var new = visible_line.duplicate()
@@ -132,6 +135,16 @@ func _ready() -> void:
 		elif id == 10:
 			var new = choice_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"choice\",\"options\":[],\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 14:
+			var new = cg_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"cg\",\"enabled\":true,\"file\":\"\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 15:
+			var new = sfx_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"sfx\",\"file\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
@@ -200,6 +213,12 @@ func dialogs_options(item, id):
 			data.erase(id)
 		item.queue_free()
 	)
+	
+func get_option_id(button: OptionButton, text: String) -> int:
+	for i in button.get_item_count():
+		if button.get_item_text(i) == text:
+			return i
+	return -1
 
 func reload_list():
 	for i in list.get_children():
@@ -215,17 +234,37 @@ func reload_list():
 			run_options(new, i)
 		elif i.type == \"visible\":
 			var new = visible_line.duplicate()
+			new.get_node(\"Panel/CheckButton\").toggle_mode = i.value
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"focus\":
 			var new = focus_line.duplicate()
+			new.get_node(\"Panel/Type\").selected = get_option_id(new.get_node(\"Panel/Type\"),i.object)
+			new.get_node(\"Panel/LineEdit\").text = i.point
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"music\":
 			var new = music_line.duplicate()
 			i[\"eline\"] = new
+			new.get_node(\"Panel/Song\").selected = get_option_id(new.get_node(\"Panel/Song\"),i.song)
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"cg\":
+			var new = cg_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Panel/CheckButton\").toggle_mode = i.enabled
+			if \"file\" in i and ResourceLoader.exists(i.file):
+				new.get_node(\"Panel/Load\").text = i.file
+				new.get_node(\"Image/TextureRect\").texture = load(i.file)
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"sfx\":
+			var new = sfx_line.duplicate()
+			i[\"eline\"] = new
+			if \"file\" in i and ResourceLoader.exists(i.file):
+				new.get_node(\"Panel/Load\").text = i.file
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"choice\":
@@ -328,12 +367,39 @@ func run_options(i, item_data):
 		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
 			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
 		)
+	elif item_data.type == \"cg\":
+		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
+			item_data.enabled = i.get_node(\"Panel/CheckButton\").button_pressed
+		)
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"cg\" + str(item_data.id)
+			file_dialog.set_filters([\"*.png,*.jpg\"])
+			file_dialog.visible = true
+		)
+		file_dialog.file_selected.connect(func(path):
+			if to_open == \"cg\" + str(item_data.id):
+				item_data.file = path
+				i.get_node(\"Panel/Load\").text = path.get_file()
+				i.get_node(\"Image/TextureRect\").texture = load(path)
+		)
+	elif item_data.type == \"sfx\":
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"sfx\" + str(item_data.id)
+			file_dialog.set_filters([\"*.mp3,*.wav\"])
+			file_dialog.visible = true
+		)
+		file_dialog.file_selected.connect(func(path):
+			if to_open == \"sfx\" + str(item_data.id):
+				item_data.file = path
+				i.get_node(\"Panel/Load\").text = path.get_file()
+		)
 	elif item_data.type == \"bullet\":
 		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
 			item_data.show = i.get_node(\"Panel/CheckButton\").button_pressed
 		)
 		i.get_node(\"Panel/Load\").pressed.connect(func():
 			to_open = \"bullet\" + str(item_data.id)
+			file_dialog.set_filters([\"*.json\"])
 			file_dialog.visible = true
 		)
 		file_dialog.file_selected.connect(func(path):
@@ -421,6 +487,9 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ob5wf"]
+size = Vector2(16, 9)
 
 [sub_resource type="Animation" id="Animation_xfl6f"]
 resource_name = "Anim"
@@ -592,6 +661,192 @@ custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
+
+[node name="SFX" type="HBoxContainer" parent="Items/List" unique_id=469161832]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/SFX" unique_id=1559122315]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/SFX/Panel" unique_id=1845631700]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/SFX/Panel" unique_id=1163430472]
+layout_mode = 0
+offset_left = 5.714287
+offset_top = 5.7142844
+offset_right = 45.714287
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/SFX/Panel" unique_id=1467434669]
+layout_mode = 0
+offset_left = 51.428574
+offset_top = 5.7142844
+offset_right = 91.42857
+offset_bottom = 45.71428
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/SFX/Panel" unique_id=1641849199]
+layout_mode = 0
+offset_left = 97.14293
+offset_top = 5.714285
+offset_right = 137.14293
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/SFX/Panel" unique_id=1122658335]
+layout_mode = 0
+offset_left = 142.85718
+offset_top = 5.714283
+offset_right = 175.42859
+offset_bottom = 45.714275
+text = "SFX"
+vertical_alignment = 1
+
+[node name="Load" type="Button" parent="Items/List/SFX/Panel" unique_id=1238070192]
+layout_mode = 0
+offset_left = 181.14285
+offset_top = 5.714287
+offset_right = 792.5714
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 2
+text = "Select file"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
+
+[node name="Index" type="Label" parent="Items/List/SFX/Panel" unique_id=542011389]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="CG" type="HBoxContainer" parent="Items/List" unique_id=1895028988]
+custom_minimum_size = Vector2(0, 143)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Items/List/CG" unique_id=871670708]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Outline" type="Panel" parent="Items/List/CG/Panel" unique_id=906998832]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
+
+[node name="Down" type="Button" parent="Items/List/CG/Panel" unique_id=821556333]
+layout_mode = 0
+offset_left = 5.714274
+offset_top = 5.7142906
+offset_right = 45.714275
+offset_bottom = 45.714287
+mouse_default_cursor_shape = 13
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/CG/Panel" unique_id=882574257]
+layout_mode = 0
+offset_left = 5.714274
+offset_top = 51.428574
+offset_right = 45.714275
+offset_bottom = 91.428566
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/CG/Panel" unique_id=1610066136]
+layout_mode = 0
+offset_left = 5.714285
+offset_top = 97.142876
+offset_right = 45.714287
+offset_bottom = 137.14288
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/CG/Panel" unique_id=1072514979]
+layout_mode = 0
+offset_left = 51.428566
+offset_top = 5.714283
+offset_right = 382.8571
+offset_bottom = 45.714275
+text = "CG"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/CG/Panel" unique_id=433474894]
+layout_mode = 0
+offset_left = -85.71428
+offset_right = -5.714279
+offset_bottom = 62.85714
+text = "0"
+horizontal_alignment = 2
+
+[node name="CheckButton" type="CheckButton" parent="Items/List/CG/Panel" unique_id=492225208]
+layout_mode = 0
+offset_left = 45.714294
+offset_top = 45.714283
+offset_right = 144.7143
+offset_bottom = 97.14287
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "Enabled"
+
+[node name="Load" type="Button" parent="Items/List/CG/Panel" unique_id=2098713049]
+layout_mode = 0
+offset_left = 51.428566
+offset_top = 97.14285
+offset_right = 485.71426
+offset_bottom = 137.14285
+mouse_default_cursor_shape = 2
+text = "Select file"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
+
+[node name="Image" type="Panel" parent="Items/List/CG" unique_id=16234557]
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Items/List/CG/Image" unique_id=2007439640]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.8571777
+offset_top = 5.714287
+offset_right = -5.7143555
+offset_bottom = -5.857147
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_ob5wf")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Choice" type="HBoxContainer" parent="Items/List" unique_id=1570782169]
 custom_minimum_size = Vector2(0, 143)
@@ -1057,7 +1312,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_53vve")
+texture = ExtResource("8_xfl6f")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1095,25 +1350,9 @@ mouse_default_cursor_shape = 2
 clip_text = true
 selected = 0
 fit_to_longest_item = false
-item_count = 9
-popup/item_0/text = "neutral"
+item_count = 1
+popup/item_0/text = "neutral.png"
 popup/item_0/id = 0
-popup/item_1/text = "happy"
-popup/item_1/id = 1
-popup/item_2/text = "excited"
-popup/item_2/id = 2
-popup/item_3/text = "sad"
-popup/item_3/id = 3
-popup/item_4/text = "depressed"
-popup/item_4/id = 4
-popup/item_5/text = "angry"
-popup/item_5/id = 5
-popup/item_6/text = "rage"
-popup/item_6/id = 6
-popup/item_7/text = "shocked"
-popup/item_7/id = 7
-popup/item_8/text = "annoyed"
-popup/item_8/id = 8
 
 [node name="Visibility" type="HBoxContainer" parent="Items/List" unique_id=549563064]
 custom_minimum_size = Vector2(0, 51)
@@ -1314,7 +1553,7 @@ transparent_bg = false
 oversampling_override = 1.0
 size = Vector2i(268, 464)
 content_scale_factor = 1.4
-item_count = 11
+item_count = 13
 item_0/text = "Dialog"
 item_0/id = 100
 item_0/separator = true
@@ -1330,16 +1569,20 @@ item_5/text = "New bullet preview"
 item_5/id = 11
 item_6/text = "New choice"
 item_6/id = 10
-item_7/text = "Debate"
-item_7/id = 102
-item_7/separator = true
-item_8/text = "New debate dialog"
-item_8/id = 8
-item_9/text = "Case"
-item_9/id = 103
+item_7/text = "New CG"
+item_7/id = 14
+item_8/text = "New SFX"
+item_8/id = 15
+item_9/text = "Debate"
+item_9/id = 102
 item_9/separator = true
-item_10/text = "New truth bullet"
-item_10/id = 10
+item_10/text = "New debate dialog"
+item_10/id = 8
+item_11/text = "Case"
+item_11/id = 103
+item_11/separator = true
+item_12/text = "New truth bullet"
+item_12/id = 10
 
 [node name="Flags" type="Window" parent="." unique_id=644388794]
 oversampling_override = 1.0
