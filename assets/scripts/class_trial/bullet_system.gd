@@ -8,12 +8,14 @@ extends Control
 @onready var crosshair_anim: AnimationPlayer = $"../crosshair/crosshair_anim"
 @onready var downtime: Timer = $downtime
 @onready var camera: Node3D = $"../../CameraNode"
-@onready var main_root: Control = $".."
+@onready var debate_root: Control = $".."
 @onready var crosshair: TextureRect = $"../crosshair"
 @onready var time_lose: AudioStreamPlayer = $"../sfx/time_lose"
+@onready var fired_bullet: RichTextLabel = $FiredBullet
+@onready var fired_bullet_anim: AnimationPlayer = $FiredBullet/anim
+@onready var break_sfx: AudioStreamPlayer = $"../sfx/break"
 var bullets = ["strange_place", "lost_memory"]
-
-var bullet_direction = Vector3(0,0,0)
+var target_location: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -24,12 +26,15 @@ func truth_shoot():
 	var mouse_pos = get_viewport().get_mouse_position()
 	if downtime.time_left > 0.0:
 		return
+	target_location = get_viewport().get_mouse_position()
 	crosshair_anim.stop()
 	crosshair_anim.play("shoot")
 	big_gunshot.play()
 	shoot_anim.stop()
 	shoot_anim.play("shoot")
 	downtime.start(2.0)
+	fired_bullet.global_position = target_location
+	fired_bullet_anim.play("shoot_target")
 	
 func white_noise_shoot():
 	crosshair_anim.stop()
@@ -37,13 +42,21 @@ func white_noise_shoot():
 	noise_anim.stop()
 	noise_anim.play("shoot")
 	small_gunshot.play()
-	if main_root.state == "bullet_preview":
-		main_root.debate_camera_reset()
+	if debate_root.state == "bullet_preview":
+		debate_root.debate_camera_reset()
 	if crosshair.touching:
-		main_root.timer -= 15
+		debate_root.timer -= 15
 		time_lose.play()
-
+func check_hit():
+	succes_hit()
+	
 func _on_downtime_timeout() -> void:
 	reload()
 func reload():
 	shoot_anim.play("reload")
+	
+func succes_hit():
+	debate_root.state = "success"
+	crosshair.visible = false
+	break_sfx.play()
+	print("SUCCESFULLY HIT!!!!")

@@ -1,7 +1,7 @@
 extends TextureRect
 @onready var inner_crosshair: TextureRect = $inner_crosshair
 @onready var words: Control = $"../Words"
-@onready var root: Control = $".."
+@onready var debate_root: Control = $".."
 @onready var bullets_main: Control = $"../Bullets"
 
 var touching = false
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 			touching = true
 
 func _input(_event: InputEvent) -> void:
-	if !root.state == "debate":
+	if !debate_root.state == "debate":
 		return
 	if Input.is_action_just_pressed("RMB"):
 		bullets_main.white_noise_shoot()
