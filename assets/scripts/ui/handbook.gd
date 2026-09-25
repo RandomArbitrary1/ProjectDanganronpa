@@ -36,6 +36,7 @@ func _ready() -> void:
 		var key = character_info.keys()[i]
 		var info = character_info[key]
 		var item = report_item.duplicate()
+		item.name = key
 		item.get_node("Preview/Name").text = info.name
 		if ResourceLoader.exists("res://assets/textures/characters/" + key + "/neutral.png"):
 			item.get_node("Preview/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
@@ -131,7 +132,22 @@ func _process(delta: float) -> void:
 					inside_tab.y = int(i.get_index() / x_range)
 
 	current_tab_node.get_node("Items").position.y = move_toward(current_tab_node.get_node("Items").position.y, clamp(tab_data[tab].offset-(inside_tab.y-(tab_data[tab].fit-1))*tab_data[tab].size,tab_data[tab].size-tab_data[tab].size*(y_range-tab_data[tab].fit)+(tab_data[tab].size/5), tab_data[tab].offset), 1600*delta)
-
+	
+	
+	#report card
+	
+	if tab == 3:
+		var key =  lists.get_node("Report/Items").get_child(inside_tab.y).name
+		if lists.get_node("Report/Info/Name").text != character_info[key].name:
+			lists.get_node("Report/Info/Name").text = character_info[key].name
+			lists.get_node("Report/Info/Panel/Items/Birthday/Info/Label").text = character_info[key].birth_date
+			lists.get_node("Report/Info/Panel/Items/Height/Info/Label").text = character_info[key].height
+			lists.get_node("Report/Info/Panel/Items/Likes/Info/Label").text = character_info[key].likes
+			lists.get_node("Report/Info/Panel/Items/Dislikes/Info/Label").text = character_info[key].dislikes
+			lists.get_node("Report/Info/Talent").text = character_info[key].talent.right(-9)
+			if ResourceLoader.exists("res://assets/textures/characters/" + key + "/neutral.png"):
+				lists.get_node("Report/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
+			
 
 var old_mouse_position : Vector2
 func _input(event: InputEvent) -> void:

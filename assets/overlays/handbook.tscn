@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://d1f68oltrlvpg" path="res://assets/ui/handbook/handbook_tab_active.png" id="3_ptt60"]
 [ext_resource type="Texture2D" uid="uid://bkkk0qho2jwyk" path="res://assets/ui/handbook/handbook_item_outline.png" id="4_fd50p"]
 [ext_resource type="Texture2D" uid="uid://ctndld16hh7c8" path="res://assets/ui/handbook/handbook_border.png" id="6_k6wq8"]
-[ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="6_mi5cs"]
 [ext_resource type="Texture2D" uid="uid://dr2c11a8oiu8f" path="res://assets/ui/handbook/icons/map.png" id="6_uhllm"]
 [ext_resource type="Texture2D" uid="uid://d0kaflyxvpdxd" path="res://assets/ui/handbook/icons/bullet.png" id="7_eqvaa"]
 [ext_resource type="Texture2D" uid="uid://to62vjgp53yg" path="res://assets/ui/handbook/icons/gift.png" id="8_5ih6t"]
+[ext_resource type="Theme" uid="uid://ct6hwnhjbnkuo" path="res://assets/ui/themes/handbook_theme.tres" id="8_y0c8w"]
 [ext_resource type="Texture2D" uid="uid://c8v3xdnow2b6e" path="res://assets/ui/handbook/icons/report.png" id="9_20njh"]
 [ext_resource type="Texture2D" uid="uid://dwpook7kjto3y" path="res://assets/ui/handbook/icons/rules.png" id="10_36iju"]
 [ext_resource type="Texture2D" uid="uid://7bbquld8ftrr" path="res://assets/ui/handbook/icons/system.png" id="11_678mn"]
@@ -1378,7 +1378,6 @@ offset_bottom = 872.0
 color = Color(0, 0, 0, 0.49803922)
 
 [node name="Report" type="Control" parent="Screen/Lists" unique_id=1624073679]
-visible = false
 clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
@@ -1446,11 +1445,20 @@ offset_top = 6.0
 offset_right = 211.0
 offset_bottom = 86.0
 rotation = 1.5707964
-theme = ExtResource("6_mi5cs")
-theme_type_variation = &"Title"
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Light"
 theme_override_font_sizes/font_size = 28
 vertical_alignment = 2
 autowrap_mode = 2
+
+[node name="Character" type="TextureRect" parent="Screen/Lists/Report" unique_id=1613704631]
+layout_mode = 0
+offset_left = 888.0
+offset_top = -48.0
+offset_right = 2248.0
+offset_bottom = 1110.0
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Info" type="ColorRect" parent="Screen/Lists/Report" unique_id=1542270339]
 layout_mode = 0
@@ -1458,6 +1466,214 @@ offset_left = 320.0
 offset_right = 1144.0
 offset_bottom = 872.0
 color = Color(0, 0, 0, 0.49803922)
+
+[node name="Name" type="Label" parent="Screen/Lists/Report/Info" unique_id=1518714102]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 6.0
+offset_right = 800.0
+offset_bottom = 96.0
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 70
+text = "Name"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Screen/Lists/Report/Info" unique_id=1685109880]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 800.0
+offset_bottom = 440.0
+theme = ExtResource("8_y0c8w")
+
+[node name="Items" type="VBoxContainer" parent="Screen/Lists/Report/Info/Panel" unique_id=112084945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Birthday" type="HBoxContainer" parent="Screen/Lists/Report/Info/Panel/Items" unique_id=165021707]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 7
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Birthday" unique_id=1187405072]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("8_y0c8w")
+theme_override_font_sizes/font_size = 40
+text = "Birthday"
+vertical_alignment = 1
+
+[node name="Info" type="ColorRect" parent="Screen/Lists/Report/Info/Panel/Items/Birthday" unique_id=969278873]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Birthday/Info" unique_id=1332201266]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Light"
+theme_override_font_sizes/font_size = 40
+text = "..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Height" type="HBoxContainer" parent="Screen/Lists/Report/Info/Panel/Items" unique_id=171546518]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 7
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Height" unique_id=1422785524]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("8_y0c8w")
+theme_override_font_sizes/font_size = 40
+text = "Height"
+vertical_alignment = 1
+
+[node name="Info" type="ColorRect" parent="Screen/Lists/Report/Info/Panel/Items/Height" unique_id=999515345]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Height/Info" unique_id=2089658076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Light"
+theme_override_font_sizes/font_size = 40
+text = "..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Likes" type="HBoxContainer" parent="Screen/Lists/Report/Info/Panel/Items" unique_id=429770858]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 7
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Likes" unique_id=1986338576]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("8_y0c8w")
+theme_override_font_sizes/font_size = 40
+text = "Likes"
+vertical_alignment = 1
+
+[node name="Info" type="ColorRect" parent="Screen/Lists/Report/Info/Panel/Items/Likes" unique_id=1740822694]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Likes/Info" unique_id=1097478698]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Light"
+theme_override_font_sizes/font_size = 40
+text = "..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Dislikes" type="HBoxContainer" parent="Screen/Lists/Report/Info/Panel/Items" unique_id=431850563]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 7
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Dislikes" unique_id=2057575175]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("8_y0c8w")
+theme_override_font_sizes/font_size = 40
+text = "Dislikes"
+vertical_alignment = 1
+
+[node name="Info" type="ColorRect" parent="Screen/Lists/Report/Info/Panel/Items/Dislikes" unique_id=748460181]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Dislikes/Info" unique_id=7266669]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Light"
+theme_override_font_sizes/font_size = 40
+text = "..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Talent" type="Label" parent="Screen/Lists/Report/Info" unique_id=130757033]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 718.0
+offset_right = 784.0
+offset_bottom = 832.0
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 90
+text = "Ultimate"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="Screen/Lists/Report/Info/Talent" unique_id=108952572]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = -62.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme = ExtResource("8_y0c8w")
+theme_override_font_sizes/font_size = 30
+text = "Ultimate"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Rules" type="Control" parent="Screen/Lists" unique_id=1656216176]
 visible = false
