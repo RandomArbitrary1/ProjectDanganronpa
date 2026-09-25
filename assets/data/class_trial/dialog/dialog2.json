@@ -1,0 +1,40 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "Noriyuki, what you said is exactly it!",
+			"eline": "Dialog:<HBoxContainer#198742904505>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 0,
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "The murder weapon was exactly a kitchen knife, lodged in the victim's chest!",
+			"eline": "@HBoxContainer@654:<HBoxContainer#269962186312>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 1,
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "Ahh, seems I was correct after all.",
+			"eline": "@HBoxContainer@680:<HBoxContainer#322055441870>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 2,
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "A kitchen knife... But how did the killer get their hands on one? The kitchen is closed after 19:00.",
+			"eline": "@HBoxContainer@706:<HBoxContainer#374652014045>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 3,
+			"type": "text"
+		}
+	]
+}
