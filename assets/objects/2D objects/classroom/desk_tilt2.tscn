@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dt212syi8syee"]
+
+[ext_resource type="Texture2D" uid="uid://bi1kupagk1ajv" path="res://assets/textures/environment/2D_objects/classroom/table_tilt2.png" id="1_s78oe"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4fivo"]
+lightmap_size_hint = Vector2i(12, 12)
+size = Vector2(1.1, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ee6p"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("1_s78oe")
+texture_repeat = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v14ks"]
+size = Vector3(0.6, 0.001, 1)
+
+[node name="Desk" type="MeshInstance3D" unique_id=870626101]
+transform = Transform3D(1, 6.7244296e-23, -2.9393415e-30, 0, -4.371139e-08, -1, -6.7244296e-23, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4fivo")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ee6p")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=566567218]
+
+[node name="Click" type="CollisionShape3D" parent="Area3D" unique_id=1991941972]
+transform = Transform3D(1, -6.3108872e-30, -5.861978e-14, 0, 1, -1.1723955e-13, -1.0587912e-22, 7.1054274e-15, 1.0000001, -3.7094971e-16, -9.40895e-07, 0.09235652)
+shape = SubResource("BoxShape3D_v14ks")

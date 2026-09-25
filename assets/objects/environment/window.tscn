@@ -40,13 +40,3 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 [node name="Plane_003" type="MeshInstance3D" parent="." unique_id=661775513]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_02ji5")
-
-[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=1090628128]
-transform = Transform3D(-3.6426158e-07, 0, 1.6666665, 0, 1.6666665, 0, -1.6666665, 0, -3.6426158e-07, -0.013911247, 0, 0)
-light_color = Color(0.37044576, 0.6307333, 0.6597672, 1)
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_blur = 10.0
-area_range = 3.297
-area_attenuation = 0.0
-area_size = Vector2(4.6700478, 2.2822165)

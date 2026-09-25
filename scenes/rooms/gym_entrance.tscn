@@ -90,9 +90,11 @@ dialog = "res://assets/data/dialog/no_enter.json"
 
 [node name="Camera" parent="Objects" unique_id=870626101 instance=ExtResource("7_7ptkl")]
 transform = Transform3D(1.2124355, -0.7, 3.059797e-08, 0, -6.119594e-08, -1.4, 0.7, 1.2124355, -5.299724e-08, 2, 3, -3)
+dialog = "res://assets/data/dialog/generic_dialog/camera.json"
 
 [node name="Monitor" parent="Objects" unique_id=2016118983 instance=ExtResource("8_821gf")]
 transform = Transform3D(1.4, 9.414201e-23, -4.1150785e-30, 0, -6.119594e-08, -1.4000001, -9.414201e-23, 1.4, -6.119595e-08, -6, 3, -3)
+dialog = "res://assets/data/dialog/generic_dialog/monitor.json"
 
 [node name="Props" type="Node3D" parent="." unique_id=1542813512]
 

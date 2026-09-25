@@ -1,0 +1,17 @@
+{
+	"dialog": [
+		{
+			"flags": [],
+			"object": "Object",
+			"point": "Monitor",
+			"type": "focus"
+		},
+		{
+			"character": "shion",
+			"content": "Ushi uses these to announce stuff to us, I hate having to wake up to his voice on the morning announcement",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}
