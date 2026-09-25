@@ -14,6 +14,8 @@ extends Control
 @onready var fired_bullet: RichTextLabel = $FiredBullet
 @onready var fired_bullet_anim: AnimationPlayer = $FiredBullet/anim
 @onready var break_sfx: AudioStreamPlayer = $"../sfx/break"
+@onready var success_anim: AnimationPlayer = $"../SuccesVfx/anim"
+@onready var words: Control = $"../Words"
 var bullets = ["strange_place", "lost_memory"]
 var target_location: Vector2
 # Called when the node enters the scene tree for the first time.
@@ -49,6 +51,7 @@ func white_noise_shoot():
 		time_lose.play()
 func check_hit():
 	succes_hit()
+	words.visible = false
 	
 func _on_downtime_timeout() -> void:
 	reload()
@@ -59,4 +62,5 @@ func succes_hit():
 	debate_root.state = "success"
 	crosshair.visible = false
 	break_sfx.play()
+	success_anim.play("success")
 	print("SUCCESFULLY HIT!!!!")
