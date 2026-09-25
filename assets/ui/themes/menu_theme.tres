@@ -3,64 +3,54 @@
 [ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="1_ppmnc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3m0t"]
-bg_color = Color(3.3691526e-07, 0.6047522, 0.39664346, 1)
+bg_color = Color(0.06310458, 0.58260363, 0.9999998, 1)
 skew = Vector2(-0.25, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0.5656066, 0.34134024, 1)
+border_color = Color(9.62615e-07, 0.73277915, 0.96391207, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_size = 11
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f33t6"]
-bg_color = Color(0.1606347, 0.5318641, 1.92523e-07, 1)
-skew = Vector2(-0.25, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.5656066, 0.34134024, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+shadow_color = Color(0, 0.23809057, 0.37487826, 0.6)
 shadow_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10t4b"]
-bg_color = Color(0, 0.47843137, 0.2509804, 1)
+bg_color = Color(0, 0.2784314, 0.74509805, 1)
 skew = Vector2(-0.25, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0.43137255, 0, 0)
+border_color = Color(0.2888095, 0.7711192, 0.9999998, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+shadow_color = Color(0.09731165, 9.62615e-07, 0.5113981, 0.6)
 shadow_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_war4s"]
-bg_color = Color(0, 0.20042741, 0.097011246, 1)
+bg_color = Color(0, 0.15329412, 0.34920946, 1)
 skew = Vector2(-0.25, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0.5656066, 0.34134024, 1)
+border_color = Color(0, 0.27869523, 0.52687234, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0.49411765, 0.6)
 shadow_size = 11
 
 [resource]
 default_font = ExtResource("1_ppmnc")
+Button/colors/font_outline_color = Color(0, 0.21277604, 0.23108149, 1)
+Button/constants/outline_size = 5
 Button/styles/hover = SubResource("StyleBoxFlat_d3m0t")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_f33t6")
 Button/styles/normal = SubResource("StyleBoxFlat_10t4b")
 Button/styles/pressed = SubResource("StyleBoxFlat_war4s")

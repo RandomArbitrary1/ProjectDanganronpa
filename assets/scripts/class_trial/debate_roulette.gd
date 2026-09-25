@@ -36,7 +36,7 @@ func start():
 	ready_anim.play("start")
 	
 func _process(delta: float) -> void:
-	timer -= delta
+	
 	
 	var minutes = (timer) / 60
 	var seconds = int(timer) % 60
@@ -46,6 +46,7 @@ func _process(delta: float) -> void:
 	crosshair.position = get_local_mouse_position() - crosshair.size / 2
 	
 	if state == "debate":
+		timer -= delta
 		debate_process(delta)
 	if state == "start":
 		start_process(delta)
