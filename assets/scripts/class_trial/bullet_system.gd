@@ -63,4 +63,6 @@ func succes_hit():
 	crosshair.visible = false
 	break_sfx.play()
 	success_anim.play("success")
+	downtime.stop()
+	shoot_anim.play("hit")
 	print("SUCCESFULLY HIT!!!!")
