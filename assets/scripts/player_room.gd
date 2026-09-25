@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 			reticle.position = get_viewport().get_mouse_position() - Vector2(48,48)
 		elif reticle_pos == "controller":
 			reticle.position = controller_reticle_pos
-	if character == "" and self.get_parent().name != "Player":
+	if character == "":
 		var offset = start_position - center
 		offset = offset.rotated(Vector3.UP, deg_to_rad(-angle.x))
 		offset = offset.rotated(Vector3.RIGHT, deg_to_rad(-angle.y))

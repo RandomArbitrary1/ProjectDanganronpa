@@ -1,0 +1,21 @@
+{
+	"dialog": [
+		{
+			"eline": "Focus:<HBoxContainer#98180270136>",
+			"flags": [],
+			"id": 0,
+			"object": "Object",
+			"point": "Camera",
+			"type": "focus"
+		},
+		{
+			"character": "shion",
+			"content": "These are definetly cameras used by ushi to watch us, I'm certain.",
+			"eline": "Dialog:<HBoxContainer#141348046758>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 1,
+			"type": "text"
+		}
+	]
+}

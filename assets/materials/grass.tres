@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cfgakpug60ka2"]
+
+[ext_resource type="Texture2D" uid="uid://crk305yas7few" path="res://assets/textures/environment/grass.png" id="1_vgjhr"]
+[ext_resource type="Texture2D" uid="uid://c40g8rfgen1f6" path="res://assets/textures/environment/WoodTextureOil_normal.png" id="2_gjj3c"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.70796657, 0.7079665, 0.7079665, 1)
+albedo_texture = ExtResource("1_vgjhr")
+normal_scale = 0.3
+normal_texture = ExtResource("2_gjj3c")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
