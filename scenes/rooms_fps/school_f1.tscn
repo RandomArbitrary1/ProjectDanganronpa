@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_8ggvf"]
 [ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="2_qqewr"]
-[ext_resource type="Material" uid="uid://ccr5d7ohbynp5" path="res://assets/materials/tile.tres" id="3_f632f"]
+[ext_resource type="Material" uid="uid://cinfix0r7v3n6" path="res://assets/materials/tile.tres" id="3_f632f"]
 [ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="4_jnqd4"]
-[ext_resource type="Material" uid="uid://chih2owintexd" path="res://assets/materials/boulder.tres" id="5_16k52"]
+[ext_resource type="Material" uid="uid://0dhobjpdibad" path="res://assets/materials/boulder.tres" id="5_16k52"]
 [ext_resource type="PackedScene" uid="uid://h3rjrxx311b3" path="res://assets/objects/environment/Pillar.glb" id="6_mm1ag"]
 [ext_resource type="PackedScene" uid="uid://1ovyqw7kh3vg" path="res://assets/objects/environment/pillar_arch.glb" id="7_ihxm5"]
 [ext_resource type="PackedScene" uid="uid://cg4nn0n7re65s" path="res://assets/objects/environment/window.tscn" id="8_tn4g6"]
@@ -32,7 +32,7 @@
 [ext_resource type="Material" uid="uid://bqb8ig24gtveo" path="res://assets/objects/environment/door_wood.tres" id="31_jnqd4"]
 [ext_resource type="Material" uid="uid://cbe0ntm8aon7n" path="res://assets/objects/environment/door_bathroom_men.tres" id="33_f632f"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="33_qqewr"]
-[ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="33_qqiqe"]
+[ext_resource type="Script" uid="uid://bjyluqgk8sxjt" path="res://assets/scripts/talking_danilo.gd" id="33_qqiqe"]
 [ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="34_34go0"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="35_gguu1"]
 

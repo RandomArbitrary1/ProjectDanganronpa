@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	if state == "dialog":
 		if !dialog.active:
 			state = "debate"
-#structure
+
 func prepare():
 	if !preparation.state == "hide":
 		camera_3d.global_position = Vector3(0,7.5,15)
@@ -52,8 +52,9 @@ func next_process():
 	var parent = process.get_base_dir().get_file()
 	if parent == "dialog":
 		state = "dialog"
-		dialog.file = JsonParse.load_json(process)
+		dialog.file = load(process)
 		dialog.start()
+		
 func dialog_process(delta):
 	var name_ch = dialog.nameplate.get_node("full_name").text
 	var key = null
