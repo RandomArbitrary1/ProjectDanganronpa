@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://c3tlodsjoo8gi" path="res://assets/ui/themes/json editor.tres" id="1_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://b8nlmkqp038bh" path="res://assets/ui/json_editor/insert_drive_file_24dp_E3E3E3.png" id="1_p0t4n"]
-[ext_resource type="Texture2D" uid="uid://dd8powc5qfetb" path="res://assets/textures/ui/title/background.png" id="2_ol5w5"]
+[ext_resource type="Texture2D" uid="uid://cvjf2k2voamob" path="res://assets/textures/ui/background/5296724.jpg" id="2_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://dm7i4hetvoe4q" path="res://assets/ui/json_editor/save_24dp_E3E3E3.png" id="2_xfl6f"]
 [ext_resource type="Texture2D" uid="uid://yy5scsj1qxvf" path="res://assets/ui/json_editor/save_as_24dp_E3E3E3.png" id="3_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://ccdrvhhvoo3js" path="res://assets/ui/json_editor/reorder_24dp_E3E3E3.png" id="4_p2fl4"]
@@ -550,19 +550,23 @@ texture = ExtResource("2_ol5w5")
 expand_mode = 1
 
 [node name="Navigation" type="Panel" parent="." unique_id=1170438030]
-layout_mode = 0
-offset_left = 557.0
-offset_top = 8.0
-offset_right = 1363.0
-offset_bottom = 59.428566
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -525.47754
+offset_right = 525.47754
+offset_bottom = 60.425003
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("1_ol5w5")
 
 [node name="Load" type="Button" parent="Navigation" unique_id=379565603]
 layout_mode = 0
 offset_left = 5.714285
-offset_top = 5.714285
-offset_right = 119.99999
-offset_bottom = 45.714287
+offset_top = 11.0
+offset_right = 132.99998
+offset_bottom = 51.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 text = "Select file"
@@ -574,9 +578,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -85.71417
-offset_top = 5.7142854
-offset_right = -5.7141724
-offset_bottom = 45.714287
+offset_top = 11.0
+offset_right = -5.7141113
+offset_bottom = 51.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -590,9 +594,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -194.2857
-offset_top = 5.7142854
+offset_top = 11.0
 offset_right = -91.42853
-offset_bottom = 45.714287
+offset_bottom = 51.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -606,9 +610,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -308.5714
-offset_top = 5.7142854
+offset_top = 11.0
 offset_right = -199.99988
-offset_bottom = 45.714287
+offset_bottom = 51.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -622,9 +626,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -422.85712
-offset_top = 5.7142854
+offset_top = 11.0
 offset_right = -314.28558
-offset_bottom = 45.714287
+offset_bottom = 51.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -634,20 +638,20 @@ icon_alignment = 2
 
 [node name="File" type="Label" parent="Navigation" unique_id=1611597450]
 layout_mode = 0
-offset_left = 125.71428
-offset_top = 5.714285
-offset_right = 280.0
-offset_bottom = 45.714287
+offset_left = 136.99998
+offset_top = 9.0
+offset_right = 291.2857
+offset_bottom = 49.0
 theme = ExtResource("1_ol5w5")
 text = "N/A"
 vertical_alignment = 1
 
 [node name="Dialog" type="Label" parent="Navigation" unique_id=516254286]
 layout_mode = 0
-offset_left = 312.0
-offset_top = 8.0
-offset_right = 366.85712
-offset_bottom = 48.0
+offset_left = 539.47754
+offset_top = 9.0
+offset_right = 600.47754
+offset_bottom = 49.0
 theme = ExtResource("1_ol5w5")
 text = "Dialog"
 horizontal_alignment = 2
@@ -734,9 +738,9 @@ vertical_alignment = 1
 
 [node name="Load" type="Button" parent="Items/List/SFX/Panel" unique_id=1238070192]
 layout_mode = 0
-offset_left = 181.14285
+offset_left = 185.28568
 offset_top = 5.714287
-offset_right = 792.5714
+offset_right = 792.34973
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -832,10 +836,10 @@ horizontal_alignment = 2
 
 [node name="CheckButton" type="CheckButton" parent="Items/List/CG/Panel" unique_id=492225208]
 layout_mode = 0
-offset_left = 45.714294
-offset_top = 45.714283
-offset_right = 144.7143
-offset_bottom = 97.14287
+offset_left = 52.285706
+offset_top = 43.000004
+offset_right = 168.2857
+offset_bottom = 94.42859
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 button_pressed = true
@@ -1144,9 +1148,9 @@ vertical_alignment = 1
 
 [node name="Load" type="Button" parent="Items/List/Bullet/Panel" unique_id=403257907]
 layout_mode = 0
-offset_left = 291.42856
+offset_left = 310.28574
 offset_top = 5.714287
-offset_right = 491.42856
+offset_right = 438.71573
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -1157,10 +1161,10 @@ text_overrun_behavior = 1
 
 [node name="Bullet" type="OptionButton" parent="Items/List/Bullet/Panel" unique_id=133974147]
 layout_mode = 0
-offset_left = 497.14288
+offset_left = 456.2857
 offset_top = 5.714286
-offset_right = 794.28564
-offset_bottom = 45.71428
+offset_right = 791.50867
+offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 
@@ -1175,9 +1179,9 @@ horizontal_alignment = 2
 
 [node name="CheckButton" type="CheckButton" parent="Items/List/Bullet/Panel" unique_id=129361642]
 layout_mode = 0
-offset_left = 188.57141
-offset_right = 287.5714
-offset_bottom = 51.428577
+offset_left = 211.2857
+offset_right = 302.2857
+offset_bottom = 51.429
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 button_pressed = true
@@ -1258,9 +1262,9 @@ horizontal_alignment = 2
 
 [node name="Song" type="OptionButton" parent="Items/List/Music/Panel" unique_id=159475097]
 layout_mode = 0
-offset_left = 194.28572
+offset_left = 207.28572
 offset_top = 5.7142982
-offset_right = 794.2856
+offset_right = 793.3557
 offset_bottom = 45.7143
 mouse_filter = 1
 mouse_default_cursor_shape = 2
@@ -1495,13 +1499,13 @@ icon_alignment = 1
 
 [node name="CheckButton" type="CheckButton" parent="Items/List/Visibility/Panel" unique_id=1052923029]
 layout_mode = 0
-offset_left = 137.14285
-offset_right = 236.14285
-offset_bottom = 51.428574
+offset_left = 146.28568
+offset_right = 354.12567
+offset_bottom = 51.429
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 button_pressed = true
-text = "Visible"
+text = "Dialog box visible"
 
 [node name="Index" type="Label" parent="Items/List/Visibility/Panel" unique_id=1919461854]
 layout_mode = 0
@@ -1591,9 +1595,9 @@ theme = ExtResource("1_ol5w5")
 
 [node name="Type" type="OptionButton" parent="Items/List/Focus/Panel" unique_id=625532767]
 layout_mode = 0
-offset_left = 245.71432
+offset_left = 269.28574
 offset_top = 5.714286
-offset_right = 371.42856
+offset_right = 405.28574
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")

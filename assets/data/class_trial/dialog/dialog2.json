@@ -1,6 +1,11 @@
 {
 	"dialog": [
 		{
+			"flags": [],
+			"song": "dawn",
+			"type": "music"
+		},
+		{
 			"character": "shion",
 			"content": "Noriyuki, what you said is exactly it!",
 			"expression": "neutral.png",

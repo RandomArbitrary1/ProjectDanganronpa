@@ -91,15 +91,15 @@ func debate_start():
 	anim.play("start")
 	
 func debate_next(add=1):
-	dialog_index = int(dialog_index + add) % dialog_data.size()
-	var character = dialog_data[dialog_index]["character"]
+	dialog_index = int(dialog_index + add) % dialog_data["dialog"].size()
+	var character = dialog_data["dialog"][dialog_index]["character"]
 	var char_data_one = char_data[character]
 		
 	words.word_init()
 	
 	name_label.operate(char_data_one["name"])
-	dialog_progress_bar.value = (float(dialog_index) / float(dialog_data.size() - 1)) * 100
-	progress.text = str(dialog_index+1)+ "/" + str(dialog_data.size())
+	dialog_progress_bar.value = (float(dialog_index) / float(dialog_data["dialog"].size() - 1)) * 100
+	progress.text = str(dialog_index+1)+ "/" + str(dialog_data["dialog"].size())
 	
 	var podiums = get_tree().get_nodes_in_group("podium")
 	for podium in podiums:
@@ -127,3 +127,6 @@ func debate_camera_reset():
 	
 func preview_process(delta):
 	debate_start()
+	
+func finished():
+	class_trial_main.next_process()

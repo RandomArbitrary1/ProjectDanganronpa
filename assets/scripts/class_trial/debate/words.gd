@@ -19,7 +19,7 @@ func word_init():
 	var label = RichTextLabel.new()
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	label.bbcode_enabled = true
-	label.text = str(debate_roulette.dialog_data[debate_roulette.dialog_index]["content"])
+	label.text = str(debate_roulette.dialog_data["dialog"][debate_roulette.dialog_index]["content"])
 	label.theme = debate_roulette.words_theme
 	label.fit_content = true
 	label.custom_minimum_size = Vector2(1000, -1)

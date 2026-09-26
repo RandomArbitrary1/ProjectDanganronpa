@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		debate()
 	if state == "dialog":
 		if !dialog.active:
-			state = "debate"
+			next_process()
 
 func prepare():
 	if !preparation.state == "hide":
@@ -44,16 +44,20 @@ func debate():
 		music.stop()
 	preparation.visible = false
 	
-func next_process():
+func next_process(next=1):
 	music.stop()
 	camera_3d.fov(25)
-	
-	var process = structure[structure_line]
-	var parent = process.get_base_dir().get_file()
-	if parent == "dialog":
+	structure_line = structure_line + next
+	var path = structure[structure_line]
+	var type = path.get_base_dir().get_file()
+	var json = path.trim_prefix("res://assets/data/")
+	if type == "dialog":
 		state = "dialog"
-		dialog.file = load(process)
+		dialog.file = load(path)
 		dialog.start()
+	if type == "debate":
+		state = "debate"
+		debate_roulette.dialog_data = JsonParse.load_json(json)
 		
 func dialog_process(delta):
 	var name_ch = dialog.nameplate.get_node("full_name").text
