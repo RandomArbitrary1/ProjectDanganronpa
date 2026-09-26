@@ -34,10 +34,8 @@ func _ready() -> void:
 	#report card
 	for i in character_info.keys().size():
 		var key = character_info.keys()[i]
-		var info = character_info[key]
 		var item = report_item.duplicate()
 		item.name = key
-		item.get_node("Preview/Name").text = info.name
 		if ResourceLoader.exists("res://assets/textures/characters/" + key + "/neutral.png"):
 			item.get_node("Preview/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
 		lists.get_node("Report/Items").add_child(item)
@@ -137,7 +135,8 @@ func _process(delta: float) -> void:
 	#report card
 	
 	if tab == 3:
-		var key =  lists.get_node("Report/Items").get_child(inside_tab.y).name
+		var list_tab =  inside_tab.y * x_range + inside_tab.x
+		var key =  lists.get_node("Report/Items").get_child(list_tab).name
 		if lists.get_node("Report/Info/Name").text != character_info[key].name:
 			lists.get_node("Report/Info/Name").text = character_info[key].name
 			lists.get_node("Report/Info/Panel/Items/Birthday/Info/Label").text = character_info[key].birth_date

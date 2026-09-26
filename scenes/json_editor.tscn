@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://0gybs6odnl23"]
 
+[ext_resource type="Theme" uid="uid://c3tlodsjoo8gi" path="res://assets/ui/themes/json editor.tres" id="1_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://b8nlmkqp038bh" path="res://assets/ui/json_editor/insert_drive_file_24dp_E3E3E3.png" id="1_p0t4n"]
-[ext_resource type="Texture2D" uid="uid://dx8rofyersfty" path="res://assets/textures/environment/planks_1.png" id="1_xfl6f"]
+[ext_resource type="Texture2D" uid="uid://dd8powc5qfetb" path="res://assets/textures/ui/title/background.png" id="2_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://dm7i4hetvoe4q" path="res://assets/ui/json_editor/save_24dp_E3E3E3.png" id="2_xfl6f"]
 [ext_resource type="Texture2D" uid="uid://yy5scsj1qxvf" path="res://assets/ui/json_editor/save_as_24dp_E3E3E3.png" id="3_ol5w5"]
 [ext_resource type="Texture2D" uid="uid://ccdrvhhvoo3js" path="res://assets/ui/json_editor/reorder_24dp_E3E3E3.png" id="4_p2fl4"]
@@ -532,11 +533,9 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -548.57153
-offset_bottom = -308.57147
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.4, 1.4)
+theme = ExtResource("1_ol5w5")
 script = SubResource("GDScript_53vve")
 
 [node name="Background" type="TextureRect" parent="." unique_id=22404534]
@@ -544,21 +543,19 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 5485.714
-offset_bottom = 3085.7144
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_xfl6f")
+theme = ExtResource("1_ol5w5")
+texture = ExtResource("2_ol5w5")
 expand_mode = 1
-stretch_mode = 1
 
 [node name="Navigation" type="Panel" parent="." unique_id=1170438030]
 layout_mode = 0
-offset_left = 182.85716
-offset_top = 5.714286
-offset_right = 1188.5714
-offset_bottom = 57.142853
+offset_left = 557.0
+offset_top = 8.0
+offset_right = 1363.0
+offset_bottom = 59.428566
+theme = ExtResource("1_ol5w5")
 
 [node name="Load" type="Button" parent="Navigation" unique_id=379565603]
 layout_mode = 0
@@ -567,6 +564,7 @@ offset_top = 5.714285
 offset_right = 119.99999
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 text = "Select file"
 icon = ExtResource("1_p0t4n")
 
@@ -581,6 +579,7 @@ offset_right = -5.7141724
 offset_bottom = 45.714287
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("2_xfl6f")
 text = "Save"
 icon_alignment = 2
@@ -596,6 +595,7 @@ offset_right = -91.42853
 offset_bottom = 45.714287
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("3_ol5w5")
 text = "Save as"
 icon_alignment = 2
@@ -611,6 +611,7 @@ offset_right = -199.99988
 offset_bottom = 45.714287
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 text = "Clear all"
 icon_alignment = 2
@@ -626,6 +627,7 @@ offset_right = -314.28558
 offset_bottom = 45.714287
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 text = "Dialogs"
 icon_alignment = 2
@@ -634,17 +636,19 @@ icon_alignment = 2
 layout_mode = 0
 offset_left = 125.71428
 offset_top = 5.714285
-offset_right = 348.5714
+offset_right = 280.0
 offset_bottom = 45.714287
+theme = ExtResource("1_ol5w5")
 text = "N/A"
 vertical_alignment = 1
 
 [node name="Dialog" type="Label" parent="Navigation" unique_id=516254286]
 layout_mode = 0
-offset_left = 314.2857
-offset_top = 5.714285
-offset_right = 577.1428
-offset_bottom = 45.714287
+offset_left = 312.0
+offset_top = 8.0
+offset_right = 366.85712
+offset_bottom = 48.0
+theme = ExtResource("1_ol5w5")
 text = "Dialog"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -652,23 +656,27 @@ vertical_alignment = 1
 [node name="Items" type="ScrollContainer" parent="." unique_id=2105817097]
 layout_mode = 0
 offset_left = 5.7142944
-offset_top = 62.857143
-offset_right = 1365.7144
-offset_bottom = 765.7142
+offset_top = 64.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("1_ol5w5")
 
 [node name="List" type="VBoxContainer" parent="Items" unique_id=561660858]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="SFX" type="HBoxContainer" parent="Items/List" unique_id=469161832]
 custom_minimum_size = Vector2(0, 51)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/SFX" unique_id=1559122315]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/SFX/Panel" unique_id=1845631700]
 visible = false
@@ -678,6 +686,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="Down" type="Button" parent="Items/List/SFX/Panel" unique_id=1163430472]
@@ -687,6 +696,7 @@ offset_top = 5.7142844
 offset_right = 45.714287
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -697,6 +707,7 @@ offset_top = 5.7142844
 offset_right = 91.42857
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -707,6 +718,7 @@ offset_top = 5.714285
 offset_right = 137.14293
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -716,6 +728,7 @@ offset_left = 142.85718
 offset_top = 5.714283
 offset_right = 175.42859
 offset_bottom = 45.714275
+theme = ExtResource("1_ol5w5")
 text = "SFX"
 vertical_alignment = 1
 
@@ -726,6 +739,7 @@ offset_top = 5.714287
 offset_right = 792.5714
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 text = "Select file"
 icon = ExtResource("1_p0t4n")
 alignment = 0
@@ -736,16 +750,19 @@ layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
 [node name="CG" type="HBoxContainer" parent="Items/List" unique_id=1895028988]
 custom_minimum_size = Vector2(0, 143)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/CG" unique_id=871670708]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/CG/Panel" unique_id=906998832]
 visible = false
@@ -758,6 +775,7 @@ offset_right = 204.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="Down" type="Button" parent="Items/List/CG/Panel" unique_id=821556333]
@@ -767,6 +785,7 @@ offset_top = 5.7142906
 offset_right = 45.714275
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -777,6 +796,7 @@ offset_top = 51.428574
 offset_right = 45.714275
 offset_bottom = 91.428566
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -787,6 +807,7 @@ offset_top = 97.142876
 offset_right = 45.714287
 offset_bottom = 137.14288
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -796,6 +817,7 @@ offset_left = 51.428566
 offset_top = 5.714283
 offset_right = 382.8571
 offset_bottom = 45.714275
+theme = ExtResource("1_ol5w5")
 text = "CG"
 vertical_alignment = 1
 
@@ -804,6 +826,7 @@ layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
@@ -814,6 +837,7 @@ offset_top = 45.714283
 offset_right = 144.7143
 offset_bottom = 97.14287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 button_pressed = true
 text = "Enabled"
 
@@ -824,6 +848,7 @@ offset_top = 97.14285
 offset_right = 485.71426
 offset_bottom = 137.14285
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 text = "Select file"
 icon = ExtResource("1_p0t4n")
 alignment = 0
@@ -832,6 +857,7 @@ text_overrun_behavior = 1
 [node name="Image" type="Panel" parent="Items/List/CG" unique_id=16234557]
 custom_minimum_size = Vector2(302, 0)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="TextureRect" type="TextureRect" parent="Items/List/CG/Image" unique_id=2007439640]
 layout_mode = 1
@@ -844,6 +870,7 @@ offset_right = -5.7143555
 offset_bottom = -5.857147
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 texture = SubResource("PlaceholderTexture2D_ob5wf")
 expand_mode = 1
 stretch_mode = 5
@@ -851,10 +878,12 @@ stretch_mode = 5
 [node name="Choice" type="HBoxContainer" parent="Items/List" unique_id=1570782169]
 custom_minimum_size = Vector2(0, 143)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/Choice" unique_id=697637364]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/Choice/Panel" unique_id=48256454]
 visible = false
@@ -864,6 +893,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="Down" type="Button" parent="Items/List/Choice/Panel" unique_id=1932628902]
@@ -873,6 +903,7 @@ offset_top = 5.7142844
 offset_right = 45.714287
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -883,6 +914,7 @@ offset_top = 51.428566
 offset_right = 45.71429
 offset_bottom = 91.42856
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -893,6 +925,7 @@ offset_top = 97.14285
 offset_right = 45.71428
 offset_bottom = 137.14285
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -902,6 +935,7 @@ offset_left = 51.42856
 offset_top = 5.714283
 offset_right = 794.28564
 offset_bottom = 45.714275
+theme = ExtResource("1_ol5w5")
 text = "Choice"
 vertical_alignment = 1
 
@@ -910,6 +944,7 @@ layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
@@ -919,6 +954,7 @@ offset_left = 51.42857
 offset_top = 51.428562
 offset_right = 794.28564
 offset_bottom = 137.14282
+theme = ExtResource("1_ol5w5")
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 3
@@ -928,18 +964,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_ol5w5")
 
 [node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option1" unique_id=2051155858]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Text"
 
 [node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option1" unique_id=1810390839]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Dialog"
 
 [node name="Option2" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1329249292]
@@ -947,18 +986,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_ol5w5")
 
 [node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option2" unique_id=112930274]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Text"
 
 [node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option2" unique_id=818236943]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Dialog"
 
 [node name="Option3" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1315234105]
@@ -966,18 +1008,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_ol5w5")
 
 [node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option3" unique_id=1452744169]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Text"
 
 [node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option3" unique_id=1160846692]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Dialog"
 
 [node name="Option4" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=141752509]
@@ -985,18 +1030,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_ol5w5")
 
 [node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option4" unique_id=1331127541]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Text"
 
 [node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option4" unique_id=1629733173]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Dialog"
 
 [node name="Option5" type="HBoxContainer" parent="Items/List/Choice/Panel/Options" unique_id=1725823410]
@@ -1004,18 +1052,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_ol5w5")
 
 [node name="Text" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option5" unique_id=1471329271]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Text"
 
 [node name="Dialog" type="LineEdit" parent="Items/List/Choice/Panel/Options/Option5" unique_id=34571119]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 placeholder_text = "Dialog"
 
 [node name="Set" type="Button" parent="Items/List/Choice/Panel/Options" unique_id=1446404267]
@@ -1023,16 +1074,19 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 text = "Apply"
 text_overrun_behavior = 1
 
 [node name="Bullet" type="HBoxContainer" parent="Items/List" unique_id=922323109]
 custom_minimum_size = Vector2(0, 51)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/Bullet" unique_id=1173112791]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/Bullet/Panel" unique_id=1525163626]
 visible = false
@@ -1042,6 +1096,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="Down" type="Button" parent="Items/List/Bullet/Panel" unique_id=2001071246]
@@ -1051,6 +1106,7 @@ offset_top = 5.7142844
 offset_right = 45.714287
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -1061,6 +1117,7 @@ offset_top = 5.7142844
 offset_right = 91.42857
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -1071,6 +1128,7 @@ offset_top = 5.714285
 offset_right = 137.14293
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -1080,6 +1138,7 @@ offset_left = 142.85718
 offset_top = 5.714283
 offset_right = 240.00009
 offset_bottom = 45.714275
+theme = ExtResource("1_ol5w5")
 text = "Bullet"
 vertical_alignment = 1
 
@@ -1090,6 +1149,7 @@ offset_top = 5.714287
 offset_right = 491.42856
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 text = "Select file"
 icon = ExtResource("1_p0t4n")
 alignment = 0
@@ -1102,12 +1162,14 @@ offset_top = 5.714286
 offset_right = 794.28564
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Index" type="Label" parent="Items/List/Bullet/Panel" unique_id=261789310]
 layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
@@ -1117,16 +1179,19 @@ offset_left = 188.57141
 offset_right = 287.5714
 offset_bottom = 51.428577
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 button_pressed = true
 text = "Show"
 
 [node name="Music" type="HBoxContainer" parent="Items/List" unique_id=1072936168]
 custom_minimum_size = Vector2(0, 51)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/Music" unique_id=606793821]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/Music/Panel" unique_id=1734375800]
 visible = false
@@ -1136,6 +1201,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="Down" type="Button" parent="Items/List/Music/Panel" unique_id=833686899]
@@ -1145,6 +1211,7 @@ offset_top = 5.7142844
 offset_right = 45.714287
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -1155,6 +1222,7 @@ offset_top = 5.7142844
 offset_right = 91.42857
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -1165,6 +1233,7 @@ offset_top = 5.714285
 offset_right = 137.14293
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -1174,6 +1243,7 @@ offset_left = 142.85718
 offset_top = 5.714283
 offset_right = 194.28574
 offset_bottom = 45.714275
+theme = ExtResource("1_ol5w5")
 text = "Music"
 vertical_alignment = 1
 
@@ -1182,6 +1252,7 @@ layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
@@ -1193,6 +1264,7 @@ offset_right = 794.2856
 offset_bottom = 45.7143
 mouse_filter = 1
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 selected = 0
 item_count = 12
 popup/item_0/text = "angst"
@@ -1223,10 +1295,12 @@ popup/item_11/id = 11
 [node name="Dialog" type="HBoxContainer" parent="Items/List" unique_id=1469758066]
 custom_minimum_size = Vector2(0, 143)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/Dialog" unique_id=2012505208]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/Dialog/Panel" unique_id=1129775105]
 visible = false
@@ -1239,6 +1313,7 @@ offset_right = 204.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="TextEdit" type="TextEdit" parent="Items/List/Dialog/Panel" unique_id=2002795568]
@@ -1252,6 +1327,7 @@ offset_right = -6.0004883
 offset_bottom = -5.7142944
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 wrap_mode = 1
 
 [node name="Down" type="Button" parent="Items/List/Dialog/Panel" unique_id=508296457]
@@ -1261,6 +1337,7 @@ offset_top = 5.7142906
 offset_right = 45.714275
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -1271,6 +1348,7 @@ offset_top = 51.428574
 offset_right = 45.714275
 offset_bottom = 91.428566
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -1281,6 +1359,7 @@ offset_top = 97.142876
 offset_right = 45.714287
 offset_bottom = 137.14288
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -1290,6 +1369,7 @@ offset_left = 51.428566
 offset_top = 5.714283
 offset_right = 382.8571
 offset_bottom = 28.714287
+theme = ExtResource("1_ol5w5")
 text = "Dialog"
 vertical_alignment = 1
 
@@ -1298,12 +1378,14 @@ layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
 [node name="Character" type="Panel" parent="Items/List/Dialog" unique_id=1201249221]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="TextureRect" type="TextureRect" parent="Items/List/Dialog/Character" unique_id=1746620367]
 layout_mode = 1
@@ -1312,6 +1394,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 texture = ExtResource("8_xfl6f")
 expand_mode = 1
 stretch_mode = 5
@@ -1324,6 +1407,7 @@ offset_right = 97.14282
 offset_bottom = 137.14285
 mouse_filter = 1
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 clip_text = true
 selected = 0
 fit_to_longest_item = false
@@ -1347,6 +1431,7 @@ offset_right = 194.28564
 offset_bottom = 137.14285
 mouse_filter = 1
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 clip_text = true
 selected = 0
 fit_to_longest_item = false
@@ -1357,10 +1442,12 @@ popup/item_0/id = 0
 [node name="Visibility" type="HBoxContainer" parent="Items/List" unique_id=549563064]
 custom_minimum_size = Vector2(0, 51)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/Visibility" unique_id=1626312578]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/Visibility/Panel" unique_id=1003563967]
 visible = false
@@ -1370,6 +1457,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="Down" type="Button" parent="Items/List/Visibility/Panel" unique_id=1764249077]
@@ -1379,6 +1467,7 @@ offset_top = 5.7142844
 offset_right = 45.714287
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -1389,6 +1478,7 @@ offset_top = 5.7142844
 offset_right = 91.42857
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -1399,6 +1489,7 @@ offset_top = 5.714287
 offset_right = 137.14287
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -1408,6 +1499,7 @@ offset_left = 137.14285
 offset_right = 236.14285
 offset_bottom = 51.428574
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 button_pressed = true
 text = "Visible"
 
@@ -1416,16 +1508,19 @@ layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
 [node name="Focus" type="HBoxContainer" parent="Items/List" unique_id=1181826034]
 custom_minimum_size = Vector2(0, 51)
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Panel" type="Panel" parent="Items/List/Focus" unique_id=106984022]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Outline" type="Panel" parent="Items/List/Focus/Panel" unique_id=1652866522]
 visible = false
@@ -1435,6 +1530,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 
 [node name="Down" type="Button" parent="Items/List/Focus/Panel" unique_id=1226379672]
@@ -1444,6 +1540,7 @@ offset_top = 5.7142844
 offset_right = 45.714287
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
@@ -1454,6 +1551,7 @@ offset_top = 5.7142844
 offset_right = 91.42857
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
@@ -1464,6 +1562,7 @@ offset_top = 5.714285
 offset_right = 137.14293
 offset_bottom = 45.714287
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
@@ -1473,6 +1572,7 @@ offset_left = 142.85718
 offset_top = 5.714283
 offset_right = 240.00009
 offset_bottom = 45.714275
+theme = ExtResource("1_ol5w5")
 text = "Focus target"
 vertical_alignment = 1
 
@@ -1487,6 +1587,7 @@ offset_right = -5.2857666
 offset_bottom = -5.285721
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 
 [node name="Type" type="OptionButton" parent="Items/List/Focus/Panel" unique_id=625532767]
 layout_mode = 0
@@ -1495,6 +1596,7 @@ offset_top = 5.714286
 offset_right = 371.42856
 offset_bottom = 45.71428
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 selected = 0
 item_count = 3
 popup/item_0/text = "Default"
@@ -1509,6 +1611,7 @@ layout_mode = 0
 offset_left = -85.71428
 offset_right = -5.714279
 offset_bottom = 62.85714
+theme = ExtResource("1_ol5w5")
 text = "0"
 horizontal_alignment = 2
 
@@ -1519,6 +1622,7 @@ offset_left = 1194.2855
 offset_top = 11.428572
 offset_right = 1274.2855
 offset_bottom = 51.428566
+theme = ExtResource("1_ol5w5")
 
 [node name="Label" type="Label" parent="Saved" unique_id=1260800737]
 layout_mode = 1
@@ -1527,6 +1631,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ol5w5")
 text = "Saved"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1538,6 +1643,7 @@ libraries/ = SubResource("AnimationLibrary_p2fl4")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+theme = ExtResource("1_ol5w5")
 file_mode = 0
 root_subfolder = "assets/data"
 filters = PackedStringArray("*.json")
@@ -1546,14 +1652,15 @@ use_native_dialog = true
 [node name="FileDialogSave" type="FileDialog" parent="." unique_id=169077777]
 oversampling_override = 1.0
 position = Vector2i(0, 36)
+theme = ExtResource("1_ol5w5")
 filters = PackedStringArray("*.json")
 use_native_dialog = true
 
 [node name="Context_menu" type="PopupMenu" parent="." unique_id=1903347401]
 transparent_bg = false
 oversampling_override = 1.0
-size = Vector2i(268, 464)
-content_scale_factor = 1.4
+size = Vector2i(218, 360)
+theme = ExtResource("1_ol5w5")
 item_count = 13
 item_0/text = "Dialog"
 item_0/id = 100
@@ -1589,26 +1696,29 @@ item_12/id = 10
 oversampling_override = 1.0
 title = "Flags"
 initial_position = 1
-size = Vector2i(300, 400)
+size = Vector2i(214, 300)
 visible = false
 unresizable = true
 always_on_top = true
-content_scale_factor = 1.4
 accessibility_name = "Flags"
+theme = ExtResource("1_ol5w5")
 
 [node name="FlagList" type="ScrollContainer" parent="Flags" unique_id=258356325]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 210.28572
 offset_bottom = 281.7143
+theme = ExtResource("1_ol5w5")
 
 [node name="FlagItems" type="VBoxContainer" parent="Flags/FlagList" unique_id=67271718]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="FlagOption" type="Button" parent="Flags/FlagList/FlagItems" unique_id=1593398890]
 layout_mode = 2
+theme = ExtResource("1_ol5w5")
 text = "Test"
 
 [node name="Outline" type="Panel" parent="Flags/FlagList/FlagItems/FlagOption" unique_id=2113223425]
@@ -1626,23 +1736,25 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_xfl6f")
 oversampling_override = 1.0
 title = "Dialogs"
 initial_position = 1
-size = Vector2i(300, 400)
+size = Vector2i(214, 300)
 visible = false
 unresizable = true
 always_on_top = true
-content_scale_factor = 1.4
 accessibility_name = "Flags"
+theme = ExtResource("1_ol5w5")
 
 [node name="DialogList" type="ScrollContainer" parent="Dialog" unique_id=581936615]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 210.28572
 offset_bottom = 242.85713
+theme = ExtResource("1_ol5w5")
 
 [node name="DialogItems" type="VBoxContainer" parent="Dialog/DialogList" unique_id=112722077]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
 
 [node name="Base" type="Control" parent="Dialog/DialogList/DialogItems" unique_id=2081572846]
 custom_minimum_size = Vector2(0, 32)
@@ -1720,4 +1832,5 @@ offset_bottom = -6.1428833
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
 text = "Insert"
