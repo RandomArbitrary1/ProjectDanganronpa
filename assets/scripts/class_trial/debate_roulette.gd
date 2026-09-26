@@ -12,7 +12,7 @@ extends Control
 @onready var progress: Label = $Hud/progress
 @onready var words: Control = $Words
 @onready var class_trial_main: Node3D = $".."
-@onready var dialog_data = class_trial_main.data["dialog"]
+@onready var dialog_data = null
 @onready var char_data = JsonParse.load_json("characters/characters.json")
 @onready var name_label: Label = $Hud/name_label
 @onready var words_theme = preload("res://assets/ui/themes/class_trial_debate_words.tres")

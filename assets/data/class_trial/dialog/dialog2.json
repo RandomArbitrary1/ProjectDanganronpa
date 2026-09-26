@@ -1,0 +1,39 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "Noriyuki, what you said is exactly it!",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "The murder weapon was exactly a kitchen knife, lodged in the victim's chest!",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "Ahh, seems I was correct after all.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "naeri",
+			"content": "A kitchen knife... But how did the killer get their hands on one? The kitchen is closed after 19:00.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Hmm you do make a good point.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}

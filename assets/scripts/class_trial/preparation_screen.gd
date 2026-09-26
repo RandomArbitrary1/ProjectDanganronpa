@@ -4,8 +4,8 @@ extends Control
 @onready var intro: Control = $"../Intro"
 @onready var pre_screen: Control = $pre_screen
 @onready var dialog: Control = $"../Dialog"
-@onready var music_dialog: AudioStreamPlayer = $"../music_dialog"
 @onready var camera_3d: Node3D = $"../CameraNode"
+@onready var message: Label = $pre_screen/message
 var state = ""
 var timer = 0.0
 
@@ -18,6 +18,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	message.visible_ratio += delta * 0.1
+	if message.visible_ratio >= 1:
+		message.visible_ratio = 0
 	revolver_cylinder.rotation += delta * 0.3
 	
 	if intro.hide_elms:

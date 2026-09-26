@@ -539,7 +539,7 @@ grow_vertical = 2
 scale = Vector2(1.4, 1.4)
 script = SubResource("GDScript_53vve")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=22404534]
+[node name="Background" type="TextureRect" parent="." unique_id=22404534]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1539,6 +1539,7 @@ oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
 file_mode = 0
+root_subfolder = "assets/data"
 filters = PackedStringArray("*.json")
 use_native_dialog = true
 
@@ -1611,7 +1612,6 @@ layout_mode = 2
 text = "Test"
 
 [node name="Outline" type="Panel" parent="Flags/FlagList/FlagItems/FlagOption" unique_id=2113223425]
-visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
