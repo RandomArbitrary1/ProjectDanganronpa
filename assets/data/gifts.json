@@ -1,3 +1,92 @@
 {
-	"gift":{"name":"gift","texture":"","vibes":[]}
-}
+	"strawberry_shortcake":
+	{
+	"name":"Strawberry shortcake",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"toothpicks":
+	{
+	"name":"Toothpicks",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"premium_shoes":
+	{
+	"name":"Premium shoes",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"game_system":
+	{
+	"name":"Game system",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"vinyl_record":
+	{
+	"name":"Vinyl record",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"sewing_kit":
+	{
+	"name":"Sewing kit",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"hand_moisturiser":
+	{
+	"name":"Hand moisturiser",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"cigarettes":
+	{
+	"name":"Cigarettes",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"multimeter":
+	{
+	"name":"Multimeter",
+	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+} 
