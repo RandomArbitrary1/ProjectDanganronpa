@@ -1,0 +1,25 @@
+[gd_resource type="Theme" format=3 uid="uid://ct6hwnhjbnkuo"]
+
+[ext_resource type="FontFile" uid="uid://31ps8affi4qb" path="res://assets/ui/fonts/SourceSans3-Medium.ttf" id="1_gim53"]
+[ext_resource type="FontFile" uid="uid://bgric25x1dc0q" path="res://assets/ui/fonts/SourceSans3-Light.ttf" id="2_qjnwp"]
+[ext_resource type="FontFile" uid="uid://cm8nwcus647g7" path="res://assets/ui/fonts/HighSchoolUsaSans.ttf" id="3_okgfi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5x6r"]
+bg_color = Color(0.04303915, 0.043039158, 0.04303913, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.003519166, 0.0035191693, 0.0035191625, 1)
+shadow_color = Color(0, 0, 0, 0.64705884)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[resource]
+Label/fonts/font = ExtResource("1_gim53")
+Light/base_type = &"Label"
+Light/constants/line_spacing = -14
+Light/fonts/font = ExtResource("2_qjnwp")
+Panel/styles/panel = SubResource("StyleBoxFlat_b5x6r")
+Title/base_type = &"Label"
+Title/fonts/font = ExtResource("3_okgfi")
