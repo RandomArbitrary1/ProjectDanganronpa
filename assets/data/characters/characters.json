@@ -3,27 +3,35 @@
 "dislikes":"Being alone","height":"1.68 cm","birth_date":"2 june",
 "sprites":{"neutral":"res://assets/textures/characters/shion/neutral.png",
 "point":"res://assets/textures/characters/shion/point.png"}},
+
 "nori":{"name":"Noriyuki Wato","talent":"Ultimate ???","sex":"Male","likes":"Optimism",
 "dislikes":"Pessimism","height":"1.75 cm","birth_date":"25 february",
 "sprites":{"neutral":"res://assets/textures/characters/nori/neutral.png"}},
+
 "yuito":{"name":"Yuito Haruki","talent":"Ultimate Dancer","sex":"Female","likes":"Hot sauce",
 "dislikes":"Gore, Horror","height":"1.65 cm","birth_date":"11 october",
 "sprites":{"neutral":"res://assets/textures/characters/yuito/neutral.png"}},
+
 "raito":{"name":"Raito Rito","talent":"Ultimate Electrician","sex":"Male","likes":"Determination",
 "dislikes":"Giving up","height":"1.82 cm","birth_date":"8 march",
 "sprites":{"neutral":"res://assets/textures/characters/raito/neutral.png"}},
+
 "ayuka":{"name":"Ayuka Hozumi","talent":"Ultimate Scientist","sex":"Female","likes":"Focusing",
 "dislikes":"Noisy/busy places","height":"1.70 cm","birth_date":"21 december",
 "sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
+
 "shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Student","sex":"Male","likes":"Radiophysics",
 "dislikes":"Not working","height":"1.71 cm","birth_date":"29 januari",
 "sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
+
 "rikuno":{"name":"Rikuno Yukami","talent":"Ultimate Mercenary","sex":"Female","likes":"Firearms",
 "dislikes":"West Europe","height":"1.76 cm","birth_date":"12 may",
 "sprites":{"neutral":"res://assets/textures/characters/rikuno/neutral.png"}},
+
 "tenga":{"name":"Tenga Koaki","talent":"Ultimate Fisher","sex":"Male","likes":"Animals",
 "dislikes":"Rainy days","height":"1.72 cm","birth_date":"24 july",
 "sprites":{"neutral":"res://assets/textures/characters/tenga/neutral.png"}},
+
 "naeri":{"name":"Naeri Enokida","talent":"Ultimate DJ","sex":"Female","likes":"Booze",
 "dislikes":"Waiting","height":"1.65 cm","birth_date":"18 october",
 "sprites":{"neutral":"res://assets/textures/characters/naeri/neutral.png"}}

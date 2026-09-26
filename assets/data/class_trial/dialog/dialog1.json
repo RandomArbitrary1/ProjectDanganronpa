@@ -1,53 +1,91 @@
 {
 	"dialog": [
 		{
+			"flags": [],
+			"song": "dawn",
+			"type": "music"
+		},
+		{
 			"character": "shion",
 			"content": "The class trial actually started, now who could have killed Shuuto?",
-			"expression": "sad",
+			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
-			"character": "yuito",
+			"character": "tenga",
 			"content": "How do we find out who did it? I have no clue what to do, I've never done this before",
-			"expression": "happy",
+			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
-			"character": "raito",
+			"character": "naeri",
 			"content": "I would guess think like one. So to find the culprit you gotta ask yourself...",
-			"expression": "angry",
+			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
-			"character": "raito",
+			"character": "naeri",
 			"content": "If I was the culprit how would I have done it?",
-			"expression": "angry",
+			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "nori",
 			"content": "That's a good start, but more importantly. Let's discuss a topic we can all think about.",
-			"expression": "happy",
+			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
-			"character": "nori",
+			"character": "rikuno",
 			"content": "Let's start with the murder weapon, that shouldn't be too hard.",
-			"expression": "happy",
+			"expression": "neutral.png",
 			"flags": [],
+			"type": "text"
+		},
+		{
+			"enabled": true,
+			"file": "res://assets/textures/CG/first_victim.jpg",
+			"flags": [],
+			"type": "cg"
+		},
+		{
+			"character": "shion",
+			"content": "The murder weapon couldn't be a long distance away from the body.",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "The murder weapon... I think I know what it could've been!",
-			"expression": "angry",
-			"flags": [],
+			"content": "If I know the reason why the victim died, I can point out the murder weapon too!",
+			"expression": "neutral.png",
+			"flags": ["thought"],
 			"type": "text"
+		},
+		{
+			"enabled": false,
+			"file": "",
+			"flags": [],
+			"type": "cg"
+		},
+		{
+			"character": "shion",
+			"content": "It might not be clear, but I refuse to let that stop me. Let's figure the weapon out!",
+			"expression": "neutral.png",
+			"flags": ["thought"],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"song": "trial_debate1",
+			"type": "music"
 		}
 	]
 }

@@ -22,26 +22,23 @@ var camera = null
 @onready var cg_fade: TextureRect = $CG_fade
 @onready var cg_anim: AnimationPlayer = $CG_anim
 @onready var cg_fade_anim: AnimationPlayer = $CG_fade_anim
+
 const idea = preload("uid://cm4ro1uwswy2a")
 const shock = preload("uid://v3ccuuxy11kt")
-
-
-
 var option_inactive = preload("res://assets/ui/dialog/choice.png")
 var option_active = preload("res://assets/ui/dialog/choice_active.png")
-
 var character_info = preload("res://assets/data/characters/characters.json").data
-var dialog = null
-var line = 0
-var tween = null
-var name_size = 0
-var leave = false
-var cg_state = false
 
+var dialog = null
+var tween = null
 var mouse_old = null
+var leave = false
+var optioning = false
+var cg_state = false
+var line = 0
+var name_size = 0
 var option_tab = 0
 var option_tab_max = 0
-var optioning = false
 
 func _ready() -> void:
 	$Choice/Option.queue_free()
@@ -56,6 +53,7 @@ func next(): # Next dialog line
 		
 		if current.type == "text": # Type of dialog node. This is a text dialog node
 			box.visible_ratio = 0.0
+			
 			if full_name.text != character_info[current.character].name and line != 0:
 				switch.play("Switch")
 				
@@ -70,6 +68,7 @@ func next(): # Next dialog line
 				
 			name_size = full_name.get_minimum_size().x+180
 			box.text = current.content
+			box.visible = true # Placed here otherwise music node makes box not visible
 			
 			for i in current.flags:
 				if i == "thought":
@@ -84,7 +83,7 @@ func next(): # Next dialog line
 					sfx_dialog.play()
 				elif i == "rage":
 					dialog_anim.play("rage")
-			if line == 0 and dialog == file.data.dialog:
+			if line == 0 and dialog == file.data.dialog: # line == 0 ignores box visible if music node is present.
 				await anim.animation_finished
 				box.visible = true
 				
@@ -105,6 +104,7 @@ func next(): # Next dialog line
 			Music.switch("res://assets/audio/music/" + current.song + ".mp3")
 			line += 1
 			next()
+			
 		elif current.type == "sfx":
 			sfx.stream = load(current.file)
 			sfx.play()
