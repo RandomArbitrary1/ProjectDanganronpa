@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		dialog.visible = true
 		camera_3d.play("RESET")
 	if intro.started:
-		class_trial_main.start_dialog()
+		class_trial_main.next_process()
 		intro.started = false
 
 func _on_button_pressed() -> void:

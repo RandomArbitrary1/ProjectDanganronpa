@@ -2,11 +2,11 @@
 "music":"trial_debate1",
 "dialog":[
 {"character":"shion","expression":"sad","content":"I'm not the killer!"},{
-"character":"nori","expression":"focus","content":"We can't think of anyone else other than you..."},{
+"character":"tenga","expression":"focus","content":"We can't think of anyone else other than you..."},{
 "character":"ayuka","expression":"determined","content":"...who could've filmed that video."},{
 "character":"shion","expression":"determined","content":"Tell us why it couldn't be you!"},{
-"character":"yuito","expression":"normal","content":"Why? Is the hempbag the proof?"},{
-"character":"raito","expression":"focus","content":"Is the hospital gown she was wearing suspicious?"},{
+"character":"naeri","expression":"normal","content":"Why? Is the hempbag the proof?"},{
+"character":"rikuno","expression":"focus","content":"Is the hospital gown she was wearing suspicious?"},{
 "character":"nori","expression":"determined","content":"Just from that video"},{
 "character":"ayuka","expression":"sad","content":"Just from that camera angle!?"},{
 "character":"yuito","expression":"angry","content":"Please forgive me already!"}],

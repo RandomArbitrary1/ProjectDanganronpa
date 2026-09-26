@@ -44,11 +44,16 @@ func debate():
 		music.stop()
 	preparation.visible = false
 	
-func start_dialog():
-	state = "dialog"
+func next_process():
 	music.stop()
-	dialog.start()
 	camera_3d.fov(25)
+	
+	var process = structure[structure_line]
+	var parent = process.get_base_dir().get_file()
+	if parent == "dialog":
+		state = "dialog"
+		dialog.file = JsonParse.load_json(process)
+		dialog.start()
 func dialog_process(delta):
 	var name_ch = dialog.nameplate.get_node("full_name").text
 	var key = null
