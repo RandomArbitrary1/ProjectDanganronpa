@@ -299,7 +299,7 @@ func reload_list():
 			if file:
 				new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i) 
 	
 func run_options(i, item_data):
 	i.get_node(\"Panel/Flags\").pressed.connect(func():

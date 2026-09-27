@@ -694,7 +694,6 @@ text = "???"
 autowrap_mode = 3
 
 [node name="Gifts" type="Control" parent="Screen/Lists" unique_id=2132885470]
-visible = false
 clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
@@ -737,672 +736,20 @@ patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
 
-[node name="Item2" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=2126084465]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item2" unique_id=96740824]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
+[node name="Icon" type="TextureRect" parent="Screen/Lists/Gifts/Items/Item" unique_id=109412003]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -104.0
+offset_right = 100.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item3" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=972058764]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item3" unique_id=1278374808]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item4" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=2037466551]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item4" unique_id=730519943]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item5" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=2143546307]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item5" unique_id=1920887102]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item6" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1895709459]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item6" unique_id=1369289398]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item7" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=2016891606]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item7" unique_id=363293089]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item8" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1158621217]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item8" unique_id=910564494]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item9" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1470817982]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item9" unique_id=580446700]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item10" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=117777922]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item10" unique_id=989996328]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item11" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=102089707]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item11" unique_id=1068833855]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item12" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1068270463]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item12" unique_id=439876999]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item13" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1132256818]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item13" unique_id=897824455]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item14" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1747914862]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item14" unique_id=1402064472]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item15" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=316354334]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item15" unique_id=750326116]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item16" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=2145353934]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item16" unique_id=587898436]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item17" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1463055027]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item17" unique_id=1795024873]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item18" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=384133369]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item18" unique_id=548509715]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item19" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=228475928]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item19" unique_id=900158978]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item20" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=901081926]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item20" unique_id=2055356429]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item21" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=879950017]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item21" unique_id=1658292173]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item22" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=469902904]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item22" unique_id=2002409119]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item23" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=1715021960]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item23" unique_id=1846195919]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Item24" type="NinePatchRect" parent="Screen/Lists/Gifts/Items" unique_id=173388700]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("3_5gwyl")
-region_rect = Rect2(0, 0, 116, 110)
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/Gifts/Items/Item24" unique_id=777997778]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -9.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_fd50p")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
 
 [node name="Info" type="ColorRect" parent="Screen/Lists/Gifts" unique_id=1677625937]
 layout_mode = 0
@@ -1452,15 +799,22 @@ anchors_preset = 0
 offset_right = 1840.0
 offset_bottom = 872.0
 
+[node name="Panel" type="Panel" parent="Screen/Lists/Report" unique_id=933513143]
+layout_mode = 0
+offset_right = 1840.0
+offset_bottom = 120.0
+theme = ExtResource("8_y0c8w")
+
 [node name="Items" type="GridContainer" parent="Screen/Lists/Report" unique_id=1426697683]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 48.0
-offset_right = 298.0
-offset_bottom = 2508.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1816.0
+offset_bottom = 131.0
+columns = 16
 
 [node name="Item" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=204773500]
-custom_minimum_size = Vector2(123, 123)
+custom_minimum_size = Vector2(113, 113)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_5gwyl")
@@ -1522,8 +876,8 @@ stretch_mode = 5
 
 [node name="Info" type="ColorRect" parent="Screen/Lists/Report" unique_id=1542270339]
 layout_mode = 0
-offset_left = 320.0
-offset_right = 1144.0
+offset_top = 120.0
+offset_right = 1096.0
 offset_bottom = 872.0
 color = Color(0, 0, 0, 0.49803922)
 
@@ -1531,7 +885,7 @@ color = Color(0, 0, 0, 0.49803922)
 layout_mode = 0
 offset_left = 24.0
 offset_top = 6.0
-offset_right = 800.0
+offset_right = 1072.0
 offset_bottom = 96.0
 theme = ExtResource("8_y0c8w")
 theme_type_variation = &"Title"
@@ -1543,7 +897,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 24.0
 offset_top = 96.0
-offset_right = 800.0
+offset_right = 1072.0
 offset_bottom = 440.0
 theme = ExtResource("8_y0c8w")
 
@@ -1709,10 +1063,10 @@ vertical_alignment = 1
 
 [node name="Talent" type="Label" parent="Screen/Lists/Report/Info" unique_id=130757033]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 718.0
-offset_right = 784.0
-offset_bottom = 832.0
+offset_left = 336.0
+offset_top = 624.0
+offset_right = 1080.0
+offset_bottom = 738.0
 theme = ExtResource("8_y0c8w")
 theme_type_variation = &"Title"
 theme_override_font_sizes/font_size = 90
