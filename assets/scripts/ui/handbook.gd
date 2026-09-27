@@ -5,7 +5,10 @@ extends TextureRect
 @onready var lists = $Screen/Lists
 
 var character_info = preload("res://assets/data/characters/characters.json").data
+var gifts_info = preload("res://assets/data/gifts.json").data
 @onready var report_item: NinePatchRect = $Screen/Lists/Report/Items/Item.duplicate()
+@onready var gift_item: NinePatchRect = $Screen/Lists/Gifts/Items/Item.duplicate()
+
 
 
 var original_mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -30,15 +33,26 @@ func _ready() -> void:
 		tab_data.append({"offset":i.get_node("Items").position.y,"size":size_y+4,"fit":fit})
 	
 	$Screen/Lists/Report/Items/Item.queue_free()
+	$Screen/Lists/Gifts/Items/Item.queue_free()
+	
 	
 	#report card
 	for i in character_info.keys().size():
 		var key = character_info.keys()[i]
 		var item = report_item.duplicate()
 		item.name = key
-		if ResourceLoader.exists("res://assets/textures/characters/" + key + "/neutral.png"):
-			item.get_node("Preview/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
+		item.get_node("Preview/Character").texture = load(character_info[key].sprites.neutral)
 		lists.get_node("Report/Items").add_child(item)
+	
+	#gifts
+	for i in gifts_info.keys().size():
+		var key = gifts_info.keys()[i]
+		print(key)
+		var item = gift_item.duplicate()
+		item.name = key
+		if ResourceLoader.exists(gifts_info[key].image):
+			item.get_node("Icon").texture = load(gifts_info[key].image)
+		lists.get_node("Gifts/Items").add_child(item)
 
 func _process(delta: float) -> void:
 	self.self_modulate = self.self_modulate.lerp((tabs.get_child(tab).self_modulate+Color(0,0,0,1))*Color(.5,.5,.5), 20*delta)
@@ -135,7 +149,7 @@ func _process(delta: float) -> void:
 	#report card
 	
 	if tab == 3:
-		var list_tab =  inside_tab.y * x_range + inside_tab.x
+		var list_tab =  inside_tab.x
 		var key =  lists.get_node("Report/Items").get_child(list_tab).name
 		if lists.get_node("Report/Info/Name").text != character_info[key].name:
 			lists.get_node("Report/Info/Name").text = character_info[key].name

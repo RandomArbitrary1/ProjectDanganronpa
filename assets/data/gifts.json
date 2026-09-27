@@ -2,7 +2,7 @@
 	"strawberry_shortcake":
 	{
 	"name":"Strawberry shortcake",
-	"image":"",
+	"image":"res://assets/textures/gifts/shortcake.png",
 	"rarity":0,
 	"love":[],
 	"like":[],
@@ -83,6 +83,16 @@
 	{
 	"name":"Multimeter",
 	"image":"",
+	"rarity":0,
+	"love":[],
+	"like":[],
+	"dislike":[],
+	"hate":[]
+	},
+	"ballgag":
+	{
+	"name":"Ballgag",
+	"image":"res://assets/textures/gifts/ballgag.png",
 	"rarity":0,
 	"love":[],
 	"like":[],
