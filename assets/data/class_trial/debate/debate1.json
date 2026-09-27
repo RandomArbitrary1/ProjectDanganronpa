@@ -1,14 +1,14 @@
 {
 "music":"trial_debate1",
 "dialog":[
-{"character":"shion","expression":"sad","content":"I'm not the killer!"},{
-"character":"tenga","expression":"focus","content":"We can't think of anyone else other than you..."},{
-"character":"ayuka","expression":"determined","content":"...who could've filmed that video."},{
-"character":"shion","expression":"determined","content":"Tell us why it couldn't be you!"},{
-"character":"naeri","expression":"normal","content":"Why? Is the hempbag the proof?"},{
-"character":"rikuno","expression":"focus","content":"Is the hospital gown she was wearing suspicious?"},{
-"character":"nori","expression":"determined","content":"Just from that video"},{
-"character":"ayuka","expression":"sad","content":"Just from that camera angle!?"},{
-"character":"yuito","expression":"angry","content":"Please forgive me already!"}],
+{"character":"nori","expression":"sad","content":"So what was the victim's cause of death?"},{
+"character":"naeri","expression":"focus","content":"It has to be something that made them lose blood."},{
+"character":"ayuka","expression":"determined","content":"Perhaps something blunt."},{
+"character":"shion","expression":"determined","content":"Considering the scene of the crime..."},{
+"character":"naeri","expression":"normal","content":"...And the fact the body was covered by the shelves..."},{
+"character":"rikuno","expression":"focus","content":"It probably was just the kitchen knife."},{
+"character":"yuito","expression":"determined","content":"There's no way anyone would kill someone!"},{
+"character":"tenga","expression":"sad","content":"It's just too insane! Too cruel!"},{
+"character":"shion","expression":"angry","content":"sybau"}],
 "retry_monologue":["What she just said was very off.","I know for a fact it was her!"]
 }

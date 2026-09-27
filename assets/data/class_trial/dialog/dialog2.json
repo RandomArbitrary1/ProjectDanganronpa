@@ -7,7 +7,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Noriyuki, what you said is exactly it!",
+			"content": "Rikuno, what you said is exactly it!",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
@@ -20,7 +20,7 @@
 			"type": "text"
 		},
 		{
-			"character": "nori",
+			"character": "rikuno",
 			"content": "Ahh, seems I was correct after all.",
 			"expression": "neutral.png",
 			"flags": [],
@@ -28,14 +28,54 @@
 		},
 		{
 			"character": "naeri",
-			"content": "A kitchen knife... But how did the killer get their hands on one? The kitchen is closed after 19:00.",
+			"content": "But how is the murder weapon a kitchen knife? The only thing around the body were shelves.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "tenga",
+			"content": "Hmm you do make a good point.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"enabled": true,
+			"file": "res://assets/textures/cg/first_victim.jpg",
+			"flags": [],
+			"type": "cg"
+		},
+		{
+			"character": "shion",
+			"content": "Well the scene of the crime shows the victim lying down in a pool of blood.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "With none other than a kitchen knife sticking out of the victim's body.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"enabled": false,
+			"file": "",
+			"flags": [],
+			"type": "cg"
+		},
+		{
+			"character": "shion",
+			"content": "We can ascertain that the victim died of blood loss. Because they got stabbed.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "rikuno",
-			"content": "Hmm you do make a good point.",
+			"content": "HOLY SHIT THIS IS THE ENDDD NOOOOO NIGGGGGGGGGGGGGGGGG",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
