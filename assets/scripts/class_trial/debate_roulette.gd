@@ -44,7 +44,8 @@ func _process(delta: float) -> void:
 	
 	timer_label.text = "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 	crosshair.position = get_local_mouse_position() - crosshair.size / 2
-	
+	if state == "invisible":
+		visible = false
 	if state == "debate":
 		timer -= delta
 		debate_process(delta)
@@ -123,10 +124,12 @@ func debate_camera_reset():
 	state = "debate"
 	state_timer = 0
 	camera_node.play("RESET")
-
 	
 func preview_process(delta):
 	debate_start()
 	
 func finished():
 	class_trial_main.next_process()
+	
+func hide_self():
+	anim.play("hide")

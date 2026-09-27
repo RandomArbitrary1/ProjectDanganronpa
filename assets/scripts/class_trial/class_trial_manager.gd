@@ -38,8 +38,9 @@ func prepare():
 	preparation.visible = true
 	
 func debate():
-	if !debate_roulette.visible:
+	if debate_roulette.state == "nothing":
 		debate_roulette.visible = true
+		debate_roulette.state = "something"
 		debate_roulette.start()
 		music.stop()
 	preparation.visible = false
