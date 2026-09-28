@@ -108,8 +108,8 @@ func _ready() -> void:
 		
 	)
 	navigation.get_node(\"Save_as\").pressed.connect(func():
-		file_dialog_save.visible = true
 		file_dialog.root_subfolder = \"res://assets/data/\"
+		file_dialog_save.visible = true
 	)
 	context_menu.id_pressed.connect(func(id):
 		if id == 0:
@@ -375,8 +375,8 @@ func run_options(i, item_data):
 		i.get_node(\"Panel/Load\").pressed.connect(func():
 			to_open = \"cg\" + str(item_data.id)
 			file_dialog.set_filters([\"*.png,*.jpg\"])
-			file_dialog.visible = true
 			file_dialog.root_subfolder = \"res://assets/textures/CG/\"
+			file_dialog.visible = true
 		)
 		file_dialog.file_selected.connect(func(path):
 			if to_open == \"cg\" + str(item_data.id):
@@ -387,9 +387,10 @@ func run_options(i, item_data):
 	elif item_data.type == \"sfx\":
 		i.get_node(\"Panel/Load\").pressed.connect(func():
 			to_open = \"sfx\" + str(item_data.id)
+			file_dialog.root_subfolder = \"res://assets/audio/sfx/\"
 			file_dialog.set_filters([\"*.mp3,*.wav\"])
 			file_dialog.visible = true
-			file_dialog.root_subfolder = \"res://assets/audio/sfx/\"
+			
 		)
 		file_dialog.file_selected.connect(func(path):
 			if to_open == \"sfx\" + str(item_data.id):
@@ -403,8 +404,8 @@ func run_options(i, item_data):
 		i.get_node(\"Panel/Load\").pressed.connect(func():
 			to_open = \"bullet\" + str(item_data.id)
 			file_dialog.set_filters([\"*.json\"])
-			file_dialog.visible = true
 			file_dialog.root_subfolder = \"res://assets/data/\"
+			file_dialog.visible = true
 		)
 		file_dialog.file_selected.connect(func(path):
 			item_data.file = path
