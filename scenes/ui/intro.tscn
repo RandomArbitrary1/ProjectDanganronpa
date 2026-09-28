@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dwxyr2hgg7xe8"]
+
+[ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="1_i8df0"]
+[ext_resource type="Script" uid="uid://c0yws84mpfmx7" path="res://assets/scripts/cut_scenes/intro.gd" id="1_j6b1i"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ocahe"]
+
+[node name="Intro" type="Control" unique_id=473734777]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_j6b1i")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1263480170]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_ocahe")
+
+[node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("1_i8df0")]
+layout_mode = 1

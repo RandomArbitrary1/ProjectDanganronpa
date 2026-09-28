@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://brvr6tpasajf1" path="res://assets/scripts/ui/title/title_ui.gd" id="1_4s1lg"]
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="1_5y5n0"]
-[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="3_kjnyq"]
+[ext_resource type="Texture2D" uid="uid://dd8powc5qfetb" path="res://assets/textures/ui/title/background.png" id="2_edp21"]
+[ext_resource type="FontFile" uid="uid://c2yaerphahb1o" path="res://assets/ui/fonts/Serpentine BoldOblique.ttf" id="3_iualr"]
 [ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="4_ufw8e"]
 [ext_resource type="AudioStream" uid="uid://cjr0c11lnhgqg" path="res://assets/audio/sfx/ui/confirm.mp3" id="5_iualr"]
 [ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/themes/menu_theme.tres" id="6_iualr"]
@@ -156,6 +157,15 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4s1lg")
 
+[node name="Background" type="TextureRect" parent="." unique_id=1090467533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_edp21")
+
 [node name="revolver" type="TextureRect" parent="." unique_id=302648570]
 self_modulate = Color(1, 1, 1, 0.3882353)
 layout_mode = 0
@@ -173,18 +183,20 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -736.0
-offset_top = 128.0
+offset_top = 26.0
 offset_right = 736.0
-offset_bottom = 280.0
+offset_bottom = 178.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(1.8049032e-07, 0.14272174, 0.21646217, 1)
-theme_override_constants/shadow_offset_x = 20
-theme_override_constants/shadow_offset_y = 11
-theme_override_fonts/font = ExtResource("3_kjnyq")
-theme_override_font_sizes/font_size = 126
-text = "PROJECT: DANGANRONPA"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_iualr")
+theme_override_font_sizes/font_size = 140
+text = "Danganronpa:
+S.P.E.S."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=468714000]
 libraries/ = SubResource("AnimationLibrary_pgqlf")
@@ -225,7 +237,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_default_cursor_shape = 2
 theme = ExtResource("6_iualr")
 theme_override_font_sizes/font_size = 55
-text = "Start first class trial"
+text = "Start New Game"
 
 [node name="Continue" type="Button" parent="Panel" unique_id=1234133301]
 layout_mode = 1
@@ -263,7 +275,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_default_cursor_shape = 2
 theme = ExtResource("6_iualr")
 theme_override_font_sizes/font_size = 55
-text = "Go to Factory area"
+text = "Go to Class trial"
 
 [node name="Quit" type="Button" parent="Panel" unique_id=1620383345]
 layout_mode = 1
