@@ -3,8 +3,9 @@ extends Control
 @export var file: Resource 
 var active: bool
 var camera = null
+var characters = null
 @onready var box = self.get_node("Bar/Dialog")
-@onready var anim = self.get_node("Anims")
+@onready var anim : AnimationPlayer = self.get_node("Anims")
 @onready var bullet = self.get_node("Bar/Bullet")
 @onready var nameplate = self.get_node("Bar/Name")
 @onready var switch = self.get_node("Bar/Switch")
@@ -28,6 +29,7 @@ const shock = preload("uid://v3ccuuxy11kt")
 var option_inactive = preload("res://assets/ui/dialog/choice.png")
 var option_active = preload("res://assets/ui/dialog/choice_active.png")
 var character_info = preload("res://assets/data/characters/characters.json").data
+const character = preload("res://assets/objects/characters/character.tscn")
 
 var dialog = null
 var tween = null
@@ -43,6 +45,7 @@ var option_tab_max = 0
 func _ready() -> void:
 	$Choice/Option.queue_free()
 	camera = get_tree().get_first_node_in_group("Camera_room")
+	characters = get_tree().get_first_node_in_group("Characters_interact")
 	
 func next(): # Next dialog line
 	if mouse_old:
@@ -104,7 +107,21 @@ func next(): # Next dialog line
 			Music.switch("res://assets/audio/music/" + current.song + ".mp3")
 			line += 1
 			next()
-			
+		elif current.type == "character":
+			var new_char = character.instantiate()
+			new_char.name = current.character
+			new_char.character = current.character
+			new_char.expression = current.expression
+			characters.add_child(new_char)
+			new_char.position = Vector3(current.x,current.y,current.z)
+			new_char.get_node("Anim").play("Enter")
+			await new_char.get_node("Anim").animation_finished
+			line += 1
+			next()
+		elif current.type == "room":
+			RoomSwitch.switch(current.file, current.name)
+			line += 1
+			next()
 		elif current.type == "sfx":
 			sfx.stream = load(current.file)
 			sfx.play()

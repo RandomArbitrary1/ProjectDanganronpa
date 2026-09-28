@@ -18,6 +18,60 @@ albedo_texture = ExtResource("1_vg3sa")
 [sub_resource type="BoxShape3D" id="BoxShape3D_vg3sa"]
 size = Vector3(1, 0.001, 2)
 
+[sub_resource type="Animation" id="Animation_vg3sa"]
+resource_name = "Enter"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.4, 1.4), Vector3(1.4, 1.4, 1.4)]
+}
+
+[sub_resource type="Animation" id="Animation_7x4ey"]
+resource_name = "Leave"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.4, 1.4, 1.4), Vector3(0, 1.4, 1.4)]
+}
+
+[sub_resource type="Animation" id="Animation_usm6v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.4, 1.4, 1.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x4ey"]
+_data = {
+&"Enter": SubResource("Animation_vg3sa"),
+&"Leave": SubResource("Animation_7x4ey"),
+&"RESET": SubResource("Animation_usm6v")
+}
+
 [node name="Character" type="MeshInstance3D" unique_id=2135237569]
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_k08ah")
@@ -29,3 +83,6 @@ script = ExtResource("2_usm6v")
 [node name="Click" type="CollisionShape3D" parent="Area3D" unique_id=257472171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.536743e-07, -4.3711385e-08)
 shape = SubResource("BoxShape3D_vg3sa")
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=1708033383]
+libraries/ = SubResource("AnimationLibrary_7x4ey")
