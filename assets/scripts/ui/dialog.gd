@@ -86,6 +86,8 @@ func next(): # Next dialog line
 					sfx_dialog.play()
 				elif i == "rage":
 					dialog_anim.play("rage")
+				elif i == "unknown":
+					full_name.text = "???"
 			if line == 0 and dialog == file.data.dialog: # line == 0 ignores box visible if music node is present.
 				await anim.animation_finished
 				box.visible = true
