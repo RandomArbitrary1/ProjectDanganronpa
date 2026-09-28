@@ -31,6 +31,8 @@ script/source = "extends Control
 @onready var music_line = list.get_node(\"Music\").duplicate()
 @onready var bullet_line = list.get_node(\"Bullet\").duplicate()
 @onready var choice_line = list.get_node(\"Choice\").duplicate()
+@onready var character_line = list.get_node(\"Character\").duplicate()
+@onready var room_line = list.get_node(\"Room\").duplicate()
 @onready var cg_line = list.get_node(\"CG\").duplicate()
 @onready var sfx_line = list.get_node(\"SFX\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
@@ -53,8 +55,10 @@ func _ready() -> void:
 	dialogs_popup.close_requested.connect(dialogs_popup.hide)
 	
 	dialog_line.get_node(\"Character/Name\").clear()
+	character_line.get_node(\"Panel/Name\").clear()
 	for key in characters.keys():
 		dialog_line.get_node(\"Character/Name\").add_item(key)
+		character_line.get_node(\"Panel/Name\").add_item(key)
 	
 	navigation.get_node(\"Choose\").pressed.connect(func():
 		dialogs_popup.visible = true
@@ -152,6 +156,16 @@ func _ready() -> void:
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"sfx\",\"file\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 16:
+			var new = room_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"room\",\"file\":\"\",\"name\":\"\",\"dialog\":\"\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 17:
+			var new = character_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"character\",\"character\":\"shion\",\"expression\":\"\",\"x\":0,\"y\":0,\"z\":0,\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
 	file_dialog.file_selected.connect(func(path):
 		if to_open == \"data\":
@@ -227,9 +241,27 @@ func reload_list():
 	for i in data[current_dialog]:
 		if i.type == \"text\":
 			var new = dialog_line.duplicate()
+			new.get_node(\"Character/Emotion\").clear()
+			for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + i.character):
+				if expr.get_extension() == \"png\":
+					new.get_node(\"Character/Emotion\").add_item(expr)
 			new.get_node(\"Panel/TextEdit\").text = i.content
 			new.get_node(\"Character/Name\").selected = range(new.get_node(\"Character/Name\").item_count).map(func(ii): return new.get_node(\"Character/Name\").get_item_text(ii)).find(i.character)
 			new.get_node(\"Character/Emotion\").selected = range(new.get_node(\"Character/Emotion\").item_count).map(func(ii): return new.get_node(\"Character/Emotion\").get_item_text(ii)).find(i.expression)
+			i[\"eline\"] = new
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"character\":
+			var new = character_line.duplicate()
+			new.get_node(\"Panel/Emotion\").clear()
+			for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + i.character):
+				if expr.get_extension() == \"png\":
+					new.get_node(\"Panel/Emotion\").add_item(expr)
+			new.get_node(\"Panel/Name\").selected = range(new.get_node(\"Panel/Name\").item_count).map(func(ii): return new.get_node(\"Panel/Name\").get_item_text(ii)).find(i.character)
+			new.get_node(\"Panel/Emotion\").selected = range(new.get_node(\"Panel/Emotion\").item_count).map(func(ii): return new.get_node(\"Panel/Emotion\").get_item_text(ii)).find(i.expression)
+			new.get_node(\"Panel/X\").text = str(i.x)
+			new.get_node(\"Panel/Y\").text = str(i.y)
+			new.get_node(\"Panel/Z\").text = str(i.z)
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
@@ -259,6 +291,16 @@ func reload_list():
 			if \"file\" in i and ResourceLoader.exists(i.file):
 				new.get_node(\"Panel/Load\").text = i.file
 				new.get_node(\"Image/TextureRect\").texture = load(i.file)
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"room\":
+			var new = room_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Panel/Name\").text = i.name
+			if \"file\" in i and ResourceLoader.exists(i.file):
+				new.get_node(\"Panel/Load\").text = i.file
+			if \"dialog\" in i and ResourceLoader.exists(i.dialog):
+				new.get_node(\"Panel/Load\").text = i.dialog
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"sfx\":
@@ -323,7 +365,11 @@ func run_options(i, item_data):
 		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
 			item_data.content = i.get_node(\"Panel/TextEdit\").text
 		)
-		i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
+		if ResourceLoader.exists(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression):
+			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
+		else:
+			item_data.expression = \"neutral.png\"
+			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		i.get_node(\"Character/Name\").item_selected.connect(func(ind):
 			item_data.character = i.get_node(\"Character/Name\").get_item_text(ind)
 			i.get_node(\"Character/Emotion\").clear()
@@ -335,6 +381,30 @@ func run_options(i, item_data):
 		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
 			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
 			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
+		)
+	elif item_data.type == \"character\":
+		i.get_node(\"Panel/Emotion\").clear()
+		for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
+			if expr.get_extension() == \"png\":
+				i.get_node(\"Panel/Emotion\").add_item(expr)
+		i.get_node(\"Panel/X\").text_changed.connect(func():
+			item_data.x = float(i.get_node(\"Panel/X\").text)
+		)
+		i.get_node(\"Panel/Y\").text_changed.connect(func():
+			item_data.y = float(i.get_node(\"Panel/Y\").text)
+		)
+		i.get_node(\"Panel/Z\").text_changed.connect(func():
+			item_data.z = float(i.get_node(\"Panel/Z\").text)
+		)
+		i.get_node(\"Panel/Name\").item_selected.connect(func(ind):
+			item_data.character = i.get_node(\"Panel/Name\").get_item_text(ind)
+			i.get_node(\"Panel/Emotion\").clear()
+			for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
+				if expr.get_extension() == \"png\":
+					i.get_node(\"Panel/Emotion\").add_item(expr)
+		)
+		i.get_node(\"Panel/Emotion\").item_selected.connect(func(ind):
+			item_data.expression = i.get_node(\"Panel/Emotion\").get_item_text(ind)
 		)
 	elif item_data.type == \"choice\":
 		i.get_node(\"Panel/Options/Set\").pressed.connect(func():
@@ -367,6 +437,31 @@ func run_options(i, item_data):
 	elif item_data.type == \"music\":
 		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
 			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
+		)
+	elif item_data.type == \"room\":
+		i.get_node(\"Panel/Name\").text_changed.connect(func():
+			item_data.name = i.get_node(\"Panel/Name\").text
+		)
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"room\" + str(item_data.id)
+			file_dialog.set_filters([\"*.tscn\"])
+			file_dialog.root_subfolder = \"res://scenes\"
+			file_dialog.visible = true
+		)
+		i.get_node(\"Panel/Dialog\").pressed.connect(func():
+			to_open = \"roomD\" + str(item_data.id)
+			file_dialog.set_filters([\"*.json\"])
+			file_dialog.root_subfolder = \"res://assets/data\"
+			file_dialog.visible = true
+		)
+		file_dialog.file_selected.connect(func(path):
+			if to_open == \"room\" + str(item_data.id):
+				item_data.file = path
+				i.get_node(\"Panel/Load\").text = path.get_file()
+			if to_open == \"roomD\" + str(item_data.id):
+				item_data.dialog = path
+				if i:
+					i.get_node(\"Panel/Dialog\").text = path.get_file()
 		)
 	elif item_data.type == \"cg\":
 		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
@@ -558,7 +653,7 @@ layout_mode = 0
 offset_left = 552.0
 offset_top = 112.0
 offset_right = 1368.0
-offset_bottom = 1160.0
+offset_bottom = 1088.0
 theme_type_variation = &"panel_bg"
 
 [node name="Dialogs_tabs" type="TabBar" parent="." unique_id=915115297]
@@ -589,6 +684,273 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(120, 0)
 offset_transform_visual_only = false
 theme = ExtResource("1_ol5w5")
+
+[node name="Character" type="HBoxContainer" parent="Items/List" unique_id=1966831039]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme = ExtResource("1_ol5w5")
+
+[node name="Panel" type="Panel" parent="Items/List/Character" unique_id=1721338697]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
+
+[node name="Outline" type="Panel" parent="Items/List/Character/Panel" unique_id=962978155]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Outline"
+
+[node name="Down" type="Button" parent="Items/List/Character/Panel" unique_id=100482593]
+layout_mode = 0
+offset_left = 7.9999924
+offset_top = 7.9999976
+offset_right = 47.999992
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Character/Panel" unique_id=1555270109]
+layout_mode = 0
+offset_left = 55.999985
+offset_top = 7.9999976
+offset_right = 95.999985
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Character/Panel" unique_id=1674002560]
+layout_mode = 0
+offset_left = 103.999985
+offset_top = 7.999998
+offset_right = 143.99998
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Character/Panel" unique_id=1676987292]
+layout_mode = 0
+offset_left = -95.999985
+offset_top = 8.0
+offset_right = -15.999985
+offset_bottom = 70.85714
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Index"
+text = "0"
+horizontal_alignment = 2
+
+[node name="CheckButton" type="CheckButton" parent="Items/List/Character/Panel" unique_id=387029689]
+layout_mode = 0
+offset_left = 152.00003
+offset_top = 8.000011
+offset_right = 360.00003
+offset_bottom = 48.00001
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+button_pressed = true
+text = "Spawn character"
+
+[node name="X" type="LineEdit" parent="Items/List/Character/Panel" unique_id=549489362]
+custom_maximum_size = Vector2(56, -1)
+layout_mode = 0
+offset_left = 608.0
+offset_top = 8.0
+offset_right = 664.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
+placeholder_text = "X"
+
+[node name="Y" type="LineEdit" parent="Items/List/Character/Panel" unique_id=1506987634]
+custom_maximum_size = Vector2(56, -1)
+layout_mode = 0
+offset_left = 672.0
+offset_top = 8.0
+offset_right = 728.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
+placeholder_text = "Y"
+
+[node name="Z" type="LineEdit" parent="Items/List/Character/Panel" unique_id=1409396037]
+custom_maximum_size = Vector2(56, -1)
+layout_mode = 0
+offset_left = 736.0
+offset_top = 8.0
+offset_right = 792.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.93
+theme = ExtResource("1_ol5w5")
+placeholder_text = "Z"
+
+[node name="Name" type="OptionButton" parent="Items/List/Character/Panel" unique_id=1371598968]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 8.000008
+offset_right = 480.0
+offset_bottom = 48.000008
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+clip_text = true
+selected = 0
+fit_to_longest_item = false
+item_count = 5
+popup/item_0/text = "shion"
+popup/item_0/id = 0
+popup/item_1/text = "nori"
+popup/item_1/id = 1
+popup/item_2/text = "yuito"
+popup/item_2/id = 2
+popup/item_3/text = "raito"
+popup/item_3/id = 3
+popup/item_4/text = "ayuka"
+popup/item_4/id = 4
+
+[node name="Emotion" type="OptionButton" parent="Items/List/Character/Panel" unique_id=132656795]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 8.0
+offset_right = 600.0
+offset_bottom = 48.000008
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+clip_text = true
+selected = 0
+fit_to_longest_item = false
+item_count = 1
+popup/item_0/text = "neutral.png"
+popup/item_0/id = 0
+
+[node name="Room" type="HBoxContainer" parent="Items/List" unique_id=6563331]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme = ExtResource("1_ol5w5")
+
+[node name="Panel" type="Panel" parent="Items/List/Room" unique_id=1808847469]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
+
+[node name="Outline" type="Panel" parent="Items/List/Room/Panel" unique_id=277296789]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Outline"
+
+[node name="Down" type="Button" parent="Items/List/Room/Panel" unique_id=285932655]
+layout_mode = 0
+offset_left = 7.9999924
+offset_top = 7.99999
+offset_right = 47.999992
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Room/Panel" unique_id=1361686705]
+layout_mode = 0
+offset_left = 55.999985
+offset_top = 7.99999
+offset_right = 95.999985
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Room/Panel" unique_id=1164775980]
+layout_mode = 0
+offset_left = 103.999985
+offset_top = 7.9999905
+offset_right = 143.99998
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Room/Panel" unique_id=1627889046]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 7.9999886
+offset_right = 273.0
+offset_bottom = 47.99998
+theme = ExtResource("1_ol5w5")
+text = "Room switch"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Room/Panel" unique_id=767898759]
+layout_mode = 0
+offset_left = -95.999985
+offset_top = 8.0
+offset_right = -15.999985
+offset_bottom = 70.85714
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Index"
+text = "0"
+horizontal_alignment = 2
+
+[node name="Name" type="LineEdit" parent="Items/List/Room/Panel" unique_id=555592143]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 8.0
+offset_right = 424.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
+placeholder_text = "Name"
+
+[node name="Load" type="Button" parent="Items/List/Room/Panel" unique_id=681491212]
+layout_mode = 0
+offset_left = 432.00003
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Select room"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
+
+[node name="Dialog" type="Button" parent="Items/List/Room/Panel" unique_id=1744983987]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 8.0
+offset_right = 792.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Select dialog"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
 
 [node name="SFX" type="HBoxContainer" parent="Items/List" unique_id=469161832]
 custom_minimum_size = Vector2(0, 56)
@@ -1193,7 +1555,7 @@ horizontal_alignment = 2
 layout_mode = 0
 offset_left = 216.00002
 offset_top = 8.000004
-offset_right = 792.0
+offset_right = 458.0
 offset_bottom = 48.000004
 mouse_filter = 1
 mouse_default_cursor_shape = 2
@@ -1432,7 +1794,7 @@ icon_alignment = 1
 layout_mode = 0
 offset_left = 152.00003
 offset_top = 8.000011
-offset_right = 366.00003
+offset_right = 368.00003
 offset_bottom = 48.00001
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -1521,6 +1883,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 424.0
 offset_top = 7.9999924
+offset_right = -8.0
 offset_bottom = -8.000008
 grow_horizontal = 2
 grow_vertical = 2
@@ -1557,10 +1920,10 @@ horizontal_alignment = 2
 [node name="Saved" type="Panel" parent="." unique_id=955261081]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1194.2855
-offset_top = 11.428572
-offset_right = 1274.2855
-offset_bottom = 51.428566
+offset_left = 1496.0
+offset_top = 8.0
+offset_right = 1576.0
+offset_bottom = 47.999992
 theme = ExtResource("1_ol5w5")
 
 [node name="Label" type="Label" parent="Saved" unique_id=1260800737]
@@ -1584,9 +1947,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -525.47754
-offset_right = 525.47754
-offset_bottom = 60.425003
+offset_left = -520.0
+offset_right = 520.0
+offset_bottom = 56.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("1_ol5w5")
@@ -1594,9 +1957,9 @@ theme_type_variation = &"nav"
 
 [node name="Load" type="Button" parent="Navigation" unique_id=379565603]
 layout_mode = 0
-offset_left = 13.47753
+offset_left = 7.9999905
 offset_top = 8.0
-offset_right = 144.47752
+offset_right = 143.99998
 offset_bottom = 48.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -1608,9 +1971,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -93.47754
+offset_left = -88.00006
 offset_top = 8.0
-offset_right = -10.477539
+offset_right = -5.0
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
@@ -1624,9 +1987,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -213.4776
+offset_left = -208.00012
 offset_top = 8.0
-offset_right = -101.4776
+offset_right = -96.00012
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
@@ -1640,9 +2003,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -341.47754
+offset_left = -336.00006
 offset_top = 8.0
-offset_right = -221.47754
+offset_right = -216.00006
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
@@ -1656,9 +2019,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -469.47748
+offset_left = -464.0
 offset_top = 8.0
-offset_right = -349.47754
+offset_right = -344.00006
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
@@ -1669,9 +2032,9 @@ icon_alignment = 2
 
 [node name="File" type="Label" parent="Navigation" unique_id=1611597450]
 layout_mode = 0
-offset_left = 149.47752
+offset_left = 151.99998
 offset_top = 8.0
-offset_right = 573.47754
+offset_right = 576.0
 offset_bottom = 48.0
 theme = ExtResource("1_ol5w5")
 text = "N/A"
@@ -1699,7 +2062,7 @@ transparent_bg = false
 oversampling_override = 1.0
 size = Vector2i(229, 360)
 theme = ExtResource("1_ol5w5")
-item_count = 13
+item_count = 11
 item_0/text = "Dialog"
 item_0/id = 100
 item_0/separator = true
@@ -1719,16 +2082,10 @@ item_7/text = "New CG"
 item_7/id = 14
 item_8/text = "New SFX"
 item_8/id = 15
-item_9/text = "Debate"
-item_9/id = 102
-item_9/separator = true
-item_10/text = "New debate dialog"
-item_10/id = 8
-item_11/text = "Case"
-item_11/id = 103
-item_11/separator = true
-item_12/text = "New truth bullet"
-item_12/id = 10
+item_9/text = "New room switch"
+item_9/id = 16
+item_10/text = "New character spawn"
+item_10/id = 17
 
 [node name="Flags" type="Window" parent="." unique_id=644388794]
 oversampling_override = 1.0
