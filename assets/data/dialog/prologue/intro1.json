@@ -179,7 +179,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "I am Shion Fumihiro, the ultimate Spy.",
+			"content": "I am Shion Fumihiro, the Ultimate Spy.",
 			"expression": "neutral.png",
 			"flags": [
 				"idea",
@@ -263,6 +263,13 @@
 				"unknown"
 			],
 			"type": "text"
+		},
+		{
+			"dialog": "",
+			"file": "res://scenes/rooms_fps/school_f1.tscn",
+			"flags": [],
+			"name": "HOLY SHIT A SCRENE TRANSITION !!111!!1!",
+			"type": "room"
 		}
 	]
 }

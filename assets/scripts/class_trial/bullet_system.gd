@@ -11,8 +11,9 @@ extends Control
 @onready var debate_root: Control = $".."
 @onready var crosshair: TextureRect = $"../crosshair"
 @onready var time_lose: AudioStreamPlayer = $"../sfx/time_lose"
-@onready var fired_bullet: RichTextLabel = $FiredBullet
-@onready var fired_bullet_anim: AnimationPlayer = $FiredBullet/anim
+@onready var root_fired_bullet: Control = $RootFiredBullet
+@onready var fired_bullet: RichTextLabel = $RootFiredBullet/FiredBullet
+@onready var fired_bullet_anim: AnimationPlayer = $RootFiredBullet/FiredBullet/anim
 @onready var break_sfx: AudioStreamPlayer = $"../sfx/break"
 @onready var success_anim: AnimationPlayer = $"../SuccesVfx/anim"
 @onready var words: Control = $"../Words"
@@ -28,14 +29,14 @@ func truth_shoot():
 	var mouse_pos = get_viewport().get_mouse_position()
 	if downtime.time_left > 0.0:
 		return
-	target_location = get_viewport().get_mouse_position()
+	target_location = mouse_pos
 	crosshair_anim.stop()
 	crosshair_anim.play("shoot")
 	big_gunshot.play()
 	shoot_anim.stop()
 	shoot_anim.play("shoot")
 	downtime.start(2.0)
-	fired_bullet.global_position = target_location
+	root_fired_bullet.position = target_location
 	fired_bullet_anim.play("shoot_target")
 	
 func white_noise_shoot():
@@ -50,8 +51,10 @@ func white_noise_shoot():
 		debate_root.timer -= 15
 		time_lose.play()
 func check_hit():
-	succes_hit()
-	words.visible = false
+	for w in words.get_children():
+		if Rect2(w.global_position, w.size).has_point(target_location):
+			
+			succes_hit()
 	
 func _on_downtime_timeout() -> void:
 	reload()
@@ -59,6 +62,7 @@ func reload():
 	shoot_anim.play("reload")
 	
 func succes_hit():
+	words.visible = false
 	debate_root.state = "success"
 	crosshair.visible = false
 	break_sfx.play()

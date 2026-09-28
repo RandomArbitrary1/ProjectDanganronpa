@@ -3,48 +3,48 @@
 [ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="1_ppmnc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3m0t"]
-bg_color = Color(0.06310458, 0.58260363, 0.9999998, 1)
+bg_color = Color(0.99999946, 0.11836911, 0.26843736, 1)
 skew = Vector2(-0.25, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(9.62615e-07, 0.73277915, 0.96391207, 1)
+border_color = Color(1, 0.4905721, 0.5313591, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0, 0.23809057, 0.37487826, 0.6)
+shadow_color = Color(1, 0, 0, 0.6)
 shadow_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10t4b"]
-bg_color = Color(0, 0.2784314, 0.74509805, 1)
+bg_color = Color(0.63888407, 2.0214916e-06, 4.813075e-07, 1)
 skew = Vector2(-0.25, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.2888095, 0.7711192, 0.9999998, 1)
+border_color = Color(1, 0.6481192, 0.70585847, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0.09731165, 9.62615e-07, 0.5113981, 0.6)
+shadow_color = Color(1, 0, 0, 0.6)
 shadow_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_war4s"]
-bg_color = Color(0, 0.15329412, 0.34920946, 1)
+bg_color = Color(0.33091605, 0, 0.036334723, 1)
 skew = Vector2(-0.25, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0.27869523, 0.52687234, 1)
+border_color = Color(0.53666866, 0, 0.114532866, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0.49411765, 0.6)
+shadow_color = Color(1, 0, 0, 0.6)
 shadow_size = 11
 
 [resource]
