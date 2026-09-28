@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://bst73b0kh88jc"]
 
 [ext_resource type="Script" uid="uid://cfj4csd4wh4ge" path="res://assets/scripts/ui/title/title.gd" id="1_4v1qu"]
-[ext_resource type="AudioStream" uid="uid://dmhfnpywmghry" path="res://assets/audio/music/title.mp3" id="1_g80e2"]
 [ext_resource type="PackedScene" uid="uid://cfp8b3o8sfas8" path="res://scenes/ui/title_ui.tscn" id="2_4v1qu"]
+[ext_resource type="AudioStream" uid="uid://bkk852f7828t7" path="res://assets/audio/music/Beautiful Fear.mp3" id="2_s1drf"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ocahe"]
 
 [node name="Title" type="Node3D" unique_id=569717398]
 script = ExtResource("1_4v1qu")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=999871051]
-stream = ExtResource("1_g80e2")
+[node name="blackBG" type="TextureRect" parent="." unique_id=90980047]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_ocahe")
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=999871051]
+stream = ExtResource("2_s1drf")
 autoplay = true
 parameters/looping = true
 

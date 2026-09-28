@@ -2,37 +2,56 @@
 	"dialog": [
 		{
 			"character": "shion",
-			"content": "Alone. No matter what I do, I always end up alone.",
+			"content": "Alone.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "When I try to do anything to change it, I end up alone.",
+			"content": "I've always been alone. That's the kind of person I'm cursed to be.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "That's a belief I've held all my life.",
+			"content": "When I do anything. I end up alone. When I try to do anything. I will always end up alone.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "That's a belief I've held my whole life.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
 			"content": "...",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
 			"content": "Where am I...? I don't recognize this place at all.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
@@ -44,21 +63,27 @@
 			"character": "shion",
 			"content": "It seems something happened before I came here.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
 			"content": "What was I doing before? Think, think, think...",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
 			"content": "...",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
@@ -66,7 +91,8 @@
 			"content": "I... got kidnapped on my way to school?",
 			"expression": "neutral.png",
 			"flags": [
-				"idea"
+				"idea",
+				"unknown"
 			],
 			"type": "text"
 		},
@@ -74,7 +100,9 @@
 			"character": "shion",
 			"content": "I don't like this one bit, I'm starting to freak out.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
@@ -82,7 +110,8 @@
 			"content": "Slowly I start moving and fidgeting until...",
 			"expression": "neutral.png",
 			"flags": [
-				"thought"
+				"thought",
+				"unknown"
 			],
 			"type": "text"
 		},
@@ -91,7 +120,8 @@
 			"content": "Ah! There's a door handle here. If I can just open it...",
 			"expression": "neutral.png",
 			"flags": [
-				"idea"
+				"idea",
+				"unknown"
 			],
 			"type": "text"
 		},
@@ -101,46 +131,59 @@
 			"type": "music"
 		},
 		{
-			"character": "shion",
-			"content": "...",
-			"expression": "neutral.png",
+			"file": "res://assets/audio/sfx/creaky_door1.mp3",
 			"flags": [],
-			"type": "text"
+			"type": "sfx"
 		},
 		{
 			"character": "shion",
 			"content": "...!",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
 			"content": "This is a... classroom? I don't recognize it from anywhere. How strange...",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
 			"content": "...",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
 			"content": "Before I go any farther I should introduce myself.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
+		},
+		{
+			"enabled": true,
+			"file": "res://assets/textures/characters/shion/neutral.png",
+			"flags": [],
+			"type": "cg"
 		},
 		{
 			"character": "shion",
 			"content": "I am Shion Fumihiro, the ultimate Spy.",
 			"expression": "neutral.png",
 			"flags": [
-				"idea"
+				"idea",
+				"unknown"
 			],
 			"type": "text"
 		},
@@ -173,10 +216,52 @@
 			"type": "text"
 		},
 		{
+			"enabled": false,
+			"file": "",
+			"flags": [],
+			"type": "cg"
+		},
+		{
 			"character": "shion",
 			"content": "Enough about me, let's check out what kind of situation I'm in.",
 			"expression": "neutral.png",
 			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Welcome to the game!",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Press the WASD keys to move around the room.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Move the mouse to move the camera.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Press F3 to review the controls. Good luck!",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		}
 	]

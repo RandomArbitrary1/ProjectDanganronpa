@@ -1,12 +1,14 @@
 extends Control
 @onready var revolver: TextureRect = $revolver
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var root_anim: AnimationPlayer = $anim
 @onready var confirm_sfx: AudioStreamPlayer = $confirm_sfx
 @onready var panel: Panel = $Panel
 var state = "press_any"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	root_anim.play("fade_in")
 	if state == "press_any":
 		panel.visible = false
 
