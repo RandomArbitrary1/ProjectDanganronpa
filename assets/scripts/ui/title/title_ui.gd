@@ -26,8 +26,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_start_new_game_pressed() -> void:
 	exiting()
-	LoadingScreen.load_scene("res://scenes/class_trial/trial_ground.tscn")
-
+	LoadingScreen.load_scene("res://scenes/ui/intro.tscn")
 
 func _on_continue_pressed() -> void:
 	exiting()
@@ -35,7 +34,7 @@ func _on_continue_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	exiting()
-	LoadingScreen.load_scene("res://scenes/rooms_fps/factory_area.tscn")
+	LoadingScreen.load_scene("res://scenes/class_trial/trial_ground.tscn")
 
 func _on_quit_pressed() -> void:
 	exiting()

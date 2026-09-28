@@ -1,0 +1,111 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "Trapped. No matter what I do, I get trapped.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "When I try to claw my way out to escape I get trapped.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "That's a belief I've held all my life.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Where am I...? I don't recognize this place at all.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"song": "back_in_the_building",
+			"type": "music"
+		},
+		{
+			"character": "shion",
+			"content": "It seems something happened before I came here.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "What was I doing before? Think, think, think...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "I.. I got kidnapped on my way to school?",
+			"expression": "neutral.png",
+			"flags": [
+				"idea"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "I don't like this one bit, I'm starting to freak out.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Ah! There's a door handle here. If I just open it...",
+			"expression": "neutral.png",
+			"flags": [
+				"idea"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"song": "beautiful_lie",
+			"type": "music"
+		},
+		{
+			"character": "shion",
+			"content": "I am Shion Fumihiro, the ultimate Spy.",
+			"expression": "neutral.png",
+			"flags": [
+				"idea"
+			],
+			"type": "text"
+		}
+	]
+}
