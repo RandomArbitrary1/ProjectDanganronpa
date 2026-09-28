@@ -40,7 +40,7 @@ script/source = "extends Control
 
 var characters = preload(\"res://assets/data/characters/characters.json\").data
 
-var flags = [\"thought\", \"rage\", \"idea\", \"shock\"]
+var flags = [\"thought\", \"rage\", \"idea\", \"shock\", \"unknown\"]
 var flag_current = []
 var data = {\"dialog\":[]}
 var file_path = \"\"
@@ -118,6 +118,7 @@ func _ready() -> void:
 	context_menu.id_pressed.connect(func(id):
 		if id == 0:
 			var new = dialog_line.duplicate()
+			new.get_node(\"Panel/CheckButton\").toggle_mode = true
 			list.add_child(new)
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"neutral.png\",\"content\":\"\",\"flags\":[]})
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
@@ -241,6 +242,8 @@ func reload_list():
 	for i in data[current_dialog]:
 		if i.type == \"text\":
 			var new = dialog_line.duplicate()
+			new.get_node(\"Panel/CheckButton\").toggle_mode = true
+			new.get_node(\"Panel/CheckButton\").button_pressed = i.flags.has(\"unknown\")
 			new.get_node(\"Character/Emotion\").clear()
 			for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + i.character):
 				if expr.get_extension() == \"png\":
@@ -267,7 +270,7 @@ func reload_list():
 			run_options(new, i)
 		elif i.type == \"visible\":
 			var new = visible_line.duplicate()
-			new.get_node(\"Panel/CheckButton\").toggle_mode = i.value
+			new.get_node(\"Panel/CheckButton\").button_pressed = i.value
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
@@ -287,7 +290,7 @@ func reload_list():
 		elif i.type == \"cg\":
 			var new = cg_line.duplicate()
 			i[\"eline\"] = new
-			new.get_node(\"Panel/CheckButton\").toggle_mode = i.enabled
+			new.get_node(\"Panel/CheckButton\").button_pressed = i.enabled
 			if \"file\" in i and ResourceLoader.exists(i.file):
 				new.get_node(\"Panel/Load\").text = i.file
 				new.get_node(\"Image/TextureRect\").texture = load(i.file)
@@ -358,6 +361,13 @@ func run_options(i, item_data):
 		i.queue_free()
 	)
 	if item_data.type == \"text\":
+		i.get_node(\"Panel/CheckButton\").toggled.connect(func(state):
+			if state:
+				if item_data.flags.has(\"unknown\"):
+					item_data.flags.remove_at(item_data.flags.find(\"unknown\"))
+			else:
+				item_data.flags.append(\"unknown\")
+		)
 		i.get_node(\"Character/Emotion\").clear()
 		for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
 			if expr.get_extension() == \"png\":
@@ -1678,6 +1688,18 @@ theme = ExtResource("1_ol5w5")
 theme_type_variation = &"Index"
 text = "0"
 horizontal_alignment = 2
+
+[node name="CheckButton" type="CheckButton" parent="Items/List/Dialog/Panel" unique_id=4015480]
+visible = false
+layout_mode = 0
+offset_left = 424.0
+offset_top = 1.1444092e-05
+offset_right = 568.0
+offset_bottom = 40.00001
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+toggle_mode = false
+text = "Unknown"
 
 [node name="Character" type="Panel" parent="Items/List/Dialog" unique_id=1201249221]
 custom_minimum_size = Vector2(200, 0)

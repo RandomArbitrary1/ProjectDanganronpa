@@ -6,7 +6,8 @@
 			"expression": "neutral.png",
 			"flags": [
 				"flash",
-				"shock"
+				"shock",
+				"unknown"
 			],
 			"type": "text"
 		},
@@ -61,14 +62,18 @@
 			"character": "nori",
 			"content": "* Walks away slowly *",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "nori",
 			"content": "Bye bye",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
