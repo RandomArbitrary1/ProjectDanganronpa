@@ -2,14 +2,14 @@
 	"dialog": [
 		{
 			"character": "shion",
-			"content": "Trapped. No matter what I do, I get trapped.",
+			"content": "Alone. No matter what I do, I always end up alone.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "When I try to claw my way out to escape I get trapped.",
+			"content": "When I try to do anything to change it, I end up alone.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
@@ -63,7 +63,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "I.. I got kidnapped on my way to school?",
+			"content": "I... got kidnapped on my way to school?",
 			"expression": "neutral.png",
 			"flags": [
 				"idea"
@@ -79,11 +79,46 @@
 		},
 		{
 			"character": "shion",
-			"content": "Ah! There's a door handle here. If I just open it...",
+			"content": "Slowly I start moving and fidgeting until...",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Ah! There's a door handle here. If I can just open it...",
 			"expression": "neutral.png",
 			"flags": [
 				"idea"
 			],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"song": "beautiful_lie",
+			"type": "music"
+		},
+		{
+			"character": "shion",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "...!",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "This is a... classroom? I don't recognize it from anywhere. How strange...",
+			"expression": "neutral.png",
+			"flags": [],
 			"type": "text"
 		},
 		{
@@ -94,9 +129,11 @@
 			"type": "text"
 		},
 		{
+			"character": "shion",
+			"content": "Before I go any farther I should introduce myself.",
+			"expression": "neutral.png",
 			"flags": [],
-			"song": "beautiful_lie",
-			"type": "music"
+			"type": "text"
 		},
 		{
 			"character": "shion",
@@ -105,6 +142,41 @@
 			"flags": [
 				"idea"
 			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "My title as an ultimate spy comes from my ability to blend in perfectly. Thus I get a lot of opportunities.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Like listening in on people or knowing what to say to avoid any if all trouble.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Sometimes though, I wish I was better at something else. Because...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "I don't like being known for spying on people. It makes me feel like an outcast.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Enough about me, let's check out what kind of situation I'm in.",
+			"expression": "neutral.png",
+			"flags": [],
 			"type": "text"
 		}
 	]
