@@ -470,7 +470,7 @@ func run_options(i, item_data):
 		i.get_node(\"Panel/Load\").pressed.connect(func():
 			to_open = \"cg\" + str(item_data.id)
 			file_dialog.set_filters([\"*.png,*.jpg\"])
-			file_dialog.root_subfolder = \"res://assets/textures/CG/\"
+			file_dialog.root_subfolder = \"res://assets/textures/cg/\"
 			file_dialog.visible = true
 		)
 		file_dialog.file_selected.connect(func(path):
