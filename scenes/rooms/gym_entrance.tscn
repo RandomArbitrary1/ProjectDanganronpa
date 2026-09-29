@@ -64,11 +64,11 @@ center = Vector3(-2, 2.2, 1)
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
 [node name="tenga" parent="Characters" unique_id=2135237569 instance=ExtResource("3_821gf")]
-transform = Transform3D(-6.119594e-08, -1.4, 6.119594e-08, -2.9646153e-22, -6.119594e-08, -1.4, 1.4, -6.119594e-08, 2.674959e-15, 0, 1.8999999, 1)
+transform = Transform3D(-6.119594e-08, -1.4, 6.119594e-08, 0, -6.119594e-08, -1.4, 1.4, -6.119594e-08, 2.6749597e-15, 0, 1.8999999, 1)
 character = "tenga"
 expression = "neutral"
 
-[node name="Objects" type="Node3D" parent="." unique_id=986129665]
+[node name="Objects" type="Node3D" parent="." unique_id=986129665 groups=["Objects"]]
 
 [node name="trash_can" parent="Objects" unique_id=2105511721 instance=ExtResource("4_6fbpm")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 3, 0.925, -5)

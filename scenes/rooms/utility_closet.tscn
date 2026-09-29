@@ -60,7 +60,7 @@ character = "rikuno"
 expression = "neutral"
 dialog = "res://assets/data/dialog/test6.json"
 
-[node name="Objects" type="Node3D" parent="." unique_id=986129665]
+[node name="Objects" type="Node3D" parent="." unique_id=986129665 groups=["Objects"]]
 
 [node name="trash_can" parent="Objects" unique_id=2105511721 instance=ExtResource("4_jnr03")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 3, 0.925, 0)

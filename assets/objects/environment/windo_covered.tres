@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://sb01ychk32qy"]
+
+[ext_resource type="Texture2D" uid="uid://cb5cmb7w3hanp" path="res://assets/objects/environment/window_covered_window_boarded.png" id="1_nfxur"]
+[ext_resource type="Texture2D" uid="uid://baihi1dby763" path="res://assets/objects/environment/window_covered_window_boarded_emm.png" id="2_tntsc"]
+[ext_resource type="Texture2D" uid="uid://bwnsw64t0yo71" path="res://assets/objects/environment/window_covered_window_boarded_spec.png" id="3_1thjd"]
+
+[resource]
+resource_name = "window.002"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_nfxur")
+metallic = 1.0
+metallic_texture = ExtResource("3_1thjd")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_1thjd")
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 4.0
+emission_operator = 1
+emission_texture = ExtResource("2_tntsc")
+metadata/_gltf_primary_texture_coord = 0

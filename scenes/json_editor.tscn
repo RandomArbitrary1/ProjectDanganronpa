@@ -484,7 +484,7 @@ func run_options(i, item_data):
 			file_dialog.visible = true
 		)
 		file_dialog.file_selected.connect(func(path):
-			if to_open == \"cg\" + str(item_data.id):
+			if i and to_open == \"cg\" + str(item_data.id):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
 				i.get_node(\"Image/TextureRect\").texture = load(path)
@@ -562,6 +562,18 @@ func save():
 		self.get_node(\"Saved/Anim\").play(\"Anim\")
 	
 func _process(_delta: float) -> void:
+	if self.size != Vector2(get_window().size):
+		var re_scale = Vector2(1080,1080)/Vector2(get_window().size.y,get_window().size.y)
+		self.size = get_window().size
+		self.scale = re_scale
+		dialogs_popup.size = Vector2(214,300)*re_scale
+		flags_popup.size = Vector2(214,300)*re_scale
+		context_menu.size = Vector2(229,360)*re_scale
+		context_menu.max_size = Vector2(229,360)*re_scale
+		dialogs_popup.content_scale_factor = re_scale.x
+		flags_popup.content_scale_factor = re_scale.x
+		context_menu.content_scale_factor = re_scale.x
+	
 	for i in data[current_dialog]:
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 			i.id = i.eline.get_index()
@@ -657,32 +669,48 @@ grow_vertical = 2
 theme = ExtResource("1_ol5w5")
 texture = ExtResource("2_ol5w5")
 expand_mode = 1
+stretch_mode = 6
 
 [node name="Panel" type="Panel" parent="." unique_id=1851522182]
-layout_mode = 0
-offset_left = 552.0
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -408.0
 offset_top = 112.0
-offset_right = 1368.0
-offset_bottom = 1088.0
+offset_right = 408.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_type_variation = &"panel_bg"
 
 [node name="Dialogs_tabs" type="TabBar" parent="." unique_id=915115297]
-layout_mode = 0
-offset_left = 568.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -392.0
 offset_top = 72.0
-offset_right = 1360.0
+offset_right = 400.0
 offset_bottom = 112.0
+grow_horizontal = 2
 mouse_default_cursor_shape = 2
 current_tab = 0
 tab_count = 1
 tab_0/title = "Base dialog"
 
 [node name="Items" type="ScrollContainer" parent="." unique_id=2105817097]
-layout_mode = 0
-offset_left = 440.0
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -520.0
 offset_top = 120.0
-offset_right = 1384.0
-offset_bottom = 1080.0
+offset_right = 424.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_ol5w5")
 
 [node name="List" type="VBoxContainer" parent="Items" unique_id=561660858]
@@ -1941,11 +1969,15 @@ horizontal_alignment = 2
 
 [node name="Saved" type="Panel" parent="." unique_id=955261081]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 1496.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 528.0
 offset_top = 8.0
-offset_right = 1576.0
+offset_right = 608.0
 offset_bottom = 47.999992
+grow_horizontal = 2
 theme = ExtResource("1_ol5w5")
 
 [node name="Label" type="Label" parent="Saved" unique_id=1260800737]
@@ -1993,9 +2025,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -88.00006
+offset_left = -96.00006
 offset_top = 8.0
-offset_right = -5.0
+offset_right = -8.0
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
@@ -2009,9 +2041,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -208.00012
+offset_left = -216.00012
 offset_top = 8.0
-offset_right = -96.00012
+offset_right = -104.00012
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
@@ -2025,9 +2057,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -336.00006
+offset_left = -344.00006
 offset_top = 8.0
-offset_right = -216.00006
+offset_right = -224.00006
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
@@ -2041,9 +2073,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -464.0
+offset_left = -472.0
 offset_top = 8.0
-offset_right = -344.00006
+offset_right = -352.00006
 offset_bottom = 48.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
