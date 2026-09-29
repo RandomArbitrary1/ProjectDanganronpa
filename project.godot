@@ -33,7 +33,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/window_width_override=1152
 window/size/window_height_override=648
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://bto0867l0lova"
 mouse_cursor/custom_image_hotspot=Vector2(5, 5)
 
@@ -157,5 +157,6 @@ Leave={
 
 [rendering]
 
+anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/use_debanding=true
