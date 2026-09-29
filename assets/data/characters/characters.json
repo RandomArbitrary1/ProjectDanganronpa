@@ -34,5 +34,9 @@
 
 "naeri":{"name":"Naeri Enokida","talent":"Ultimate DJ","sex":"Female","likes":"Booze",
 "dislikes":"Waiting","height":"1.65 cm","birth_date":"18 october",
-"sprites":{"neutral":"res://assets/textures/characters/naeri/neutral.png"}}
+"sprites":{"neutral":"res://assets/textures/characters/naeri/neutral.png"}},
+
+"reoto":{"name":"Reoto Nakanishi","talent":"Ultimate Sewist","sex":"Male","likes":"Social media",
+"dislikes":"Artificial intelligence","height":"1.67 cm","birth_date":"29 april",
+"sprites":{"neutral":"res://assets/textures/characters/reoto/neutral.png"}}
 }

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="4_y7sc8"]
 [ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="5_cs6e0"]
 [ext_resource type="PackedScene" uid="uid://cg4nn0n7re65s" path="res://assets/objects/environment/window.tscn" id="7_en462"]
+[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="7_xn6dl"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_double.tscn" id="8_n47gf"]
 [ext_resource type="PackedScene" uid="uid://bw4tdosbt8xyy" path="res://assets/objects/environment/nature/grass.tscn" id="8_xn6dl"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="9_0m0d0"]
@@ -237,6 +238,11 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 2, 22)
 [node name="Characters" type="Node3D" parent="." unique_id=76754438 groups=["Characters_interact"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.53373826, 7)
 script = ExtResource("5_cs6e0")
+
+[node name="reoto" parent="Characters" unique_id=2135237569 instance=ExtResource("7_xn6dl")]
+transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 0, 1.3662606, -14)
+character = "reoto"
+expression = "neutral"
 
 [node name="Props" type="Node3D" parent="." unique_id=647337532]
 

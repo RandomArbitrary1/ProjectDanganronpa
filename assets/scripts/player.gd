@@ -156,7 +156,7 @@ func _process(delta: float) -> void:
 	if current_hover != null and current_hover_check != current_hover and dialog.active == false:
 		current_hover_check = current_hover
 		if current_hover_type == "character":
-			tooltip.get_node("Label").text = character_info[current_hover.name].name
+			tooltip.get_node("Label").text = character_info[current_hover.character].name
 			if reticle.get_node("Indicator").texture != reticle_talk:
 				reticle.get_node("Indicator").texture = reticle_talk
 		elif current_hover_type == "door" or "object":
