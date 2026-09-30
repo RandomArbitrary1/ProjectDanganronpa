@@ -505,7 +505,7 @@ func run_options(i, item_data): #function to run stuff on the given item
 			
 		)
 		file_dialog.file_selected.connect(func(path):
-			if to_open == \"sfx\" + str(item_data.id):
+			if to_open == \"sfx\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
 		)
