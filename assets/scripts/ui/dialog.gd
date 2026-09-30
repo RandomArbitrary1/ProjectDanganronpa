@@ -45,6 +45,8 @@ var line = 0
 var name_size = 0
 var option_tab = 0
 var option_tab_max = 0
+var last_anim = null
+var instant_skip_timer = 0
 
 #setup
 
@@ -106,9 +108,11 @@ func next(): # Next dialog line
 			if current.show == true:
 				bullet.get_node("Mask/Image").texture = load(load(current.file).data[current.bullet].picture)
 				bullet.get_node("Anim").play("Show")
+				last_anim = bullet.get_node("Anim")
 				print(current.bullet)
 			else:
 				bullet.get_node("Anim").play("Hide")
+				last_anim = bullet.get_node("Anim")
 			line += 1
 			next()
 		elif current.type == "music":
@@ -133,7 +137,6 @@ func next(): # Next dialog line
 		elif current.type == "sfx":
 			sfx.stream = load(current.file)
 			sfx.play()
-			await sfx.finished
 			line += 1
 			next()
 		elif current.type == "focus":
@@ -156,12 +159,14 @@ func next(): # Next dialog line
 					cg.texture = load(current.file)
 					cg_state = true
 					cg_anim.play("Open")
+					last_anim = cg_anim
 					await cg_anim.animation_finished
 					line += 1
 					next()
 				else:
 					cg_fade.texture = load(current.file)
 					cg_fade_anim.play("Fade")
+					last_anim = cg_fade_anim
 					await cg_fade_anim.animation_finished
 					cg_fade_anim.play("RESET")
 					cg.texture = load(current.file)
@@ -170,6 +175,7 @@ func next(): # Next dialog line
 			elif cg_state:
 				cg_state = false
 				cg_anim.play("Close")
+				last_anim = cg_anim
 				await cg_anim.animation_finished
 				line += 1
 				next()
@@ -194,6 +200,7 @@ func next(): # Next dialog line
 				$Choice.add_child(option)
 				
 			choice_anim.play("Open")
+			choice_anim = cg_anim
 		else:
 			line += 1
 			next()
@@ -247,6 +254,17 @@ func _process(delta: float) -> void:
 			option_tab += 1
 		else:
 			option_tab = 0
+	if Input.is_action_pressed("Ctrl"):
+		if instant_skip_timer < delta:
+			instant_skip_timer = .1
+			line += 1
+			next()
+			if tween:
+				tween.kill()
+				box.visible_ratio = 1.0
+		else:
+			instant_skip_timer -= delta
+		
 	if Input.is_action_just_pressed("Progress") and active: #click
 		if optioning:
 			choice_anim.play("Close")
@@ -271,6 +289,9 @@ func _process(delta: float) -> void:
 			else: #skip line
 				if tween and dialog.size() > line:
 					tween.kill()
+					if last_anim:
+						last_anim.seek(last_anim.current_animation_length, true)
+						last_anim = null
 					box.visible_ratio = 1.0
 					input_ind.play("Show")
 
