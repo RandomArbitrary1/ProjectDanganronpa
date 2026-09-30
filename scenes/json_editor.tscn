@@ -14,6 +14,8 @@
 resource_name = "json editor"
 script/source = "extends Control
 
+#references
+
 @onready var context_menu = self.get_node(\"Context_menu\")
 @onready var navigation = self.get_node(\"Navigation\")
 @onready var file_dialog = self.get_node(\"FileDialog\")
@@ -23,7 +25,7 @@ script/source = "extends Control
 @onready var dialogs_popup: Window = $Dialog
 @onready var dialogs_tabs: TabBar = $Dialogs_tabs
 
-
+#objects
 
 @onready var dialog_line = list.get_node(\"Dialog\").duplicate()
 @onready var visible_line = list.get_node(\"Visibility\").duplicate()
@@ -38,23 +40,26 @@ script/source = "extends Control
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
 @onready var dialog_button = dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").duplicate()
 
-var characters = preload(\"res://assets/data/characters/characters.json\").data
 
+#editor data
+
+
+var characters = preload(\"res://assets/data/characters/characters.json\").data
 var flags = [\"thought\", \"rage\", \"idea\", \"shock\", \"unknown\"]
 var flag_current = []
 var data = {\"dialog\":[]}
 var file_path = \"\"
 var moving = null
 var to_open = \"data\"
-
 var current_dialog = \"dialog\"
 
+
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(null)
+	Input.set_custom_mouse_cursor(null) #system cursor cuz custom one on here is cursed asf
 	flags_popup.close_requested.connect(flags_popup.hide)
-	dialogs_popup.close_requested.connect(dialogs_popup.hide)
+	dialogs_popup.close_requested.connect(dialogs_popup.hide) #make popups close work
 	
-	dialog_line.get_node(\"Character/Name\").clear()
+	dialog_line.get_node(\"Character/Name\").clear() #set character dropdowns their items
 	character_line.get_node(\"Panel/Name\").clear()
 	for key in characters.keys():
 		dialog_line.get_node(\"Character/Name\").add_item(key)
@@ -63,7 +68,7 @@ func _ready() -> void:
 	navigation.get_node(\"Choose\").pressed.connect(func():
 		dialogs_popup.visible = true
 	)
-	dialogs_popup.get_node(\"Insert\").pressed.connect(func():
+	dialogs_popup.get_node(\"Insert\").pressed.connect(func(): #add new dialog segment
 		for i in data.keys().size():
 			if not data.has(\"dialog\" + str(i+1)):
 				data[\"dialog\" + str(i+1)] = []
@@ -74,7 +79,7 @@ func _ready() -> void:
 				return
 	)
 	
-	dialogs_tabs.tab_changed.connect(func(tab):
+	dialogs_tabs.tab_changed.connect(func(tab): #switch between segments
 		if tab == 0:
 			current_dialog = \"dialog\"
 		else:
@@ -82,10 +87,10 @@ func _ready() -> void:
 		reload_list()
 	)
 	
-	flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").queue_free()
+	flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").queue_free() #clean up template buttons
 	dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").queue_free()
 	
-	for i in list.get_children():
+	for i in list.get_children(): #load flag options
 		if i:
 			i.queue_free()
 	for i in flags:
@@ -94,7 +99,7 @@ func _ready() -> void:
 		flag_opt.name = i
 		flags_popup.get_node(\"FlagList/FlagItems\").add_child(flag_opt)
 	
-	for i in flags_popup.get_node(\"FlagList/FlagItems\").get_children():
+	for i in flags_popup.get_node(\"FlagList/FlagItems\").get_children(): #set flags
 		i.pressed.connect(func():
 			if flag_current.flags.has(i.name):
 				flag_current.flags.remove_at(flag_current.flags.find(i.name))
@@ -104,72 +109,72 @@ func _ready() -> void:
 				i.get_node(\"Outline\").visible = true
 		)
 	
-	navigation.get_node(\"Load\").pressed.connect(func():
+	navigation.get_node(\"Load\").pressed.connect(func(): #setup file dialog for loading dialog json
 		to_open = \"data\"
 		file_dialog.set_filters([\"*.json\"])
 		file_dialog.root_subfolder = \"res://assets/data/\"
 		file_dialog.visible = true
 		
 	)
-	navigation.get_node(\"Save_as\").pressed.connect(func():
+	navigation.get_node(\"Save_as\").pressed.connect(func(): #setup save as
 		file_dialog.root_subfolder = \"res://assets/data/\"
 		file_dialog_save.visible = true
 	)
-	context_menu.id_pressed.connect(func(id):
-		if id == 0:
+	context_menu.id_pressed.connect(func(id): #context menu press
+		if id == 0: #type text
 			var new = dialog_line.duplicate()
 			new.get_node(\"Panel/CheckButton\").toggle_mode = true
 			list.add_child(new)
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"text\",\"character\":\"shion\",\"expression\":\"neutral.png\",\"content\":\"\",\"flags\":[]})
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 1:
+		elif id == 1: #type toggle box visibility
 			var new = visible_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"visible\",\"value\":true,\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 2:
+		elif id == 2: #type focus
 			var new = focus_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"focus\",\"object\":\"default\",\"point\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 3:
+		elif id == 3: #type music switch
 			var new = music_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 11:
+		elif id == 11: #type bullet preview
 			var new = bullet_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"bullet\",\"show\":true,\"file\":\"\",\"bullet\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 10:
+		elif id == 10: #type choice
 			var new = choice_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"choice\",\"options\":[],\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 14:
+		elif id == 14: #type CG
 			var new = cg_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"cg\",\"enabled\":true,\"file\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 15:
+		elif id == 15: #type play sfx
 			var new = sfx_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"sfx\",\"file\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 16:
+		elif id == 16: #type room switch
 			var new = room_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"room\",\"file\":\"\",\"name\":\"\",\"dialog\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 17:
+		elif id == 17: #spawn/despawn character
 			var new = character_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"character\",\"character\":\"shion\",\"expression\":\"\",\"x\":0,\"y\":0,\"z\":0,\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
-	file_dialog.file_selected.connect(func(path):
-		if to_open == \"data\":
+	file_dialog.file_selected.connect(func(path): #file dialog picked response
+		if to_open == \"data\": #check if it is for data (aka open dialog json)
 			current_dialog = \"dialog\"
 			file_path = path
 			navigation.get_node(\"File\").text = path.get_file()
@@ -196,7 +201,7 @@ func _ready() -> void:
 			print(data)
 			reload_list()
 	)
-	file_dialog_save.file_selected.connect(func(path):
+	file_dialog_save.file_selected.connect(func(path): #save as dialog response
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(data, \"\\t\"))
@@ -205,9 +210,9 @@ func _ready() -> void:
 			file.close()
 			self.get_node(\"Saved/Anim\").play(\"Anim\")
 	)
-	navigation.get_node(\"Save\").pressed.connect(save)
-	navigation.get_node(\"Clear\").pressed.connect(func():
-		if navigation.get_node(\"Clear\").text == \"yes?\":
+	navigation.get_node(\"Save\").pressed.connect(save) #connec to save function save btn press
+	navigation.get_node(\"Clear\").pressed.connect(func(): #clear everything
+		if navigation.get_node(\"Clear\").text == \"yes?\": #confirmation
 			data = {\"dialog\":[]}
 			navigation.get_node(\"Clear\").text = \"Clear all\"
 			for i in list.get_children():
@@ -215,14 +220,14 @@ func _ready() -> void:
 		else:
 			navigation.get_node(\"Clear\").text = \"yes?\"
 	)
-	navigation.get_node(\"Clear\").mouse_exited.connect(func():
+	navigation.get_node(\"Clear\").mouse_exited.connect(func(): #reset state
 		navigation.get_node(\"Clear\").text = \"Clear all\"
 	)
 	
 func dialogs_options(item, id):
 	item.get_node(\"Activate\").text = id
 	item.get_node(\"Clear\").pressed.connect(func():
-		if current_dialog == \"dialog\" + str(item.get_index()):
+		if current_dialog == \"dialog\" + str(item.get_index()): #incase if delete selected dialog
 			current_dialog = \"dialog\"
 		data.erase(id)
 		print(item.get_index())
@@ -230,17 +235,17 @@ func dialogs_options(item, id):
 		item.queue_free()
 	)
 	
-func get_option_id(button: OptionButton, text: String) -> int:
+func get_option_id(button: OptionButton, text: String) -> int: #get the ID of the option with the given text
 	for i in button.get_item_count():
 		if button.get_item_text(i) == text:
 			return i
 	return -1
 
-func reload_list():
+func reload_list(): #reload the displayed items to the current selected ones last state
 	for i in list.get_children():
 		i.queue_free()
-	for i in data[current_dialog]:
-		if i.type == \"text\":
+	for i in data[current_dialog]:  #checks per if statement which it is and does corresponding action per type
+		if i.type == \"text\":		#(load correct data, use correct object, etc)
 			var new = dialog_line.duplicate()
 			new.get_node(\"Panel/CheckButton\").toggle_mode = true
 			new.get_node(\"Panel/CheckButton\").button_pressed = i.flags.has(\"unknown\")
@@ -341,7 +346,8 @@ func reload_list():
 			list.add_child(new)
 			run_options(new, i) 
 	
-func run_options(i, item_data):
+func run_options(i, item_data): #function to run stuff on the given item
+	#global functions for all
 	i.get_node(\"Panel/Flags\").pressed.connect(func():
 		flag_current = item_data
 		for ii in flags_popup.get_node(\"FlagList/FlagItems\").get_children():
@@ -360,6 +366,7 @@ func run_options(i, item_data):
 		data[current_dialog].remove_at(item_data.id)
 		i.queue_free()
 	)
+	#by type
 	if item_data.type == \"text\":
 		i.get_node(\"Panel/CheckButton\").toggled.connect(func(state):
 			if state:
@@ -526,7 +533,7 @@ func run_options(i, item_data):
 			item_data.bullet = i.get_node(\"Panel/Bullet\").get_item_text(ind)
 		)
 
-func closest(target):
+func closest(target): #find closest index for when dragging an item
 	var close = list.get_child(0).global_position.y
 	var closeID = 0
 	for num in list.get_child_count():
@@ -536,33 +543,34 @@ func closest(target):
 			closeID = num
 	return closeID
 	
-func sort_new(a, b):
+func sort_new(a, b): #sort array
 	if a.id < b.id:
 		return true
 	return false
 
-func save():
+func save(): #save the current file
 	if file_path != \"\":
 		var new_data = data.duplicate(true)
 		new_data[current_dialog].sort_custom(sort_new)
 		for i in new_data[current_dialog]:
-			i.erase(\"id\")
+			i.erase(\"id\") #get rid of editor exlusive data
 			if i.has(\"eline\"):
 				i.erase(\"eline\")
-		for a in new_data.keys().size():
+		for a in new_data.keys().size(): #double check
 			if new_data.has(\"dialog\" + str(a)) and new_data[\"dialog\" + str(a)] != new_data[current_dialog]:
 				new_data[\"dialog\" + str(a)].sort_custom(sort_new)
 				for i in new_data[\"dialog\" + str(a)]:
 					i.erase(\"id\")
 					i.erase(\"eline\")
-		print(new_data)
-		var to_save = FileAccess.open(file_path, FileAccess.WRITE)
+		#the saving part
+		var to_save = FileAccess.open(file_path, FileAccess.WRITE) 
 		to_save.store_string(JSON.stringify(new_data, \"\\t\"))
 		to_save.close()
-		self.get_node(\"Saved/Anim\").play(\"Anim\")
+		self.get_node(\"Saved/Anim\").play(\"Anim\") #confirmation label
 	
 func _process(_delta: float) -> void:
-	if self.size != Vector2(get_window().size):
+	if self.size != Vector2(get_window().size): 
+		#no scaling, aka nodes don't shrink with viewport but stay 1080p always
 		var re_scale = Vector2(1080,1080)/Vector2(get_window().size.y,get_window().size.y)
 		self.size = get_window().size
 		self.scale = re_scale
@@ -574,28 +582,28 @@ func _process(_delta: float) -> void:
 		flags_popup.content_scale_factor = re_scale.x
 		context_menu.content_scale_factor = re_scale.x
 	
-	for i in data[current_dialog]:
+	for i in data[current_dialog]: #continously set id, cuz resorting
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 			i.id = i.eline.get_index()
-	for a in data.keys().size():
+	for a in data.keys().size(): #for non active segments
 		if data.has(\"dialog\" + str(a)):
 			for b in data[\"dialog\" + str(a)].size():
 				var i = data[\"dialog\" + str(a)][b]
 				if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 					i.id = b
-	for i in list.get_children():
+	for i in list.get_children(): #set index count text
 		i.get_node(\"Panel/Index\").text = str(i.get_index())
 	var mouse_pos = get_viewport().get_mouse_position()
-	if moving:
+	if moving: #moving a line
 		list.move_child(moving, closest(mouse_pos.y-32))
-	if moving and Input.is_action_just_released(\"Progress\"):
+	if moving and Input.is_action_just_released(\"Progress\"): #when dragging
 		moving.mouse_filter = Control.MOUSE_FILTER_STOP
 		moving.get_node(\"Panel/Outline\").visible = false
 		moving = null
-	if Input.is_action_just_released(\"RMB\"):
+	if Input.is_action_just_released(\"RMB\"): #release drag
 		context_menu.visible = true
 		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-262),(clampf(mouse_pos.y,0,1080-424)))
-	if Input.is_action_just_pressed(\"Ctrl\"):
+	if Input.is_action_just_pressed(\"Ctrl\"): #debug print
 		print(data[current_dialog])
 "
 
@@ -800,11 +808,10 @@ button_pressed = true
 text = "Spawn character"
 
 [node name="X" type="LineEdit" parent="Items/List/Character/Panel" unique_id=549489362]
-custom_maximum_size = Vector2(56, -1)
 layout_mode = 0
-offset_left = 608.0
+offset_left = 512.0
 offset_top = 56.0
-offset_right = 664.0
+offset_right = 600.0
 offset_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -813,11 +820,10 @@ theme = ExtResource("1_ol5w5")
 placeholder_text = "X"
 
 [node name="Y" type="LineEdit" parent="Items/List/Character/Panel" unique_id=1506987634]
-custom_maximum_size = Vector2(56, -1)
 layout_mode = 0
-offset_left = 672.0
+offset_left = 608.0
 offset_top = 56.0
-offset_right = 728.0
+offset_right = 696.0
 offset_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -826,9 +832,8 @@ theme = ExtResource("1_ol5w5")
 placeholder_text = "Y"
 
 [node name="Z" type="LineEdit" parent="Items/List/Character/Panel" unique_id=1409396037]
-custom_maximum_size = Vector2(56, -1)
 layout_mode = 0
-offset_left = 736.0
+offset_left = 704.0
 offset_top = 56.0
 offset_right = 792.0
 offset_bottom = 96.0
@@ -882,7 +887,7 @@ popup/item_0/id = 0
 layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
-offset_right = 600.0
+offset_right = 504.0
 offset_bottom = 96.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")

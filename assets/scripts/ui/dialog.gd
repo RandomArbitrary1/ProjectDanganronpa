@@ -1,5 +1,7 @@
 extends Control
 
+#imports/paths
+
 @export var file: Resource 
 var active: bool
 var camera = null
@@ -31,6 +33,8 @@ var option_active = preload("res://assets/ui/dialog/choice_active.png")
 var character_info = preload("res://assets/data/characters/characters.json").data
 const character = preload("res://assets/objects/characters/character.tscn")
 
+#variables
+
 var dialog = null
 var tween = null
 var mouse_old = null
@@ -41,6 +45,8 @@ var line = 0
 var name_size = 0
 var option_tab = 0
 var option_tab_max = 0
+
+#setup
 
 func _ready() -> void:
 	$Choice/Option.queue_free()
@@ -223,13 +229,14 @@ func _process(delta: float) -> void:
 	for i in $Choice.get_children():
 		if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
 			if option_tab != i.get_index() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-				option_tab = i.get_index()
-		if i.get_index() == option_tab:
+				option_tab = i.get_index()  # set current choice/option based on mouse
+		if i.get_index() == option_tab:  # choice/option hover active check
 			i.texture = option_active
 			i.position.x = move_toward(i.position.x, 180.0+i.get_index()*-60, 500*delta)
 		else:
 			i.texture = option_inactive
 			i.position.x = move_toward(i.position.x, 240.0+i.get_index()*-60, 500*delta)
+	#navigate options/choices
 	if Input.is_action_just_pressed("Up"):
 		if option_tab > 0:
 			option_tab -= 1
@@ -240,7 +247,7 @@ func _process(delta: float) -> void:
 			option_tab += 1
 		else:
 			option_tab = 0
-	if Input.is_action_just_pressed("Progress") and active:
+	if Input.is_action_just_pressed("Progress") and active: #click
 		if optioning:
 			choice_anim.play("Close")
 			optioning = false
@@ -253,7 +260,7 @@ func _process(delta: float) -> void:
 					line = 0
 					dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
 					next()
-				else:
+				else: #specifically for leaving rooms, hardcoded since only needed at one place
 					RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
 		else:
 			if box.visible_ratio == 1.0:
@@ -261,17 +268,18 @@ func _process(delta: float) -> void:
 				line += 1
 				input_ind.play("Next")
 				next()
-			else:
+			else: #skip line
 				if tween and dialog.size() > line:
 					tween.kill()
 					box.visible_ratio = 1.0
 					input_ind.play("Show")
 
+#show/hide the cursor
 var old_mouse_position : Vector2
 func _input(event: InputEvent) -> void:
 	if optioning:
 		if event is InputEventMouse:
-			if event.position.distance_to(old_mouse_position) > 100:
+			if event.position.distance_to(old_mouse_position) > 100: #uses position in check so it doesn't show right away when just using mouse for clicking
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif event is InputEventJoypadButton or event is InputEventKey:
 			old_mouse_position = get_viewport().get_mouse_position()
