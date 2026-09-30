@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dj1dhvos2a5m6" path="res://assets/audio/sfx/class_trial/gavel.mp3" id="2_5xcgg"]
 [ext_resource type="Texture2D" uid="uid://voteotxow472" path="res://assets/textures/ui/class_trial/t.png" id="2_h5blc"]
 [ext_resource type="Texture2D" uid="uid://chujljng3nqgw" path="res://assets/textures/ui/class_trial/a.png" id="2_svhqp"]
-[ext_resource type="AudioStream" uid="uid://d1h245457c0mk" path="res://assets/audio/sfx/creaky_door1.mp3" id="3_ibexd"]
+[ext_resource type="AudioStream" uid="uid://d1h245457c0mk" path="res://assets/audio/sfx/environment/creaky_door1.mp3" id="3_ibexd"]
 [ext_resource type="Texture2D" uid="uid://rnthgx71u32c" path="res://assets/textures/ui/class_trial/r.png" id="3_jiiqk"]
 [ext_resource type="Texture2D" uid="uid://bvyumsevmg75q" path="res://assets/textures/ui/class_trial/i.png" id="4_yvnhd"]
 [ext_resource type="AudioStream" uid="uid://cgq0u5i7kbux5" path="res://assets/audio/sfx/class_trial/thump.mp3" id="6_qpncn"]
