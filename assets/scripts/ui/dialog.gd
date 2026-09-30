@@ -267,34 +267,35 @@ func _process(delta: float) -> void:
 				instant_skip_timer -= delta
 		
 	if Input.is_action_just_pressed("Progress") and active: #click
-		if optioning:
-			choice_anim.play("Close")
-			optioning = false
-			var id = $Choice.get_child(option_tab).get_meta("ID")
-			if id == "0":
-				line += 1
-				next()
-			else:
-				if not leave:
-					line = 0
-					dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
+		if active:
+			if optioning:
+				choice_anim.play("Close")
+				optioning = false
+				var id = $Choice.get_child(option_tab).get_meta("ID")
+				if id == "0":
+					line += 1
 					next()
-				else: #specifically for leaving rooms, hardcoded since only needed at one place
-					RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
-		else:
-			if box.visible_ratio == 1.0:
-				sfx_next.play()
-				line += 1
-				input_ind.play("Next")
-				next()
-			else: #skip line
-				if tween and dialog.size() > line:
-					tween.kill()
-					if last_anim:
-						last_anim.seek(last_anim.current_animation_length, true)
-						last_anim = null
-					box.visible_ratio = 1.0
-					input_ind.play("Show")
+				else:
+					if not leave:
+						line = 0
+						dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
+						next()
+					else: #specifically for leaving rooms, hardcoded since only needed at one place
+						RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
+			else:
+				if box.visible_ratio == 1.0:
+					sfx_next.play()
+					line += 1
+					input_ind.play("Next")
+					next()
+				else: #skip line
+					if tween and dialog.size() > line:
+						tween.kill()
+						if last_anim:
+							last_anim.seek(last_anim.current_animation_length, true)
+							last_anim = null
+						box.visible_ratio = 1.0
+						input_ind.play("Show")
 
 #show/hide the cursor
 var old_mouse_position : Vector2
