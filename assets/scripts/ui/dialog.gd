@@ -255,15 +255,16 @@ func _process(delta: float) -> void:
 		else:
 			option_tab = 0
 	if Input.is_action_pressed("Ctrl"):
-		if instant_skip_timer < delta:
-			instant_skip_timer = .1
-			line += 1
-			next()
-			if tween:
-				tween.kill()
-				box.visible_ratio = 1.0
-		else:
-			instant_skip_timer -= delta
+		if active:
+			if instant_skip_timer < delta:
+				instant_skip_timer = .1
+				line += 1
+				next()
+				if tween:
+					tween.kill()
+					box.visible_ratio = 1.0
+			else:
+				instant_skip_timer -= delta
 		
 	if Input.is_action_just_pressed("Progress") and active: #click
 		if optioning:
