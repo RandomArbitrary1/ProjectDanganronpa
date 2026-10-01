@@ -26,6 +26,11 @@ var characters = null
 @onready var cg_anim: AnimationPlayer = $CG_anim
 @onready var cg_fade_anim: AnimationPlayer = $CG_fade_anim
 
+#ui sfx
+var next_sfx = preload("res://assets/audio/sfx/ui/dialog_next.mp3")
+var confirm_sfx = preload("res://assets/audio/sfx/ui/confirm.mp3")
+var select_sfx = preload("res://assets/audio/sfx/ui/select2.mp3")
+
 const idea = preload("uid://cm4ro1uwswy2a")
 const shock = preload("uid://v3ccuuxy11kt")
 var option_inactive = preload("res://assets/ui/dialog/choice.png")
@@ -200,7 +205,7 @@ func next(): # Next dialog line
 				$Choice.add_child(option)
 				
 			choice_anim.play("Open")
-			choice_anim = cg_anim
+			last_anim = cg_anim
 		else:
 			line += 1
 			next()
@@ -236,6 +241,9 @@ func _process(delta: float) -> void:
 	for i in $Choice.get_children():
 		if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
 			if option_tab != i.get_index() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				if sfx_next.stream != select_sfx:
+					sfx_next.stream = select_sfx
+					sfx_next.play()
 				option_tab = i.get_index()  # set current choice/option based on mouse
 		if i.get_index() == option_tab:  # choice/option hover active check
 			i.texture = option_active
@@ -245,11 +253,19 @@ func _process(delta: float) -> void:
 			i.position.x = move_toward(i.position.x, 240.0+i.get_index()*-60, 500*delta)
 	#navigate options/choices
 	if Input.is_action_just_pressed("Up"):
+		if optioning:
+			if sfx_next.stream != select_sfx:
+				sfx_next.stream = select_sfx
+			sfx_next.play()
 		if option_tab > 0:
 			option_tab -= 1
 		else:
 			option_tab = option_tab_max
 	if Input.is_action_just_pressed("Down"):
+		if optioning:
+			if sfx_next.stream != select_sfx:
+				sfx_next.stream = select_sfx
+			sfx_next.play()
 		if option_tab < option_tab_max:
 			option_tab += 1
 		else:
@@ -267,34 +283,41 @@ func _process(delta: float) -> void:
 				instant_skip_timer -= delta
 		
 	if Input.is_action_just_pressed("Progress") and active: #click
-		if optioning:
-			choice_anim.play("Close")
-			optioning = false
-			var id = $Choice.get_child(option_tab).get_meta("ID")
-			if id == "0":
-				line += 1
-				next()
-			else:
-				if not leave:
-					line = 0
-					dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
+		if active:
+			if optioning:
+				if optioning:
+					if sfx_next.stream != confirm_sfx:
+						sfx_next.stream = confirm_sfx
+					sfx_next.play()
+				choice_anim.play("Close")
+				optioning = false
+				var id = $Choice.get_child(option_tab).get_meta("ID")
+				if id == "0":
+					line += 1
 					next()
-				else: #specifically for leaving rooms, hardcoded since only needed at one place
-					RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
-		else:
-			if box.visible_ratio == 1.0:
-				sfx_next.play()
-				line += 1
-				input_ind.play("Next")
-				next()
-			else: #skip line
-				if tween and dialog.size() > line:
-					tween.kill()
-					if last_anim:
-						last_anim.seek(last_anim.current_animation_length, true)
-						last_anim = null
-					box.visible_ratio = 1.0
-					input_ind.play("Show")
+				else:
+					if not leave:
+						line = 0
+						dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
+						next()
+					else: #specifically for leaving rooms, hardcoded since only needed at one place
+						RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
+			else:
+				if box.visible_ratio == 1.0:
+					if sfx_next.stream != next_sfx:
+						sfx_next.stream = next_sfx
+					sfx_next.play()
+					line += 1
+					input_ind.play("Next")
+					next()
+				else: #skip line
+					if tween and dialog.size() > line:
+						tween.kill()
+						if last_anim:
+							last_anim.seek(last_anim.current_animation_length, true)
+							last_anim = null
+						box.visible_ratio = 1.0
+						input_ind.play("Show")
 
 #show/hide the cursor
 var old_mouse_position : Vector2

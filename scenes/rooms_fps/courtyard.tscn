@@ -244,6 +244,11 @@ transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08
 character = "reoto"
 expression = "neutral"
 
+[node name="tenga" parent="Characters" unique_id=57926839 instance=ExtResource("7_xn6dl")]
+transform = Transform3D(-1.4, 2.1139412e-07, -9.240331e-15, 0, -6.119594e-08, -1.4, -2.1139412e-07, -1.4, 6.119594e-08, -10, 1.3662605, 36)
+character = "tenga"
+expression = "neutral"
+
 [node name="Props" type="Node3D" parent="." unique_id=647337532]
 
 [node name="Structure" type="Node3D" parent="Props" unique_id=1805729853]

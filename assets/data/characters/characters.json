@@ -38,5 +38,9 @@
 
 "reoto":{"name":"Reoto Nakanishi","talent":"Ultimate Sewist","sex":"Male","likes":"Social media",
 "dislikes":"Artificial intelligence","height":"1.67 cm","birth_date":"29 april",
-"sprites":{"neutral":"res://assets/textures/characters/reoto/neutral.png"}}
+"sprites":{"neutral":"res://assets/textures/characters/reoto/neutral.png"}},
+
+"sumiko":{"name":"Sumiko Ekiba","talent":"Ultimate Athlete","sex":"Female","likes":"Bananas",
+"dislikes":"Glitter","height":"1.86 cm","birth_date":"12 january",
+"sprites":{"neutral":"res://assets/textures/characters/sumiko/neutral.png"}}
 }

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c8v3xdnow2b6e" path="res://assets/ui/handbook/icons/report.png" id="9_20njh"]
 [ext_resource type="Texture2D" uid="uid://dwpook7kjto3y" path="res://assets/ui/handbook/icons/rules.png" id="10_36iju"]
 [ext_resource type="Texture2D" uid="uid://7bbquld8ftrr" path="res://assets/ui/handbook/icons/system.png" id="11_678mn"]
+[ext_resource type="AudioStream" uid="uid://dbmnqc43rux14" path="res://assets/audio/sfx/ui/handbook_open1.mp3" id="16_unhec"]
 
 [sub_resource type="Gradient" id="Gradient_fd50p"]
 colors = PackedColorArray(0.20224464, 0.20224461, 0.20224461, 1, 0.48648673, 0.4864868, 0.48648667, 1)
@@ -194,6 +195,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SFX:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nrkx1"]
@@ -1465,3 +1478,8 @@ stretch_mode = 5
 [node name="Anim" type="AnimationPlayer" parent="." unique_id=1749970568]
 libraries/ = SubResource("AnimationLibrary_nrkx1")
 speed_scale = 0.8
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=999125617]
+stream = ExtResource("16_unhec")
+volume_db = 8.0
+autoplay = true

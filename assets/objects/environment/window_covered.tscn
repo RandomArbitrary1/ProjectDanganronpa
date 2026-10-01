@@ -43,7 +43,7 @@ mesh = SubResource("ArrayMesh_pxb4f")
 
 [node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=1184566723]
 transform = Transform3D(2.4835272e-08, 0, 1.6666665, 0, 1.6666665, 0, -1.6666665, 0, 2.4835272e-08, 0.6429631, 0, 0)
-light_energy = 0.5
+light_energy = 0.2
 shadow_enabled = true
 area_range = 4.587
 area_attenuation = 2.295

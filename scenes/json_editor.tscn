@@ -55,6 +55,7 @@ var current_dialog = \"dialog\"
 
 
 func _ready() -> void:
+	get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
 	Input.set_custom_mouse_cursor(null) #system cursor cuz custom one on here is cursed asf
 	flags_popup.close_requested.connect(flags_popup.hide)
 	dialogs_popup.close_requested.connect(dialogs_popup.hide) #make popups close work
@@ -505,7 +506,7 @@ func run_options(i, item_data): #function to run stuff on the given item
 			
 		)
 		file_dialog.file_selected.connect(func(path):
-			if to_open == \"sfx\" + str(item_data.id):
+			if to_open == \"sfx\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
 		)
@@ -569,19 +570,6 @@ func save(): #save the current file
 		self.get_node(\"Saved/Anim\").play(\"Anim\") #confirmation label
 	
 func _process(_delta: float) -> void:
-	if self.size != Vector2(get_window().size): 
-		#no scaling, aka nodes don't shrink with viewport but stay 1080p always
-		var re_scale = Vector2(1080,1080)/Vector2(get_window().size.y,get_window().size.y)
-		self.size = get_window().size
-		self.scale = re_scale
-		dialogs_popup.size = Vector2(214,300)*re_scale
-		flags_popup.size = Vector2(214,300)*re_scale
-		context_menu.size = Vector2(229,360)*re_scale
-		context_menu.max_size = Vector2(229,360)*re_scale
-		dialogs_popup.content_scale_factor = re_scale.x
-		flags_popup.content_scale_factor = re_scale.x
-		context_menu.content_scale_factor = re_scale.x
-	
 	for i in data[current_dialog]: #continously set id, cuz resorting
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 			i.id = i.eline.get_index()
