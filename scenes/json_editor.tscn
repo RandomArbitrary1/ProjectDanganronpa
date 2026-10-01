@@ -570,18 +570,7 @@ func save(): #save the current file
 		self.get_node(\"Saved/Anim\").play(\"Anim\") #confirmation label
 	
 func _process(_delta: float) -> void:
-	if self.size != Vector2(get_window().size): 
-		#no scaling, aka nodes don't shrink with viewport but stay 1080p always
-		var re_scale = Vector2(1080,1080)/Vector2(get_window().size.y,get_window().size.y)
-		self.size = get_window().size
-		self.scale = re_scale
-		dialogs_popup.size = Vector2(214,300)*re_scale
-		flags_popup.size = Vector2(214,300)*re_scale
-		context_menu.size = Vector2(229,360)*re_scale
-		context_menu.max_size = Vector2(229,360)*re_scale
-		dialogs_popup.content_scale_factor = re_scale.x
-		flags_popup.content_scale_factor = re_scale.x
-		context_menu.content_scale_factor = re_scale.x
+
 	
 	for i in data[current_dialog]: #continously set id, cuz resorting
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
