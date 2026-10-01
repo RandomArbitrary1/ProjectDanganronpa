@@ -3,12 +3,12 @@ extends TextureRect
 @onready var anim : AnimationPlayer = $Anim
 @onready var tabs = $Screen/Tabs/List
 @onready var lists = $Screen/Lists
+@onready var sfx: AudioStreamPlayer = $SFX
 
 var character_info = preload("res://assets/data/characters/characters.json").data
 var gifts_info = preload("res://assets/data/gifts.json").data
 @onready var report_item: NinePatchRect = $Screen/Lists/Report/Items/Item.duplicate()
 @onready var gift_item: NinePatchRect = $Screen/Lists/Gifts/Items/Item.duplicate()
-
 
 
 var original_mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -70,6 +70,7 @@ func _process(delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			open = true
 			anim.play("Open")
+			sfx.play()
 			get_tree().paused = true
 			tab = 0
 			for i in tabs.get_child_count():

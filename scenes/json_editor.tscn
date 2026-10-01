@@ -55,6 +55,7 @@ var current_dialog = \"dialog\"
 
 
 func _ready() -> void:
+	get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
 	Input.set_custom_mouse_cursor(null) #system cursor cuz custom one on here is cursed asf
 	flags_popup.close_requested.connect(flags_popup.hide)
 	dialogs_popup.close_requested.connect(dialogs_popup.hide) #make popups close work

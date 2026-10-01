@@ -26,6 +26,11 @@ var characters = null
 @onready var cg_anim: AnimationPlayer = $CG_anim
 @onready var cg_fade_anim: AnimationPlayer = $CG_fade_anim
 
+#ui sfx
+var next_sfx = preload("res://assets/audio/sfx/ui/dialog_next.mp3")
+var confirm_sfx = preload("res://assets/audio/sfx/ui/confirm.mp3")
+var select_sfx = preload("res://assets/audio/sfx/ui/select2.mp3")
+
 const idea = preload("uid://cm4ro1uwswy2a")
 const shock = preload("uid://v3ccuuxy11kt")
 var option_inactive = preload("res://assets/ui/dialog/choice.png")
@@ -245,11 +250,19 @@ func _process(delta: float) -> void:
 			i.position.x = move_toward(i.position.x, 240.0+i.get_index()*-60, 500*delta)
 	#navigate options/choices
 	if Input.is_action_just_pressed("Up"):
+		if optioning:
+			if sfx_next.stream != select_sfx:
+				sfx_next.stream = select_sfx
+			sfx_next.play()
 		if option_tab > 0:
 			option_tab -= 1
 		else:
 			option_tab = option_tab_max
 	if Input.is_action_just_pressed("Down"):
+		if optioning:
+			if sfx_next.stream != select_sfx:
+				sfx_next.stream = select_sfx
+			sfx_next.play()
 		if option_tab < option_tab_max:
 			option_tab += 1
 		else:
@@ -269,6 +282,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Progress") and active: #click
 		if active:
 			if optioning:
+				if optioning:
+					if sfx_next.stream != confirm_sfx:
+						sfx_next.stream = confirm_sfx
+					sfx_next.play()
 				choice_anim.play("Close")
 				optioning = false
 				var id = $Choice.get_child(option_tab).get_meta("ID")
@@ -284,6 +301,8 @@ func _process(delta: float) -> void:
 						RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
 			else:
 				if box.visible_ratio == 1.0:
+					if sfx_next.stream != next_sfx:
+						sfx_next.stream = next_sfx
 					sfx_next.play()
 					line += 1
 					input_ind.play("Next")
