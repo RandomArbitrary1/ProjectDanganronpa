@@ -570,8 +570,6 @@ func save(): #save the current file
 		self.get_node(\"Saved/Anim\").play(\"Anim\") #confirmation label
 	
 func _process(_delta: float) -> void:
-
-	
 	for i in data[current_dialog]: #continously set id, cuz resorting
 		if i.has(\"id\") and i.has(\"eline\") and i.eline != null:
 			i.id = i.eline.get_index()

@@ -205,7 +205,7 @@ func next(): # Next dialog line
 				$Choice.add_child(option)
 				
 			choice_anim.play("Open")
-			choice_anim = cg_anim
+			last_anim = cg_anim
 		else:
 			line += 1
 			next()
@@ -241,6 +241,9 @@ func _process(delta: float) -> void:
 	for i in $Choice.get_children():
 		if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
 			if option_tab != i.get_index() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				if sfx_next.stream != select_sfx:
+					sfx_next.stream = select_sfx
+					sfx_next.play()
 				option_tab = i.get_index()  # set current choice/option based on mouse
 		if i.get_index() == option_tab:  # choice/option hover active check
 			i.texture = option_active
