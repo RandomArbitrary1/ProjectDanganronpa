@@ -1,0 +1,21 @@
+{
+	"dialog": [
+		{
+			"flags": [],
+			"song": "dawn",
+			"type": "music"
+		},
+		{
+			"character": "shion",
+			"content": "Spinny woop!",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"song": "Break",
+			"type": "music"
+		},
+	]
+}

@@ -18,6 +18,7 @@ extends Control
 @onready var ready_anim: AnimationPlayer = $"Ready?/anim"
 @onready var anim: AnimationPlayer = $anim
 @onready var speeds: Label = $Hud/speeds
+@onready var canvas = $CanvasLayer
 var state = "nothing"
 var timer = 499.0
 var state_timer = 0.0
@@ -52,9 +53,11 @@ func _process(delta: float) -> void:
 	revolver.rotation += delta * 0.2
 	
 func start_process(delta): # PREVIEW PROCESS
+	canvas.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	state_timer += delta
 	if state_timer > 4.0:
+		state_timer = 0.0
 		bullets_main.reload()
 		state = "bullet_preview"
 		camera_node.play("rotate_in_center")
@@ -118,6 +121,7 @@ func debate_camera_reset():
 	camera_node.play("RESET")
 	
 func reset():
+	canvas.visible = false
 	state = "nothing"
 	timer = 499.0
 	state_timer = 0.0
@@ -129,6 +133,7 @@ func reset():
 	hud._ready()
 	
 func preview_process(delta):
+	
 	debate_start()
 	
 func finished():

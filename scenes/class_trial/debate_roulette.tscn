@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="3_bsook"]
 [ext_resource type="AudioStream" uid="uid://vp1f2vv2w0ju" path="res://assets/audio/sfx/class_trial/big_gunshot.mp3" id="4_on1fu"]
 [ext_resource type="Texture2D" uid="uid://cl73jelgvbjh8" path="res://assets/textures/ui/class_trial/shoot_white_noise_effect.png" id="4_ul4ow"]
+[ext_resource type="AudioStream" uid="uid://d0ohhjul3vqjw" path="res://assets/audio/sfx/class_trial/sonar_loop.mp3" id="5_emt8l"]
 [ext_resource type="Script" uid="uid://dn2lunsusc6x8" path="res://assets/scripts/class_trial/debate/hud.gd" id="5_pygrl"]
 [ext_resource type="AudioStream" uid="uid://b5oljuyd4ulox" path="res://assets/audio/sfx/class_trial/small_gunshot.mp3" id="5_ul4ow"]
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
@@ -32,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://c3csi42ued8pn" path="res://assets/textures/ui/class_trial/inner_crosshair.png" id="19_y04of"]
 [ext_resource type="Texture2D" uid="uid://c0p7e5xicfsb" path="res://assets/textures/ui/class_trial/bg9.png" id="20_06lkw"]
 [ext_resource type="FontFile" uid="uid://c2yaerphahb1o" path="res://assets/ui/fonts/Serpentine BoldOblique.ttf" id="21_dlr72"]
+[ext_resource type="Shader" uid="uid://d3px4671h7b7g" path="res://assets/ui/shaders/color_tint.gdshader" id="34_ypxl3"]
 
 [sub_resource type="Animation" id="Animation_ogawx"]
 length = 0.001
@@ -828,6 +830,12 @@ _data = {
 &"start": SubResource("Animation_6k323")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocahe"]
+shader = ExtResource("34_ypxl3")
+shader_parameter/tint_color = Color(1, 0.38431373, 0, 1)
+shader_parameter/opacity = 0.250000011875
+shader_parameter/saturation = 2.0
+
 [node name="DebateRoulette" type="Control" unique_id=1937437093]
 layout_mode = 3
 anchors_preset = 15
@@ -855,6 +863,12 @@ bus = &"Sfx"
 
 [node name="time_lose" type="AudioStreamPlayer" parent="sfx" unique_id=1689940330]
 volume_db = 5.0
+
+[node name="slow_sfx" type="AudioStreamPlayer" parent="sfx" unique_id=124143199]
+stream = ExtResource("5_emt8l")
+pitch_scale = 1.8
+bus = &"Sfx"
+parameters/looping = true
 
 [node name="Hud" type="Control" parent="." unique_id=474364630]
 modulate = Color(1, 1, 1, 0)
@@ -1260,5 +1274,15 @@ libraries/ = SubResource("AnimationLibrary_06reo")
 
 [node name="anim" type="AnimationPlayer" parent="." unique_id=1236655896]
 libraries/ = SubResource("AnimationLibrary_ogawx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=686794745]
+
+[node name="Tint" type="ColorRect" parent="CanvasLayer" unique_id=333132393]
+material = SubResource("ShaderMaterial_ocahe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="Bullets/downtime" to="Bullets" method="_on_downtime_timeout"]

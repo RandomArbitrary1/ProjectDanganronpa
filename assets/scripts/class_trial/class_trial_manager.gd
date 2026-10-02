@@ -6,7 +6,8 @@ extends Node3D
 @onready var music: AudioStreamPlayer = $music/pre_music
 @onready var dialog: Control = $Dialog
 @onready var intro: Control = $Intro
-
+# TODO DANILO: Camera spins before entering big spin. ALL Hardcoded, no anim players.
+# should anim players be used? only in dialog, not in debate.
 var state = "prepare"
 var structure = JsonParse.load_json("class_trial/structure/trial1.json")
 var char_data = JsonParse.load_json("characters/characters.json")
@@ -15,7 +16,7 @@ var podiums = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	podiums = get_tree().get_nodes_in_group("podium")
-	instant_begin()
+	#instant_begin()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
