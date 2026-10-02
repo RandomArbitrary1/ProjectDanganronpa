@@ -42,5 +42,9 @@
 
 "sumiko":{"name":"Sumiko Ekiba","talent":"Ultimate Athlete","sex":"Female","likes":"Bananas",
 "dislikes":"Glitter","height":"1.86 cm","birth_date":"12 january",
-"sprites":{"neutral":"res://assets/textures/characters/sumiko/neutral.png"}}
+"sprites":{"neutral":"res://assets/textures/characters/sumiko/neutral.png"}},
+
+"masato":{"name":"Masato Tohari","talent":"Ultimate Hacker","sex":"Male","likes":"Lights",
+"dislikes":"Mornings","height":"1.81 cm","birth_date":"5 december",
+"sprites":{"neutral":"res://assets/textures/characters/masato/neutral.png"}}
 }
