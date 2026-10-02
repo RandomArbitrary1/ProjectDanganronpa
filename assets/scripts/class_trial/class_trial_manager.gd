@@ -15,6 +15,7 @@ var podiums = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	podiums = get_tree().get_nodes_in_group("podium")
+	instant_begin()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -46,6 +47,7 @@ func debate():
 	preparation.visible = false
 	
 func next_process(next=1):
+	state = "nothing"
 	music.stop()
 	camera_3d.fov(25)
 	structure_line = structure_line + next
@@ -57,7 +59,7 @@ func next_process(next=1):
 		dialog.file = load(path)
 		dialog.start()
 	if type == "debate":
-		state = "debate"
+		debate_roulette.start()
 		debate_roulette.dialog_data = JsonParse.load_json(json)
 		
 func dialog_process(delta):
@@ -71,3 +73,6 @@ func dialog_process(delta):
 			camera_3d.look_at(podium.global_position, Vector3.UP)
 			break
 	
+func instant_begin():
+	intro.start()
+	intro.hide_elements()

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="3_bsook"]
 [ext_resource type="AudioStream" uid="uid://vp1f2vv2w0ju" path="res://assets/audio/sfx/class_trial/big_gunshot.mp3" id="4_on1fu"]
 [ext_resource type="Texture2D" uid="uid://cl73jelgvbjh8" path="res://assets/textures/ui/class_trial/shoot_white_noise_effect.png" id="4_ul4ow"]
+[ext_resource type="Script" uid="uid://dn2lunsusc6x8" path="res://assets/scripts/class_trial/debate/hud.gd" id="5_pygrl"]
 [ext_resource type="AudioStream" uid="uid://b5oljuyd4ulox" path="res://assets/audio/sfx/class_trial/small_gunshot.mp3" id="5_ul4ow"]
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
 [ext_resource type="Script" uid="uid://w5nod7m0ufde" path="res://assets/scripts/class_trial/bullet_system.gd" id="6_qus7n"]
@@ -15,6 +16,7 @@
 [ext_resource type="Theme" uid="uid://xbu3dv5es6ug" path="res://assets/ui/themes/class_trial_debate_words.tres" id="9_3resf"]
 [ext_resource type="Texture2D" uid="uid://0rp7vcnmr45g" path="res://assets/textures/ui/class_trial/debate_bg.png" id="9_c6kf5"]
 [ext_resource type="Texture2D" uid="uid://nibm1uw8rtdj" path="res://assets/textures/ui/class_trial/concentrate_bar_full.png" id="9_qmpdv"]
+[ext_resource type="Texture2D" uid="uid://cct6inkq5i5ab" path="res://assets/textures/ui/class_trial/HP_bar_empty.png" id="9_xrand"]
 [ext_resource type="Texture2D" uid="uid://dd3mhfe2v8gwg" path="res://assets/textures/ui/class_trial/dialog_progress_bg.png" id="10_06reo"]
 [ext_resource type="Texture2D" uid="uid://c4lccysi02k8b" path="res://assets/textures/ui/class_trial/dialog_progress_upper.png" id="11_c6kf5"]
 [ext_resource type="Texture2D" uid="uid://b6tvvygi6xmjn" path="res://assets/textures/ui/class_trial/bg_debate_ready.png" id="12_wokie"]
@@ -688,7 +690,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.8, 0.8)]
+"values": [Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -716,7 +718,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(0.8, 0.8)]
+"values": [Vector2(2, 2), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -863,6 +865,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("5_pygrl")
 
 [node name="bg" type="TextureRect" parent="Hud" unique_id=1388570049]
 layout_mode = 0
@@ -899,11 +902,12 @@ libraries/ = SubResource("AnimationLibrary_pgswe")
 [node name="HP" type="TextureProgressBar" parent="Hud" unique_id=162493343]
 layout_mode = 0
 offset_left = 1492.2931
-offset_top = 59.0
+offset_top = 54.00003
 offset_right = 1892.2931
-offset_bottom = 109.0
+offset_bottom = 134.00003
 rotation = 0.2262477
 value = 57.0
+texture_under = ExtResource("9_xrand")
 texture_progress = ExtResource("8_ogawx")
 
 [node name="Concentrate" type="TextureProgressBar" parent="Hud" unique_id=250982091]
@@ -913,7 +917,8 @@ offset_top = 125.0
 offset_right = 1892.2931
 offset_bottom = 175.0
 rotation = 0.2262477
-value = 35.0
+value = 90.0
+texture_under = ExtResource("9_xrand")
 texture_progress = ExtResource("9_qmpdv")
 
 [node name="dialog_progress_bar" type="TextureProgressBar" parent="Hud" unique_id=1712652643]
@@ -930,12 +935,12 @@ texture_under = ExtResource("10_06reo")
 texture_progress = ExtResource("11_c6kf5")
 
 [node name="progress" type="Label" parent="Hud" unique_id=2010527368]
-modulate = Color(1, 1, 1, 0.22745098)
+modulate = Color(1, 1, 1, 0.5411765)
 layout_mode = 0
-offset_left = 1745.0
-offset_top = 619.0001
-offset_right = 1914.0
-offset_bottom = 744.0001
+offset_left = 1738.9998
+offset_top = 634.99994
+offset_right = 1907.9998
+offset_bottom = 759.99994
 rotation = -1.0043099
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("8_juyy3")
@@ -949,10 +954,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -372.00012
-offset_top = -17.000013
-offset_right = 11.999878
-offset_bottom = 105.999985
+offset_left = -383.00012
+offset_top = -22.000015
+offset_right = 0.9998779
+offset_bottom = 100.999985
 grow_horizontal = 0
 rotation = 0.20659846
 theme_override_fonts/font = ExtResource("8_juyy3")
@@ -1183,7 +1188,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("17_y04of")
 
-[node name="crosshair" type="TextureRect" parent="." unique_id=1547952700]
+[node name="crosshair" type="Control" parent="." unique_id=1683437466]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -1197,10 +1202,8 @@ offset_right = 125.0
 offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8, 0.8)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("1_q3l8k")
 script = ExtResource("18_pgswe")
 
 [node name="inner_crosshair" type="TextureRect" parent="crosshair" unique_id=1033124637]
@@ -1209,6 +1212,22 @@ offset_right = 250.0
 offset_bottom = 250.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("19_y04of")
+
+[node name="outer_crosshair" type="TextureRect" parent="crosshair" unique_id=1706366344]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_q3l8k")
 
 [node name="Area2D" type="Area2D" parent="crosshair" unique_id=1441810566]
 

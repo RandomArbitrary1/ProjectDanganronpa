@@ -14,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	revolver.rotation += delta * 0.5
+	revolver.rotation += delta * 0.2
 	if state == "menu":
 		panel.visible = true
 	
