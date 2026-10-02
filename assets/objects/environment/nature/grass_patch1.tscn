@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bfe7jbvw33x0q"]
+
+[ext_resource type="PackedScene" uid="uid://bw4tdosbt8xyy" path="res://assets/objects/environment/nature/grass.tscn" id="1_j0ue2"]
+
+[node name="grass" type="Node3D" unique_id=1759133414]
+
+[node name="grass8" parent="." unique_id=988088890 instance=ExtResource("1_j0ue2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8, 5)
+
+[node name="grass12" parent="." unique_id=1761672361 instance=ExtResource("1_j0ue2")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1, 0.8, 1)
+
+[node name="grass10" parent="." unique_id=585038498 instance=ExtResource("1_j0ue2")]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 0, 0.8, 2)
+
+[node name="grass13" parent="." unique_id=2032455477 instance=ExtResource("1_j0ue2")]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 1, 0.8, 0)
+
+[node name="grass9" parent="." unique_id=857569148 instance=ExtResource("1_j0ue2")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -1, 1, 4)
+
+[node name="grass11" parent="." unique_id=251574070 instance=ExtResource("1_j0ue2")]
+transform = Transform3D(-0.70000005, 0, 1.2124355, 0, 1.4, 0, -1.2124355, 0, -0.70000005, 2, 1, 2)
