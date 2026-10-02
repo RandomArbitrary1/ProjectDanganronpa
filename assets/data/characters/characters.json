@@ -4,7 +4,7 @@
 "sprites":{"neutral":"res://assets/textures/characters/shion/neutral.png",
 "point":"res://assets/textures/characters/shion/point.png"}},
 
-"nori":{"name":"Noriyuki Wato","talent":"Ultimate ???","sex":"Male","likes":"Optimism",
+"nori":{"name":"Noriyuki Wato","talent":"Ultimate Guitarist","sex":"Male","likes":"Optimism",
 "dislikes":"Pessimism","height":"1.75 cm","birth_date":"25 february",
 "sprites":{"neutral":"res://assets/textures/characters/nori/neutral.png"}},
 
@@ -16,11 +16,11 @@
 "dislikes":"Giving up","height":"1.82 cm","birth_date":"8 march",
 "sprites":{"neutral":"res://assets/textures/characters/raito/neutral.png"}},
 
-"ayuka":{"name":"Ayuka Hozumi","talent":"Ultimate Scientist","sex":"Female","likes":"Focusing",
+"ayuka":{"name":"Ayuka Hozumi","talent":"Ultimate Chemist","sex":"Female","likes":"Focusing",
 "dislikes":"Noisy/busy places","height":"1.70 cm","birth_date":"21 december",
 "sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
 
-"shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Student","sex":"Male","likes":"Radiophysics",
+"shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Accountant","sex":"Male","likes":"Radiophysics",
 "dislikes":"Not working","height":"1.71 cm","birth_date":"29 januari",
 "sprites":{"neutral":"res://assets/textures/characters/shuuto/neutral.png"}},
 
