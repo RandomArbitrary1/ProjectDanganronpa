@@ -1,3 +1,9 @@
 {
-	"dialog": []
+	"dialog": [
+		{
+			"flags": [],
+			"song": "trial_debate1",
+			"type": "music"
+		},
+	]
 }

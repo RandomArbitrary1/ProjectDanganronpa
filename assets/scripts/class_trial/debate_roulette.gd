@@ -1,10 +1,9 @@
 extends Control
-@onready var crosshair: TextureRect = $crosshair
+@onready var crosshair: Control = $crosshair
 @onready var break_sfx: AudioStreamPlayer = $sfx/break
-@onready var hp = $Hud/HP
-@onready var concentrate = $Hud/Concentrate
 @onready var shoot_anim: AnimationPlayer = $Bullets/ShootAnim
 @onready var revolver: TextureRect = $revolver
+@onready var hud: Control = $Hud
 @onready var bullets_main: Control = $Bullets
 @onready var camera_node: Node3D = $"../CameraNode"
 @onready var timer_label = $Hud/timer_label
@@ -25,19 +24,15 @@ var state_timer = 0.0
 var dialog_index: int = 0
 
 func _ready() -> void:
-	hp.value = 100
-	concentrate.value = 100
-	bullets_main.noise_anim.play("hide")
-	anim.play("RESET")
+	reset()
 
 func start():
 	state = "start"
 	camera_node.play("intro1")
 	ready_anim.play("start")
+	visible = true
 	
 func _process(delta: float) -> void:
-	
-	
 	var minutes = (timer) / 60
 	var seconds = int(timer) % 60
 	var milliseconds = int((timer - int(timer)) * 100)
@@ -66,16 +61,15 @@ func start_process(delta): # PREVIEW PROCESS
 		
 func debate_process(delta):
 	state_timer += delta
-	concentrate.value += delta * 1.3
+	
 	speeds.text = ""
-	if Input.is_action_pressed("Spacebar"):
-		concentrate.value -= delta * 35.0
-		state_timer -= delta * 0.5
+	if hud.speed_state == "slow":
 		speeds.text = "c o n c e n t r a t i n g . . ."
-		
+		state_timer -= delta * 0.5
+	if hud.speed_state == "fast":
+		speeds.text = "Speeding Up!"
 	if Input.is_action_pressed("Ctrl"):
 		state_timer += delta
-		speeds.text = "Speeding Up!"
 		
 	camera_node.fov(35)
 	
@@ -107,7 +101,6 @@ func debate_next(add=1):
 		if podium.char_name == character:
 			podium.swap(char_data_one.sprites["neutral"])
 			var test_tween = create_tween()
-
 			#test_tween..parallel().tween_property(camera_node,"global_position",target_position,3.0)
 			var target_rotation = camera_node.global_transform.looking_at(
 			podium.global_position,
@@ -118,12 +111,22 @@ func debate_next(add=1):
 	print("ERROR, no character",character, "has been found!")
 	
 func debate_camera_reset():
-	print("CAEMERA GOT RESET!!")
 	camera_node.global_position = Vector3(0,1.8,0)
 	camera_node.rotation = Vector3.ZERO
 	state = "debate"
 	state_timer = 0
 	camera_node.play("RESET")
+	
+func reset():
+	state = "nothing"
+	timer = 499.0
+	state_timer = 0.0
+	bullets_main.noise_anim.play("hide")
+	anim.play("RESET")
+	words.visible = true
+	crosshair.visible = true
+	dialog_index = 0
+	hud._ready()
 	
 func preview_process(delta):
 	debate_start()

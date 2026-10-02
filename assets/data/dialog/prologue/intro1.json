@@ -46,6 +46,11 @@
 			"type": "text"
 		},
 		{
+			"flags": [],
+			"song": "Claustrophobic",
+			"type": "music"
+		},
+		{
 			"character": "shion",
 			"content": "Where am I...? I don't recognize this place at all.",
 			"expression": "neutral.png",
@@ -53,11 +58,6 @@
 				"unknown"
 			],
 			"type": "text"
-		},
-		{
-			"flags": [],
-			"song": "back_in_the_building",
-			"type": "music"
 		},
 		{
 			"character": "shion",
@@ -131,7 +131,7 @@
 			"type": "music"
 		},
 		{
-			"file": "res://assets/audio/sfx/creaky_door1.mp3",
+			"file": "res://assets/audio/sfx/environment/creaky_door1.mp3",
 			"flags": [],
 			"type": "sfx"
 		},
@@ -189,14 +189,14 @@
 		},
 		{
 			"character": "shion",
-			"content": "My title as an ultimate spy comes from my ability to blend in perfectly. Thus I get a lot of opportunities.",
+			"content": "My title as an ultimate spy comes from my history working as a spy. Also because it's an ability I own.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "Like listening in on people or knowing what to say to avoid any if all trouble.",
+			"content": "Working plenty for various businesses and even the American Government.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"

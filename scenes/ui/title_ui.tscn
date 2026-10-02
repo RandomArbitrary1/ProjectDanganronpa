@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="4_ufw8e"]
 [ext_resource type="AudioStream" uid="uid://cjr0c11lnhgqg" path="res://assets/audio/sfx/ui/confirm.mp3" id="5_iualr"]
 [ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/themes/menu_theme.tres" id="6_iualr"]
+[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="8_pgqlf"]
 
 [sub_resource type="Animation" id="Animation_iualr"]
 length = 0.001
@@ -206,10 +207,10 @@ texture = ExtResource("2_edp21")
 self_modulate = Color(1, 1, 1, 0.3882353)
 layout_mode = 0
 offset_left = 1319.0
-offset_top = 485.0
+offset_top = 348.0
 offset_right = 2420.0
-offset_bottom = 1586.0
-scale = Vector2(0.5, 0.5)
+offset_bottom = 1449.0
+scale = Vector2(0.74, 0.74)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_5y5n0")
 
@@ -327,6 +328,25 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("6_iualr")
 theme_override_font_sizes/font_size = 55
 text = "Quit"
+
+[node name="Credts" type="Label" parent="Panel" unique_id=2023385575]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -631.43506
+offset_top = 124.42505
+offset_right = -54.43506
+offset_bottom = 188.42505
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_pgqlf")
+theme_override_font_sizes/font_size = 46
+text = "Made by Danilo and Maik"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="press_label" type="Label" parent="." unique_id=706478272]
 layout_mode = 1
