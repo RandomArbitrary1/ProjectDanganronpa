@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://b5oljuyd4ulox" path="res://assets/audio/sfx/class_trial/small_gunshot.mp3" id="5_ul4ow"]
 [ext_resource type="AudioStream" uid="uid://dvlp0p1rybbda" path="res://assets/audio/sfx/class_trial/mountain_break.mp3" id="6_fe14r"]
 [ext_resource type="Script" uid="uid://w5nod7m0ufde" path="res://assets/scripts/class_trial/bullet_system.gd" id="6_qus7n"]
+[ext_resource type="AudioStream" uid="uid://78hvmji7help" path="res://assets/audio/sfx/ui/back.mp3" id="6_v10gr"]
 [ext_resource type="Script" uid="uid://bhc4scbeu7xse" path="res://assets/scripts/class_trial/debate/name_label.gd" id="7_6k323"]
 [ext_resource type="Texture2D" uid="uid://b5ixvrf66o27g" path="res://assets/textures/ui/class_trial/truth_bullet.png" id="8_fe14r"]
 [ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="8_juyy3"]
@@ -34,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://c0p7e5xicfsb" path="res://assets/textures/ui/class_trial/bg9.png" id="20_06lkw"]
 [ext_resource type="FontFile" uid="uid://c2yaerphahb1o" path="res://assets/ui/fonts/Serpentine BoldOblique.ttf" id="21_dlr72"]
 [ext_resource type="Shader" uid="uid://d3px4671h7b7g" path="res://assets/ui/shaders/color_tint.gdshader" id="34_ypxl3"]
+[ext_resource type="Script" uid="uid://bymdugmjbai8y" path="res://assets/scripts/class_trial/debate/tint.gd" id="36_qn1lk"]
 
 [sub_resource type="Animation" id="Animation_ogawx"]
 length = 0.001
@@ -301,7 +303,7 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.9, 1.0448872),
+"times": PackedFloat32Array(0, 0.33333334, 0.8333333, 1.0448872),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.63, 1), Vector2(0.63, 1), Vector2(0.055, 0.5), Vector2(0, 0)]
@@ -313,7 +315,7 @@ tracks/2/path = NodePath("../..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.93333334),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -423,7 +425,7 @@ tracks/1/use_blend = true
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../sfx/time_lose")
+tracks/2/path = NodePath("../../sfx/anim_sfx")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -861,7 +863,7 @@ bus = &"Sfx"
 stream = ExtResource("6_fe14r")
 bus = &"Sfx"
 
-[node name="time_lose" type="AudioStreamPlayer" parent="sfx" unique_id=1689940330]
+[node name="anim_sfx" type="AudioStreamPlayer" parent="sfx" unique_id=1689940330]
 volume_db = 5.0
 
 [node name="slow_sfx" type="AudioStreamPlayer" parent="sfx" unique_id=124143199]
@@ -869,6 +871,9 @@ stream = ExtResource("5_emt8l")
 pitch_scale = 1.8
 bus = &"Sfx"
 parameters/looping = true
+
+[node name="time_lost" type="AudioStreamPlayer" parent="sfx" unique_id=434352427]
+stream = ExtResource("6_v10gr")
 
 [node name="Hud" type="Control" parent="." unique_id=474364630]
 modulate = Color(1, 1, 1, 0)
@@ -1012,8 +1017,8 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 182.0
 offset_top = 1060.0
-offset_right = 682.0028
-offset_bottom = 1210.0089
+offset_right = 682.00244
+offset_bottom = 1210.0088
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("8_fe14r")
@@ -1058,7 +1063,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 866.0
 offset_top = 351.0
-offset_right = 2151.0044
+offset_right = 2151.0457
 offset_bottom = 610.0002
 grow_horizontal = 2
 grow_vertical = 2
@@ -1093,7 +1098,7 @@ libraries/ = SubResource("AnimationLibrary_pygrl")
 [node name="bg" type="TextureRect" parent="SuccesVfx" unique_id=1901153432]
 layout_mode = 0
 offset_left = 1920.0
-offset_right = 3840.0415
+offset_right = 3840.0422
 offset_bottom = 1080.0005
 texture = ExtResource("18_dlb3f")
 
@@ -1284,5 +1289,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("36_qn1lk")
 
 [connection signal="timeout" from="Bullets/downtime" to="Bullets" method="_on_downtime_timeout"]

@@ -57,7 +57,6 @@ func debate():
 func next_process(next=1):
 	state = "nothing"
 	music.stop()
-	#camera_3d.fov(25)
 	structure_line = structure_line + next
 	var path = structure[structure_line]
 	var type = path.get_base_dir().get_file()
@@ -71,15 +70,18 @@ func next_process(next=1):
 		debate_roulette.dialog_data = JsonParse.load_json(json)
 		
 func dialog_process(delta):
-	var name_ch = dialog.nameplate.get_node("full_name").text
-	var key = null
-	camera_3d.position = Vector3(0,1.0,0)
-	for k in char_data:
-		if char_data[k].name == name_ch:
-			key = k
+	var dialog_fullname_txt = dialog.nameplate.get_node("full_name").text
+	camera_3d.fov(25)
+	camera_3d.position = Vector3(0,1.3,0)
+	
+	var char_key = null
+	for char in char_data: # Checks every character for their "shion" key name
+		if char_data[char].name == dialog_fullname_txt: # If full name is equal to speaker
+			char_key = char # get character KEY name
+			break
 	for podium in podiums:
-		if podium.char_name == key:
-			camera_3d.look_at(podium.global_position)
+		if podium.char_name == char_key:
+			camera_3d.look_at(podium.global_position + Vector3(0,1.4,0))
 			break
 	
 func instant_begin():
