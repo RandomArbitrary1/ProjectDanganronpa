@@ -47,6 +47,7 @@ Characters_interact=""
 Camera_room=""
 Camera=""
 Objects=""
+Player_fps=""
 
 [input]
 

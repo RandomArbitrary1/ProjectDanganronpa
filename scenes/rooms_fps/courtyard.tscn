@@ -99,17 +99,10 @@ size = Vector3(6, 2.432129, 8)
 height = 8.0
 radius = 0.4
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tkyub"]
-noise_type = 3
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i2tru"]
-noise = SubResource("FastNoiseLite_tkyub")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trm24"]
 shader = ExtResource("8_61nrk")
-shader_parameter/sun_position = Vector2(0, 0)
+shader_parameter/sun_position = Vector2(-100000, -100000)
 shader_parameter/tint = Vector3(2.4, 2.2, 2)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_i2tru")
 
 [sub_resource type="GDScript" id="GDScript_61nrk"]
 resource_name = "Flare"
