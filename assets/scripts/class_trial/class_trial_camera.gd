@@ -1,8 +1,6 @@
 extends Node3D
-@onready var animation_player: AnimationPlayer = $ClassTrialCamera/AnimationPlayer
-@onready var camera_node: Node3D = $"."
-@onready var class_trial_camera: Camera3D = $ClassTrialCamera
 
+@onready var camera_node: Camera3D = $"."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,12 +11,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 func play(animation:String):
-	if animation == "stop":
-		animation_player.stop()
-		return
-	animation_player.stop()
+
 	camera_node.global_position = Vector3.ZERO
 	camera_node.rotation = Vector3.ZERO
-	animation_player.play(animation)
+
 func fov(value):
-	class_trial_camera.fov = value
+	camera_node.fov = value
+	
+func set_pos(pos):
+	global_position = pos
+	
+func set_rotat(rotat):
+	rotation = rotat

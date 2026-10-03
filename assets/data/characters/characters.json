@@ -1,50 +1,62 @@
 {
 "shion":{"name":"Shion Fumihiro","talent":"Ultimate Spy","sex":"Female","likes":"Peanuts",
 "dislikes":"Being alone","height":"1.68 cm","birth_date":"2 june",
+"face_pos":[0.45,0.3],
 "sprites":{"neutral":"res://assets/textures/characters/shion/neutral.png",
 "point":"res://assets/textures/characters/shion/point.png"}},
 
 "nori":{"name":"Noriyuki Wato","talent":"Ultimate Guitarist","sex":"Male","likes":"Optimism",
 "dislikes":"Pessimism","height":"1.75 cm","birth_date":"25 february",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/nori/neutral.png"}},
 
 "yuito":{"name":"Yuito Haruki","talent":"Ultimate Dancer","sex":"Female","likes":"Hot sauce",
 "dislikes":"Gore, Horror","height":"1.65 cm","birth_date":"11 october",
+"face_pos":[0.45,0.2],
 "sprites":{"neutral":"res://assets/textures/characters/yuito/neutral.png"}},
 
 "raito":{"name":"Raito Rito","talent":"Ultimate Electrician","sex":"Male","likes":"Determination",
 "dislikes":"Giving up","height":"1.82 cm","birth_date":"8 march",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/raito/neutral.png"}},
 
 "ayuka":{"name":"Ayuka Hozumi","talent":"Ultimate Chemist","sex":"Female","likes":"Focusing",
 "dislikes":"Noisy/busy places","height":"1.70 cm","birth_date":"21 december",
+"face_pos":[0.45,0.2],
 "sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
 
 "shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Accountant","sex":"Male","likes":"Radiophysics",
 "dislikes":"Not working","height":"1.71 cm","birth_date":"29 januari",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/shuuto/neutral.png"}},
 
 "rikuno":{"name":"Rikuno Yukami","talent":"Ultimate Mercenary","sex":"Female","likes":"Firearms",
 "dislikes":"West Europe","height":"1.76 cm","birth_date":"12 may",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/rikuno/neutral.png"}},
 
 "tenga":{"name":"Tenga Koaki","talent":"Ultimate Fisher","sex":"Male","likes":"Animals",
 "dislikes":"Rainy days","height":"1.72 cm","birth_date":"24 july",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/tenga/neutral.png"}},
 
 "naeri":{"name":"Naeri Enokida","talent":"Ultimate DJ","sex":"Female","likes":"Booze",
 "dislikes":"Waiting","height":"1.65 cm","birth_date":"18 october",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/naeri/neutral.png"}},
 
 "reoto":{"name":"Reoto Nakanishi","talent":"Ultimate Sewist","sex":"Male","likes":"Social media",
 "dislikes":"Artificial intelligence","height":"1.67 cm","birth_date":"29 april",
+"face_pos":[0.45,0.23],
 "sprites":{"neutral":"res://assets/textures/characters/reoto/neutral.png"}},
 
 "sumiko":{"name":"Sumiko Ekiba","talent":"Ultimate Athlete","sex":"Female","likes":"Bananas",
 "dislikes":"Glitter","height":"1.86 cm","birth_date":"12 january",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/sumiko/neutral.png"}},
 
 "masato":{"name":"Masato Tohari","talent":"Ultimate Hacker","sex":"Male","likes":"Lights",
 "dislikes":"Mornings","height":"1.81 cm","birth_date":"5 december",
+"face_pos":[0.45,0.1],
 "sprites":{"neutral":"res://assets/textures/characters/masato/neutral.png"}}
 }

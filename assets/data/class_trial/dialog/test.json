@@ -7,7 +7,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Spinny woop!",
+			"content": "So this is the part that'll be used to test the text. Gotta say it's starting to look nice.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"

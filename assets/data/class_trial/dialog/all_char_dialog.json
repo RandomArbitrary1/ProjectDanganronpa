@@ -1,0 +1,98 @@
+{
+	"dialog": [
+		{
+			"flags": [],
+			"song": "dawn",
+			"type": "music"
+		},
+		{
+			"character": "shion",
+			"content": "I am Shion Fumihiro.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "yuito",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "ayuka",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shuuto",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "tenga",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "naeri",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "reoto",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "sumiko",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "masato",
+			"content": "I am a character",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"flags": [],
+			"song": "Break",
+			"type": "music"
+		},
+	]
+}
