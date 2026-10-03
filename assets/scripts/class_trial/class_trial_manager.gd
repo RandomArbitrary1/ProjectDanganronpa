@@ -13,6 +13,7 @@ var structure = JsonParse.load_json("class_trial/structure/trial1.json")
 var char_data = JsonParse.load_json("characters/characters.json")
 var structure_line = 0
 var podiums = null
+var angle := 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	podiums = get_tree().get_nodes_in_group("podium")
@@ -20,20 +21,26 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if state == "dialog":
-		dialog_process(delta)
 	if state == "prepare":
-		prepare()
+		prepare(delta)
 	if state == "debate":
 		debate()
 	if state == "dialog":
+		dialog_process(delta)
 		if !dialog.active:
 			next_process()
 
-func prepare():
+func prepare(delta):
 	if !preparation.state == "hide":
-		camera_3d.global_position = Vector3(0,7.5,15)
-		camera_3d.rotation.x = -0.4
+		var radius := 3.0
+		var height := 1.0
+		var center = Vector3(0,2,0)
+		angle += delta * 0.1
+		camera_3d.global_position = center + Vector3(
+		sin(angle) * radius, 
+		height,
+		cos(angle) * radius)
+		camera_3d.look_at(center)
 	if !music.playing:
 		music.play()
 	debate_roulette.visible = false
@@ -50,7 +57,7 @@ func debate():
 func next_process(next=1):
 	state = "nothing"
 	music.stop()
-	camera_3d.fov(25)
+	#camera_3d.fov(25)
 	structure_line = structure_line + next
 	var path = structure[structure_line]
 	var type = path.get_base_dir().get_file()
@@ -66,12 +73,13 @@ func next_process(next=1):
 func dialog_process(delta):
 	var name_ch = dialog.nameplate.get_node("full_name").text
 	var key = null
+	camera_3d.position = Vector3(0,1.0,0)
 	for k in char_data:
 		if char_data[k].name == name_ch:
 			key = k
 	for podium in podiums:
 		if podium.char_name == key:
-			camera_3d.look_at(podium.global_position, Vector3.UP)
+			camera_3d.look_at(podium.global_position)
 			break
 	
 func instant_begin():

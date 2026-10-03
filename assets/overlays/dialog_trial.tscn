@@ -1425,10 +1425,10 @@ texture = ExtResource("6_pkhgj")
 
 [node name="Character" type="TextureRect" parent="Bar/Display/Mask" unique_id=17203150]
 layout_mode = 0
-offset_left = -535.0
-offset_top = -266.0
-offset_right = 965.0
-offset_bottom = 1734.0
+offset_left = -863.0
+offset_top = -370.00003
+offset_right = 637.0
+offset_bottom = 1630.0
 scale = Vector2(1.07, 1.07)
 texture = ExtResource("7_tcbm5")
 
