@@ -707,6 +707,7 @@ text = "???"
 autowrap_mode = 3
 
 [node name="Gifts" type="Control" parent="Screen/Lists" unique_id=2132885470]
+visible = false
 clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
@@ -806,7 +807,6 @@ text = "???"
 autowrap_mode = 3
 
 [node name="Report" type="Control" parent="Screen/Lists" unique_id=1624073679]
-visible = false
 clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
@@ -824,7 +824,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 1816.0
 offset_bottom = 131.0
-columns = 16
+columns = 12
 
 [node name="Item" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=204773500]
 custom_minimum_size = Vector2(113, 113)
@@ -886,6 +886,19 @@ offset_right = 2248.0
 offset_bottom = 1110.0
 expand_mode = 1
 stretch_mode = 5
+
+[node name="ID" type="Label" parent="Screen/Lists/Report" unique_id=1491259169]
+modulate = Color(1, 1, 1, 0.30980393)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 640.0
+offset_right = 296.0
+offset_bottom = 892.0
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 200
+text = "01"
+vertical_alignment = 1
 
 [node name="Info" type="ColorRect" parent="Screen/Lists/Report" unique_id=1542270339]
 layout_mode = 0

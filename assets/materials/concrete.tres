@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bpf6n2vgdn43m" path="res://assets/textures/environment/ConcreteOil_normal.png" id="2_o7n2m"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_0113i")
 normal_enabled = true
 normal_texture = ExtResource("2_o7n2m")

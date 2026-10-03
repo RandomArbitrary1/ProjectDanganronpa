@@ -111,7 +111,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("Left"):
 			if inside_tab.x > 0:
 				inside_tab.x -= 1
-			else:
+			elif x_range != 1:
 				inside_tab.x = x_range-1
 		if Input.is_action_just_pressed("Right"):
 			if inside_tab .x < x_range-1:
@@ -150,6 +150,7 @@ func _process(delta: float) -> void:
 	#report card
 	
 	if tab == 3:
+		lists.get_node("Report/ID").text = "0" + str(int(inside_tab.x+1)) if str(int(inside_tab.x+1)).length() == 1 else str(int(inside_tab.x+1))
 		var list_tab =  inside_tab.x
 		var key =  lists.get_node("Report/Items").get_child(list_tab).name
 		if lists.get_node("Report/Info/Name").text != character_info[key].name:

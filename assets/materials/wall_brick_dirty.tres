@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bi77g6fm515n6"]
+
+[ext_resource type="Texture2D" uid="uid://ng1cw4x300en" path="res://assets/textures/environment/brick_dirty.png" id="1_x2duc"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_x2duc")
+uv1_scale = Vector3(0.2, 0.075, 0.2)
+uv1_offset = Vector3(0, -0.037, 0)
+uv1_triplanar = true
