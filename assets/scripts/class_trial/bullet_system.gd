@@ -68,3 +68,4 @@ func succes_hit():
 	success_anim.play("success")
 	downtime.stop()
 	shoot_anim.play("hit")
+	camera.shake(0.3)

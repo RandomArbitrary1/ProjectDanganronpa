@@ -52,6 +52,7 @@ func debate():
 		debate_roulette.state = "something"
 		debate_roulette.start()
 		music.stop()
+	
 	preparation.visible = false
 	
 func next_process(next=1):
@@ -71,7 +72,7 @@ func next_process(next=1):
 		
 func dialog_process(delta):
 	var dialog_fullname_txt = dialog.nameplate.get_node("full_name").text
-	camera_3d.fov(25)
+	camera_3d.fov(35)
 	camera_3d.position = Vector3(0,1.3,0)
 	
 	var char_key = null
@@ -81,9 +82,12 @@ func dialog_process(delta):
 			break
 	for podium in podiums:
 		if podium.char_name == char_key:
-			camera_3d.look_at(podium.global_position + Vector3(0,1.4,0))
+			camera_3d.look_at(podium.face_center)
 			break
 	
 func instant_begin():
 	intro.start()
 	intro.hide_elements()
+	
+func start(): # IS CALLED AFTER INTRO ANIMATION
+	next_process(0)

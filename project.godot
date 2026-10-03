@@ -47,7 +47,11 @@ Characters_interact=""
 Camera_room=""
 Camera=""
 Objects=""
+<<<<<<< HEAD
 Player_fps=""
+=======
+trial_main=""
+>>>>>>> fd449dd1707134535ce8258f8ba5159947f01b59
 
 [input]
 

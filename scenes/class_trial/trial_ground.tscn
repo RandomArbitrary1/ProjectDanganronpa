@@ -13,6 +13,6 @@ shadow_enabled = true
 [node name="ClassTrialRing" parent="." unique_id=809995449 instance=ExtResource("4_nogv8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.040589094, 0)
 
-[node name="CLASS_TRIAL_MAIN" parent="." unique_id=642936802 instance=ExtResource("5_fp278")]
+[node name="CLASS_TRIAL_MAIN" parent="." unique_id=642936802 groups=["trial_main"] instance=ExtResource("5_fp278")]
 
 [node name="TrialEnvironment1" parent="." unique_id=1385433186 instance=ExtResource("3_xpmoe")]

@@ -28,9 +28,9 @@ func _process(delta: float) -> void:
 		pre_screen.visible = false
 		intro.hide_elms = false
 		dialog.visible = true
-		camera_3d.play("RESET")
+
 	if intro.started:
-		class_trial_main.next_process(0)
+		class_trial_main.start()
 		intro.started = false
 
 func _on_button_pressed() -> void:

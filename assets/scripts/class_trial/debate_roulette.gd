@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func start():
 	state = "start"
-	#camera_node.play("intro1")
+	camera_node.debate_spin()
 	ready_anim.play("start")
 	visible = true
 	
@@ -61,11 +61,10 @@ func start_process(delta): # PREVIEW PROCESS
 		state_timer = 0.0
 		bullets_main.reload()
 		state = "bullet_preview"
-		#camera_node.play("rotate_in_center")
+		camera_node.state = ""
 		
 func debate_process(delta):
 	state_timer += delta
-	
 	speeds.text = ""
 	if hud.speed_state == "slow":
 		speeds.text = "c o n c e n t r a t i n g . . ."
@@ -73,20 +72,19 @@ func debate_process(delta):
 	if hud.speed_state == "fast":
 		speeds.text = "Speeding Up!"
 		state_timer += delta * 1.8
-		
 	camera_node.fov(35)
 	
 	if state_timer > 5.0:
 		debate_next()
 		state_timer = 0
+		
 	if name_label.text == "name":
 		debate_start()
 		
 func debate_start():
-	camera_node.position = Vector3(0,1.5,0)
+	camera_node._ready()
 	debate_next(0)
 	state = "debate"
-	debate_camera_reset()
 	anim.play("start")
 	
 func debate_next(add=1):
@@ -100,27 +98,19 @@ func debate_next(add=1):
 	dialog_progress_bar.value = (float(dialog_index) / float(dialog_data["dialog"].size() - 1)) * 100
 	progress.text = str(dialog_index+1)+ "/" + str(dialog_data["dialog"].size())
 	
+	camera_node.position = Vector3(0,1.6,0)
 	var podiums = get_tree().get_nodes_in_group("podium")
 	for podium in podiums:
 		if podium.char_name == character:
 			podium.swap(char_data_one.sprites["neutral"])
-			
-			var test_tween = create_tween()
-			#test_tween..parallel().tween_property(camera_node,"global_position",target_position,3.0)
-			var target_rotation = camera_node.global_transform.looking_at(
-			podium.global_position + Vector3(0,1.4,0),
-			Vector3.UP
-		).basis.get_euler()
-			test_tween.parallel().tween_property(camera_node,"global_rotation",target_rotation,0.7)
+			camera_node.focus_on(podium.face_center)
 			return
-	print("ERROR, no character",character, "has been found!")
 	
 func debate_camera_reset():
-	camera_node.global_position = Vector3(0,1.8,0)
+	camera_node.global_position = Vector3.ZERO
 	camera_node.rotation = Vector3.ZERO
 	state = "debate"
 	state_timer = 0
-	camera_node.play("RESET")
 	
 func reset():
 	state = "nothing"
