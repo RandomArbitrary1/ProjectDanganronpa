@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://breslrvsodp38"]
+
+[ext_resource type="PackedScene" uid="uid://b3ld2fd535fk5" path="res://assets/objects/environment/nature/tree_trunk.glb" id="1_1a3wl"]
+[ext_resource type="Material" uid="uid://b22c6y7o8gyan" path="res://assets/materials/wood.tres" id="2_lgx50"]
+[ext_resource type="PackedScene" uid="uid://dv1ake1fdpghp" path="res://assets/objects/environment/nature/vines2.tscn" id="3_y6sba"]
+[ext_resource type="Texture2D" uid="uid://8gqmxmlmj64g" path="res://assets/textures/environment/Nature/tree leaves.png" id="4_yolpa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hirv"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.52906674, 0.5290667, 0.5290667, 1)
+albedo_texture = ExtResource("4_yolpa")
+texture_repeat = false
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_puoyy"]
+material = SubResource("StandardMaterial3D_8hirv")
+size = Vector2(1.5, 1.5)
+orientation = 2
+
+[node name="tree_trunk" unique_id=740311548 instance=ExtResource("1_1a3wl")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1568727551]
+surface_material_override/0 = ExtResource("2_lgx50")
+
+[node name="Leaves" parent="." index="1" unique_id=257907977 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-6, 2.2928226e-14, -5.2453663e-07, -5.2453663e-07, -7.8680495e-07, 6, -4.5856443e-14, 6, 7.8680495e-07, -1, 7.5, 3.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves2" parent="." index="2" unique_id=446926131 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.854517e-07, -4.2426405, 4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.854517e-07, -4.2426405, -4.2426405, -1, 7.5, 3.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves3" parent="." index="3" unique_id=680453290 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, 4.24264, -4.242641, -6, 1.14641115e-14, -2.6226832e-07, -1.8545168e-07, 4.242641, 4.24264, -1, 7.5, 3.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves4" parent="." index="4" unique_id=1934641118 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, -4.2426405, -4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.8545168e-07, 4.2426405, -4.2426405, -1, 7.5, 3.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves5" parent="." index="5" unique_id=720659161 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.8545165e-07, 4.242641, 4.24264, -6, -3.608772e-15, -2.622683e-07, -1.8545171e-07, -4.24264, 4.242641, -1, 7.5, 3.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves6" parent="." index="6" unique_id=2065290854 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-6, 2.2928226e-14, -5.2453663e-07, -5.2453663e-07, -7.8680495e-07, 6, -4.5856443e-14, 6, 7.8680495e-07, -3, 7.5, -2.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves7" parent="." index="7" unique_id=351902063 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.854517e-07, -4.2426405, 4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.854517e-07, -4.2426405, -4.2426405, -3, 7.5, -2.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves8" parent="." index="8" unique_id=702534111 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, 4.24264, -4.242641, -6, 1.14641115e-14, -2.6226832e-07, -1.8545168e-07, 4.242641, 4.24264, -3, 7.5, -2.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves9" parent="." index="9" unique_id=958382692 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, -4.2426405, -4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.8545168e-07, 4.2426405, -4.2426405, -3, 7.5, -2.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves10" parent="." index="10" unique_id=38106116 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.8545165e-07, 4.242641, 4.24264, -6, -3.608772e-15, -2.622683e-07, -1.8545171e-07, -4.24264, 4.242641, -3, 7.5, -2.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves11" parent="." index="11" unique_id=1301917033 instance=ExtResource("3_y6sba")]
+transform = Transform3D(6, 7.6232965e-21, 3.3322486e-28, 0, -2.6226832e-07, 6, 2.5410988e-21, -6, -2.6226832e-07, 4, 6, 1.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves12" parent="." index="12" unique_id=209784621 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.854517e-07, -4.2426405, 4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.854517e-07, -4.2426405, -4.2426405, 4, 6, 1.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves13" parent="." index="13" unique_id=1761775976 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, 4.24264, -4.242641, -6, 1.14641115e-14, -2.6226832e-07, -1.8545168e-07, 4.242641, 4.24264, 4, 6, 1.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves14" parent="." index="14" unique_id=1925160660 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, -4.2426405, -4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.8545168e-07, 4.2426405, -4.2426405, 4, 6, 1.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves15" parent="." index="15" unique_id=1039503707 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.8545165e-07, 4.242641, 4.24264, -6, -3.608772e-15, -2.622683e-07, -1.8545171e-07, -4.24264, 4.242641, 4, 6, 1.5)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves16" parent="." index="16" unique_id=552571564 instance=ExtResource("3_y6sba")]
+transform = Transform3D(6, 7.6232965e-21, 3.3322486e-28, 0, -2.6226832e-07, 6, 2.5410988e-21, -6, -2.6226832e-07, 0, 9.5, 1)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves17" parent="." index="17" unique_id=272577245 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.854517e-07, -4.2426405, 4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.854517e-07, -4.2426405, -4.2426405, 0, 9.5, 1)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves18" parent="." index="18" unique_id=700830936 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, 4.24264, -4.242641, -6, 1.14641115e-14, -2.6226832e-07, -1.8545168e-07, 4.242641, 4.24264, 0, 9.5, 1)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves19" parent="." index="19" unique_id=549031695 instance=ExtResource("3_y6sba")]
+transform = Transform3D(1.8545171e-07, -4.2426405, -4.2426405, -6, 1.14641115e-14, -2.6226832e-07, 1.8545168e-07, 4.2426405, -4.2426405, 0, 9.5, 1)
+mesh = SubResource("PlaneMesh_puoyy")
+
+[node name="Leaves20" parent="." index="20" unique_id=1396609775 instance=ExtResource("3_y6sba")]
+transform = Transform3D(-1.8545165e-07, 4.242641, 4.24264, -6, -3.608772e-15, -2.622683e-07, -1.8545171e-07, -4.24264, 4.242641, 0, 9.5, 1)
+mesh = SubResource("PlaneMesh_puoyy")
