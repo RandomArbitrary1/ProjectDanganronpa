@@ -426,7 +426,6 @@ texture = ExtResource("9_x8ge1")
 
 [node name="anim" type="AnimationPlayer" parent="." unique_id=696642662]
 libraries/ = SubResource("AnimationLibrary_omduj")
-speed_scale = 2.0
 
 [node name="tap" type="AudioStreamPlayer" parent="." unique_id=1529674655]
 
