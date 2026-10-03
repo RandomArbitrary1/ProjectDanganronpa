@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func start():
 	state = "start"
-	camera_node.play("intro1")
+	#camera_node.play("intro1")
 	ready_anim.play("start")
 	visible = true
 	
@@ -53,6 +53,7 @@ func _process(delta: float) -> void:
 	revolver.rotation += delta * 0.2
 	
 func start_process(delta): # PREVIEW PROCESS
+	
 	canvas.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	state_timer += delta
@@ -60,7 +61,7 @@ func start_process(delta): # PREVIEW PROCESS
 		state_timer = 0.0
 		bullets_main.reload()
 		state = "bullet_preview"
-		camera_node.play("rotate_in_center")
+		#camera_node.play("rotate_in_center")
 		
 func debate_process(delta):
 	state_timer += delta
@@ -71,8 +72,7 @@ func debate_process(delta):
 		state_timer -= delta * 0.5
 	if hud.speed_state == "fast":
 		speeds.text = "Speeding Up!"
-	if Input.is_action_pressed("Ctrl"):
-		state_timer += delta
+		state_timer += delta * 1.8
 		
 	camera_node.fov(35)
 	
@@ -83,6 +83,7 @@ func debate_process(delta):
 		debate_start()
 		
 func debate_start():
+	camera_node.position = Vector3(0,1.5,0)
 	debate_next(0)
 	state = "debate"
 	debate_camera_reset()
@@ -103,10 +104,11 @@ func debate_next(add=1):
 	for podium in podiums:
 		if podium.char_name == character:
 			podium.swap(char_data_one.sprites["neutral"])
+			
 			var test_tween = create_tween()
 			#test_tween..parallel().tween_property(camera_node,"global_position",target_position,3.0)
 			var target_rotation = camera_node.global_transform.looking_at(
-			podium.global_position,
+			podium.global_position + Vector3(0,1.4,0),
 			Vector3.UP
 		).basis.get_euler()
 			test_tween.parallel().tween_property(camera_node,"global_rotation",target_rotation,0.7)
@@ -121,22 +123,23 @@ func debate_camera_reset():
 	camera_node.play("RESET")
 	
 func reset():
-	canvas.visible = false
 	state = "nothing"
 	timer = 499.0
 	state_timer = 0.0
 	bullets_main.noise_anim.play("hide")
 	anim.play("RESET")
 	words.visible = true
+	words._ready()
 	crosshair.visible = true
 	dialog_index = 0
+	canvas.visible = false
 	hud._ready()
 	
 func preview_process(delta):
-	
 	debate_start()
 	
 func finished():
+	reset()
 	class_trial_main.next_process()
 	
 func hide_self():

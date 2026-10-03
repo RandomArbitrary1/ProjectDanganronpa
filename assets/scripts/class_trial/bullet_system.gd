@@ -10,7 +10,7 @@ extends Control
 @onready var camera: Node3D = $"../../CameraNode"
 @onready var debate_root: Control = $".."
 @onready var crosshair: Control = $"../crosshair"
-@onready var time_lose: AudioStreamPlayer = $"../sfx/time_lose"
+@onready var time_lose: AudioStreamPlayer = $"../sfx/time_lost"
 @onready var root_fired_bullet: Control = $RootFiredBullet
 @onready var fired_bullet: RichTextLabel = $RootFiredBullet/FiredBullet
 @onready var fired_bullet_anim: AnimationPlayer = $RootFiredBullet/FiredBullet/anim
@@ -48,12 +48,11 @@ func white_noise_shoot():
 	if debate_root.state == "bullet_preview":
 		debate_root.debate_camera_reset()
 	if crosshair.touching:
-		debate_root.timer -= 15
+		debate_root.timer -= 3
 		time_lose.play()
 func check_hit():
 	for w in words.get_children():
 		if Rect2(w.global_position, w.size).has_point(target_location):
-			
 			succes_hit()
 	
 func _on_downtime_timeout() -> void:
