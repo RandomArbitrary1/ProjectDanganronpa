@@ -5,14 +5,14 @@ var state = ""
 var height = Vector3(0,1.6,0)
 var rotate_value := 0.0 # is rotation
 var radius := 14.0 # is distance
-var angle := 1.3
+var angle := 1.9
 var tween: Tween
 var shake_strength := 0.0
 var shake_decay := 0.3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state = ""
-	angle = 1.3
+	angle = 1.9
 	radius = 14.0
 	rotate_value = 0.0
 	height = Vector3(0,1.6,0)
@@ -20,7 +20,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if state == "debate_spin":
-		radius -= delta * 3.3
+		radius -= delta * 3.2
 		angle -= delta * 1.3 * 0.1
 		rotate_value += delta * 2.1
 		global_position = height + Vector3(sin(rotate_value) * radius, 
@@ -56,7 +56,6 @@ func shake(amount: float) -> void:
 func focus_on(target_pos:Vector3):
 	if tween:
 		tween.kill()
-	tween = create_tween()
 	var from_transform = global_transform
 	look_at(target_pos)                  # this snaps instantly...
 	var target_basis = global_basis      # ...so grab the result...

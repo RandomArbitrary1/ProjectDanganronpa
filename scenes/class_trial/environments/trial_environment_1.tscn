@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://cw27gj8y4lw5r"]
 
-[ext_resource type="Material" uid="uid://car1tebk5v60w" path="res://assets/materials/concrete.tres" id="1_20crt"]
+[ext_resource type="Texture2D" uid="uid://clxcgk0s7pgfr" path="res://assets/textures/environment/Wallpaper_2.png" id="1_kyxb6"]
 [ext_resource type="Material" uid="uid://h0x4jtpt4o2f" path="res://assets/materials/tile_checker.tres" id="2_20crt"]
 [ext_resource type="PackedScene" uid="uid://d2v7flsafhiil" path="res://assets/objects/models/class_trial_entrance2.glb" id="3_txco6"]
 [ext_resource type="PackedScene" uid="uid://b8bsgkwyh0ypo" path="res://assets/objects/models/pillar9.glb" id="4_img0q"]
+[ext_resource type="Texture2D" uid="uid://dcultj5aar0n5" path="res://assets/textures/environment/class_trial/class_trial_entrance2_oiled_up_curtain.png" id="5_kyxb6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv72t"]
+albedo_texture = ExtResource("1_kyxb6")
+uv1_scale = Vector3(0.265, 0.265, 0.265)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_20crt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,6 +30,13 @@ ssao_radius = 16.0
 ssao_intensity = 3.0
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g6qi"]
+transparency = 1
+albedo_texture = ExtResource("5_kyxb6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ocahe"]
+material = SubResource("StandardMaterial3D_6g6qi")
+
 [node name="TrialEnvironment1" type="Node3D" unique_id=1385433186]
 
 [node name="RoomNODE" type="CSGCombiner3D" parent="." unique_id=1525151402]
@@ -38,7 +52,7 @@ operation = 2
 radius = 15.0
 height = 24.75
 sides = 32
-material = ExtResource("1_20crt")
+material = SubResource("StandardMaterial3D_qv72t")
 
 [node name="Floor" type="CSGBox3D" parent="RoomNODE" unique_id=1129412267]
 size = Vector3(33, 1, 33)
@@ -48,7 +62,7 @@ material = ExtResource("2_20crt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.472571, 0)
 light_energy = 3.0
 shadow_enabled = true
-omni_range = 16.0
+omni_range = 18.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1089324817]
 environment = SubResource("Environment_txco6")
@@ -90,3 +104,35 @@ transform = Transform3D(-0.12940958, 0, 0.4829629, 0, 0.84, 0, -0.4829629, 0, -0
 
 [node name="pillar16" parent="Props" unique_id=1003455448 instance=ExtResource("4_img0q")]
 transform = Transform3D(-0.12940958, 0, 0.4829629, 0, 0.84, 0, -0.4829629, 0, -0.12940958, 12.247449, 0, 7.071067)
+
+[node name="Curtain" type="MeshInstance3D" parent="Props" unique_id=1164244202]
+transform = Transform3D(3.1784449, -3.1784449, 1.3893424e-07, 0, -1.9648269e-07, -4.495, 3.1784449, 3.1784449, -1.3893424e-07, 9.581, 3.7879758, -9.581)
+mesh = SubResource("PlaneMesh_ocahe")
+
+[node name="Curtain2" type="MeshInstance3D" parent="Props" unique_id=568112137]
+transform = Transform3D(-3.1784449, 3.1784449, -1.3893424e-07, 0, -1.9648269e-07, -4.495, -3.1784449, -3.1784449, 1.3893424e-07, -9.581, 3.7879758, 9.581)
+mesh = SubResource("PlaneMesh_ocahe")
+
+[node name="Curtain3" type="MeshInstance3D" parent="Props" unique_id=1673915256]
+transform = Transform3D(3.1784446, 3.178445, -1.3893428e-07, 0, -1.9648267e-07, -4.4949994, -3.178445, 3.1784446, -1.3893421e-07, -9.581, 3.7879758, -9.581)
+mesh = SubResource("PlaneMesh_ocahe")
+
+[node name="Curtain4" type="MeshInstance3D" parent="Props" unique_id=199939486]
+transform = Transform3D(-3.1784446, -3.178445, 1.3893428e-07, 0, -1.9648267e-07, -4.4949994, 3.178445, -3.1784446, 1.3893421e-07, 9.581, 3.7879758, 9.581)
+mesh = SubResource("PlaneMesh_ocahe")
+
+[node name="Curtain5" type="MeshInstance3D" parent="Props" unique_id=1534703656]
+transform = Transform3D(4.495, 0, -2.842171e-14, 0, -1.9648267e-07, -4.4949994, 0, 4.495, -1.9648266e-07, 0, 3.7879758, -13.549581)
+mesh = SubResource("PlaneMesh_ocahe")
+
+[node name="Curtain6" type="MeshInstance3D" parent="Props" unique_id=370087199]
+transform = Transform3D(-4.495, 0, 2.842171e-14, 0, -1.9648267e-07, -4.4949994, 0, -4.495, 1.9648266e-07, 0, 3.7879758, 13.549581)
+mesh = SubResource("PlaneMesh_ocahe")
+
+[node name="Curtain7" type="MeshInstance3D" parent="Props" unique_id=2053254700]
+transform = Transform3D(-7.1525574e-07, 4.495, -1.9648272e-07, 0, -1.964827e-07, -4.495, -4.495, -7.1525574e-07, 6.3948846e-14, -13.549581, 3.7879758, 0)
+mesh = SubResource("PlaneMesh_ocahe")
+
+[node name="Curtain8" type="MeshInstance3D" parent="Props" unique_id=441601030]
+transform = Transform3D(7.1525574e-07, -4.495, 1.9648272e-07, 0, -1.964827e-07, -4.495, 4.495, 7.1525574e-07, -6.3948846e-14, 13.549581, 3.7879758, 0)
+mesh = SubResource("PlaneMesh_ocahe")
