@@ -133,6 +133,8 @@ func next(): # Next dialog line
 			new_char.name = current.character
 			new_char.character = current.character
 			new_char.expression = current.expression
+			if "dialog" in current:
+				new_char.dialog = current.dialog
 			characters.add_child(new_char)
 			new_char.position = Vector3(current.x,current.y,current.z)
 			new_char.get_node("Anim").play("Enter")
