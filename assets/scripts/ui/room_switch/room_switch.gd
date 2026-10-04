@@ -10,6 +10,7 @@ extends Control
 
 var loading = false
 var last_door_position = null
+var dialog_next = null
 
 
 func switch(new_scene, scene_name, door_pos = null):

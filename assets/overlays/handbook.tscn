@@ -958,6 +958,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.37
 color = Color(0, 0, 0, 0.49803922)
 
 [node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Birthday/Info" unique_id=1332201266]
@@ -965,7 +966,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -16.0
+offset_left = 10.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 6
@@ -973,7 +975,6 @@ theme = ExtResource("8_y0c8w")
 theme_type_variation = &"Light"
 theme_override_font_sizes/font_size = 40
 text = "..."
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Height" type="HBoxContainer" parent="Screen/Lists/Report/Info/Panel/Items" unique_id=171546518]
@@ -995,6 +996,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.37
 color = Color(0, 0, 0, 0.49803922)
 
 [node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Height/Info" unique_id=2089658076]
@@ -1002,7 +1004,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -16.0
+offset_left = 10.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 6
@@ -1010,7 +1013,6 @@ theme = ExtResource("8_y0c8w")
 theme_type_variation = &"Light"
 theme_override_font_sizes/font_size = 40
 text = "..."
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Likes" type="HBoxContainer" parent="Screen/Lists/Report/Info/Panel/Items" unique_id=429770858]
@@ -1032,6 +1034,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.37
 color = Color(0, 0, 0, 0.49803922)
 
 [node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Likes/Info" unique_id=1097478698]
@@ -1039,7 +1042,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -16.0
+offset_left = 10.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 6
@@ -1047,7 +1051,6 @@ theme = ExtResource("8_y0c8w")
 theme_type_variation = &"Light"
 theme_override_font_sizes/font_size = 40
 text = "..."
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Dislikes" type="HBoxContainer" parent="Screen/Lists/Report/Info/Panel/Items" unique_id=431850563]
@@ -1069,6 +1072,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.37
 color = Color(0, 0, 0, 0.49803922)
 
 [node name="Label" type="Label" parent="Screen/Lists/Report/Info/Panel/Items/Dislikes/Info" unique_id=7266669]
@@ -1076,7 +1080,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -16.0
+offset_left = 10.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 6
@@ -1084,7 +1089,6 @@ theme = ExtResource("8_y0c8w")
 theme_type_variation = &"Light"
 theme_override_font_sizes/font_size = 40
 text = "..."
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Talent" type="Label" parent="Screen/Lists/Report/Info" unique_id=130757033]

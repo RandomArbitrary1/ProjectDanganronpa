@@ -15,7 +15,7 @@
 			"type": "text"
 		},
 		{
-			"character": "tenga",
+			"character": "sumiko",
 			"expression": "neutral",
 			"flags": [],
 			"type": "character",
@@ -24,17 +24,17 @@
 			"z": 2.0
 		},
 		{
-			"character": "tenga",
+			"character": "sumiko",
 			"content": "hold the phone",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
-			"dialog": "res://assets/data/dialog/test.json",
+			"dialog": "res://assets/data/dialog/test3.json",
 			"file": "res://scenes/rooms/gym_entrance.tscn",
-			"name": "Gym entrance",
 			"flags": [],
+			"name": "Gym entrance",
 			"type": "room"
 		}
 	]

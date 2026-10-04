@@ -1,5 +1,7 @@
 [gd_resource type="Environment" format=3 uid="uid://ibwlxnpfwc0c"]
 
+[ext_resource type="Texture2D" uid="uid://gamqp4jnfhet" path="res://assets/textures/environment/skybox/stars.png" id="1_xkoke"]
+
 [sub_resource type="Gradient" id="Gradient_aw1sh"]
 colors = PackedColorArray(0, 0, 0, 1, 0.49651968, 0.62230676, 0.826821, 1)
 
@@ -10,6 +12,7 @@ gradient = SubResource("Gradient_aw1sh")
 sky_top_color = Color(0.027084142, 0.015044262, 0.123975374, 1)
 sky_horizon_color = Color(5.174056e-06, 0.118554674, 0.3851873, 1)
 sky_energy_multiplier = 0.7
+sky_cover = ExtResource("1_xkoke")
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sun_angle_max = 0.0
 sun_curve = 0.33287066
@@ -33,5 +36,15 @@ glow_strength = 0.8
 glow_hdr_threshold = 1.5
 glow_hdr_scale = 1.0
 glow_hdr_luminance_cap = 50.0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 2.97
+fog_density = 0.0889
+fog_sky_affect = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.34499717, 0.48791862, 0.59844357, 1)
+volumetric_fog_emission_energy = 530.97
+volumetric_fog_length = 10.11
+volumetric_fog_detail_spread = 0.7500003
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_aw1sh")

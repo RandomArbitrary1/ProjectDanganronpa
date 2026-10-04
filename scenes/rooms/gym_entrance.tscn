@@ -63,7 +63,7 @@ center = Vector3(-2, 2.2, 1)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
-[node name="tenga" parent="Characters" unique_id=2135237569 instance=ExtResource("3_821gf")]
+[node name="sumiko" parent="Characters" unique_id=2135237569 instance=ExtResource("3_821gf")]
 transform = Transform3D(-6.119594e-08, -1.4, 6.119594e-08, 0, -6.119594e-08, -1.4, 1.4, -6.119594e-08, 2.6749597e-15, 0, 1.8999999, 1)
 character = "sumiko"
 expression = "neutral"
