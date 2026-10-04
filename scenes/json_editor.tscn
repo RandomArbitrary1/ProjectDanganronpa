@@ -66,6 +66,10 @@ func _ready() -> void:
 		dialog_line.get_node(\"Character/Name\").add_item(key)
 		character_line.get_node(\"Panel/Name\").add_item(key)
 	
+	music_line.get_node(\"Panel/Song\").clear()
+	for key in ResourceLoader.list_directory(\"res://assets/audio/music\"):
+		music_line.get_node(\"Panel/Song\").add_item(key.get_file().get_basename())
+	
 	navigation.get_node(\"Choose\").pressed.connect(func():
 		dialogs_popup.visible = true
 	)
@@ -140,7 +144,7 @@ func _ready() -> void:
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 3: #type music switch
 			var new = music_line.duplicate()
-			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"music\",\"song\":\"angst\",\"delay\":0.0,\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 11: #type bullet preview
@@ -170,7 +174,7 @@ func _ready() -> void:
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 17: #spawn/despawn character
 			var new = character_line.duplicate()
-			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"character\",\"character\":\"shion\",\"expression\":\"\",\"x\":0,\"y\":0,\"z\":0,\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"character\",\"character\":\"shion\",\"expression\":\"neutral\",\"x\":0.0,\"y\":0.0,\"z\":0.0,\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
@@ -291,6 +295,8 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			var new = music_line.duplicate()
 			i[\"eline\"] = new
 			new.get_node(\"Panel/Song\").selected = get_option_id(new.get_node(\"Panel/Song\"),i.song)
+			if \"delay\" in i:
+				new.get_node(\"Panel/Delay\").value = i.delay
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"cg\":
@@ -455,6 +461,9 @@ func run_options(i, item_data): #function to run stuff on the given item
 	elif item_data.type == \"music\":
 		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
 			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
+		)
+		i.get_node(\"Panel/Delay\").value_changed.connect(func(_val):
+			item_data.delay = float(i.get_node(\"Panel/Delay\").value)
 		)
 	elif item_data.type == \"room\":
 		i.get_node(\"Panel/Name\").text_changed.connect(func():
@@ -1630,6 +1639,14 @@ popup/item_10/text = "solar"
 popup/item_10/id = 10
 popup/item_11/text = "trial_debate1"
 popup/item_11/id = 11
+
+[node name="Delay" type="SpinBox" parent="Items/List/Music/Panel" unique_id=1161037038]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 8.0
+offset_right = 568.0
+offset_bottom = 48.0
+step = 0.01
 
 [node name="Dialog" type="HBoxContainer" parent="Items/List" unique_id=1469758066]
 custom_minimum_size = Vector2(0, 152)

@@ -7,15 +7,15 @@ script/source = "extends AudioStreamPlayer
 var current = \"\"
 var timer = 0
 
-func switch(file : String):
+func switch(file : String, delay = 0.0):
 	if current != file:
 		current = file
 		self.stream = load(file)
-		timer = 1
+		timer = delay
 		
 
 func _process(delta: float) -> void:
-	if timer > delta:
+	if timer > 0:
 		timer -= delta
 	elif not self.playing:
 		self.play()

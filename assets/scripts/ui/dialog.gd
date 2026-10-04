@@ -125,7 +125,10 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "music":
-			Music.switch("res://assets/audio/music/" + current.song + ".mp3")
+			if "delay" in current:
+				Music.switch("res://assets/audio/music/" + current.song + ".mp3", current.delay)
+			else:
+				Music.switch("res://assets/audio/music/" + current.song + ".mp3")
 			line += 1
 			next()
 		elif current.type == "character":
