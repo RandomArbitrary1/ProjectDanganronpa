@@ -182,10 +182,11 @@ func _process(delta: float) -> void:
 		elif current_hover_type == "door" and current_hover.room != "":
 			var scene = current_hover.room
 			var scene_name = current_hover.name
+			var door_pos = current_hover.position
 			current_hover = null
 			current_hover_check = null
 			reticle.get_node("Anim").play("Hide")
-			RoomSwitch.switch(scene, scene_name)
+			RoomSwitch.switch(scene, scene_name, door_pos)
 			
 
 		

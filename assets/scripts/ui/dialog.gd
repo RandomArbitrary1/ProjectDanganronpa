@@ -59,6 +59,10 @@ func _ready() -> void:
 	$Choice/Option.queue_free()
 	camera = get_tree().get_first_node_in_group("Camera_room")
 	characters = get_tree().get_first_node_in_group("Characters_interact")
+	if RoomSwitch.dialog_next != null:
+		file = load(RoomSwitch.dialog_next)
+		RoomSwitch.dialog_next = null
+		start()
 	
 func next(): # Next dialog line
 	if mouse_old:
@@ -129,6 +133,8 @@ func next(): # Next dialog line
 			new_char.name = current.character
 			new_char.character = current.character
 			new_char.expression = current.expression
+			if "dialog" in current:
+				new_char.dialog = current.dialog
 			characters.add_child(new_char)
 			new_char.position = Vector3(current.x,current.y,current.z)
 			new_char.get_node("Anim").play("Enter")
@@ -136,6 +142,7 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "room":
+			RoomSwitch.dialog_next = current.dialog
 			RoomSwitch.switch(current.file, current.name)
 			line += 1
 			next()
@@ -221,6 +228,8 @@ func next(): # Next dialog line
 		anim.play("Close")
 		await anim.animation_finished
 		active = false
+
+
 
 func start():
 	if file and not active:

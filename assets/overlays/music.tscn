@@ -5,11 +5,19 @@ resource_name = "Music"
 script/source = "extends AudioStreamPlayer
 
 var current = \"\"
+var timer = 0
 
 func switch(file : String):
 	if current != file:
 		current = file
 		self.stream = load(file)
+		timer = 1
+		
+
+func _process(delta: float) -> void:
+	if timer > delta:
+		timer -= delta
+	elif not self.playing:
 		self.play()
 "
 

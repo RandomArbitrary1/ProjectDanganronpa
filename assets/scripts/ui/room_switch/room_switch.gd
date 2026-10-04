@@ -9,9 +9,12 @@ extends Control
 
 
 var loading = false
+var last_door_position = null
+var dialog_next = null
 
 
-func switch(new_scene, scene_name):
+func switch(new_scene, scene_name, door_pos = null):
+	last_door_position = door_pos
 	door.play()
 	fade.material.set_shader_parameter("factor", 0.0)
 	scene = new_scene
@@ -42,6 +45,10 @@ func _process(_delta: float) -> void:
 func finish():
 	var fin_scene = ResourceLoader.load_threaded_get(scene)
 	get_tree().change_scene_to_packed(fin_scene)
+	var plr = get_tree().get_first_node_in_group("Player_fps")
+	if plr:
+		plr.position = last_door_position
+		last_door_position = null
 	anim.play("Out")
 	await anim.animation_finished
 	var tween = create_tween()

@@ -537,7 +537,7 @@ _data = {
 &"Show": SubResource("Animation_oud0k")
 }
 
-[node name="DaniloPlayer" type="CharacterBody3D" unique_id=806081659]
+[node name="DaniloPlayer" type="CharacterBody3D" unique_id=806081659 groups=["Player_fps"]]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 script = ExtResource("1_fpkso")
 

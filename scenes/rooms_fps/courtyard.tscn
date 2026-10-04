@@ -99,17 +99,10 @@ size = Vector3(6, 2.432129, 8)
 height = 8.0
 radius = 0.4
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tkyub"]
-noise_type = 3
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i2tru"]
-noise = SubResource("FastNoiseLite_tkyub")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trm24"]
 shader = ExtResource("8_61nrk")
-shader_parameter/sun_position = Vector2(0, 0)
+shader_parameter/sun_position = Vector2(-100000, -100000)
 shader_parameter/tint = Vector3(2.4, 2.2, 2)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_i2tru")
 
 [sub_resource type="GDScript" id="GDScript_61nrk"]
 resource_name = "Flare"
@@ -979,7 +972,7 @@ transform = Transform3D(-0.2070553, 0, 0.7727407, 0, 0.8, 0, -0.7727407, 0, -0.2
 shape = SubResource("CylinderShape3D_k08ah")
 
 [node name="tree_trunk3" parent="Props/Misc/Trees" unique_id=117184996 instance=ExtResource("20_nlala")]
-transform = Transform3D(-0.20705524, 0, -0.77274066, 0, 0.8, 0, 0.77274066, 0, -0.20705524, 10, 2.2532597, 3)
+transform = Transform3D(-0.20705524, 0, -0.77274066, 0, 0.8, 0, 0.77274066, 0, -0.20705524, 8.454518, 2.2532597, 2.5858896)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/Misc/Trees/tree_trunk3" unique_id=893931501]
 
@@ -987,7 +980,7 @@ transform = Transform3D(-0.20705524, 0, -0.77274066, 0, 0.8, 0, 0.77274066, 0, -
 shape = SubResource("CylinderShape3D_k08ah")
 
 [node name="tree_trunk12" parent="Props/Misc/Trees" unique_id=692584585 instance=ExtResource("20_nlala")]
-transform = Transform3D(0.39999998, 0, -0.6928203, 0, 0.8, 0, 0.6928203, 0, 0.39999998, 16, 2.2532597, 9)
+transform = Transform3D(0.39999998, 0, -0.6928203, 0, 0.8, 0, 0.6928203, 0, 0.39999998, 15.492821, 2.2532597, 6.5215387)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/Misc/Trees/tree_trunk12" unique_id=481255507]
 

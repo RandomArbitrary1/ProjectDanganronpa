@@ -63,7 +63,6 @@ func _process(delta: float) -> void:
 			anim.play("Close")
 			await anim.animation_finished
 			get_tree().paused = false
-			
 		else:
 			original_mouse_mode = Input.mouse_mode
 			old_mouse_position = get_viewport().get_mouse_position()
