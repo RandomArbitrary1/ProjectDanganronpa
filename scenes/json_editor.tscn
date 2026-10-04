@@ -24,6 +24,7 @@ script/source = "extends Control
 @onready var flags_popup: Window = $Flags
 @onready var dialogs_popup: Window = $Dialog
 @onready var dialogs_tabs: TabBar = $Dialogs_tabs
+@onready var preview: AudioStreamPlayer = $Preview
 
 #objects
 
@@ -52,6 +53,7 @@ var file_path = \"\"
 var moving = null
 var to_open = \"data\"
 var current_dialog = \"dialog\"
+var previewing_audio = null
 
 
 func _ready() -> void:
@@ -459,6 +461,15 @@ func run_options(i, item_data): #function to run stuff on the given item
 			item_data.point = i.get_node(\"Panel/LineEdit\").text
 		)
 	elif item_data.type == \"music\":
+		i.get_node(\"Panel/Preview\").pressed.connect(func():
+			if previewing_audio != item_data.song:
+				previewing_audio = item_data.song
+				preview.stream = load(\"res://assets/audio/music/\" + item_data.song + \".mp3\")
+				preview.play()
+			else:
+				previewing_audio = null
+				preview.stop()
+		)
 		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
 			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
 		)
@@ -507,6 +518,15 @@ func run_options(i, item_data): #function to run stuff on the given item
 				i.get_node(\"Image/TextureRect\").texture = load(path)
 		)
 	elif item_data.type == \"sfx\":
+		i.get_node(\"Panel/Preview\").pressed.connect(func():
+			if previewing_audio != item_data.file:
+				previewing_audio = item_data.file
+				preview.stream = load(item_data.file)
+				preview.play()
+			else:
+				previewing_audio = null
+				preview.stop()
+		)
 		i.get_node(\"Panel/Load\").pressed.connect(func():
 			to_open = \"sfx\" + str(item_data.id)
 			file_dialog.root_subfolder = \"res://assets/audio/sfx/\"
@@ -1073,7 +1093,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 192.00003
 offset_top = 8.0
-offset_right = 792.0
+offset_right = 488.00003
 offset_bottom = 48.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
@@ -1092,6 +1112,17 @@ theme = ExtResource("1_ol5w5")
 theme_type_variation = &"Index"
 text = "0"
 horizontal_alignment = 2
+
+[node name="Preview" type="Button" parent="Items/List/SFX/Panel" unique_id=1989953301]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 8.000011
+offset_right = 608.0
+offset_bottom = 48.00001
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Preview"
+text_overrun_behavior = 1
 
 [node name="CG" type="HBoxContainer" parent="Items/List" unique_id=1895028988]
 custom_minimum_size = Vector2(0, 152)
@@ -1647,6 +1678,17 @@ offset_top = 8.0
 offset_right = 568.0
 offset_bottom = 48.0
 step = 0.01
+
+[node name="Preview" type="Button" parent="Items/List/Music/Panel" unique_id=1714891807]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 8.000011
+offset_right = 688.0
+offset_bottom = 48.00001
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Preview"
+text_overrun_behavior = 1
 
 [node name="Dialog" type="HBoxContainer" parent="Items/List" unique_id=1469758066]
 custom_minimum_size = Vector2(0, 152)
@@ -2314,3 +2356,5 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 text = "Insert"
+
+[node name="Preview" type="AudioStreamPlayer" parent="." unique_id=1018524920]
