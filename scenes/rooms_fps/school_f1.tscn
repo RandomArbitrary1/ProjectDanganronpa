@@ -37,8 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="35_gguu1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1pa7i"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+energy_multiplier = 3.51
 
 [sub_resource type="Sky" id="Sky_ptc8j"]
 sky_material = SubResource("ProceduralSkyMaterial_1pa7i")
@@ -893,8 +895,14 @@ expression = "neutral"
 dialog = "res://assets/data/dialog/test2.json"
 
 [node name="yuito" parent="Characters" unique_id=187800201 instance=ExtResource("34_34go0")]
-transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, -7, 7.766262, 1)
+transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, 2, 1.3662642, 5)
 character = "yuito"
+expression = "neutral"
+dialog = "res://assets/data/dialog/test4.json"
+
+[node name="kikuya" parent="Characters" unique_id=1236026409 instance=ExtResource("34_34go0")]
+transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, -7, 7.766262, 1)
+character = "kikuya"
 expression = "neutral"
 
 [node name="DaniloPlayer" parent="." unique_id=806081659 instance=ExtResource("35_gguu1")]

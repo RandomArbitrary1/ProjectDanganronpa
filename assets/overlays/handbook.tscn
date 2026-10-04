@@ -807,6 +807,7 @@ text = "???"
 autowrap_mode = 3
 
 [node name="Report" type="Control" parent="Screen/Lists" unique_id=1624073679]
+visible = false
 clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
@@ -824,7 +825,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 1816.0
 offset_bottom = 131.0
-columns = 12
+columns = 13
 
 [node name="Item" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=204773500]
 custom_minimum_size = Vector2(113, 113)
@@ -900,16 +901,18 @@ theme_override_font_sizes/font_size = 200
 text = "01"
 vertical_alignment = 1
 
-[node name="Info" type="ColorRect" parent="Screen/Lists/Report" unique_id=1542270339]
+[node name="Info" type="Panel" parent="Screen/Lists/Report" unique_id=838627845]
 layout_mode = 0
+offset_left = -232.0
 offset_top = 120.0
-offset_right = 1096.0
+offset_right = 1032.0
 offset_bottom = 872.0
-color = Color(0, 0, 0, 0.49803922)
+theme = ExtResource("8_y0c8w")
+theme_type_variation = &"background_left"
 
 [node name="Name" type="Label" parent="Screen/Lists/Report/Info" unique_id=1518714102]
 layout_mode = 0
-offset_left = 24.0
+offset_left = 288.0
 offset_top = 6.0
 offset_right = 1072.0
 offset_bottom = 96.0
@@ -921,9 +924,9 @@ vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="Screen/Lists/Report/Info" unique_id=1685109880]
 layout_mode = 0
-offset_left = 24.0
+offset_left = 280.0
 offset_top = 96.0
-offset_right = 1072.0
+offset_right = 1208.0
 offset_bottom = 440.0
 theme = ExtResource("8_y0c8w")
 
@@ -1093,9 +1096,9 @@ vertical_alignment = 1
 
 [node name="Talent" type="Label" parent="Screen/Lists/Report/Info" unique_id=130757033]
 layout_mode = 0
-offset_left = 336.0
+offset_left = 608.0
 offset_top = 624.0
-offset_right = 1080.0
+offset_right = 1352.0
 offset_bottom = 738.0
 theme = ExtResource("8_y0c8w")
 theme_type_variation = &"Title"
