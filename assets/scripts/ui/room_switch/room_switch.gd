@@ -11,22 +11,30 @@ extends Control
 var loading = false
 var last_door_position = null
 var dialog_next = null
+var type = false
 
 
-func switch(new_scene, scene_name, door_pos = null):
+func switch(new_scene, scene_name, door_pos = null, default = true):
+	scene_name_label.visible = false
+	self.visible = true
+	type = default
 	last_door_position = door_pos
 	door.play()
 	fade.material.set_shader_parameter("factor", 0.0)
 	scene = new_scene
 	scene_name_label.text = scene_name
 	get_tree().paused = true
-	var tween = create_tween()
-	tween.tween_method(func(v): tint.material.set_shader_parameter("tint_strength", v), 0.0, 1.0, .5)
-	anim.play("In")
-	await tween.finished
-	var tween2 = create_tween()
-	tween2.tween_method(func(v): fade.material.set_shader_parameter("factor", v), 0.0, 1.0, 1)
-	await anim.animation_finished
+	if type == true:
+		var tween = create_tween()
+		tween.tween_method(func(v): tint.material.set_shader_parameter("tint_strength", v), 0.0, 1.0, .5)
+		anim.play("In")
+		await tween.finished
+		var tween2 = create_tween()
+		tween2.tween_method(func(v): fade.material.set_shader_parameter("factor", v), 0.0, 1.0, 1)
+		await anim.animation_finished
+	else:
+		anim.play("in_basic")
+		await anim.animation_finished
 	ResourceLoader.load_threaded_request(scene)
 	loading = true
 
@@ -49,10 +57,14 @@ func finish():
 	if plr:
 		plr.position = last_door_position
 		last_door_position = null
-	anim.play("Out")
-	await anim.animation_finished
-	var tween = create_tween()
-	tween.tween_method(func(v): tint.material.set_shader_parameter("tint_strength", v), 1.0, 0.0, .5)
-	await tween.finished
+	if type == true:
+		anim.play("Out")
+		await anim.animation_finished
+		var tween = create_tween()
+		tween.tween_method(func(v): tint.material.set_shader_parameter("tint_strength", v), 1.0, 0.0, .5)
+		await tween.finished
+	else:
+		anim.play("out_basic")
+		await anim.animation_finished
 	self.visible = false
 	get_tree().paused = false

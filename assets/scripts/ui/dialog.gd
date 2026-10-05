@@ -72,6 +72,9 @@ func next(): # Next dialog line
 		var current = dialog[line]
 		
 		if current.type == "text": # Type of dialog node. This is a text dialog node
+			if "sfx" in current:
+				sfx.stream = load(current.sfx)
+				sfx.play()
 			box.visible_ratio = 0.0
 			
 			if full_name.text != character_info[current.character].name and line != 0:
@@ -132,21 +135,32 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "character":
-			var new_char = character.instantiate()
-			new_char.name = current.character
-			new_char.character = current.character
-			new_char.expression = current.expression
-			if "dialog" in current:
-				new_char.dialog = current.dialog
-			characters.add_child(new_char)
-			new_char.position = Vector3(current.x,current.y,current.z)
-			new_char.get_node("Anim").play("Enter")
-			await new_char.get_node("Anim").animation_finished
+			if not "spawn" in current or current.spawn == true:
+				var new_char = find_child(current.character)
+				if not new_char:
+					new_char = character.instantiate()
+					new_char.name = current.character
+					new_char.character = current.character
+				new_char.expression = current.expression
+				if "file" in current:
+					new_char.dialog = current.file
+				characters.add_child(new_char)
+				new_char.position = Vector3(current.x,current.y,current.z)
+				new_char.get_node("Anim").play("Enter")
+				await new_char.get_node("Anim").animation_finished
+			else:
+				var old_char = characters.find_child(current.character)
+				old_char.get_node("Anim").play("Leave")
+				await old_char.get_node("Anim").animation_finished
+				old_char.queue_free()
 			line += 1
 			next()
 		elif current.type == "room":
 			RoomSwitch.dialog_next = current.dialog
-			RoomSwitch.switch(current.file, current.name)
+			if "default" in current:
+				RoomSwitch.switch(current.file, current.name, null, current.default)
+			else:
+				RoomSwitch.switch(current.file, current.name)
 			line += 1
 			next()
 		elif current.type == "sfx":

@@ -265,6 +265,8 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			new.get_node(\"Panel/TextEdit\").text = i.content
 			new.get_node(\"Character/Name\").selected = range(new.get_node(\"Character/Name\").item_count).map(func(ii): return new.get_node(\"Character/Name\").get_item_text(ii)).find(i.character)
 			new.get_node(\"Character/Emotion\").selected = range(new.get_node(\"Character/Emotion\").item_count).map(func(ii): return new.get_node(\"Character/Emotion\").get_item_text(ii)).find(i.expression)
+			if \"sfx\" in i and ResourceLoader.exists(i.sfx):
+				new.get_node(\"Panel/Sfx\").text = i.sfx
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
@@ -279,6 +281,10 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			new.get_node(\"Panel/X\").text = str(i.x)
 			new.get_node(\"Panel/Y\").text = str(i.y)
 			new.get_node(\"Panel/Z\").text = str(i.z)
+			if \"dialog\" in i and ResourceLoader.exists(i.dialog):
+				new.get_node(\"Panel/Dialog\").text = i.dialog
+			if \"spawn\" in i:
+				new.get_node(\"Panel/CheckButton\").button_pressed = i.spawn
 			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
@@ -319,7 +325,9 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			if \"file\" in i and ResourceLoader.exists(i.file):
 				new.get_node(\"Panel/Load\").text = i.file
 			if \"dialog\" in i and ResourceLoader.exists(i.dialog):
-				new.get_node(\"Panel/Load\").text = i.dialog
+				new.get_node(\"Panel/Dialog\").text = i.dialog
+			if \"default\" in i:
+				new.get_node(\"Panel/CheckButton\").button_pressed = i.default
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"sfx\":
@@ -379,6 +387,33 @@ func run_options(i, item_data): #function to run stuff on the given item
 	)
 	#by type
 	if item_data.type == \"text\":
+		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
+			item_data.content = i.get_node(\"Panel/TextEdit\").text
+		)
+		i.get_node(\"Panel/Sfx\").pressed.connect(func():
+			to_open = \"sfx_dialog\" + str(item_data.id)
+			file_dialog.root_subfolder = \"res://assets/audio/sfx/\"
+			file_dialog.set_filters([\"*.mp3,*.wav\"])
+			file_dialog.visible = true
+			
+		)
+		i.get_node(\"Panel/Preview\").pressed.connect(func():
+			if \"sfx\" in item_data and previewing_audio != item_data.sfx + str(item_data.id):
+				previewing_audio = item_data.sfx + str(item_data.id)
+				if ResourceLoader.exists(item_data.sfx):
+					preview.stream = load(item_data.sfx)
+					preview.play()
+				previewing_audio_button = i.get_node(\"Panel/Preview\")
+			else:
+				previewing_audio = null
+				previewing_audio_button = null
+				preview.stop()
+		)
+		file_dialog.file_selected.connect(func(path):
+			if to_open == \"sfx_dialog\" + str(item_data.id) and i.get_node_or_null(\"Panel/Sfx\"):
+				item_data.sfx = path
+				i.get_node(\"Panel/Sfx\").text = path.get_file()
+		)
 		i.get_node(\"Panel/CheckButton\").toggled.connect(func(state):
 			if state:
 				if item_data.flags.has(\"unknown\"):
@@ -390,9 +425,6 @@ func run_options(i, item_data): #function to run stuff on the given item
 		for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
 			if expr.get_extension() == \"png\":
 				i.get_node(\"Character/Emotion\").add_item(expr)
-		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
-			item_data.content = i.get_node(\"Panel/TextEdit\").text
-		)
 		if ResourceLoader.exists(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression):
 			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
 		else:
@@ -415,14 +447,17 @@ func run_options(i, item_data): #function to run stuff on the given item
 		for expr in DirAccess.get_files_at(\"res://assets/textures/characters/\" + item_data.character):
 			if expr.get_extension() == \"png\":
 				i.get_node(\"Panel/Emotion\").add_item(expr)
-		i.get_node(\"Panel/X\").text_changed.connect(func():
+		i.get_node(\"Panel/X\").text_changed.connect(func(_e):
 			item_data.x = float(i.get_node(\"Panel/X\").text)
 		)
-		i.get_node(\"Panel/Y\").text_changed.connect(func():
+		i.get_node(\"Panel/Y\").text_changed.connect(func(_e):
 			item_data.y = float(i.get_node(\"Panel/Y\").text)
 		)
-		i.get_node(\"Panel/Z\").text_changed.connect(func():
+		i.get_node(\"Panel/Z\").text_changed.connect(func(_e):
 			item_data.z = float(i.get_node(\"Panel/Z\").text)
+		)
+		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
+			item_data.spawn = i.get_node(\"Panel/CheckButton\").button_pressed
 		)
 		i.get_node(\"Panel/Name\").item_selected.connect(func(ind):
 			item_data.character = i.get_node(\"Panel/Name\").get_item_text(ind)
@@ -433,6 +468,18 @@ func run_options(i, item_data): #function to run stuff on the given item
 		)
 		i.get_node(\"Panel/Emotion\").item_selected.connect(func(ind):
 			item_data.expression = i.get_node(\"Panel/Emotion\").get_item_text(ind)
+		)
+		i.get_node(\"Panel/Dialog\").pressed.connect(func():
+			to_open = \"character\" + str(item_data.id)
+			file_dialog.root_subfolder = \"res://assets/data/\"
+			file_dialog.set_filters([\"*.json\"])
+			file_dialog.visible = true
+			
+		)
+		file_dialog.file_selected.connect(func(path):
+			if to_open == \"character\" + str(item_data.id) and i and i.get_node_or_null(\"Panel/Dialog\"):
+				item_data.file = path
+				i.get_node(\"Panel/Dialog\").text = path.get_file()
 		)
 	elif item_data.type == \"choice\":
 		i.get_node(\"Panel/Options/Set\").pressed.connect(func():
@@ -482,7 +529,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 			item_data.delay = float(i.get_node(\"Panel/Delay\").value)
 		)
 	elif item_data.type == \"room\":
-		i.get_node(\"Panel/Name\").text_changed.connect(func():
+		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
+			item_data.default = i.get_node(\"Panel/CheckButton\").button_pressed
+		)
+		i.get_node(\"Panel/Name\").text_changed.connect(func(_e):
 			item_data.name = i.get_node(\"Panel/Name\").text
 		)
 		i.get_node(\"Panel/Load\").pressed.connect(func():
@@ -930,7 +980,7 @@ alignment = 0
 text_overrun_behavior = 1
 
 [node name="Room" type="HBoxContainer" parent="Items/List" unique_id=6563331]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
 theme = ExtResource("1_ol5w5")
 
@@ -1008,7 +1058,7 @@ horizontal_alignment = 2
 layout_mode = 0
 offset_left = 280.0
 offset_top = 8.0
-offset_right = 424.0
+offset_right = 504.0
 offset_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1017,10 +1067,10 @@ placeholder_text = "Name"
 
 [node name="Load" type="Button" parent="Items/List/Room/Panel" unique_id=681491212]
 layout_mode = 0
-offset_left = 432.00003
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 48.0
+offset_left = 400.00003
+offset_top = 56.0
+offset_right = 792.0
+offset_bottom = 96.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 text = "Select room"
@@ -1030,16 +1080,27 @@ text_overrun_behavior = 1
 
 [node name="Dialog" type="Button" parent="Items/List/Room/Panel" unique_id=1744983987]
 layout_mode = 0
-offset_left = 624.0
-offset_top = 8.0
-offset_right = 792.0
-offset_bottom = 48.0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 392.0
+offset_bottom = 96.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 text = "Select dialog"
 icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
+
+[node name="CheckButton" type="CheckButton" parent="Items/List/Room/Panel" unique_id=760568889]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 8.0
+offset_right = 792.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+button_pressed = true
+text = "Default room transition"
 
 [node name="SFX" type="HBoxContainer" parent="Items/List" unique_id=469161832]
 custom_minimum_size = Vector2(0, 56)
@@ -1736,7 +1797,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 55.99997
-offset_top = 40.000008
+offset_top = 56.000008
 offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
@@ -1779,10 +1840,10 @@ icon_alignment = 1
 
 [node name="Label" type="Label" parent="Items/List/Dialog/Panel" unique_id=1982149487]
 layout_mode = 0
-offset_left = 51.428566
-offset_top = 5.714283
-offset_right = 382.8571
-offset_bottom = 28.714287
+offset_left = 55.999977
+offset_top = 7.9999886
+offset_right = 387.4285
+offset_bottom = 47.99999
 theme = ExtResource("1_ol5w5")
 text = "Dialog"
 vertical_alignment = 1
@@ -1809,6 +1870,30 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 toggle_mode = false
 text = "Unknown"
+
+[node name="Sfx" type="Button" parent="Items/List/Dialog/Panel" unique_id=640302086]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 8.000011
+offset_right = 584.43
+offset_bottom = 48.00001
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Select SFX"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
+
+[node name="Preview" type="Button" parent="Items/List/Dialog/Panel" unique_id=240683343]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 8.000011
+offset_right = 352.0
+offset_bottom = 48.00001
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Preview"
+text_overrun_behavior = 1
 
 [node name="Character" type="Panel" parent="Items/List/Dialog" unique_id=1201249221]
 custom_minimum_size = Vector2(200, 0)
