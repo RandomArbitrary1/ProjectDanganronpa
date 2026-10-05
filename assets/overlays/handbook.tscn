@@ -825,7 +825,8 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 1816.0
 offset_bottom = 131.0
-columns = 13
+theme_override_constants/h_separation = 1
+columns = 16
 
 [node name="Item" type="NinePatchRect" parent="Screen/Lists/Report/Items" unique_id=204773500]
 custom_minimum_size = Vector2(113, 113)

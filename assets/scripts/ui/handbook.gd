@@ -159,8 +159,7 @@ func _process(delta: float) -> void:
 			lists.get_node("Report/Info/Panel/Items/Likes/Info/Label").text = character_info[key].likes
 			lists.get_node("Report/Info/Panel/Items/Dislikes/Info/Label").text = character_info[key].dislikes
 			lists.get_node("Report/Info/Talent").text = character_info[key].talent.right(-9)
-			if ResourceLoader.exists("res://assets/textures/characters/" + key + "/neutral.png"):
-				lists.get_node("Report/Character").texture = load("res://assets/textures/characters/" + key + "/neutral.png")
+			lists.get_node("Report/Character").texture = load(character_info[key].sprites.neutral)
 			
 
 var old_mouse_position : Vector2

@@ -54,6 +54,8 @@ var moving = null
 var to_open = \"data\"
 var current_dialog = \"dialog\"
 var previewing_audio = null
+var previewing_audio_button = null
+var previewing_audio_button_past = null
 
 
 func _ready() -> void:
@@ -462,13 +464,16 @@ func run_options(i, item_data): #function to run stuff on the given item
 		)
 	elif item_data.type == \"music\":
 		i.get_node(\"Panel/Preview\").pressed.connect(func():
-			if previewing_audio != item_data.song:
-				previewing_audio = item_data.song
+			if previewing_audio != item_data.song + str(item_data.id):
+				previewing_audio = item_data.song + str(item_data.id)
 				preview.stream = load(\"res://assets/audio/music/\" + item_data.song + \".mp3\")
 				preview.play()
+				previewing_audio_button = i.get_node(\"Panel/Preview\")
 			else:
 				previewing_audio = null
+				previewing_audio_button = null
 				preview.stop()
+				
 		)
 		i.get_node(\"Panel/Song\").item_selected.connect(func(ind):
 			item_data.song = i.get_node(\"Panel/Song\").get_item_text(ind)
@@ -519,12 +524,15 @@ func run_options(i, item_data): #function to run stuff on the given item
 		)
 	elif item_data.type == \"sfx\":
 		i.get_node(\"Panel/Preview\").pressed.connect(func():
-			if previewing_audio != item_data.file:
-				previewing_audio = item_data.file
-				preview.stream = load(item_data.file)
-				preview.play()
+			if previewing_audio != item_data.file + str(item_data.id):
+				previewing_audio = item_data.file + str(item_data.id)
+				if ResourceLoader.exists(item_data.file):
+					preview.stream = load(item_data.file)
+					preview.play()
+				previewing_audio_button = i.get_node(\"Panel/Preview\")
 			else:
 				previewing_audio = null
+				previewing_audio_button = null
 				preview.stop()
 		)
 		i.get_node(\"Panel/Load\").pressed.connect(func():
@@ -622,6 +630,14 @@ func _process(_delta: float) -> void:
 		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-262),(clampf(mouse_pos.y,0,1080-424)))
 	if Input.is_action_just_pressed(\"Ctrl\"): #debug print
 		print(data[current_dialog])
+	
+	if previewing_audio_button_past != previewing_audio_button: #music button text check
+		if previewing_audio_button_past:
+			previewing_audio_button_past.text = \"Preview\"
+		if previewing_audio_button:
+			previewing_audio_button.text = \"Stop\"
+		previewing_audio_button_past = previewing_audio_button
+		
 "
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ob5wf"]

@@ -4,14 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_04axm"]
 [ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="3_8sdgk"]
 [ext_resource type="Material" uid="uid://b4yrgwnxylb13" path="res://assets/materials/wall1.tres" id="6_1dljc"]
-[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door.tscn" id="6_8sdgk"]
+[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/doors/door.tscn" id="6_8sdgk"]
 [ext_resource type="PackedScene" uid="uid://v6ddvo1lkhb6" path="res://assets/objects/2D objects/camera.tscn" id="6_ibabf"]
 [ext_resource type="PackedScene" uid="uid://cmu4b24vjyv8r" path="res://assets/objects/2D objects/monitor.tscn" id="7_1dljc"]
 [ext_resource type="Material" uid="uid://bnxvr3c7hnuj" path="res://assets/materials/floor1.tres" id="7_5wqhw"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="7_460oe"]
 [ext_resource type="PackedScene" uid="uid://h3rjrxx311b3" path="res://assets/objects/environment/Pillar.glb" id="12_dm2uf"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="12_n33xs"]
-[ext_resource type="PackedScene" uid="uid://cg4nn0n7re65s" path="res://assets/objects/environment/window.tscn" id="13_4qvwg"]
 [ext_resource type="PackedScene" uid="uid://dv1ake1fdpghp" path="res://assets/objects/environment/nature/vines2.tscn" id="13_ecm03"]
 [ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/nature/vines.tscn" id="14_dm2uf"]
 [ext_resource type="PackedScene" uid="uid://n45jjw4fdlfa" path="res://assets/objects/2D objects/classroom/desk.tscn" id="14_qh2ha"]
@@ -111,32 +110,6 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 3.5, 2.5, 7.5)
 
 [node name="Pillar4" parent="Props/Structure" unique_id=28083330 instance=ExtResource("12_dm2uf")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -7.5, 2.5, 7.5)
-
-[node name="window5" parent="Props/Structure" unique_id=1886335236 instance=ExtResource("13_4qvwg")]
-transform = Transform3D(-0.59999996, 0, -5.2453665e-08, 0, 0.59999996, 0, 5.2453665e-08, 0, -0.59999996, -7.8, 2.76, -3.087)
-
-[node name="AreaLight3D2" type="AreaLight3D" parent="Props/Structure/window5" unique_id=43458732]
-transform = Transform3D(-3.6426158e-07, 0, 1.6666665, 0, 1.6666665, 0, -1.6666665, 0, -3.6426158e-07, -0.013911247, 0, 0)
-light_color = Color(0.37044576, 0.6307333, 0.6597672, 1)
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_blur = 10.0
-area_range = 3.297
-area_attenuation = 0.0
-area_size = Vector2(4.6700478, 2.2822165)
-
-[node name="window6" parent="Props/Structure" unique_id=253474714 instance=ExtResource("13_4qvwg")]
-transform = Transform3D(-0.59999996, 0, -5.2453665e-08, 0, 0.59999996, 0, 5.2453665e-08, 0, -0.59999996, -7.8, 2.76, 2.913)
-
-[node name="AreaLight3D2" type="AreaLight3D" parent="Props/Structure/window6" unique_id=1139473784]
-transform = Transform3D(-3.6426158e-07, 0, 1.6666665, 0, 1.6666665, 0, -1.6666665, 0, -3.6426158e-07, -0.013911247, 0, 0)
-light_color = Color(0.37044576, 0.6307333, 0.6597672, 1)
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_blur = 10.0
-area_range = 3.297
-area_attenuation = 0.0
-area_size = Vector2(4.6700478, 2.2822165)
 
 [node name="Furniture" type="Node3D" parent="Props" unique_id=1071267596]
 
@@ -245,7 +218,8 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1181242268]
-size = Vector3(22, 13, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+size = Vector3(19, 13, 19)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1964429876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5370121, -0.5)
@@ -257,18 +231,6 @@ material = ExtResource("6_1dljc")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4, 1.819, -6)
 operation = 2
 size = Vector3(1, 2.63, 1.39)
-material = ExtResource("6_1dljc")
-
-[node name="hole_window5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=412473385]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.199999, 2.7561398, -3.1000004)
-operation = 2
-size = Vector3(2, 2.35, 4.75)
-material = ExtResource("6_1dljc")
-
-[node name="hole_window6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=166203287]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.199999, 2.7561398, 2.8999996)
-operation = 2
-size = Vector3(2, 2.35, 4.75)
 material = ExtResource("6_1dljc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=928180442]
