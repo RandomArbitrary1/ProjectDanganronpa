@@ -124,6 +124,7 @@ func reset():
 	dialog_index = 0
 	canvas.visible = false
 	hud._ready()
+	shoot_anim.play("RESET")
 	
 func preview_process(delta):
 	debate_start()
