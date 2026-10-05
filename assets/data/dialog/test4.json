@@ -12,6 +12,7 @@
 			"content": "no u :(",
 			"expression": "neutral.png",
 			"flags": [],
+			"sfx": "res://assets/audio/sfx/ui/shock.mp3",
 			"type": "text"
 		},
 		{
@@ -28,9 +29,11 @@
 			"content": "hold the phone",
 			"expression": "neutral.png",
 			"flags": [],
+			"sfx": "res://assets/audio/sfx/ui/idea.mp3",
 			"type": "text"
 		},
 		{
+			"default": false,
 			"dialog": "res://assets/data/dialog/test3.json",
 			"file": "res://scenes/rooms/gym_entrance.tscn",
 			"flags": [],

@@ -42,6 +42,7 @@ func _ready() -> void:
 		var item = report_item.duplicate()
 		item.name = key
 		item.get_node("Preview/Character").texture = load(character_info[key].sprites.neutral)
+		item.get_node("Preview/Character").position = -Vector2(character_info[key].face_pos[0],character_info[key].face_pos[1])*item.get_node("Preview/Character").size+(item.size/2)
 		lists.get_node("Report/Items").add_child(item)
 	
 	#gifts
