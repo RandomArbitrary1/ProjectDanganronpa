@@ -28,14 +28,14 @@ func _process(delta: float) -> void:
 			if not slow_sfx.playing:
 				slow_sfx.play()
 			speed_state = "slow"
-			concen_value -= 35 * delta
-	else:
-		concen_value += 28 * delta
 	if Input.is_action_pressed("Ctrl"):
 		speed_state = "fast"
 		
 	if speed_state == "slow":
+		concen_value -= 35 * delta
 		tint.material.set_shader_parameter("tint_color",Vector4(0.0,1.0,0.0,1.0))
+	else:
+		concen_value += 28 * delta
 	if not speed_state == "slow":
 		slow_sfx.stop()
 	concentrate.value = concen_value

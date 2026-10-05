@@ -2,7 +2,7 @@ extends Node3D
 # List used to put into class trial podiums, simply fill key string
 var person_spots = [
 	"shion","nori","yuito","raito","ayuka","rikuno","tenga","naeri",
-	"shuuto","reoto","sumiko","masato"]
+	"shuuto","reoto","itsuki","sumiko","masato","kikuya","yusio","amia"]
 
 @onready var podiums: Node3D = $podiums
 var data = JsonParse.load_json("characters/characters.json")

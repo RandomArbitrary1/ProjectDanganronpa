@@ -1,0 +1,9 @@
+{
+	"protagonist":"shion",
+	"who_died":[],
+	"friendship":{"shion":0,"nori":0,"naeri":0},
+	"items":[],
+	"coins":0,
+	"dialog": null,
+	"dialog_index":0
+}
