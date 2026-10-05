@@ -50,13 +50,33 @@
 "face_pos":[0.45,0.41],
 "sprites":{"neutral":"res://assets/textures/characters/reoto/neutral.png"}},
 
+"itsuki":{"name":"Itsuki Nagato","talent":"Ultimate Vampire","sex":"Female","likes":"Grape juice",
+"dislikes":"Grapes","height":"1.79 cm","birth_date":"26 may",
+"face_pos":[0.5,0.1],
+"sprites":{"neutral":"res://assets/textures/characters/dummyman/dummy.png"}},
+
+"masato":{"name":"Masato Tohari","talent":"Ultimate Hacker","sex":"Male","likes":"Lights",
+"dislikes":"Mornings","height":"1.81 cm","birth_date":"5 december",
+"face_pos":[0.45,0.4],
+"sprites":{"neutral":"res://assets/textures/characters/masato/neutral.png"}},
+
 "sumiko":{"name":"Sumiko Ekiba","talent":"Ultimate Athlete","sex":"Female","likes":"Bananas",
 "dislikes":"Glitter","height":"1.86 cm","birth_date":"12 january",
 "face_pos":[0.45,0.3],
 "sprites":{"neutral":"res://assets/textures/characters/sumiko/neutral.png"}},
 
-"masato":{"name":"Masato Tohari","talent":"Ultimate Hacker","sex":"Male","likes":"Lights",
-"dislikes":"Mornings","height":"1.81 cm","birth_date":"5 december",
-"face_pos":[0.45,0.4],
-"sprites":{"neutral":"res://assets/textures/characters/masato/neutral.png"}}
+"kikuya":{"name":"Kikuya Nohata","talent":"Ultimate Librarian","sex":"Male","likes":"The Victorian era",
+"dislikes":"Loud people","height":"1.73 cm","birth_date":"13 may",
+"face_pos":[0.5,0.33],
+"sprites":{"neutral":"res://assets/textures/characters/kikuya/neutral.png"}},
+
+"yusio":{"name":"Yusio Hajima","talent":"Ultimate Spiritualist","sex":"Male","likes":"Chinese Philosophy",
+"dislikes":"Losers","height":"1.59 cm","birth_date":"16 november",
+"face_pos":[0.5,0.1],
+"sprites":{"neutral":"res://assets/textures/characters/dummyman/dummy.png"}},
+
+"amia":{"name":"Amia Kobayashi","talent":"Ultimate Botanist","sex":"Female","likes":"Pastries",
+"dislikes":"Motorcycles","height":"1.66 cm","birth_date":"22 february",
+"face_pos":[0.5,0.1],
+"sprites":{"neutral":"res://assets/textures/characters/dummyman/dummy.png"}}
 }

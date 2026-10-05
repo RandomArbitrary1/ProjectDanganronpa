@@ -23,22 +23,24 @@
 [ext_resource type="PackedScene" uid="uid://c4n2n6sir6n6o" path="res://assets/objects/environment/nature/vines.tscn" id="21_b6fpb"]
 [ext_resource type="PackedScene" uid="uid://dv1ake1fdpghp" path="res://assets/objects/environment/nature/vines2.tscn" id="22_kk5q6"]
 [ext_resource type="PackedScene" uid="uid://bw4tdosbt8xyy" path="res://assets/objects/environment/nature/grass.tscn" id="23_dni7s"]
-[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/door.tscn" id="24_eii7d"]
+[ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/doors/door.tscn" id="24_eii7d"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="25_vqswb"]
-[ext_resource type="Material" uid="uid://bocar0fmh1nd" path="res://assets/objects/environment/door_bathroom_women.tres" id="26_qqewr"]
-[ext_resource type="Material" uid="uid://c5wupw8t0q5nt" path="res://assets/objects/environment/door_metal.tres" id="27_qqewr"]
-[ext_resource type="Material" uid="uid://b7bcqie2poekd" path="res://assets/objects/environment/door_gym.tres" id="30_f632f"]
-[ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/door_double.tscn" id="31_1r2xp"]
-[ext_resource type="Material" uid="uid://bqb8ig24gtveo" path="res://assets/objects/environment/door_wood.tres" id="31_jnqd4"]
-[ext_resource type="Material" uid="uid://cbe0ntm8aon7n" path="res://assets/objects/environment/door_bathroom_men.tres" id="33_f632f"]
+[ext_resource type="Material" uid="uid://bocar0fmh1nd" path="res://assets/objects/environment/doors/door_bathroom_women.tres" id="26_qqewr"]
+[ext_resource type="Material" uid="uid://c5wupw8t0q5nt" path="res://assets/objects/environment/doors/door_metal.tres" id="27_qqewr"]
+[ext_resource type="Material" uid="uid://b7bcqie2poekd" path="res://assets/objects/environment/doors/door_gym.tres" id="30_f632f"]
+[ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/doors/door_double.tscn" id="31_1r2xp"]
+[ext_resource type="Material" uid="uid://bqb8ig24gtveo" path="res://assets/objects/environment/doors/door_wood.tres" id="31_jnqd4"]
+[ext_resource type="Material" uid="uid://cbe0ntm8aon7n" path="res://assets/objects/environment/doors/door_bathroom_men.tres" id="33_f632f"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="33_qqewr"]
 [ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="33_qqiqe"]
 [ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="34_34go0"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="35_gguu1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1pa7i"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+energy_multiplier = 3.51
 
 [sub_resource type="Sky" id="Sky_ptc8j"]
 sky_material = SubResource("ProceduralSkyMaterial_1pa7i")
@@ -893,8 +895,14 @@ expression = "neutral"
 dialog = "res://assets/data/dialog/test2.json"
 
 [node name="yuito" parent="Characters" unique_id=187800201 instance=ExtResource("34_34go0")]
-transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, -7, 7.766262, 1)
+transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, 2, 1.3662642, 5)
 character = "yuito"
+expression = "neutral"
+dialog = "res://assets/data/dialog/test4.json"
+
+[node name="kikuya" parent="Characters" unique_id=1236026409 instance=ExtResource("34_34go0")]
+transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, -7, 7.766262, 1)
+character = "kikuya"
 expression = "neutral"
 
 [node name="DaniloPlayer" parent="." unique_id=806081659 instance=ExtResource("35_gguu1")]

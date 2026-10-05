@@ -15,6 +15,10 @@ shadow_color = Color(0, 0, 0, 0.64705884)
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k08ah"]
+bg_color = Color(0, 0, 0, 0.49803922)
+skew = Vector2(-0.5, 0)
+
 [resource]
 Label/fonts/font = ExtResource("1_gim53")
 Light/base_type = &"Label"
@@ -23,3 +27,5 @@ Light/fonts/font = ExtResource("2_qjnwp")
 Panel/styles/panel = SubResource("StyleBoxFlat_b5x6r")
 Title/base_type = &"Label"
 Title/fonts/font = ExtResource("3_okgfi")
+background_left/base_type = &"Panel"
+background_left/styles/panel = SubResource("StyleBoxFlat_k08ah")

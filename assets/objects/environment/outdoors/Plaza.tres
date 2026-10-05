@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kcub24qy5at5"]
+
+[ext_resource type="Texture2D" uid="uid://lcak0l6nh7sc" path="res://assets/objects/environment/outdoors/path_plaza.png" id="1_p38vc"]
+
+[resource]
+resource_name = "Plaza"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_p38vc")
+metadata/_gltf_primary_texture_coord = 0
