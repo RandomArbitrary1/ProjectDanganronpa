@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://e38bwk750ffp"]
+
+[ext_resource type="Texture2D" uid="uid://die6rgnqhh4x8" path="res://assets/objects/environment/furniture/clock_clock.png" id="1_6uas0"]
+[ext_resource type="Texture2D" uid="uid://d3jnt85nkyt11" path="res://assets/objects/environment/furniture/clock_clock_met.png" id="2_qic32"]
+
+[resource]
+resource_name = "clock"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_6uas0")
+metallic = 1.0
+metallic_texture = ExtResource("2_qic32")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_qic32")
+roughness_texture_channel = 1
+metadata/_gltf_primary_texture_coord = 0
