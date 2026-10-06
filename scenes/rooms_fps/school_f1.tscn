@@ -881,12 +881,13 @@ script = ExtResource("33_qqiqe")
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, -1, 1.4, -1)
 character = "nori"
 expression = "neutral"
-dialog = "res://assets/data/dialog/test4.json"
+dialog = "res://assets/data/dialog/test_introduction.json"
 
 [node name="naeri" parent="Characters" unique_id=1879049343 instance=ExtResource("34_34go0")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, 13, 1.4, 5)
 character = "naeri"
 expression = "neutral"
+dialog = "res://assets/data/dialog/test_school_f1.json"
 
 [node name="raito" parent="Characters" unique_id=1893461810 instance=ExtResource("34_34go0")]
 transform = Transform3D(-6.119594e-08, 1.4, -6.119594e-08, 0, -6.119594e-08, -1.4, -1.4, -6.119594e-08, 2.6749597e-15, 1, 1.4, 38)

@@ -11,6 +11,7 @@ extends Control
 var loading = false
 var last_door_position = null
 var dialog_next = null
+var dialog_next_pos = null
 var type = false
 
 

@@ -5,5 +5,24 @@
 	"items":[],
 	"coins":0,
 	"dialog": null,
-	"dialog_index":0
+	"dialog_index":0,
+	"character_positions":{
+		"amia":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"ayuka":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"itsuki":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"kikuya":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"masato":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"naeri":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"nori":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"raito":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"reoto":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"rikuno":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"shion":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"shuuto":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"sumiko":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"tenga":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"yusio":{"room":"","position":{"x":0,"y":0,"z":0}},
+		"ushi":{"room":"","position":{"x":0,"y":0,"z":0}}
+	},
+	"game_value": {"student_introductions": 0}
 }

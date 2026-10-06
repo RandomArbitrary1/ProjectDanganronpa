@@ -25,6 +25,9 @@ var characters = null
 @onready var cg_fade: TextureRect = $CG_fade
 @onready var cg_anim: AnimationPlayer = $CG_anim
 @onready var cg_fade_anim: AnimationPlayer = $CG_fade_anim
+@onready var intro: TextureRect = $Introduction
+@onready var intro_anim: AnimationPlayer = $Introduction/Anim
+
 
 #ui sfx
 var next_sfx = preload("res://assets/audio/sfx/ui/dialog_next.mp3")
@@ -62,7 +65,10 @@ func _ready() -> void:
 	if RoomSwitch.dialog_next != null:
 		file = load(RoomSwitch.dialog_next)
 		RoomSwitch.dialog_next = null
-		start()
+		if RoomSwitch.dialog_next_pos:
+			start(RoomSwitch.dialog_next_pos)
+		else:
+			start()
 	
 func next(): # Next dialog line
 	if mouse_old:
@@ -134,17 +140,31 @@ func next(): # Next dialog line
 				Music.switch("res://assets/audio/music/" + current.song + ".mp3")
 			line += 1
 			next()
+		elif current.type == "intro":
+			intro.get_node("Content/Character").texture = load(character_info[current.character].sprites.neutral)
+			intro.get_node("Content/Nameplate/Label").text = character_info[current.character].name
+			intro.get_node("Content/Ultimate").text = character_info[current.character].talent
+			sfx.stream = load("res://assets/audio/sfx/class_trial/whoosh1.mp3")
+			anim.play("Close")
+			intro_anim.play("Anim")
+			sfx.play()
+			await intro_anim.animation_finished
+			if dialog.size()+1 > line:
+				anim.play("Open")
+				await anim.animation_finished
+			line += 1
+			next()
 		elif current.type == "character":
 			if not "spawn" in current or current.spawn == true:
-				var new_char = find_child(current.character)
+				var new_char = characters.find_child(current.character)
 				if not new_char:
 					new_char = character.instantiate()
 					new_char.name = current.character
 					new_char.character = current.character
-				new_char.expression = current.expression
+					new_char.expression = current.expression
+					characters.add_child(new_char)
 				if "file" in current:
 					new_char.dialog = current.file
-				characters.add_child(new_char)
 				new_char.position = Vector3(current.x,current.y,current.z)
 				new_char.get_node("Anim").play("Enter")
 				await new_char.get_node("Anim").animation_finished
@@ -156,7 +176,8 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "room":
-			RoomSwitch.dialog_next = current.dialog
+			RoomSwitch.dialog_next = file.resource_path
+			RoomSwitch.dialog_next_pos = line+1
 			if "default" in current:
 				RoomSwitch.switch(current.file, current.name, null, current.default)
 			else:
@@ -248,7 +269,7 @@ func next(): # Next dialog line
 
 
 
-func start():
+func start(line_new = 0):
 	if file and not active:
 		input_ind.play("RESET")
 		if file.resource_path == "res://assets/data/leave.json":
@@ -258,7 +279,7 @@ func start():
 		box.visible = false
 		box.visible_ratio = 0.0
 		dialog = file.data.dialog
-		line = 0
+		line = line_new
 		anim.play("Open")
 		next()
 		active = true
@@ -340,7 +361,9 @@ func _process(delta: float) -> void:
 					if tween and dialog.size() > line:
 						tween.kill()
 						if last_anim:
+							var last_box_text = box.text
 							last_anim.seek(last_anim.current_animation_length, true)
+							box.text = last_box_text
 							last_anim = null
 						box.visible_ratio = 1.0
 						input_ind.play("Show")

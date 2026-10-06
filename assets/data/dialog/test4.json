@@ -39,6 +39,53 @@
 			"flags": [],
 			"name": "Gym entrance",
 			"type": "room"
+		},
+		{
+			"character": "nori",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/test.json",
+			"flags": [],
+			"type": "character",
+			"x": -2.0,
+			"y": 2.0,
+			"z": 2.0
+		},
+		{
+			"character": "sumiko",
+			"content": "we're here!",
+			"expression": "neutral.png",
+			"flags": [],
+			"sfx": "res://assets/audio/sfx/ui/shock.mp3",
+			"type": "text"
+		},
+		{
+			"character": "sumiko",
+			"flags": [],
+			"type": "intro"
+		},
+		{
+			"character": "nori",
+			"content": "ello",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "sumiko",
+			"content": "I gotta go now, see ya",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "sumiko",
+			"expression": "neutral",
+			"flags": [],
+			"spawn": false,
+			"type": "character",
+			"x": 0.0,
+			"y": 0.0,
+			"z": 0.0
 		}
 	]
 }

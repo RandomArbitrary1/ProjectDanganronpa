@@ -1,0 +1,16 @@
+{
+	"dialog": [
+		{
+			"character": "nori",
+			"content": "ay, I'm Noriyuki Wato and im the Ultimate Guitarist",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"flags": [],
+			"type": "intro"
+		}
+	]
+}

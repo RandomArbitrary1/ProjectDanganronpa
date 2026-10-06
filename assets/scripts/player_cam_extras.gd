@@ -26,6 +26,6 @@ func _process(delta: float) -> void:
 		var chr = characters.get_node_or_null(character)
 		if chr:
 			self.fov = move_toward(self.fov, 40.0, 165*delta)
-			var direction = (chr.position - start_position).normalized()
+			var direction = (chr.global_position - self.global_position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-			self.global_position = self.global_position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.2,1), 20*delta)
+			self.global_position = self.global_position.move_toward(chr.global_position + self.global_transform.basis*Vector3(0,.2,-2), 20*delta)

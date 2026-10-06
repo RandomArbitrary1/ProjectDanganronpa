@@ -1,0 +1,128 @@
+{
+	"dialog": [
+		{
+			"delay": 0.0,
+			"flags": [],
+			"song": "angst",
+			"type": "music"
+		},
+		{
+			"character": "naeri",
+			"content": "I want to party",
+			"expression": "neutral.png",
+			"flags": [],
+			"sfx": "res://assets/audio/sfx/ui/idea.mp3",
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "nah, I won't let that slide",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"expression": "neutral",
+			"flags": [],
+			"type": "character",
+			"x": 13.0,
+			"y": 1.4,
+			"z": 7.0
+		},
+		{
+			"character": "raito",
+			"content": "me neither!",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "tenga",
+			"expression": "neutral",
+			"flags": [],
+			"type": "character",
+			"x": 14.0,
+			"y": 1.4,
+			"z": 9.0
+		},
+		{
+			"character": "tenga",
+			"content": "yeah!",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "itsuki",
+			"expression": "neutral",
+			"flags": [],
+			"type": "character",
+			"x": 16.0,
+			"y": 1.4,
+			"z": 9.5
+		},
+		{
+			"character": "itsuki",
+			"content": "I will suck your blood dry if you do",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "reoto",
+			"expression": "neutral",
+			"flags": [],
+			"type": "character",
+			"x": 18.0,
+			"y": 1.4,
+			"z": 9.5
+		},
+		{
+			"character": "reoto",
+			"content": "Yeah, u weirdo ugh",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"expression": "neutral",
+			"flags": [],
+			"type": "character",
+			"x": 19.0,
+			"y": 1.4,
+			"z": 9.0
+		},
+		{
+			"character": "shion",
+			"content": "Yeah! no partying in here",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "wait, is that me standing infront of me?",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "hehe",
+			"expression": "point.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "kikuya",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}
