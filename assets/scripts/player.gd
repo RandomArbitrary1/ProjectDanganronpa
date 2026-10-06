@@ -176,8 +176,9 @@ func _process(delta: float) -> void:
 				dialog.file = load(current_hover.dialog)
 				current_hover = null
 				current_hover_check = null
-				tooltip.get_node("Anim").play("Hide")
-				reticle.get_node("Anim").play("Hide")
+				if not dialog.active:
+					tooltip.get_node("Anim").play("Hide")
+					reticle.get_node("Anim").play("Hide")
 				dialog.start()
 		elif current_hover_type == "door" and current_hover.room != "":
 			var scene = current_hover.room
