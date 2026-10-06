@@ -403,7 +403,7 @@ func run_options(i, item_data): #function to run stuff on the given item
 		)
 		i.get_node(\"Panel/Sfx\").pressed.connect(func():
 			to_open = \"sfx_dialog\" + str(item_data.id)
-			file_dialog.root_subfolder = \"res://assets/audio/sfx/\"
+			file_dialog.root_subfolder = \"res://assets/audio/\"
 			file_dialog.set_filters([\"*.mp3,*.wav\"])
 			file_dialog.visible = true
 			
@@ -421,7 +421,7 @@ func run_options(i, item_data): #function to run stuff on the given item
 				preview.stop()
 		)
 		file_dialog.file_selected.connect(func(path):
-			if to_open == \"sfx_dialog\" + str(item_data.id) and i.get_node_or_null(\"Panel/Sfx\"):
+			if i and to_open == \"sfx_dialog\" + str(item_data.id) and i.get_node_or_null(\"Panel/Sfx\"):
 				item_data.sfx = path
 				i.get_node(\"Panel/Sfx\").text = path.get_file()
 		)

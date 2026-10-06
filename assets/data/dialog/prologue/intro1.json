@@ -16,6 +16,7 @@
 			"flags": [
 				"unknown"
 			],
+			"sfx": "res://assets/audio/voice/shion/frustrated.mp3",
 			"type": "text"
 		},
 		{
