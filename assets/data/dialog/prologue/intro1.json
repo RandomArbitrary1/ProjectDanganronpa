@@ -189,6 +189,11 @@
 		},
 		{
 			"character": "shion",
+			"flags": [],
+			"type": "intro"
+		},
+		{
+			"character": "shion",
 			"content": "My title as an ultimate spy comes from my history working as a spy. Also because it's an ability I own.",
 			"expression": "neutral.png",
 			"flags": [],
@@ -265,11 +270,19 @@
 			"type": "text"
 		},
 		{
+			"default": false,
 			"dialog": "",
 			"file": "res://scenes/rooms_fps/school_f1.tscn",
 			"flags": [],
-			"name": "HOLY SHIT A SCRENE TRANSITION !!111!!1!",
+			"name": "whats the hardest part of a vegetable, the wheelchair :o",
 			"type": "room"
+		},
+		{
+			"character": "shion",
+			"content": "HOLY SHIT THSI WORKRSSSSS",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
 		}
 	]
 }
