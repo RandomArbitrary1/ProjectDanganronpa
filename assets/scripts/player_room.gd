@@ -84,7 +84,8 @@ func _process(delta: float) -> void:
 			self.fov = move_toward(self.fov, 40.0, 165*delta)
 			var direction = (start_position - chr.position).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,.3,2.2), 20*delta)
+			var pos_y = (1-character_info[character].face_pos[1]-.5)*2.2
+			self.position = self.position.move_toward(chr.position + self.global_transform.basis*Vector3(0,pos_y,2.2), 20*delta)
 	
 	if self.get_parent().name != "Player":
 		if dialog.active == false:

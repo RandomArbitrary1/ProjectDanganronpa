@@ -8,11 +8,14 @@ extends Camera3D
 @export var character: String
 var characters = Node3D
 var angle = Vector2(0,0)
+var global_pos_current = null
 
 var start_position = Vector3(0,.65,0)
 var start_rotation = self.rotation_degrees
 var mouse_start = Vector2.ZERO
 var angle_start = Vector2.ZERO
+
+var character_info = preload("res://assets/data/characters/characters.json").data
 
 func _ready() -> void:
 	characters = get_tree().get_first_node_in_group("Characters_interact")
@@ -20,12 +23,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if character == "":
+		global_pos_current = null
 		self.position = self.position.move_toward(start_position, 25*delta)
 		self.fov = move_toward(self.fov, 50.0, 165*delta)
 	else:
 		var chr = characters.get_node_or_null(character)
 		if chr:
+			if global_pos_current == null:
+				global_pos_current = self.global_position
 			self.fov = move_toward(self.fov, 40.0, 165*delta)
-			var direction = (chr.global_position - self.global_position).normalized()
+			var direction = (chr.global_position - global_pos_current).normalized()
 			self.rotation = self.rotation.move_toward(Vector3(0,atan2(direction.x, direction.z),0), 5*delta)
-			self.global_position = self.global_position.move_toward(chr.global_position + self.global_transform.basis*Vector3(0,.2,-2), 20*delta)
+			var pos_y = (1-character_info[character].face_pos[1]-.5)*2
+			self.global_position = self.global_position.move_toward(chr.global_position + self.global_transform.basis*Vector3(0,pos_y,2), 20*delta)
