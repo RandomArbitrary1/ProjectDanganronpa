@@ -10,6 +10,7 @@ lightmap_size_hint = Vector2i(12, 12)
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
+shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 disable_ambient_light = true
