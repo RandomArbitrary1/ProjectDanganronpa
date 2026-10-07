@@ -69,6 +69,11 @@
 			"type": "text"
 		},
 		{
+			"character": "amia",
+			"flags": [],
+			"type": "intro"
+		},
+		{
 			"character": "nori",
 			"content": "Bye bye",
 			"expression": "neutral.png",

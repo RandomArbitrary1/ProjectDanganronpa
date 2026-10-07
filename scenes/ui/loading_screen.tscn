@@ -57,8 +57,9 @@ _data = {
 }
 
 [node name="LoadingScreen" type="Control" unique_id=1853993188]
+process_mode = 3
 top_level = true
-z_index = 999
+z_index = 1000
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

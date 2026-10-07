@@ -141,6 +141,7 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "intro":
+			intro.get_node("bg").modulate = character_info[current.character].color
 			intro.get_node("Content/Character").texture = load(character_info[current.character].sprites.neutral)
 			intro.get_node("Content/Nameplate/Label").text = character_info[current.character].name
 			intro.get_node("Content/Ultimate").text = character_info[current.character].talent

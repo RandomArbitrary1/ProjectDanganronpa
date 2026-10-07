@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dwpook7kjto3y" path="res://assets/ui/handbook/icons/rules.png" id="10_36iju"]
 [ext_resource type="Texture2D" uid="uid://7bbquld8ftrr" path="res://assets/ui/handbook/icons/system.png" id="11_678mn"]
 [ext_resource type="AudioStream" uid="uid://dbmnqc43rux14" path="res://assets/audio/sfx/ui/handbook_open1.mp3" id="16_unhec"]
+[ext_resource type="AudioStream" uid="uid://bi3tpe7pllsh6" path="res://assets/audio/sfx/ui/select1.mp3" id="17_y0c8w"]
+[ext_resource type="AudioStream" uid="uid://dhdjje73w66fl" path="res://assets/audio/sfx/ui/confirm2.mp3" id="18_7s1ms"]
 
 [sub_resource type="Gradient" id="Gradient_fd50p"]
 colors = PackedColorArray(0.20224464, 0.20224461, 0.20224461, 1, 0.48648673, 0.4864868, 0.48648667, 1)
@@ -199,7 +201,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SFX:playing")
+tracks/4/path = NodePath("Startup:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -219,7 +221,7 @@ _data = {
 [node name="Handbook" type="TextureRect" unique_id=1023202368]
 process_mode = 3
 visible = false
-z_index = 1
+z_index = 50
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1146,6 +1148,7 @@ grow_vertical = 2
 columns = 3
 
 [node name="System" type="Control" parent="Screen/Lists" unique_id=285997411]
+visible = false
 clip_contents = true
 anchors_preset = 0
 offset_right = 1840.0
@@ -1166,7 +1169,7 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="Item" type="NinePatchRect" parent="Screen/Lists/System/Items" unique_id=1560483335]
+[node name="Item3" type="NinePatchRect" parent="Screen/Lists/System/Items" unique_id=948144208]
 custom_minimum_size = Vector2(460, 300)
 layout_mode = 2
 texture = ExtResource("3_5gwyl")
@@ -1176,7 +1179,7 @@ patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 19
 
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/System/Items/Item" unique_id=1886492107]
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/System/Items/Item3" unique_id=1578440778]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 1
@@ -1195,7 +1198,7 @@ patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
 
-[node name="Label" type="Label" parent="Screen/Lists/System/Items/Item" unique_id=1903631651]
+[node name="Label" type="Label" parent="Screen/Lists/System/Items/Item3" unique_id=473242329]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 194.0
@@ -1203,7 +1206,7 @@ offset_right = 454.0
 offset_bottom = 286.0
 theme = ExtResource("8_y0c8w")
 theme_override_font_sizes/font_size = 50
-text = "Settings"
+text = "Save"
 horizontal_alignment = 1
 
 [node name="Item2" type="NinePatchRect" parent="Screen/Lists/System/Items" unique_id=1352218336]
@@ -1246,7 +1249,7 @@ theme_override_font_sizes/font_size = 50
 text = "Load"
 horizontal_alignment = 1
 
-[node name="Item3" type="NinePatchRect" parent="Screen/Lists/System/Items" unique_id=948144208]
+[node name="Item" type="NinePatchRect" parent="Screen/Lists/System/Items" unique_id=1560483335]
 custom_minimum_size = Vector2(460, 300)
 layout_mode = 2
 texture = ExtResource("3_5gwyl")
@@ -1256,7 +1259,7 @@ patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 19
 
-[node name="Outline" type="NinePatchRect" parent="Screen/Lists/System/Items/Item3" unique_id=1578440778]
+[node name="Outline" type="NinePatchRect" parent="Screen/Lists/System/Items/Item" unique_id=1886492107]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 1
@@ -1275,7 +1278,7 @@ patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
 
-[node name="Label" type="Label" parent="Screen/Lists/System/Items/Item3" unique_id=473242329]
+[node name="Label" type="Label" parent="Screen/Lists/System/Items/Item" unique_id=1903631651]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 194.0
@@ -1283,7 +1286,7 @@ offset_right = 454.0
 offset_bottom = 286.0
 theme = ExtResource("8_y0c8w")
 theme_override_font_sizes/font_size = 50
-text = "Save"
+text = "Settings"
 horizontal_alignment = 1
 
 [node name="Item4" type="NinePatchRect" parent="Screen/Lists/System/Items" unique_id=1312019298]
@@ -1485,7 +1488,13 @@ stretch_mode = 5
 libraries/ = SubResource("AnimationLibrary_nrkx1")
 speed_scale = 0.8
 
-[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=999125617]
+[node name="Startup" type="AudioStreamPlayer" parent="." unique_id=999125617]
 stream = ExtResource("16_unhec")
 volume_db = 8.0
-autoplay = true
+
+[node name="Shift" type="AudioStreamPlayer" parent="." unique_id=1136365081]
+stream = ExtResource("17_y0c8w")
+
+[node name="Press" type="AudioStreamPlayer" parent="." unique_id=1348926758]
+stream = ExtResource("18_7s1ms")
+volume_db = 8.0

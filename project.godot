@@ -49,6 +49,12 @@ Camera=""
 Objects=""
 trial_main=""
 
+[importer_defaults]
+
+MeshLibrary={
+&"materials/extract": 1
+}
+
 [input]
 
 Progress={
