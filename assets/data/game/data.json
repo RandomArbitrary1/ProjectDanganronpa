@@ -24,5 +24,6 @@
 		"yusio":{"room":"","position":{"x":0,"y":0,"z":0}},
 		"ushi":{"room":"","position":{"x":0,"y":0,"z":0}}
 	},
-	"game_value": {"student_introductions": 0}
+	"game_value": {"student_introductions": 0},
+	"music":{"sad1":"Despair Inducing Mayhem"}
 }
