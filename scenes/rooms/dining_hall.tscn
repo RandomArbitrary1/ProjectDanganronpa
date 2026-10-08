@@ -4,6 +4,7 @@
 [ext_resource type="Environment" uid="uid://b8oxnw70k4u3" path="res://assets/environments/room.tres" id="2_32mg4"]
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_xyiem"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="4_32mg4"]
+[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="4_c7p4a"]
 [ext_resource type="PackedScene" uid="uid://bkjdmivyfkwwr" path="res://assets/objects/environment/window_covered.tscn" id="4_h4tv8"]
 [ext_resource type="Material" uid="uid://h0x4jtpt4o2f" path="res://assets/materials/tile_checker.tres" id="6_67mco"]
 [ext_resource type="PackedScene" uid="uid://culnmexpbyame" path="res://assets/objects/2D objects/dining_hall/circle_table.tscn" id="6_sjhf2"]
@@ -24,6 +25,11 @@ maxX = 10.0
 center = Vector3(-16, 1.7, -13)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
+
+[node name="amia" parent="Characters" unique_id=2135237569 instance=ExtResource("4_c7p4a")]
+transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, -12, 1.8999999, -13)
+character = "amia"
+expression = "neutral"
 
 [node name="Objects" type="Node3D" parent="." unique_id=986129665]
 

@@ -230,7 +230,7 @@ character = "ayuka"
 expression = "neutral"
 dialog = "res://assets/data/dialog/test5.json"
 
-[node name="ayuka2" parent="Characters" unique_id=1163226673 instance=ExtResource("6_f7rjr")]
+[node name="masato" parent="Characters" unique_id=1163226673 instance=ExtResource("6_f7rjr")]
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 21, 1.4, -7)
 character = "masato"
 expression = "neutral"
