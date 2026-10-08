@@ -3,7 +3,9 @@ extends TextureRect
 @onready var anim : AnimationPlayer = $Anim
 @onready var tabs = $Screen/Tabs/List
 @onready var lists = $Screen/Lists
-@onready var sfx: AudioStreamPlayer = $SFX
+@onready var sfx: AudioStreamPlayer = $Startup
+@onready var Shift: AudioStreamPlayer = $Shift
+@onready var press: AudioStreamPlayer = $Press
 
 var character_info = preload("res://assets/data/characters/characters.json").data
 var gifts_info = preload("res://assets/data/gifts.json").data
@@ -84,12 +86,14 @@ func _process(delta: float) -> void:
 				
 	if get_tree().paused == true:
 		if Input.is_action_just_pressed("Next"):
+			Shift.play()
 			if tab < 5:
 				tab += 1
 			else:
 				tab = 0
 			switch_tab()
 		if Input.is_action_just_pressed("Previous"):
+			Shift.play()
 			if tab > 0:
 				tab -= 1
 			else:
@@ -105,25 +109,30 @@ func _process(delta: float) -> void:
 				current.get_node("Icon").modulate = current.get_node("Icon").modulate.lerp(Color(1.0,1.0,1.0), 20*delta)
 			if Input.is_action_just_pressed("LMB"):
 				if Rect2(current.global_position, current.size).has_point(get_global_mouse_position()):
+					Shift.play()
 					tab = i
 					switch_tab()
 		
 		if Input.is_action_just_pressed("Left"):
+			Shift.play()
 			if inside_tab.x > 0:
 				inside_tab.x -= 1
 			elif x_range != 1:
 				inside_tab.x = x_range-1
 		if Input.is_action_just_pressed("Right"):
+			Shift.play()
 			if inside_tab .x < x_range-1:
 				inside_tab.x += 1
 			else:
 				inside_tab.x = 0
 		if Input.is_action_just_pressed("Up"):
+			Shift.play()
 			if inside_tab.y > 0:
 				inside_tab.y -= 1
 			else:
 				inside_tab.y = y_range-1
 		if Input.is_action_just_pressed("Down"):
+			Shift.play()
 			if inside_tab .y < y_range-1:
 				inside_tab.y += 1
 			else:
@@ -137,12 +146,18 @@ func _process(delta: float) -> void:
 				i.get_node("Outline").modulate.a = lerp(i.get_node("Outline").modulate.a, 0.0, 20*delta)
 			if tab != 5:
 				if Input.is_action_just_pressed("LMB") and Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
+					Shift.play()
 					inside_tab.x = int(i.get_index() % x_range)
 					inside_tab.y = int(i.get_index() / x_range)
 			else:
 				if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()) and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 					inside_tab.x = int(i.get_index() % x_range)
 					inside_tab.y = int(i.get_index() / x_range)
+				if Input.is_action_just_pressed("Progress"):
+					press.play()
+					if inside_tab == Vector2(1,1):
+						get_tree().paused = false
+						LoadingScreen.load_scene("res://scenes/ui/title.tscn")
 
 	current_tab_node.get_node("Items").position.y = move_toward(current_tab_node.get_node("Items").position.y, clamp(tab_data[tab].offset-(inside_tab.y-(tab_data[tab].fit-1))*tab_data[tab].size,tab_data[tab].size-tab_data[tab].size*(y_range-tab_data[tab].fit)+(tab_data[tab].size/5), tab_data[tab].offset), 1600*delta)
 	

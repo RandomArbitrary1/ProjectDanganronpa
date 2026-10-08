@@ -1511,7 +1511,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Introduction" type="TextureRect" parent="." unique_id=1150089217]
 visible = false
-modulate = Color(0.42565843, 0.655135, 0.9584089, 1)
+modulate = Color(0.42745098, 0.654902, 0.95686275, 1)
 clip_children = 1
 z_index = 10
 layout_mode = 1
@@ -1537,7 +1537,7 @@ texture = ExtResource("15_o1amr")
 
 [node name="Content" type="Control" parent="Introduction" unique_id=1705298271]
 top_level = true
-z_index = 10
+z_index = 20
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1567,9 +1567,9 @@ texture = ExtResource("17_2rgs5")
 
 [node name="Nameplate" type="TextureRect" parent="Introduction/Content" unique_id=75189809]
 layout_mode = 0
-offset_top = 750.0
+offset_top = 824.0
 offset_right = 1456.0
-offset_bottom = 1077.9962
+offset_bottom = 1151.9962
 texture = ExtResource("16_o1amr")
 
 [node name="Label" type="Label" parent="Introduction/Content/Nameplate" unique_id=2019071035]
@@ -1606,9 +1606,9 @@ autowrap_mode = 2
 [node name="Character" type="TextureRect" parent="Introduction/Content" unique_id=1862466283]
 layout_mode = 0
 offset_left = 760.0
-offset_top = -276.92538
+offset_top = 24.0
 offset_right = 2296.0
-offset_bottom = 1211.0746
+offset_bottom = 1512.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("17_owry8")
 expand_mode = 1

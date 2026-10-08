@@ -230,7 +230,7 @@ character = "ayuka"
 expression = "neutral"
 dialog = "res://assets/data/dialog/test5.json"
 
-[node name="ayuka2" parent="Characters" unique_id=1163226673 instance=ExtResource("6_f7rjr")]
+[node name="masato" parent="Characters" unique_id=1163226673 instance=ExtResource("6_f7rjr")]
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 21, 1.4, -7)
 character = "masato"
 expression = "neutral"
@@ -306,6 +306,7 @@ room = "res://scenes/rooms_fps/courtyard.tscn"
 [node name="Dining hall" parent="Doors" unique_id=481195389 instance=ExtResource("8_msf16")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 5.152, 1.82, 12.148)
 script = ExtResource("9_5gesx")
+room = "res://scenes/rooms/dining_hall.tscn"
 
 [node name="Basement" parent="Doors" unique_id=1912084388 instance=ExtResource("10_bfg0b")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -6.8459997, 1.82, 12.15)
