@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_8e3mb"]
 [ext_resource type="Environment" uid="uid://b8oxnw70k4u3" path="res://assets/environments/room.tres" id="2_32mg4"]
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_xyiem"]
-[ext_resource type="Material" uid="uid://qt7tfqir33l4" path="res://assets/materials/wall2.tres" id="3_8e3mb"]
 [ext_resource type="PackedScene" uid="uid://dcdo16wuh1h6f" path="res://assets/objects/environment/ceiling_light.tscn" id="4_32mg4"]
 [ext_resource type="PackedScene" uid="uid://bkjdmivyfkwwr" path="res://assets/objects/environment/window_covered.tscn" id="4_h4tv8"]
 [ext_resource type="Material" uid="uid://h0x4jtpt4o2f" path="res://assets/materials/tile_checker.tres" id="6_67mco"]
+[ext_resource type="PackedScene" uid="uid://culnmexpbyame" path="res://assets/objects/2D objects/dining_hall/circle_table.tscn" id="6_sjhf2"]
+[ext_resource type="Material" uid="uid://ipponjpupynf" path="res://assets/materials/wall_dining_hall.tres" id="7_c7p4a"]
 [ext_resource type="Material" uid="uid://uk4cda4cktrn" path="res://assets/materials/tile_clean.tres" id="7_sjhf2"]
 
 [node name="Room" type="Node3D" unique_id=478957731]
@@ -18,9 +19,9 @@ hall_name = "Dorms"
 environment = ExtResource("2_32mg4")
 
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_xyiem")]
-transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, -9.282011, 3, -5.400155)
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, -9.282011, 3, -6.400155)
 maxX = 10.0
-center = Vector3(-17.282011, 3, -8.400155)
+center = Vector3(-16, 1.7, -13)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
@@ -151,6 +152,39 @@ transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.2999
 [node name="ceiling_light36" parent="Props/Furniture/Lights" unique_id=1746937437 instance=ExtResource("4_32mg4")]
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -9.5, 5.85, -22)
 
+[node name="Table" parent="Props/Furniture" unique_id=870626101 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -13, 1.46, -10)
+
+[node name="Table3" parent="Props/Furniture" unique_id=328591360 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -18, 1.46, -10)
+
+[node name="Table4" parent="Props/Furniture" unique_id=466405849 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -18, 1.46, -15)
+
+[node name="Table2" parent="Props/Furniture" unique_id=2067538123 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -13, 1.46, -15)
+
+[node name="Table5" parent="Props/Furniture" unique_id=1027798872 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -9, 1.46, -10)
+
+[node name="Table7" parent="Props/Furniture" unique_id=217000108 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -13, 1.46, -6)
+
+[node name="Table8" parent="Props/Furniture" unique_id=843694938 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -18, 1.46, -6)
+
+[node name="Table9" parent="Props/Furniture" unique_id=1552257198 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -23, 1.46, -10)
+
+[node name="Table10" parent="Props/Furniture" unique_id=138269 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -23, 1.46, -15)
+
+[node name="Table11" parent="Props/Furniture" unique_id=170890474 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -23, 1.46, -6)
+
+[node name="Table6" parent="Props/Furniture" unique_id=1021261910 instance=ExtResource("6_sjhf2")]
+transform = Transform3D(1.4142134, 1.4142135, -4.9453792e-08, 0, -8.742278e-08, -1.6, -1.4142134, 1.4142135, -4.9453792e-08, -9, 1.46, -15)
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1181242268]
@@ -161,7 +195,7 @@ size = Vector3(34, 14, 36)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2.537012, -9.5)
 operation = 2
 size = Vector3(29, 7, 30)
-material = ExtResource("3_8e3mb")
+material = ExtResource("7_c7p4a")
 
 [node name="hole_window" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1566601850]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.291747, 2.7561398, -24.995468)

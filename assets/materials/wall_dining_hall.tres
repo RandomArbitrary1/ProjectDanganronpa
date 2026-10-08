@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ipponjpupynf"]
+
+[ext_resource type="Texture2D" uid="uid://fk4qgb4ntn87" path="res://assets/textures/environment/tile_kitchen.png" id="1_5vbvm"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_5vbvm")
+uv1_scale = Vector3(0.2, 0.075, 0.2)
+uv1_offset = Vector3(0, -0.037, 0)
+uv1_triplanar = true
