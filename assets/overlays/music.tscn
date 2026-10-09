@@ -4,6 +4,7 @@
 resource_name = "Music"
 script/source = "extends AudioStreamPlayer
 
+var music_data = preload(\"res://assets/data/game/data.json\").data.music
 var current = \"\"
 var timer = 0
 
@@ -12,6 +13,10 @@ func switch(file : String, delay = 0.0):
 		current = file
 		self.stream = load(file)
 		timer = delay
+
+func get_music_name():
+	if current != \"\" and current.get_basename().get_file() in music_data:
+		return music_data[current.get_basename().get_file()]
 		
 
 func _process(delta: float) -> void:
