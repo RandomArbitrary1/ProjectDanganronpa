@@ -38,6 +38,11 @@ var controller_reticle_pos = Vector2(960,540)
 const DEADZONE = 0.15
 
 func _ready() -> void:
+	var offset = start_position - center
+	offset = offset.rotated(Vector3.UP, deg_to_rad(-angle.x))
+	offset = offset.rotated(Vector3.RIGHT, deg_to_rad(-angle.y))
+	self.global_position = center + offset
+	look_at(center)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	characters = get_tree().get_first_node_in_group("Characters_interact")
 	objects = get_tree().get_first_node_in_group("Objects")

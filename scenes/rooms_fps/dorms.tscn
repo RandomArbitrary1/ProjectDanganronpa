@@ -312,6 +312,7 @@ room = "res://scenes/rooms/dining_hall.tscn"
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -6.8459997, 1.82, 12.15)
 surface_material_override/0 = ExtResource("10_fyqrs")
 script = ExtResource("9_5gesx")
+room = "res://scenes/rooms/basement.tscn"
 
 [node name="Dorm" parent="Doors" unique_id=1041409864 instance=ExtResource("10_bfg0b")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.1540003, 1.82, -1.8500004)

@@ -936,7 +936,7 @@ transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08
 surface_material_override/0 = ExtResource("27_qqewr")
 script = ExtResource("33_qqewr")
 display_name = "???"
-dialog = "res://assets/data/object_plain.json"
+dialog = "res://assets/data/dialog/generic_dialog/locked_door.json"
 
 [node name="Boys bathroom" parent="Objects" unique_id=1647493315 instance=ExtResource("24_eii7d")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1.82, -21.8)
