@@ -557,10 +557,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 			file_dialog.visible = true
 		)
 		file_dialog.file_selected.connect(func(path):
-			if to_open == \"room\" + str(item_data.id):
+			if i and to_open == \"room\" + str(item_data.id):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
-			if to_open == \"roomD\" + str(item_data.id):
+			if i and  to_open == \"roomD\" + str(item_data.id):
 				item_data.dialog = path
 				if i:
 					i.get_node(\"Panel/Dialog\").text = path.get_file()
@@ -583,7 +583,7 @@ func run_options(i, item_data): #function to run stuff on the given item
 		)
 	elif item_data.type == \"sfx\":
 		i.get_node(\"Panel/Preview\").pressed.connect(func():
-			if previewing_audio != item_data.file + str(item_data.id):
+			if i and  previewing_audio != item_data.file + str(item_data.id):
 				previewing_audio = item_data.file + str(item_data.id)
 				if ResourceLoader.exists(item_data.file):
 					preview.stream = load(item_data.file)
@@ -602,7 +602,7 @@ func run_options(i, item_data): #function to run stuff on the given item
 			
 		)
 		file_dialog.file_selected.connect(func(path):
-			if to_open == \"sfx\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
+			if i and to_open == \"sfx\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
 		)
@@ -618,7 +618,7 @@ func run_options(i, item_data): #function to run stuff on the given item
 		)
 		file_dialog.file_selected.connect(func(path):
 			item_data.file = path
-			if to_open == \"bullet\" + str(item_data.id):
+			if i and to_open == \"bullet\" + str(item_data.id):
 				i.get_node(\"Panel/Load\").text = path.get_file()
 				i.get_node(\"Panel/Bullet\").clear()
 				var file = load(path).data
