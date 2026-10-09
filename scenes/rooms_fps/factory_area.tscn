@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2vvl303tuptw" path="res://assets/objects/obj_scene/hazard_stair.tscn" id="7_0c4b8"]
 [ext_resource type="PackedScene" uid="uid://hku8ehukmkxl" path="res://assets/objects/obj_scene/factory_machine_1.tscn" id="7_i0s0o"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/doors/door_double.tscn" id="8_bodv5"]
-[ext_resource type="AudioStream" uid="uid://bleh0qrbi8nbl" path="res://assets/audio/music/darkness_time.mp3" id="8_ml7js"]
+[ext_resource type="AudioStream" uid="uid://bleh0qrbi8nbl" path="res://assets/audio/music/night.mp3" id="8_ml7js"]
 [ext_resource type="Material" uid="uid://c5wupw8t0q5nt" path="res://assets/objects/environment/doors/door_metal.tres" id="9_h0pio"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="10_i0s0o"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="10_ogetv"]

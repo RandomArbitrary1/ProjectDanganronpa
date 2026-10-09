@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfj4csd4wh4ge" path="res://assets/scripts/ui/title/title.gd" id="1_4v1qu"]
 [ext_resource type="PackedScene" uid="uid://cfp8b3o8sfas8" path="res://scenes/ui/title_ui.tscn" id="2_4v1qu"]
-[ext_resource type="AudioStream" uid="uid://bkk852f7828t7" path="res://assets/audio/music/Beautiful Fear.mp3" id="2_s1drf"]
+[ext_resource type="AudioStream" uid="uid://bkk852f7828t7" path="res://assets/audio/music/main_emotion.mp3" id="2_s1drf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ocahe"]
 
