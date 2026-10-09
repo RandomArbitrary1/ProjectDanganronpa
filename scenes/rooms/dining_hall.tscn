@@ -29,9 +29,9 @@ center = Vector3(-16, 1.7, -13)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
-[node name="amia" parent="Characters" unique_id=2135237569 instance=ExtResource("4_c7p4a")]
+[node name="reoto" parent="Characters" unique_id=2135237569 instance=ExtResource("4_c7p4a")]
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, -12, 1.8999999, -13)
-character = "amia"
+character = "reoto"
 expression = "neutral"
 
 [node name="Objects" type="Node3D" parent="." unique_id=986129665]
