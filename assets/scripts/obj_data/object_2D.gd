@@ -9,7 +9,7 @@ var camera = Camera3D
 func _ready() -> void:
 	camera = get_tree().get_first_node_in_group("Camera")
 
-	rotation.y = atan2(
+	global_rotation.y = atan2(
 		camera.global_position.x - global_position.x,
 		camera.global_position.z - global_position.z
 	)
@@ -18,7 +18,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if camera.name != "Player":
-		rotation.y = atan2(
+		global_rotation.y = atan2(
 			camera.global_position.x - global_position.x,
 			camera.global_position.z - global_position.z
 		)
