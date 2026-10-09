@@ -88,7 +88,7 @@
 "dislikes":"Losers","height":"1.59 cm","birth_date":"16 november",
 "face_pos":[0.5,0.1],
 "color":"91ffd9",
-"sprites":{"neutral":"res://assets/textures/characters/dummyman/dummy.png"}},
+"sprites":{"neutral":"res://assets/textures/characters/yusio/neutral.png"}},
 
 "amia":{"name":"Amia Kobayashi","talent":"Ultimate Botanist","sex":"Female","likes":"Pastries",
 "dislikes":"Motorcycles","height":"1.66 cm","birth_date":"22 february",

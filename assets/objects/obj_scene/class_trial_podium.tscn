@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://e51hmk2ifh4p"]
+
+[ext_resource type="PackedScene" uid="uid://d0pwvsd04iti5" path="res://assets/objects/class_trial/class_trial_podium.glb" id="1_dpdj1"]
+
+[node name="class_trial_podium" unique_id=59247663 instance=ExtResource("1_dpdj1")]
