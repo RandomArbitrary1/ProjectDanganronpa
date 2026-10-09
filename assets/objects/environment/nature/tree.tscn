@@ -24,7 +24,7 @@ orientation = 2
 
 [node name="tree_trunk" unique_id=740311548 instance=ExtResource("1_1a3wl")]
 
-[node name="Cylinder" parent="." index="0" unique_id=1568727551]
+[node name="Cylinder" parent="." index="0" unique_id=915774678]
 surface_material_override/0 = ExtResource("2_lgx50")
 
 [node name="Leaves" parent="." index="1" unique_id=257907977 instance=ExtResource("3_y6sba")]
