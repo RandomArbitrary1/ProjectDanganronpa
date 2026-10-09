@@ -240,6 +240,30 @@ operation = 2
 size = Vector3(2, 2.35, 4.75)
 material = ExtResource("2_qqewr")
 
+[node name="hole_window6" type="CSGBox3D" parent="Building" unique_id=225492932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.60372, 6.0561395, 3.9127846)
+operation = 2
+size = Vector3(2, 8.95, 4.75)
+material = ExtResource("2_qqewr")
+
+[node name="hole_window7" type="CSGBox3D" parent="Building" unique_id=790666354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.60372, 6.0561395, 14.912785)
+operation = 2
+size = Vector3(2, 8.95, 4.75)
+material = ExtResource("2_qqewr")
+
+[node name="hole_window8" type="CSGBox3D" parent="Building" unique_id=490218925]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.250517, 6.0561395, 19.595533)
+operation = 2
+size = Vector3(2, 8.95, 4.75)
+material = ExtResource("2_qqewr")
+
+[node name="hole_window9" type="CSGBox3D" parent="Building" unique_id=993497754]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.270975, 6.0561395, -0.6904179)
+operation = 2
+size = Vector3(2, 8.95, 4.75)
+material = ExtResource("2_qqewr")
+
 [node name="hole_door" type="CSGBox3D" parent="Building" unique_id=1331478798]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1037202, 1.8191967, -5.996479)
 operation = 2
@@ -441,6 +465,54 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 5.8, 2.76, -9.1)
 
 [node name="window3" parent="Props/Structure" unique_id=908004637 instance=ExtResource("10_8ggvf")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 5.8, 2.76, -14.1)
+
+[node name="window5" parent="Props/Structure" unique_id=508674855 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 2.76, 3.8999996)
+
+[node name="window6" parent="Props/Structure" unique_id=1019695095 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 2.76, 14.9)
+
+[node name="window7" parent="Props/Structure" unique_id=414627808 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 4.96, 3.8999996)
+
+[node name="window8" parent="Props/Structure" unique_id=494186184 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 4.96, 14.9)
+
+[node name="window9" parent="Props/Structure" unique_id=1234422828 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 7.16, 3.8999996)
+
+[node name="window10" parent="Props/Structure" unique_id=1661808733 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 7.16, 14.9)
+
+[node name="window11" parent="Props/Structure" unique_id=694185887 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 9.36, 3.8999996)
+
+[node name="window12" parent="Props/Structure" unique_id=859758975 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 20.8, 9.36, 14.9)
+
+[node name="window13" parent="Props/Structure" unique_id=376755074 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 16.263302, 2.76, 19.791813)
+
+[node name="window14" parent="Props/Structure" unique_id=2115251770 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 16.263302, 4.96, 19.791813)
+
+[node name="window15" parent="Props/Structure" unique_id=604402935 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 16.263302, 7.16, 19.791813)
+
+[node name="window16" parent="Props/Structure" unique_id=763463202 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 16.263302, 9.36, 19.791813)
+
+[node name="window17" parent="Props/Structure" unique_id=365670540 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, 0.59999996, 0, 0.59999996, 0, -0.59999996, 0, -2.6226832e-08, 16.25819, 2.76, -0.8866974)
+
+[node name="window18" parent="Props/Structure" unique_id=1407788504 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, 0.59999996, 0, 0.59999996, 0, -0.59999996, 0, -2.6226832e-08, 16.25819, 4.96, -0.8866974)
+
+[node name="window19" parent="Props/Structure" unique_id=1960493593 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, 0.59999996, 0, 0.59999996, 0, -0.59999996, 0, -2.6226832e-08, 16.25819, 7.16, -0.8866974)
+
+[node name="window20" parent="Props/Structure" unique_id=2112349544 instance=ExtResource("10_8ggvf")]
+transform = Transform3D(-2.6226832e-08, 0, 0.59999996, 0, 0.59999996, 0, -0.59999996, 0, -2.6226832e-08, 16.25819, 9.36, -0.8866974)
 
 [node name="window4" parent="Props/Structure" unique_id=647689455 instance=ExtResource("10_8ggvf")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 5.8, 2.76, 29.9)
