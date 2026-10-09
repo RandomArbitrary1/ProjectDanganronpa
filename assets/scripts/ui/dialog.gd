@@ -331,7 +331,7 @@ func _process(delta: float) -> void:
 				instant_skip_timer -= delta
 		
 	if Input.is_action_just_pressed("Progress") and active: #click
-		if active:
+		if active and not intro_anim.is_playing():
 			if optioning:
 				if optioning:
 					if sfx_next.stream != confirm_sfx:
