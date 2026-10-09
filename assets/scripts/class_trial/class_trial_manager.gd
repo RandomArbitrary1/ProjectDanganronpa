@@ -3,7 +3,6 @@ extends Node3D
 @onready var camera_3d: Node3D = $CameraNode
 @onready var preparation: Control = $Preparation
 @onready var debate_roulette: Control = $DebateRoulette
-@onready var music: AudioStreamPlayer = $music/pre_music
 @onready var dialog: Control = $Dialog
 @onready var intro: Control = $Intro
 # TODO DANILO: Camera spins before entering big spin. ALL Hardcoded, no anim players.
@@ -16,6 +15,8 @@ var podiums = null
 var angle := 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	dialog.file = load("res://assets/data/class_trial/structure/intro_music.json")
+	dialog.start()
 	podiums = get_tree().get_nodes_in_group("podium")
 	#instant_begin()
 
@@ -41,8 +42,6 @@ func prepare(delta):
 		height,
 		cos(angle) * radius)
 		camera_3d.look_at(center)
-	if !music.playing:
-		music.play()
 	debate_roulette.visible = false
 	preparation.visible = true
 	
@@ -51,13 +50,13 @@ func debate():
 		debate_roulette.visible = true
 		debate_roulette.state = "something"
 		debate_roulette.start()
-		music.stop()
+
 	
 	preparation.visible = false
 	
 func next_process(next=1):
 	state = "nothing"
-	music.stop()
+
 	structure_line = structure_line + next
 	var path = structure[structure_line]
 	var type = path.get_base_dir().get_file()

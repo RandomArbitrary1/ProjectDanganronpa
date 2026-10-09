@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://raoipxifch01" path="res://assets/scripts/class_trial/class_trial_manager.gd" id="1_arjlt"]
 [ext_resource type="PackedScene" uid="uid://r1ybdydhlyyl" path="res://scenes/class_trial/debate_roulette.tscn" id="2_hddxn"]
-[ext_resource type="AudioStream" uid="uid://cbcv001taaaxs" path="res://assets/audio/music/preparation.mp3" id="2_ywd3k"]
 [ext_resource type="PackedScene" uid="uid://p0mqiqashvrm" path="res://scenes/class_trial/preparation_screen.tscn" id="3_ywd3k"]
 [ext_resource type="PackedScene" uid="uid://bi2wqakt44a5q" path="res://assets/overlays/dialog_trial.tscn" id="6_pcyjt"]
 [ext_resource type="PackedScene" uid="uid://dro7rb65a6s7t" path="res://scenes/class_trial/intro_trial_start.tscn" id="7_jtrg0"]
@@ -10,13 +9,6 @@
 
 [node name="CLASS_TRIAL_MAIN" type="Node3D" unique_id=642936802]
 script = ExtResource("1_arjlt")
-
-[node name="music" type="Node" parent="." unique_id=1609904005]
-
-[node name="pre_music" type="AudioStreamPlayer" parent="music" unique_id=2032512217]
-stream = ExtResource("2_ywd3k")
-volume_db = -5.0
-parameters/looping = true
 
 [node name="DebateRoulette" parent="." unique_id=1937437093 instance=ExtResource("2_hddxn")]
 
