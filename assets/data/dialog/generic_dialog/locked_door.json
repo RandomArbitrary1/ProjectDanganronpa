@@ -1,0 +1,19 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "* clatter *",
+			"expression": "neutral.png",
+			"flags": [],
+			"sfx": "res://assets/audio/sfx/environment/door_clatter.mp3",
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Seems like this door is locked",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}
