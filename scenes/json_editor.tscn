@@ -39,6 +39,7 @@ script/source = "extends Control
 @onready var cg_line = list.get_node(\"CG\").duplicate()
 @onready var sfx_line = list.get_node(\"SFX\").duplicate()
 @onready var intro_line = list.get_node(\"Intro\").duplicate()
+@onready var dialog_change_line = list.get_node(\"Dialog_change\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
 @onready var dialog_button = dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").duplicate()
 
@@ -822,6 +823,109 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(120, 0)
 offset_transform_visual_only = false
 theme = ExtResource("1_ol5w5")
+
+[node name="Dialog_change" type="HBoxContainer" parent="Items/List" unique_id=1993356996]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme = ExtResource("1_ol5w5")
+
+[node name="Panel" type="Panel" parent="Items/List/Dialog_change" unique_id=174325771]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
+
+[node name="Outline" type="Panel" parent="Items/List/Dialog_change/Panel" unique_id=415498985]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Outline"
+
+[node name="Down" type="Button" parent="Items/List/Dialog_change/Panel" unique_id=33471916]
+layout_mode = 0
+offset_left = 7.9999924
+offset_top = 7.99999
+offset_right = 47.999992
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Dialog_change/Panel" unique_id=681141981]
+layout_mode = 0
+offset_left = 55.999985
+offset_top = 7.99999
+offset_right = 95.999985
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Dialog_change/Panel" unique_id=796365090]
+layout_mode = 0
+offset_left = 103.999985
+offset_top = 7.9999905
+offset_right = 143.99998
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Dialog_change/Panel" unique_id=1155523932]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 7.9999886
+offset_right = 272.0
+offset_bottom = 47.99998
+theme = ExtResource("1_ol5w5")
+text = "Change dialog"
+vertical_alignment = 1
+
+[node name="Type" type="OptionButton" parent="Items/List/Dialog_change/Panel" unique_id=1044378319]
+layout_mode = 0
+offset_left = 295.99997
+offset_top = 7.999999
+offset_right = 439.99997
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+selected = 0
+item_count = 2
+popup/item_0/text = "Object"
+popup/item_0/id = 1
+popup/item_1/text = "Door"
+popup/item_1/id = 2
+
+[node name="Index" type="Label" parent="Items/List/Dialog_change/Panel" unique_id=1427336535]
+layout_mode = 0
+offset_left = -95.999985
+offset_top = 8.0
+offset_right = -15.999985
+offset_bottom = 70.85714
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Index"
+text = "0"
+horizontal_alignment = 2
+
+[node name="Load" type="Button" parent="Items/List/Dialog_change/Panel" unique_id=1152465212]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 8.0
+offset_right = 792.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Select file"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
 
 [node name="Intro" type="HBoxContainer" parent="Items/List" unique_id=1693977683]
 custom_minimum_size = Vector2(0, 56)
