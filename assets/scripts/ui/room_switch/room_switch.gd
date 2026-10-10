@@ -69,3 +69,4 @@ func finish():
 		await anim.animation_finished
 	self.visible = false
 	get_tree().paused = false
+	Character.spawn_all()

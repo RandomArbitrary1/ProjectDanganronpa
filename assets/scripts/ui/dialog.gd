@@ -39,7 +39,6 @@ const shock = preload("uid://v3ccuuxy11kt")
 var option_inactive = preload("res://assets/ui/dialog/choice.png")
 var option_active = preload("res://assets/ui/dialog/choice_active.png")
 var character_info = preload("res://assets/data/characters/characters.json").data
-const character = preload("res://assets/objects/characters/character.tscn")
 
 #variables
 
@@ -156,24 +155,13 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "character":
+			var room_file = ""
+			var dialog_file = ""
 			if not "spawn" in current or current.spawn == true:
-				var new_char = characters.find_child(current.character)
-				if not new_char:
-					new_char = character.instantiate()
-					new_char.name = current.character
-					new_char.character = current.character
-					new_char.expression = current.expression
-					characters.add_child(new_char)
-				if "file" in current:
-					new_char.dialog = current.file
-				new_char.position = Vector3(current.x,current.y,current.z)
-				new_char.get_node("Anim").play("Enter")
-				await new_char.get_node("Anim").animation_finished
-			else:
-				var old_char = characters.find_child(current.character)
-				old_char.get_node("Anim").play("Leave")
-				await old_char.get_node("Anim").animation_finished
-				old_char.queue_free()
+				room_file = get_tree().current_scene.scene_file_path
+			if "file" in current:
+				dialog_file = current.file
+			Character.spawn(current.character, room_file, Vector3(current.x,current.y,current.z), dialog_file, current.expression)
 			line += 1
 			next()
 		elif current.type == "room":
