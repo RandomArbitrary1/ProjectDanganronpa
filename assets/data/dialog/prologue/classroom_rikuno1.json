@@ -113,9 +113,32 @@
 		},
 		{
 			"character": "rikuno",
-			"content": "Oh no, I'm an ultimate because I'm really good at shooting. And know every little detail about guns and such.",
+			"content": "Oh no, I'm an ultimate because I'm really good at shooting. And know every little detail about guns.",
 			"expression": "neutral.png",
 			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "I think it's a good idea to team up. You never know what you're gonna come across.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Right, I agree.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Now to only find the exit to this classroom...",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
 			"type": "text"
 		}
 	]

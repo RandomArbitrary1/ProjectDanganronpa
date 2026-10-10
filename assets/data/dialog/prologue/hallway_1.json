@@ -1,0 +1,37 @@
+{
+	"dialog": [
+		{
+			"character": "nori",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/nori_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -3.0,
+			"y": 1.8,
+			"z": 8.0
+		},
+		{
+			"character": "shion",
+			"content": "So this is the hallway... Oh, I see a few people!",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Hey, Rikuno. I'm going to talk to those other people over there and figure out what's up.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Ah, alright. I'm joining in too. Let's go.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}
