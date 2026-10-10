@@ -93,7 +93,10 @@ func next(): # Next dialog line
 				var sprite = character_info[current.character].sprites["neutral"]
 				var texture = load(sprite) as Texture2D
 				class_trial_char_bust.texture = texture
-				
+			
+			if anim.is_playing():
+				await anim.animation_finished
+			
 			name_size = full_name.get_minimum_size().x+180
 			box.text = current.content
 			box.visible = true # Placed here otherwise music node makes box not visible
@@ -114,7 +117,6 @@ func next(): # Next dialog line
 				elif i == "unknown":
 					full_name.text = "???"
 			if line == 0 and dialog == file.data.dialog: # line == 0 ignores box visible if music node is present.
-				await anim.animation_finished
 				box.visible = true
 				
 			tween = create_tween()
@@ -254,6 +256,8 @@ func next(): # Next dialog line
 			camera.focus = ""
 		anim.play("Close")
 		await anim.animation_finished
+		full_name.text = ""
+		box.text = ""
 		active = false
 
 
@@ -351,8 +355,10 @@ func _process(delta: float) -> void:
 						tween.kill()
 						if last_anim:
 							var last_box_text = box.text
+							var last_name_text = full_name.text
 							last_anim.seek(last_anim.current_animation_length, true)
 							box.text = last_box_text
+							full_name.text = last_name_text
 							last_anim = null
 						box.visible_ratio = 1.0
 						input_ind.play("Show")
