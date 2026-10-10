@@ -48,6 +48,7 @@ material = SubResource("StandardMaterial3D_xtass")
 size = Vector2(5, 2)
 
 [node name="Room" type="Node3D" unique_id=478957731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50113916, 0)
 script = ExtResource("1_lx2vg")
 hall = "res://scenes/rooms_fps/school_f1.tscn"
 hall_name = "School F-1"
@@ -82,6 +83,7 @@ dialog = "res://assets/data/dialog/generic_dialog/monitor.json"
 transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.904, 1.82, -3.9959998)
 script = ExtResource("7_460oe")
 room = "res://scenes/rooms/classroom.tscn"
+followup_dialog = "res://assets/data/dialog/prologue/hallway_1.json"
 
 [node name="Props" type="Node3D" parent="." unique_id=963253182]
 

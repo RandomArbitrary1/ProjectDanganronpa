@@ -1148,7 +1148,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="bg" type="TextureRect" parent="Ready?/bar" unique_id=1678285598]
@@ -1196,7 +1195,7 @@ modulate = Color(1, 1, 1, 0.7490196)
 layout_mode = 0
 offset_left = 1930.0
 offset_top = 382.1192
-offset_right = 2230.0002
+offset_right = 2230.0
 offset_bottom = 682.1192
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("18_dntt2")

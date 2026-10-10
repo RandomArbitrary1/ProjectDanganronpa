@@ -9,6 +9,7 @@ var angle := 1.9
 var tween: Tween
 var shake_strength := 0.0
 var shake_decay := 0.3
+var timer = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state = ""
@@ -21,13 +22,23 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if state == "debate_spin":
 		radius -= delta * 3.2
-		angle -= delta * 1.3 * 0.1
+		if angle > 0.0:
+			angle -= delta * 1.3 * 0.1
 		rotate_value += delta * 2.1
 		global_position = height + Vector3(sin(rotate_value) * radius, 
 		angle,
 		cos(rotate_value) * radius)
 		look_at(height)
 		rotate_object_local(Vector3.FORWARD, deg_to_rad(-18))
+	if state == "intro_short_spin":
+		rotate_value += delta * 2.1
+		global_position = height + Vector3(sin(rotate_value) * radius, 
+		angle,
+		cos(rotate_value) * radius)
+		timer += delta
+		if timer > 1.0:
+			state = "debate_spin"
+			
 	if shake_strength > 0.0:
 		shake_strength = move_toward(shake_strength, 0.0, shake_decay * delta)
 		self.h_offset = randf_range(-shake_strength, shake_strength)
@@ -45,7 +56,7 @@ func set_pos(pos):
 func set_rotat(rotat):
 	rotation = rotat
 func debate_spin():
-	state = "debate_spin"
+	state = "intro_short_spin"
 	
 func succes_shake():
 	pass

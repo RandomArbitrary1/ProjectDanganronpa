@@ -1,0 +1,145 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "Hey, who are you; are you trapped here too?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Aahhh!",
+			"expression": "neutral.png",
+			"flags": [
+				"shock",
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "What, wait, who, where?! Where are we, who are you?",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "I don't know, that's why I'm asking you.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Wait what. You woke up just now. Do you not know where we are either?",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "I don't, that's what I've been saying.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Sorry, I didn't mean to freak out like that. It seems we're in the same boat.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "It seems so...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "I-I haven't introduced myself.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "I am Rikuno Yukami, the ultimate mercenary.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"flags": [],
+			"type": "intro"
+		},
+		{
+			"character": "shion",
+			"content": "An ultimate mercenary? So you're really good at killing people?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Oh no, I'm an ultimate because I'm really good at shooting. And know every little detail about guns.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "I think it's a good idea to team up. You never know what you're gonna come across.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Right, I agree.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Now to only find the exit to this classroom...",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		}
+	]
+}

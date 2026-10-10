@@ -12,7 +12,7 @@
 "color":"4f54e3",
 "sprites":{"neutral":"res://assets/textures/characters/nori/neutral.png"}},
 
-"yuito":{"name":"Yuito Haruki","talent":"Ultimate Dancer","sex":"Female","likes":"Hot sauce",
+"yuito":{"name":"Yuito Haruki","talent":"Ultimate Salsa Dancer","sex":"Female","likes":"Hot sauce",
 "dislikes":"Gore, Horror","height":"1.65 cm","birth_date":"11 october",
 "face_pos":[0.45,0.5],
 "color":"a9c94f",
@@ -30,8 +30,8 @@
 "color":"d5a7e8",
 "sprites":{"neutral":"res://assets/textures/characters/ayuka/neutral.png"}},
 
-"shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Accountant","sex":"Male","likes":"Radiophysics",
-"dislikes":"Not working","height":"1.71 cm","birth_date":"29 januari",
+"shuuto":{"name":"Shuuto Yutaka","talent":"Ultimate Accountant","sex":"Male","likes":"Money",
+"dislikes":"Radios","height":"1.71 cm","birth_date":"29 januari",
 "face_pos":[0.45,0.32],
 "color":"4044c2",
 "sprites":{"neutral":"res://assets/textures/characters/shuuto/neutral.png"}},
@@ -62,7 +62,7 @@
 
 "itsuki":{"name":"Itsuki Nagato","talent":"Ultimate Vampire","sex":"Female","likes":"Grape juice",
 "dislikes":"Grapes","height":"1.79 cm","birth_date":"26 may",
-"face_pos":[0.5,0.1],
+"face_pos":[0.5,0.3],
 "color":"5629a3",
 "sprites":{"neutral":"res://assets/textures/characters/itsuki/neutral.png"}},
 
@@ -84,8 +84,8 @@
 "color":"4d802e",
 "sprites":{"neutral":"res://assets/textures/characters/kikuya/neutral.png"}},
 
-"yusio":{"name":"Yusio Hajima","talent":"Ultimate Spiritualist","sex":"Male","likes":"Chinese Philosophy",
-"dislikes":"Losers","height":"1.59 cm","birth_date":"16 november",
+"yusio":{"name":"Yusio Itō","talent":"Ultimate Spiritualist","sex":"Male","likes":"Chinese Philosophy",
+"dislikes":"Cardboard boxes","height":"1.59 cm","birth_date":"16 november",
 "face_pos":[0.5,0.1],
 "color":"91ffd9",
 "sprites":{"neutral":"res://assets/textures/characters/yusio/neutral.png"}},

@@ -2,7 +2,7 @@
 	"dialog": [
 		{
 			"flags": [],
-			"song": "",
+			"song": "no_music",
 			"type": "music"
 		},
 		{
@@ -16,12 +16,11 @@
 		},
 		{
 			"character": "shion",
-			"content": "I've always been alone. That's the kind of person I'm cursed to be.",
+			"content": "Being alone is all I know, am and will be.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
 			],
-			"sfx": "res://assets/audio/voice/test/aha.wav",
 			"type": "text"
 		},
 		{
@@ -35,7 +34,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "That's a belief I've held my whole life.",
+			"content": "That's what I am, that's who I will ever be.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -58,16 +57,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Where am I...? I don't recognize this place at all.",
-			"expression": "neutral.png",
-			"flags": [
-				"unknown"
-			],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"content": "It seems something happened before I came here.",
+			"content": "Wait, where am I...? I can't see anything in front of me.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -94,10 +84,18 @@
 		},
 		{
 			"character": "shion",
-			"content": "I... got kidnapped on my way to school?",
+			"content": "I really can't recall anything. What in the world is happening?",
 			"expression": "neutral.png",
 			"flags": [
-				"idea",
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Did I get knocked out and then brought here somehow?",
+			"expression": "neutral.png",
+			"flags": [
 				"unknown"
 			],
 			"type": "text"
@@ -132,11 +130,6 @@
 			"type": "text"
 		},
 		{
-			"flags": [],
-			"song": "morning",
-			"type": "music"
-		},
-		{
 			"file": "res://assets/audio/sfx/environment/creaky_door1.mp3",
 			"flags": [],
 			"type": "sfx"
@@ -155,8 +148,19 @@
 			"dialog": "",
 			"file": "res://scenes/rooms/classroom.tscn",
 			"flags": [],
-			"name": "whats the hardest part of a vegetable, the wheelchair :o",
+			"name": "",
 			"type": "room"
+		},
+		{
+			"character": "rikuno",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/classroom_rikuno1.json",
+			"flags": [],
+			"spawn": true,
+			"type": "character",
+			"x": -1.5,
+			"y": 1.8,
+			"z": -4.0
 		},
 		{
 			"character": "shion",
@@ -249,7 +253,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Welcome to the game!",
+			"content": "Welcome to the game! We would like to introduce you to the controls.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -258,7 +262,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Press the WASD keys to move around the room.",
+			"content": "To rotate the camera, hold the right mouse button and move the mouse.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -267,7 +271,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Move the mouse to move the camera.",
+			"content": "To interact with an object, move the cursor to the object and press with the left mouse button.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -276,7 +280,16 @@
 		},
 		{
 			"character": "shion",
-			"content": "Press F3 to review the controls. Good luck!",
+			"content": "To exit a room, press 'R' and select with the left mouse button.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Press F3 to review the controls. Good luck and have fun!",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
