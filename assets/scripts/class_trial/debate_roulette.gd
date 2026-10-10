@@ -30,6 +30,7 @@ func _ready() -> void:
 func start():
 	state = "start"
 	camera_node.debate_spin()
+	await get_tree().create_timer(1)
 	ready_anim.play("start")
 	visible = true
 	
@@ -57,7 +58,7 @@ func start_process(delta): # PREVIEW PROCESS
 	canvas.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	state_timer += delta
-	if state_timer > 4.0:
+	if state_timer > 7.0:
 		state_timer = 0.0
 		bullets_main.reload()
 		state = "bullet_preview"

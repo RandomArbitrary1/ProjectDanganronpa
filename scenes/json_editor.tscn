@@ -639,7 +639,7 @@ func closest(target): #find closest index for when dragging an item
 			close = item.global_position.y
 			closeID = num
 	return closeID
-	
+
 func sort_new(a, b): #sort array
 	if a.id < b.id:
 		return true
