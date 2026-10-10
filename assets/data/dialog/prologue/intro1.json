@@ -2,7 +2,7 @@
 	"dialog": [
 		{
 			"flags": [],
-			"song": "",
+			"song": "no_music",
 			"type": "music"
 		},
 		{
@@ -21,7 +21,6 @@
 			"flags": [
 				"unknown"
 			],
-			"sfx": "res://assets/audio/voice/test/aha.wav",
 			"type": "text"
 		},
 		{
@@ -58,16 +57,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Where am I...? I don't recognize this place at all.",
-			"expression": "neutral.png",
-			"flags": [
-				"unknown"
-			],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"content": "It seems something happened before I came here.",
+			"content": "Where am I...? I can't see anything.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -94,7 +84,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "I... got kidnapped on my way to school?",
+			"content": "I can't recall anything.",
 			"expression": "neutral.png",
 			"flags": [
 				"idea",
@@ -133,7 +123,7 @@
 		},
 		{
 			"flags": [],
-			"song": "morning",
+			"song": "casual",
 			"type": "music"
 		},
 		{
@@ -155,7 +145,7 @@
 			"dialog": "",
 			"file": "res://scenes/rooms/classroom.tscn",
 			"flags": [],
-			"name": "whats the hardest part of a vegetable, the wheelchair :o",
+			"name": "",
 			"type": "room"
 		},
 		{
@@ -258,7 +248,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Press the WASD keys to move around the room.",
+			"content": "To rotate the camera, hold the right mouse button and move the mouse.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -267,7 +257,16 @@
 		},
 		{
 			"character": "shion",
-			"content": "Move the mouse to move the camera.",
+			"content": "To interact with an object, move the cursor to the object and press with the left mouse button.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "To exit a room, press 'R' and select with the left mouse button.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
