@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="5_cs6e0"]
 [ext_resource type="Material" uid="uid://c6vjj6c15tgp7" path="res://assets/materials/metal.tres" id="6_0m0d0"]
 [ext_resource type="PackedScene" uid="uid://cg4nn0n7re65s" path="res://assets/objects/environment/window.tscn" id="7_en462"]
-[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="7_xn6dl"]
 [ext_resource type="Shader" uid="uid://ywlpfkw31nji" path="res://assets/ui/shaders/lens_flare.gdshader" id="8_61nrk"]
 [ext_resource type="PackedScene" uid="uid://csuvvkrekwpls" path="res://assets/objects/environment/doors/door_double.tscn" id="8_n47gf"]
 [ext_resource type="Script" uid="uid://beq4vi0pmkgux" path="res://assets/scripts/obj_data/door_data.gd" id="9_0m0d0"]
@@ -549,16 +548,6 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 2, 22)
 [node name="Characters" type="Node3D" parent="." unique_id=76754438 groups=["Characters_interact"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.53373826, 7)
 script = ExtResource("5_cs6e0")
-
-[node name="amia" parent="Characters" unique_id=2135237569 instance=ExtResource("7_xn6dl")]
-transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 12.6, 1.3662605, -11.2)
-character = "amia"
-expression = "neutral"
-
-[node name="tenga" parent="Characters" unique_id=57926839 instance=ExtResource("7_xn6dl")]
-transform = Transform3D(-1.4, 2.1139412e-07, -9.240331e-15, 0, -6.119594e-08, -1.4, -2.1139412e-07, -1.4, 6.119594e-08, -1.6000007, 1.3662608, 40.2)
-character = "tenga"
-expression = "neutral"
 
 [node name="Props" type="Node3D" parent="." unique_id=647337532]
 
