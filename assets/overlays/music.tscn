@@ -9,7 +9,7 @@ var current = \"\"
 var timer = 0
 
 func switch(file : String, delay = 0.0):
-	if current != file:
+	if current != file and ResourceLoader.exists(file):
 		current = file
 		self.stream = load(file)
 		timer = delay
