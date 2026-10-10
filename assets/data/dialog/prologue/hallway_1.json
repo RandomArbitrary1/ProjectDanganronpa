@@ -6,9 +6,9 @@
 			"file": "res://assets/data/dialog/prologue/nori_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -3.0,
+			"x": -3.5,
 			"y": 1.8,
-			"z": 8.0
+			"z": 2.0
 		},
 		{
 			"character": "shion",
