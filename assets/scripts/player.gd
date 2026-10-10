@@ -184,9 +184,13 @@ func _process(delta: float) -> void:
 			var scene = current_hover.room
 			var scene_name = current_hover.name
 			var door_pos = current_hover.position
+			var followup_dialog = current_hover.followup_dialog
 			current_hover = null
 			current_hover_check = null
 			reticle.get_node("Anim").play("Hide")
+			if followup_dialog != "":
+				RoomSwitch.dialog_next = followup_dialog
+				RoomSwitch.dialog_next_pos = 0
 			RoomSwitch.switch(scene, scene_name, door_pos)
 			
 

@@ -6,6 +6,7 @@ extends Control
 var active: bool
 var camera = null
 var characters = null
+@onready var doors = get_tree().current_scene.get_node_or_null("Doors")
 @onready var box = self.get_node("Bar/Dialog")
 @onready var anim : AnimationPlayer = self.get_node("Anims")
 @onready var bullet = self.get_node("Bar/Bullet")
@@ -347,6 +348,9 @@ func _process(delta: float) -> void:
 						dialog = file.data["dialog" + $Choice.get_child(option_tab).get_meta("ID")]
 						next()
 					else: #specifically for leaving rooms, hardcoded since only needed at one place
+						if doors and doors.get_node_or_null("Leave") and doors.get_node("Leave").followup_dialog != "":
+							RoomSwitch.dialog_next = doors.get_node("Leave").followup_dialog
+							RoomSwitch.dialog_next_pos = 0
 						RoomSwitch.switch(get_tree().current_scene.hall, get_tree().current_scene.hall_name)
 			else:
 				if box.visible_ratio == 1.0:

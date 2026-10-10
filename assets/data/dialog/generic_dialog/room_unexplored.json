@@ -1,0 +1,11 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "I can't leave this room yet, there's still stuff left to investigate",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}
