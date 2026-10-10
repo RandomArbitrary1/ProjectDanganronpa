@@ -35,6 +35,7 @@ func spawn(chr, room, pos, dialog, expression):
 		await new_char.get_node("Anim").animation_finished
 	else:
 		var old_char = characters.find_child(chr)
-		old_char.get_node("Anim").play("Leave")
-		await old_char.get_node("Anim").animation_finished
-		old_char.queue_free()
+		if old_char:
+			old_char.get_node("Anim").play("Leave")
+			await old_char.get_node("Anim").animation_finished
+			old_char.queue_free()
