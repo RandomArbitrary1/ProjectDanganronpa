@@ -190,6 +190,11 @@ func _ready() -> void:
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"intro\",\"character\":\"shion\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 19: #dialog change
+			var new = dialog_change_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"dialog_change\",\"file\":\"\",\"focus\":\"\",\"name\":\"\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
 	file_dialog.file_selected.connect(func(path): #file dialog picked response
 		if to_open == \"data\": #check if it is for data (aka open dialog json)
@@ -345,6 +350,15 @@ func reload_list(): #reload the displayed items to the current selected ones las
 		elif i.type == \"sfx\":
 			var new = sfx_line.duplicate()
 			i[\"eline\"] = new
+			if \"file\" in i and ResourceLoader.exists(i.file):
+				new.get_node(\"Panel/Load\").text = i.file
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"dialog_change\":
+			var new = dialog_change_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Name\").text = i.name
+			new.get_node(\"Panel/Type\").selected = get_option_id(new.get_node(\"Panel/Type\"),i.object)
 			if \"file\" in i and ResourceLoader.exists(i.file):
 				new.get_node(\"Panel/Load\").text = i.file
 			list.add_child(new)
@@ -604,6 +618,25 @@ func run_options(i, item_data): #function to run stuff on the given item
 		)
 		file_dialog.file_selected.connect(func(path):
 			if i and to_open == \"sfx\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
+				item_data.file = path
+				i.get_node(\"Panel/Load\").text = path.get_file()
+		)
+	elif item_data.type == \"dialog_change\":
+		i.get_node(\"Panel/name\").text_changed.connect(func(_e):
+			item_data.name = i.get_node(\"Panel/name\").text
+		)
+		i.get_node(\"Panel/Type\").item_selected.connect(func(ind):
+			item_data.object = i.get_node(\"Panel/Type\").get_item_text(ind)
+		)
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"dialog_change\" + str(item_data.id)
+			file_dialog.root_subfolder = \"res://assets/data/\"
+			file_dialog.set_filters([\"*.json\"])
+			file_dialog.visible = true
+			
+		)
+		file_dialog.file_selected.connect(func(path):
+			if i and to_open == \"dialog_change\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
 		)
@@ -916,7 +949,7 @@ horizontal_alignment = 2
 
 [node name="Load" type="Button" parent="Items/List/Dialog_change/Panel" unique_id=1152465212]
 layout_mode = 0
-offset_left = 448.0
+offset_left = 624.0
 offset_top = 8.0
 offset_right = 792.0
 offset_bottom = 48.0
@@ -926,6 +959,17 @@ text = "Select file"
 icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
+
+[node name="Name" type="LineEdit" parent="Items/List/Dialog_change/Panel" unique_id=828228780]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
+placeholder_text = "Name"
 
 [node name="Intro" type="HBoxContainer" parent="Items/List" unique_id=1693977683]
 custom_minimum_size = Vector2(0, 56)
@@ -2481,7 +2525,7 @@ transparent_bg = false
 oversampling_override = 1.0
 size = Vector2i(229, 360)
 theme = ExtResource("1_ol5w5")
-item_count = 12
+item_count = 13
 item_0/text = "Dialog"
 item_0/id = 100
 item_0/separator = true
@@ -2507,6 +2551,8 @@ item_10/text = "New character spawn"
 item_10/id = 17
 item_11/text = "New introduction"
 item_11/id = 18
+item_12/text = "New dialog change"
+item_12/id = 19
 
 [node name="Flags" type="Window" parent="." unique_id=644388794]
 oversampling_override = 1.0

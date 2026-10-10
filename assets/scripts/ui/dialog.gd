@@ -242,6 +242,12 @@ func next(): # Next dialog line
 				
 			choice_anim.play("Open")
 			last_anim = cg_anim
+		elif current.type == "dialog_change":
+			var location = get_tree().current_scene.get_node_or_null("Doors")
+			if current.focus == "Object":
+				location = get_tree().get_first_node_in_group(current.name)
+			line += 1
+			next()
 		else:
 			line += 1
 			next()
