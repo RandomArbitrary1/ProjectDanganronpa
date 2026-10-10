@@ -48,6 +48,7 @@ material = SubResource("StandardMaterial3D_xtass")
 size = Vector2(5, 2)
 
 [node name="Room" type="Node3D" unique_id=478957731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50113916, 0)
 script = ExtResource("1_lx2vg")
 hall = "res://scenes/rooms_fps/school_f1.tscn"
 hall_name = "School F-1"

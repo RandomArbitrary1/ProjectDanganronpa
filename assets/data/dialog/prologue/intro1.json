@@ -16,7 +16,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "I've always been alone. That's the kind of person I'm cursed to be.",
+			"content": "Being alone is all I know, am and will be.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -34,7 +34,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "That's a belief I've held my whole life.",
+			"content": "That's what I am, that's who I will ever be.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -57,7 +57,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Where am I...? I can't see anything.",
+			"content": "Wait, where am I...? I can't see anything in front of me.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -84,10 +84,18 @@
 		},
 		{
 			"character": "shion",
-			"content": "I can't recall anything.",
+			"content": "I really can't recall anything. What in the world is happening?",
 			"expression": "neutral.png",
 			"flags": [
-				"idea",
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Did I get knocked out and then brought here somehow?",
+			"expression": "neutral.png",
+			"flags": [
 				"unknown"
 			],
 			"type": "text"
@@ -122,11 +130,6 @@
 			"type": "text"
 		},
 		{
-			"flags": [],
-			"song": "casual",
-			"type": "music"
-		},
-		{
 			"file": "res://assets/audio/sfx/environment/creaky_door1.mp3",
 			"flags": [],
 			"type": "sfx"
@@ -147,6 +150,17 @@
 			"flags": [],
 			"name": "",
 			"type": "room"
+		},
+		{
+			"character": "rikuno",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/classroom_rikuno1.json",
+			"flags": [],
+			"spawn": true,
+			"type": "character",
+			"x": -1.5,
+			"y": 1.8,
+			"z": -4.0
 		},
 		{
 			"character": "shion",
@@ -239,7 +253,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Welcome to the game!",
+			"content": "Welcome to the game! We would like to introduce you to the controls.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -275,7 +289,7 @@
 		},
 		{
 			"character": "shion",
-			"content": "Press F3 to review the controls. Good luck!",
+			"content": "Press F3 to review the controls. Good luck and have fun!",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"

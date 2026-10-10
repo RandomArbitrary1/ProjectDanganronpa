@@ -20,6 +20,8 @@ func spawn(chr, room, pos, dialog, expression):
 	data[chr].position.y = pos.y
 	data[chr].position.z = pos.z
 	data[chr].dialog = dialog
+	if !characters:
+		return
 	if room == get_tree().current_scene.scene_file_path:
 		var new_char = characters.find_child(chr)
 		if not new_char:
