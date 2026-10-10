@@ -12,7 +12,7 @@
 		"itsuki":{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""},
 		"kikuya":{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""},
 		"masato":{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""},
-		"naeri":{"room":"res://scenes/rooms/classroom.tscn","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":"res://assets/data/dialog/test4.json"},
+		"naeri":{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""},
 		"nori":{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""},
 		"raito":{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""},
 		"reoto":{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""},
