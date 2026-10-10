@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_pmqxx"]
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_cv4ux"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_rfwoq"]
-[ext_resource type="PackedScene" uid="uid://ck6ftauius01" path="res://assets/objects/environment/furniture/shelf.glb" id="6_qnaxt"]
 [ext_resource type="PackedScene" uid="uid://v6ddvo1lkhb6" path="res://assets/objects/2D objects/camera.tscn" id="7_v5upx"]
 [ext_resource type="PackedScene" uid="uid://dd0i01jg1ejp1" path="res://assets/objects/environment/doors/door.tscn" id="8_jn08e"]
 [ext_resource type="PackedScene" uid="uid://cmu4b24vjyv8r" path="res://assets/objects/2D objects/monitor.tscn" id="8_ktl53"]
@@ -31,9 +30,6 @@ ssao_radius = 16.0
 ssao_intensity = 3.0
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4tp24"]
-size = Vector3(8, 7, 2)
-
 [node name="Room" type="Node3D" unique_id=478957731]
 script = ExtResource("1_pmqxx")
 hall = "res://scenes/rooms_fps/dorms.tscn"
@@ -57,42 +53,6 @@ center = Vector3(0, 1.9, -1.5)
 
 [node name="Objects" type="Node3D" parent="." unique_id=986129665 groups=["Objects"]]
 
-[node name="shelf" parent="Objects" unique_id=1955547385 instance=ExtResource("6_qnaxt")]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -5, 1.047, -1.5)
-script = ExtResource("5_rfwoq")
-display_name = "Shelf"
-dialog = "res://assets/data/object_plain.json"
-
-[node name="Area3D" type="Area3D" parent="Objects/shelf" unique_id=792731465]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/shelf/Area3D" unique_id=2073708771]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9999998, 0)
-shape = SubResource("BoxShape3D_4tp24")
-
-[node name="shelf3" parent="Objects" unique_id=120063030 instance=ExtResource("6_qnaxt")]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -5, 1.047, 2.5)
-script = ExtResource("5_rfwoq")
-display_name = "Shelf"
-dialog = "res://assets/data/object_plain.json"
-
-[node name="Area3D" type="Area3D" parent="Objects/shelf3" unique_id=1738529395]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/shelf3/Area3D" unique_id=1484819649]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9999998, 0)
-shape = SubResource("BoxShape3D_4tp24")
-
-[node name="shelf2" parent="Objects" unique_id=1013267284 instance=ExtResource("6_qnaxt")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2, 1.047, -4.5)
-script = ExtResource("5_rfwoq")
-display_name = "Shelf"
-dialog = "res://assets/data/object_plain.json"
-
-[node name="Area3D" type="Area3D" parent="Objects/shelf2" unique_id=1498270348]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/shelf2/Area3D" unique_id=1805491447]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9999998, 0)
-shape = SubResource("BoxShape3D_4tp24")
-
 [node name="Camera" parent="Objects" unique_id=870626101 instance=ExtResource("7_v5upx")]
 transform = Transform3D(1.2124355, -0.7, 3.059797e-08, 0, -6.119594e-08, -1.4, 0.7, 1.2124355, -5.299724e-08, 3, 3.701477, -3.5)
 
@@ -101,7 +61,7 @@ transform = Transform3D(-6.119594e-08, 1.4, -6.1195955e-08, 3.3445959e-37, -6.11
 dialog = "res://assets/data/dialog/generic_dialog/monitor.json"
 
 [node name="Breaker" parent="Objects" unique_id=1912084388 instance=ExtResource("8_jn08e")]
-transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, 1.1040001)
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, 5.104)
 surface_material_override/0 = ExtResource("9_yn36u")
 script = ExtResource("5_rfwoq")
 display_name = "Breaker room"
@@ -130,7 +90,12 @@ transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.2999
 [node name="Doors" type="Node3D" parent="." unique_id=435588806]
 
 [node name="Storage" parent="Doors" unique_id=1208143330 instance=ExtResource("8_jn08e")]
-transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, 5.104)
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, 1.1040001)
+surface_material_override/0 = ExtResource("9_yn36u")
+script = ExtResource("11_rfwoq")
+
+[node name="Boiler room" parent="Doors" unique_id=632100843 instance=ExtResource("8_jn08e")]
+transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, -5.8499994, 1.82, 1.1000004)
 surface_material_override/0 = ExtResource("9_yn36u")
 script = ExtResource("11_rfwoq")
 
@@ -153,6 +118,12 @@ material = ExtResource("9_ypih2")
 
 [node name="hole_door4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=329478019]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.9500008, 1.6340001, 5.1000004)
+operation = 2
+size = Vector3(1, 3, 1.39)
+material = ExtResource("9_ypih2")
+
+[node name="hole_door5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1049347297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.946, 1.6340001, 1.1040001)
 operation = 2
 size = Vector3(1, 3, 1.39)
 material = ExtResource("9_ypih2")

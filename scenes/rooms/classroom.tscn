@@ -61,6 +61,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_04axm")]
 transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0.71799994, 2.2, 6.6)
+maxX = 55.0
 center = Vector3(-2, 2.2, 2)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
@@ -78,7 +79,7 @@ dialog = "res://assets/data/dialog/generic_dialog/monitor.json"
 [node name="Doors" type="Node3D" parent="." unique_id=1975974436]
 
 [node name="Leave" parent="Doors" unique_id=1496385204 instance=ExtResource("6_8sdgk")]
-transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.904, 1.82, -5.996)
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.904, 1.82, -3.9959998)
 script = ExtResource("7_460oe")
 room = "res://scenes/rooms/classroom.tscn"
 
@@ -179,7 +180,7 @@ transform = Transform3D(1.8, 1.2103972e-22, -5.2908147e-30, 0, -7.86805e-08, -1.
 [node name="Misc" type="Node3D" parent="Props" unique_id=1972198514]
 
 [node name="Greenery12" parent="Props/Misc" unique_id=257907977 instance=ExtResource("13_ecm03")]
-transform = Transform3D(1.0013738e-06, -2.9309998, 1.2811806e-07, -3.3881318e-21, -1.2811806e-07, -2.9309998, 4, 7.337567e-07, -3.207353e-14, 3.358769, 2.5691428, -2.7197638)
+transform = Transform3D(1.0013738e-06, -2.9309998, 1.2811806e-07, -3.3881318e-21, -1.2811806e-07, -2.9309998, 4, 7.337567e-07, -3.207353e-14, 3.358769, 2.5691428, -1.7197638)
 
 [node name="Greenery9" parent="Props/Misc" unique_id=1600043079 instance=ExtResource("14_dm2uf")]
 transform = Transform3D(3.9471382e-07, -2.2049997, 9.63836e-08, 0, -9.63836e-08, -2.2049997, 3.01, 2.8915082e-07, -1.2639184e-14, 3.4622178, 3.4605675, -0.18383789)
@@ -215,7 +216,7 @@ size = Vector3(11, 5, 16)
 material = ExtResource("6_1dljc")
 
 [node name="hole_door" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1822532778]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4, 1.819, -6)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4, 1.819, -4)
 operation = 2
 size = Vector3(1, 2.63, 1.39)
 material = ExtResource("6_1dljc")
