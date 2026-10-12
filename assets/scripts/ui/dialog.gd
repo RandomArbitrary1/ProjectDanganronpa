@@ -247,6 +247,12 @@ func next(): # Next dialog line
 			var location = get_tree().current_scene.get_node_or_null("Doors")
 			if current.focus == "Object":
 				location = get_tree().get_first_node_in_group(current.name)
+			var obj = location.get_node_or_null(current.name)
+			if obj:
+				if current.focus == "Object":
+					obj.dialog = current.dialog
+				else:
+					obj.followup_dialog = current.dialog
 			line += 1
 			next()
 		else:

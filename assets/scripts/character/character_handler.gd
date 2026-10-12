@@ -13,6 +13,7 @@ func spawn_all():
 			spawn(key, chr.room, Vector3(chr.position.x,chr.position.y,chr.position.z), chr.dialog, chr.expression)
 	
 
+#TODO mk -- plz make room var be list not string thx
 func spawn(chr, room, pos, dialog, expression):
 	var characters = get_tree().get_first_node_in_group("Characters_interact")
 	data[chr].room = room
