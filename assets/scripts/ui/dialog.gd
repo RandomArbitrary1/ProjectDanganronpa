@@ -158,13 +158,13 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "character":
-			var room_file = ""
+			var spawn = false
 			var dialog_file = ""
 			if not "spawn" in current or current.spawn == true:
-				room_file = get_tree().current_scene.scene_file_path
+				spawn = true
 			if "file" in current:
 				dialog_file = current.file
-			Character.spawn(current.character, room_file, Vector3(current.x,current.y,current.z), dialog_file, current.expression, room_file == "")
+			Character.spawn(current.character, get_tree().current_scene.scene_file_path, Vector3(current.x,current.y,current.z), dialog_file, current.expression, spawn)
 			line += 1
 			next()
 		elif current.type == "room":
