@@ -164,7 +164,7 @@ func next(): # Next dialog line
 				room_file = get_tree().current_scene.scene_file_path
 			if "file" in current:
 				dialog_file = current.file
-			Character.spawn(current.character, room_file, Vector3(current.x,current.y,current.z), dialog_file, current.expression)
+			Character.spawn(current.character, room_file, Vector3(current.x,current.y,current.z), dialog_file, current.expression, room_file == "")
 			line += 1
 			next()
 		elif current.type == "room":

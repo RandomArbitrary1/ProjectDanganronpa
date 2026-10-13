@@ -8,19 +8,25 @@ func _ready() -> void:
 
 func spawn_all():
 	for key in data:
-		var chr = data[key]
-		if chr.room == get_tree().current_scene.scene_file_path:
-			spawn(key, chr.room, Vector3(chr.position.x,chr.position.y,chr.position.z), chr.dialog, chr.expression)
+		for i in data[key].size():
+			var chr = data[key][i]
+			if chr.room == get_tree().current_scene.scene_file_path:
+				spawn(key, chr.room, Vector3(chr.position.x,chr.position.y,chr.position.z), chr.dialog, chr.expression, true)
 	
 
 #TODO mk -- plz make room var be list not string thx
-func spawn(chr, room, pos, dialog, expression):
+func spawn(chr, room, pos, dialog, expression, active):
 	var characters = get_tree().get_first_node_in_group("Characters_interact")
-	data[chr].room = room
-	data[chr].position.x = pos.x
-	data[chr].position.y = pos.y
-	data[chr].position.z = pos.z
-	data[chr].dialog = dialog
+	for i in data[chr].size(): #remove/add room data
+		var room_data = data[chr][i]
+		if active and not room_data.has(room):
+			room_data.append(room)
+			room_data.position.x = pos.x
+			room_data.position.y = pos.y
+			room_data.position.z = pos.z
+			room_data.dialog = dialog
+		elif not active and room_data.has(room):
+			data[chr].remove_at(i)
 	if !characters:
 		return
 	if room == get_tree().current_scene.scene_file_path:
