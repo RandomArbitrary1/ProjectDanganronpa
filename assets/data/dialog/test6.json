@@ -6,6 +6,12 @@
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
+		},
+		{
+			"file": "",
+			"flags": [],
+			"objects": "object:shelf,object:trash_can",
+			"type": "investigate_counter"
 		}
 	]
 }

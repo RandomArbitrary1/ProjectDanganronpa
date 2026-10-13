@@ -255,6 +255,11 @@ func next(): # Next dialog line
 					obj.followup_dialog = current.dialog
 			line += 1
 			next()
+		elif current.type == "investigate_counter":
+			GameData.data.game_value.investigate_counter_objects_pressed = []
+			GameData.data.game_value.investigate_counter_objects = current.objects.split(",", true)
+			line += 1
+			next()
 		else:
 			line += 1
 			next()
@@ -279,7 +284,11 @@ func start(line_new = 0):
 	if file and not active:
 		input_ind.play("RESET")
 		if file.resource_path == "res://assets/data/leave.json":
-			leave = true
+			if 	GameData.data.game_value.investigate_counter_objects_pressed.size() >= GameData.data.game_value.investigate_counter_objects.size():
+				leave = true
+			else:
+				leave = false
+				file = load("res://assets/data/dialog/generic_dialog/room_unexplored.json")
 		else:
 			leave = false
 		box.visible = false

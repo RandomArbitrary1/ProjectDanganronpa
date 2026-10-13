@@ -40,6 +40,7 @@ script/source = "extends Control
 @onready var sfx_line = list.get_node(\"SFX\").duplicate()
 @onready var intro_line = list.get_node(\"Intro\").duplicate()
 @onready var dialog_change_line = list.get_node(\"Dialog_change\").duplicate()
+@onready var counter_line  = list.get_node(\"Investigate_counter\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
 @onready var dialog_button = dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").duplicate()
 
@@ -193,6 +194,11 @@ func _ready() -> void:
 		elif id == 19: #dialog change
 			var new = dialog_change_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"dialog_change\",\"file\":\"\",\"focus\":\"\",\"name\":\"\",\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 20: #investigating counter
+			var new = counter_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"investigate_counter\",\"file\":\"\",\"objects\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
@@ -390,6 +396,12 @@ func reload_list(): #reload the displayed items to the current selected ones las
 				new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
 			list.add_child(new)
 			run_options(new, i) 
+		elif i.type == \"investigate_counter\":
+			var new = bullet_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Panel/TextEdit\").text = i.objects
+			list.add_child(new)
+			run_options(new, i)
 	
 func run_options(i, item_data): #function to run stuff on the given item
 	#global functions for all
@@ -467,6 +479,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
 			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
 			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
+		)
+	elif item_data.type == \"investigate_counter\":
+		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
+			item_data.objects = i.get_node(\"Panel/TextEdit\").text
 		)
 	elif item_data.type == \"intro\":
 		i.get_node(\"Panel/Name\").item_selected.connect(func(ind):
@@ -856,6 +872,99 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(120, 0)
 offset_transform_visual_only = false
 theme = ExtResource("1_ol5w5")
+
+[node name="Investigate_counter" type="HBoxContainer" parent="Items/List" unique_id=1946597395]
+custom_minimum_size = Vector2(0, 152)
+layout_mode = 2
+theme = ExtResource("1_ol5w5")
+
+[node name="Panel" type="Panel" parent="Items/List/Investigate_counter" unique_id=523726691]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
+
+[node name="Outline" type="Panel" parent="Items/List/Investigate_counter/Panel" unique_id=1156069596]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Outline"
+
+[node name="TextEdit" type="TextEdit" parent="Items/List/Investigate_counter/Panel" unique_id=978831661]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.99997
+offset_top = 56.000008
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ol5w5")
+placeholder_text = "character:name,object:name"
+wrap_mode = 1
+
+[node name="Down" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=55616396]
+layout_mode = 0
+offset_left = 7.9999795
+offset_top = 7.999996
+offset_right = 47.99998
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=1725429773]
+layout_mode = 0
+offset_left = 7.9999795
+offset_top = 55.999985
+offset_right = 47.99998
+offset_bottom = 95.99998
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=1776599835]
+layout_mode = 0
+offset_left = 7.9999905
+offset_top = 103.99999
+offset_right = 47.999992
+offset_bottom = 144.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Investigate_counter/Panel" unique_id=201950816]
+layout_mode = 0
+offset_left = 55.999977
+offset_top = 7.9999886
+offset_right = 387.4285
+offset_bottom = 47.99999
+theme = ExtResource("1_ol5w5")
+text = "Investigate counter"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Investigate_counter/Panel" unique_id=797448279]
+layout_mode = 0
+offset_left = -95.999985
+offset_top = 8.0
+offset_right = -15.999985
+offset_bottom = 70.85714
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Index"
+text = "0"
+horizontal_alignment = 2
 
 [node name="Dialog_change" type="HBoxContainer" parent="Items/List" unique_id=1993356996]
 custom_minimum_size = Vector2(0, 56)
@@ -2525,7 +2634,7 @@ transparent_bg = false
 oversampling_override = 1.0
 size = Vector2i(229, 360)
 theme = ExtResource("1_ol5w5")
-item_count = 13
+item_count = 14
 item_0/text = "Dialog"
 item_0/id = 100
 item_0/separator = true
@@ -2553,6 +2662,8 @@ item_11/text = "New introduction"
 item_11/id = 18
 item_12/text = "New dialog change"
 item_12/id = 19
+item_13/text = "New investigate counter"
+item_13/id = 20
 
 [node name="Flags" type="Window" parent="." unique_id=644388794]
 oversampling_override = 1.0

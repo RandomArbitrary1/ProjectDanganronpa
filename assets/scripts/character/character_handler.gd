@@ -1,6 +1,6 @@
 extends Node
 
-var data = preload("res://assets/data/game/data.json").data.character_data
+var data = GameData.data.character_data
 const character = preload("res://assets/objects/characters/character.tscn")
 
 func _ready() -> void:
@@ -20,7 +20,7 @@ func spawn(chr, room, pos, dialog, expression, active):
 	for i in data[chr].size(): #remove/add room data
 		var room_data = data[chr][i]
 		if active and not room_data.has(room):
-			room_data.append(room)
+			room_data.room = room
 			room_data.position.x = pos.x
 			room_data.position.y = pos.y
 			room_data.position.z = pos.z
