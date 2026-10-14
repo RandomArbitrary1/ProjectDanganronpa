@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 					current.self_modulate.a = 0
 					current.get_node("Icon").modulate = Color(1,1,1)
 				
-	if get_tree().paused == true:
+	if get_tree().paused == true and visible == true:
 		if Input.is_action_just_pressed("Next"):
 			Shift.play()
 			if tab < 5:

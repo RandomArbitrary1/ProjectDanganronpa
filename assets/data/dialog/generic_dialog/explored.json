@@ -1,0 +1,11 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "That should be about everything here",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}

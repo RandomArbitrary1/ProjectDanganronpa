@@ -193,7 +193,6 @@ func _process(delta: float) -> void:
 				RoomSwitch.dialog_next = followup_dialog
 				RoomSwitch.dialog_next_pos = 0
 			RoomSwitch.switch(scene, scene_name, door_pos)
-			
 
 		
 		

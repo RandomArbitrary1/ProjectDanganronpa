@@ -8,7 +8,7 @@
 			"type": "text"
 		},
 		{
-			"file": "",
+			"file": "res://assets/data/dialog/generic_dialog/explored.json",
 			"flags": [],
 			"objects": "object:shelf,object:trash_can",
 			"type": "investigate_counter"

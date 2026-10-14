@@ -339,7 +339,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			i[\"eline\"] = new
 			new.get_node(\"Panel/CheckButton\").button_pressed = i.enabled
 			if \"file\" in i and ResourceLoader.exists(i.file):
-				new.get_node(\"Panel/Load\").text = i.file
+				new.get_node(\"Panel/Load\").text = i.file.get_file()
 				new.get_node(\"Image/TextureRect\").texture = load(i.file)
 			list.add_child(new)
 			run_options(new, i)
@@ -348,7 +348,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			i[\"eline\"] = new
 			new.get_node(\"Panel/Name\").text = i.name
 			if \"file\" in i and ResourceLoader.exists(i.file):
-				new.get_node(\"Panel/Load\").text = i.file
+				new.get_node(\"Panel/Load\").text = i.file.get_file()
 			if \"default\" in i:
 				new.get_node(\"Panel/CheckButton\").button_pressed = i.default
 			list.add_child(new)
@@ -357,7 +357,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			var new = sfx_line.duplicate()
 			i[\"eline\"] = new
 			if \"file\" in i and ResourceLoader.exists(i.file):
-				new.get_node(\"Panel/Load\").text = i.file
+				new.get_node(\"Panel/Load\").text = i.file.get_file()
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"dialog_change\":
@@ -366,7 +366,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			new.get_node(\"Name\").text = i.name
 			new.get_node(\"Panel/Type\").selected = get_option_id(new.get_node(\"Panel/Type\"),i.object)
 			if \"file\" in i and ResourceLoader.exists(i.file):
-				new.get_node(\"Panel/Load\").text = i.file
+				new.get_node(\"Panel/Load\").text = i.file.get_file()
 			list.add_child(new)
 			run_options(new, i)
 		elif i.type == \"choice\":
@@ -387,7 +387,6 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			new.get_node(\"Panel/Bullet\").clear()
 			var file = null
 			if i.file != \"\":
-				print(i.file)
 				file = load(i.file).data
 				if file is Dictionary:
 					for key in file.keys():
@@ -397,8 +396,10 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			list.add_child(new)
 			run_options(new, i) 
 		elif i.type == \"investigate_counter\":
-			var new = bullet_line.duplicate()
+			var new = counter_line.duplicate()
 			i[\"eline\"] = new
+			if \"file\" in i:
+				new.get_node(\"Panel/Load\").text = i.file.get_file()
 			new.get_node(\"Panel/TextEdit\").text = i.objects
 			list.add_child(new)
 			run_options(new, i)
@@ -483,6 +484,18 @@ func run_options(i, item_data): #function to run stuff on the given item
 	elif item_data.type == \"investigate_counter\":
 		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
 			item_data.objects = i.get_node(\"Panel/TextEdit\").text
+		)
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"investigate_counter\" + str(item_data.id)
+			file_dialog.root_subfolder = \"res://assets/data/\"
+			file_dialog.set_filters([\"*.json\"])
+			file_dialog.visible = true
+			
+		)
+		file_dialog.file_selected.connect(func(path):
+			if i and to_open == \"investigate_counter\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
+				item_data.file = path
+				i.get_node(\"Panel/Load\").text = path.get_file()
 		)
 	elif item_data.type == \"intro\":
 		i.get_node(\"Panel/Name\").item_selected.connect(func(ind):
@@ -965,6 +978,19 @@ theme = ExtResource("1_ol5w5")
 theme_type_variation = &"Index"
 text = "0"
 horizontal_alignment = 2
+
+[node name="Load" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=430546628]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 8.0
+offset_right = 792.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+text = "Select dialog"
+icon = ExtResource("1_p0t4n")
+alignment = 0
+text_overrun_behavior = 1
 
 [node name="Dialog_change" type="HBoxContainer" parent="Items/List" unique_id=1993356996]
 custom_minimum_size = Vector2(0, 56)

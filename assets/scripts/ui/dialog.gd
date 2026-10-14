@@ -257,7 +257,8 @@ func next(): # Next dialog line
 			next()
 		elif current.type == "investigate_counter":
 			GameData.data.game_value.investigate_counter_objects_pressed = []
-			GameData.data.game_value.investigate_counter_objects = current.objects.split(",", true)
+			GameData.data.game_value.investigate_counter_objects = Array(current.objects.split(",", true))
+			GameData.data.game_value.investigate_counter_dialog = current.file
 			line += 1
 			next()
 		else:
@@ -277,6 +278,10 @@ func next(): # Next dialog line
 		full_name.text = ""
 		box.text = ""
 		active = false
+		if GameData.data.game_value.investigate_counter_objects.size() != 0 and GameData.data.game_value.investigate_counter_dialog != "" and GameData.data.game_value.investigate_counter_objects_pressed >= GameData.data.game_value.investigate_counter_objects:
+			file = load(GameData.data.game_value.investigate_counter_dialog)
+			GameData.data.game_value.investigate_counter_dialog = ""
+			start()
 
 
 
