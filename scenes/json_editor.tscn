@@ -40,7 +40,9 @@ script/source = "extends Control
 @onready var sfx_line = list.get_node(\"SFX\").duplicate()
 @onready var intro_line = list.get_node(\"Intro\").duplicate()
 @onready var dialog_change_line = list.get_node(\"Dialog_change\").duplicate()
-@onready var counter_line  = list.get_node(\"Investigate_counter\").duplicate()
+@onready var counter_add_line  = list.get_node(\"Counter_add\").duplicate()
+@onready var counter_check_line  = list.get_node(\"Counter_check\").duplicate()
+@onready var counter_reset_line  = list.get_node(\"Counter_reset\").duplicate()
 @onready var flag_button = flags_popup.get_node(\"FlagList/FlagItems/FlagOption\").duplicate()
 @onready var dialog_button = dialogs_popup.get_node(\"DialogList/DialogItems/DialogOption\").duplicate()
 
@@ -196,9 +198,19 @@ func _ready() -> void:
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"dialog_change\",\"file\":\"\",\"focus\":\"\",\"name\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
-		elif id == 20: #investigating counter
-			var new = counter_line.duplicate()
-			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"investigate_counter\",\"file\":\"\",\"objects\":\"\",\"flags\":[]})
+		elif id == 20: #counter add
+			var new = counter_add_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"counter_add\",\"object\":\"\",\"addition\":0,\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 21: #counter check
+			var new = counter_add_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"counter_add\",\"object\":\"\",\"file\":\"\",\"threshold\":0,\"flags\":[]})
+			list.add_child(new)
+			run_options(new,data[current_dialog][data[current_dialog].size()-1])
+		elif id == 22: #counter reset
+			var new = counter_add_line.duplicate()
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"counter_reset\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 	)
@@ -395,12 +407,20 @@ func reload_list(): #reload the displayed items to the current selected ones las
 				new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
 			list.add_child(new)
 			run_options(new, i) 
-		elif i.type == \"investigate_counter\":
-			var new = counter_line.duplicate()
+		elif i.type == \"counter_add\":
+			var new = counter_add_line.duplicate()
+			i[\"eline\"] = new
+			new.get_node(\"Panel/Name\").text = i.object
+			new.get_node(\"Panel/Add\").value = i.addition
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"counter_check\":
+			var new = counter_check_line.duplicate()
 			i[\"eline\"] = new
 			if \"file\" in i:
 				new.get_node(\"Panel/Load\").text = i.file.get_file()
-			new.get_node(\"Panel/TextEdit\").text = i.objects
+			new.get_node(\"Panel/Name\").text = i.object
+			new.get_node(\"Panel/Add\").value = i.threshold
 			list.add_child(new)
 			run_options(new, i)
 	
@@ -480,22 +500,6 @@ func run_options(i, item_data): #function to run stuff on the given item
 		i.get_node(\"Character/Emotion\").item_selected.connect(func(ind):
 			item_data.expression = i.get_node(\"Character/Emotion\").get_item_text(ind)
 			i.get_node(\"Character/TextureRect\").texture = load(\"res://assets/textures/characters/\" + item_data.character + \"/\" + item_data.expression)
-		)
-	elif item_data.type == \"investigate_counter\":
-		i.get_node(\"Panel/TextEdit\").text_changed.connect(func():
-			item_data.objects = i.get_node(\"Panel/TextEdit\").text
-		)
-		i.get_node(\"Panel/Load\").pressed.connect(func():
-			to_open = \"investigate_counter\" + str(item_data.id)
-			file_dialog.root_subfolder = \"res://assets/data/\"
-			file_dialog.set_filters([\"*.json\"])
-			file_dialog.visible = true
-			
-		)
-		file_dialog.file_selected.connect(func(path):
-			if i and to_open == \"investigate_counter\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
-				item_data.file = path
-				i.get_node(\"Panel/Load\").text = path.get_file()
 		)
 	elif item_data.type == \"intro\":
 		i.get_node(\"Panel/Name\").item_selected.connect(func(ind):
@@ -692,6 +696,32 @@ func run_options(i, item_data): #function to run stuff on the given item
 		i.get_node(\"Panel/Bullet\").item_selected.connect(func(ind):
 			item_data.bullet = i.get_node(\"Panel/Bullet\").get_item_text(ind)
 		)
+	elif item_data.type == \"counter_add\":
+		i.get_node(\"Panel/Name\").text_changed.connect(func():
+			item_data.object = i.get_node(\"Panel/Name\").text
+		)
+		i.get_node(\"Panel/Add\").text_changed.connect(func():
+			item_data.addition = i.get_node(\"Panel/Add\").text
+		)
+	elif item_data.type == \"counter_check\":
+		i.get_node(\"Panel/Name\").text_changed.connect(func():
+			item_data.object = i.get_node(\"Panel/Name\").text
+		)
+		i.get_node(\"Panel/Add\").text_changed.connect(func():
+			item_data.threshold = i.get_node(\"Panel/Add\").text
+		)
+		i.get_node(\"Panel/Load\").pressed.connect(func():
+			to_open = \"investigate_counter\" + str(item_data.id)
+			file_dialog.root_subfolder = \"res://assets/data/\"
+			file_dialog.set_filters([\"*.json\"])
+			file_dialog.visible = true
+			
+		)
+		file_dialog.file_selected.connect(func(path):
+			if i and to_open == \"investigate_counter\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
+				item_data.file = path
+				i.get_node(\"Panel/Load\").text = path.get_file()
+		)
 
 func closest(target): #find closest index for when dragging an item
 	var close = list.get_child(0).global_position.y
@@ -749,7 +779,7 @@ func _process(_delta: float) -> void:
 		moving = null
 	if Input.is_action_just_released(\"RMB\"): #release drag
 		context_menu.visible = true
-		context_menu.position = Vector2(clampf(mouse_pos.x,0,1920-262),(clampf(mouse_pos.y,0,1080-424)))
+		context_menu.position = Vector2(clampf(mouse_pos.x,0,get_viewport().size.x-262),(clampf(mouse_pos.y,0,get_viewport().size.y-584)))
 	if Input.is_action_just_pressed(\"Ctrl\"): #debug print
 		print(data[current_dialog])
 	
@@ -886,89 +916,71 @@ offset_transform_position = Vector2(120, 0)
 offset_transform_visual_only = false
 theme = ExtResource("1_ol5w5")
 
-[node name="Investigate_counter" type="HBoxContainer" parent="Items/List" unique_id=1946597395]
-custom_minimum_size = Vector2(0, 152)
+[node name="Counter_add" type="HBoxContainer" parent="Items/List" unique_id=1876202596]
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 theme = ExtResource("1_ol5w5")
 
-[node name="Panel" type="Panel" parent="Items/List/Investigate_counter" unique_id=523726691]
+[node name="Panel" type="Panel" parent="Items/List/Counter_add" unique_id=2011105338]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
-[node name="Outline" type="Panel" parent="Items/List/Investigate_counter/Panel" unique_id=1156069596]
+[node name="Outline" type="Panel" parent="Items/List/Counter_add/Panel" unique_id=2123696031]
 visible = false
-z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 204.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme = ExtResource("1_ol5w5")
 theme_type_variation = &"Outline"
 
-[node name="TextEdit" type="TextEdit" parent="Items/List/Investigate_counter/Panel" unique_id=978831661]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 55.99997
-offset_top = 56.000008
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_ol5w5")
-placeholder_text = "character:name,object:name"
-wrap_mode = 1
-
-[node name="Down" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=55616396]
+[node name="Down" type="Button" parent="Items/List/Counter_add/Panel" unique_id=1587830087]
 layout_mode = 0
-offset_left = 7.9999795
-offset_top = 7.999996
-offset_right = 47.99998
-offset_bottom = 47.999992
+offset_left = 7.9999924
+offset_top = 7.99999
+offset_right = 47.999992
+offset_bottom = 47.999985
 mouse_default_cursor_shape = 13
 theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("4_p2fl4")
 icon_alignment = 1
 
-[node name="Remove" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=1725429773]
+[node name="Remove" type="Button" parent="Items/List/Counter_add/Panel" unique_id=515061265]
 layout_mode = 0
-offset_left = 7.9999795
-offset_top = 55.999985
-offset_right = 47.99998
-offset_bottom = 95.99998
+offset_left = 55.999985
+offset_top = 7.99999
+offset_right = 95.999985
+offset_bottom = 47.999985
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("5_oqeqj")
 icon_alignment = 1
 
-[node name="Flags" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=1776599835]
+[node name="Flags" type="Button" parent="Items/List/Counter_add/Panel" unique_id=209726758]
 layout_mode = 0
-offset_left = 7.9999905
-offset_top = 103.99999
-offset_right = 47.999992
-offset_bottom = 144.0
+offset_left = 103.999985
+offset_top = 7.9999905
+offset_right = 143.99998
+offset_bottom = 47.999992
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ol5w5")
 theme_override_icons/icon = ExtResource("6_1adse")
 icon_alignment = 1
 
-[node name="Label" type="Label" parent="Items/List/Investigate_counter/Panel" unique_id=201950816]
+[node name="Label" type="Label" parent="Items/List/Counter_add/Panel" unique_id=1164006605]
 layout_mode = 0
-offset_left = 55.999977
+offset_left = 152.0
 offset_top = 7.9999886
-offset_right = 387.4285
-offset_bottom = 47.99999
+offset_right = 272.0
+offset_bottom = 47.99998
 theme = ExtResource("1_ol5w5")
-text = "Investigate counter"
+text = "Counter add"
 vertical_alignment = 1
 
-[node name="Index" type="Label" parent="Items/List/Investigate_counter/Panel" unique_id=797448279]
+[node name="Index" type="Label" parent="Items/List/Counter_add/Panel" unique_id=1135912311]
 layout_mode = 0
 offset_left = -95.999985
 offset_top = 8.0
@@ -979,9 +991,122 @@ theme_type_variation = &"Index"
 text = "0"
 horizontal_alignment = 2
 
-[node name="Load" type="Button" parent="Items/List/Investigate_counter/Panel" unique_id=430546628]
+[node name="Name" type="LineEdit" parent="Items/List/Counter_add/Panel" unique_id=246938251]
 layout_mode = 0
-offset_left = 488.0
+offset_left = 280.0
+offset_top = 8.0
+offset_right = 464.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
+placeholder_text = "Name"
+
+[node name="Add" type="SpinBox" parent="Items/List/Counter_add/Panel" unique_id=1194619603]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 8.0
+offset_right = 575.625
+offset_bottom = 48.0
+step = 0.01
+
+[node name="Counter_check" type="HBoxContainer" parent="Items/List" unique_id=2083046254]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme = ExtResource("1_ol5w5")
+
+[node name="Panel" type="Panel" parent="Items/List/Counter_check" unique_id=1191464221]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
+
+[node name="Outline" type="Panel" parent="Items/List/Counter_check/Panel" unique_id=709565469]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Outline"
+
+[node name="Down" type="Button" parent="Items/List/Counter_check/Panel" unique_id=1762494927]
+layout_mode = 0
+offset_left = 7.9999924
+offset_top = 7.99999
+offset_right = 47.999992
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Counter_check/Panel" unique_id=771682440]
+layout_mode = 0
+offset_left = 55.999985
+offset_top = 7.99999
+offset_right = 95.999985
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Counter_check/Panel" unique_id=645079108]
+layout_mode = 0
+offset_left = 103.999985
+offset_top = 7.9999905
+offset_right = 143.99998
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Counter_check/Panel" unique_id=441114829]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 7.9999886
+offset_right = 272.0
+offset_bottom = 47.99998
+theme = ExtResource("1_ol5w5")
+text = "Counter check"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Counter_check/Panel" unique_id=866344166]
+layout_mode = 0
+offset_left = -95.999985
+offset_top = 8.0
+offset_right = -15.999985
+offset_bottom = 70.85714
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Index"
+text = "0"
+horizontal_alignment = 2
+
+[node name="Name" type="LineEdit" parent="Items/List/Counter_check/Panel" unique_id=579373685]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 8.0
+offset_right = 488.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ol5w5")
+placeholder_text = "Name"
+
+[node name="Add" type="SpinBox" parent="Items/List/Counter_check/Panel" unique_id=1731106725]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 8.0
+offset_right = 600.0
+offset_bottom = 48.0
+step = 0.01
+
+[node name="Load" type="Button" parent="Items/List/Counter_check/Panel" unique_id=20435068]
+layout_mode = 0
+offset_left = 608.0
 offset_top = 8.0
 offset_right = 792.0
 offset_bottom = 48.0
@@ -991,6 +1116,81 @@ text = "Select dialog"
 icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
+
+[node name="Counter_reset" type="HBoxContainer" parent="Items/List" unique_id=1143674519]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme = ExtResource("1_ol5w5")
+
+[node name="Panel" type="Panel" parent="Items/List/Counter_reset" unique_id=245774868]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ol5w5")
+
+[node name="Outline" type="Panel" parent="Items/List/Counter_reset/Panel" unique_id=308046973]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Outline"
+
+[node name="Down" type="Button" parent="Items/List/Counter_reset/Panel" unique_id=220881387]
+layout_mode = 0
+offset_left = 7.9999924
+offset_top = 7.99999
+offset_right = 47.999992
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 13
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("4_p2fl4")
+icon_alignment = 1
+
+[node name="Remove" type="Button" parent="Items/List/Counter_reset/Panel" unique_id=1701120800]
+layout_mode = 0
+offset_left = 55.999985
+offset_top = 7.99999
+offset_right = 95.999985
+offset_bottom = 47.999985
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
+[node name="Flags" type="Button" parent="Items/List/Counter_reset/Panel" unique_id=892545855]
+layout_mode = 0
+offset_left = 103.999985
+offset_top = 7.9999905
+offset_right = 143.99998
+offset_bottom = 47.999992
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("6_1adse")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Items/List/Counter_reset/Panel" unique_id=1369466084]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 7.9999886
+offset_right = 272.0
+offset_bottom = 47.99998
+theme = ExtResource("1_ol5w5")
+text = "Counter reset"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Items/List/Counter_reset/Panel" unique_id=513423031]
+layout_mode = 0
+offset_left = -95.999985
+offset_top = 8.0
+offset_right = -15.999985
+offset_bottom = 70.85714
+theme = ExtResource("1_ol5w5")
+theme_type_variation = &"Index"
+text = "0"
+horizontal_alignment = 2
 
 [node name="Dialog_change" type="HBoxContainer" parent="Items/List" unique_id=1993356996]
 custom_minimum_size = Vector2(0, 56)
@@ -2660,7 +2860,7 @@ transparent_bg = false
 oversampling_override = 1.0
 size = Vector2i(229, 360)
 theme = ExtResource("1_ol5w5")
-item_count = 14
+item_count = 18
 item_0/text = "Dialog"
 item_0/id = 100
 item_0/separator = true
@@ -2690,6 +2890,15 @@ item_12/text = "New dialog change"
 item_12/id = 19
 item_13/text = "New investigate counter"
 item_13/id = 20
+item_14/text = "Counter"
+item_14/id = 101
+item_14/separator = true
+item_15/text = "Counter add"
+item_15/id = 21
+item_16/text = "Counter check"
+item_16/id = 22
+item_17/text = "Counter reset"
+item_17/id = 23
 
 [node name="Flags" type="Window" parent="." unique_id=644388794]
 oversampling_override = 1.0

@@ -255,12 +255,24 @@ func next(): # Next dialog line
 					obj.followup_dialog = current.dialog
 			line += 1
 			next()
-		elif current.type == "investigate_counter":
-			GameData.data.game_value.investigate_counter_objects_pressed = []
-			GameData.data.game_value.investigate_counter_objects = Array(current.objects.split(",", true))
-			GameData.data.game_value.investigate_counter_dialog = current.file
+		elif current.type == "counter_reset":
+			GameData.data.game_value.counter_objects = []
 			line += 1
 			next()
+		elif current.type == "counter_add":
+			if not GameData.data.game_value.counter_objects.has(current.object):
+				GameData.data.game_value.counter_objects[current.object] = {"count":0,"threshold":0}
+			GameData.data.game_value.counter_objects[current.object].count += current.addition
+			line += 1
+			next()
+		elif current.type == "counter_check":
+			if GameData.data.game_value.counter_objects.has(current.object) and GameData.data.game_value.counter_objects[current.object].count > current.threshold:
+				if current.dialog != "":
+					file = load(current.dialog)
+					start()
+				else:
+					line += 1
+					next()
 		else:
 			line += 1
 			next()
@@ -278,10 +290,6 @@ func next(): # Next dialog line
 		full_name.text = ""
 		box.text = ""
 		active = false
-		if GameData.data.game_value.investigate_counter_objects.size() != 0 and GameData.data.game_value.investigate_counter_dialog != "" and GameData.data.game_value.investigate_counter_objects_pressed >= GameData.data.game_value.investigate_counter_objects:
-			file = load(GameData.data.game_value.investigate_counter_dialog)
-			GameData.data.game_value.investigate_counter_dialog = ""
-			start()
 
 
 

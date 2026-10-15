@@ -27,18 +27,6 @@ var data = {
 		"ushi":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}]
 	},
 	"game_value": {"student_introductions": 0,
-	"investigate_counter_objects":[],
-	"investigate_counter_objects_pressed":[],
-	"investigate_counter_dialog":""},
-	"music":{"big_realization":"Absolute Mayhem",
-	"calm_despair":"Despair",
-	"casual":"Beautiful Trapezoid",
-	"claustrophobic":"Claustrophobic",
-	"evil_puzzle":"Distrust 2x2",
-	"main_emotion":"The Good, the bad, and the despair",
-	"morning":"Hopeful Morning",
-	"nervous":"Anticipating the uninevidable",
-	"night":"Nighttime",
-	"panic":"Panic!",
-	"scared":"Terrified"}
+	"counter_objects":{},
+	"counter_dialog":""},
 }
