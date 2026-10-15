@@ -204,12 +204,12 @@ func _ready() -> void:
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 21: #counter check
-			var new = counter_add_line.duplicate()
+			var new = counter_check_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"counter_add\",\"object\":\"\",\"file\":\"\",\"threshold\":0,\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 22: #counter reset
-			var new = counter_add_line.duplicate()
+			var new = counter_reset_line.duplicate()
 			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"counter_reset\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
@@ -421,6 +421,11 @@ func reload_list(): #reload the displayed items to the current selected ones las
 				new.get_node(\"Panel/Load\").text = i.file.get_file()
 			new.get_node(\"Panel/Name\").text = i.object
 			new.get_node(\"Panel/Add\").value = i.threshold
+			list.add_child(new)
+			run_options(new, i)
+		elif i.type == \"counter_reset\":
+			var new = counter_reset_line.duplicate()
+			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i)
 	
