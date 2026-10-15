@@ -297,7 +297,7 @@ func start(line_new = 0):
 	if file and not active:
 		input_ind.play("RESET")
 		if file.resource_path == "res://assets/data/leave.json":
-			if 	GameData.data.game_value.investigate_counter_objects_pressed.size() >= GameData.data.game_value.investigate_counter_objects.size():
+			if 	GameData.data.game_value.counter_objects_pressed.size() >= GameData.data.game_value.counter_objects.size():
 				leave = true
 			else:
 				leave = false

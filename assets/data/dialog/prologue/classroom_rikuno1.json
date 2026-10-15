@@ -1,6 +1,13 @@
 {
 	"dialog": [
 		{
+			"file": "res://assets/data/dialog/prologue/classroom_rikuno2.json",
+			"flags": [],
+			"object": "",
+			"threshold": 0,
+			"type": "counter_check"
+		},
+		{
 			"character": "shion",
 			"content": "Hey, who are you; are you trapped here too?",
 			"expression": "neutral.png",
@@ -140,6 +147,12 @@
 				"thought"
 			],
 			"type": "text"
+		},
+		{
+			"addition": 0,
+			"flags": [],
+			"object": "",
+			"type": "counter_add"
 		}
 	]
 }

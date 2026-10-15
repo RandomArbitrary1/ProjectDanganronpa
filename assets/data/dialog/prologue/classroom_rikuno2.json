@@ -1,0 +1,24 @@
+{
+	"dialog": [
+		{
+			"character": "rikuno",
+			"content": "Let's exit through the door besides me.",
+			"eline": "Dialog:<HBoxContainer#108397595016>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 0,
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "The side of this room has a door right..?",
+			"eline": "@HBoxContainer@566:<HBoxContainer#140660181315>",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"id": 1,
+			"type": "text"
+		}
+	]
+}
