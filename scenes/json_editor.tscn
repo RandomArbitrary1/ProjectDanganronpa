@@ -700,15 +700,15 @@ func run_options(i, item_data): #function to run stuff on the given item
 		i.get_node(\"Panel/Name\").text_changed.connect(func():
 			item_data.object = i.get_node(\"Panel/Name\").text
 		)
-		i.get_node(\"Panel/Add\").text_changed.connect(func():
-			item_data.addition = i.get_node(\"Panel/Add\").text
+		i.get_node(\"Panel/Add\").value_changed.connect(func():
+			item_data.addition = i.get_node(\"Panel/Add\").value
 		)
 	elif item_data.type == \"counter_check\":
 		i.get_node(\"Panel/Name\").text_changed.connect(func():
 			item_data.object = i.get_node(\"Panel/Name\").text
 		)
-		i.get_node(\"Panel/Add\").text_changed.connect(func():
-			item_data.threshold = i.get_node(\"Panel/Add\").text
+		i.get_node(\"Panel/Add\").value_changed.connect(func():
+			item_data.threshold = i.get_node(\"Panel/Add\").value
 		)
 		i.get_node(\"Panel/Load\").pressed.connect(func():
 			to_open = \"investigate_counter\" + str(item_data.id)
