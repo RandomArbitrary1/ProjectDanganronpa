@@ -205,7 +205,7 @@ func _ready() -> void:
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 22: #counter check
 			var new = counter_check_line.duplicate()
-			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"counter_add\",\"object\":\"\",\"file\":\"\",\"threshold\":0,\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"counter_check\",\"object\":\"\",\"file\":\"\",\"threshold\":0,\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 23: #counter reset
