@@ -1,187 +1,185 @@
 [gd_scene format=3 uid="uid://cfp8b3o8sfas8"]
 
 [ext_resource type="Script" uid="uid://brvr6tpasajf1" path="res://assets/scripts/ui/title/title_ui.gd" id="1_4s1lg"]
-[ext_resource type="Texture2D" uid="uid://yen6p1keeopa" path="res://assets/textures/ui/revolver_cylinder.png" id="1_5y5n0"]
 [ext_resource type="Texture2D" uid="uid://dd8powc5qfetb" path="res://assets/textures/ui/title/background.png" id="2_edp21"]
 [ext_resource type="FontFile" uid="uid://c2yaerphahb1o" path="res://assets/ui/fonts/Serpentine BoldOblique.ttf" id="3_iualr"]
+[ext_resource type="Texture2D" uid="uid://ckmden1ik6l3j" path="res://assets/ui/title_screen/revolver_cylinder.png" id="3_lc7fs"]
 [ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="4_ufw8e"]
 [ext_resource type="AudioStream" uid="uid://cjr0c11lnhgqg" path="res://assets/audio/sfx/ui/confirm.mp3" id="5_iualr"]
-[ext_resource type="Theme" uid="uid://bfavwrk3v75ob" path="res://assets/ui/themes/menu_theme.tres" id="6_iualr"]
-[ext_resource type="FontFile" uid="uid://d7r0oinh8tp0" path="res://assets/ui/fonts/Newtown.ttf" id="8_pgqlf"]
+[ext_resource type="AudioStream" uid="uid://pfww5dhvp055" path="res://assets/audio/sfx/ui/select2.mp3" id="6_lc7fs"]
+[ext_resource type="Texture2D" uid="uid://byaagwmjkh6se" path="res://assets/ui/title_screen/option.png" id="8_ewnb4"]
+[ext_resource type="Texture2D" uid="uid://cbh0nl4gjn2l" path="res://assets/ui/title_screen/option_active.png" id="9_je787"]
+[ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="10_chq1c"]
 
-[sub_resource type="Animation" id="Animation_iualr"]
+[sub_resource type="Animation" id="Animation_ewnb4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("press_label:modulate")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel/StartNewGame:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_pgqlf"]
-resource_name = "menu_init"
-length = 2.0
+[sub_resource type="Animation" id="Animation_je787"]
+resource_name = "Spin"
+length = 4.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel/StartNewGame:scale")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333, 0.36666667),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel/Continue:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.19, 0.5233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel/Options:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.33333334, 0.6666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Panel/Quit:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.43333334, 0.7666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1.3660389, 0),
-"update": 0,
-"values": [-0.6492624817418904, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("press_label:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.26666668, 0.43333334, 1.14),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [0.0, 6.283185307179586]
 }
 
-[sub_resource type="Animation" id="Animation_edp21"]
-resource_name = "press_any"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("press_label:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.2, 0.56666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgqlf"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_chq1c"]
 _data = {
-&"RESET": SubResource("Animation_iualr"),
-&"menu_init": SubResource("Animation_pgqlf"),
-&"press_any": SubResource("Animation_edp21")
+&"RESET": SubResource("Animation_ewnb4"),
+&"Spin": SubResource("Animation_je787")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3m0t"]
-
-[sub_resource type="Animation" id="Animation_358vh"]
+[sub_resource type="Animation" id="Animation_fu6to"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("press_label:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Items:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-704.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(392, 88)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleLabel:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
 }
 
-[sub_resource type="Animation" id="Animation_lc7fs"]
-resource_name = "fade_in"
+[sub_resource type="Animation" id="Animation_chq1c"]
+resource_name = "Start"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("Items:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.3542589, 1),
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [-704.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("press_label:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(392, 88), Vector2(844, 24)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleLabel:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666667, 0.26666665, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewnb4"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu6to"]
 _data = {
-&"RESET": SubResource("Animation_358vh"),
-&"fade_in": SubResource("Animation_lc7fs")
+&"RESET": SubResource("Animation_fu6to"),
+&"Start": SubResource("Animation_chq1c")
 }
 
 [node name="Ui" type="Control" unique_id=1217565761]
@@ -204,25 +202,30 @@ grow_vertical = 2
 texture = ExtResource("2_edp21")
 
 [node name="revolver" type="TextureRect" parent="." unique_id=302648570]
-self_modulate = Color(1, 1, 1, 0.3882353)
+self_modulate = Color(1, 1, 1, 0.36862746)
 layout_mode = 0
-offset_left = 1319.0
-offset_top = 348.0
-offset_right = 2420.0
-offset_bottom = 1449.0
+offset_left = 1104.0
+offset_top = 128.0
+offset_right = 2632.0
+offset_bottom = 1656.0
 scale = Vector2(0.74, 0.74)
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("1_5y5n0")
+texture = ExtResource("3_lc7fs")
+
+[node name="Spin" type="AnimationPlayer" parent="revolver" unique_id=369208217]
+libraries/ = SubResource("AnimationLibrary_chq1c")
+autoplay = &"Spin"
+speed_scale = 0.35
 
 [node name="TitleLabel" type="Label" parent="." unique_id=458274582]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -736.0
-offset_top = 26.0
-offset_right = 736.0
-offset_bottom = 178.0
+offset_left = -568.0
+offset_top = 88.0
+offset_right = 568.0
+offset_bottom = 409.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -235,118 +238,11 @@ S.P.E.S."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=468714000]
-libraries/ = SubResource("AnimationLibrary_pgqlf")
-
 [node name="confirm_sfx" type="AudioStreamPlayer" parent="." unique_id=114964799]
 stream = ExtResource("5_iualr")
 
-[node name="Panel" type="Panel" parent="." unique_id=2146991160]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -676.0
-offset_top = -50.0
-offset_right = -313.56494
-offset_bottom = 340.57495
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxEmpty_d3m0t")
-
-[node name="StartNewGame" type="Button" parent="Panel" unique_id=1900385099]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -379.21753
-offset_top = -187.28748
-offset_right = 195.78247
-offset_bottom = -101.287476
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = ExtResource("6_iualr")
-theme_override_font_sizes/font_size = 55
-text = "Start New Game"
-
-[node name="Continue" type="Button" parent="Panel" unique_id=1234133301]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -291.21753
-offset_top = -57.287476
-offset_right = 220.78247
-offset_bottom = 28.712524
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = ExtResource("6_iualr")
-theme_override_font_sizes/font_size = 55
-text = "Go to school scene"
-
-[node name="Options" type="Button" parent="Panel" unique_id=1334670713]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.21753
-offset_top = 69.712524
-offset_right = 311.78247
-offset_bottom = 155.71252
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = ExtResource("6_iualr")
-theme_override_font_sizes/font_size = 55
-text = "Go to Class trial"
-
-[node name="Quit" type="Button" parent="Panel" unique_id=1620383345]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -126.21753
-offset_top = 198.71252
-offset_right = 304.50244
-offset_bottom = 284.71252
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = ExtResource("6_iualr")
-theme_override_font_sizes/font_size = 55
-text = "Quit"
-
-[node name="Credts" type="Label" parent="Panel" unique_id=2023385575]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -631.43506
-offset_top = 124.42505
-offset_right = -54.43506
-offset_bottom = 188.42505
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("8_pgqlf")
-theme_override_font_sizes/font_size = 46
-text = "Made by Danilo and Maik"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="select_sfx" type="AudioStreamPlayer" parent="." unique_id=218062139]
+stream = ExtResource("6_lc7fs")
 
 [node name="press_label" type="Label" parent="." unique_id=706478272]
 layout_mode = 1
@@ -355,21 +251,145 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -596.0
-offset_top = -209.0
-offset_right = 596.0
-offset_bottom = -114.0
+offset_left = -600.0
+offset_top = -152.0
+offset_right = 600.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_ufw8e")
-theme_override_font_sizes/font_size = 71
+theme_override_font_sizes/font_size = 60
 text = "Press any button to continue"
+horizontal_alignment = 1
+vertical_alignment = 2
 
-[node name="anim" type="AnimationPlayer" parent="." unique_id=761552827]
-libraries/ = SubResource("AnimationLibrary_ewnb4")
-speed_scale = 0.7
+[node name="Credits" type="Label" parent="." unique_id=664267064]
+modulate = Color(1, 1, 1, 0.49019608)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -952.0
+offset_top = -64.0
+offset_right = -552.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_ufw8e")
+theme_override_font_sizes/font_size = 30
+text = "By Danilo & mkaiast"
+vertical_alignment = 2
 
-[connection signal="pressed" from="Panel/StartNewGame" to="." method="_on_start_new_game_pressed"]
-[connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Panel/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]
+[node name="Items" type="Control" parent="." unique_id=1957337230]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -44.0
+offset_right = -664.0
+offset_bottom = 284.0
+grow_vertical = 2
+
+[node name="Option" type="NinePatchRect" parent="Items" unique_id=1385948898]
+layout_mode = 0
+offset_right = 704.0
+offset_bottom = 104.0
+texture = ExtResource("8_ewnb4")
+region_rect = Rect2(0, 0, 208, 104)
+patch_margin_right = 104
+
+[node name="Hover" type="NinePatchRect" parent="Items/Option" unique_id=1083101633]
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("9_je787")
+region_rect = Rect2(0, 0, 208, 104)
+patch_margin_right = 104
+
+[node name="Label" type="Label" parent="Items/Option" unique_id=977654937]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -88.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_chq1c")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "New game"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Option2" type="NinePatchRect" parent="Items" unique_id=220114982]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 704.0
+offset_bottom = 216.0
+texture = ExtResource("8_ewnb4")
+region_rect = Rect2(0, 0, 208, 104)
+patch_margin_right = 104
+
+[node name="Hover" type="NinePatchRect" parent="Items/Option2" unique_id=2010804915]
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("9_je787")
+region_rect = Rect2(0, 0, 208, 104)
+patch_margin_right = 104
+
+[node name="Label" type="Label" parent="Items/Option2" unique_id=1062247872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -88.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_chq1c")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Load save"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Option3" type="NinePatchRect" parent="Items" unique_id=1405205942]
+layout_mode = 0
+offset_top = 224.0
+offset_right = 704.0
+offset_bottom = 328.0
+texture = ExtResource("8_ewnb4")
+region_rect = Rect2(0, 0, 208, 104)
+patch_margin_right = 104
+
+[node name="Hover" type="NinePatchRect" parent="Items/Option3" unique_id=4336399]
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("9_je787")
+region_rect = Rect2(0, 0, 208, 104)
+patch_margin_right = 104
+
+[node name="Label" type="Label" parent="Items/Option3" unique_id=1525220761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -88.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_chq1c")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Anims" type="AnimationPlayer" parent="." unique_id=1431404898]
+libraries/ = SubResource("AnimationLibrary_fu6to")

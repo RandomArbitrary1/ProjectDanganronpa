@@ -1,4 +1,4 @@
-extends Node3D
+extends Control
 var state = "press_any"
 @onready var dialog: Control = $Dialog
 

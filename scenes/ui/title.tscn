@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://bst73b0kh88jc"]
 
-[ext_resource type="Script" uid="uid://cfj4csd4wh4ge" path="res://assets/scripts/ui/title/title.gd" id="1_4v1qu"]
 [ext_resource type="PackedScene" uid="uid://cfp8b3o8sfas8" path="res://scenes/ui/title_ui.tscn" id="2_4v1qu"]
-[ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="3_4v1qu"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ocahe"]
 
-[node name="Title" type="Node3D" unique_id=569717398]
-script = ExtResource("1_4v1qu")
+[node name="Title" type="Control" unique_id=1646705141]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="blackBG" type="TextureRect" parent="." unique_id=90980047]
 modulate = Color(0, 0, 0, 1)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,6 +22,5 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_ocahe")
 
-[node name="Dialog" parent="." unique_id=1879447364 instance=ExtResource("3_4v1qu")]
-
 [node name="Ui" parent="." unique_id=1217565761 instance=ExtResource("2_4v1qu")]
+layout_mode = 1

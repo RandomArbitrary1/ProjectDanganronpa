@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://bknv7ibilrqdg"]
+
+[ext_resource type="Script" uid="uid://44yf1d5mhe2u" path="res://assets/scripts/ui/title/title_save_ui.gd" id="1_47tr7"]
+[ext_resource type="Texture2D" uid="uid://44n88kqnva3o" path="res://assets/ui/title_screen/option_save.png" id="5_47tr7"]
+[ext_resource type="AudioStream" uid="uid://cjr0c11lnhgqg" path="res://assets/audio/sfx/ui/confirm.mp3" id="5_ahy3t"]
+[ext_resource type="AudioStream" uid="uid://pfww5dhvp055" path="res://assets/audio/sfx/ui/select2.mp3" id="6_qaem5"]
+[ext_resource type="Texture2D" uid="uid://baclatlpquena" path="res://assets/ui/title_screen/option_save_active.png" id="6_qky5q"]
+[ext_resource type="FontFile" uid="uid://da5g5x6gbtm0q" path="res://assets/ui/fonts/RobotoMono-Regular.ttf" id="7_wngil"]
+[ext_resource type="Texture2D" uid="uid://cr36d0bi163jl" path="res://assets/ui/title_screen/save_overlay.png" id="8_47tr7"]
+[ext_resource type="Texture2D" uid="uid://b62xkdi8ql3mf" path="res://assets/ui/title_screen/save_thumbnail_mask.png" id="9_qky5q"]
+[ext_resource type="Texture2D" uid="uid://bdr3wtss8d3qg" path="res://assets/textures/cg/first_victim.jpg" id="10_1hxa8"]
+[ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="10_6mgai"]
+
+[sub_resource type="Animation" id="Animation_fu6to"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_chq1c"]
+resource_name = "Start"
+length = 0.7
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu6to"]
+_data = {
+&"RESET": SubResource("Animation_fu6to"),
+&"Start": SubResource("Animation_chq1c")
+}
+
+[node name="Ui" type="ColorRect" unique_id=2142963964]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.038397167, 0.038397167, 0.03839716, 1)
+script = ExtResource("1_47tr7")
+
+[node name="confirm_sfx" type="AudioStreamPlayer" parent="." unique_id=114964799]
+stream = ExtResource("5_ahy3t")
+
+[node name="select_sfx" type="AudioStreamPlayer" parent="." unique_id=218062139]
+stream = ExtResource("6_qaem5")
+
+[node name="press_label" type="Label" parent="." unique_id=706478272]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -152.0
+offset_right = 600.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_wngil")
+theme_override_font_sizes/font_size = 60
+text = "Press any button to continue"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Credits" type="Label" parent="." unique_id=664267064]
+modulate = Color(1, 1, 1, 0.49019608)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -952.0
+offset_top = -64.0
+offset_right = -552.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_wngil")
+theme_override_font_sizes/font_size = 30
+text = "By Danilo & mkaiast"
+vertical_alignment = 2
+
+[node name="Items" type="Control" parent="." unique_id=1957337230]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -208.0
+offset_right = 136.0
+offset_bottom = 208.0
+grow_vertical = 2
+
+[node name="Option" type="TextureRect" parent="Items" unique_id=1886398587]
+layout_mode = 0
+offset_right = 704.0
+offset_bottom = 104.0
+texture = ExtResource("5_47tr7")
+
+[node name="Hover" type="TextureRect" parent="Items/Option" unique_id=1177949002]
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("6_qky5q")
+
+[node name="Label" type="Label" parent="Items/Option" unique_id=977654937]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -88.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_6mgai")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Continue"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Items/Option" unique_id=115668891]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0.11764706)
+
+[node name="Option2" type="TextureRect" parent="Items" unique_id=1307195351]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 104.0
+offset_right = 760.0
+offset_bottom = 208.0
+texture = ExtResource("5_47tr7")
+
+[node name="Hover" type="TextureRect" parent="Items/Option2" unique_id=571436026]
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("6_qky5q")
+
+[node name="Label" type="Label" parent="Items/Option2" unique_id=1062247872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -88.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_6mgai")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Chapter select"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Items/Option2" unique_id=977888255]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0.11764706)
+
+[node name="Option3" type="TextureRect" parent="Items" unique_id=2081561801]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 208.0
+offset_right = 816.0
+offset_bottom = 312.0
+texture = ExtResource("5_47tr7")
+
+[node name="Hover" type="TextureRect" parent="Items/Option3" unique_id=1169761570]
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("6_qky5q")
+
+[node name="Label" type="Label" parent="Items/Option3" unique_id=1525220761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -88.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_6mgai")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Extras"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Items/Option3" unique_id=1545539573]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0.11764706)
+
+[node name="Option4" type="TextureRect" parent="Items" unique_id=1664788897]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 312.0
+offset_right = 864.0
+offset_bottom = 416.0
+texture = ExtResource("5_47tr7")
+
+[node name="Hover" type="TextureRect" parent="Items/Option4" unique_id=1884651181]
+layout_mode = 0
+offset_left = -104.0
+offset_bottom = 104.0
+texture = ExtResource("6_qky5q")
+
+[node name="Label" type="Label" parent="Items/Option4" unique_id=485950255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -88.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_6mgai")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Anims" type="AnimationPlayer" parent="." unique_id=1431404898]
+libraries/ = SubResource("AnimationLibrary_fu6to")
+
+[node name="Overlay" type="TextureRect" parent="." unique_id=1523862275]
+layout_mode = 0
+offset_right = 1216.0
+offset_bottom = 1080.0
+texture = ExtResource("8_47tr7")
+
+[node name="Thumbnail" type="TextureRect" parent="." unique_id=315204328]
+clip_children = 1
+layout_mode = 0
+offset_left = 632.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("9_qky5q")
+
+[node name="Image" type="TextureRect" parent="Thumbnail" unique_id=155407593]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_1hxa8")
+expand_mode = 1
+stretch_mode = 6
