@@ -354,7 +354,7 @@ func _process(delta: float) -> void:
 		else:
 			option_tab = 0
 	if Input.is_action_pressed("Ctrl"):
-		if active:
+		if active and not intro_anim.is_playing():
 			if instant_skip_timer < delta:
 				instant_skip_timer = .1
 				line += 1
