@@ -1,10 +1,16 @@
 {
 	"dialog": [
 		{
+			"flags": [],
+			"object": "Character",
+			"point": "rikuno",
+			"type": "focus"
+		},
+		{
 			"file": "res://assets/data/dialog/prologue/classroom_rikuno2.json",
 			"flags": [],
-			"object": "",
-			"threshold": 0,
+			"object": "rikuno",
+			"threshold": 1.0,
 			"type": "counter_check"
 		},
 		{
@@ -149,9 +155,9 @@
 			"type": "text"
 		},
 		{
-			"addition": 0,
+			"addition": 1.0,
 			"flags": [],
-			"object": "",
+			"object": "rikuno",
 			"type": "counter_add"
 		}
 	]

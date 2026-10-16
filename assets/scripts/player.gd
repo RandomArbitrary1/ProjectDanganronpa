@@ -172,8 +172,6 @@ func _process(delta: float) -> void:
 	if current_hover and Input.is_action_just_pressed("Progress"):
 		if current_hover_type == "character" or current_hover_type == "object" and not dialog.active:
 			if current_hover.dialog != "":
-				if GameData.data.game_value.investigate_counter_objects.has(current_hover_type + ":" + current_hover.name) and not GameData.data.game_value.investigate_counter_objects_pressed.has(current_hover_type + ":" + current_hover.name):
-					GameData.data.game_value.investigate_counter_objects_pressed.append(current_hover_type + ":" + current_hover.name)
 				dialog.file = load(current_hover.dialog)
 				current_hover = null
 				current_hover_check = null

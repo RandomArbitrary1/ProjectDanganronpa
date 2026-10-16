@@ -260,19 +260,24 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "counter_add":
-			if not GameData.data.game_value.counter_objects.has(current.object):
+			if not current.object in GameData.data.game_value.counter_objects:
 				GameData.data.game_value.counter_objects[current.object] = {"count":0,"threshold":0}
 			GameData.data.game_value.counter_objects[current.object].count += current.addition
 			line += 1
 			next()
 		elif current.type == "counter_check":
-			if GameData.data.game_value.counter_objects.has(current.object) and GameData.data.game_value.counter_objects[current.object].count > current.threshold:
-				if current.dialog != "":
-					file = load(current.dialog)
-					start()
+			if current.object in GameData.data.game_value.counter_objects and GameData.data.game_value.counter_objects[current.object].count >= current.threshold:
+				if current.file != "":
+					file = load(current.file)
+					dialog = file.data.dialog
+					line = 0
+					next()
 				else:
 					line += 1
 					next()
+			else:
+				line += 1
+				next()
 		else:
 			line += 1
 			next()
@@ -297,11 +302,14 @@ func start(line_new = 0):
 	if file and not active:
 		input_ind.play("RESET")
 		if file.resource_path == "res://assets/data/leave.json":
-			if 	GameData.data.game_value.counter_objects_pressed.size() >= GameData.data.game_value.counter_objects.size():
+			leave = true
+			"""
+			if 	not "leave" in GameData.data.game_value.counter_objects or GameData.data.game_value.counter_objects.leave.count >= current.threshold:
 				leave = true
 			else:
 				leave = false
 				file = load("res://assets/data/dialog/generic_dialog/room_unexplored.json")
+			"""
 		else:
 			leave = false
 		box.visible = false

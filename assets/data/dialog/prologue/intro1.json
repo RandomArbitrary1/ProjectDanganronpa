@@ -6,6 +6,12 @@
 			"type": "music"
 		},
 		{
+			"enabled": true,
+			"file": "",
+			"flags": [],
+			"type": "cg"
+		},
+		{
 			"character": "shion",
 			"content": "Alone.",
 			"expression": "neutral.png",
@@ -144,6 +150,17 @@
 			"type": "text"
 		},
 		{
+			"flags": [],
+			"type": "visible",
+			"value": false
+		},
+		{
+			"enabled": false,
+			"file": "",
+			"flags": [],
+			"type": "cg"
+		},
+		{
 			"default": false,
 			"dialog": "",
 			"file": "res://scenes/rooms/classroom.tscn",
@@ -163,6 +180,11 @@
 			"z": -4.0
 		},
 		{
+			"flags": [],
+			"type": "visible",
+			"value": true
+		},
+		{
 			"character": "shion",
 			"content": "This is a... classroom? I don't recognize it from anywhere. How strange...",
 			"expression": "neutral.png",
@@ -170,6 +192,11 @@
 				"unknown"
 			],
 			"type": "text"
+		},
+		{
+			"character": "shion",
+			"flags": [],
+			"type": "intro"
 		},
 		{
 			"character": "shion",
@@ -190,12 +217,6 @@
 			"type": "text"
 		},
 		{
-			"enabled": true,
-			"file": "res://assets/textures/characters/shion/neutral.png",
-			"flags": [],
-			"type": "cg"
-		},
-		{
 			"character": "shion",
 			"content": "I am Shion Fumihiro, the Ultimate Spy.",
 			"expression": "neutral.png",
@@ -206,9 +227,10 @@
 			"type": "text"
 		},
 		{
-			"character": "shion",
+			"enabled": true,
+			"file": "res://assets/textures/characters/shion/neutral.png",
 			"flags": [],
-			"type": "intro"
+			"type": "cg"
 		},
 		{
 			"character": "shion",

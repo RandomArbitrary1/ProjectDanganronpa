@@ -702,17 +702,17 @@ func run_options(i, item_data): #function to run stuff on the given item
 			item_data.bullet = i.get_node(\"Panel/Bullet\").get_item_text(ind)
 		)
 	elif item_data.type == \"counter_add\":
-		i.get_node(\"Panel/Name\").text_changed.connect(func():
+		i.get_node(\"Panel/Name\").text_changed.connect(func(_e):
 			item_data.object = i.get_node(\"Panel/Name\").text
 		)
-		i.get_node(\"Panel/Add\").value_changed.connect(func():
+		i.get_node(\"Panel/Add\").value_changed.connect(func(_e):
 			item_data.addition = i.get_node(\"Panel/Add\").value
 		)
 	elif item_data.type == \"counter_check\":
-		i.get_node(\"Panel/Name\").text_changed.connect(func():
+		i.get_node(\"Panel/Name\").text_changed.connect(func(_e):
 			item_data.object = i.get_node(\"Panel/Name\").text
 		)
-		i.get_node(\"Panel/Add\").value_changed.connect(func():
+		i.get_node(\"Panel/Add\").value_changed.connect(func(_e):
 			item_data.threshold = i.get_node(\"Panel/Add\").value
 		)
 		i.get_node(\"Panel/Load\").pressed.connect(func():
@@ -1013,7 +1013,7 @@ offset_left = 472.0
 offset_top = 8.0
 offset_right = 575.625
 offset_bottom = 48.0
-step = 0.01
+min_value = -100.0
 
 [node name="Counter_check" type="HBoxContainer" parent="Items/List" unique_id=2083046254]
 custom_minimum_size = Vector2(0, 56)
@@ -1107,7 +1107,7 @@ offset_left = 496.0
 offset_top = 8.0
 offset_right = 600.0
 offset_bottom = 48.0
-step = 0.01
+min_value = -100.0
 
 [node name="Load" type="Button" parent="Items/List/Counter_check/Panel" unique_id=20435068]
 layout_mode = 0
