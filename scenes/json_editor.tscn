@@ -431,7 +431,8 @@ func reload_list(): #reload the displayed items to the current selected ones las
 	
 func run_options(i, item_data): #function to run stuff on the given item
 	#global functions for all
-	list.move_child(i, closest(mouse_pos_context_menu.y+32)+1)
+	if mouse_pos_context_menu.y < get_viewport_rect().size.y-100:
+		list.move_child(i, closest(mouse_pos_context_menu.y+32)+1)
 	i.get_node(\"Panel/Flags\").pressed.connect(func():
 		flag_current = item_data
 		for ii in flags_popup.get_node(\"FlagList/FlagItems\").get_children():
