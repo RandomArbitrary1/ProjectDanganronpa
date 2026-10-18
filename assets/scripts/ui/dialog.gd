@@ -40,6 +40,8 @@ const shock = preload("uid://v3ccuuxy11kt")
 var option_inactive = preload("res://assets/ui/dialog/choice.png")
 var option_active = preload("res://assets/ui/dialog/choice_active.png")
 var character_info = preload("res://assets/data/characters/characters.json").data
+var nameplate_texture = preload("res://assets/ui/dialog/Dialog_nameplate.png")
+var nameplate_protagonist_texture = preload("res://assets/ui/dialog/Dialog_nameplate_protagonist.png")
 
 #variables
 
@@ -76,8 +78,13 @@ func next(): # Next dialog line
 	if dialog.size() > line:
 		dialog_anim.play("RESET")
 		var current = dialog[line]
-		
+		if current.type != "text" and nameplate.texture == nameplate_protagonist_texture:
+			nameplate.texture = nameplate_texture
 		if current.type == "text": # Type of dialog node. This is a text dialog node
+			if current.character == "shion" and nameplate.texture != nameplate_protagonist_texture:
+				nameplate.texture = nameplate_protagonist_texture
+			elif current.character != "shion" and nameplate.texture != nameplate_texture:
+				nameplate.texture = nameplate_texture
 			if "sfx" in current:
 				sfx.stream = load(current.sfx)
 				sfx.play()

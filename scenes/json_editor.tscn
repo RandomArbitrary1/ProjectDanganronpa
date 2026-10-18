@@ -61,7 +61,7 @@ var current_dialog = \"dialog\"
 var previewing_audio = null
 var previewing_audio_button = null
 var previewing_audio_button_past = null
-
+var mouse_pos_context_menu = Vector2.ZERO
 
 func _ready() -> void:
 	get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
@@ -431,6 +431,8 @@ func reload_list(): #reload the displayed items to the current selected ones las
 	
 func run_options(i, item_data): #function to run stuff on the given item
 	#global functions for all
+	if mouse_pos_context_menu.y < get_viewport_rect().size.y-100:
+		list.move_child(i, closest(mouse_pos_context_menu.y+32)+1)
 	i.get_node(\"Panel/Flags\").pressed.connect(func():
 		flag_current = item_data
 		for ii in flags_popup.get_node(\"FlagList/FlagItems\").get_children():
@@ -477,6 +479,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 			if i and to_open == \"sfx_dialog\" + str(item_data.id) and i.get_node_or_null(\"Panel/Sfx\"):
 				item_data.sfx = path
 				i.get_node(\"Panel/Sfx\").text = path.get_file()
+		)
+		i.get_node(\"Panel/Sfx/Remove\").pressed.connect(func():
+			item_data.sfx = \"\"
+			i.get_node(\"Panel/Sfx\").text = \"Select SFX\"
 		)
 		i.get_node(\"Panel/CheckButton\").toggled.connect(func(state):
 			if state:
@@ -549,6 +555,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 				item_data.file = path
 				i.get_node(\"Panel/Dialog\").text = path.get_file()
 		)
+		i.get_node(\"Panel/Dialog/Remove\").pressed.connect(func():
+			item_data.file = \"\"
+			i.get_node(\"Panel/Dialog\").text = \"Select dialog\"
+		)
 	elif item_data.type == \"choice\":
 		i.get_node(\"Panel/Options/Set\").pressed.connect(func():
 			var new_options = []
@@ -618,6 +628,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 				if i:
 					i.get_node(\"Panel/Dialog\").text = path.get_file()
 		)
+		i.get_node(\"Panel/Load/Remove\").pressed.connect(func():
+			item_data.file = \"\"
+			i.get_node(\"Panel/Load\").text = \"Select dialog\"
+		)
 	elif item_data.type == \"cg\":
 		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
 			item_data.enabled = i.get_node(\"Panel/CheckButton\").button_pressed
@@ -633,6 +647,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
 				i.get_node(\"Image/TextureRect\").texture = load(path)
+		)
+		i.get_node(\"Panel/Load/Remove\").pressed.connect(func():
+			item_data.file = \"\"
+			i.get_node(\"Panel/Load\").text = \"Select texture\"
 		)
 	elif item_data.type == \"sfx\":
 		i.get_node(\"Panel/Preview\").pressed.connect(func():
@@ -659,9 +677,13 @@ func run_options(i, item_data): #function to run stuff on the given item
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
 		)
+		i.get_node(\"Panel/Load/Remove\").pressed.connect(func():
+			item_data.file = \"\"
+			i.get_node(\"Panel/Load\").text = \"Select SFX\"
+		)
 	elif item_data.type == \"dialog_change\":
-		i.get_node(\"Panel/name\").text_changed.connect(func(_e):
-			item_data.name = i.get_node(\"Panel/name\").text
+		i.get_node(\"Panel/Name\").text_changed.connect(func(_e):
+			item_data.name = i.get_node(\"Panel/Name\").text
 		)
 		i.get_node(\"Panel/Type\").item_selected.connect(func(ind):
 			item_data.object = i.get_node(\"Panel/Type\").get_item_text(ind)
@@ -677,6 +699,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 			if i and to_open == \"dialog_change\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
+		)
+		i.get_node(\"Panel/Load/Remove\").pressed.connect(func():
+			item_data.file = \"\"
+			i.get_node(\"Panel/Load\").text = \"Select dialog\"
 		)
 	elif item_data.type == \"bullet\":
 		i.get_node(\"Panel/CheckButton\").pressed.connect(func():
@@ -697,6 +723,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 				if file is Dictionary:
 					for key in file.keys():
 						i.get_node(\"Panel/Bullet\").add_item(key)
+		)
+		i.get_node(\"Panel/Load/Remove\").pressed.connect(func():
+			item_data.file = \"\"
+			i.get_node(\"Panel/Load\").text = \"Select file\"
 		)
 		i.get_node(\"Panel/Bullet\").item_selected.connect(func(ind):
 			item_data.bullet = i.get_node(\"Panel/Bullet\").get_item_text(ind)
@@ -726,6 +756,10 @@ func run_options(i, item_data): #function to run stuff on the given item
 			if i and to_open == \"investigate_counter\" + str(item_data.id) and i.get_node_or_null(\"Panel/Load\"):
 				item_data.file = path
 				i.get_node(\"Panel/Load\").text = path.get_file()
+		)
+		i.get_node(\"Panel/Load/Remove\").pressed.connect(func():
+			item_data.file = \"\"
+			i.get_node(\"Panel/Load\").text = \"Select dialog\"
 		)
 
 func closest(target): #find closest index for when dragging an item
@@ -783,6 +817,7 @@ func _process(_delta: float) -> void:
 		moving.get_node(\"Panel/Outline\").visible = false
 		moving = null
 	if Input.is_action_just_released(\"RMB\"): #release drag
+		mouse_pos_context_menu = get_viewport().get_mouse_position()
 		context_menu.visible = true
 		context_menu.position = Vector2(clampf(mouse_pos.x,0,get_viewport().size.x-262),(clampf(mouse_pos.y,0,get_viewport().size.y-584)))
 	if Input.is_action_just_pressed(\"Ctrl\"): #debug print
@@ -1122,6 +1157,26 @@ icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
 
+[node name="Remove" type="Button" parent="Items/List/Counter_check/Panel/Load" unique_id=1525712054]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
 [node name="Counter_reset" type="HBoxContainer" parent="Items/List" unique_id=1143674519]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
@@ -1299,6 +1354,26 @@ text = "Select file"
 icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
+
+[node name="Remove" type="Button" parent="Items/List/Dialog_change/Panel/Load" unique_id=1911681594]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
 
 [node name="Name" type="LineEdit" parent="Items/List/Dialog_change/Panel" unique_id=828228780]
 layout_mode = 0
@@ -1575,6 +1650,26 @@ icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
 
+[node name="Remove" type="Button" parent="Items/List/Character/Panel/Dialog" unique_id=220900806]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
 [node name="Room" type="HBoxContainer" parent="Items/List" unique_id=6563331]
 custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
@@ -1674,6 +1769,26 @@ icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
 
+[node name="Remove" type="Button" parent="Items/List/Room/Panel/Load" unique_id=1858511480]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
 [node name="CheckButton" type="CheckButton" parent="Items/List/Room/Panel" unique_id=760568889]
 layout_mode = 0
 offset_left = 512.0
@@ -1761,6 +1876,26 @@ text = "Select file"
 icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
+
+[node name="Remove" type="Button" parent="Items/List/SFX/Panel/Load" unique_id=367611608]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
 
 [node name="Index" type="Label" parent="Items/List/SFX/Panel" unique_id=542011389]
 layout_mode = 0
@@ -1885,6 +2020,26 @@ text = "Select file"
 icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
+
+[node name="Remove" type="Button" parent="Items/List/CG/Panel/Load" unique_id=602151150]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
 
 [node name="Image" type="Panel" parent="Items/List/CG" unique_id=16234557]
 custom_minimum_size = Vector2(304, 0)
@@ -2189,6 +2344,26 @@ icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
 
+[node name="Remove" type="Button" parent="Items/List/Bullet/Panel/Load" unique_id=1702102804]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
+
 [node name="Bullet" type="OptionButton" parent="Items/List/Bullet/Panel" unique_id=133974147]
 layout_mode = 0
 offset_left = 464.0
@@ -2466,6 +2641,26 @@ text = "Select SFX"
 icon = ExtResource("1_p0t4n")
 alignment = 0
 text_overrun_behavior = 1
+
+[node name="Remove" type="Button" parent="Items/List/Dialog/Panel/Sfx" unique_id=527744125]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.999996
+offset_right = 8.0
+offset_bottom = 27.999996
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ol5w5")
+theme_override_icons/icon = ExtResource("5_oqeqj")
+icon_alignment = 1
 
 [node name="Preview" type="Button" parent="Items/List/Dialog/Panel" unique_id=240683343]
 layout_mode = 0
