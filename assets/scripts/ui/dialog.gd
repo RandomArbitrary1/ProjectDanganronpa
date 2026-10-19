@@ -78,13 +78,12 @@ func next(): # Next dialog line
 	if dialog.size() > line:
 		dialog_anim.play("RESET")
 		var current = dialog[line]
-		if current.type != "text" and nameplate.texture == nameplate_protagonist_texture:
-			nameplate.texture = nameplate_texture
 		if current.type == "text": # Type of dialog node. This is a text dialog node
-			if current.character == "shion" and nameplate.texture != nameplate_protagonist_texture:
-				nameplate.texture = nameplate_protagonist_texture
-			elif current.character != "shion" and nameplate.texture != nameplate_texture:
-				nameplate.texture = nameplate_texture
+			if not class_trial_char_bust:
+				if current.character == "shion" and nameplate.texture != nameplate_protagonist_texture:
+					nameplate.texture = nameplate_protagonist_texture
+				elif current.character != "shion" and nameplate.texture != nameplate_texture:
+					nameplate.texture = nameplate_texture
 			if "sfx" in current:
 				sfx.stream = load(current.sfx)
 				sfx.play()

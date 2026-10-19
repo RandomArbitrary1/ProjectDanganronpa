@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jyol1e6wnxf2"]
 
 [ext_resource type="Material" uid="uid://bwy88nfiay4jp" path="res://assets/materials/wood_plank.tres" id="1_lpxfg"]
-[ext_resource type="Material" uid="uid://qt7tfqir33l4" path="res://assets/materials/wall2.tres" id="2_fyqrs"]
+[ext_resource type="Material" uid="uid://qt7tfqir33l4" path="res://assets/materials/wall_paint_salmon.tres" id="2_fyqrs"]
 [ext_resource type="Material" uid="uid://bxtk3l80bifdr" path="res://assets/materials/floor2.tres" id="3_bfg0b"]
 [ext_resource type="PackedScene" uid="uid://dw3px5y5bxf3k" path="res://assets/objects/characters/player.tscn" id="4_glkou"]
 [ext_resource type="Script" path="res://assets/scripts/talking_danilo.gd" id="5_3pl7v"]
@@ -428,12 +428,13 @@ shaded = true
 texture_filter = 0
 texture = ExtResource("13_3pl7v")
 
-[node name="Dorm7" parent="Doors" unique_id=799898424 instance=ExtResource("10_bfg0b")]
+[node name="Shions dorm" parent="Doors" unique_id=799898424 instance=ExtResource("10_bfg0b")]
 transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 19.837334, 1.82, 9.21)
 surface_material_override/0 = ExtResource("12_glkou")
 script = ExtResource("9_5gesx")
+room = "res://scenes/rooms/dorm.tscn"
 
-[node name="Icon" type="Sprite3D" parent="Doors/Dorm7" unique_id=1503687953]
+[node name="Icon" type="Sprite3D" parent="Doors/Shions dorm" unique_id=1503687953]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0.903172, 0.10065055)
 shaded = true
 texture_filter = 0
