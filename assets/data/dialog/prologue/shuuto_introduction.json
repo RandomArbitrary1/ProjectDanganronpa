@@ -1,0 +1,52 @@
+{
+	"dialog": [
+		{
+			"character": "shuuto",
+			"content": "Seems the school is definitely made with pretty hefty funding, the quality checks out...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Hey, do you know why we're here?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shuuto",
+			"content": "Not really to be honest, I'm not even sure myself. Are you stuck here too?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Something like that... I am Shion Fumihiro, an Ultimate Spy.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shuuto",
+			"content": "Oh right. Hm. Hm.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shuuto",
+			"content": "My name is Shuuto Yutaka, the Ultimate Accountant.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"addition": 1.0,
+			"flags": [],
+			"object": "introductions",
+			"type": "counter_add"
+		}
+	]
+}

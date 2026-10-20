@@ -1,0 +1,13 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "I can't leave yet, I have some unfinished business to do.",
+			"eline": "Dialog:<HBoxContainer#121114724753>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 0,
+			"type": "text"
+		}
+	]
+}

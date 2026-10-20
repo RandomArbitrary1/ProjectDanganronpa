@@ -1,0 +1,21 @@
+{
+	"dialog": [
+		{
+			"character": "raito",
+			"content": "I am Raito Rito. I'm the Ultimate Electrician.",
+			"eline": "Dialog:<HBoxContainer#123631307168>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 0,
+			"type": "text"
+		},
+		{
+			"addition": 1.0,
+			"eline": "Counter_add:<HBoxContainer#205319571820>",
+			"flags": [],
+			"id": 1,
+			"object": "introductions",
+			"type": "counter_add"
+		}
+	]
+}

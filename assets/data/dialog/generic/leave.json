@@ -1,9 +1,16 @@
 {
 	"dialog": [
 		{
+			"file": "res://assets/data/dialog/generic/leave_block.json",
+			"flags": [],
+			"object": "leave",
+			"threshold": 0.0,
+			"type": "counter_check"
+		},
+		{
 			"character": "shion",
 			"content": "Should I leave this room?",
-			"expression": "sad",
+			"expression": "neutral.png",
 			"flags": [
 				"thought"
 			],
@@ -24,6 +31,5 @@
 			"type": "choice"
 		}
 	],
-	"dialog1": [
-	]
+	"dialog1": []
 }

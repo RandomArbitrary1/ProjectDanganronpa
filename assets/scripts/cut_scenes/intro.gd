@@ -7,8 +7,3 @@ extends Control
 func _ready() -> void:
 	dialog.file = load("res://assets/data/dialog/prologue/intro1.json")
 	dialog.start()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
