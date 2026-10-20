@@ -8,7 +8,7 @@ extends TextureRect
 @onready var press: AudioStreamPlayer = $Press
 
 var character_info = preload("res://assets/data/characters/characters.json").data
-var gifts_info = preload("res://assets/data/gifts.json").data
+var gifts_info = preload("res://assets/data/game/gifts.json").data
 @onready var report_item: NinePatchRect = $Screen/Lists/Report/Items/Item.duplicate()
 @onready var gift_item: NinePatchRect = $Screen/Lists/Gifts/Items/Item.duplicate()
 

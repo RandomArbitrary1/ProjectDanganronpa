@@ -165,11 +165,11 @@ func _process(delta: float) -> void:
 					RoomSwitch.dialog_next_pos = 0
 				RoomSwitch.switch(scene, scene_name)
 			else:
-				dialog.file = load("res://assets/data/leave.json")
+				dialog.file = load("res://assets/data/dialog/generic/leave.json")
 				tooltip.get_node("Anim").play("Hide")
 				dialog.start()
 	if Input.is_action_just_pressed("Leave"):
-		dialog.file = load("res://assets/data/leave.json")
+		dialog.file = load("res://assets/data/dialog/generic/leave.json")
 		tooltip.get_node("Anim").play("Hide")
 		dialog.start()
 		

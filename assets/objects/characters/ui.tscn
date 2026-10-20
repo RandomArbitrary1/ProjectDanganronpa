@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnif5la5wg0dm"]
 
 [ext_resource type="PackedScene" uid="uid://dft7lueqqcwfc" path="res://assets/overlays/dialog.tscn" id="1_3kmj4"]
-[ext_resource type="JSON" path="res://assets/data/dialog/test.json" id="2_e3wc1"]
+[ext_resource type="JSON" path="res://assets/data/dialog/test_dialog/test.json" id="2_e3wc1"]
 [ext_resource type="PackedScene" uid="uid://dymidptdxg4ca" path="res://assets/overlays/base.tscn" id="3_7hmrh"]
 [ext_resource type="PackedScene" uid="uid://dndpi3bk3uqya" path="res://assets/overlays/handbook.tscn" id="4_a1us6"]
 
