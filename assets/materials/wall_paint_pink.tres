@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://s2iauff4m504"]
+
+[ext_resource type="Texture2D" uid="uid://crwrqityhwyje" path="res://assets/textures/environment/wall_paint_pink.png" id="1_7slas"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_7slas")
+uv1_scale = Vector3(0.2, 0.075, 0.2)
+uv1_offset = Vector3(0, -0.037, 0)
+uv1_triplanar = true

@@ -44,10 +44,10 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1474280234 groups=["Camera"] instance=ExtResource("2_cv4ux")]
 transform = Transform3D(0.86602545, 0, -0.49999988, 0, 1, 0, 0.49999988, 0, 0.86602545, -1.2820108, 2, 6.599845)
-minX = -70.0
+minX = -30.0
 maxX = 30.0
-speed = 45.0
-center = Vector3(0, 1.9, -1.5)
+speed = 40.0
+center = Vector3(0, 1.9, -0.5)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
@@ -57,11 +57,11 @@ center = Vector3(0, 1.9, -1.5)
 transform = Transform3D(1.2124355, -0.7, 3.059797e-08, 0, -6.119594e-08, -1.4, 0.7, 1.2124355, -5.299724e-08, 3, 3.701477, -3.5)
 
 [node name="Monitor" parent="Objects" unique_id=2016118983 instance=ExtResource("8_ktl53")]
-transform = Transform3D(-6.119594e-08, 1.4, -6.1195955e-08, 3.3445959e-37, -6.119595e-08, -1.4000001, -1.4, -6.119594e-08, 7.648759e-15, -4, 3, 5.5)
+transform = Transform3D(0.6999999, 1.2124355, -5.2997258e-08, -2.9646153e-22, -6.119595e-08, -1.4000001, -1.2124355, 0.6999999, -3.059797e-08, -4, 3, -2.5)
 dialog = "res://assets/data/dialog/generic_dialog/monitor.json"
 
 [node name="Breaker" parent="Objects" unique_id=1912084388 instance=ExtResource("8_jn08e")]
-transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, 5.104)
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, 3.104)
 surface_material_override/0 = ExtResource("9_yn36u")
 script = ExtResource("5_rfwoq")
 display_name = "Breaker room"
@@ -90,14 +90,16 @@ transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.2999
 [node name="Doors" type="Node3D" parent="." unique_id=435588806]
 
 [node name="Storage" parent="Doors" unique_id=1208143330 instance=ExtResource("8_jn08e")]
-transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, 1.1040001)
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 3.854, 1.82, -0.8959999)
 surface_material_override/0 = ExtResource("9_yn36u")
 script = ExtResource("11_rfwoq")
+room = "res://scenes/rooms/storage.tscn"
 
 [node name="Boiler room" parent="Doors" unique_id=632100843 instance=ExtResource("8_jn08e")]
-transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, -5.8499994, 1.82, 1.1000004)
+transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, -5.8499994, 1.82, -0.8999996)
 surface_material_override/0 = ExtResource("9_yn36u")
 script = ExtResource("11_rfwoq")
+room = "res://scenes/rooms/boiler.tscn"
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=117162884]
 
@@ -111,19 +113,19 @@ size = Vector3(9, 5, 12.5)
 material = ExtResource("9_ypih2")
 
 [node name="hole_door3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1276271751]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.9500008, 1.6340001, 1.1000004)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.9500008, 1.6340001, -0.8999996)
 operation = 2
 size = Vector3(1, 3, 1.39)
 material = ExtResource("9_ypih2")
 
 [node name="hole_door4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=329478019]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.9500008, 1.6340001, 5.1000004)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.9500008, 1.6340001, 3.1000004)
 operation = 2
 size = Vector3(1, 3, 1.39)
 material = ExtResource("9_ypih2")
 
 [node name="hole_door5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1049347297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.946, 1.6340001, 1.1040001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.946, 1.6340001, -0.8959999)
 operation = 2
 size = Vector3(1, 3, 1.39)
 material = ExtResource("9_ypih2")

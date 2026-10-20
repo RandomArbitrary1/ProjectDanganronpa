@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bj65mo7dd37im"]
+
+[ext_resource type="Texture2D" uid="uid://dk38k42kvxa0c" path="res://assets/textures/environment/wall_paint_black.png" id="1_5qwpp"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_5qwpp")
+uv1_scale = Vector3(0.2, 0.075, 0.2)
+uv1_offset = Vector3(0, -0.037, 0)
+uv1_triplanar = true

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://4rlsst7l1ym2" path="res://assets/scripts/obj_data/room_data.gd" id="1_bgbo7"]
 [ext_resource type="PackedScene" uid="uid://cl2q23o41psa0" path="res://assets/objects/characters/player_room.tscn" id="2_s0uex"]
-[ext_resource type="PackedScene" uid="uid://lay0c05yu3el" path="res://assets/objects/characters/character.tscn" id="3_sf84d"]
 [ext_resource type="PackedScene" uid="uid://i6vqs58lhnbx" path="res://assets/objects/environment/furniture/trash_can.glb" id="4_jnr03"]
 [ext_resource type="Script" uid="uid://db3jnuj2xrjt1" path="res://assets/scripts/obj_data/object_data.gd" id="5_sf84d"]
 [ext_resource type="PackedScene" uid="uid://ck6ftauius01" path="res://assets/objects/environment/furniture/shelf.glb" id="6_eee68"]
@@ -54,12 +53,6 @@ center = Vector3(0, 2.2, 4)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
 
-[node name="rikuno" parent="Characters" unique_id=2135237569 instance=ExtResource("3_sf84d")]
-transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 0, 1.9, 2)
-character = "rikuno"
-expression = "neutral"
-dialog = "res://assets/data/dialog/test6.json"
-
 [node name="Objects" type="Node3D" parent="." unique_id=986129665 groups=["Objects"]]
 
 [node name="trash_can" parent="Objects" unique_id=2105511721 instance=ExtResource("4_jnr03")]
@@ -77,7 +70,6 @@ shape = SubResource("BoxShape3D_qvc4m")
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -3, 1.047, 3)
 script = ExtResource("5_sf84d")
 display_name = "Shelf"
-dialog = "res://assets/data/object_plain.json"
 
 [node name="Area3D" type="Area3D" parent="Objects/shelf" unique_id=792731465]
 
@@ -89,7 +81,6 @@ shape = SubResource("BoxShape3D_4tp24")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.047, 0)
 script = ExtResource("5_sf84d")
 display_name = "Shelf"
-dialog = "res://assets/data/object_plain.json"
 
 [node name="Area3D" type="Area3D" parent="Objects/shelf2" unique_id=1498270348]
 
