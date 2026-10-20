@@ -255,6 +255,8 @@ func _ready() -> void:
 	navigation.get_node(\"Clear\").pressed.connect(func(): #clear everything
 		if navigation.get_node(\"Clear\").text == \"yes?\": #confirmation
 			data = {\"dialog\":[]}
+			file_path = \"\"
+			navigation.get_node(\"File\").text = \"\"
 			navigation.get_node(\"Clear\").text = \"Clear all\"
 			for i in list.get_children():
 				i.queue_free()
