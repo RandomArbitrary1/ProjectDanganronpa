@@ -301,12 +301,12 @@ func reload_list(): #reload the displayed items to the current selected ones las
 				new.get_node(\"Panel/Sfx\").text = i.sfx
 			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"intro\":
 			var new = intro_line.duplicate()
 			new.get_node(\"Panel/Name\").selected = range(new.get_node(\"Panel/Name\").item_count).map(func(ii): return new.get_node(\"Panel/Name\").get_item_text(ii)).find(i.character)
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"character\":
 			var new = character_line.duplicate()
 			new.get_node(\"Panel/Emotion\").clear()
@@ -324,20 +324,20 @@ func reload_list(): #reload the displayed items to the current selected ones las
 				new.get_node(\"Panel/CheckButton\").button_pressed = i.spawn
 			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"visible\":
 			var new = visible_line.duplicate()
 			new.get_node(\"Panel/CheckButton\").button_pressed = i.value
 			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"focus\":
 			var new = focus_line.duplicate()
 			new.get_node(\"Panel/Type\").selected = get_option_id(new.get_node(\"Panel/Type\"),i.object)
 			new.get_node(\"Panel/LineEdit\").text = i.point
 			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"music\":
 			var new = music_line.duplicate()
 			i[\"eline\"] = new
@@ -345,7 +345,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			if \"delay\" in i:
 				new.get_node(\"Panel/Delay\").value = i.delay
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"cg\":
 			var new = cg_line.duplicate()
 			i[\"eline\"] = new
@@ -354,7 +354,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 				new.get_node(\"Panel/Load\").text = i.file.get_file()
 				new.get_node(\"Image/TextureRect\").texture = load(i.file)
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"room\":
 			var new = room_line.duplicate()
 			i[\"eline\"] = new
@@ -364,14 +364,14 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			if \"default\" in i:
 				new.get_node(\"Panel/CheckButton\").button_pressed = i.default
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"sfx\":
 			var new = sfx_line.duplicate()
 			i[\"eline\"] = new
 			if \"file\" in i and ResourceLoader.exists(i.file):
 				new.get_node(\"Panel/Load\").text = i.file.get_file()
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"dialog_change\":
 			var new = dialog_change_line.duplicate()
 			i[\"eline\"] = new
@@ -380,7 +380,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			if \"file\" in i and ResourceLoader.exists(i.file):
 				new.get_node(\"Panel/Load\").text = i.file.get_file()
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"choice\":
 			var new = choice_line.duplicate()
 			i[\"eline\"] = new
@@ -390,7 +390,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 					box.get_node(\"Text\").text = i.options[c].text
 					box.get_node(\"Dialog\").text = i.options[c].dialog
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"bullet\":
 			var new = bullet_line.duplicate()
 			i[\"eline\"] = new
@@ -406,14 +406,14 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			if file:
 				new.get_node(\"Panel/Bullet\").selected = file.keys().find(i.bullet)
 			list.add_child(new)
-			run_options(new, i) 
+			run_options(new, i, false) 
 		elif i.type == \"counter_add\":
 			var new = counter_add_line.duplicate()
 			i[\"eline\"] = new
 			new.get_node(\"Panel/Name\").text = i.object
 			new.get_node(\"Panel/Add\").value = i.addition
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"counter_check\":
 			var new = counter_check_line.duplicate()
 			i[\"eline\"] = new
@@ -422,16 +422,16 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			new.get_node(\"Panel/Name\").text = i.object
 			new.get_node(\"Panel/Add\").value = i.threshold
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 		elif i.type == \"Counter_remove\":
 			var new = counter_remove_line.duplicate()
 			i[\"eline\"] = new
 			list.add_child(new)
-			run_options(new, i)
+			run_options(new, i, false)
 	
-func run_options(i, item_data): #function to run stuff on the given item
+func run_options(i, item_data, to_move = true): #function to run stuff on the given item
 	#global functions for all
-	if mouse_pos_context_menu.y < get_viewport_rect().size.y-100:
+	if to_move and mouse_pos_context_menu.y < get_viewport_rect().size.y-100:
 		list.move_child(i, closest(mouse_pos_context_menu.y+32)+1)
 	i.get_node(\"Panel/Flags\").pressed.connect(func():
 		flag_current = item_data
