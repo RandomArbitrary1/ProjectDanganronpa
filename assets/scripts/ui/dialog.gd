@@ -307,7 +307,7 @@ func next(): # Next dialog line
 func start(line_new = 0):
 	if file and not active:
 		input_ind.play("RESET")
-		if file.resource_path == "res://assets/data/leave.json":
+		if file.resource_path == "res://assets/data/dialog/generic/leave.json":
 			leave = true
 			"""
 			if 	not "leave" in GameData.data.game_value.counter_objects or GameData.data.game_value.counter_objects.leave.count >= current.threshold:
