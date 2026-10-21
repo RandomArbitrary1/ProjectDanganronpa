@@ -4,11 +4,13 @@ extends Control
 @onready var anims: AnimationPlayer = $Anims
 @onready var confirm_sfx: AudioStreamPlayer = $confirm_sfx
 @onready var select_sfx: AudioStreamPlayer = $select_sfx
+@onready var save_menu: ColorRect = $"../Save"
 
 
 var tab = 0
 var tab_max = 3
 var active = false
+var started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,40 +20,44 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not active:
-		return
-	for i in items.get_children():
-		if i.get_index() == tab:
-			i.get_node("Hover").size.x = move_toward(i.get_node("Hover").size.x, i.size.x+104, 4750*delta)
-		else:
-			i.get_node("Hover").size.x = move_toward(i.get_node("Hover").size.x, 104, 4750*delta)
-		i.mouse_entered.connect(func():
+	if active:
+		for i in items.get_children():
+			if i.get_index() == tab:
+				i.get_node("Hover").size.x = move_toward(i.get_node("Hover").size.x, i.size.x+104, 4750*delta)
+			else:
+				i.get_node("Hover").size.x = move_toward(i.get_node("Hover").size.x, 104, 4750*delta)
+			i.mouse_entered.connect(func():
+				select_sfx.play()
+			)
+			if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
+				if tab != i.get_index() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+					tab = i.get_index()
+				
+		if Input.is_action_just_pressed("Up"):
 			select_sfx.play()
-		)
-		if Rect2(i.global_position, i.size).has_point(get_global_mouse_position()):
-			if tab != i.get_index() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-				tab = i.get_index()
-			
-	if Input.is_action_just_pressed("Up"):
-		select_sfx.play()
-		if tab > 0:
-			tab -= 1
-		else:
-			tab = tab_max-1
-	if Input.is_action_just_pressed("Down"):
-		select_sfx.play()
-		if tab < tab_max-1:
-			tab += 1
-		else:
-			tab = 0
-	
-	if Input.is_action_just_pressed("Progress"):
-		confirm_sfx.play()
-		print(tab)
-		if tab == 0:
-			LoadingScreen.load_scene("res://scenes/ui/intro.tscn")
-		elif tab == 2:
-			get_tree().quit()
+			if tab > 0:
+				tab -= 1
+			else:
+				tab = tab_max-1
+		if Input.is_action_just_pressed("Down"):
+			select_sfx.play()
+			if tab < tab_max-1:
+				tab += 1
+			else:
+				tab = 0
+		
+		if Input.is_action_just_pressed("Progress"):
+			confirm_sfx.play()
+			print(tab)
+			if tab == 0:
+				LoadingScreen.load_scene("res://scenes/ui/intro.tscn")
+			elif tab == 1:
+				save_menu.get_node("Anims").play("Start")
+				await save_menu.get_node("Anims").animation_finished
+				save_menu.active = true
+				active = false
+			elif tab == 2:
+				get_tree().quit()
 	
 
 var old_mouse_position : Vector2
@@ -64,8 +70,9 @@ func _input(event: InputEvent) -> void:
 			old_mouse_position = get_viewport().get_mouse_position()
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	else:
-		if (event is InputEventJoypadButton or event is InputEventKey or event is InputEventMouseButton) and not anims.is_playing():
+		if (event is InputEventJoypadButton or event is InputEventKey or event is InputEventMouseButton) and not anims.is_playing() and not started:
 			confirm_sfx.play()
 			anims.play("Start")
 			await anims.animation_finished
 			active = true
+			started = true

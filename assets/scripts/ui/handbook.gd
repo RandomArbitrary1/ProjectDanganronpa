@@ -39,7 +39,7 @@ func _ready() -> void:
 	
 	
 	#report card
-	for i in character_info.keys().size():
+	for i in 16:
 		var key = character_info.keys()[i]
 		var item = report_item.duplicate()
 		item.name = key
@@ -83,6 +83,7 @@ func _process(delta: float) -> void:
 				else:
 					current.self_modulate.a = 0
 					current.get_node("Icon").modulate = Color(1,1,1)
+			switch_tab()
 				
 	if get_tree().paused == true and visible == true:
 		if Input.is_action_just_pressed("Next"):
