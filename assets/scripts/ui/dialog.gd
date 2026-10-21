@@ -64,7 +64,10 @@ func _ready() -> void:
 	$Choice/Option.queue_free()
 	camera = get_tree().get_first_node_in_group("Camera_room")
 	characters = get_tree().get_first_node_in_group("Characters_interact")
-	if RoomSwitch.dialog_next != null:
+	if RoomSwitch.dialog_next != null or RoomSwitch.leave_dialog != null:
+		if RoomSwitch.dialog_next == null:
+			RoomSwitch.dialog_next = RoomSwitch.leave_dialog
+		RoomSwitch.leave_dialog = null
 		file = load(RoomSwitch.dialog_next)
 		RoomSwitch.dialog_next = null
 		if RoomSwitch.dialog_next_pos:
@@ -251,14 +254,17 @@ func next(): # Next dialog line
 			last_anim = cg_anim
 		elif current.type == "dialog_change":
 			var location = get_tree().current_scene.get_node_or_null("Doors")
-			if current.focus == "Object":
-				location = get_tree().get_first_node_in_group(current.name)
-			var obj = location.get_node_or_null(current.name)
-			if obj:
-				if current.focus == "Object":
-					obj.dialog = current.dialog
-				else:
-					obj.followup_dialog = current.dialog
+			if current.name == "Leave":
+				RoomSwitch.leave_dialog = current.file
+			else:
+				if current.object == "Object":
+					location = get_tree().get_first_node_in_group(current.name)
+				var obj = location.get_node_or_null(current.name)
+				if obj:
+					if current.object == "Object":
+						obj.dialog = current.file
+					else:
+						obj.followup_dialog = current.file
 			line += 1
 			next()
 		elif current.type == "counter_reset":
