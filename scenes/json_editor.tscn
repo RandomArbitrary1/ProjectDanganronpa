@@ -195,7 +195,7 @@ func _ready() -> void:
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 19: #dialog change
 			var new = dialog_change_line.duplicate()
-			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"dialog_change\",\"file\":\"\",\"focus\":\"\",\"name\":\"\",\"flags\":[]})
+			data[current_dialog].append({\"id\":data[current_dialog].size(),\"eline\":new,\"type\":\"dialog_change\",\"file\":\"\",\"object\":\"Object\",\"name\":\"\",\"flags\":[]})
 			list.add_child(new)
 			run_options(new,data[current_dialog][data[current_dialog].size()-1])
 		elif id == 21: #counter add
