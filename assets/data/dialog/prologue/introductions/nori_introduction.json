@@ -44,6 +44,11 @@
 		},
 		{
 			"character": "nori",
+			"flags": [],
+			"type": "intro"
+		},
+		{
+			"character": "nori",
 			"content": "But if we're all ultimates, why were we brought here? That's what I'm trying to find out.",
 			"expression": "neutral.png",
 			"flags": [],
@@ -62,11 +67,6 @@
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
-		},
-		{
-			"character": "nori",
-			"flags": [],
-			"type": "intro"
 		},
 		{
 			"character": "nori",

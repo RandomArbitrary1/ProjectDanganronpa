@@ -3,11 +3,11 @@
 		{
 			"character": "nori",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/nori_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/nori_introduction.json",
 			"flags": [],
 			"type": "character",
 			"x": -3.5,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 2.0
 		},
 		{
@@ -17,7 +17,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -3.5,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 3.0
 		},
 		{
@@ -27,24 +27,8 @@
 			"flags": [],
 			"type": "character",
 			"x": -3.5,
-			"y": 1.8,
-			"z": 4.0
-		},
-		{
-			"character": "shion",
-			"content": "Hey, Rikuno. I'm going to talk to those other people over there and figure out what's up.",
-			"expression": "neutral.png",
-			"flags": [],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"expression": "neutral",
-			"flags": [],
-			"type": "character",
-			"x": 0.0,
 			"y": 0.0,
-			"z": 0.0
+			"z": 4.0
 		},
 		{
 			"character": "ayuka",
@@ -53,7 +37,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -3.5,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 5.0
 		},
 		{
@@ -63,7 +47,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -3.8,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 5.0
 		},
 		{
@@ -73,7 +57,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -4.3,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 5.0
 		},
 		{
@@ -83,7 +67,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -4.5,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 5.4
 		},
 		{
@@ -93,7 +77,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -4.5,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 6.4
 		},
 		{
@@ -103,7 +87,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -4.8,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 5.4
 		},
 		{
@@ -113,7 +97,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -4.0,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 6.0
 		},
 		{
@@ -123,7 +107,7 @@
 			"flags": [],
 			"type": "character",
 			"x": -5.2,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 5.4
 		},
 		{
@@ -133,8 +117,121 @@
 			"flags": [],
 			"type": "character",
 			"x": -5.5,
-			"y": 1.8,
+			"y": 0.0,
 			"z": 5.5
+		},
+		{
+			"character": "shion",
+			"content": "..! There are more people?",
+			"expression": "neutral.png",
+			"flags": [
+				"idea"
+			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Let's talk to them and see if they know anything. For all we know they might be kidnapped too.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Rikuno and I make our way to the new group of people...",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Hey, do you guys know what's going on?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "nori",
+			"content": "Ah, hi. Not really actually, that's what we're all wondering.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "tenga",
+			"content": "Yeah, sorry to say but we don't know anything.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "naeri",
+			"content": "But you girls don't recall anything either?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "We don't, that's why we're asking.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shuuto",
+			"content": "How strange, we all woke up and know nothing. Something fishy is going on.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "... So what now? We all showed up here somehow, and are stuck in a place unknown?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "itsuki",
+			"content": "Well if we're in this together, we probably should team up and introduce ourselves.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "ayuka",
+			"content": "That does seem to be the most logical reasonable action.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "reoto",
+			"content": "You're probably right. If we team up we can get out of here together!",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "So we're gonna introduce ourselves to eachother? That's a good point to be honest.",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Alright, let's see who I'm working with. Who are they...",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
 		}
 	]
 }
