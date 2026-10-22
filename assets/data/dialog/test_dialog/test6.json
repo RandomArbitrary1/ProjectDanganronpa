@@ -10,8 +10,8 @@
 		{
 			"file": "res://assets/data/dialog/prologue/hallway_1.json",
 			"flags": [],
-			"object": "Door",
 			"name": "Leave",
+			"object": "Door",
 			"type": "dialog_change"
 		}
 	]
