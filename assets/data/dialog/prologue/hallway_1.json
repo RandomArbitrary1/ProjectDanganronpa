@@ -6,117 +6,134 @@
 			"file": "res://assets/data/dialog/prologue/introductions/nori_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -3.5,
+			"x": 0.0,
 			"y": 0.0,
-			"z": 2.0
+			"z": 8.5
 		},
 		{
 			"character": "yuito",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/yuito_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/yuito_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -3.5,
+			"x": 3.3,
 			"y": 0.0,
-			"z": 3.0
+			"z": 8.5
 		},
 		{
 			"character": "raito",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/raito_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/raito_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -3.5,
+			"x": 3.3,
 			"y": 0.0,
-			"z": 4.0
+			"z": 6.0
+		},
+		{
+			"character": "amia",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/introductions/amia_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": 2.0,
+			"y": 0.0,
+			"z": 5.0
 		},
 		{
 			"character": "ayuka",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/ayuka_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/ayuka_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -3.5,
+			"x": 1.5,
 			"y": 0.0,
 			"z": 5.0
 		},
 		{
 			"character": "shuuto",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/shuuto_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/shuuto_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -3.8,
+			"x": 1.2,
 			"y": 0.0,
 			"z": 5.0
 		},
 		{
 			"character": "tenga",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/tenga_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/tenga_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -4.3,
+			"x": 2.0,
 			"y": 0.0,
-			"z": 5.0
+			"z": 4.0
 		},
 		{
 			"character": "naeri",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/naeri_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/naeri_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -4.5,
+			"x": 1.0,
 			"y": 0.0,
 			"z": 5.4
 		},
 		{
 			"character": "reoto",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/reoto_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/reoto_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -4.5,
+			"x": 1.0,
 			"y": 0.0,
 			"z": 6.4
 		},
 		{
 			"character": "itsuki",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/itsuki_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/itsuki_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -4.8,
+			"x": 1.0,
 			"y": 0.0,
 			"z": 5.4
 		},
 		{
 			"character": "masato",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/masato_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/masato_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -4.0,
+			"x": 1.0,
 			"y": 0.0,
 			"z": 6.0
 		},
 		{
-			"character": "sumiko",
+			"character": "yusio",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/sumiko_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/yusio_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -5.2,
+			"x": 2.0,
 			"y": 0.0,
-			"z": 5.4
+			"z": 8.0
+		},
+		{
+			"character": "shion",
+			"content": "",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
 		},
 		{
 			"character": "haru",
 			"expression": "neutral",
-			"file": "res://assets/data/dialog/prologue/haru_introduction.json",
+			"file": "res://assets/data/dialog/prologue/introductions/haru_introduction.json",
 			"flags": [],
 			"type": "character",
-			"x": -5.5,
+			"x": 2.0,
 			"y": 0.0,
 			"z": 5.5
 		},
@@ -188,7 +205,7 @@
 			"type": "text"
 		},
 		{
-			"character": "shion",
+			"character": "amia",
 			"content": "... So what now? We all showed up here somehow, and are stuck in a place unknown?",
 			"expression": "neutral.png",
 			"flags": [],
