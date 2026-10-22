@@ -1,0 +1,22 @@
+{
+	"dialog": [
+		{
+			"character": "naeri",
+			"content": "Why do we have to gather at the gym?",
+			"eline": "Dialog:<HBoxContainer#113481091536>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 0,
+			"type": "text"
+		},
+		{
+			"character": "masato",
+			"content": "It's to have a place to inform us with. the place doesnt matter",
+			"eline": "@HBoxContainer@566:<HBoxContainer#159199005045>",
+			"expression": "neutral.png",
+			"flags": [],
+			"id": 1,
+			"type": "text"
+		}
+	]
+}

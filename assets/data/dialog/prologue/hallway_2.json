@@ -1,0 +1,69 @@
+{
+	"dialog": [
+		{
+			"character": "shion",
+			"content": "I think I've introduced myself to everyone here. I can't find anyone else.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Before knowing what to do next, we heard the monitors turn on with a strange person speaking...",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "ushi",
+			"content": "Hello, hello! Do you guys see me?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "ushi",
+			"content": "For everyone that wants to know who I am and why you all are brought here.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "ushi",
+			"content": "Please gather in the gymnasium ASAP. I'll be waiting...",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "W-what was that?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "itsuki",
+			"content": "Better question, who was that? It was just a silloette we saw.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "raito",
+			"content": "So someone is running the place I assume.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "yuito",
+			"content": "Alright, we probably should go towards the gym",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		}
+	]
+}
