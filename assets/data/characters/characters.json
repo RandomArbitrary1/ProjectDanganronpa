@@ -78,11 +78,11 @@
 "color":"c7ed4a",
 "sprites":{"neutral":"res://assets/textures/characters/sumiko/neutral.png"}},
 
-"kikuya":{"name":"Kikuya Nohata","talent":"Ultimate Librarian","sex":"Male","likes":"The Victorian era",
+"haru":{"name":"Haru Nohata","talent":"Ultimate Librarian","sex":"Male","likes":"The Victorian era",
 "dislikes":"Loud people","height":"1.73 cm","birth_date":"13 may",
 "face_pos":[0.5,0.33],
 "color":"4d802e",
-"sprites":{"neutral":"res://assets/textures/characters/kikuya/neutral.png"}},
+"sprites":{"neutral":"res://assets/textures/characters/haru/neutral.png"}},
 
 "yusio":{"name":"Yusio Itō","talent":"Ultimate Spiritualist","sex":"Male","likes":"Chinese Philosophy",
 "dislikes":"Cardboard boxes","height":"1.59 cm","birth_date":"16 november",
@@ -94,5 +94,11 @@
 "dislikes":"Motorcycles","height":"1.66 cm","birth_date":"22 february",
 "face_pos":[0.5,0.4],
 "color":"ff91f0",
-"sprites":{"neutral":"res://assets/textures/characters/amia/neutral.png"}}
+"sprites":{"neutral":"res://assets/textures/characters/amia/neutral.png"}},
+
+"ushi":{"name":"Headmaster Ushi","talent":"Ultimate Despair Headmaster","sex":"Junko Enoshima","likes":"Despair",
+"dislikes":"Hope","height":"1.23 cm","birth_date":"2 february",
+"face_pos":[0.5,0.4],
+"color":"ff91f0",
+"sprites":{"neutral":"res://assets/textures/characters/ushi/ushi.png"}}
 }

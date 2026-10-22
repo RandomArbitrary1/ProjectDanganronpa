@@ -147,6 +147,15 @@
 		},
 		{
 			"character": "shion",
+			"content": "So Rikuno is an Ultimate just like me. Maybe we can find other Ultimates close by...",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
 			"content": "Now to only find the exit to this classroom...",
 			"expression": "neutral.png",
 			"flags": [
@@ -158,6 +167,12 @@
 			"addition": 1.0,
 			"flags": [],
 			"object": "rikuno",
+			"type": "counter_add"
+		},
+		{
+			"addition": 1.0,
+			"flags": [],
+			"object": "leave",
 			"type": "counter_add"
 		}
 	]

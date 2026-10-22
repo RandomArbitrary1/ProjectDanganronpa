@@ -1,15 +1,15 @@
 {
 	"dialog": [
 		{
-			"flags": [],
-			"song": "no_music",
-			"type": "music"
-		},
-		{
 			"enabled": true,
 			"file": "",
 			"flags": [],
 			"type": "cg"
+		},
+		{
+			"flags": [],
+			"song": "no_music",
+			"type": "music"
 		},
 		{
 			"character": "shion",
@@ -195,11 +195,6 @@
 		},
 		{
 			"character": "shion",
-			"flags": [],
-			"type": "intro"
-		},
-		{
-			"character": "shion",
 			"content": "...",
 			"expression": "neutral.png",
 			"flags": [
@@ -217,6 +212,12 @@
 			"type": "text"
 		},
 		{
+			"enabled": true,
+			"file": "res://assets/textures/characters/shion/neutral.png",
+			"flags": [],
+			"type": "cg"
+		},
+		{
 			"character": "shion",
 			"content": "I am Shion Fumihiro, the Ultimate Spy.",
 			"expression": "neutral.png",
@@ -227,10 +228,9 @@
 			"type": "text"
 		},
 		{
-			"enabled": true,
-			"file": "res://assets/textures/characters/shion/neutral.png",
+			"character": "shion",
 			"flags": [],
-			"type": "cg"
+			"type": "intro"
 		},
 		{
 			"character": "shion",
@@ -317,6 +317,12 @@
 				"unknown"
 			],
 			"type": "text"
+		},
+		{
+			"addition": 0,
+			"flags": [],
+			"object": "leave",
+			"type": "counter_add"
 		}
 	]
 }

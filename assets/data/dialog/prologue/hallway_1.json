@@ -11,13 +11,24 @@
 			"z": 2.0
 		},
 		{
-			"character": "shion",
-			"content": "So this is the hallway... Oh, I see a few people!",
-			"expression": "neutral.png",
-			"flags": [
-				"thought"
-			],
-			"type": "text"
+			"character": "yuito",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/yuito_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -3.5,
+			"y": 1.8,
+			"z": 3.0
+		},
+		{
+			"character": "raito",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/raito_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -3.5,
+			"y": 1.8,
+			"z": 4.0
 		},
 		{
 			"character": "shion",
@@ -27,11 +38,103 @@
 			"type": "text"
 		},
 		{
-			"character": "rikuno",
-			"content": "Ah, alright. I'm joining in too. Let's go.",
-			"expression": "neutral.png",
+			"character": "shion",
+			"expression": "neutral",
 			"flags": [],
-			"type": "text"
+			"type": "character",
+			"x": 0.0,
+			"y": 0.0,
+			"z": 0.0
+		},
+		{
+			"character": "ayuka",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/ayuka_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -3.5,
+			"y": 1.8,
+			"z": 5.0
+		},
+		{
+			"character": "shuuto",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/shuuto_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -3.8,
+			"y": 1.8,
+			"z": 5.0
+		},
+		{
+			"character": "tenga",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/tenga_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -4.3,
+			"y": 1.8,
+			"z": 5.0
+		},
+		{
+			"character": "naeri",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/naeri_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -4.5,
+			"y": 1.8,
+			"z": 5.4
+		},
+		{
+			"character": "reoto",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/reoto_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -4.5,
+			"y": 1.8,
+			"z": 6.4
+		},
+		{
+			"character": "itsuki",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/itsuki_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -4.8,
+			"y": 1.8,
+			"z": 5.4
+		},
+		{
+			"character": "masato",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/masato_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -4.0,
+			"y": 1.8,
+			"z": 6.0
+		},
+		{
+			"character": "sumiko",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/sumiko_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -5.2,
+			"y": 1.8,
+			"z": 5.4
+		},
+		{
+			"character": "haru",
+			"expression": "neutral",
+			"file": "res://assets/data/dialog/prologue/haru_introduction.json",
+			"flags": [],
+			"type": "character",
+			"x": -5.5,
+			"y": 1.8,
+			"z": 5.5
 		}
 	]
 }

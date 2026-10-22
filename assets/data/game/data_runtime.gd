@@ -12,7 +12,7 @@ var data = {
 		"amia":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"ayuka":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"itsuki":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
-		"kikuya":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
+		"haru":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"masato":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"naeri":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"nori":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
@@ -24,6 +24,7 @@ var data = {
 		"sumiko":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"tenga":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"yusio":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
+		"yuito":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}],
 		"ushi":[{"room":"","position":{"x":0,"y":0,"z":0},"expression":"neutral","dialog":""}]
 	},
 	"game_value": {"student_introductions": 0,

@@ -2,67 +2,35 @@
 	"dialog": [
 		{
 			"character": "shion",
-			"content": "Hi there. You wouldn't happen to know where we are?",
+			"content": "Hi there. You wouldn't happen to be an Ultimate by chance?",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "nori",
-			"content": "Oh, hi. Who are you?",
-			"expression": "neutral.png",
-			"flags": [],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"content": "I am Shion Fumihiro. I'm an ul-",
-			"expression": "neutral.png",
-			"flags": [],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"content": "Wait I don't know this person, what if he's the one who kidnapped me here.",
-			"expression": "neutral.png",
-			"flags": [
-				"thought"
-			],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"content": "Sorry, I started stuttering. Bad habit of mine.",
+			"content": "..Hm? Two other people? How truly unexpected.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "nori",
-			"content": "It's fine really. I don't blame you for being scared in a situation like this.",
+			"content": "I may be an ultimate, who's asking?",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "Well, I am scared. But I'm not in the mood for your sympathy.",
-			"expression": "neutral.png",
-			"flags": [
-				"thought"
-			],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"content": "Could I perhaps know your name?",
+			"content": "Oh, I'm Shion Fumihiro. I'm an Ultimate Spy. And Rikuno here is an Ultimate Mercenary.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "nori",
-			"content": "Oh right, of course.",
+			"content": "Ah, really. Well in that case.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
@@ -76,19 +44,7 @@
 		},
 		{
 			"character": "nori",
-			"flags": [],
-			"type": "intro"
-		},
-		{
-			"character": "nori",
-			"content": "By the way you weren't completely honest with me. It's obvious you are an ultimate too.",
-			"expression": "neutral.png",
-			"flags": [],
-			"type": "text"
-		},
-		{
-			"character": "shion",
-			"content": "Yeah, true... I am an ultimate spy. Wasn't sure if I should've hidden it.",
+			"content": "But if we're all ultimates, why were we brought here? That's what I'm trying to find out.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
@@ -109,10 +65,21 @@
 		},
 		{
 			"character": "nori",
+			"flags": [],
+			"type": "intro"
+		},
+		{
+			"character": "nori",
 			"content": "If I had to guess, based on how we all remember nothing. It's done on purpose.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
+		},
+		{
+			"addition": 1.0,
+			"flags": [],
+			"object": "introductions",
+			"type": "counter_add"
 		}
 	]
 }

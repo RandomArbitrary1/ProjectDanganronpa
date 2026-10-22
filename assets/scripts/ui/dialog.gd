@@ -278,7 +278,7 @@ func next(): # Next dialog line
 			line += 1
 			next()
 		elif current.type == "counter_check":
-			if current.object in GameData.data.game_value.counter_objects and GameData.data.game_value.counter_objects[current.object].count >= current.threshold:
+			if current.object in GameData.data.game_value.counter_objects and GameData.data.game_value.counter_objects[current.object].count == current.threshold:
 				if current.file != "":
 					file = load(current.file)
 					dialog = file.data.dialog
@@ -290,6 +290,7 @@ func next(): # Next dialog line
 			else:
 				line += 1
 				next()
+				return
 		else:
 			line += 1
 			next()
@@ -307,8 +308,6 @@ func next(): # Next dialog line
 		full_name.text = ""
 		box.text = ""
 		active = false
-
-
 
 func start(line_new = 0):
 	if file and not active:
