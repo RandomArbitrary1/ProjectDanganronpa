@@ -321,8 +321,8 @@ func reload_list(): #reload the displayed items to the current selected ones las
 			new.get_node(\"Panel/X\").text = str(i.x)
 			new.get_node(\"Panel/Y\").text = str(i.y)
 			new.get_node(\"Panel/Z\").text = str(i.z)
-			if \"dialog\" in i and ResourceLoader.exists(i.dialog):
-				new.get_node(\"Panel/Dialog\").text = i.dialog
+			if \"file\" in i and ResourceLoader.exists(i.file):
+				new.get_node(\"Panel/Dialog\").text = i.file
 			if \"spawn\" in i:
 				new.get_node(\"Panel/CheckButton\").button_pressed = i.spawn
 			i[\"eline\"] = new
