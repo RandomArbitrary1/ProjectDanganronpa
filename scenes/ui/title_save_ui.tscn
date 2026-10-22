@@ -11,20 +11,207 @@
 [ext_resource type="Texture2D" uid="uid://bdr3wtss8d3qg" path="res://assets/textures/cg/first_victim.jpg" id="10_1hxa8"]
 [ext_resource type="Theme" uid="uid://bqyb3163eupti" path="res://assets/ui/theme.tres" id="10_6mgai"]
 
+[sub_resource type="Animation" id="Animation_47tr7"]
+resource_name = "Exit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1080.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-632, -1080)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thumbnail:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [632.0, 1920.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Items:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666666, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [64.0, -866.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_fu6to"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1080.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thumbnail:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [632.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Items:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_chq1c"]
 resource_name = "Start"
-length = 0.7
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1080.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-632, -1080), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thumbnail:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1920.0, 632.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Items:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.26666668, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-866.0, 64.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fu6to"]
 _data = {
+&"Exit": SubResource("Animation_47tr7"),
 &"RESET": SubResource("Animation_fu6to"),
 &"Start": SubResource("Animation_chq1c")
 }
 
 [node name="Ui" type="ColorRect" unique_id=2142963964]
+visible = false
+z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,25 +247,6 @@ text = "Press any button to continue"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Credits" type="Label" parent="." unique_id=664267064]
-modulate = Color(1, 1, 1, 0.49019608)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -952.0
-offset_top = -64.0
-offset_right = -552.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("7_wngil")
-theme_override_font_sizes/font_size = 30
-text = "By Danilo & mkaiast"
-vertical_alignment = 2
-
 [node name="Items" type="Control" parent="." unique_id=1957337230]
 layout_mode = 1
 anchors_preset = 4
@@ -87,7 +255,7 @@ anchor_bottom = 0.5
 offset_left = 64.0
 offset_top = -208.0
 offset_right = 136.0
-offset_bottom = 208.0
+offset_bottom = 207.9997
 grow_vertical = 2
 
 [node name="Option" type="TextureRect" parent="Items" unique_id=1886398587]
@@ -237,24 +405,18 @@ grow_vertical = 2
 theme = ExtResource("10_6mgai")
 theme_type_variation = &"Title"
 theme_override_font_sizes/font_size = 60
-text = "Quit"
+text = "Return"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Anims" type="AnimationPlayer" parent="." unique_id=1431404898]
 libraries/ = SubResource("AnimationLibrary_fu6to")
 
-[node name="Overlay" type="TextureRect" parent="." unique_id=1523862275]
-layout_mode = 0
-offset_right = 1216.0
-offset_bottom = 1080.0
-texture = ExtResource("8_47tr7")
-
 [node name="Thumbnail" type="TextureRect" parent="." unique_id=315204328]
 clip_children = 1
 layout_mode = 0
 offset_left = 632.0
-offset_right = 1920.0
+offset_right = 1919.998
 offset_bottom = 1080.0
 texture = ExtResource("9_qky5q")
 
@@ -268,3 +430,9 @@ grow_vertical = 2
 texture = ExtResource("10_1hxa8")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="Overlay" type="TextureRect" parent="." unique_id=1523862275]
+layout_mode = 0
+offset_right = 1264.0
+offset_bottom = 1080.0
+texture = ExtResource("8_47tr7")

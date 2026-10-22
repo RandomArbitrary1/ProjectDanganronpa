@@ -96,8 +96,8 @@ func _process(delta: float) -> void:
 			reticle.get_node("Anim").play("Show")
 			reticle_anim.play("Exit")
 	if not dialog.active:
-		var joy_x_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
-		var joy_y_left = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+		var joy_x_left = clamp(Input.get_joy_axis(0, JOY_AXIS_LEFT_X),-1.0,1.0)
+		var joy_y_left = clamp(Input.get_joy_axis(0, JOY_AXIS_LEFT_Y),-1.0,1.0)
 		if abs(joy_x_left) < DEADZONE: joy_x_left = 0.0
 		if abs(joy_y_left) < DEADZONE: joy_y_left = 0.0
 		if joy_x_left != 0.0 or joy_y_left != 0.0:
@@ -106,8 +106,8 @@ func _process(delta: float) -> void:
 			velocity.x = -input_dir.x * JOYSTICK_SENSITIVITY * delta * SPEED/1.5
 			velocity.z = -input_dir.z * JOYSTICK_SENSITIVITY * delta * SPEED/1.5
 		
-		var joy_x_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
-		var joy_y_right = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+		var joy_x_right = clamp(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),-1.0,1.0)
+		var joy_y_right = clamp(Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y),-1.0,1.0)
 		if abs(joy_x_right) < DEADZONE: joy_x_right = 0.0
 		if abs(joy_y_right) < DEADZONE: joy_y_right = 0.0
 		if joy_x_right != 0.0 or joy_y_right != 0.0:

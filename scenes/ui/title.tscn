@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bst73b0kh88jc"]
 
 [ext_resource type="PackedScene" uid="uid://cfp8b3o8sfas8" path="res://scenes/ui/title_ui.tscn" id="2_4v1qu"]
+[ext_resource type="PackedScene" uid="uid://bknv7ibilrqdg" path="res://scenes/ui/title_save_ui.tscn" id="2_g80e2"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ocahe"]
 
@@ -14,6 +15,7 @@ grow_vertical = 2
 
 [node name="blackBG" type="TextureRect" parent="." unique_id=90980047]
 modulate = Color(0, 0, 0, 1)
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,3 +26,13 @@ texture = SubResource("PlaceholderTexture2D_ocahe")
 
 [node name="Ui" parent="." unique_id=1217565761 instance=ExtResource("2_4v1qu")]
 layout_mode = 1
+
+[node name="Save" parent="." unique_id=2142963964 instance=ExtResource("2_g80e2")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
