@@ -171,7 +171,7 @@ func _process(delta: float) -> void:
 		reticle_anim.play("Exit")
 	if current_hover and Input.is_action_just_pressed("Progress"):
 		if current_hover_type == "character" or current_hover_type == "object" and not dialog.active:
-			if current_hover.dialog != "":
+			if current_hover.dialog != "" and ResourceLoader.exists(current_hover.dialog):
 				dialog.file = load(current_hover.dialog)
 				current_hover = null
 				current_hover_check = null

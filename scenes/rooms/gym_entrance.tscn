@@ -58,6 +58,7 @@ maxY = 0.0
 center = Vector3(-2, 2.2, 1)
 
 [node name="Characters" type="Node3D" parent="." unique_id=2124327811 groups=["Characters_interact"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 
 [node name="Objects" type="Node3D" parent="." unique_id=986129665 groups=["Objects"]]
 
