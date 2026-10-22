@@ -307,6 +307,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 		elif i.type == \"intro\":
 			var new = intro_line.duplicate()
 			new.get_node(\"Panel/Name\").selected = range(new.get_node(\"Panel/Name\").item_count).map(func(ii): return new.get_node(\"Panel/Name\").get_item_text(ii)).find(i.character)
+			i[\"eline\"] = new
 			list.add_child(new)
 			run_options(new, i, false)
 		elif i.type == \"character\":
@@ -377,7 +378,7 @@ func reload_list(): #reload the displayed items to the current selected ones las
 		elif i.type == \"dialog_change\":
 			var new = dialog_change_line.duplicate()
 			i[\"eline\"] = new
-			new.get_node(\"Name\").text = i.name
+			new.get_node(\"Panel/Name\").text = i.name
 			new.get_node(\"Panel/Type\").selected = get_option_id(new.get_node(\"Panel/Type\"),i.object)
 			if \"file\" in i and ResourceLoader.exists(i.file):
 				new.get_node(\"Panel/Load\").text = i.file.get_file()
@@ -785,7 +786,7 @@ func save(): #save the current file
 		new_data[current_dialog].sort_custom(sort_new)
 		for i in new_data[current_dialog]:
 			i.erase(\"id\") #get rid of editor exlusive data
-			if i.has(\"eline\"):
+			if \"eline\" in i:
 				i.erase(\"eline\")
 		for a in new_data.keys().size(): #double check
 			if new_data.has(\"dialog\" + str(a)) and new_data[\"dialog\" + str(a)] != new_data[current_dialog]:
@@ -834,8 +835,158 @@ func _process(_delta: float) -> void:
 		
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k08ah"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.3529412, 0.72156864, 0.84705883, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol5w5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.79120463, 0.5727377, 0.8477413, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2fl4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.3606654, 0.7626423, 0.51675344, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqeqj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.6181915, 0.2934623, 0.928516, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1adse"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.85754114, 0.94828564, 0.98348683, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2v0n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.8431443, 0.4897555, 0.27468824, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg4kt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.8874726, 0.36137912, 0.6068694, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q53kf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.9907624, 0.3933225, 1, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mn1m3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.97492343, 0.8873416, 0.43344477, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ob5wf"]
 size = Vector2(16, 9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m42j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0, 0.79607844, 1, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2ie8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(1, 1, 0, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc1ed"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.4745098, 0, 0.9098039, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erjaa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.40390605, 0.79576564, 0.99999994, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bap13"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.38170326, 0.38170323, 0.38170323, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evopi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1000
+border_color = Color(0.7606132, 0.4985779, 1, 0.49803922)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Animation" id="Animation_xfl6f"]
 resource_name = "Anim"
@@ -968,6 +1119,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/Counter_add/Panel" unique_id=1734945209]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k08ah")
+
 [node name="Outline" type="Panel" parent="Items/List/Counter_add/Panel" unique_id=2123696031]
 visible = false
 layout_mode = 1
@@ -1062,6 +1222,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/Counter_remove/Panel" unique_id=154278148]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ol5w5")
+
 [node name="Outline" type="Panel" parent="Items/List/Counter_remove/Panel" unique_id=946178747]
 visible = false
 layout_mode = 1
@@ -1147,6 +1316,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Counter_check/Panel" unique_id=1725734791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p2fl4")
 
 [node name="Outline" type="Panel" parent="Items/List/Counter_check/Panel" unique_id=709565469]
 visible = false
@@ -1274,6 +1452,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Dialog_change/Panel" unique_id=1396213240]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oqeqj")
 
 [node name="Outline" type="Panel" parent="Items/List/Dialog_change/Panel" unique_id=415498985]
 visible = false
@@ -1409,6 +1596,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/Intro/Panel" unique_id=764261571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1adse")
+
 [node name="Outline" type="Panel" parent="Items/List/Intro/Panel" unique_id=1285075546]
 visible = false
 layout_mode = 1
@@ -1507,6 +1703,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Character/Panel" unique_id=1418198823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2v0n")
 
 [node name="Outline" type="Panel" parent="Items/List/Character/Panel" unique_id=962978155]
 visible = false
@@ -1693,6 +1898,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/Room/Panel" unique_id=1704766326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cg4kt")
+
 [node name="Outline" type="Panel" parent="Items/List/Room/Panel" unique_id=277296789]
 visible = false
 layout_mode = 1
@@ -1823,6 +2037,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/SFX/Panel" unique_id=1076562785]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q53kf")
+
 [node name="Outline" type="Panel" parent="Items/List/SFX/Panel" unique_id=1845631700]
 visible = false
 layout_mode = 1
@@ -1942,6 +2165,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/CG/Panel" unique_id=1309393971]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mn1m3")
+
 [node name="Outline" type="Panel" parent="Items/List/CG/Panel" unique_id=906998832]
 visible = false
 z_index = 1
@@ -2059,6 +2291,15 @@ custom_minimum_size = Vector2(304, 0)
 layout_mode = 2
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/CG/Image" unique_id=224832657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mn1m3")
+
 [node name="TextureRect" type="TextureRect" parent="Items/List/CG/Image" unique_id=2007439640]
 layout_mode = 1
 anchors_preset = 15
@@ -2084,6 +2325,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Choice/Panel" unique_id=1456285457]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4m42j")
 
 [node name="Outline" type="Panel" parent="Items/List/Choice/Panel" unique_id=48256454]
 visible = false
@@ -2290,6 +2540,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/Bullet/Panel" unique_id=426644637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2ie8")
+
 [node name="Outline" type="Panel" parent="Items/List/Bullet/Panel" unique_id=1525163626]
 visible = false
 layout_mode = 1
@@ -2417,6 +2676,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Music/Panel" unique_id=783875018]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hc1ed")
 
 [node name="Outline" type="Panel" parent="Items/List/Music/Panel" unique_id=1734375800]
 visible = false
@@ -2547,6 +2815,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Dialog/Panel" unique_id=14665072]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_erjaa")
 
 [node name="Outline" type="Panel" parent="Items/List/Dialog/Panel" unique_id=1129775105]
 visible = false
@@ -2691,6 +2968,15 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("1_ol5w5")
 
+[node name="Color" type="Panel" parent="Items/List/Dialog/Character" unique_id=595350374]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_erjaa")
+
 [node name="TextureRect" type="TextureRect" parent="Items/List/Dialog/Character" unique_id=1746620367]
 layout_mode = 1
 anchors_preset = 15
@@ -2752,6 +3038,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Visibility/Panel" unique_id=1025341257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bap13")
 
 [node name="Outline" type="Panel" parent="Items/List/Visibility/Panel" unique_id=1003563967]
 visible = false
@@ -2828,6 +3123,15 @@ theme = ExtResource("1_ol5w5")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ol5w5")
+
+[node name="Color" type="Panel" parent="Items/List/Focus/Panel" unique_id=1061431169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_evopi")
 
 [node name="Outline" type="Panel" parent="Items/List/Focus/Panel" unique_id=1652866522]
 visible = false
