@@ -121,13 +121,6 @@
 			"z": 8.0
 		},
 		{
-			"character": "shion",
-			"content": "",
-			"expression": "neutral.png",
-			"flags": [],
-			"type": "text"
-		},
-		{
 			"character": "haru",
 			"expression": "neutral",
 			"file": "res://assets/data/dialog/prologue/introductions/haru_introduction.json",
@@ -160,6 +153,7 @@
 			"flags": [
 				"thought"
 			],
+			"sfx": "res://assets/audio/sfx/environment/steps.mp3",
 			"type": "text"
 		},
 		{

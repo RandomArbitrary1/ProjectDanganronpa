@@ -46,7 +46,7 @@
 		},
 		{
 			"character": "itsuki",
-			"content": "Better question, who was that? It was just a silloette we saw.",
+			"content": "Better question, who was that? It was just a silhouette we saw.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
@@ -59,10 +59,65 @@
 			"type": "text"
 		},
 		{
+			"character": "reoto",
+			"content": "Should we really trust a silhouette, what if it's a trap?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "masato",
+			"content": "To be completely honest we don't have much choice. We need more information.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
 			"character": "yuito",
 			"content": "Alright, we probably should go towards the gym",
 			"expression": "neutral.png",
 			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "So there's a gym, it shouldn't be too far to walk to.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Hello! There I am again. I'm gonna explain the controls to the movement.",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Use WASD to move around. The mouse to look around. And click with the mouse to interact!",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "You can also press TAB to show the map, which is useful if you wanna know where places are.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Good luck with your mystery adventure!",
+			"expression": "neutral.png",
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		}
 	]

@@ -15,7 +15,16 @@
 		},
 		{
 			"character": "shion",
-			"content": "Hey, who are you; are you trapped here too?",
+			"content": "Why is there someone else here, did she kidnap me?",
+			"expression": "neutral.png",
+			"flags": [
+				"thought"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "Hey, do you have any idea of what's going on?",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
@@ -41,30 +50,24 @@
 		},
 		{
 			"character": "shion",
-			"content": "I don't know, that's why I'm asking you.",
-			"expression": "neutral.png",
-			"flags": [],
-			"type": "text"
-		},
-		{
-			"character": "rikuno",
-			"content": "Wait what. You woke up just now. Do you not know where we are either?",
+			"content": "Ah, judging from her reaction she doesn't know what's happening either...",
 			"expression": "neutral.png",
 			"flags": [
-				"unknown"
+				"thought",
+				"idea"
 			],
 			"type": "text"
 		},
 		{
 			"character": "shion",
-			"content": "I don't, that's what I've been saying.",
+			"content": "It's alright, I'm Shion Fumihiro. I somehow woke up here and hoped you know more about it.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "rikuno",
-			"content": "...",
+			"content": "I'm afraid I don't have anything to tell you. I was asleep before waking up here.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -73,7 +76,7 @@
 		},
 		{
 			"character": "rikuno",
-			"content": "Sorry, I didn't mean to freak out like that. It seems we're in the same boat.",
+			"content": "But sorry, I didn't mean to freak out like that. It seems we're in the same boat.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -89,14 +92,14 @@
 		},
 		{
 			"character": "shion",
-			"content": "...",
+			"content": "Can I ask what your name is?",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "rikuno",
-			"content": "I-I haven't introduced myself.",
+			"content": "Oh right, of course. It's only fair.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
@@ -105,11 +108,41 @@
 		},
 		{
 			"character": "rikuno",
-			"content": "I am Rikuno Yukami, the ultimate mercenary.",
+			"content": "I am Rikuno Yukami.",
 			"expression": "neutral.png",
 			"flags": [
 				"unknown"
 			],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Say have you ever heard about an Ultimate talent?",
+			"expression": "neutral.png",
+			"flags": [
+				"idea"
+			],
+			"type": "text"
+		},
+		{
+			"character": "shion",
+			"content": "I have actually, I'm an Ultimate spy. Do you have one too?",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "Yeah, I do. I was wondering if you were an Ultimate too.",
+			"expression": "neutral.png",
+			"flags": [],
+			"type": "text"
+		},
+		{
+			"character": "rikuno",
+			"content": "In that case, I'm Rikuno Yukami, the Ultimate mercenary.",
+			"expression": "neutral.png",
+			"flags": [],
 			"type": "text"
 		},
 		{

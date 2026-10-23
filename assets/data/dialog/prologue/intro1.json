@@ -176,7 +176,7 @@
 			"spawn": true,
 			"type": "character",
 			"x": -1.5,
-			"y": 1.8,
+			"y": 0.0,
 			"z": -4.0
 		},
 		{
@@ -319,7 +319,7 @@
 			"type": "text"
 		},
 		{
-			"addition": 0,
+			"addition": 0.0,
 			"flags": [],
 			"object": "leave",
 			"type": "counter_add"
