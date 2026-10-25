@@ -20,7 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://dhdjje73w66fl" path="res://assets/audio/sfx/ui/confirm2.mp3" id="18_7s1ms"]
 
 [sub_resource type="Gradient" id="Gradient_fd50p"]
-colors = PackedColorArray(0.20224464, 0.20224461, 0.20224461, 1, 0.48648673, 0.4864868, 0.48648667, 1)
+offsets = PackedFloat32Array(0, 0.989899)
+colors = PackedColorArray(0.41598043, 0.41598046, 0.41598022, 1, 0.7162962, 0.7162962, 0.7162962, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4tp24"]
 gradient = SubResource("Gradient_fd50p")
