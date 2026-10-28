@@ -39,7 +39,8 @@ func spawn(chr, room, pos, dialog, expression, active):
 			characters.add_child(new_char)
 		if ResourceLoader.exists(dialog):
 			new_char.dialog = dialog
-		new_char.position = pos
+		new_char.global_position = pos
+		new_char.position.y = pos.y
 		new_char.get_node("Anim").play("Enter")
 		await new_char.get_node("Anim").animation_finished
 	else:

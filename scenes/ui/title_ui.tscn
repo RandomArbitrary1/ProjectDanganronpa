@@ -288,14 +288,14 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -704.0
-offset_top = -44.0
+offset_top = 68.0
 offset_right = -664.0
-offset_bottom = 284.0
+offset_bottom = 396.0
 grow_vertical = 2
 
 [node name="Option" type="NinePatchRect" parent="Items" unique_id=1385948898]
 layout_mode = 0
-offset_right = 704.0
+offset_right = 480.0
 offset_bottom = 104.0
 texture = ExtResource("8_ewnb4")
 region_rect = Rect2(0, 0, 208, 104)
@@ -328,7 +328,7 @@ vertical_alignment = 1
 [node name="Option2" type="NinePatchRect" parent="Items" unique_id=220114982]
 layout_mode = 0
 offset_top = 112.0
-offset_right = 704.0
+offset_right = 592.0
 offset_bottom = 216.0
 texture = ExtResource("8_ewnb4")
 region_rect = Rect2(0, 0, 208, 104)
