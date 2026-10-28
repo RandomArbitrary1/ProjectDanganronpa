@@ -20,21 +20,27 @@
 			"character": "ushi",
 			"content": "Hello, hello! Do you guys see me?",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "ushi",
 			"content": "For everyone that wants to know who I am and why you all are brought here.",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
 			"character": "ushi",
 			"content": "Please gather in the gymnasium ASAP. I'll be waiting...",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"unknown"
+			],
 			"type": "text"
 		},
 		{
@@ -46,14 +52,14 @@
 		},
 		{
 			"character": "itsuki",
-			"content": "Better question, who was that? It was just a silhouette we saw.",
+			"content": "Better question, who was that? We saw nothing except for a silhouette.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
 		},
 		{
 			"character": "raito",
-			"content": "So someone is running the place I assume.",
+			"content": "So it's someone running the place I assume.",
 			"expression": "neutral.png",
 			"flags": [],
 			"type": "text"
@@ -81,9 +87,11 @@
 		},
 		{
 			"character": "shion",
-			"content": "So there's a gym, it shouldn't be too far to walk to.",
+			"content": "So there's a gym, it shouldn't be too far to walk to. Let's check out what's there..?",
 			"expression": "neutral.png",
-			"flags": [],
+			"flags": [
+				"thought"
+			],
 			"type": "text"
 		},
 		{
